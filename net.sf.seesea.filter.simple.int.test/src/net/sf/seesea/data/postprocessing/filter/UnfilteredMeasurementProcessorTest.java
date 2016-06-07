@@ -54,13 +54,8 @@ public class UnfilteredMeasurementProcessorTest {
 		
 		MemoryDataWriter memoryDataWriter = new MemoryDataWriter();
 		
-		IWriterFactory writerFactory = EasyMock.createNiceMock(IWriterFactory.class);
-		EasyMock.expect(writerFactory.createWriter()).andReturn(memoryDataWriter);
-		EasyMock.expectLastCall().anyTimes();
-		EasyMock.replay(writerFactory);
-		
 		UnfilteredMeasurementProcessor unfilteredMeasurementProcessor = new UnfilteredMeasurementProcessor();
-		unfilteredMeasurementProcessor.bindWriterFactory(writerFactory);
+		unfilteredMeasurementProcessor.bindWriter(memoryDataWriter);
 		
 		unfilteredMeasurementProcessor.processMeasurements(measurements, "Pos", 1L, null, null);
 		unfilteredMeasurementProcessor.finish();
