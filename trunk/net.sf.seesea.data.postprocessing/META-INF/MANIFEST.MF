@@ -6,10 +6,7 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: net.sf.seesea.data.postprocessing.DataPostprocessingActivator
 Export-Package: net.sf.seesea.data.postprocessing,
- net.sf.seesea.data.postprocessing.cleaning,
- net.sf.seesea.data.postprocessing.data,
- net.sf.seesea.data.postprocessing.file,
- net.sf.seesea.data.postprocessing.filter
+ net.sf.seesea.data.postprocessing.data
 Require-Bundle: org.eclipse.core.runtime,
  org.apache.log4j;bundle-version="[1.2.0,2.0.0)",
  net.sf.seesea.model.core,

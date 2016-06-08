@@ -37,12 +37,6 @@ import javax.bluetooth.RemoteDevice;
 import javax.bluetooth.ServiceRecord;
 import javax.bluetooth.UUID;
 
-import net.sf.seesea.gps.bluetooth.ui.BluetoothDeviceLabelProvider;
-import net.sf.seesea.gps.bluetooth.ui.BluetoothDiscoveryListener;
-import net.sf.seesea.gps.bluetooth.ui.GPSBluetoothUIActivator;
-import net.sf.seesea.lib.IValidatingPage;
-import net.sf.seesea.provider.navigation.nmea.ui.NMEAWizard;
-
 import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -59,7 +53,12 @@ import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.widgets.Composite;
 
-public class DevicesPage extends WizardPage implements IValidatingPage {
+import net.sf.seesea.gps.bluetooth.ui.BluetoothDeviceLabelProvider;
+import net.sf.seesea.gps.bluetooth.ui.BluetoothDiscoveryListener;
+import net.sf.seesea.gps.bluetooth.ui.GPSBluetoothUIActivator;
+import net.sf.seesea.provider.navigation.nmea.ui.NMEAWizard;
+
+public class DevicesPage extends WizardPage implements net.sf.seesea.lib.ui.IValidatingPage {
 
 	private TableViewer tableViewer;
 	private ServiceRecord serviceRecord;

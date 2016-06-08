@@ -26,8 +26,6 @@
  */
 package wizard;
 
-import net.sf.seesea.lib.IValidatingPage;
-
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.IDialogSettings;
@@ -42,6 +40,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
+import net.sf.seesea.lib.ui.IValidatingPage;
+
 /**
  * 
  */
@@ -54,7 +54,7 @@ public class SelectHostPage extends WizardPage implements IValidatingPage {
 	private Text text_2;
 	private int timeout;
 
-	/**
+	/**o
 	 * @param serialNMEAProvider 
 	 * @param pageName
 	 */
