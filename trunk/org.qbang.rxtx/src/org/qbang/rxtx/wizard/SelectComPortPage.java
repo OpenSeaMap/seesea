@@ -26,15 +26,8 @@
  */
 package org.qbang.rxtx.wizard;
 
-import gnu.io.CommPort;
-import gnu.io.CommPortIdentifier;
-import gnu.io.ParallelPort;
-import gnu.io.PortInUseException;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import net.sf.seesea.lib.IValidatingPage;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -48,6 +41,12 @@ import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.widgets.Composite;
 import org.qbang.rxtx.ComPortLabelProvider;
+
+import gnu.io.CommPort;
+import gnu.io.CommPortIdentifier;
+import gnu.io.ParallelPort;
+import gnu.io.PortInUseException;
+import net.sf.seesea.lib.ui.IValidatingPage;
 
 /**
  * 

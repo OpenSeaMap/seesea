@@ -23,7 +23,9 @@ Require-Bundle: org.eclipse.ui,
  net.sf.seesea.lib;bundle-version="1.0.0",
  net.sf.seesea.upload;bundle-version="1.0.0",
  net.sf.seesea.upload.osm;bundle-version="1.0.0",
- net.sf.seesea.services.navigation;bundle-version="1.0.0"
+ net.sf.seesea.services.navigation;bundle-version="1.0.0",
+ net.sf.seesea.track.api,
+ net.sf.seesea.lib.ui
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: net.sf.seesea.nmea.rcp

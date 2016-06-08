@@ -30,9 +30,6 @@ package net.sf.seesea.nmea.rcp.handler;
 import java.io.IOException;
 import java.util.Collection;
 
-import net.sf.seesea.nmea.rcp.NMEARCPActivator;
-import net.sf.seesea.services.navigation.IStreamProcessor;
-
 import org.apache.log4j.Logger;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.Command;
@@ -51,6 +48,9 @@ import org.eclipse.ui.handlers.RegistryToggleState;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
+
+import net.sf.seesea.nmea.rcp.NMEARCPActivator;
+import net.sf.seesea.track.api.IStreamProcessor;
 
 public class ToggleLogEnablementHandler extends AbstractHandler {
 

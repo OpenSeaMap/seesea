@@ -28,14 +28,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.provider.navigation.nmea.ui;
 
-import net.sf.seesea.lib.ValidatingWizardDialog;
-
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jface.window.Window;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.osgi.util.tracker.ServiceTracker;
+
+import net.sf.seesea.lib.ui.ValidatingWizardDialog;
 
 /**
  * 
