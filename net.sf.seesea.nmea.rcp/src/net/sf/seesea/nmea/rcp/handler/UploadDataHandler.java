@@ -26,10 +26,6 @@
  */
 package net.sf.seesea.nmea.rcp.handler;
 
-import net.sf.seesea.lib.ValidatingWizardDialog;
-import net.sf.seesea.nmea.rcp.NMEARCPActivator;
-import net.sf.seesea.upload.IUploadWizardProvider;
-
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -38,6 +34,10 @@ import org.eclipse.jface.wizard.IWizard;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
+
+import net.sf.seesea.lib.ui.ValidatingWizardDialog;
+import net.sf.seesea.nmea.rcp.NMEARCPActivator;
+import net.sf.seesea.upload.IUploadWizardProvider;
 
 public class UploadDataHandler extends AbstractHandler {
 
