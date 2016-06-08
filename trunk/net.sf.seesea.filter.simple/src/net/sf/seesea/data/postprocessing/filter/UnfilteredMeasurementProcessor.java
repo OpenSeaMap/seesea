@@ -30,9 +30,11 @@ package net.sf.seesea.data.postprocessing.filter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 
 import org.apache.log4j.Logger;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
@@ -40,7 +42,6 @@ import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
 
 import net.sf.seesea.data.io.IDataWriter;
-import net.sf.seesea.data.io.IWriterFactory;
 import net.sf.seesea.data.io.WriterException;
 import net.sf.seesea.data.postprocessing.process.IFilter;
 import net.sf.seesea.model.core.geo.Depth;
@@ -80,6 +81,12 @@ public class UnfilteredMeasurementProcessor implements IFilter {
 
 	private AtomicReference<IWaterLevelCorrection> waterLevelCorrectionAR = new AtomicReference<IWaterLevelCorrection>();
 
+	private boolean enableBoatOffsetFiltering = false;
+
+	public void activate(Map<String,Object> properties) {
+		enableBoatOffsetFiltering = "true".equals(properties.get("boatOffsetFiltering"));
+	}
+	
 	@Override
 	public void processMeasurements(List<Measurement> results, String messageType, long sourceTrackIdentifier,
 			GeoBoundingBox boundingBox, ITrackFile trackfile) throws ProcessingException {
@@ -103,7 +110,7 @@ public class UnfilteredMeasurementProcessor implements IFilter {
 	protected void processSingleMeasurement(Measurement measurement, long sourceTrackIdentifier,
 			GeoBoundingBox boundingBox, ITrackFile trackfile) throws WriterException, ProcessingException {
 		// if(lastSourceTrackIdentifier != sourceTrackIdentifier) {
-		if (trackfile.getBoatParameters() != null) {
+		if (trackfile.getBoatParameters() != null && measurement instanceof MeasuredPosition3D) {
 			sensorOffsetToWaterline = trackfile.getBoatParameters().getSensorOffsetToWaterline(
 					measurement.getSensorID());
 		}
@@ -187,12 +194,13 @@ public class UnfilteredMeasurementProcessor implements IFilter {
 			// depth.getDepth());
 			IWaterLevelCorrection tideProvider = waterLevelCorrectionAR.get();
 			if (tideProvider != null) {
+				Depth depthOut = EcoreUtil.copy(depth);
 				double tideHeight = tideProvider.getCorrection(lastPosition.getLatitude().getDecimalDegree(),
 						lastPosition.getLongitude().getDecimalDegree(), lastPosition.getTime());
 				if (!Double.isNaN(tideHeight)) {
-					depth.setDepth(depth.getDepth() - tideHeight);
-					depth.setDepth(depth.getDepth() - sensorOffsetToWaterline);
-					measurements.add(depth);
+					depthOut.setDepth(depth.getDepth() - tideHeight);
+					correctDepthByBoat(depthOut);
+					measurements.add(depthOut);
 					writerFactoryAR.get().write(measurements, true, lastSourceTrackIdentifier);
 				} else {
 					Logger.getLogger(getClass())
@@ -200,7 +208,13 @@ public class UnfilteredMeasurementProcessor implements IFilter {
 									+ lastPosition.getLongitude().getDecimalDegree() + ":" + lastPosition.getTime());
 				}
 			} else {
-				measurements.add(depth);
+				if(enableBoatOffsetFiltering) {
+					Depth depthOut = EcoreUtil.copy(depth);
+					correctDepthByBoat(depthOut);
+					measurements.add(depthOut);
+				} else {
+					measurements.add(depth);
+				}
 				writerFactoryAR.get().write(measurements, true, lastSourceTrackIdentifier);
 			}
 			// System.out.println(latitude.getDecimalDegree() + ":" +
@@ -208,6 +222,12 @@ public class UnfilteredMeasurementProcessor implements IFilter {
 			if(measurementWindow2 != null) {
 				measurementWindow2 = null;
 			}
+		}
+	}
+
+	private void correctDepthByBoat(Depth depthOut) {
+		if(enableBoatOffsetFiltering) {
+			depthOut.setDepth(depthOut.getDepth() - sensorOffsetToWaterline);
 		}
 	}
 
