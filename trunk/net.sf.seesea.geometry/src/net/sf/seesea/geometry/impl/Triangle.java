@@ -381,7 +381,7 @@ public class Triangle implements ITriangle {
 
 	@Override
 	public boolean inCircumcircle(IPoint point) {
-		double in = new ImpreciseGeometric().incircle(points.get(0), points.get(1), points.get(2), point);
+		double in = ImpreciseGeometric.incircle(points.get(0), points.get(1), points.get(2), point);
 		if(in > 0.0) {
 			return true;
 		} else if(in < 0.0) {

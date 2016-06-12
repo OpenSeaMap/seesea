@@ -27,7 +27,7 @@ import net.sf.seesea.geometry.IGeometric;
 import net.sf.seesea.geometry.IPoint;
 
 public class ImpreciseGeometric implements IGeometric {
-	
+
 	private static double resulterrbound;
 	private static double ccwerrboundA;
 	private static double ccwerrboundB;
@@ -38,21 +38,21 @@ public class ImpreciseGeometric implements IGeometric {
 	private static double o3derrboundA;
 	private static double o3derrboundB;
 	private static double o3derrboundC;
-	
+
 	static {
-		  resulterrbound = (3.0d + 8.0d * DoublePrecision.EPSILON) * DoublePrecision.EPSILON;
-		  ccwerrboundA = (3.0d + 16.0d * DoublePrecision.EPSILON) * DoublePrecision.EPSILON;
-		  ccwerrboundB = (2.0d + 12.0d * DoublePrecision.EPSILON) * DoublePrecision.EPSILON;
-		  ccwerrboundC = (9.0d + 64.0d * DoublePrecision.EPSILON) * DoublePrecision.EPSILON * DoublePrecision.EPSILON;
-		  iccerrboundA = (10.0d + 96.0d * DoublePrecision.EPSILON) * DoublePrecision.EPSILON;
-		  iccerrboundB = (4.0d + 48.0d * DoublePrecision.EPSILON) * DoublePrecision.EPSILON;
-		  iccerrboundC = (44.0d + 576.0d * DoublePrecision.EPSILON) * DoublePrecision.EPSILON * DoublePrecision.EPSILON;
-		  o3derrboundA = (7.0d + 56.0d * DoublePrecision.EPSILON) * DoublePrecision.EPSILON;
-		  o3derrboundB = (3.0d + 28.0d * DoublePrecision.EPSILON) * DoublePrecision.EPSILON;
-		  o3derrboundC = (26.0d + 288.0d * DoublePrecision.EPSILON) * DoublePrecision.EPSILON * DoublePrecision.EPSILON;
+		resulterrbound = (3.0d + 8.0d * DoublePrecision.EPSILON) * DoublePrecision.EPSILON;
+		ccwerrboundA = (3.0d + 16.0d * DoublePrecision.EPSILON) * DoublePrecision.EPSILON;
+		ccwerrboundB = (2.0d + 12.0d * DoublePrecision.EPSILON) * DoublePrecision.EPSILON;
+		ccwerrboundC = (9.0d + 64.0d * DoublePrecision.EPSILON) * DoublePrecision.EPSILON * DoublePrecision.EPSILON;
+		iccerrboundA = (10.0d + 96.0d * DoublePrecision.EPSILON) * DoublePrecision.EPSILON;
+		iccerrboundB = (4.0d + 48.0d * DoublePrecision.EPSILON) * DoublePrecision.EPSILON;
+		iccerrboundC = (44.0d + 576.0d * DoublePrecision.EPSILON) * DoublePrecision.EPSILON * DoublePrecision.EPSILON;
+		o3derrboundA = (7.0d + 56.0d * DoublePrecision.EPSILON) * DoublePrecision.EPSILON;
+		o3derrboundB = (3.0d + 28.0d * DoublePrecision.EPSILON) * DoublePrecision.EPSILON;
+		o3derrboundC = (26.0d + 288.0d * DoublePrecision.EPSILON) * DoublePrecision.EPSILON * DoublePrecision.EPSILON;
 	}
-	
-	public double incircle(IPoint pa, IPoint pb, IPoint pc, IPoint pd) {
+
+	public static double incircle(IPoint pa, IPoint pb, IPoint pc, IPoint pd) {
 		double adx, bdx, cdx, ady, bdy, cdy;
 		double bdxcdy, cdxbdy, cdxady, adxcdy, adxbdy, bdxady;
 		double alift, blift, clift;
@@ -86,7 +86,8 @@ public class ImpreciseGeometric implements IGeometric {
 		// return det;
 		// }
 
-		permanent = (Math.abs(bdxcdy) + Math.abs(cdxbdy)) * alift + (Math.abs(cdxady) + Math.abs(adxcdy)) * blift + (Math.abs(adxbdy) + Math.abs(bdxady)) * clift;
+		permanent = (Math.abs(bdxcdy) + Math.abs(cdxbdy)) * alift + (Math.abs(cdxady) + Math.abs(adxcdy)) * blift
+				+ (Math.abs(adxbdy) + Math.abs(bdxady)) * clift;
 		errbound = iccerrboundA * permanent;
 		if ((det > errbound) || (-det > errbound)) {
 			return det;
@@ -94,8 +95,8 @@ public class ImpreciseGeometric implements IGeometric {
 
 		return incircleadapt(pa, pb, pc, pd, permanent);
 	}
-	
-	public double incircleadapt(IPoint pa, IPoint pb, IPoint pc, IPoint pd, double permanent) {
+
+	public static double incircleadapt(IPoint pa, IPoint pb, IPoint pc, IPoint pd, double permanent) {
 		double adx, bdx, cdx, ady, bdy, cdy;
 		double det, errbound;
 
@@ -103,11 +104,14 @@ public class ImpreciseGeometric implements IGeometric {
 		double bdxcdy0, cdxbdy0, cdxady0, adxcdy0, adxbdy0, bdxady0;
 		double bc[] = new double[4], ca[] = new double[4], ab[] = new double[4];
 		double bc3, ca3, ab3;
-		double axbc[] = new double[8], axxbc[] = new double[16], aybc[] = new double[8], ayybc[] = new double[16], adet[] = new double[32];
+		double axbc[] = new double[8], axxbc[] = new double[16], aybc[] = new double[8], ayybc[] = new double[16],
+				adet[] = new double[32];
 		int axbclen, axxbclen, aybclen, ayybclen, alen;
-		double bxca[] = new double[8], bxxca[] = new double[16], byca[] = new double[8], byyca[] = new double[16], bdet[] = new double[32];
+		double bxca[] = new double[8], bxxca[] = new double[16], byca[] = new double[8], byyca[] = new double[16],
+				bdet[] = new double[32];
 		int bxcalen, bxxcalen, bycalen, byycalen, blen;
-		double cxab[] = new double[8], cxxab[] = new double[16], cyab[] = new double[8], cyyab[] = new double[16], cdet[] = new double[32];
+		double cxab[] = new double[8], cxxab[] = new double[16], cyab[] = new double[8], cyyab[] = new double[16],
+				cdet[] = new double[32];
 		int cxablen, cxxablen, cyablen, cyyablen, clen;
 		double abdet[] = new double[64];
 		int ablen;
@@ -124,8 +128,10 @@ public class ImpreciseGeometric implements IGeometric {
 		double ti0, tj0;
 		double u[] = new double[4], v[] = new double[4];
 		double u3, v3;
-		double temp8[] = new double[8], temp16a[] = new double[16], temp16b[] = new double[16], temp16c[] = new double[16];
-		double temp32a[] = new double[32], temp32b[] = new double[32], temp48[] = new double[48], temp64[] = new double[64];
+		double temp8[] = new double[8], temp16a[] = new double[16], temp16b[] = new double[16],
+				temp16c[] = new double[16];
+		double temp32a[] = new double[32], temp32b[] = new double[32], temp48[] = new double[48],
+				temp64[] = new double[64];
 		int temp8len, temp16alen, temp16blen, temp16clen;
 		int temp32alen, temp32blen, temp48len, temp64len;
 		double axtbb[] = new double[8], axtcc[] = new double[8], aytbb[] = new double[8], aytcc[] = new double[8];
@@ -134,9 +140,11 @@ public class ImpreciseGeometric implements IGeometric {
 		int bxtaalen, bxtcclen, bytaalen, bytcclen;
 		double cxtaa[] = new double[8], cxtbb[] = new double[8], cytaa[] = new double[8], cytbb[] = new double[8];
 		int cxtaalen, cxtbblen, cytaalen, cytbblen;
-		double axtbc[] = new double[8], aytbc[] = new double[8], bxtca[] = new double[8], bytca[] = new double[8], cxtab[] = new double[8], cytab[] = new double[8];
+		double axtbc[] = new double[8], aytbc[] = new double[8], bxtca[] = new double[8], bytca[] = new double[8],
+				cxtab[] = new double[8], cytab[] = new double[8];
 		int axtbclen = 0, aytbclen = 0, bxtcalen = 0, bytcalen = 0, cxtablen = 0, cytablen = 0;
-		double axtbct[] = new double[16], aytbct[] = new double[16], bxtcat[] = new double[16], bytcat[] = new double[16], cxtabt[] = new double[16], cytabt[] = new double[16];
+		double axtbct[] = new double[16], aytbct[] = new double[16], bxtcat[] = new double[16],
+				bytcat[] = new double[16], cxtabt[] = new double[16], cytabt[] = new double[16];
 		int axtbctlen, aytbctlen, bxtcatlen, bytcatlen, cxtabtlen, cytabtlen;
 		double axtbctt[] = new double[8], aytbctt[] = new double[8], bxtcatt[] = new double[8];
 		double bytcatt[] = new double[8], cxtabtt[] = new double[8], cytabtt[] = new double[8];
@@ -226,14 +234,18 @@ public class ImpreciseGeometric implements IGeometric {
 		bdytail = DoublePrecision.twoDiffTail(pb.getY(), pd.getY(), bdy);
 		cdxtail = DoublePrecision.twoDiffTail(pc.getX(), pd.getX(), cdx);
 		cdytail = DoublePrecision.twoDiffTail(pc.getY(), pd.getY(), cdy);
-		if ((adxtail == 0.0) && (bdxtail == 0.0) && (cdxtail == 0.0) && (adytail == 0.0) && (bdytail == 0.0) && (cdytail == 0.0)) {
+		if ((adxtail == 0.0) && (bdxtail == 0.0) && (cdxtail == 0.0) && (adytail == 0.0) && (bdytail == 0.0)
+				&& (cdytail == 0.0)) {
 			return det;
 		}
 
 		errbound = iccerrboundC * permanent + resulterrbound * Math.abs(det);
-		det += ((adx * adx + ady * ady) * ((bdx * cdytail + cdy * bdxtail) - (bdy * cdxtail + cdx * bdytail)) + 2.0 * (adx * adxtail + ady * adytail) * (bdx * cdy - bdy * cdx))
-				+ ((bdx * bdx + bdy * bdy) * ((cdx * adytail + ady * cdxtail) - (cdy * adxtail + adx * cdytail)) + 2.0 * (bdx * bdxtail + bdy * bdytail) * (cdx * ady - cdy * adx))
-				+ ((cdx * cdx + cdy * cdy) * ((adx * bdytail + bdy * adxtail) - (ady * bdxtail + bdx * adytail)) + 2.0 * (cdx * cdxtail + cdy * cdytail) * (adx * bdy - ady * bdx));
+		det += ((adx * adx + ady * ady) * ((bdx * cdytail + cdy * bdxtail) - (bdy * cdxtail + cdx * bdytail))
+				+ 2.0 * (adx * adxtail + ady * adytail) * (bdx * cdy - bdy * cdx))
+				+ ((bdx * bdx + bdy * bdy) * ((cdx * adytail + ady * cdxtail) - (cdy * adxtail + adx * cdytail))
+						+ 2.0 * (bdx * bdxtail + bdy * bdytail) * (cdx * ady - cdy * adx))
+				+ ((cdx * cdx + cdy * cdy) * ((adx * bdytail + bdy * adxtail) - (ady * bdxtail + bdx * adytail))
+						+ 2.0 * (cdx * cdxtail + cdy * cdytail) * (adx * bdy - ady * bdx));
 		if ((det >= errbound) || (-det >= errbound)) {
 			return det;
 		}
@@ -450,7 +462,8 @@ public class ImpreciseGeometric implements IGeometric {
 				if (bdytail != 0.0) {
 					temp8len = DoublePrecision.scaleExpansionZeroelim(4, cc, adxtail, temp8);
 					temp16alen = DoublePrecision.scaleExpansionZeroelim(temp8len, temp8, bdytail, temp16a);
-					finlength = DoublePrecision.fastExpansionSumZeroelim(finlength, finnow, temp16alen, temp16a, finother);
+					finlength = DoublePrecision.fastExpansionSumZeroelim(finlength, finnow, temp16alen, temp16a,
+							finother);
 					finswap = finnow;
 					finnow = finother;
 					finother = finswap;
@@ -458,7 +471,8 @@ public class ImpreciseGeometric implements IGeometric {
 				if (cdytail != 0.0) {
 					temp8len = DoublePrecision.scaleExpansionZeroelim(4, bb, -adxtail, temp8);
 					temp16alen = DoublePrecision.scaleExpansionZeroelim(temp8len, temp8, cdytail, temp16a);
-					finlength = DoublePrecision.fastExpansionSumZeroelim(finlength, finnow, temp16alen, temp16a, finother);
+					finlength = DoublePrecision.fastExpansionSumZeroelim(finlength, finnow, temp16alen, temp16a,
+							finother);
 					finswap = finnow;
 					finnow = finother;
 					finother = finswap;
@@ -468,7 +482,8 @@ public class ImpreciseGeometric implements IGeometric {
 				axtbcttlen = DoublePrecision.scaleExpansionZeroelim(bcttlen, bctt, adxtail, axtbctt);
 				temp16alen = DoublePrecision.scaleExpansionZeroelim(axtbcttlen, axtbctt, 2.0 * adx, temp16a);
 				temp16blen = DoublePrecision.scaleExpansionZeroelim(axtbcttlen, axtbctt, adxtail, temp16b);
-				temp32blen = DoublePrecision.fastExpansionSumZeroelim(temp16alen, temp16a, temp16blen, temp16b, temp32b);
+				temp32blen = DoublePrecision.fastExpansionSumZeroelim(temp16alen, temp16a, temp16blen, temp16b,
+						temp32b);
 				temp64len = DoublePrecision.fastExpansionSumZeroelim(temp32alen, temp32a, temp32blen, temp32b, temp64);
 				finlength = DoublePrecision.fastExpansionSumZeroelim(finlength, finnow, temp64len, temp64, finother);
 				finswap = finnow;
@@ -489,7 +504,8 @@ public class ImpreciseGeometric implements IGeometric {
 				aytbcttlen = DoublePrecision.scaleExpansionZeroelim(bcttlen, bctt, adytail, aytbctt);
 				temp16alen = DoublePrecision.scaleExpansionZeroelim(aytbcttlen, aytbctt, 2.0 * ady, temp16a);
 				temp16blen = DoublePrecision.scaleExpansionZeroelim(aytbcttlen, aytbctt, adytail, temp16b);
-				temp32blen = DoublePrecision.fastExpansionSumZeroelim(temp16alen, temp16a, temp16blen, temp16b, temp32b);
+				temp32blen = DoublePrecision.fastExpansionSumZeroelim(temp16alen, temp16a, temp16blen, temp16b,
+						temp32b);
 				temp64len = DoublePrecision.fastExpansionSumZeroelim(temp32alen, temp32a, temp32blen, temp32b, temp64);
 				finlength = DoublePrecision.fastExpansionSumZeroelim(finlength, finnow, temp64len, temp64, finother);
 				finswap = finnow;
@@ -559,7 +575,8 @@ public class ImpreciseGeometric implements IGeometric {
 				if (cdytail != 0.0) {
 					temp8len = DoublePrecision.scaleExpansionZeroelim(4, aa, bdxtail, temp8);
 					temp16alen = DoublePrecision.scaleExpansionZeroelim(temp8len, temp8, cdytail, temp16a);
-					finlength = DoublePrecision.fastExpansionSumZeroelim(finlength, finnow, temp16alen, temp16a, finother);
+					finlength = DoublePrecision.fastExpansionSumZeroelim(finlength, finnow, temp16alen, temp16a,
+							finother);
 					finswap = finnow;
 					finnow = finother;
 					finother = finswap;
@@ -567,7 +584,8 @@ public class ImpreciseGeometric implements IGeometric {
 				if (adytail != 0.0) {
 					temp8len = DoublePrecision.scaleExpansionZeroelim(4, cc, -bdxtail, temp8);
 					temp16alen = DoublePrecision.scaleExpansionZeroelim(temp8len, temp8, adytail, temp16a);
-					finlength = DoublePrecision.fastExpansionSumZeroelim(finlength, finnow, temp16alen, temp16a, finother);
+					finlength = DoublePrecision.fastExpansionSumZeroelim(finlength, finnow, temp16alen, temp16a,
+							finother);
 					finswap = finnow;
 					finnow = finother;
 					finother = finswap;
@@ -577,7 +595,8 @@ public class ImpreciseGeometric implements IGeometric {
 				bxtcattlen = DoublePrecision.scaleExpansionZeroelim(cattlen, catt, bdxtail, bxtcatt);
 				temp16alen = DoublePrecision.scaleExpansionZeroelim(bxtcattlen, bxtcatt, 2.0 * bdx, temp16a);
 				temp16blen = DoublePrecision.scaleExpansionZeroelim(bxtcattlen, bxtcatt, bdxtail, temp16b);
-				temp32blen = DoublePrecision.fastExpansionSumZeroelim(temp16alen, temp16a, temp16blen, temp16b, temp32b);
+				temp32blen = DoublePrecision.fastExpansionSumZeroelim(temp16alen, temp16a, temp16blen, temp16b,
+						temp32b);
 				temp64len = DoublePrecision.fastExpansionSumZeroelim(temp32alen, temp32a, temp32blen, temp32b, temp64);
 				finlength = DoublePrecision.fastExpansionSumZeroelim(finlength, finnow, temp64len, temp64, finother);
 				finswap = finnow;
@@ -598,7 +617,8 @@ public class ImpreciseGeometric implements IGeometric {
 				bytcattlen = DoublePrecision.scaleExpansionZeroelim(cattlen, catt, bdytail, bytcatt);
 				temp16alen = DoublePrecision.scaleExpansionZeroelim(bytcattlen, bytcatt, 2.0 * bdy, temp16a);
 				temp16blen = DoublePrecision.scaleExpansionZeroelim(bytcattlen, bytcatt, bdytail, temp16b);
-				temp32blen = DoublePrecision.fastExpansionSumZeroelim(temp16alen, temp16a, temp16blen, temp16b, temp32b);
+				temp32blen = DoublePrecision.fastExpansionSumZeroelim(temp16alen, temp16a, temp16blen, temp16b,
+						temp32b);
 				temp64len = DoublePrecision.fastExpansionSumZeroelim(temp32alen, temp32a, temp32blen, temp32b, temp64);
 				finlength = DoublePrecision.fastExpansionSumZeroelim(finlength, finnow, temp64len, temp64, finother);
 				finswap = finnow;
@@ -668,7 +688,8 @@ public class ImpreciseGeometric implements IGeometric {
 				if (adytail != 0.0) {
 					temp8len = DoublePrecision.scaleExpansionZeroelim(4, bb, cdxtail, temp8);
 					temp16alen = DoublePrecision.scaleExpansionZeroelim(temp8len, temp8, adytail, temp16a);
-					finlength = DoublePrecision.fastExpansionSumZeroelim(finlength, finnow, temp16alen, temp16a, finother);
+					finlength = DoublePrecision.fastExpansionSumZeroelim(finlength, finnow, temp16alen, temp16a,
+							finother);
 					finswap = finnow;
 					finnow = finother;
 					finother = finswap;
@@ -676,7 +697,8 @@ public class ImpreciseGeometric implements IGeometric {
 				if (bdytail != 0.0) {
 					temp8len = DoublePrecision.scaleExpansionZeroelim(4, aa, -cdxtail, temp8);
 					temp16alen = DoublePrecision.scaleExpansionZeroelim(temp8len, temp8, bdytail, temp16a);
-					finlength = DoublePrecision.fastExpansionSumZeroelim(finlength, finnow, temp16alen, temp16a, finother);
+					finlength = DoublePrecision.fastExpansionSumZeroelim(finlength, finnow, temp16alen, temp16a,
+							finother);
 					finswap = finnow;
 					finnow = finother;
 					finother = finswap;
@@ -686,7 +708,8 @@ public class ImpreciseGeometric implements IGeometric {
 				cxtabttlen = DoublePrecision.scaleExpansionZeroelim(abttlen, abtt, cdxtail, cxtabtt);
 				temp16alen = DoublePrecision.scaleExpansionZeroelim(cxtabttlen, cxtabtt, 2.0 * cdx, temp16a);
 				temp16blen = DoublePrecision.scaleExpansionZeroelim(cxtabttlen, cxtabtt, cdxtail, temp16b);
-				temp32blen = DoublePrecision.fastExpansionSumZeroelim(temp16alen, temp16a, temp16blen, temp16b, temp32b);
+				temp32blen = DoublePrecision.fastExpansionSumZeroelim(temp16alen, temp16a, temp16blen, temp16b,
+						temp32b);
 				temp64len = DoublePrecision.fastExpansionSumZeroelim(temp32alen, temp32a, temp32blen, temp32b, temp64);
 				finlength = DoublePrecision.fastExpansionSumZeroelim(finlength, finnow, temp64len, temp64, finother);
 				finswap = finnow;
@@ -707,7 +730,8 @@ public class ImpreciseGeometric implements IGeometric {
 				cytabttlen = DoublePrecision.scaleExpansionZeroelim(abttlen, abtt, cdytail, cytabtt);
 				temp16alen = DoublePrecision.scaleExpansionZeroelim(cytabttlen, cytabtt, 2.0 * cdy, temp16a);
 				temp16blen = DoublePrecision.scaleExpansionZeroelim(cytabttlen, cytabtt, cdytail, temp16b);
-				temp32blen = DoublePrecision.fastExpansionSumZeroelim(temp16alen, temp16a, temp16blen, temp16b, temp32b);
+				temp32blen = DoublePrecision.fastExpansionSumZeroelim(temp16alen, temp16a, temp16blen, temp16b,
+						temp32b);
 				temp64len = DoublePrecision.fastExpansionSumZeroelim(temp32alen, temp32a, temp32blen, temp32b, temp64);
 				finlength = DoublePrecision.fastExpansionSumZeroelim(finlength, finnow, temp64len, temp64, finother);
 				finswap = finnow;
@@ -717,6 +741,144 @@ public class ImpreciseGeometric implements IGeometric {
 		}
 
 		return finnow[finlength - 1];
+	}
+
+	public double counterclockwiseadapt(IPoint pa, IPoint pb, IPoint pc, double detsum) {
+		double acx, acy, bcx, bcy;
+		double acxtail, acytail, bcxtail, bcytail;
+		double detleft, detright;
+		double detlefttail, detrighttail;
+		double det, errbound;
+		double B[] = new double[4];
+		double C1[] = new double[8];
+		double C2[] = new double[12];
+		double D[] = new double[16];
+		double B3;
+		int C1length, C2length, Dlength;
+		double u[] = new double[4];
+		double u3;
+		double s1, t1;
+		double s0, t0;
+
+		acx = (pa.getX() - pc.getX());
+		bcx = (pb.getX() - pc.getX());
+		acy = (pa.getY() - pc.getY());
+		bcy = (pb.getY() - pc.getY());
+
+		double[] two_Product = DoublePrecision.Two_Product(acx, bcy);
+		detleft = two_Product[0];
+		detlefttail = two_Product[1];
+		two_Product = DoublePrecision.Two_Product(acy, bcx);
+		detright = two_Product[0];
+		detrighttail = two_Product[1];
+
+		double[] two_Two_Diff = DoublePrecision.twoTwoDiff(detleft, detlefttail, detright, detrighttail);
+		B3 = two_Two_Diff[0];
+		B[2] = two_Two_Diff[1];
+		B[1] = two_Two_Diff[2];
+		B[0] = two_Two_Diff[3];
+		B[3] = B3;
+
+		det = DoublePrecision.estimate(4, B);
+		errbound = ccwerrboundB * detsum;
+		if ((det >= errbound) || (-det >= errbound)) {
+			return det;
+		}
+
+		acxtail = DoublePrecision.twoDiffTail(pa.getX(), pc.getX(), acx);
+		bcxtail = DoublePrecision.twoDiffTail(pb.getX(), pc.getX(), bcx);
+		acytail = DoublePrecision.twoDiffTail(pa.getY(), pc.getY(), acy);
+		bcytail = DoublePrecision.twoDiffTail(pb.getY(), pc.getY(), bcy);
+
+		if ((acxtail == 0.0) && (acytail == 0.0) && (bcxtail == 0.0) && (bcytail == 0.0)) {
+			return det;
+		}
+
+		errbound = ccwerrboundC * detsum + resulterrbound * Math.abs(det);
+		det += (acx * bcytail + bcy * acxtail) - (acy * bcxtail + bcx * acytail);
+		if ((det >= errbound) || (-det >= errbound)) {
+			return det;
+		}
+
+		double[] twoProduct = DoublePrecision.Two_Product(acxtail, bcy);
+		s1 = twoProduct[0];
+		s0 = twoProduct[1];
+		twoProduct = DoublePrecision.Two_Product(acytail, bcx);
+		t1 = twoProduct[0];
+		t0 = twoProduct[1];
+
+		two_Two_Diff = DoublePrecision.twoTwoDiff(s1, s0, t1, t0);
+		u3 = two_Two_Diff[0];
+		u[2] = two_Two_Diff[1];
+		u[1] = two_Two_Diff[2];
+		u[0] = two_Two_Diff[3];
+		u[3] = u3;
+
+		C1length = DoublePrecision.fastExpansionSumZeroelim(3, B, 3, u, C1);
+
+		twoProduct = DoublePrecision.Two_Product(acx, bcytail);
+		s1 = twoProduct[0];
+		s0 = twoProduct[1];
+		twoProduct = DoublePrecision.Two_Product(acy, bcxtail);
+		t1 = twoProduct[0];
+		t0 = twoProduct[1];
+
+		two_Two_Diff = DoublePrecision.twoTwoDiff(s1, s0, t1, t0);
+		u3 = two_Two_Diff[0];
+		u[2] = two_Two_Diff[1];
+		u[1] = two_Two_Diff[2];
+		u[0] = two_Two_Diff[3];
+		u[3] = u3;
+		C2length = DoublePrecision.fastExpansionSumZeroelim(C1length, C1, 3, u, C2);
+
+		twoProduct = DoublePrecision.Two_Product(acxtail, bcytail);
+		s1 = twoProduct[0];
+		s0 = twoProduct[1];
+		twoProduct = DoublePrecision.Two_Product(acytail, bcxtail);
+		t1 = twoProduct[0];
+		t0 = twoProduct[1];
+		two_Two_Diff = DoublePrecision.twoTwoDiff(s1, s0, t1, t0);
+		u3 = two_Two_Diff[0];
+		u[2] = two_Two_Diff[1];
+		u[1] = two_Two_Diff[2];
+		u[0] = two_Two_Diff[3];
+		u[3] = u3;
+		Dlength = DoublePrecision.fastExpansionSumZeroelim(C2length, C2, 3, u, D);
+
+		return (D[Dlength - 1]);
+	}
+
+	public double counterclockwise(IPoint pa, IPoint pb, IPoint pc) {
+		double detleft, detright, det;
+		double detsum, errbound;
+
+		detleft = (pa.getX() - pc.getX()) * (pb.getY() - pc.getY());
+		detright = (pa.getY() - pc.getY()) * (pb.getX() - pc.getX());
+		det = detleft - detright;
+
+		if (detleft > 0.0) {
+			if (detright <= 0.0) {
+				return det;
+			} else {
+				detsum = detleft + detright;
+			}
+		} else if (detleft < 0.0) {
+			if (detright >= 0.0) {
+				return det;
+			} else {
+				detsum = -detleft - detright;
+			}
+		} else {
+			return det;
+		}
+
+		errbound = ccwerrboundA * detsum;
+		if ((det >= errbound) || (-det >= errbound)) {
+			return det;
+		}
+
+		return counterclockwiseadapt(pa, pb, pc, detsum);
+
 	}
 
 }
