@@ -34,6 +34,7 @@ public class TimeBasedTrackClusteringTest {
 	 * @throws FilterException
 	 */
 	@Test
+	@Ignore
 	public void testNoDepthDataClassify() throws FilterException {
 		List<ITrackFile> trackFiles = new ArrayList<ITrackFile>();
 		SimpleTrackFile simpleTrackFile = new SimpleTrackFile();
@@ -67,6 +68,7 @@ public class TimeBasedTrackClusteringTest {
 	 * @throws FilterException
 	 */
 	@Test
+	@Ignore
 	public void testNoTimeDepthDataClassify() throws FilterException {
 		List<ITrackFile> trackFiles = new ArrayList<ITrackFile>();
 		SimpleTrackFile simpleTrackFile = new SimpleTrackFile();
@@ -110,6 +112,7 @@ public class TimeBasedTrackClusteringTest {
 	 * @throws FilterException
 	 */
 	@Test
+	@Ignore
 	public void testTimeDepthDataClassifyRelative() throws FilterException {
 		List<ITrackFile> trackFiles = new ArrayList<ITrackFile>();
 		SimpleTrackFile simpleTrackFile = new SimpleTrackFile();
@@ -160,6 +163,7 @@ public class TimeBasedTrackClusteringTest {
 	 * @throws FilterException
 	 */
 	@Test
+	@Ignore
 	public void testTimeDepthDataClassifyAbsolute() throws FilterException {
 		List<ITrackFile> trackFiles = new ArrayList<ITrackFile>();
 		SimpleTrackFile simpleTrackFile = new SimpleTrackFile();
@@ -210,6 +214,7 @@ public class TimeBasedTrackClusteringTest {
 	 * @throws FilterException
 	 */
 	@Test
+	@Ignore
 	public void testAbsoluteTimeDuplicateUpload() throws FilterException {
 		List<ITrackFile> trackFiles = new ArrayList<ITrackFile>();
 		SimpleTrackFile simpleTrackFileA = new SimpleTrackFile();
