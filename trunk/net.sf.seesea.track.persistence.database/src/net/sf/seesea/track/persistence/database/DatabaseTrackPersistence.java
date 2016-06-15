@@ -33,6 +33,8 @@ import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
 
 import net.sf.seesea.geometry.impl.Point3D;
+import net.sf.seesea.model.core.physx.CompositeMeasurement;
+//import net.sf.seesea.track.api.CompositeMeasurement;
 import net.sf.seesea.track.api.IStreamProcessor;
 import net.sf.seesea.track.api.ITrackPersistence;
 import net.sf.seesea.track.api.data.CompressionType;
@@ -667,6 +669,12 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 		String result = formatter.toString();
 		formatter.close();
 		return result;
+	}
+
+	@Override
+	public List<CompositeMeasurement> getNearByPoints() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
