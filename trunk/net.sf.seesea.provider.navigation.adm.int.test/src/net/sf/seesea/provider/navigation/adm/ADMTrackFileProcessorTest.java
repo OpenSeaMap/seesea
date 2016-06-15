@@ -16,7 +16,6 @@ import org.eclipse.core.runtime.FileLocator;
 import org.junit.Test;
 
 import net.sf.seesea.model.core.geo.Depth;
-import net.sf.seesea.model.core.geo.GeoBoundingBox;
 import net.sf.seesea.model.core.geo.Latitude;
 import net.sf.seesea.model.core.geo.Longitude;
 import net.sf.seesea.model.core.geo.MeasuredPosition3D;
@@ -39,8 +38,7 @@ public class ADMTrackFileProcessorTest {
 		IMeasurmentProcessor iMeasurmentProcessor = new IMeasurmentProcessor() {
 			
 			@Override
-			public void processMeasurements(List<Measurement> results, String messageType, long sourceTrackIdentifier,
-					GeoBoundingBox boundingBox, ITrackFile trackfile) throws ProcessingException {
+			public void processMeasurements(List<Measurement> results, String messageType, ITrackFile trackfile) throws ProcessingException {
 				measurements.addAll(results);
 				
 			}

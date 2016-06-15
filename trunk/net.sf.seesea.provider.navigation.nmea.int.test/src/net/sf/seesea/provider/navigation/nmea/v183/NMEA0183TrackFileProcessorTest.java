@@ -15,7 +15,6 @@ import org.junit.Test;
 
 import net.sf.seesea.model.core.geo.Depth;
 import net.sf.seesea.model.core.geo.GNSSMeasuredPosition;
-import net.sf.seesea.model.core.geo.GeoBoundingBox;
 import net.sf.seesea.model.core.geo.Latitude;
 import net.sf.seesea.model.core.geo.Longitude;
 import net.sf.seesea.model.core.physx.CompositeMeasurement;
@@ -44,8 +43,7 @@ public class NMEA0183TrackFileProcessorTest {
 		IMeasurmentProcessor iMeasurmentProcessor = new IMeasurmentProcessor() {
 			
 			@Override
-			public void processMeasurements(List<Measurement> results, String messageType, long sourceTrackIdentifier,
-					GeoBoundingBox boundingBox, ITrackFile trackfile) throws ProcessingException {
+			public void processMeasurements(List<Measurement> results, String messageType, ITrackFile trackfile) throws ProcessingException {
 				measurements.addAll(results);
 				
 			}

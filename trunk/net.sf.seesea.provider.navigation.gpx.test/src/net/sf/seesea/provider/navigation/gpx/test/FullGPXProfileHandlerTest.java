@@ -44,7 +44,6 @@ import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
 
 import junit.framework.TestCase;
-import net.sf.seesea.model.core.geo.GeoBoundingBox;
 import net.sf.seesea.model.core.physx.Measurement;
 import net.sf.seesea.provider.navigation.gpx.FullGPXProfileHandler;
 import net.sf.seesea.track.api.IMeasurmentProcessor;
@@ -59,7 +58,7 @@ public class FullGPXProfileHandlerTest extends TestCase {
 		IMeasurmentProcessor measurmentProcessor = EasyMock.createNiceMock(IMeasurmentProcessor.class);
 		List<Measurement> list = new ArrayList<Measurement>();
 		Capture<List<Measurement>> measurements = new Capture<List<Measurement>>();
-		measurmentProcessor.processMeasurements(EasyMock.capture(measurements), EasyMock.anyString(), EasyMock.anyLong(), EasyMock.<GeoBoundingBox>anyObject(), EasyMock.<ITrackFile>anyObject());
+		measurmentProcessor.processMeasurements(EasyMock.capture(measurements), EasyMock.anyString(), EasyMock.<ITrackFile>anyObject());
 		EasyMock.replay(measurmentProcessor);
 		
 		URL url = GPXTestActivator.getContext().getBundle().getEntry("/res/8629.dat"); //$NON-NLS-1$
