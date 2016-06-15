@@ -27,8 +27,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.data.postprocessing.filter;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -47,7 +45,6 @@ import net.sf.seesea.model.core.physx.CompositeMeasurement;
 import net.sf.seesea.model.core.physx.Heading;
 import net.sf.seesea.model.core.physx.Measurement;
 import net.sf.seesea.model.core.physx.Speed;
-import net.sf.seesea.track.api.ITrackFileProcessor;
 import net.sf.seesea.track.api.data.ITrackFile;
 import net.sf.seesea.track.api.data.SensorDescription;
 import net.sf.seesea.track.api.data.SensorDescriptionUpdateRate;
@@ -71,11 +68,7 @@ public class DepthPositionMeasurementStatisticsProcessor<T extends Measurement> 
 
 	private long lastMeasurmentTime;
 
-	private final ITrackFileProcessor trackFileProcessor;
-
-	public DepthPositionMeasurementStatisticsProcessor(ITrackFileProcessor trackFileProcessor) {
-		this.trackFileProcessor = trackFileProcessor;
-		trackFileProcessor.setMeasurementProcessor(this);
+	public DepthPositionMeasurementStatisticsProcessor() {
 		lastMeasurmentTime = 0;
 		sensorRateDistribution = new HashMap<Class<T>, Map<String, Map<String, Map<Long, Integer>>>>();
 		lastMeasurement = new HashMap<Class<?>, Map<String, Map<String, Long>>>();
@@ -90,16 +83,15 @@ public class DepthPositionMeasurementStatisticsProcessor<T extends Measurement> 
 	 * @param messageType
 	 */
 	public void processMeasurements(List<Measurement> results,
-			String messageType, long sourceTrackIdentifier,
-			GeoBoundingBox boundingBox, ITrackFile trackfile) {
+			String messageType, ITrackFile trackfile) {
 		// update rate for depth, position, velocity
 		for (Measurement measurement : results) {
 			if (measurement instanceof CompositeMeasurement) {
 				processMeasurements(
 						((CompositeMeasurement) measurement).getMeasurements(),
-						messageType, sourceTrackIdentifier, boundingBox, null);
+						messageType, trackfile);
 			} else if (measurement instanceof MeasuredPosition3D
-					&& (measurement.getTime() != null || !trackFileProcessor.hasTimedMeasurments()) && measurement.isValid()) {
+					&& (measurement.getTime() != null || !(trackfile.isHasAbsoluteTimedMeasurements() || trackfile.isHasRelativeTimedMeasurements())) && measurement.isValid()) {
 				MeasuredPosition3D measuredPosition3D = (MeasuredPosition3D) measurement;
 				Map<String, Map<String, Map<Long, Integer>>> sensorId2Distribution = getSensorId2MessageType((Class<T>) MeasuredPosition3D.class);
 				Map<String, Map<Long, Integer>> messageType2Distrubution = getMessageType2Distribution(
@@ -430,15 +422,6 @@ public class DepthPositionMeasurementStatisticsProcessor<T extends Measurement> 
 			descriptions.add(bestPositionSensor);
 		}
 		return descriptions;
-	}
-
-	@Override
-	public void processFiles(ITrackFile trackFile) throws StatisticsException {
-		try {
-			trackFileProcessor.processFile(trackFile);
-		} catch (IOException | ProcessingException e) {
-			throw new StatisticsException(e);
-		}
 	}
 
 	@Override

@@ -48,11 +48,7 @@ import net.sf.seesea.track.api.exception.ProcessingException;
 
 public class DepthPositionPreprocessor implements IDepthPositionPreProcessor {
 
-	private final ITrackFileProcessor trackFileProcessor;
-
-	public DepthPositionPreprocessor(ITrackFileProcessor trackFileProcessor) {
-		this.trackFileProcessor = trackFileProcessor;
-		trackFileProcessor.setMeasurementProcessor(this);
+	public DepthPositionPreprocessor() {
 		timedRelativeMeasurements = false;
 		pointCount = 0;
 	}
@@ -94,27 +90,18 @@ public class DepthPositionPreprocessor implements IDepthPositionPreProcessor {
 		return containsDepthData;
 	}
 
-	@Override
-	public void processFiles(ITrackFile trackFile) throws FileNotFoundException,
-			IOException, ProcessingException {
-		trackFileProcessor.processFile(trackFile);
-		trackFile.setStart(start);
-		trackFile.setEnd(end);
-	}
-
-	public void processMeasurements(List<Measurement> results, String messageType, long sourceTrackIdentifier,
-			GeoBoundingBox boundingBox, ITrackFile trackfile) {
+	public void processMeasurements(List<Measurement> results, String messageType, ITrackFile trackfile) {
 		for (Measurement measurement : results) {
 			if(measurement instanceof CompositeMeasurement) {
-				processMeasurements(((CompositeMeasurement) measurement).getMeasurements(), messageType, sourceTrackIdentifier, boundingBox, trackfile);
+				processMeasurements(((CompositeMeasurement) measurement).getMeasurements(), messageType, trackfile);
 				
 			} else if (measurement instanceof MeasuredPosition3D && measurement.isValid()) {
 				// && (measurement.getTime() != null || !trackFileProcessor.hasTimedMeasurments())  &&
 				if(measurement.getTime() != null && measurement.getTime().getTime() > 0L) {
-					if(trackFileProcessor.hasAbsoluteTime()) {
+					if(trackfile.isHasAbsoluteTimedMeasurements()) {
 						timedAbsoluteMeasurements = true;
 					}
-					if(trackFileProcessor.hasRelativeTime()) {
+					if(trackfile.isHasRelativeTimedMeasurements()) {
 						timedRelativeMeasurements = true;
 					}
 				}

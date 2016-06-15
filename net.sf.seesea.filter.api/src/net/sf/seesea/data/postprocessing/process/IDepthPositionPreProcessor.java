@@ -27,15 +27,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.data.postprocessing.process;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.List;
 
 import net.sf.seesea.model.core.geo.GeoBoundingBox;
 import net.sf.seesea.model.core.geo.MeasuredPosition3D;
 import net.sf.seesea.track.api.IMeasurmentProcessor;
-import net.sf.seesea.track.api.data.ITrackFile;
-import net.sf.seesea.track.api.exception.ProcessingException;
 
 /**
  * This preprocessor gathers statistics about the track file.
@@ -63,16 +59,6 @@ public interface IDepthPositionPreProcessor extends IMeasurmentProcessor {
 	
 	/** returns if this data contains any depth data */
 	boolean hasDepthData();
-
-	/**
-	 * 
-	 * @param trackFile
-	 * @throws FileNotFoundException
-	 * @throws IOException
-	 * @throws ProcessingException
-	 */
-	void processFiles(ITrackFile trackFile) throws FileNotFoundException,
-			IOException, ProcessingException;
 
 	/**
 	 * 

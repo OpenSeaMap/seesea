@@ -3,6 +3,7 @@ package net.sf.seesea.data.postprocessing.filter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
 
 import org.apache.commons.math3.distribution.TDistribution;
@@ -25,6 +26,7 @@ import net.sf.seesea.model.core.physx.Measurement;
 import net.sf.seesea.model.util.GeoUtil;
 import net.sf.seesea.track.api.data.IBoatParameters;
 import net.sf.seesea.track.api.data.ITrackFile;
+import net.sf.seesea.track.api.data.SensorDescriptionUpdateRate;
 import net.sf.seesea.track.api.exception.ProcessingException;
 import net.sf.seesea.waterlevel.IWaterLevelCorrection;
 
@@ -74,16 +76,16 @@ public class ManualFilteredMeasurementProcessor implements IFilter {
 
 	@Override
 	public void processMeasurements(List<Measurement> results,
-			String messageType,long sourceTrackIdentifier, GeoBoundingBox boundingBox, ITrackFile trackfile) throws ProcessingException {
+			String messageType,ITrackFile trackfile) throws ProcessingException {
 		try {
 			for (Measurement measurement : results) {
 				if(measurement instanceof CompositeMeasurement) {
 					CompositeMeasurement compositeMeasurement = (CompositeMeasurement) measurement;
 					for (Measurement containedMeasurement : compositeMeasurement.getMeasurements()) {
-						processSingleMeasurement(containedMeasurement, sourceTrackIdentifier, boundingBox,  trackfile);
+						processSingleMeasurement(containedMeasurement, trackfile);
 					}
 				} else {
-					processSingleMeasurement(measurement, sourceTrackIdentifier, boundingBox, trackfile);
+					processSingleMeasurement(measurement, trackfile);
 				}
 			}
 		} catch (WriterException e) {
@@ -92,15 +94,15 @@ public class ManualFilteredMeasurementProcessor implements IFilter {
 
 	}
 	
-	protected void processSingleMeasurement(Measurement measurement, long sourceTrackIdentifier, GeoBoundingBox boundingBox, ITrackFile trackfile) throws WriterException, ProcessingException {
-		if(lastSourceTrackIdentifier != sourceTrackIdentifier) {
+	protected void processSingleMeasurement(Measurement measurement, ITrackFile trackfile) throws WriterException, ProcessingException {
+		if(lastSourceTrackIdentifier != trackfile.getTrackId()) {
 			sensorOffsetToWaterline = boatParameters.getSensorOffsetToWaterline(measurement.getSensorID());
 //			this.boundingBox = boundingBox;
 			lastPosition = null;
 			descStats = new DescriptiveStatistics(100);
 //			diffs = new ArrayList<Double>();
 		}
-		this.lastSourceTrackIdentifier = sourceTrackIdentifier;
+		this.lastSourceTrackIdentifier = trackfile.getTrackId();
 		if(measurement.isValid()) {
 				if(measurement instanceof MeasuredPosition3D) {
 					MeasuredPosition3D position3d = (MeasuredPosition3D) measurement;
@@ -318,6 +320,25 @@ public class ManualFilteredMeasurementProcessor implements IFilter {
 	public boolean requiresRelativeTime() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+
+	@Override
+	public void setBestSensors(Set<SensorDescriptionUpdateRate<Measurement>> bestSensors) {
+		// determine best setup for track files that are no more than x seconds
+		// apart
+		long updateRate = 1000;
+		int positionPrecision = 0;
+
+		if (!bestSensors.isEmpty()) {
+			for (SensorDescriptionUpdateRate<Measurement> sensor : bestSensors) {
+				if (MeasuredPosition3D.class.isAssignableFrom(sensor.getMeasurement())) {
+					updateRate = sensor.getUpdateRate();
+					positionPrecision = sensor.getPrecision();
+					break;
+				}
+			}
+		}
 	}
 
 }

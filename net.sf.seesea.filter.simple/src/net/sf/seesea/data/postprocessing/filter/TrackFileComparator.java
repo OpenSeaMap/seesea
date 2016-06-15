@@ -30,21 +30,42 @@ package net.sf.seesea.data.postprocessing.filter;
 
 import java.util.Comparator;
 
+import net.sf.seesea.model.core.geo.MeasuredPosition3D;
 import net.sf.seesea.track.api.data.ITrackFile;
 
 public class TrackFileComparator implements Comparator<ITrackFile> {
 
 	@Override
 	public int compare(ITrackFile fileA, ITrackFile fileB) {
-		if(fileB.getEnd().getTime() != null && fileA.getEnd().getTime() != null && fileB.getStartTime() != null && fileA.getStartTime() != null &&
-				fileA.getEnd().getTime().getTime() - fileA.getStartTime().getTime() > 0 && (fileB.getEnd().getTime().getTime() - fileB.getStartTime().getTime()) > 0) {
-			long a = (fileA.getEnd().getTime().getTime() - fileB.getStartTime().getTime());
+		MeasuredPosition3D endB = fileB.getEnd();
+		MeasuredPosition3D endA = fileA.getEnd();
+		MeasuredPosition3D startA = fileA.getStart();
+		MeasuredPosition3D startB = fileB.getStart();
+		if(endB.getTime() != null && endA.getTime() != null && startB.getTime() != null && startA.getTime() != null &&
+				endA.getTime().getTime() - startA.getTime().getTime() > 0 && (endB.getTime().getTime() - startB.getTime().getTime()) > 0) {
+			if(endA.getTime().getTime() == endB.getTime().getTime() && startA.getTime().getTime() == startB.getTime().getTime()) {
+				return compareNameId(fileA, fileB);
+			}
+			// fail safe handling for overlapping times
+			if(startA.getTime().getTime() < startB.getTime().getTime() && endA.getTime().getTime() > startB.getTime().getTime()) {
+				return compareNameId(fileA, fileB);
+			}
+			if(startB.getTime().getTime() < startA.getTime().getTime() && endB.getTime().getTime() > startA.getTime().getTime()) {
+				return compareNameId(fileA, fileB);
+			}
+			
+			
+			long a = (endA.getTime().getTime() - startB.getTime().getTime());
 			if(a < 0 ) {
 				return -1;
 			} else if(a > 0) {
 				return 1;
 			}
 		}
+		return compareNameId(fileA, fileB);
+	}
+
+	private int compareNameId(ITrackFile fileA, ITrackFile fileB) {
 		int compareTo = fileA.getTrackQualifier().compareTo(fileB.getTrackQualifier());
 		if(compareTo == 0) {
 			return (int) (fileA.getTrackId() - fileB.getTrackId());

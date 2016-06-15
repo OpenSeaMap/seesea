@@ -1,30 +1,25 @@
 package net.sf.seesea.data.postprocessing.process;
 
 import java.util.Collection;
-import java.util.List;
-import java.util.Map;
 
 import net.sf.seesea.track.api.data.ITrackFile;
 
 /**
- * a filter controller resembles
+ * A filter controller is responsible for executing a single filter run.
+ * Implementations may store processing results in a database and must update the track file's processing states
  * @author jens
  *
  */
 public interface IFilterController {
 
 	
-	void setTimeout(long i);
-
 	/**
-	 * processes this collection of track files.
+	 * Processes this collection of track files.
 	 * 
-	 * @param singleTrackList
-	 * @param b
+	 * @param trackList
+	 * @param executeSensorDistribution
 	 * @throws FilterException
 	 */
-	void process(Collection<ITrackFile> singleTrackList, boolean b) throws FilterException;
-
-	void setFilterProperties(List<Map<String, Object>> filterProperties);
+	void process(Collection<ITrackFile> trackList, boolean executeSensorDistribution) throws FilterException;
 
 }

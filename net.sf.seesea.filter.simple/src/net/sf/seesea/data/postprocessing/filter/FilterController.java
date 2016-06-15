@@ -1,5 +1,5 @@
 /**
-Copyright (c) 2013-2015, Jens Kübler
+Copyright (c) 2013-2016, Jens Kübler
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -29,34 +29,24 @@ package net.sf.seesea.data.postprocessing.filter;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Hashtable;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
 
 import org.apache.log4j.Logger;
-import org.osgi.framework.BundleContext;
-import org.osgi.framework.InvalidSyntaxException;
-import org.osgi.framework.ServiceReference;
-import org.osgi.service.cm.Configuration;
-import org.osgi.service.cm.ConfigurationAdmin;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
-import org.osgi.util.tracker.ServiceTracker;
 
 import net.sf.seesea.data.io.WriterException;
 import net.sf.seesea.data.postprocessing.process.FilterException;
 import net.sf.seesea.data.postprocessing.process.IFileTypeProcessingFactory;
 import net.sf.seesea.data.postprocessing.process.IFilter;
-import net.sf.seesea.data.postprocessing.process.IFilterFactory;
 import net.sf.seesea.data.postprocessing.process.IFilterController;
 import net.sf.seesea.data.postprocessing.process.IStatisticsPreprocessor;
 import net.sf.seesea.data.postprocessing.process.StatisticsException;
@@ -68,34 +58,15 @@ import net.sf.seesea.track.api.data.SensorDescriptionUpdateRate;
 import net.sf.seesea.track.api.exception.ProcessingException;
 
 /**
- * The main class that controls the filtering process
+ * The main class that controls a filtering process for a cluster of track files. A cluster of track files
+ * is a ordered
  */
 @Component
 public class FilterController implements IFilterController {
 
-	private long timeout;
-
-	private List<Map<String, Object>> filterProperties;
-
-	private BundleContext context;
-
 	private AtomicReference<IFileTypeProcessingFactory> fileTypeProcessingFactoryAR = new AtomicReference<IFileTypeProcessingFactory>();
 
 	private List<IFilter> filters = Collections.synchronizedList(new ArrayList<IFilter>());
-
-	private AtomicReference<ConfigurationAdmin> configurationAdminAR = new AtomicReference<ConfigurationAdmin>();
-
-	public void setFilterProperties(List<Map<String, Object>> filterProperties) {
-		this.filterProperties = filterProperties;
-	}
-
-	public void activate(BundleContext context) {
-		this.context = context;
-	}
-
-	public void deactivate(BundleContext context) {
-		this.context = null;
-	}
 
 	/**
 	 * process this list of tracks as batch
@@ -118,36 +89,37 @@ public class FilterController implements IFilterController {
 		// when the file type changes, consider it a new track
 		String lastFileType = orderedFiles.iterator().next().getFileType();
 		List<ITrackFile> trackFiles = new ArrayList<ITrackFile>();
-		IStatisticsPreprocessor preprocessor = null;
+		ITrackFileProcessor preprocessor = null;
+		IStatisticsPreprocessor measurmentProcessor = new DepthPositionMeasurementStatisticsProcessor<>();
 		for (ITrackFile trackFile : orderedFiles) {
 			try {
 				if (trackFile.getFileType() == null) {
 					// hm must be a zip file
 				} else {
-					preprocessor = processingFactory.getPreprocessor(trackFile);
+					preprocessor = processingFactory.createLocationPreProcessor(trackFile);
+					preprocessor.setMeasurementProcessor(measurmentProcessor);
 					if (!trackFile.getFileType().equals(lastFileType)) {
 						// file type changed -> run statistics again
 						if (preprocessor != null) {
-							Set<SensorDescriptionUpdateRate<Measurement>> bestSensors = preprocessor.getBestSensors();
+							Set<SensorDescriptionUpdateRate<Measurement>> bestSensors = measurmentProcessor.getBestSensors();
 							runFilters(trackFiles, bestSensors);
 						}
-						preprocessor = processingFactory.getPreprocessor(trackFile);
 						trackFiles.clear();
 						lastFileType = trackFile.getFileType();
 						if (executeSensorDistribution) {
-							try {
-								preprocessor.processFiles(trackFile);
-							} catch (StatisticsException e) {
-								// must be correct at this point since the
-								// preprocessor passed it with depth points
-								logger.error("Partially correct data for for track id " + trackFile.getTrackId());
-							}
+//							try {
+								preprocessor.processFile(trackFile);
+//							} catch (StatisticsException e) {
+//								// must be correct at this point since the
+//								// preprocessor passed it with depth points
+//								logger.error("Partially correct data for for track id " + trackFile.getTrackId());
+//							}
 						}
 						trackFiles.add(trackFile);
 					} else {
 						// continue processing this file
 						if (executeSensorDistribution) {
-							preprocessor.processFiles(trackFile);
+							preprocessor.processFile(trackFile);
 						}
 						trackFiles.add(trackFile);
 					}
@@ -160,7 +132,7 @@ public class FilterController implements IFilterController {
 		try {
 			// trigger any open filter run
 			if (!trackFiles.isEmpty() && executeSensorDistribution) {
-				Set<SensorDescriptionUpdateRate<Measurement>> bestSensors = preprocessor.getBestSensors();
+				Set<SensorDescriptionUpdateRate<Measurement>> bestSensors = measurmentProcessor.getBestSensors();
 				runFilters(trackFiles, bestSensors);
 			} else if (!trackFiles.isEmpty()) {
 				Set<SensorDescriptionUpdateRate<Measurement>> noSensors = new HashSet<SensorDescriptionUpdateRate<Measurement>>();
@@ -185,183 +157,51 @@ public class FilterController implements IFilterController {
 	 */
 	private void runFilters(List<ITrackFile> orderedFiles, Set<SensorDescriptionUpdateRate<Measurement>> bestSensors)
 			throws IOException, ProcessingException {
-		ConfigurationAdmin configurationAdmin = configurationAdminAR.get();
 		IFileTypeProcessingFactory fileTypeProcessingFactory = fileTypeProcessingFactoryAR.get();
 
 		logBestSensorChoice(bestSensors);
 		// System.out.println("Wrinting Filter data to " + format);
 
-		// determine best setup for track files that are no more than x seconds
-		// apart
-		long updateRate = 1000;
-		int positionPrecision = 0;
-
-		if (!bestSensors.isEmpty()) {
-			for (SensorDescriptionUpdateRate<Measurement> sensor : bestSensors) {
-				if (MeasuredPosition3D.class.isAssignableFrom(sensor.getMeasurement())) {
-					updateRate = sensor.getUpdateRate();
-					positionPrecision = sensor.getPrecision();
-					break;
-				}
-			}
-		}
 		boolean processFiles4Filter = false;
 
-		ITrackFileProcessor trackFileProcessor = fileTypeProcessingFactory.createProcessor(bestSensors,
-				orderedFiles.iterator().next());
+		ITrackFile firstTrack = orderedFiles.iterator().next();
 		for (IFilter filter : filters) {
-			// tie the reading processor to the filter
-			trackFileProcessor.setMeasurementProcessor(filter);
-			if (filter.requiresAbsoluteTime() && trackFileProcessor.hasAbsoluteTime()) {
-				processFiles4Filter = true;
-			} else if (filter.requiresRelativeTime() && trackFileProcessor.hasRelativeTime()) {
-				processFiles4Filter = true;
-			} else if (!filter.requiresAbsoluteTime() && !filter.requiresRelativeTime()) {
-				processFiles4Filter = true;
-			}
-			if (!processFiles4Filter) {
-				Logger.getLogger(getClass()).info("Skipping filter run for track file processor " + trackFileProcessor
-						+ " with filter " + filter);
-			}
-			if (processFiles4Filter) {
-				System.out.println("Running filter run for track file processor " + trackFileProcessor + " with filter "
-						+ filter);
-				for (ITrackFile trackFile : orderedFiles) {
-					try {
-						System.out.println("Processing track id:" + trackFile.getTrackId());
-						trackFileProcessor.processFile(trackFile);
-					} catch (ProcessingException e) {
-						Logger.getLogger(getClass())
-								.error("Partially correct data for for track id " + trackFile.getTrackId());
-					}
+			try {
+				ITrackFileProcessor trackFileProcessor = fileTypeProcessingFactory.createLocationPreProcessor(firstTrack);
+				trackFileProcessor.setFilter(bestSensors);
+				// tie the reading processor to the filter
+				filter.setBestSensors(bestSensors);
+				trackFileProcessor.setMeasurementProcessor(filter);
+				if (filter.requiresAbsoluteTime() && trackFileProcessor.hasAbsoluteTime()) {
+					processFiles4Filter = true;
+				} else if (filter.requiresRelativeTime() && trackFileProcessor.hasRelativeTime()) {
+					processFiles4Filter = true;
+				} else if (!filter.requiresAbsoluteTime() && !filter.requiresRelativeTime()) {
+					processFiles4Filter = true;
 				}
-				filter.finish();
+				if (!processFiles4Filter) {
+					Logger.getLogger(getClass()).info("Skipping filter run for track file processor " + trackFileProcessor
+							+ " with filter " + filter);
+				}
+				if (processFiles4Filter) {
+					System.out.println("Running filter run for track file processor " + trackFileProcessor + " with filter "
+							+ filter);
+					for (ITrackFile trackFile : orderedFiles) {
+						try {
+							System.out.println("Processing track id:" + trackFile.getTrackId());
+							trackFileProcessor.processFile(trackFile);
+						} catch (ProcessingException e) {
+							Logger.getLogger(getClass())
+							.error("Partially correct data for for track id " + trackFile.getTrackId());
+						}
+					}
+					filter.finish();
+				}
+				
+			} finally {
+				fileTypeProcessingFactory.disposeLocationPreProcessor(firstTrack);
 			}
 		}
-
-		// decision
-
-		System.out.println("Starting filter process");
-
-		// List<Configuration> configurations = new ArrayList<Configuration>();
-		// try {
-		// ServiceTracker<IFilterFactory, IFilterFactory> serviceTracker = new
-		// ServiceTracker<IFilterFactory, IFilterFactory>(context,
-		// IFilterFactory.class, null);
-		// serviceTracker.open();
-		// int i = 0;
-		// for (Map<String, Object> filterProperty : filterProperties) {
-		// // configure output writer (like csv, postgis)
-		// String writerFactoryType = (String) filterProperty.get("writer");
-		// //$NON-NLS-1$
-		// filterProperty.put("IWriterFactory.target",
-		// MessageFormat.format("(type={0})", writerFactoryType));
-		// //$NON-NLS-1$//$NON-NLS-2$
-		//
-		// // configure water level correction if any
-		// String waterlevelcorrectionType = (String)
-		// filterProperty.get("waterlevelcorrection"); //$NON-NLS-1$
-		// filterProperty.put("IWaterLevelCorrection.target",
-		// MessageFormat.format("(type={0})", waterlevelcorrectionType));
-		// //$NON-NLS-1$//$NON-NLS-2$
-		//
-		// // create the kind of filter to run
-		// String filterType = (String) filterProperty.get("type");
-		// //$NON-NLS-1$
-		//
-		// Configuration[] configurationsPID =
-		// configurationAdmin.listConfigurations(MessageFormat.format("(service.factoryPid={0})",
-		// filterType) ); //$NON-NLS-1$
-		// if(configurationsPID != null) {
-		// for (Configuration configuration : configurationsPID) {
-		// configuration.delete();
-		// }
-		// }
-		//// configurationsPID[0].delete()
-		// Configuration configuration = null;
-		//// if(configurationsPID == null || configurationsPID.length == 0) {
-		// configuration =
-		// configurationAdmin.createFactoryConfiguration(filterType);
-		//// } else {
-		//// configuration = configurationsPID[i++];
-		//// }
-		// Hashtable<String, Object> hashtable = new Hashtable<String,
-		// Object>();
-		// hashtable.putAll(filterProperty);
-		// configuration.update(hashtable);
-		// configurations.add(configuration);
-		// }
-		//
-		//
-		// // let the components come up
-		// while(serviceTracker.getServiceReferences() == null ||
-		// serviceTracker.getServiceReferences().length <
-		// filterProperties.size()) {
-		// Logger.getLogger(getClass()).info("Waiting for service references to
-		// become online");
-		// Thread.sleep(50);
-		// }
-		//
-		// IFileTypeProcessingFactory fileTypeProcessingFactory =
-		// fileTypeProcessingFactoryAR.get();
-		// for (ServiceReference<IFilterFactory> serviceReference :
-		// serviceTracker.getServiceReferences()) {
-		// ITrackFileProcessor trackFileProcessor =
-		// fileTypeProcessingFactory.createProcessor(bestSensors,
-		// orderedFiles.iterator().next());
-		// IFilterFactory filterConfiguration = (IFilterFactory)
-		// context.getService(serviceReference);
-		// System.out.println("Running filter " + filterConfiguration);
-		// net.sf.seesea.track.api.IMeasurmentProcessor measurementProcessor =
-		// filterConfiguration.createFilter(updateRate, positionPrecision);
-		// // tie the reading processor to the filter
-		// trackFileProcessor.setMeasurementProcessor(measurementProcessor);
-		//
-		// // only run compatible filters
-		// boolean processFiles4Filter = false;
-		// if(filterConfiguration.requiresAbsoluteTime() &&
-		// trackFileProcessor.hasAbsoluteTime()) {
-		// processFiles4Filter = true;
-		// } else if(filterConfiguration.requiresRelativeTime() &&
-		// trackFileProcessor.hasRelativeTime()) {
-		// processFiles4Filter = true;
-		// } else if(!filterConfiguration.requiresAbsoluteTime() &&
-		// !filterConfiguration.requiresRelativeTime()) {
-		// processFiles4Filter = true;
-		// }
-		// if(!processFiles4Filter) {
-		// Logger.getLogger(getClass()).info("Skipping filter run for track file
-		// processor " + trackFileProcessor + " with filter " +
-		// filterConfiguration);
-		// }
-		// if(processFiles4Filter) {
-		// System.out.println("Running filter run for track file processor " +
-		// trackFileProcessor + " with filter " + filterConfiguration);
-		// for (ITrackFile trackFile : orderedFiles) {
-		// try {
-		// System.out.println("Processing track id:" + trackFile.getTrackId());
-		// trackFileProcessor.processFile(trackFile);
-		// } catch (ProcessingException e) {
-		// Logger.getLogger(getClass()).error("Partially correct data for for
-		// track id " + trackFile.getTrackId());
-		// }
-		// }
-		// measurementProcessor.finish();
-		// }
-		//
-		// }
-		// serviceTracker.close();
-		// } catch (InvalidSyntaxException e) {
-		// Logger.getLogger(getClass()).error("OSGi filter failed", e);
-		// //$NON-NLS-1$
-		// } catch (InterruptedException e) {
-		// Logger.getLogger(getClass()).error("Interrupted while waiting for
-		// configuration services to come up", e); //$NON-NLS-1$
-		// } finally {
-		// for (Configuration configuration : configurations) {
-		// configuration.delete();
-		// }
-		// }
 	}
 
 	private void logBestSensorChoice(Set<SensorDescriptionUpdateRate<Measurement>> bestSensors) {
@@ -382,15 +222,6 @@ public class FilterController implements IFilterController {
 		fileTypeProcessingFactoryAR.compareAndSet(null, fileTypeProcessingFactory);
 	}
 
-	@Reference(cardinality = ReferenceCardinality.OPTIONAL, policy = ReferencePolicy.DYNAMIC)
-	public void bindConfigAdmin(ConfigurationAdmin configurationAdmin) {
-		configurationAdminAR.set(configurationAdmin);
-	}
-
-	public void unbindConfigAdmin(ConfigurationAdmin configurationAdmin) {
-		configurationAdminAR.compareAndSet(configurationAdmin, null);
-	}
-
 	@Reference(cardinality = ReferenceCardinality.MANDATORY, policy = ReferencePolicy.DYNAMIC)
 	public void bindFilter(IFilter filter) {
 		filters.add(filter);
@@ -398,14 +229,6 @@ public class FilterController implements IFilterController {
 
 	public void unbindFilter(IFilter filter) {
 		filters.remove(filter);
-	}
-
-	public long getTimeout() {
-		return timeout;
-	}
-
-	public void setTimeout(long timeout) {
-		this.timeout = timeout;
 	}
 
 }

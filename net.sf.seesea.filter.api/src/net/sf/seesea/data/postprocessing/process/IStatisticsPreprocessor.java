@@ -31,9 +31,7 @@ import java.util.Set;
 
 import net.sf.seesea.model.core.physx.Measurement;
 import net.sf.seesea.track.api.IMeasurmentProcessor;
-import net.sf.seesea.track.api.data.ITrackFile;
 import net.sf.seesea.track.api.data.SensorDescriptionUpdateRate;
-import net.sf.seesea.track.api.exception.ProcessingException;
 
 /**
  * this interface is being used to determine statistics about particular track files 
@@ -47,7 +45,5 @@ public interface IStatisticsPreprocessor extends IMeasurmentProcessor {
 	 * @throws StatisticsException if a processing error occured during statistics calculation
 	 */
 	Set<SensorDescriptionUpdateRate<Measurement>> getBestSensors() throws StatisticsException;
-
-	void processFiles(ITrackFile trackFile) throws StatisticsException;
 
 }
