@@ -50,14 +50,22 @@ public class Quadtree<T extends IBoxExtends> {
 	  private IRectangle bounds;
 	  private Quadtree[] nodes;
 	 
+	  
+	  /*
+		  * Constructor
+		  */
+		  public Quadtree(int pLevel, int maxObjects, IRectangle pBounds) {
+		   level = pLevel;
+		   objects = new ArrayList<>();
+		   bounds = pBounds;
+		   nodes = new Quadtree[4];
+		   MAX_OBJECTS = maxObjects;
+		  }
 	 /*
 	  * Constructor
 	  */
 	  public Quadtree(int pLevel, IRectangle pBounds) {
-	   level = pLevel;
-	   objects = new ArrayList<>();
-	   bounds = pBounds;
-	   nodes = new Quadtree[4];
+		  this(pLevel, 1000, pBounds);
 	  }
 	  
 	  /*

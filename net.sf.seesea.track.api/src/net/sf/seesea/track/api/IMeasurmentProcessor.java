@@ -2,7 +2,6 @@ package net.sf.seesea.track.api;
 
 import java.util.List;
 
-import net.sf.seesea.model.core.geo.GeoBoundingBox;
 import net.sf.seesea.model.core.physx.Measurement;
 import net.sf.seesea.track.api.data.ITrackFile;
 import net.sf.seesea.track.api.exception.ProcessingException;
@@ -18,12 +17,10 @@ public interface IMeasurmentProcessor {
 	 * 
 	 * @param results
 	 * @param messageType
-	 * @param sourceTrackIdentifier
-	 * @param boundingBox
 	 * @param trackfile TODO
 	 * @throws ProcessingException
 	 */
-	void processMeasurements(List<Measurement> results, String messageType, long sourceTrackIdentifier, GeoBoundingBox boundingBox, ITrackFile trackfile) throws ProcessingException;
+	void processMeasurements(List<Measurement> results, String messageType, ITrackFile trackfile) throws ProcessingException;
 
 	/**
 	 * 

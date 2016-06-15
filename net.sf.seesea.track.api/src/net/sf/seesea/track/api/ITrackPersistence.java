@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import net.sf.seesea.model.core.physx.CompositeMeasurement;
 import net.sf.seesea.track.api.data.ITrackFile;
 import net.sf.seesea.track.api.exception.TrackPerssitenceException;
 
@@ -43,5 +44,7 @@ public interface ITrackPersistence {
 	 * @throws TrackPerssitenceException
 	 */
 	void storePreprocessingStates(Collection<ITrackFile> trackFiles) throws TrackPerssitenceException;
+
+	List<CompositeMeasurement> getNearByPoints();
 
 }

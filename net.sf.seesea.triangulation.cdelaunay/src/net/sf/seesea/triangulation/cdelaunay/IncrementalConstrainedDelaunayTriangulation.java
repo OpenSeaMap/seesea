@@ -306,6 +306,7 @@ public class IncrementalConstrainedDelaunayTriangulation implements
 //		Map<ITriangle, Integer> neighbourCount = new HashMap<ITriangle, Integer>();
 		
 		Stack<ITriangle> stack = new Stack<ITriangle>();
+		// fixme point location routines
 		List<ITriangle> foundTriangles = getTriangle(point);
 		// damn its lying on a line of both triangles, resolve both of them in a coordinated fashion
 		if(foundTriangles.size() == 2) {

@@ -26,8 +26,13 @@ public class StreamProcessorDetection implements IStreamProcessorDetection {
 
 	private Map<IStreamProcessor, Map<String,Object>> processors = new ConcurrentHashMap<IStreamProcessor, Map<String,Object>>();
 	
+	private int initialBytes = 1024;
+	
 	@Activate
 	public void activate(Map<String,Object> properties) {
+		if(properties.get("INITIALBYTES") != null) {
+			initialBytes = (Integer) properties.get("INITIALBYTES");
+		}
 		
 	}
 	
@@ -49,8 +54,8 @@ public class StreamProcessorDetection implements IStreamProcessorDetection {
 	private IStreamProcessor detectStreamProcessorEnblock(InputStream inputStream, Collection<IStreamProcessor> services, boolean log)
 			throws IOException, RawDataEventException {
 		IStreamProcessor streamProcessor = null;
-		int intialBytesToBeRead = 65536 * 4;
-		int[] input = new int[intialBytesToBeRead];
+//		int intialBytesToBeRead = initialBytes;
+		int[] input = new int[initialBytes];
 		int x;
 		int k = 0;
 		if (log) {
@@ -59,7 +64,7 @@ public class StreamProcessorDetection implements IStreamProcessorDetection {
 		while ((x = inputStream.read()) != -1) {
 			input[k] = x;
 			k++;
-			if (k >= intialBytesToBeRead) {
+			if (k >= initialBytes) {
 				break;
 			}
 		}
@@ -80,8 +85,8 @@ public class StreamProcessorDetection implements IStreamProcessorDetection {
 	private IStreamProcessor detectStreamProcessor(InputStream inputStream, Object[] services, boolean log)
 			throws IOException, RawDataEventException {
 		IStreamProcessor streamProcessor = null;
-		int intialBytesToBeRead = 65536;
-		int[] input = new int[intialBytesToBeRead];
+//		int intialBytesToBeRead = 65536;
+		int[] input = new int[initialBytes];
 		int x;
 		int k = 0;
 		if (log) {
@@ -101,7 +106,7 @@ public class StreamProcessorDetection implements IStreamProcessorDetection {
 					break streamcheck;
 				}
 			}
-			if (k >= intialBytesToBeRead) {
+			if (k >= initialBytes) {
 				break;
 			}
 		}
