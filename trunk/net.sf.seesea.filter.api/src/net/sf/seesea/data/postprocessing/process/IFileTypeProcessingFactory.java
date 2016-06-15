@@ -41,13 +41,13 @@ public interface IFileTypeProcessingFactory {
 	 * @param trackFile
 	 * @return
 	 */
-	IDepthPositionPreProcessor createLocationPreProcessor(
+	ITrackFileProcessor createLocationPreProcessor(
 			ITrackFile trackFile);
 
 	void disposeLocationPreProcessor(ITrackFile trackFile);
 
-	IStatisticsPreprocessor getPreprocessor(ITrackFile fileType);
-
+//	ITrackFileProcessor createProcessor(ITrackFile file);
+//
 	ITrackFileProcessor createProcessor(Set<SensorDescriptionUpdateRate<Measurement>> bestSensors, ITrackFile file);
 
 }

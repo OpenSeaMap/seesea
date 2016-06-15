@@ -24,6 +24,12 @@ import net.sf.seesea.track.api.data.ITrackFile;
 import net.sf.seesea.track.api.data.ProcessingState;
 import net.sf.seesea.track.api.exception.TrackPerssitenceException;
 
+/**
+ * The Filter Engine processes track cluster results. It stores results to persistent storage and triggers filter runs for a single cluster with a filter controller.
+ * Since this is a convenient place to update candidate gauges this done as well.
+ * @author Jens
+ *
+ */
 @Component
 public class FilterEngine implements IFilterEngine {
 
@@ -35,14 +41,8 @@ public class FilterEngine implements IFilterEngine {
 
 	private AtomicReference<ITrackClustering> trackClusteringAR = new AtomicReference<ITrackClustering>();;
 
-	private List<Map<String, Object>> filterProperties = new ArrayList<Map<String, Object>>();
-
-	// private Object filterProperties;
-
 	public void activate(Map<String, Object> config) {
 		preprocessRun = (boolean) config.get("preprocessRun");
-//		filterProperties = (List<Map<String, Object>>) config.get("filterProperties");
-		// filterProperties = config.get("filterProperties");
 	}
 
 	@Override
@@ -51,9 +51,6 @@ public class FilterEngine implements IFilterEngine {
 		ITrackClustering trackClustering = trackClusteringAR.get();
 		IFilterController filterController = filterControllerAR.get();
 		IGaugeValueUpdater gaugeValueUpdater = gaugeValueUpdaterAR.get();
-		// cluster the tracks per user
-		// Set<String> whitelistUsers = new HashSet<String>();
-		// Set<String> blacklistUsers = new HashSet<String>();
 		Map<String, List<ITrackFile>> user2PostprocessTrackCluster;
 		try {
 			user2PostprocessTrackCluster = trackPersistence.getUser2PostprocessTrackCluster();
@@ -76,8 +73,6 @@ public class FilterEngine implements IFilterEngine {
 						// processed
 						// separately
 						for (ITrackFile abstractTrackFile : trackClusterResult.getNoTimeMeasurementFiles()) {
-							filterController.setTimeout(60000);
-							filterController.setFilterProperties(filterProperties);
 							List<ITrackFile> singleTrackList = new ArrayList<ITrackFile>();
 							singleTrackList.add(abstractTrackFile);
 							filterController.process(singleTrackList, false);
@@ -105,8 +100,6 @@ public class FilterEngine implements IFilterEngine {
 										Logger.getLogger(getClass()).error("Failed to update gauge", e);
 									}
 								}
-								filterController.setTimeout(60000);
-								filterController.setFilterProperties(filterProperties);
 								filterController.process(trackFilesCluster, true);
 								for (ITrackFile iTrackFile : trackFilesCluster) {
 									iTrackFile.setUploadState(ProcessingState.FILE_PROCESSED);

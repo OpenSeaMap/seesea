@@ -64,14 +64,15 @@ public class FileTypeProcessingFactory implements IFileTypeProcessingFactory {
 		this.bundleContext = bundleContext;
 	}
 
-	public IDepthPositionPreProcessor createLocationPreProcessor(ITrackFile trackFile) {
+	public ITrackFileProcessor createLocationPreProcessor(ITrackFile trackFile) {
 		if(trackFile.getFileType() != null) {
 			ComponentInstance component = getComponent(trackFile.getFileType());
 			map.put(trackFile, component);
 			ITrackFileProcessor trackFileProcessor = (ITrackFileProcessor) component.getInstance();
-			if(trackFileProcessor != null) {
-				return new DepthPositionPreprocessor(trackFileProcessor);
-			}
+			return trackFileProcessor;
+//			if(trackFileProcessor != null) {
+//				return new DepthPositionPreprocessor(trackFileProcessor);
+//			}
 		}
 		return null;
 	}
@@ -83,16 +84,6 @@ public class FileTypeProcessingFactory implements IFileTypeProcessingFactory {
 		}
 	}
 
-	public IStatisticsPreprocessor getPreprocessor(ITrackFile trackFile) {
-		if(trackFile.getFileType() != null) {
-			ITrackFileProcessor trackFileProcessor = (ITrackFileProcessor) getComponent(trackFile.getFileType()).getInstance();
-			if(trackFileProcessor != null) {
-				return new DepthPositionMeasurementStatisticsProcessor<Measurement>(trackFileProcessor);
-			}
-		}
-		return null;
-	}
-	
 	public ITrackFileProcessor createProcessor(Set<SensorDescriptionUpdateRate<Measurement>> bestSensors, ITrackFile file) {
 		ITrackFileProcessor service = (ITrackFileProcessor) getComponent(file.getFileType()).getInstance();
 		service.setFilter(bestSensors);

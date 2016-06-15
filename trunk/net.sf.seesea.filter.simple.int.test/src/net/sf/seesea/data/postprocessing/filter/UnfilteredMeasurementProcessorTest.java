@@ -35,7 +35,7 @@ public class UnfilteredMeasurementProcessorTest {
 
 		List<Measurement> measurements = new ArrayList<>();
 		UnfilteredMeasurementProcessor unfilteredMeasurementProcessor = new UnfilteredMeasurementProcessor();
-		unfilteredMeasurementProcessor.processMeasurements(measurements, "Pos", 1L, null, null);
+		unfilteredMeasurementProcessor.processMeasurements(measurements, "Pos", null);
 		
 		return;
 		
@@ -68,7 +68,7 @@ public class UnfilteredMeasurementProcessorTest {
 		ITrackFile trackFile = EasyMock.createNiceMock(ITrackFile.class);
 		EasyMock.replay(trackFile);
 		
-		unfilteredMeasurementProcessor.processMeasurements(measurements, "Pos", 1L, null, trackFile);
+		unfilteredMeasurementProcessor.processMeasurements(measurements, "Pos", trackFile);
 		unfilteredMeasurementProcessor.finish();
 		
 		List<Measurement> writtenMeasurements = memoryDataWriter.getMeasurements();
@@ -117,7 +117,7 @@ public class UnfilteredMeasurementProcessorTest {
 		EasyMock.expectLastCall().anyTimes();
 		EasyMock.replay(trackFile);
 		
-		unfilteredMeasurementProcessor.processMeasurements(measurements, "Pos", 1L, null, trackFile);
+		unfilteredMeasurementProcessor.processMeasurements(measurements, "Pos", trackFile);
 		unfilteredMeasurementProcessor.finish();
 		
 		List<Measurement> writtenMeasurements = memoryDataWriter.getMeasurements();
@@ -175,7 +175,7 @@ public class UnfilteredMeasurementProcessorTest {
 		EasyMock.replay(tideProvider);
 		unfilteredMeasurementProcessor.bindWaterLevelCorrection(tideProvider);
 		
-		unfilteredMeasurementProcessor.processMeasurements(measurements, "Pos", 1L, null, trackFile);
+		unfilteredMeasurementProcessor.processMeasurements(measurements, "Pos", trackFile);
 		unfilteredMeasurementProcessor.finish();
 		
 		List<Measurement> writtenMeasurements = memoryDataWriter.getMeasurements();
@@ -224,7 +224,7 @@ public class UnfilteredMeasurementProcessorTest {
 		EasyMock.expectLastCall().anyTimes();
 		EasyMock.replay(trackFile);
 		
-		unfilteredMeasurementProcessor.processMeasurements(measurements, "Pos", 1L, null, trackFile);
+		unfilteredMeasurementProcessor.processMeasurements(measurements, "Pos", trackFile);
 		unfilteredMeasurementProcessor.finish();
 		
 		List<Measurement> writtenMeasurements = memoryDataWriter.getMeasurements();

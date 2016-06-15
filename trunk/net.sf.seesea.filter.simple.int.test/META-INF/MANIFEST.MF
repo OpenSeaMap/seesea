@@ -9,4 +9,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.junit;bundle-version="4.12.0",
  org.easymock;bundle-version="3.4.0",
  net.sf.seesea.track.model,
- net.sf.seesea.track.api
+ net.sf.seesea.track.api,
+ net.sf.seesea.model.core

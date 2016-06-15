@@ -14,6 +14,7 @@ import net.sf.seesea.data.postprocessing.process.IStatisticsPreprocessor;
 import net.sf.seesea.data.postprocessing.process.StatisticsException;
 import net.sf.seesea.model.core.geo.MeasuredPosition3D;
 import net.sf.seesea.model.core.physx.Measurement;
+import net.sf.seesea.track.api.ITrackFileProcessor;
 import net.sf.seesea.track.api.data.ITrackFile;
 import net.sf.seesea.track.api.data.SensorDescriptionUpdateRate;
 import net.sf.seesea.track.model.SimpleTrackFile;
@@ -47,16 +48,16 @@ public class FilterControllerTest {
 		simpleTrackFile.setFileType("application/x-nmea0183");
 		trackFiles.add(simpleTrackFile);
 
-		IStatisticsPreprocessor statsPreprocessor = EasyMock.createNiceMock(IStatisticsPreprocessor.class);
+		ITrackFileProcessor statsPreprocessor = EasyMock.createNiceMock(ITrackFileProcessor.class);
 		Set<SensorDescriptionUpdateRate<Measurement>> bestRates = new HashSet<SensorDescriptionUpdateRate<Measurement>>();
 		SensorDescriptionUpdateRate positionUpdateRate = new SensorDescriptionUpdateRate<MeasuredPosition3D>(MeasuredPosition3D.class, "sensorIDA", "GLL", 1000L, 1);
 		bestRates.add(positionUpdateRate);
 		
-		EasyMock.expect(statsPreprocessor.getBestSensors()).andReturn(bestRates);
+//		EasyMock.expect(statsPreprocessor.getBestSensors()).andReturn(bestRates);
 		EasyMock.replay(statsPreprocessor);
 
 		IFileTypeProcessingFactory processingFactory = EasyMock.createNiceMock(IFileTypeProcessingFactory.class);
-		EasyMock.expect(processingFactory.getPreprocessor(EasyMock.<ITrackFile>anyObject())).andReturn(statsPreprocessor);
+		EasyMock.expect(processingFactory.createLocationPreProcessor(EasyMock.<ITrackFile>anyObject())).andReturn(statsPreprocessor);
 		EasyMock.replay(processingFactory);
 
 		

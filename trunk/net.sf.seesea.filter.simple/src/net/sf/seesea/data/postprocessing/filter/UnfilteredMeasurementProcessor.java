@@ -31,6 +31,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
 
 import org.apache.log4j.Logger;
@@ -45,11 +46,11 @@ import net.sf.seesea.data.io.IDataWriter;
 import net.sf.seesea.data.io.WriterException;
 import net.sf.seesea.data.postprocessing.process.IFilter;
 import net.sf.seesea.model.core.geo.Depth;
-import net.sf.seesea.model.core.geo.GeoBoundingBox;
 import net.sf.seesea.model.core.geo.MeasuredPosition3D;
 import net.sf.seesea.model.core.physx.CompositeMeasurement;
 import net.sf.seesea.model.core.physx.Measurement;
 import net.sf.seesea.track.api.data.ITrackFile;
+import net.sf.seesea.track.api.data.SensorDescriptionUpdateRate;
 import net.sf.seesea.track.api.exception.ProcessingException;
 import net.sf.seesea.waterlevel.IWaterLevelCorrection;
 
@@ -66,8 +67,6 @@ public class UnfilteredMeasurementProcessor implements IFilter {
 	// internal states
 
 	public static final String WRITER_REFERENCE = "writer";
-
-//	private IDataWriter dataWriter;
 
 	private MeasurmentWindow measurementWindow2;
 
@@ -88,17 +87,16 @@ public class UnfilteredMeasurementProcessor implements IFilter {
 	}
 	
 	@Override
-	public void processMeasurements(List<Measurement> results, String messageType, long sourceTrackIdentifier,
-			GeoBoundingBox boundingBox, ITrackFile trackfile) throws ProcessingException {
+	public void processMeasurements(List<Measurement> results, String messageType, ITrackFile trackfile) throws ProcessingException {
 		try {
 			for (Measurement measurement : results) {
 				if (measurement instanceof CompositeMeasurement) {
 					CompositeMeasurement compositeMeasurement = (CompositeMeasurement) measurement;
 					for (Measurement containedMeasurement : compositeMeasurement.getMeasurements()) {
-						processSingleMeasurement(containedMeasurement, sourceTrackIdentifier, boundingBox, trackfile);
+						processSingleMeasurement(containedMeasurement, trackfile);
 					}
 				} else {
-					processSingleMeasurement(measurement, sourceTrackIdentifier, boundingBox, trackfile);
+					processSingleMeasurement(measurement, trackfile);
 				}
 			}
 		} catch (WriterException e) {
@@ -107,8 +105,7 @@ public class UnfilteredMeasurementProcessor implements IFilter {
 
 	}
 
-	protected void processSingleMeasurement(Measurement measurement, long sourceTrackIdentifier,
-			GeoBoundingBox boundingBox, ITrackFile trackfile) throws WriterException, ProcessingException {
+	protected void processSingleMeasurement(Measurement measurement, ITrackFile trackfile) throws WriterException, ProcessingException {
 		// if(lastSourceTrackIdentifier != sourceTrackIdentifier) {
 		if (trackfile.getBoatParameters() != null && measurement instanceof MeasuredPosition3D) {
 			sensorOffsetToWaterline = trackfile.getBoatParameters().getSensorOffsetToWaterline(
@@ -116,7 +113,7 @@ public class UnfilteredMeasurementProcessor implements IFilter {
 		}
 		//// this.boundingBox = boundingBox;
 		// }
-		this.lastSourceTrackIdentifier = sourceTrackIdentifier;
+		this.lastSourceTrackIdentifier = trackfile.getTrackId();
 		if (measurement.isValid()) {
 			if (measurement instanceof MeasuredPosition3D) {
 				MeasuredPosition3D position3d = (MeasuredPosition3D) measurement;
@@ -164,14 +161,11 @@ public class UnfilteredMeasurementProcessor implements IFilter {
 
 	private void internalFinishProcessing() throws WriterException {
 
-		if (writerFactoryAR.get() != null) {
-			writerFactoryAR.get().closeOutput();
+		IDataWriter dataWriter = writerFactoryAR.get();
+		if (dataWriter != null) {
+			dataWriter.closeOutput();
 		}
 //		dataWriter = null;
-	}
-
-	private void createNewDataWriter() throws WriterException {
-//		dataWriter = writerFactoryAR.get().createWriter();
 	}
 
 	/**
@@ -258,6 +252,11 @@ public class UnfilteredMeasurementProcessor implements IFilter {
 	@Override
 	public boolean requiresRelativeTime() {
 		return false;
+	}
+
+	@Override
+	public void setBestSensors(Set<SensorDescriptionUpdateRate<Measurement>> bestSensors) {
+		// update rates are not being used
 	}
 
 }

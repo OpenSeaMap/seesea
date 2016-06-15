@@ -49,6 +49,7 @@ import net.sf.seesea.data.postprocessing.process.IDepthPositionPreProcessor;
 import net.sf.seesea.data.postprocessing.process.IFileTypeProcessingFactory;
 import net.sf.seesea.data.postprocessing.process.ITrackClustering;
 import net.sf.seesea.data.postprocessing.process.TrackClusterResult;
+import net.sf.seesea.track.api.ITrackFileProcessor;
 import net.sf.seesea.track.api.data.ITrackFile;
 import net.sf.seesea.track.api.exception.ProcessingException;
 
@@ -86,40 +87,28 @@ public class TimeBasedTrackClustering implements ITrackClustering {
 
 		// get start and end point
 		for (ITrackFile trackFile : orderedFiles) {
-			IDepthPositionPreProcessor locationPreprocessor = fileTypeProcessingFactory.createLocationPreProcessor(trackFile);
+			ITrackFileProcessor locationPreprocessor = fileTypeProcessingFactory.createLocationPreProcessor(trackFile);
+			IDepthPositionPreProcessor measurmentProcessor = new DepthPositionPreprocessor();
+			locationPreprocessor.setMeasurementProcessor(measurmentProcessor);
 			// format supported
 			if(locationPreprocessor != null) {
 				try {
 					try {
-						locationPreprocessor.processFiles(trackFile);
-						trackFile.setBoundingBox(locationPreprocessor.getBoundingBox());
-						if(!locationPreprocessor.hasDepthData() || locationPreprocessor.getPointCount() == 0) {
+						locationPreprocessor.processFile(trackFile);
+						trackFile.setBoundingBox(measurmentProcessor.getBoundingBox());
+						if(!measurmentProcessor.hasDepthData() || measurmentProcessor.getPointCount() == 0) {
 							// set no depth
 							noTrackFiles.add(trackFile);
 						} else {
-							trackFile.setAbsoluteTimeMeasurements(locationPreprocessor.hasAbsoluteTimedMeasurements());
-							trackFile.setRelativeTimeMeasurements(locationPreprocessor.hasRelativeTimedMeasurements());
-							if(trackFile.getStartTime() != null && (locationPreprocessor.hasAbsoluteTimedMeasurements() || locationPreprocessor.hasRelativeTimedMeasurements())) {
-								trackFile.setFirstPositions(locationPreprocessor.getFirstTrackPoints());
-								newOrderedFiles.add(trackFile);
-							} else {
-								noTimeMeasurementFiles.add(trackFile);
-							}
+							subclassifyTracks(newOrderedFiles, noTimeMeasurementFiles, trackFile, measurmentProcessor);
 						}
 					} catch (ProcessingException e) {
-						if(locationPreprocessor.getPointCount() > 0) {
-							if(!locationPreprocessor.hasDepthData()) {
+						if(measurmentProcessor.getPointCount() > 0) {
+							if(!measurmentProcessor.hasDepthData()) {
 								// set no depth
 								noTrackFiles.add(trackFile);
 							} else {
-								trackFile.setAbsoluteTimeMeasurements(locationPreprocessor.hasAbsoluteTimedMeasurements());
-								trackFile.setRelativeTimeMeasurements(locationPreprocessor.hasRelativeTimedMeasurements());
-								if(trackFile.getStartTime() != null && (locationPreprocessor.hasAbsoluteTimedMeasurements() || locationPreprocessor.hasRelativeTimedMeasurements())) {
-									trackFile.setFirstPositions(locationPreprocessor.getFirstTrackPoints());
-									newOrderedFiles.add(trackFile);
-								} else {
-									noTimeMeasurementFiles.add(trackFile);
-								}
+								subclassifyTracks(newOrderedFiles, noTimeMeasurementFiles, trackFile, measurmentProcessor);
 							}
 							Logger.getLogger(getClass()).error("Partially correct data for for track id " + trackFile.getTrackId(), e);
 						} else {
@@ -139,7 +128,7 @@ public class TimeBasedTrackClustering implements ITrackClustering {
 			for (ITrackFile trackFileB : newOrderedFiles) {
 				if(!trackFileA.equals(trackFileB)) {
 					boolean compareTime = (trackFileA.isHasRelativeTimedMeasurements() && trackFileB.isHasRelativeTimedMeasurements()) || (trackFileA.isHasAbsoluteTimedMeasurements() && trackFileB.isHasAbsoluteTimedMeasurements()); 
-					if((!compareTime || (trackFileA.getStartTime() != null && trackFileB.getStartTime() != null &&  trackFileA.getStartTime() != null && trackFileB.getStartTime() != null && trackFileA.getStartTime().equals(trackFileB.getStartTime()))) 
+					if((!compareTime || (trackFileA.getStartTime() != null && trackFileB.getStartTime() != null && trackFileA.getStartTime().equals(trackFileB.getStartTime()))) 
 							&& trackFileA.getStart().getLatitude().getDecimalDegree() == trackFileB.getStart().getLatitude().getDecimalDegree()
 							&& trackFileA.getStart().getLongitude().getDecimalDegree() == trackFileB.getStart().getLongitude().getDecimalDegree() 
 							&& !duplicateTrackFiles.contains(trackFileA)) {
@@ -176,6 +165,20 @@ public class TimeBasedTrackClustering implements ITrackClustering {
 		}
 		
 		return new TrackClusterResult(clusterOfTracks, duplicateTrackFiles, corruptTrackFiles, noTrackFiles, noTimeMeasurementFiles);
+	}
+
+	private void subclassifyTracks(List<ITrackFile> newOrderedFiles, Set<ITrackFile> noTimeMeasurementFiles,
+			ITrackFile trackFile, IDepthPositionPreProcessor locationPreprocessor) {
+		trackFile.setAbsoluteTimeMeasurements(locationPreprocessor.hasAbsoluteTimedMeasurements());
+		trackFile.setRelativeTimeMeasurements(locationPreprocessor.hasRelativeTimedMeasurements());
+		if(locationPreprocessor.getStart() != null && (locationPreprocessor.hasAbsoluteTimedMeasurements() || locationPreprocessor.hasRelativeTimedMeasurements())) {
+			trackFile.setFirstPositions(locationPreprocessor.getFirstTrackPoints());
+			trackFile.setStart(locationPreprocessor.getStart());
+			trackFile.setEnd(locationPreprocessor.getEnd());
+			newOrderedFiles.add(trackFile);
+		} else {
+			noTimeMeasurementFiles.add(trackFile);
+		}
 	}
 
 	@Reference(cardinality = ReferenceCardinality.OPTIONAL, policy = ReferencePolicy.DYNAMIC)
