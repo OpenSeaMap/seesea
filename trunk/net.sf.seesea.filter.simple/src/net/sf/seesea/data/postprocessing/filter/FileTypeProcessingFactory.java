@@ -30,7 +30,6 @@ package net.sf.seesea.data.postprocessing.filter;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
-import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.osgi.framework.BundleContext;
@@ -41,13 +40,9 @@ import org.osgi.service.component.ComponentInstance;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 
-import net.sf.seesea.data.postprocessing.process.IDepthPositionPreProcessor;
 import net.sf.seesea.data.postprocessing.process.IFileTypeProcessingFactory;
-import net.sf.seesea.data.postprocessing.process.IStatisticsPreprocessor;
-import net.sf.seesea.model.core.physx.Measurement;
 import net.sf.seesea.track.api.ITrackFileProcessor;
 import net.sf.seesea.track.api.data.ITrackFile;
-import net.sf.seesea.track.api.data.SensorDescriptionUpdateRate;
 
 @Component
 public class FileTypeProcessingFactory implements IFileTypeProcessingFactory {
@@ -70,9 +65,6 @@ public class FileTypeProcessingFactory implements IFileTypeProcessingFactory {
 			map.put(trackFile, component);
 			ITrackFileProcessor trackFileProcessor = (ITrackFileProcessor) component.getInstance();
 			return trackFileProcessor;
-//			if(trackFileProcessor != null) {
-//				return new DepthPositionPreprocessor(trackFileProcessor);
-//			}
 		}
 		return null;
 	}
@@ -84,11 +76,6 @@ public class FileTypeProcessingFactory implements IFileTypeProcessingFactory {
 		}
 	}
 
-	public ITrackFileProcessor createProcessor(Set<SensorDescriptionUpdateRate<Measurement>> bestSensors, ITrackFile file) {
-		ITrackFileProcessor service = (ITrackFileProcessor) getComponent(file.getFileType()).getInstance();
-		service.setFilter(bestSensors);
-		return service;
-	}
 
 	private ComponentInstance getComponent(String fileType) {
 		if(fileType != null) {
