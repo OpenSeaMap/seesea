@@ -27,12 +27,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.data.postprocessing.process;
 
-import java.util.Set;
-
-import net.sf.seesea.model.core.physx.Measurement;
 import net.sf.seesea.track.api.ITrackFileProcessor;
 import net.sf.seesea.track.api.data.ITrackFile;
-import net.sf.seesea.track.api.data.SensorDescriptionUpdateRate;
 
 public interface IFileTypeProcessingFactory {
 
@@ -46,8 +42,5 @@ public interface IFileTypeProcessingFactory {
 
 	void disposeLocationPreProcessor(ITrackFile trackFile);
 
-//	ITrackFileProcessor createProcessor(ITrackFile file);
-//
-	ITrackFileProcessor createProcessor(Set<SensorDescriptionUpdateRate<Measurement>> bestSensors, ITrackFile file);
 
 }
