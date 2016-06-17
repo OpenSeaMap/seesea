@@ -75,6 +75,7 @@ public class UnfilteredMeasurementProcessorTest {
 		assertEquals(2, writtenMeasurements.size());
 		assertTrue(writtenMeasurements.contains(measuredPosition3D));
 		assertTrue(writtenMeasurements.contains(depth));
+		unfilteredMeasurementProcessor.unbindWriter(memoryDataWriter);
 		
 	}
 	

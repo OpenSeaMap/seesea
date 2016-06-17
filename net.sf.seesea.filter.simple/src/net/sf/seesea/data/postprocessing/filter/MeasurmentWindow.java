@@ -28,17 +28,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package net.sf.seesea.data.postprocessing.filter;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import net.sf.seesea.model.core.geo.Depth;
 import net.sf.seesea.model.core.geo.GeoPosition3D;
 import net.sf.seesea.model.core.geo.MeasuredPosition3D;
-import net.sf.seesea.model.core.physx.Heading;
-import net.sf.seesea.model.core.physx.HeadingType;
 import net.sf.seesea.model.core.physx.Measurement;
-import net.sf.seesea.model.core.physx.RelativeSpeed;
-import net.sf.seesea.model.core.physx.SpeedType;
 import net.sf.seesea.model.core.physx.Time;
 
 /**
@@ -47,27 +42,19 @@ import net.sf.seesea.model.core.physx.Time;
  */
 public class MeasurmentWindow {
 
-	private long windowStartTime; 
-	
 	private List<Depth> depths;
 
-	private List<Heading> headings;
+//	private List<Heading> headings;
 
-	private List<RelativeSpeed> speeds;
+//	private List<RelativeSpeed> speeds;
 
 	private List<GeoPosition3D> positions;
 
 	public MeasurmentWindow() {
 		depths = new ArrayList<Depth>(2);
-		headings = new ArrayList<Heading>(2);
-		speeds = new ArrayList<RelativeSpeed>(2);
+//		headings = new ArrayList<Heading>(2);
+//		speeds = new ArrayList<RelativeSpeed>(2);
 		positions = new ArrayList<GeoPosition3D>(2);;
-	}
-	
-	public void addMeasurements(Collection<Measurement> measurements) {
-		for (Measurement measurement : measurements) {
-			setMeasurement(measurement);
-		}
 	}
 	
 	public void setMeasurement(Measurement containedMeasurement) {
@@ -75,27 +62,22 @@ public class MeasurmentWindow {
 		if(containedMeasurement.isValid()) {
 			if(containedMeasurement instanceof Time && ((Time) containedMeasurement).getTime() != null) {
 				Time time = (Time) containedMeasurement;
-				windowStartTime = time.getTime().getTime();
+//				windowStartTime = time.getTime().getTime();
 			} else if(containedMeasurement instanceof MeasuredPosition3D) {
 				positions.add((MeasuredPosition3D) containedMeasurement);
 			} else if(containedMeasurement instanceof Depth) {
 				depths.add((Depth) containedMeasurement);
-			} else if(containedMeasurement instanceof Heading && HeadingType.COMPASS.equals(((Heading)containedMeasurement).getHeadingType())) {
-				headings.add((Heading)containedMeasurement);
-			} else if(containedMeasurement instanceof RelativeSpeed && SpeedType.SPEEDTHOUGHWATER.equals(((RelativeSpeed)containedMeasurement).getKey())) {
-				speeds.add((RelativeSpeed)containedMeasurement);
-			} 
-			if(windowStartTime == 0 && containedMeasurement.getTime() != null) {
-				windowStartTime = containedMeasurement.getTime().getTime();
 			}
+//			} else if(containedMeasurement instanceof Heading && HeadingType.COMPASS.equals(((Heading)containedMeasurement).getHeadingType())) {
+//				headings.add((Heading)containedMeasurement);
+//			} else if(containedMeasurement instanceof RelativeSpeed && SpeedType.SPEEDTHOUGHWATER.equals(((RelativeSpeed)containedMeasurement).getKey())) {
+//				speeds.add((RelativeSpeed)containedMeasurement);
+//			} 
+//			if(windowStartTime == 0 && containedMeasurement.getTime() != null) {
+//				windowStartTime = containedMeasurement.getTime().getTime();
+//			}
 		}
 	}
-
-
-	protected long getWindowStartTime() {
-		return windowStartTime;
-	}
-
 
 	public List<Depth> getDepths() {
 		return depths;
