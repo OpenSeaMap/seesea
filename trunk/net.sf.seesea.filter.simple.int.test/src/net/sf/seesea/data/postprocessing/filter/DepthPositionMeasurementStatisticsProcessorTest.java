@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.easymock.EasyMock;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import net.sf.seesea.model.core.geo.Depth;
@@ -58,6 +59,7 @@ public class DepthPositionMeasurementStatisticsProcessorTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testDepthLocationMeasurements() {
 		ITrackFileProcessor trackFileProcessor = EasyMock.createNiceMock(ITrackFileProcessor.class);
 		EasyMock.replay(trackFileProcessor);
