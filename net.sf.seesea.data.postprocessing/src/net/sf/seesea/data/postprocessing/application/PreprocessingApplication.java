@@ -33,9 +33,13 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Dictionary;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
@@ -123,7 +127,21 @@ public class PreprocessingApplication implements IApplication {
 						for (Iterator iterator = startElement.getAttributes(); iterator.hasNext();) {
 							Attribute attribute = (Attribute) iterator.next();
 							if("key".equals(attribute.getName().getLocalPart())) {
-								xmlConfig.getProperties().put(attribute.getValue(), xmlr.nextEvent().asCharacters().getData());
+								Dictionary<String, Object> properties2 = xmlConfig.getProperties();
+								String key = attribute.getValue();
+								String value = xmlr.nextEvent().asCharacters().getData();
+								Object object = properties2.get(key);
+								if(object instanceof Collection) {
+									Collection collection = (Collection) object;
+									collection.add(value);
+								} else if(object != null) {
+									List<Object> list = new ArrayList<Object>();
+									list.add(object);
+									list.add(value);
+									properties2.put(key, list);
+								} else {
+									properties2.put(key, value);
+								}
 							}
 							
 						}
