@@ -15,7 +15,7 @@
 
    <windowImages/>
 
-   <launcher>
+   <launcher name="depthPostprocessing">
       <solaris/>
       <win useIco="false">
          <bmp/>
@@ -37,8 +37,21 @@
       <plugin id="net.sf.seesea.contour.triangulation" autoStart="true" startLevel="0" />
       <plugin id="net.sf.seesea.tidemodel.dtu10.java" autoStart="false" startLevel="0" />
       <plugin id="net.sf.seesea.waterlevel.gaugeocean" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.cm" autoStart="true" startLevel="1" />
+      <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="1" />
+      <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.p2.reconciler.dropins" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
+      <plugin id="org.postgresql.jdbc41" autoStart="true" startLevel="0" />
    </configurations>
+
+   <preferencesInfo>
+      <targetfile overwrite="false"/>
+   </preferencesInfo>
+
+   <cssInfo>
+   </cssInfo>
 
 </product>
