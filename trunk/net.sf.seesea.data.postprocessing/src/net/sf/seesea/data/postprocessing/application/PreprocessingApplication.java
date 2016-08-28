@@ -58,6 +58,7 @@ import org.osgi.service.cm.ConfigurationAdmin;
 
 import net.sf.seesea.data.io.postgis.PostgresConnectionFactory;
 import net.sf.seesea.data.postprocessing.DataPostprocessingActivator;
+import net.sf.seesea.data.postprocessing.database.IUploadedData2Contours;
 
 /**
  * This class controls all aspects of the application's execution
@@ -183,42 +184,17 @@ public class PreprocessingApplication implements IApplication {
 //				configurationContours.delete();
 //			}
 //
-//			ServiceReference<IUploadedData2Contours> serviceReference2 = DataPostprocessingActivator.getContext()
-//					.getServiceReference(IUploadedData2Contours.class);
-//			IUploadedData2Contours uploadedData2Contours = DataPostprocessingActivator.getContext()
-//					.getService(serviceReference2);
-//			uploadedData2Contours.processData();
+			ServiceReference<IUploadedData2Contours> serviceReference2 = DataPostprocessingActivator.getContext()
+					.getServiceReference(IUploadedData2Contours.class);
+			IUploadedData2Contours uploadedData2Contours = DataPostprocessingActivator.getContext()
+					.getService(serviceReference2);
+			uploadedData2Contours.processData();
 //
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		// new ServiceTracker<S, T>(context, clazz, customizer)
-
-		//
-		// DatabaseProcessor databaseProcessor;
-		// try {
-		// File file = new File(configFile);
-		// System.out.println(file.getAbsolutePath());
-		// properties.load(new FileInputStream(configFile));
-		//
-		// configureDatabaseConnections(properties);
-		// configureTideProvider(properties);
-		//
-		// configureContourGeneration();
-		//
-		//
-		//
-		// databaseProcessor = new DatabaseProcessor();
-		// databaseProcessor.createAndFilterTracks();
-		// } catch (SQLException e) {
-		// Logger.getLogger(getClass()).error("Failed to start processing", e);
-		// } catch (IOException e1) {
-		// Logger.getLogger(getClass()).error("Failed to start processing", e1);
-		// } catch (NMEAProcessingException e2) {
-		// Logger.getLogger(getClass()).error("Failed to start processing", e2);
-//		 }
 		return 0;
 	}
 
