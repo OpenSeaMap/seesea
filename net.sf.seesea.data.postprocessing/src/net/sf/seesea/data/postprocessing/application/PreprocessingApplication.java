@@ -98,7 +98,8 @@ public class PreprocessingApplication implements IApplication {
 			XMLInputFactory xmlif = XMLInputFactory.newInstance();
 			XMLEventReader xmlr = xmlif.createXMLEventReader(configFile, new FileInputStream(file));
 //			xmlif.setEventAllocator(new XMLEventAllocatorImpl());
-
+			
+			List<XMLConfig> configs = new ArrayList<XMLConfig>();
 			XMLConfig xmlConfig = null;
 			boolean singleton = true;
 
@@ -115,6 +116,7 @@ public class PreprocessingApplication implements IApplication {
 					}
 					if (startElement.getName().getLocalPart() == ("config")) {
 						xmlConfig = new XMLConfig();
+						configs.add(xmlConfig);
 						for (Iterator iterator = startElement.getAttributes(); iterator.hasNext();) {
 							Attribute attribute = (Attribute) iterator.next();
 							if("persistentIdentifier".equals(attribute.getName().getLocalPart())) {
@@ -153,6 +155,13 @@ public class PreprocessingApplication implements IApplication {
 						if(singleton) {
 							Configuration configuration = configurationAdmin.getConfiguration(xmlConfig.getConfigID());
 							configuration.update(xmlConfig.getProperties());
+							configs.clear();
+						} else {
+							for (XMLConfig xmlConfig2 : configs) {
+								Configuration configuration = configurationAdmin.createFactoryConfiguration(xmlConfig2.getConfigID());
+								configuration.update(xmlConfig2.getProperties());
+							}
+							configs.clear();
 						}
 					}
 				}
