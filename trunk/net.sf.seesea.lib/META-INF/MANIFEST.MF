@@ -4,8 +4,9 @@ Bundle-Name: See Sea Library
 Bundle-SymbolicName: net.sf.seesea.lib
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: net.sf.seesea.lib.SeeSeaLibraryActivator
-Require-Bundle: org.eclipse.core.runtime,
- org.apache.log4j;visibility:=reexport
+Require-Bundle: org.apache.log4j;visibility:=reexport
 Bundle-ActivationPolicy: lazy
 Export-Package: net.sf.seesea.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: org.eclipse.core.runtime;version="3.5.0",
+ org.osgi.framework

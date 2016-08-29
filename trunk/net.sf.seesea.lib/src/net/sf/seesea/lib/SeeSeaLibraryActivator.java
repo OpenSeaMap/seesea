@@ -29,12 +29,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package net.sf.seesea.lib;
 
 import org.eclipse.core.runtime.Plugin;
+import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
 /**
  * The activator class controls the plug-in life cycle
  */
-public class SeeSeaLibraryActivator extends Plugin {
+public class SeeSeaLibraryActivator implements BundleActivator {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "net.sf.seesea.lib"; //$NON-NLS-1$
@@ -53,7 +54,6 @@ public class SeeSeaLibraryActivator extends Plugin {
 	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
 	 */
 	public void start(BundleContext context) throws Exception {
-		super.start(context);
 		plugin = this;
 	}
 
@@ -63,7 +63,6 @@ public class SeeSeaLibraryActivator extends Plugin {
 	 */
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
-		super.stop(context);
 	}
 
 	/**
