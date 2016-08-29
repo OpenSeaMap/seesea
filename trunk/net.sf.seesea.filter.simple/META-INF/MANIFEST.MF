@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Simple Filter
 Bundle-SymbolicName: net.sf.seesea.filter.simple
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: net.sf.seesea.data.postprocessing.filter.FilterActivator
 Require-Bundle: net.sf.seesea.data.io;bundle-version="1.0.0",
  net.sf.seesea.services.navigation;bundle-version="1.0.0",
  net.sf.seesea.model.core;bundle-version="1.0.0",
@@ -12,7 +11,6 @@ Require-Bundle: net.sf.seesea.data.io;bundle-version="1.0.0",
  net.sf.seesea.filter.api;bundle-version="1.0.0",
  org.apache.log4j;bundle-version="1.2.0",
  net.sf.seesea.gauge,
- org.eclipse.osgi,
  org.apache.commons.math3;bundle-version="3.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Service-Component: OSGI-INF/net.sf.seesea.data.postprocessing.filter.FileTypeProcessingFactory.xml,
@@ -25,3 +23,4 @@ Import-Package: org.osgi.framework;version="1.8.0",
  org.osgi.service.component;version="1.2.2",
  org.osgi.service.component.annotations
 Bundle-ActivationPolicy: lazy
+Bundle-Activator: net.sf.seesea.data.postprocessing.filter.FilterActivator
