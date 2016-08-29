@@ -15,7 +15,7 @@
 
    <windowImages/>
 
-   <launcher name="depthPostprocessing">
+   <launcher>
       <solaris/>
       <win useIco="false">
          <bmp/>
@@ -42,7 +42,6 @@
       <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="1" />
       <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="2" />
-      <plugin id="org.eclipse.equinox.p2.reconciler.dropins" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
       <plugin id="org.postgresql.jdbc41" autoStart="true" startLevel="0" />
    </configurations>
