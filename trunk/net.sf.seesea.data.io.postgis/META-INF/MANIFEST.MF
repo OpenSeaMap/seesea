@@ -4,16 +4,15 @@ Bundle-Name: Postgis IO
 Bundle-SymbolicName: net.sf.seesea.data.io.postgis
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: net.sf.seesea.data.io.postgis.PostgisIOActivator
 Bundle-Vendor: SeeSea
 Export-Package: net.sf.seesea.data.io.postgis
-Require-Bundle: org.eclipse.core.runtime,
- net.sf.seesea.data.io,
+Require-Bundle: net.sf.seesea.data.io,
  org.apache.log4j;bundle-version="[1.2.0,2.0.0)",
  net.sf.seesea.geometry,
  net.sf.seesea.model.core,
  org.postgresql.jdbc41;bundle-version="9.4.1208"
-Import-Package: org.osgi.service.component;version="1.2.1",
+Import-Package: org.osgi.framework;version="1.8.0",
+ org.osgi.service.component;version="1.2.1",
  org.osgi.service.component.annotations,
  org.osgi.service.jdbc;version="[1.0.0,2.0.0)"
 Service-Component: OSGI-INF/net.sf.seesea.data.io.postgis.PartitionRetrival.xml,
