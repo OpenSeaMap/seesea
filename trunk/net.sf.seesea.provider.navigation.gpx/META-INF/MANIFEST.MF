@@ -9,8 +9,7 @@ Require-Bundle: org.eclipse.core.runtime,
  net.sf.seesea.model.core;bundle-version="1.0.0",
  net.sf.seesea.track.api;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Import-Package: org.apache.log4j;version="1.2.16",
- org.apache.logging.log4j.core;version="2.5.0",
+Import-Package: org.apache.log4j;version="[1.2.16,2.0.0)",
  org.osgi.service.component.annotations
 Service-Component: OSGI-INF/net.sf.seesea.provider.navigation.gpx.GPXStreamProcessor.xml,
  OSGI-INF/net.sf.seesea.provider.navigation.gpx.GPXTrackFileProcessor.xml
