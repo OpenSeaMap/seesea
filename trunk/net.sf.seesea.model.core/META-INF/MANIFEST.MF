@@ -29,6 +29,5 @@ Export-Package: net.sf.seesea.model.core,
  net.sf.seesea.model.core.weather.impl,
  net.sf.seesea.model.core.weather.util,
  net.sf.seesea.model.util
-Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.emf.ecore;visibility:=reexport
+Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport
 Bundle-ActivationPolicy: lazy
