@@ -7,13 +7,15 @@ Bundle-Activator: net.sf.seesea.services.navigation.NavigationServicesActivator
 Export-Package: net.sf.seesea.services.navigation,
  net.sf.seesea.services.navigation.listener,
  net.sf.seesea.services.navigation.provider
-Require-Bundle: org.eclipse.core.runtime,
- net.sf.seesea.model.core,
+Require-Bundle: net.sf.seesea.model.core,
  net.sf.seesea.lib;bundle-version="1.0.0",
  net.sf.seesea.track.api;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Import-Package: org.osgi.service.component;version="1.2.1",
- org.osgi.service.component.annotations
+Import-Package: org.eclipse.core.runtime;version="3.5.0",
+ org.osgi.framework;version="1.8.0",
+ org.osgi.service.component;version="1.2.1",
+ org.osgi.service.component.annotations,
+ org.osgi.util.tracker;version="1.5.1"
 Service-Component: OSGI-INF/SBASTotalTrip.xml,
  OSGI-INF/SBASTrip.xml,
  OSGI-INF/VirtualTotalTrip.xml,
