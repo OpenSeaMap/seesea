@@ -28,19 +28,18 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.services.navigation;
 
-import org.eclipse.core.runtime.Plugin;
+import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
 /**
  * The activator class controls the plug-in life cycle
  */
-public class NavigationServicesActivator extends Plugin {
+public class NavigationServicesActivator implements BundleActivator {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "net.sf.seesea.services.navigation"; //$NON-NLS-1$
 
-	// The shared instance
-	private static NavigationServicesActivator plugin;
+	private static BundleContext context;
 	
 	/**
 	 * The constructor
@@ -54,8 +53,7 @@ public class NavigationServicesActivator extends Plugin {
 	 */
 	@Override
 	public void start(BundleContext context) throws Exception {
-		super.start(context);
-		plugin = this;
+		NavigationServicesActivator.context = context;
 	}
 
 	/*
@@ -64,8 +62,7 @@ public class NavigationServicesActivator extends Plugin {
 	 */
 	@Override
 	public void stop(BundleContext context) throws Exception {
-		plugin = null;
-		super.stop(context);
+		context = null;
 	}
 
 	/**
@@ -73,8 +70,8 @@ public class NavigationServicesActivator extends Plugin {
 	 *
 	 * @return the shared instance
 	 */
-	public static NavigationServicesActivator getDefault() {
-		return plugin;
+	public static BundleContext getContext() {
+		return context;
 	}
 
 }

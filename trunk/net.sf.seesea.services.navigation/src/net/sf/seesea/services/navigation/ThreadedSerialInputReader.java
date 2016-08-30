@@ -82,8 +82,8 @@ public class ThreadedSerialInputReader implements Callable<Void>{
 		properties.put("hardware", true); //$NON-NLS-1$
 		properties.put(PROVIDER_NAME, nmeaStreamProvider.getName());
 		properties.put(PROVIDER_TYPE, "sensor"); //$NON-NLS-1$
-		if(NavigationServicesActivator.getDefault() != null) {
-			BundleContext bundleContext = NavigationServicesActivator.getDefault().getBundle().getBundleContext();
+		if(NavigationServicesActivator.getContext() != null) {
+			BundleContext bundleContext = NavigationServicesActivator.getContext();
 //			serviceRegistration = bundleContext.registerService(INMEAReader.class.getName(), this, properties);
 			streamTracker = new ServiceTracker<IStreamProcessorDetection,IStreamProcessorDetection>(bundleContext, IStreamProcessorDetection.class, null);
 			streamTracker.open();
@@ -159,7 +159,7 @@ public class ThreadedSerialInputReader implements Callable<Void>{
 						// exception during processing
 						if(!Thread.interrupted()) {
 							Logger.getLogger(getClass()).error("Exception while reading input stream", e); //$NON-NLS-1$
-							BundleContext bundleContext = NavigationServicesActivator.getDefault().getBundle().getBundleContext();
+							BundleContext bundleContext = NavigationServicesActivator.getContext();
 							Collection<ServiceReference<INMEAReaderFailureNotifier>> serviceReferences = bundleContext.getServiceReferences(INMEAReaderFailureNotifier.class, null);
 							if(serviceReferences != null) {
 								for (ServiceReference<INMEAReaderFailureNotifier> serviceReference : serviceReferences) {
