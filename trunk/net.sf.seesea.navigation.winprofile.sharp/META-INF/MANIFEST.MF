@@ -10,6 +10,7 @@ Require-Bundle: net.sf.seesea.lib;bundle-version="1.0.0",
  net.sf.seesea.track.api
 Service-Component: OSGI-INF/net.sf.seesea.navigation.winprofile.sharp.WinSharpTrackFileProcessor.xml,
  OSGI-INF/net.sf.seesea.navigation.winprofile.sharp.WinprofileSharpStreamProcessor.xml
-Import-Package: org.osgi.framework;version="1.8.0",
+Import-Package: org.apache.log4j;version="[1.2.16,2.0.0)",
+ org.osgi.framework;version="1.8.0",
  org.osgi.service.component.annotations;resolution:=optional
 Bundle-ActivationPolicy: lazy
