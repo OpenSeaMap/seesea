@@ -13,6 +13,7 @@
   </parent>
   
   <modules>
+   	<module>../net.sf.seesea.postprocessing.eclipse.feature</module>
   
    	<module>../net.sf.seesea.data.postprocessing</module>
   	<module>../net.sf.seesea.data.postprocessing.system.test</module>
@@ -78,7 +79,6 @@
   	<module>../net.sf.seesea.nmea.rcp.logging</module>
   	
 <!--   	<module>../net.sf.seesea.data.processing.feature</module> -->
-  	<module>../net.sf.seesea.postprocessing.eclipse.feature</module>
   	<module>../net.sf.seesea.data.processing.feature</module>
   	
   	<module>../net.sf.seesea.postprocess.product</module>
