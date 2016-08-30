@@ -14,10 +14,11 @@ Require-Bundle: net.sf.seesea.model.core,
  net.sf.seesea.data.io;bundle-version="1.0.0",
  net.sf.seesea.lib;bundle-version="1.0.0",
  net.sf.seesea.track.api;bundle-version="1.0.0",
- net.sf.seesea.services.navigation,
- org.eclipse.equinox.registry
+ net.sf.seesea.services.navigation
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Import-Package: org.osgi.framework;version="1.8.0",
+Import-Package: org.apache.log4j;version="[1.2.16,2.0.0)",
+ org.eclipse.core.runtime;version="3.5.0",
+ org.osgi.framework;version="1.8.0",
  org.osgi.service.component;version="1.1.0",
  org.osgi.service.component.annotations
 Service-Component: OSGI-INF/CSVDataWriterFactory.xml,
