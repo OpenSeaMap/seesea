@@ -37,7 +37,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.Stack;
 
-import org.eclipse.core.runtime.Assert;
+//import org.eclipse.core.runtime.Assert;
 
 import net.sf.seesea.geometry.IBoxExtends;
 import net.sf.seesea.geometry.ICircle;
@@ -612,11 +612,11 @@ public class IncrementalConstrainedDelaunayTriangulation implements
 		IPoint b3 = bPoints.get(2);
 		
 		IEdge sharedEdge = triangle.getSharedEdge(oppositeTriangle);
-		Assert.isNotNull(sharedEdge);
+//		Assert.isNotNull(sharedEdge);
 		IPoint pointNotOnEdge = getPointNotOnEdge(triangle, sharedEdge);
-		Assert.isNotNull(pointNotOnEdge);
+//		Assert.isNotNull(pointNotOnEdge);
 		IPoint oppositePointNotOnEdge = getPointNotOnEdge(oppositeTriangle, sharedEdge);
-		Assert.isNotNull(oppositePointNotOnEdge);
+//		Assert.isNotNull(oppositePointNotOnEdge);
 		aPoints.clear();
 		aPoints.add(pointNotOnEdge);
 		aPoints.add(sharedEdge.getOrigin());
@@ -639,7 +639,7 @@ public class IncrementalConstrainedDelaunayTriangulation implements
 			quadtree.insert(oppositeTriangle);
 		}
 		int newSize = triangle.getNeighbors().size() + oppositeTriangle.getNeighbors().size();
-		Assert.isTrue(oldSize == newSize);
+//		Assert.isTrue(oldSize == newSize);
 	}
 
 	private IPoint getPointNotOnEdge(ITriangle triangle, IEdge sharedEdge) {
