@@ -7,7 +7,6 @@ Bundle-ClassPath: .
 Bundle-Vendor: SeeSea
 Require-Bundle: net.sf.seesea.gauge;bundle-version="1.0.0",
  net.sf.seesea.waterlevel;bundle-version="1.0.0",
- org.apache.log4j;bundle-version="[1.2.0,2.0.0)",
  net.sf.seesea.data.io,
  net.sf.seesea.geometry,
  net.sf.seesea.model.core,
@@ -16,6 +15,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Service-Component: OSGI-INF/net.sf.seesea.waterlevel.CombinedWaterLevelCorrection.xml,
  OSGI-INF/net.sf.seesea.waterlevel.GaugeValueUpdater.xml,
  OSGI-INF/net.sf.seesea.waterlevel.GaugeWaterLevelCorrection.xml
-Import-Package: org.osgi.framework,
+Import-Package: org.apache.log4j;version="[1.2.16,2.0.0)",
+ org.osgi.framework,
  org.osgi.service.component,
  org.osgi.service.component.annotations
