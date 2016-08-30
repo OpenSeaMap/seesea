@@ -5,11 +5,11 @@ Bundle-SymbolicName: net.sf.seesea.triangulation.cdelaunay
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: net.sf.seesea.triangulation.cdelaunay.DelaunayActivator
 Export-Package: net.sf.seesea.triangulation.cdelaunay;x-friends:="net.sf.seesea.triangulation.cdelaunay.test"
-Require-Bundle: org.eclipse.core.runtime,
- org.apache.log4j;bundle-version="[1.2.0,2.0.0)",
- net.sf.seesea.geometry;bundle-version="1.0.0",
+Require-Bundle: net.sf.seesea.geometry;bundle-version="1.0.0",
  net.sf.seesea.triangulation;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Import-Package: org.osgi.service.component.annotations
+Import-Package: org.apache.log4j;version="[1.2.16,2.0.0)",
+ org.osgi.framework;version="1.8.0",
+ org.osgi.service.component.annotations
 Service-Component: OSGI-INF/net.sf.seesea.triangulation.cdelaunay.IncrementalContrainedDelaunayFactory.xml
 Bundle-ActivationPolicy: lazy
