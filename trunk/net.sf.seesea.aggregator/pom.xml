@@ -33,6 +33,7 @@
 <!--   	<module>../net.sf.seesea.content.tika.test</module> -->
   	<!--  -->
  	<module>../net.sf.seesea.lib</module>
+ 	
   	<module>../net.sf.seesea.services.navigation</module>
   	<module>../net.sf.seesea.provider.navigation.fsh</module>
   	<module>../net.sf.seesea.provider.navigation.fsh.test</module>
@@ -77,8 +78,9 @@
   	<module>../net.sf.seesea.nmea.rcp.logging</module>
   	
 <!--   	<module>../net.sf.seesea.data.processing.feature</module> -->
-  	<module>../net.sf.seesea.eclipse.feature</module>
+  	<module>../net.sf.seesea.postprocessing.eclipse.feature</module>
   	<module>../net.sf.seesea.data.processing.feature</module>
+  	
   	<module>../net.sf.seesea.postprocess.product</module>
   	
   </modules>
