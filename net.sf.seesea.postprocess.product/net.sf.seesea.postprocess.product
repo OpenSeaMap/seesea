@@ -30,10 +30,10 @@
 
    <features>
       <feature id="org.eclipse.equinox.core.feature" version="1.2.100.v20150529-1857"/>
-      <feature id="net.sf.seesea.data.processing.feature" version="1.0.0.qualifier"/>
-      <feature id="net.sf.seesea.postprocessing.eclipse.feature" version="1.0.0.qualifier"/>
       <feature id="org.eclipse.e4.rcp" version="1.4.0.v20150603-0857"/>
       <feature id="org.eclipse.emf.ecore" version="2.11.2.v20160208-0816"/>
+      <feature id="net.sf.seesea.data.processing.feature" version="1.0.0.qualifier"/>
+      <feature id="net.sf.seesea.postprocessing.eclipse.feature" version="1.0.0.qualifier"/>
    </features>
 
    <configurations>
