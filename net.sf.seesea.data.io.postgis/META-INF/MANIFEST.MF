@@ -8,8 +8,7 @@ Bundle-Vendor: SeeSea
 Export-Package: net.sf.seesea.data.io.postgis
 Require-Bundle: net.sf.seesea.data.io,
  net.sf.seesea.geometry,
- net.sf.seesea.model.core,
- org.postgresql.jdbc41;bundle-version="9.4.1208"
+ net.sf.seesea.model.core
 Import-Package: org.apache.log4j;version="[1.2.16,2.0.0)",
  org.osgi.framework;version="1.8.0",
  org.osgi.service.component;version="1.2.1",
