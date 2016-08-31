@@ -18,3 +18,4 @@ Export-Package: gnu.io,
 Bundle-ClassPath: .,
  lib/RXTXcomm.jar
 Service-Component: OSGI-INF/serialprovider.xml
+Import-Package: org.apache.log4j;version="[1.2.16,2.0.0)"
