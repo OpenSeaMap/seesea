@@ -13,7 +13,6 @@
   </parent>
   
   <modules>
-   	<module>../net.sf.seesea.postprocessing.eclipse.feature</module>
   
    	<module>../net.sf.seesea.data.postprocessing</module>
   	<module>../net.sf.seesea.data.postprocessing.system.test</module>
