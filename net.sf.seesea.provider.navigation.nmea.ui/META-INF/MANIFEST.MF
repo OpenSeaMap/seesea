@@ -17,3 +17,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: net.sf.seesea.provider.navigation.nmea.ui
 Bundle-Localization: plugin
 Service-Component: OSGI-INF/statuslinemonitor.xml, OSGI-INF/NMEAReaderFailedDialog.xml
+Import-Package: org.apache.log4j;version="[1.2.16,2.0.0)"
