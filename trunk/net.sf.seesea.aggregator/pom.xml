@@ -80,6 +80,7 @@
   	
 <!--   	<module>../net.sf.seesea.data.processing.feature</module> -->
   	<module>../net.sf.seesea.data.processing.feature</module>
+  	<module>../net.sf.seesea.postprocessing.eclipse.feature</module>
   	
   	<module>../net.sf.seesea.postprocess.product</module>
   	
