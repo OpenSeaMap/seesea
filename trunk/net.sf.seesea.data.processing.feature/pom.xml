@@ -10,6 +10,6 @@
     
     <groupId>net.sf.seesea</groupId>
     <artifactId>net.sf.seesea.data.processing.feature</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.0.qualifier</version>
     <packaging>eclipse-feature</packaging>
 </project> 
