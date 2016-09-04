@@ -7,9 +7,12 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URL;
+import java.nio.charset.Charset;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,7 +25,6 @@ import java.util.Map;
 
 import org.eclipse.core.runtime.FileLocator;
 import org.hsqldb.jdbc.JDBCDataSource;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import net.sf.seesea.track.api.data.CompressionType;
@@ -47,7 +49,7 @@ public class DatabaseTrackPersistenceTest {
 
 			URL resolve = FileLocator.resolve(dumpURL);
 			File file = new File(resolve.getFile());
-			try(FileReader fileReader = new FileReader(file)) {
+			try(InputStreamReader fileReader = new InputStreamReader(new FileInputStream(file),"CP1252")) {
 				ScriptRunner scriptRunner = new ScriptRunner(c, true, true);
 				scriptRunner.runScript(fileReader);
 			}
@@ -81,7 +83,7 @@ public class DatabaseTrackPersistenceTest {
 
 			URL resolve = FileLocator.resolve(dumpURL);
 			File file = new File(resolve.getFile());
-			try(FileReader fileReader = new FileReader(file)) {
+			try(InputStreamReader fileReader = new InputStreamReader(new FileInputStream(file),"CP1252")) {
 				ScriptRunner scriptRunner = new ScriptRunner(c, true, true);
 				scriptRunner.runScript(fileReader);
 			}
@@ -112,7 +114,7 @@ public class DatabaseTrackPersistenceTest {
 
 			URL resolve = FileLocator.resolve(dumpURL);
 			File file = new File(resolve.getFile());
-			try(FileReader fileReader = new FileReader(file)) {
+			try(InputStreamReader fileReader = new InputStreamReader(new FileInputStream(file),"CP1252")) {
 				ScriptRunner scriptRunner = new ScriptRunner(c, true, true);
 				scriptRunner.runScript(fileReader);
 			}
@@ -142,7 +144,7 @@ public class DatabaseTrackPersistenceTest {
 
 			URL resolve = FileLocator.resolve(dumpURL);
 			File file = new File(resolve.getFile());
-			try(FileReader fileReader = new FileReader(file)) {
+			try(InputStreamReader fileReader = new InputStreamReader(new FileInputStream(file),"CP1252")) {
 				ScriptRunner scriptRunner = new ScriptRunner(c, true, true);
 				scriptRunner.runScript(fileReader);
 			}
@@ -179,7 +181,7 @@ public class DatabaseTrackPersistenceTest {
 
 			URL resolve = FileLocator.resolve(dumpURL);
 			File file = new File(resolve.getFile());
-			try(FileReader fileReader = new FileReader(file)) {
+			try(InputStreamReader fileReader = new InputStreamReader(new FileInputStream(file),"CP1252")) {
 				ScriptRunner scriptRunner = new ScriptRunner(c, true, true);
 				scriptRunner.runScript(fileReader);
 			}
@@ -221,7 +223,7 @@ public class DatabaseTrackPersistenceTest {
 
 			URL resolve = FileLocator.resolve(dumpURL);
 			File file = new File(resolve.getFile());
-			try(FileReader fileReader = new FileReader(file)) {
+			try(InputStreamReader fileReader = new InputStreamReader(new FileInputStream(file),"CP1252")) {
 				ScriptRunner scriptRunner = new ScriptRunner(c, true, true);
 				scriptRunner.runScript(fileReader);
 			}
@@ -268,7 +270,7 @@ public class DatabaseTrackPersistenceTest {
 
 			URL resolve = FileLocator.resolve(dumpURL);
 			File file = new File(resolve.getFile());
-			try(FileReader fileReader = new FileReader(file)) {
+			try(InputStreamReader fileReader = new InputStreamReader(new FileInputStream(file),"CP1252")) {
 				ScriptRunner scriptRunner = new ScriptRunner(c, true, true);
 				scriptRunner.runScript(fileReader);
 			}
@@ -332,7 +334,7 @@ public class DatabaseTrackPersistenceTest {
 
 			URL resolve = FileLocator.resolve(dumpURL);
 			File file = new File(resolve.getFile());
-			try(FileReader fileReader = new FileReader(file)) {
+			try(InputStreamReader fileReader = new InputStreamReader(new FileInputStream(file),"CP1252")) {
 				ScriptRunner scriptRunner = new ScriptRunner(c, true, true);
 				scriptRunner.runScript(fileReader);
 			}
