@@ -404,7 +404,7 @@ private List<ZipEntry> getZipEntries(ZipFile zipFile) {
 	    	  String trackName = new String(name, LATIN1);
 	    	  byte[] ext = new byte[4];
 	    	  dis.read(ext);
-	    	  String trackExtension = new String(ext);
+	    	  String trackExtension = new String(ext,LATIN1);
 	    	  return new SONRoot(new Date(1000L * recordingStart), degLatitude, degLongitude, trackName, trackExtension);
 	      }
 	      return null;
