@@ -62,7 +62,7 @@ public class NavigationServicesActivator implements BundleActivator {
 	 */
 	@Override
 	public void stop(BundleContext context) throws Exception {
-		context = null;
+		NavigationServicesActivator.context = null;
 	}
 
 	/**
