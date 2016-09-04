@@ -15,6 +15,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
@@ -36,6 +37,8 @@ import net.sf.seesea.waterlevel.ocean.ITideProvider;
 @org.osgi.service.component.annotations.Component(property = { "ocean:Boolean=true" })
 public class DTU implements ITideProvider {
 
+	private static Charset charset = Charset.forName("ISO-8859-1");
+	
 	private static int mx = 2881;
 	private static int my = 1441;
 	private static int ng = 10;
@@ -367,7 +370,7 @@ public class DTU implements ITideProvider {
 
 		try {
 			int read = dataInputStream.read(x, 0, 30);
-			String titleRead = new String(x);
+			String titleRead = new String(x, charset);
 			System.out.println(titleRead);
 			read = dataInputStream.read(x, 0, 32);
 			read = dataInputStream.read(x, 0, 16);
