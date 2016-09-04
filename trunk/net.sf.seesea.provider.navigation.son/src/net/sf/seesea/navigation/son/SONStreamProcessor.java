@@ -62,6 +62,8 @@ import net.sf.seesea.track.api.data.ITrack;
 @Component(property={"type:String=binary"})
 public class SONStreamProcessor implements IStreamProcessor {
 
+	private static final Charset LATIN1 = Charset.forName("ISO-8859-1");
+
 	SONProcessingState state;
 	
 	private int counter;
@@ -295,7 +297,7 @@ public class SONStreamProcessor implements IStreamProcessor {
 			} catch (IllegalArgumentException e) {
 				Logger.getLogger(this.getClass()).error("Failed to open zip entry. May it is not UTF-8 encoded:" + file.getAbsolutePath());
 				try {
-					zipFile = new ZipFile(file, Charset.forName("ISO-8859-1"));
+					zipFile = new ZipFile(file, LATIN1);
 					zipEntries = getZipEntries(zipFile); //$NON-NLS-1$
 					encoding = "ISO-8859-1"; //$NON-NLS-1$
 				} catch (IllegalArgumentException e2) {
@@ -399,7 +401,7 @@ private List<ZipEntry> getZipEntries(ZipFile zipFile) {
 	    	  
 	    	  byte[] name = new byte[6];
 	    	  dis.read(name);
-	    	  String trackName = new String(name);
+	    	  String trackName = new String(name, LATIN1);
 	    	  byte[] ext = new byte[4];
 	    	  dis.read(ext);
 	    	  String trackExtension = new String(ext);
