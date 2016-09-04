@@ -17,14 +17,6 @@
       [Enter License Description here.]
    </license>
 
-   <includes
-         id="org.eclipse.equinox.core.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.e4.rcp"
-         version="0.0.0"/>
-
    <plugin
          id="net.sf.seesea.data.io"
          download-size="0"
