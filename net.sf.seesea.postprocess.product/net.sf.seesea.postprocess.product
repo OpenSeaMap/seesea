@@ -3,7 +3,6 @@
 
 <product name="Postprocessing" uid="postprocessing" id="net.sf.seesea.data.postprocessing.product" application="net.sf.seesea.data.postprocessing.application" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
 
-
    <configIni use="default">
    </configIni>
 
@@ -23,10 +22,8 @@
       </win>
    </launcher>
 
-
    <vm>
    </vm>
-
 
    <plugins>
    </plugins>
@@ -37,6 +34,7 @@
       <feature id="org.eclipse.e4.rcp" version="1.4.0.v20150603-0857"/>
       <feature id="org.eclipse.emf.ecore" version="2.11.2.v20160208-0816"/>
       <feature id="net.sf.seesea.postprocessing.eclipse.feature"/>
+      <feature id="net.sf.seesea.data.processing.feature"/>
    </features>
 
    <configurations>
