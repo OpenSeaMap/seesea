@@ -73,7 +73,7 @@ public class NMEA0183TrackSimulator implements Runnable, INMEAReader {
 //			File file = new File(".");
 			for (InputStream stream : inputStreams) {
 //				int lineNumber = 0;
-				InputStreamReader inputStreamReader = new InputStreamReader(stream);
+				InputStreamReader inputStreamReader = new InputStreamReader(stream, "ISO-8859-1");
 				BufferedReader in = new BufferedReader(inputStreamReader);
 				currentLine = ""; //$NON-NLS-1$
 				while (currentLine != null) {
