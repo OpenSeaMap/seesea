@@ -113,6 +113,13 @@ public class PreprocessingApplication implements IApplication {
 					}
 					if (startElement.getName().getLocalPart() == ("multiton")) {
 						singleton = false;
+						for (Iterator iterator = startElement.getAttributes(); iterator.hasNext();) {
+							Attribute attribute = (Attribute) iterator.next();
+							if("id".equals(attribute.getName().getLocalPart())) {
+								xmlConfig.setMultitonID(attribute.getValue());
+							}
+							
+						}
 					}
 					if (startElement.getName().getLocalPart() == ("config")) {
 						xmlConfig = new XMLConfig();
@@ -158,8 +165,15 @@ public class PreprocessingApplication implements IApplication {
 							configs.clear();
 						} else {
 							for (XMLConfig xmlConfig2 : configs) {
-								Configuration configuration = configurationAdmin.createFactoryConfiguration(xmlConfig2.getConfigID());
-								configuration.update(xmlConfig2.getProperties());
+								Configuration[] configurations = configurationAdmin.listConfigurations(xmlConfig2.getMultitonId() + "=" + xmlConfig.getProperties().get(xmlConfig2.getMultitonId()));
+								if(configurations.length == 0) {
+									Configuration configuration = configurationAdmin.createFactoryConfiguration(xmlConfig2.getConfigID());
+									configuration.update(xmlConfig2.getProperties());
+								} else {
+									for (Configuration configuration : configurations) {
+										configuration.update(xmlConfig2.getProperties());
+									}
+								}
 							}
 							configs.clear();
 						}
