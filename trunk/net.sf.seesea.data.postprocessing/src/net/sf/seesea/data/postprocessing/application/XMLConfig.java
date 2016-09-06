@@ -8,6 +8,8 @@ public class XMLConfig {
 	private String persistentIdentifier;
 	
 	private Dictionary<String, Object> properties;
+
+	private String multitonId;
 	
 	public XMLConfig() {
 		properties = new Hashtable<String, Object>();
@@ -23,6 +25,14 @@ public class XMLConfig {
 
 	public Dictionary<String, Object> getProperties() {
 		return properties;
+	}
+
+	public String getMultitonId() {
+		return multitonId;
+	}
+
+	public void setMultitonID(String multitonId) {
+		this.multitonId = multitonId;
 	}
 
 
