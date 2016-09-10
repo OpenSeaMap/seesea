@@ -37,6 +37,7 @@
                                     <artifact><id>org.hsqldb:hsqldb:2.3.3</id></artifact>
                                     <artifact><id>org.osgi:org.osgi.enterprise:5.0.0</id></artifact>
                                     <artifact><id>org.xerial:sqlite-jdbc:3.8.11.2</id></artifact>
+                                    <artifact><id>org.apache.felix:org.apache.felix.fileinstall:jar:3.5.4</id></artifact>
                                 </artifacts>
                             </configuration>
                         </execution>
