@@ -33,6 +33,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
@@ -84,7 +85,7 @@ public class PostInsertGISWriter implements IDataWriter {
 	private Connection connection;
 
 	public void activate(Map<String, Object> properties) throws SQLException {
-		tableNames = (List<String>) properties.get("outputTables"); 
+		tableNames = Arrays.asList(((String) properties.get("outputTables")).split(",")); 
 		connection = outputDataSource.getConnection();
 		insertStatements = new ArrayList<PreparedStatement>(tableNames.size());
 		prepareInsertStatement();
