@@ -36,7 +36,7 @@ public class PostInsertGISWriterTest {
 		tables.add("table3");
 		tables.add("table4");
 		Map<String, Object> properties = new HashMap<String,Object>();
-		properties.put("outputTables", tables);
+		properties.put("outputTables", "table1,table2,table3,table4");
 
 		PreparedStatement statement = EasyMock.createNiceMock(PreparedStatement.class);
 		int [] result = new int[] {1};
