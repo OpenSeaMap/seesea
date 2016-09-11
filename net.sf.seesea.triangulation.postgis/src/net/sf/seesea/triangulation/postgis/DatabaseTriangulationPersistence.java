@@ -51,6 +51,17 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.atomic.AtomicReference;
+
+import javax.sql.DataSource;
+
+import org.apache.log4j.Logger;
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Deactivate;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
+import org.osgi.service.component.annotations.ReferencePolicy;
 
 import net.sf.seesea.contour.api.ContourLine;
 import net.sf.seesea.contour.api.IContourLine;
@@ -70,12 +81,6 @@ import net.sf.seesea.triangulation.ITriangulator;
 import net.sf.seesea.triangulation.NeighboringTrianglesOnBoundary;
 import net.sf.seesea.triangulation.TriangulationDescription;
 
-import org.apache.log4j.Logger;
-import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.component.annotations.ReferenceCardinality;
-import org.osgi.service.component.annotations.ReferencePolicy;
-
 /**
  * A persistence implementation for postgis
  *
@@ -90,6 +95,8 @@ public class DatabaseTriangulationPersistence implements ITriangulationPersisten
 	
 	private int batchCounter;
 	private PreparedStatement lastStatement;
+	private AtomicReference<DataSource> triangulationDataSourceReference = new AtomicReference<DataSource>();
+	private AtomicReference<DataSource> inshoreDataSourceReference = new AtomicReference<DataSource>();
 
 	public DatabaseTriangulationPersistence() {
 		batchCounter = 0;
@@ -1132,21 +1139,21 @@ public class DatabaseTriangulationPersistence implements ITriangulationPersisten
 //	}
 
 	@Reference(policy = ReferencePolicy.DYNAMIC, name="OSMConnection", cardinality = ReferenceCardinality.MANDATORY,target="(db=osm)")
-	public void bindInshoreConnection(Connection connection) {
-		this.inshoreConnection = connection;
+	public void bindInshoreConnection(DataSource connection) {
+		this.inshoreDataSourceReference.set(connection);
 	}
 
-	public void unbindInshoreConnection(Connection connection) {
-		this.inshoreConnection = null;
+	public void unbindInshoreConnection(DataSource connection) {
+		this.inshoreDataSourceReference.compareAndSet(connection, null);
 	}
 
 	@Reference(policy = ReferencePolicy.DYNAMIC, name="Connection", cardinality = ReferenceCardinality.MANDATORY,target="(db=coastline)")
-	public void bindTriangulationConnection(Connection connection) {
-		this.triangulationConnection = connection;
+	public void bindTriangulationConnection(DataSource connection) {
+		this.triangulationDataSourceReference.set(connection);
 	}
 
-	public void unbindTriangulationConnection(Connection connection) {
-		this.triangulationConnection = null;
+	public void unbindTriangulationConnection(DataSource connection) {
+		this.triangulationDataSourceReference.compareAndSet(connection, null);
 	}
 
 	@Reference(policy = ReferencePolicy.DYNAMIC, name="ITriangulationFactory", cardinality = ReferenceCardinality.MANDATORY)
@@ -1157,6 +1164,25 @@ public class DatabaseTriangulationPersistence implements ITriangulationPersisten
 	public void unbindTriangulationFactory(ITriangulationFactory triangulationFactory) {
 		this.triangulationFactory = null;
 	}
+	
+	@Activate
+	public synchronized void actviate() throws SQLException  {
+		DataSource ds = inshoreDataSourceReference.get();
+		inshoreConnection = ds.getConnection();
+		DataSource ds2 = triangulationDataSourceReference.get();
+		triangulationConnection = ds2.getConnection();
+	}
+	
+	@Deactivate
+	public synchronized void deactivate() {
+		try {
+			inshoreConnection.close();
+			triangulationConnection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 
 	@Override
 	public void finishAddOrUpdateContourLines() throws PersistenceException {
