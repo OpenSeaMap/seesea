@@ -71,118 +71,123 @@ public class PreprocessingApplication implements IApplication {
 	@Override
 	public Object start(IApplicationContext context) throws InvalidSyntaxException, SQLException, XMLStreamException {
 
-		ServiceReference<ConfigurationAdmin> serviceReference = DataPostprocessingActivator.getContext()
-				.getServiceReference(ConfigurationAdmin.class);
-		ConfigurationAdmin configurationAdmin = DataPostprocessingActivator.getContext().getService(serviceReference);
-
-		Map<Object, Object> arguments = context.getArguments();
-		String[] args = (String[]) arguments.get("application.args"); //$NON-NLS-1$
-		String configFile = null;
-		if (args.length > 0) {
-			configFile = args[0];
-		} else {
-			configFile = "config.xml"; //$NON-NLS-1$
-		}
-		try {
-			File file = new File(configFile);
-			System.out.println(file.getAbsolutePath());
-
-			XMLInputFactory xmlif = XMLInputFactory.newInstance();
-			XMLEventReader xmlr = xmlif.createXMLEventReader(configFile, new FileInputStream(file));
-//			xmlif.setEventAllocator(new XMLEventAllocatorImpl());
-			
-			List<XMLConfig> configs = new ArrayList<XMLConfig>();
-			XMLConfig xmlConfig = null;
-			boolean singleton = true;
-
-			while (xmlr.hasNext()) {
-				XMLEvent event = xmlr.nextEvent();
-				// Get all "Book" elements as XMLEvent object
-				if (event.isStartElement()) {
-					StartElement startElement = event.asStartElement();
-					if (startElement.getName().getLocalPart() == ("singleton")) {
-						singleton = true;
-					}
-					if (startElement.getName().getLocalPart() == ("multiton")) {
-						singleton = false;
-						for (Iterator iterator = startElement.getAttributes(); iterator.hasNext();) {
-							Attribute attribute = (Attribute) iterator.next();
-							if("id".equals(attribute.getName().getLocalPart())) {
-								xmlConfig.setMultitonID(attribute.getValue());
-							}
-							
-						}
-					}
-					if (startElement.getName().getLocalPart() == ("config")) {
-						xmlConfig = new XMLConfig();
-						configs.add(xmlConfig);
-						for (Iterator iterator = startElement.getAttributes(); iterator.hasNext();) {
-							Attribute attribute = (Attribute) iterator.next();
-							if("persistentIdentifier".equals(attribute.getName().getLocalPart())) {
-								xmlConfig.setConfigID(attribute.getValue());
-							}
-							
-						}
-					}
-					if (startElement.getName().getLocalPart() == ("property")) {
-						for (Iterator iterator = startElement.getAttributes(); iterator.hasNext();) {
-							Attribute attribute = (Attribute) iterator.next();
-							if("key".equals(attribute.getName().getLocalPart())) {
-								Dictionary<String, Object> properties2 = xmlConfig.getProperties();
-								String key = attribute.getValue();
-								String value = xmlr.nextEvent().asCharacters().getData();
-								Object object = properties2.get(key);
-								if(object instanceof Collection) {
-									Collection<Object> collection = (Collection<Object>) object;
-									collection.add(value);
-								} else if(object != null) {
-									List<Object> list = new ArrayList<Object>();
-									list.add(object);
-									list.add(value);
-									properties2.put(key, list);
-								} else {
-									properties2.put(key, value);
-								}
-							}
-							
-						}
-					}
-
-				} else if(event.isEndElement()) {
-					EndElement endElement = event.asEndElement();
-					if(endElement.getName().getLocalPart() == "config") {
-						if(singleton) {
-							Configuration configuration = configurationAdmin.getConfiguration(xmlConfig.getConfigID());
-							configuration.update(xmlConfig.getProperties());
-							configs.clear();
-						} else {
-							for (XMLConfig xmlConfig2 : configs) {
-								Configuration[] configurations = configurationAdmin.listConfigurations(xmlConfig2.getMultitonId() + "=" + xmlConfig.getProperties().get(xmlConfig2.getMultitonId()));
-								if(configurations.length == 0) {
-									Configuration configuration = configurationAdmin.createFactoryConfiguration(xmlConfig2.getConfigID());
-									configuration.update(xmlConfig2.getProperties());
-								} else {
-									for (Configuration configuration : configurations) {
-										configuration.update(xmlConfig2.getProperties());
-									}
-								}
-							}
-							configs.clear();
-						}
-					}
-				}
-			}
-
-			ServiceReference<IUploadedData2Contours> serviceReference2 = DataPostprocessingActivator.getContext()
-					.getServiceReference(IUploadedData2Contours.class);
-			IUploadedData2Contours uploadedData2Contours = DataPostprocessingActivator.getContext()
-					.getService(serviceReference2);
-			uploadedData2Contours.processData();
+//		ServiceReference<ConfigurationAdmin> serviceReference = DataPostprocessingActivator.getContext()
+//				.getServiceReference(ConfigurationAdmin.class);
+//		ConfigurationAdmin configurationAdmin = DataPostprocessingActivator.getContext().getService(serviceReference);
 //
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		Map<Object, Object> arguments = context.getArguments();
+//		String[] args = (String[]) arguments.get("application.args"); //$NON-NLS-1$
+//		String configFile = null;
+//		if (args.length > 0) {
+//			configFile = args[0];
+//		} else {
+//			configFile = "config.xml"; //$NON-NLS-1$
+//		}
+//		try {
+//			File file = new File(configFile);
+//			System.out.println(file.getAbsolutePath());
+//
+//			XMLInputFactory xmlif = XMLInputFactory.newInstance();
+//			XMLEventReader xmlr = xmlif.createXMLEventReader(configFile, new FileInputStream(file));
+////			xmlif.setEventAllocator(new XMLEventAllocatorImpl());
+//			
+//			List<XMLConfig> configs = new ArrayList<XMLConfig>();
+//			XMLConfig xmlConfig = null;
+//			boolean singleton = true;
+//
+//			while (xmlr.hasNext()) {
+//				XMLEvent event = xmlr.nextEvent();
+//				// Get all "Book" elements as XMLEvent object
+//				if (event.isStartElement()) {
+//					StartElement startElement = event.asStartElement();
+//					if (startElement.getName().getLocalPart() == ("singleton")) {
+//						singleton = true;
+//					}
+//					if (startElement.getName().getLocalPart() == ("multiton")) {
+//						singleton = false;
+//						for (Iterator iterator = startElement.getAttributes(); iterator.hasNext();) {
+//							Attribute attribute = (Attribute) iterator.next();
+//							if("id".equals(attribute.getName().getLocalPart())) {
+//								xmlConfig.setMultitonID(attribute.getValue());
+//							}
+//							
+//						}
+//					}
+//					if (startElement.getName().getLocalPart() == ("config")) {
+//						xmlConfig = new XMLConfig();
+//						configs.add(xmlConfig);
+//						for (Iterator iterator = startElement.getAttributes(); iterator.hasNext();) {
+//							Attribute attribute = (Attribute) iterator.next();
+//							if("persistentIdentifier".equals(attribute.getName().getLocalPart())) {
+//								xmlConfig.setConfigID(attribute.getValue());
+//							}
+//							
+//						}
+//					}
+//					if (startElement.getName().getLocalPart() == ("property")) {
+//						for (Iterator iterator = startElement.getAttributes(); iterator.hasNext();) {
+//							Attribute attribute = (Attribute) iterator.next();
+//							if("key".equals(attribute.getName().getLocalPart())) {
+//								Dictionary<String, Object> properties2 = xmlConfig.getProperties();
+//								String key = attribute.getValue();
+//								String value = xmlr.nextEvent().asCharacters().getData();
+//								Object object = properties2.get(key);
+//								if(object instanceof Collection) {
+//									Collection<Object> collection = (Collection<Object>) object;
+//									collection.add(value);
+//								} else if(object != null) {
+//									List<Object> list = new ArrayList<Object>();
+//									list.add(object);
+//									list.add(value);
+//									properties2.put(key, list);
+//								} else {
+//									properties2.put(key, value);
+//								}
+//							}
+//							
+//						}
+//					}
+//
+//				} else if(event.isEndElement()) {
+//					EndElement endElement = event.asEndElement();
+//					if(endElement.getName().getLocalPart() == "config") {
+//						if(singleton) {
+//							Configuration configuration = configurationAdmin.getConfiguration(xmlConfig.getConfigID());
+//							configuration.update(xmlConfig.getProperties());
+//							configs.clear();
+//						} else {
+//							for (XMLConfig xmlConfig2 : configs) {
+//								Configuration[] configurations = configurationAdmin.listConfigurations(xmlConfig2.getMultitonId() + "=" + xmlConfig.getProperties().get(xmlConfig2.getMultitonId()));
+//								if(configurations.length == 0) {
+//									Configuration configuration = configurationAdmin.createFactoryConfiguration(xmlConfig2.getConfigID());
+//									configuration.update(xmlConfig2.getProperties());
+//								} else {
+//									for (Configuration configuration : configurations) {
+//										configuration.update(xmlConfig2.getProperties());
+//									}
+//								}
+//							}
+//							configs.clear();
+//						}
+//					}
+//				}
+//			}
+
+//			long time = System.currentTimeMillis();
+//			while((time < System.currentTimeMillis() + 1200000)) {
+				
+				ServiceReference<IUploadedData2Contours> serviceReference2 = DataPostprocessingActivator.getContext()
+						.getServiceReference(IUploadedData2Contours.class);
+				IUploadedData2Contours uploadedData2Contours = DataPostprocessingActivator.getContext()
+						.getService(serviceReference2);
+				uploadedData2Contours.processData();
+//			}
+		
+//
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 
 		return 0;
 	}
