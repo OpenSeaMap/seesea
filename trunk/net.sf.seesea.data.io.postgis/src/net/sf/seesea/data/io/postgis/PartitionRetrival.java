@@ -40,8 +40,12 @@ import java.util.Locale;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
 
+import javax.sql.DataSource;
+
 import org.apache.log4j.Logger;
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
@@ -58,7 +62,7 @@ public class PartitionRetrival implements IParitionRetrival {
 			Set<String> offshoreIds) throws SQLException {
 		for (Long trackId : trackIds) {
 			// the bounding box of the points for the track
-			try (PreparedStatement boundaryStatement = triangulationConnection.get().prepareStatement(
+			try (PreparedStatement boundaryStatement = triangulationConnection.prepareStatement(
 					"SELECT st_xmin(ST_Extent(the_geom)), st_xmax(ST_Extent(the_geom)), st_ymin(ST_Extent(the_geom)), st_ymax(ST_Extent(the_geom)) FROM "
 							+ trackpointTable + " WHERE datasetid = ?")) {
 				boundaryStatement.setLong(1, trackId);
@@ -98,8 +102,8 @@ public class PartitionRetrival implements IParitionRetrival {
 	public void getHitPartitionizedPolygons(Set<String> inshoreOSMids, Set<String> offshoreIds, Long trackId,
 			double xmin, double xmax, double ymin, double ymax) throws SQLException {
 		// select all polygons of that bounding box
-		try (Statement inshoreStatement = osmConnectionReference.get().createStatement();
-				Statement offshoreStatement = triangulationConnection.get().createStatement()) {
+		try (Statement inshoreStatement = osmConnectionReference.createStatement();
+				Statement offshoreStatement = triangulationConnection.createStatement()) {
 			// formatter:off
 			NumberFormat format = DecimalFormat.getNumberInstance(Locale.ENGLISH);
 			format.setMaximumFractionDigits(Integer.MAX_VALUE);
@@ -132,8 +136,8 @@ public class PartitionRetrival implements IParitionRetrival {
 	public IIdentifiablePolygon getHitPartitionizedPolygon(Set<String> inshoreOSMids, Set<String> offshoreIds,
 			double lat, double lon) throws SQLException {
 		// select all polygons of that bounding box
-		try (Statement inshoreStatement = osmConnectionReference.get().createStatement();
-				Statement offshoreStatement = triangulationConnection.get().createStatement()) {
+		try (Statement inshoreStatement = osmConnectionReference.createStatement();
+				Statement offshoreStatement = triangulationConnection.createStatement()) {
 			// formatter:off
 			NumberFormat format = DecimalFormat.getNumberInstance(Locale.ENGLISH);
 			format.setMaximumFractionDigits(Integer.MAX_VALUE);
@@ -163,36 +167,65 @@ public class PartitionRetrival implements IParitionRetrival {
 	}
 
 	@Reference(policy = ReferencePolicy.DYNAMIC, target = "(db=userData)", cardinality = ReferenceCardinality.MANDATORY)
-	public synchronized void bindUserDataConnection(Connection connection) {
-		userDataConnectionReference.set(connection);
+	public synchronized void bindUserDataConnection(DataSource connection) {
+		userDataDataSourceReference.set(connection);
 	}
 
-	public synchronized void unbindUserDataConnection(Connection connection) {
-		userDataConnectionReference.compareAndSet(connection, null);
+	public synchronized void unbindUserDataConnection(DataSource connection) {
+		userDataDataSourceReference.compareAndSet(connection, null);
+	}
+	
+	private AtomicReference<DataSource> userDataDataSourceReference = new AtomicReference<DataSource>();
+	
+	private AtomicReference<DataSource> triangulationDataSourceReference = new AtomicReference<DataSource>();
+
+	private AtomicReference<DataSource> osmDataSourceReference = new AtomicReference<DataSource>();
+	
+	@Activate
+	public synchronized void actviate() throws SQLException {
+		DataSource ds = triangulationDataSourceReference.get();
+		triangulationConnection = ds.getConnection();
+		DataSource ds2 = userDataDataSourceReference.get();
+		userDataConnectionReference = ds2.getConnection();
+		DataSource ds3 = osmDataSourceReference.get();
+		osmConnectionReference = ds2.getConnection();
+
+	}
+	
+	@Deactivate
+	public synchronized void deactivate() {
+		try {
+			triangulationConnection.close();
+			userDataConnectionReference.close();
+			osmConnectionReference.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
-	private AtomicReference<Connection> userDataConnectionReference = new AtomicReference<Connection>();
 
-	private AtomicReference<Connection> triangulationConnection = new AtomicReference<Connection>();
+	private Connection userDataConnectionReference;
 
-	private AtomicReference<Connection> osmConnectionReference = new AtomicReference<Connection>();
+	private Connection triangulationConnection;
+
+	private Connection osmConnectionReference;
 
 	@Reference(policy = ReferencePolicy.DYNAMIC, target = "(db=coastline)", cardinality = ReferenceCardinality.MANDATORY)
-	public synchronized void bindGaugeConnection(Connection connection) {
-		triangulationConnection.set(connection);
+	public synchronized void bindGaugeConnection(DataSource connection) {
+		triangulationDataSourceReference.set(connection);
 	}
 
-	public synchronized void unbindGaugeConnection(Connection connection) {
-		triangulationConnection.compareAndSet(connection, null);
+	public synchronized void unbindGaugeConnection(DataSource connection) {
+		triangulationDataSourceReference.compareAndSet(connection, null);
 	}
 
 	@Reference(policy = ReferencePolicy.DYNAMIC, target = "(db=osm)", cardinality = ReferenceCardinality.MANDATORY)
-	public synchronized void bindOSMConnection(Connection connection) {
-		osmConnectionReference.set(connection);
+	public synchronized void bindOSMConnection(DataSource connection) {
+		osmDataSourceReference.set(connection);
 	}
 
-	public synchronized void unbindOSMConnection(Connection connection) {
-		osmConnectionReference.compareAndSet(connection, null);
+	public synchronized void unbindOSMConnection(DataSource connection) {
+		osmDataSourceReference.compareAndSet(connection, null);
 	}
 
 }
