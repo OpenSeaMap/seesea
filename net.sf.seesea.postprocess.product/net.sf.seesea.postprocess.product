@@ -8,6 +8,7 @@
 
    <launcherArgs>
       <vmArgs>-Xss1M
+-Dfelix.fileinstall.dir=config
       </vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
       </vmArgsMac>
@@ -41,6 +42,7 @@
       <plugin id="net.sf.seesea.contour.triangulation" autoStart="true" startLevel="0" />
       <plugin id="net.sf.seesea.tidemodel.dtu10.java" autoStart="false" startLevel="0" />
       <plugin id="net.sf.seesea.waterlevel.gaugeocean" autoStart="true" startLevel="0" />
+      <plugin id="org.apache.felix.fileinstall" autoStart="false" startLevel="0" />
       <plugin id="org.eclipse.equinox.cm" autoStart="true" startLevel="1" />
       <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="1" />
       <plugin id="org.postgresql.jdbc41" autoStart="true" startLevel="0" />
