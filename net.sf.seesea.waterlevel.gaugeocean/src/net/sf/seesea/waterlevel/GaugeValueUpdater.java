@@ -43,6 +43,8 @@ import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicReference;
 
+import javax.sql.DataSource;
+
 import org.apache.log4j.Logger;
 import org.osgi.framework.ServiceReference;
 import org.osgi.service.component.ComponentContext;
@@ -141,7 +143,7 @@ public class GaugeValueUpdater implements IGaugeValueUpdater {
 	public void retrieveLatestGaugeValues(Date startTime, Date endTime, long gaugeId) throws GaugeUpdateException {
 		Logger.getLogger(getClass()).info(MessageFormat.format("Update gauge {0} between start {1} and end {2}", gaugeId, startTime, endTime));
 		// which gauge provider is responsible for that location ?
-		try (PreparedStatement gaugeProviderStatement = gaugeConnectionReference.get().prepareStatement("SELECT remoteid, provider FROM gauge WHERE id = ?");) {
+		try (PreparedStatement gaugeProviderStatement = gaugeconnection.prepareStatement("SELECT remoteid, provider FROM gauge WHERE id = ?");) {
 			gaugeProviderStatement.setLong(1, gaugeId);
 			try(ResultSet queryRemoteGauge = gaugeProviderStatement.executeQuery()) {
 				while(queryRemoteGauge.next()) {
@@ -183,7 +185,7 @@ public class GaugeValueUpdater implements IGaugeValueUpdater {
 		Map<Long, String> gaugeId2Name = new HashMap<Long, String>();
 		
 		// get all polygons for the given gauge locations
-		try (Statement statement = gaugeConnectionReference.get().createStatement()) {
+		try (Statement statement = gaugeconnection.createStatement()) {
 			try (ResultSet executeQuery = statement.executeQuery("SELECT id, name, ST_X(ST_ASTEXT(geom)), ST_Y(ST_ASTEXT(geom)) FROM gauge")) {
 				while(executeQuery.next()) {
 					String lon = executeQuery.getString(3);
@@ -191,7 +193,7 @@ public class GaugeValueUpdater implements IGaugeValueUpdater {
 					String name = executeQuery.getString(2);
 					Long gaugeId = executeQuery.getLong(1);
 					gaugeId2Name.put(gaugeId, name);
-					try (Statement statementGaugePolygon = osmConnectionReference.get().createStatement()) {
+					try (Statement statementGaugePolygon = osmConnection.createStatement()) {
 						// get the polygons which are very close to the gauges, assuming that they are very close to the shore
 						try(ResultSet execute = statementGaugePolygon.executeQuery("SELECT osm_id FROM planet_osm_polygon AS b WHERE ST_DWithin(way, ST_Transform(ST_GeomFromText( 'POINT(" + lon + " " + lat + ")', 4326), 900913), 100) AND (water is not null OR waterway is not null OR \"natural\" = 'water')")) {
 							while(execute.next()) {
@@ -223,7 +225,7 @@ public class GaugeValueUpdater implements IGaugeValueUpdater {
 	 * @throws SQLException
 	 */
 	private Long getNearestGaugePolygon(Set<Long> nodes, int recursionDepth, Set<Long> gaugeContainingPolygonIds , Set<Long> visitedNodes) throws SQLException {
-		try (Statement statement = osmConnectionReference.get().createStatement()) {
+		try (Statement statement = osmConnection.createStatement()) {
 			Set<Long> osmIds = new LinkedHashSet<Long>();
 			visitedNodes.addAll(nodes);
 			// this is a breadth first search. It there fore is related to the distance of reachability and may not always yield the closest point but a first good approximation
@@ -266,25 +268,25 @@ public class GaugeValueUpdater implements IGaugeValueUpdater {
 	}
 
 	
-	private AtomicReference<Connection> gaugeConnectionReference = new AtomicReference<Connection>();
+	private AtomicReference<DataSource> gaugeConnectionReference = new AtomicReference<DataSource>();
 
 	@Reference(policy = ReferencePolicy.DYNAMIC, target = "(db=osm)", cardinality = ReferenceCardinality.MANDATORY)
-	public synchronized void bindOSMConnection(Connection connection) {
+	public synchronized void bindOSMConnection(DataSource connection) {
 		osmConnectionReference.set(connection);
 	}
 
-	public synchronized void unbindOSMConnection(Connection connection) {
+	public synchronized void unbindOSMConnection(DataSource connection) {
 		osmConnectionReference.compareAndSet(connection, null);
 	}
 
-	private AtomicReference<Connection> osmConnectionReference = new AtomicReference<Connection>();
+	private AtomicReference<DataSource> osmConnectionReference = new AtomicReference<DataSource>();
 
 	@Reference(policy = ReferencePolicy.DYNAMIC, target = "(db=gauge)", cardinality = ReferenceCardinality.MANDATORY)
-	public synchronized void bindGaugeConnection(Connection connection) {
+	public synchronized void bindGaugeConnection(DataSource connection) {
 		gaugeConnectionReference.set(connection);
 	}
 
-	public synchronized void unbindGaugeConnection(Connection connection) {
+	public synchronized void unbindGaugeConnection(DataSource connection) {
 		gaugeConnectionReference.compareAndSet(connection, null);
 	}
 
@@ -301,23 +303,41 @@ public class GaugeValueUpdater implements IGaugeValueUpdater {
 
 
 	private ComponentContext componentContext;
+
+	private Connection osmConnection;
 	
 	@Activate
 	public synchronized void actviate(ComponentContext componentContext) throws GaugeUpdateException {
     	maxRecursionDepth = 10;
     	debug = false;
-		gaugeContainingPolygonIds2gaugeId = getGaugePoly();
 		this.componentContext = componentContext;
+		DataSource dataSource = gaugeConnectionReference.get();
+		DataSource openStreetmapDatasource = osmConnectionReference.get();
+		try {
+			gaugeconnection = dataSource.getConnection();
+			osmConnection = openStreetmapDatasource.getConnection();
+		} catch (SQLException e) {
+			throw new GaugeUpdateException(e);
+		}
+		gaugeContainingPolygonIds2gaugeId = getGaugePoly();
+
 	}
 	
 	@Deactivate
 	public synchronized void deactivate(ComponentContext componentContext) {
 		this.componentContext = null;
+		try {
+			gaugeconnection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private List<ServiceReference<IGaugeProvider>> gaugeProviderRefereneces;
 
 	private Map<Long, Long> gaugeContainingPolygonIds2gaugeId;
+
+	private Connection gaugeconnection;
 
 	
 	@Reference(policy = ReferencePolicy.DYNAMIC, cardinality = ReferenceCardinality.MULTIPLE, service = IGaugeProvider.class, name = "GAUGE_PROVIDERS")

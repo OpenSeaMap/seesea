@@ -40,8 +40,13 @@ import java.util.Set;
 import java.util.TimeZone;
 import java.util.concurrent.atomic.AtomicReference;
 
+import javax.sql.DataSource;
+
 import org.apache.log4j.Logger;
+import org.osgi.service.component.ComponentContext;
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
@@ -57,11 +62,32 @@ import net.sf.seesea.model.core.geo.GeoBoundingBox;
 @Component(property = "type=gauge")
 public class GaugeWaterLevelCorrection implements IWaterLevelCorrection {
 	
+	private AtomicReference<DataSource> dataSource = new AtomicReference<DataSource>();
 	private Connection connection;
 	private LRUCache<IPolygon, Gauge> hitPolygonCache;
 	
 	public GaugeWaterLevelCorrection() {
 		hitPolygonCache = new LRUCache<IPolygon,Gauge>(10);
+	}
+	
+	@Activate
+	public synchronized void actviate() throws GaugeUpdateException {
+		DataSource ds = dataSource.get();
+		try {
+			connection = ds.getConnection();
+		} catch (SQLException e) {
+			throw new GaugeUpdateException(e);
+		}
+
+	}
+	
+	@Deactivate
+	public synchronized void deactivate() {
+		try {
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Override
@@ -75,7 +101,8 @@ public class GaugeWaterLevelCorrection implements IWaterLevelCorrection {
 //		long timeX = time.getTime();
 		Gauge gauge = getGauge(lat, lon);
 		if(gauge != null) {
-			try (PreparedStatement minStatement = connection.prepareStatement("SELECT time, value from GAUGEMEASUREMENT WHERE time = (SELECT MIN(time) FROM gaugemeasurement WHERE time >= ?) AND gaugeid = ?");
+			try ( 
+					PreparedStatement minStatement = connection.prepareStatement("SELECT time, value from GAUGEMEASUREMENT WHERE time = (SELECT MIN(time) FROM gaugemeasurement WHERE time >= ?) AND gaugeid = ?");
 					PreparedStatement maxStatement = connection.prepareStatement("SELECT time, value from GAUGEMEASUREMENT WHERE time = (SELECT MAX(time) FROM gaugemeasurement WHERE time <= ?) AND gaugeid = ?")
 					){
 				Calendar calendar = Calendar.getInstance();
@@ -170,12 +197,12 @@ public class GaugeWaterLevelCorrection implements IWaterLevelCorrection {
 	}
 	
 	@Reference(policy = ReferencePolicy.DYNAMIC, target = "(db=gauge)", cardinality = ReferenceCardinality.MANDATORY)
-	public synchronized void bindConnection(Connection connection) {
-		this.connection = connection;
+	public synchronized void bindDatasource(DataSource connection) {
+		this.dataSource.set(connection);
 	}
 
-	public synchronized void unbindConnection(Connection connection) {
-		this.connection = null;
+	public synchronized void unbindDatasource(DataSource connection) {
+		this.dataSource.compareAndSet(connection, null);
 	}
 	
 	private AtomicReference<IParitionRetrival> partitionizeReference = new AtomicReference<IParitionRetrival>();
