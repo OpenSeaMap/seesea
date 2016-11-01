@@ -28,31 +28,17 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package net.sf.seesea.data.postprocessing.application;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Dictionary;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
-import javax.xml.stream.XMLEventReader;
-import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.events.Attribute;
-import javax.xml.stream.events.EndElement;
-import javax.xml.stream.events.StartElement;
-import javax.xml.stream.events.XMLEvent;
-
+import org.apache.log4j.Logger;
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
-import org.osgi.framework.InvalidSyntaxException;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceEvent;
 import org.osgi.framework.ServiceReference;
-import org.osgi.service.cm.Configuration;
-import org.osgi.service.cm.ConfigurationAdmin;
 
 import net.sf.seesea.data.postprocessing.DataPostprocessingActivator;
 import net.sf.seesea.data.postprocessing.database.IUploadedData2Contours;
@@ -69,127 +55,53 @@ public class PreprocessingApplication implements IApplication {
 	 * IApplicationContext)
 	 */
 	@Override
-	public Object start(IApplicationContext context) throws InvalidSyntaxException, SQLException, XMLStreamException {
-
-//		ServiceReference<ConfigurationAdmin> serviceReference = DataPostprocessingActivator.getContext()
-//				.getServiceReference(ConfigurationAdmin.class);
-//		ConfigurationAdmin configurationAdmin = DataPostprocessingActivator.getContext().getService(serviceReference);
-//
-//		Map<Object, Object> arguments = context.getArguments();
-//		String[] args = (String[]) arguments.get("application.args"); //$NON-NLS-1$
-//		String configFile = null;
-//		if (args.length > 0) {
-//			configFile = args[0];
-//		} else {
-//			configFile = "config.xml"; //$NON-NLS-1$
-//		}
-//		try {
-//			File file = new File(configFile);
-//			System.out.println(file.getAbsolutePath());
-//
-//			XMLInputFactory xmlif = XMLInputFactory.newInstance();
-//			XMLEventReader xmlr = xmlif.createXMLEventReader(configFile, new FileInputStream(file));
-////			xmlif.setEventAllocator(new XMLEventAllocatorImpl());
-//			
-//			List<XMLConfig> configs = new ArrayList<XMLConfig>();
-//			XMLConfig xmlConfig = null;
-//			boolean singleton = true;
-//
-//			while (xmlr.hasNext()) {
-//				XMLEvent event = xmlr.nextEvent();
-//				// Get all "Book" elements as XMLEvent object
-//				if (event.isStartElement()) {
-//					StartElement startElement = event.asStartElement();
-//					if (startElement.getName().getLocalPart() == ("singleton")) {
-//						singleton = true;
-//					}
-//					if (startElement.getName().getLocalPart() == ("multiton")) {
-//						singleton = false;
-//						for (Iterator iterator = startElement.getAttributes(); iterator.hasNext();) {
-//							Attribute attribute = (Attribute) iterator.next();
-//							if("id".equals(attribute.getName().getLocalPart())) {
-//								xmlConfig.setMultitonID(attribute.getValue());
-//							}
-//							
-//						}
-//					}
-//					if (startElement.getName().getLocalPart() == ("config")) {
-//						xmlConfig = new XMLConfig();
-//						configs.add(xmlConfig);
-//						for (Iterator iterator = startElement.getAttributes(); iterator.hasNext();) {
-//							Attribute attribute = (Attribute) iterator.next();
-//							if("persistentIdentifier".equals(attribute.getName().getLocalPart())) {
-//								xmlConfig.setConfigID(attribute.getValue());
-//							}
-//							
-//						}
-//					}
-//					if (startElement.getName().getLocalPart() == ("property")) {
-//						for (Iterator iterator = startElement.getAttributes(); iterator.hasNext();) {
-//							Attribute attribute = (Attribute) iterator.next();
-//							if("key".equals(attribute.getName().getLocalPart())) {
-//								Dictionary<String, Object> properties2 = xmlConfig.getProperties();
-//								String key = attribute.getValue();
-//								String value = xmlr.nextEvent().asCharacters().getData();
-//								Object object = properties2.get(key);
-//								if(object instanceof Collection) {
-//									Collection<Object> collection = (Collection<Object>) object;
-//									collection.add(value);
-//								} else if(object != null) {
-//									List<Object> list = new ArrayList<Object>();
-//									list.add(object);
-//									list.add(value);
-//									properties2.put(key, list);
-//								} else {
-//									properties2.put(key, value);
-//								}
-//							}
-//							
-//						}
-//					}
-//
-//				} else if(event.isEndElement()) {
-//					EndElement endElement = event.asEndElement();
-//					if(endElement.getName().getLocalPart() == "config") {
-//						if(singleton) {
-//							Configuration configuration = configurationAdmin.getConfiguration(xmlConfig.getConfigID());
-//							configuration.update(xmlConfig.getProperties());
-//							configs.clear();
-//						} else {
-//							for (XMLConfig xmlConfig2 : configs) {
-//								Configuration[] configurations = configurationAdmin.listConfigurations(xmlConfig2.getMultitonId() + "=" + xmlConfig.getProperties().get(xmlConfig2.getMultitonId()));
-//								if(configurations.length == 0) {
-//									Configuration configuration = configurationAdmin.createFactoryConfiguration(xmlConfig2.getConfigID());
-//									configuration.update(xmlConfig2.getProperties());
-//								} else {
-//									for (Configuration configuration : configurations) {
-//										configuration.update(xmlConfig2.getProperties());
-//									}
-//								}
-//							}
-//							configs.clear();
-//						}
-//					}
-//				}
-//			}
-
-//			long time = System.currentTimeMillis();
-//			while((time < System.currentTimeMillis() + 1200000)) {
-				
-				ServiceReference<IUploadedData2Contours> serviceReference2 = DataPostprocessingActivator.getContext()
-						.getServiceReference(IUploadedData2Contours.class);
-				IUploadedData2Contours uploadedData2Contours = DataPostprocessingActivator.getContext()
-						.getService(serviceReference2);
-				uploadedData2Contours.processData();
-//			}
+	public Object start(IApplicationContext context)  {
+		BundleContext bundleContext = DataPostprocessingActivator.getContext();
 		
-//
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-
+		// this receives the service either through lookup or through a service event whatever comes first
+		CompletableFuture<ServiceEvent> serviceEventFuture = new CompletableFuture<ServiceEvent>();
+		bundleContext.addServiceListener(new ServiceListenerCompletableFuture(serviceEventFuture));
+		CompletableFuture<IUploadedData2Contours> serviceLookup = getServiceByLookup(bundleContext);
+		CompletableFuture<IUploadedData2Contours> serviceEvent = serviceEventFuture.thenCompose((result) -> getServiceByEvent(bundleContext, result));
+		
+		CompletableFuture<IUploadedData2Contours> result = serviceLookup.thenCompose(b 
+				-> { 
+					if(b == null) 
+					{
+						return serviceEvent;
+					}
+					else 
+					{
+						return CompletableFuture.completedFuture(b);
+					}
+		});  
+		try {
+			IUploadedData2Contours uploadedData2Contours = result.get(120, TimeUnit.SECONDS);
+			uploadedData2Contours.processData();
+		} catch (InterruptedException | ExecutionException | TimeoutException e ) {
+			Logger.getLogger(getClass()).error("Failed to start processing in time. Some service seem not to have started.", e);
+		}
 		return 0;
+	}
+
+	private CompletableFuture<IUploadedData2Contours> getServiceByLookup(BundleContext bundleContext) {
+		return CompletableFuture.supplyAsync(() -> { 
+			ServiceReference<IUploadedData2Contours> serviceReference = bundleContext.getServiceReference(IUploadedData2Contours.class);
+			if(serviceReference != null) {
+				IUploadedData2Contours uploadedData2Contours = (IUploadedData2Contours) bundleContext.getService(serviceReference);
+				System.out.println("lookup");
+				return uploadedData2Contours;
+			}
+			return null;
+//			throw new IllegalArgumentException("No service");
+			});
+	}
+
+	private CompletableFuture<IUploadedData2Contours> getServiceByEvent(BundleContext bundleContext, ServiceEvent event) {
+		return CompletableFuture.supplyAsync(() -> { 
+			IUploadedData2Contours uploadedData2Contours = (IUploadedData2Contours) bundleContext.getService(event.getServiceReference());
+			return uploadedData2Contours;
+			});
 	}
 
 	/*
