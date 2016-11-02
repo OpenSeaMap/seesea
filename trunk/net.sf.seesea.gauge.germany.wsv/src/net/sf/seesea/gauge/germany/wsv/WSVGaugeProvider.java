@@ -28,9 +28,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package net.sf.seesea.gauge.germany.wsv;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -43,8 +40,9 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
-import java.util.Properties;
+import java.util.concurrent.atomic.AtomicReference;
 
+import javax.sql.DataSource;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
@@ -55,12 +53,13 @@ import javax.ws.rs.core.Response;
 import org.apache.log4j.Logger;
 import org.glassfish.jersey.filter.LoggingFilter;
 import org.glassfish.jersey.moxy.json.MoxyJsonFeature;
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
 
-import net.sf.seesea.data.io.postgis.PostgresConnectionFactory;
 import net.sf.seesea.gauge.GaugeUpdateException;
 import net.sf.seesea.gauge.IGaugeProvider;
 
@@ -69,6 +68,9 @@ public class WSVGaugeProvider implements IGaugeProvider {
 
 	private Connection gaugeConnection;
 
+	private AtomicReference<DataSource> dataSource = new AtomicReference<DataSource>();
+
+	
 	@Override
 	public void updateAllGaugeMeasurements(Date startDate, Date endDate) throws GaugeUpdateException {
 		try (Statement statement = gaugeConnection.createStatement();
@@ -133,13 +135,13 @@ public class WSVGaugeProvider implements IGaugeProvider {
 
 	}
 	
-	@Reference(cardinality = ReferenceCardinality.MANDATORY, policy = ReferencePolicy.DYNAMIC, target = "(db=gauge)")
-	public void bindConnection(Connection gaugeConnection) {
-		this.gaugeConnection = gaugeConnection;
+	@Reference(policy = ReferencePolicy.DYNAMIC, target = "(db=gauge)", cardinality = ReferenceCardinality.MANDATORY)
+	public synchronized void bindDatasource(DataSource connection) {
+		this.dataSource.set(connection);
 	}
 
-	public void unbindConnection(Connection gaugeConnection) {
-		this.gaugeConnection = gaugeConnection;
+	public synchronized void unbindDatasource(DataSource connection) {
+		this.dataSource.compareAndSet(connection, null);
 	}
 
 	
@@ -158,12 +160,33 @@ public class WSVGaugeProvider implements IGaugeProvider {
         return Collections.<WSVGaugeMeasurement>emptyList();
 	}
 	
-	public static void main(String args[]) throws FileNotFoundException, IOException, SQLException, GaugeUpdateException {
-		Properties properties = new Properties();
-		properties.load(new FileInputStream("config.cfg"));
-		Connection connection = PostgresConnectionFactory.getConnection(properties, "database");
-		WSVGaugeProvider wsvGaugeProvider = new WSVGaugeProvider();
-		wsvGaugeProvider.bindConnection(connection);
-		wsvGaugeProvider.updateAllGaugeMeasurements(null, null);
+//	public static void main(String args[]) throws FileNotFoundException, IOException, SQLException, GaugeUpdateException {
+//		Properties properties = new Properties();
+//		properties.load(new FileInputStream("config.cfg"));
+//		Connection connection = PostgresConnectionFactory.getConnection(properties, "database");
+//		WSVGaugeProvider wsvGaugeProvider = new WSVGaugeProvider();
+////		wsvGaugeProvider.bindConnection(connection);
+//		wsvGaugeProvider.updateAllGaugeMeasurements(null, null);
+//	}
+	
+	@Activate
+	public synchronized void actviate() throws GaugeUpdateException {
+		DataSource ds = dataSource.get();
+		try {
+			gaugeConnection = ds.getConnection();
+		} catch (SQLException e) {
+			throw new GaugeUpdateException(e);
+		}
+
 	}
+	
+	@Deactivate
+	public synchronized void deactivate() {
+		try {
+			gaugeConnection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 }
