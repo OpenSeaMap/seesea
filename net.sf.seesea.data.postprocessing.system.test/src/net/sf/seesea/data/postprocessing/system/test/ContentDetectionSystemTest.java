@@ -75,8 +75,9 @@ public class ContentDetectionSystemTest {
 			URL schemaDump = new URL("http://depth.openseamap.org/dumpSchema.sql.gz");
 			InputStream openStream = schemaDump.openStream();
 			GZIPInputStream gzipInputStream = new GZIPInputStream(openStream);
-			BufferedReader in = new BufferedReader(new InputStreamReader(gzipInputStream));
-			scriptRunner.runScript(in);
+			try (BufferedReader in = new BufferedReader(new InputStreamReader(gzipInputStream))) {
+				scriptRunner.runScript(in);
+			}
 		}
 
 		
@@ -136,8 +137,9 @@ public class ContentDetectionSystemTest {
 			URL schemaDump = new URL("http://depth.openseamap.org/dumpAll.sql.gz");
 			InputStream openStream = schemaDump.openStream();
 			GZIPInputStream gzipInputStream = new GZIPInputStream(openStream);
-			BufferedReader in = new BufferedReader(new InputStreamReader(gzipInputStream));
-			scriptRunner.runScript(in);
+			try (BufferedReader in = new BufferedReader(new InputStreamReader(gzipInputStream))) {
+				scriptRunner.runScript(in);
+			}
 		}
 
 		

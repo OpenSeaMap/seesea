@@ -188,7 +188,7 @@ public class ScriptRunner {
                         println("");
                         while (rs.next()) {
                             for (int i = 0; i < cols; i++) {
-                                String value = rs.getString(i);
+                                String value = rs.getString(i + 1);
                                 print(value + "\t");
                             }
                             println("");
