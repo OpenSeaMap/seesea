@@ -307,7 +307,7 @@ public class NMEA0183Reader implements IDataReader {
 				}
 			}
 		} catch (IllegalArgumentException e) {
-			Logger.getLogger(getClass()).error("Failed to parse timestamp " + nmeaContent);
+			Logger.getLogger(getClass()).error("Failed to parse timestamp " + nmeaContent[0]);
 		}
 		}
 		return null;
