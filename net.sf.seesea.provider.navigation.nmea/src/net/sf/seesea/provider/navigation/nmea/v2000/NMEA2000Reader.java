@@ -35,7 +35,6 @@ import net.sf.seesea.provider.navigation.nmea.v2000.pgn.DistanceLog;
 import net.sf.seesea.provider.navigation.nmea.v2000.pgn.EnvironmentalParameters1;
 import net.sf.seesea.provider.navigation.nmea.v2000.pgn.EnvironmentalParameters2;
 import net.sf.seesea.provider.navigation.nmea.v2000.pgn.GNSSPositionData;
-import net.sf.seesea.provider.navigation.nmea.v2000.pgn.PositionRapid;
 import net.sf.seesea.provider.navigation.nmea.v2000.pgn.SpeedWaterReferenced;
 import net.sf.seesea.provider.navigation.nmea.v2000.pgn.TimeDate;
 import net.sf.seesea.provider.navigation.nmea.v2000.pgn.VesselHeading;
@@ -46,11 +45,11 @@ public class NMEA2000Reader {
 
 	private final Set<Integer> pgnsToAnalyze;
 	
-	private long currentTimeMillis;
+//	private long currentTimeMillis;
 
 	public NMEA2000Reader(Set<Integer> pgnsToAnalyze) {
 		this.pgnsToAnalyze = pgnsToAnalyze;
-		currentTimeMillis = System.currentTimeMillis();
+//		currentTimeMillis = System.currentTimeMillis();
 	}
 	
 	public NMEA2000Reader() {
@@ -199,7 +198,7 @@ public class NMEA2000Reader {
 					measuredPosition3D.setLongitude(longitude);
 					measuredPosition3D.setAltitude(gnssPositionData.getAltitude()
 							.getValue());
-					measuredPosition3D.setSensorID(new Integer(source).toString());
+					measuredPosition3D.setSensorID(Integer.toString(source));
 					measuredPosition3D.setTime(gnssPositionData.getTime());
 					measuredPosition3D.setValid(true);
 					measuredPosition3D.setTimezone("UTC");
@@ -225,7 +224,7 @@ public class NMEA2000Reader {
 				TimeDate timeDate = new TimeDate(Arrays.copyOfRange(data, 11, 19));
 				Time time = PhysxFactory.eINSTANCE.createTime();
 				time.setTime(timeDate.getDate());
-				time.setSensorID(new Integer(source).toString());
+				time.setSensorID(Integer.toString(source));
 				time.setValid(true);
 				results.add(time);
 				break;
