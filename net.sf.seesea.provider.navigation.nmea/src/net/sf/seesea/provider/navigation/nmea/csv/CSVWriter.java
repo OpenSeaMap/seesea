@@ -1,7 +1,9 @@
 package net.sf.seesea.provider.navigation.nmea.csv;
 
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -50,7 +52,7 @@ public class CSVWriter implements IDataWriter {
 		MeasuredPosition3D geoPosition = null;
 		Depth depth = null;
 		if(printWriter == null) {
-			printWriter = new PrintWriter(outputStream);
+			printWriter = new PrintWriter(new OutputStreamWriter(outputStream, StandardCharsets.UTF_8), true);
 		}
 
 		for (Measurement measurement2 : measurements) {
