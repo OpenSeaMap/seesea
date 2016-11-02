@@ -35,15 +35,14 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.seesea.services.navigation.INMEAReader;
-import net.sf.seesea.services.navigation.RawDataEvent;
-import net.sf.seesea.services.navigation.RawDataEventListener;
-import net.sf.seesea.track.api.exception.NMEAProcessingException;
-import net.sf.seesea.track.api.exception.RawDataEventException;
-
 import org.apache.log4j.Logger;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceRegistration;
+
+import net.sf.seesea.services.navigation.INMEAReader;
+import net.sf.seesea.services.navigation.RawDataEvent;
+import net.sf.seesea.services.navigation.RawDataEventListener;
+import net.sf.seesea.track.api.exception.RawDataEventException;
 
 public class NMEA0183TrackSimulator implements Runnable, INMEAReader {
 
@@ -66,59 +65,67 @@ public class NMEA0183TrackSimulator implements Runnable, INMEAReader {
 		try {
 			String currentLine = ""; //$NON-NLS-1$
 
-			BundleContext bundleContext = NMEA0183Activator.getContext()
-					.getBundle().getBundleContext();
-			ServiceRegistration<INMEAReader> serviceRegistration = bundleContext.registerService(INMEAReader.class, this, null);
-//			AISParser aisParser = new AISParser(new AisMessageMultiplexer(), new DummyErrorHandler());
-//			File file = new File(".");
+			BundleContext bundleContext = NMEA0183Activator.getContext().getBundle().getBundleContext();
+			ServiceRegistration<INMEAReader> serviceRegistration = bundleContext.registerService(INMEAReader.class,
+					this, null);
+			// AISParser aisParser = new AISParser(new AisMessageMultiplexer(),
+			// new DummyErrorHandler());
+			// File file = new File(".");
 			for (InputStream stream : inputStreams) {
-//				int lineNumber = 0;
-				InputStreamReader inputStreamReader = new InputStreamReader(stream, "ISO-8859-1");
-				BufferedReader in = new BufferedReader(inputStreamReader);
-				currentLine = ""; //$NON-NLS-1$
-				while (currentLine != null) {
-					currentLine = in.readLine();
-//					lineNumber++;
-					while(_paused && !_stopped) {
-						Thread.sleep(1000);
-					}
-					if(_stopped) {
-						serviceRegistration.unregister();
-						return;
-					}
-					if (currentLine != null) {
-						if(currentLine.startsWith("$")) { //$NON-NLS-1$
-							RawDataEvent nmeaEvent = new RawDataEvent(currentLine, null);
-							try {
-								for (RawDataEventListener eventListener : nmeaEventListeners) {
-									eventListener.receiveRawDataEvent(nmeaEvent);
-								}
-							} catch (RawDataEventException e) {
-								Logger.getLogger(getClass()).debug("Failed event " + nmeaEvent.getNmeaMessageContent(), e); //$NON-NLS-1$
-							}
-							Thread.sleep(5);
-						} else if(currentLine.startsWith("!")) { //$NON-NLS-1$
-							RawDataEvent nmeaEvent = new RawDataEvent(currentLine, null);
-							try {
-								for (RawDataEventListener eventListener : aisEventListeners) {
-									eventListener.receiveRawDataEvent(nmeaEvent);
-								}
-							} catch (RawDataEventException e) {
-								Logger.getLogger(getClass()).debug("Failed event " + nmeaEvent.getNmeaMessageContent(), e); //$NON-NLS-1$
-							}
-//							Thread.sleep(5);
-							
-//							aisParser.handleSensorData(new FileSource(file, lineNumber, currentLine, Calendar.getInstance().getTime().getTime()), currentLine);
+				// int lineNumber = 0;
+				try (InputStreamReader inputStreamReader = new InputStreamReader(stream, "ISO-8859-1");) {
+
+					BufferedReader in = new BufferedReader(inputStreamReader);
+					currentLine = ""; //$NON-NLS-1$
+					while (currentLine != null) {
+						currentLine = in.readLine();
+						// lineNumber++;
+						while (_paused && !_stopped) {
+							Thread.sleep(1000);
 						}
-						
+						if (_stopped) {
+							serviceRegistration.unregister();
+							return;
+						}
+						if (currentLine != null) {
+							if (currentLine.startsWith("$")) { //$NON-NLS-1$
+								RawDataEvent nmeaEvent = new RawDataEvent(currentLine, null);
+								try {
+									for (RawDataEventListener eventListener : nmeaEventListeners) {
+										eventListener.receiveRawDataEvent(nmeaEvent);
+									}
+								} catch (RawDataEventException e) {
+									Logger.getLogger(getClass())
+											.debug("Failed event " + nmeaEvent.getNmeaMessageContent(), e); //$NON-NLS-1$
+								}
+								Thread.sleep(5);
+							} else if (currentLine.startsWith("!")) { //$NON-NLS-1$
+								RawDataEvent nmeaEvent = new RawDataEvent(currentLine, null);
+								try {
+									for (RawDataEventListener eventListener : aisEventListeners) {
+										eventListener.receiveRawDataEvent(nmeaEvent);
+									}
+								} catch (RawDataEventException e) {
+									Logger.getLogger(getClass())
+											.debug("Failed event " + nmeaEvent.getNmeaMessageContent(), e); //$NON-NLS-1$
+								}
+								// Thread.sleep(5);
+
+								// aisParser.handleSensorData(new
+								// FileSource(file, lineNumber, currentLine,
+								// Calendar.getInstance().getTime().getTime()),
+								// currentLine);
+							}
+
+						}
 					}
 				}
 			}
 		} catch (IOException e) {
 			Logger.getLogger(NMEA0183TrackSimulator.class).debug("IO Exception while simulate track", e); //$NON-NLS-1$
-		 } catch (InterruptedException e) {
-			 Logger.getLogger(NMEA0183TrackSimulator.class).debug("Simulator interrupted", e); //$NON-NLS-1$
-		 }
+		} catch (InterruptedException e) {
+			Logger.getLogger(NMEA0183TrackSimulator.class).debug("Simulator interrupted", e); //$NON-NLS-1$
+		}
 
 		// return track;
 	}
@@ -142,11 +149,11 @@ public class NMEA0183TrackSimulator implements Runnable, INMEAReader {
 	public void pause() {
 		_paused = true;
 	}
-	
+
 	public void resume() {
 		_paused = false;
 	}
-	
+
 	public void stop() {
 		_stopped = true;
 	}
@@ -160,5 +167,5 @@ public class NMEA0183TrackSimulator implements Runnable, INMEAReader {
 	public void removeAISEventListener(RawDataEventListener nmeaEventListener) {
 		aisEventListeners.remove(nmeaEventListener);
 	}
-	
+
 }
