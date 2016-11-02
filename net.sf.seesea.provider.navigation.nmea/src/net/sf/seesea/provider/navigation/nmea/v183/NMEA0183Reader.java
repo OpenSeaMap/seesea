@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -108,9 +109,9 @@ public class NMEA0183Reader implements IDataReader {
 
 	}
 
-	public NMEA0183Reader(InputStream inputStream) {
+	public NMEA0183Reader(InputStream inputStream) throws UnsupportedEncodingException {
 		this();
-		bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+		bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "ISO-8859-15"));
 		simpleDateFormat = new SimpleDateFormat("HHmmss"); //$NON-NLS-1$
 	}
 
