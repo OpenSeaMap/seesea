@@ -40,9 +40,7 @@ public class NMEA2000TrackFileProcessor implements ITrackFileProcessor,
 			IOException, ProcessingException {
 
 		this.currentProcessedFile = trackFile;
-		BufferedInputStream input;
-		try {
-			input = new BufferedInputStream(trackFile.getInputStream());
+		try (BufferedInputStream input = new BufferedInputStream(trackFile.getInputStream())){
 			byte[] buffer = new byte[512];
 			
 			while (input.read(buffer) != -1) {
