@@ -1023,7 +1023,7 @@ public class NMEA0183Reader implements IDataReader {
 	private Temperature MTW_WaterTemperature(String[] nmeaContent) {
 		Temperature temperature = PhysxFactory.eINSTANCE.createTemperature();
 		temperature.setValue(Double.parseDouble(nmeaContent[1]));
-		if (nmeaContent[1].toUpperCase().equals('F')) {
+		if (nmeaContent[1].toUpperCase().equals("F")) {
 			temperature.setUnit(TemperatureUnit.FAHRENHEIT);
 		} else {
 			temperature.setUnit(TemperatureUnit.CELSIUS);
