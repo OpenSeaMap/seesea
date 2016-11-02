@@ -53,18 +53,16 @@ public class ActisenseStreamProcessor implements IStreamProcessor, INMEA2000Read
 
 	private MessageProcessingState state;
 
-	boolean startEscape = false;
+	private boolean noEscape = false;
 
-	boolean noEscape = false;
+	private boolean isFile = true;
 
-	boolean isFile = true;
+	private int[] message = new int[2048];
 
-	int[] message = new int[2048];
-
-	int STARTTX = 0x02;
-	int ENDTX = 0x03;
-	int DLE = 0x010;
-	int ESCAPE = 0x1B;
+	private int STARTTX = 0x02;
+	private int ENDTX = 0x03;
+	private int DLE = 0x010;
+	private int ESCAPE = 0x1B;
 	
 	int N2K_MSG_RECEIVED = 0x93;
 	
@@ -193,14 +191,14 @@ public class ActisenseStreamProcessor implements IStreamProcessor, INMEA2000Read
 	public static void main(String[] args) throws IOException {
 		ActisenseStreamProcessor actisense = new ActisenseStreamProcessor();
 		String file = "trace.dat"; //$NON-NLS-1$
-		BufferedInputStream input = new BufferedInputStream(
-				new FileInputStream(file));
-		byte[] buffer = new byte[512];
-
-		while (input.read(buffer) != -1) {
-			for (int i = 0; i < buffer.length; i++) {
-				int c = buffer[i] & 0xFF;
-				actisense.readByte(c, "none");
+		try(BufferedInputStream input = new BufferedInputStream(
+				new FileInputStream(file))) {
+			byte[] buffer = new byte[512];
+			while (input.read(buffer) != -1) {
+				for (int i = 0; i < buffer.length; i++) {
+					int c = buffer[i] & 0xFF;
+					actisense.readByte(c, "none");
+				}
 			}
 		}
 	}
