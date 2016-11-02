@@ -21,7 +21,6 @@ import java.util.Set;
 import java.util.TimeZone;
 
 import net.sf.seesea.data.io.IDataReader;
-import net.sf.seesea.model.core.geo.Coordinate;
 import net.sf.seesea.model.core.geo.Depth;
 import net.sf.seesea.model.core.geo.GNSSMeasuredPosition;
 import net.sf.seesea.model.core.geo.GeoFactory;
@@ -558,20 +557,20 @@ public class NMEA0183Reader implements IDataReader {
 			PrecisionCoordinate precisionCoordinate2 = null;
 			if (!nmeaContent[3].isEmpty()) {
 				precisionCoordinate = parseLatitude(nmeaContent, 3);
-				Latitude latitude = (Latitude) precisionCoordinate.coordinate;
+				Latitude latitude = (Latitude) precisionCoordinate.getCoordinate();
 				geoPosition.setLatitude(latitude);
 			}
 			if (!nmeaContent[5].isEmpty()) {
 				precisionCoordinate2 = parseLongitude(nmeaContent, 5);
-				Longitude longitude = (Longitude) precisionCoordinate2.coordinate;
+				Longitude longitude = (Longitude) precisionCoordinate2.getCoordinate();
 				geoPosition.setLongitude(longitude);
 			}
 			if (geoPosition.getLatitude() != null
 					&& geoPosition.getLongitude() != null) {
 				measurement.getMeasurements().add(geoPosition);
 				geoPosition.setPrecision(Math.max(
-						precisionCoordinate.precision,
-						precisionCoordinate2.precision));
+						precisionCoordinate.getPrecision(),
+						precisionCoordinate2.getPrecision()));
 			}
 
 		} catch (ArrayIndexOutOfBoundsException e) {
@@ -706,19 +705,19 @@ public class NMEA0183Reader implements IDataReader {
 			PrecisionCoordinate precisionCoordinate = parseLatitude(
 					nmeaContent, 2);
 			if (precisionCoordinate != null) {
-				Latitude latitude = (Latitude) precisionCoordinate.coordinate;
+				Latitude latitude = (Latitude) precisionCoordinate.getCoordinate();
 				geoPosition.setLatitude(latitude);
 			}
 			PrecisionCoordinate precisionCoordinate2 = parseLongitude(
 					nmeaContent, 4);
 			if (precisionCoordinate2 != null) {
-				Longitude longitude = (Longitude) precisionCoordinate2.coordinate;
+				Longitude longitude = (Longitude) precisionCoordinate2.getCoordinate();
 				geoPosition.setLongitude(longitude);
 			}
 			if (precisionCoordinate != null && precisionCoordinate2 != null) {
 				geoPosition.setPrecision(Math.max(
-						precisionCoordinate.precision,
-						precisionCoordinate2.precision));
+						precisionCoordinate.getPrecision(),
+						precisionCoordinate2.getPrecision()));
 			} else {
 				return null;
 			}
@@ -913,19 +912,19 @@ public class NMEA0183Reader implements IDataReader {
 			PrecisionCoordinate precisionCoordinate = parseLatitude(
 					nmeaContent, 1);
 			if (precisionCoordinate != null) {
-				Latitude latitude = (Latitude) precisionCoordinate.coordinate;
+				Latitude latitude = (Latitude) precisionCoordinate.getCoordinate();
 				geoPosition.setLatitude(latitude);
 			}
 			PrecisionCoordinate precisionCoordinate2 = parseLongitude(
 					nmeaContent, 3);
 			if (precisionCoordinate2 != null) {
-				Longitude longitude = (Longitude) precisionCoordinate2.coordinate;
+				Longitude longitude = (Longitude) precisionCoordinate2.getCoordinate();
 				geoPosition.setLongitude(longitude);
 			}
 			if (precisionCoordinate != null && precisionCoordinate2 != null) {
 				geoPosition.setPrecision(Math.max(
-						precisionCoordinate.precision,
-						precisionCoordinate2.precision));
+						precisionCoordinate.getPrecision(),
+						precisionCoordinate2.getPrecision()));
 			} else {
 				return null;
 			}
@@ -1105,19 +1104,6 @@ public class NMEA0183Reader implements IDataReader {
 			depth.setValid(true);
 		}
 		setSensorID(nmeaContent[0], depth);
-	}
-
-	private class PrecisionCoordinate {
-
-		public PrecisionCoordinate(Coordinate coordinate, int precision) {
-			super();
-			this.coordinate = coordinate;
-			this.precision = precision;
-		}
-
-		Coordinate coordinate;
-
-		int precision;
 	}
 }
 
