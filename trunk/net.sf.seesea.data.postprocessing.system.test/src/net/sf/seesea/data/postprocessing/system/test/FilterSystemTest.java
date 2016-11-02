@@ -65,8 +65,9 @@ public class FilterSystemTest {
 			URL schemaDump = new URL("http://depth.openseamap.org/dumpDepthSchema.sql");
 			InputStream openStream = schemaDump.openStream();
 //			GZIPInputStream gzipInputStream = new GZIPInputStream(openStream);
-			BufferedReader in = new BufferedReader(new InputStreamReader(openStream));
-			scriptRunner.runScript(in);
+			try (BufferedReader in = new BufferedReader(new InputStreamReader(openStream, "ISO-8859-1"))) {
+				scriptRunner.runScript(in);
+			}
 		}
 
 		
