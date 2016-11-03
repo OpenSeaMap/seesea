@@ -172,34 +172,36 @@ public class FilterController implements IFilterController {
 		for (IFilter filter : filters) {
 			try {
 				ITrackFileProcessor trackFileProcessor = fileTypeProcessingFactory.createLocationPreProcessor(firstTrack);
-				trackFileProcessor.setFilter(bestSensors);
-				// tie the reading processor to the filter
-				filter.setBestSensors(bestSensors);
-				trackFileProcessor.setMeasurementProcessor(filter);
-				if (filter.requiresAbsoluteTime() && trackFileProcessor.hasAbsoluteTime()) {
-					processFiles4Filter = true;
-				} else if (filter.requiresRelativeTime() && trackFileProcessor.hasRelativeTime()) {
-					processFiles4Filter = true;
-				} else if (!filter.requiresAbsoluteTime() && !filter.requiresRelativeTime()) {
-					processFiles4Filter = true;
-				}
-				if (!processFiles4Filter) {
-					Logger.getLogger(getClass()).info("Skipping filter run for track file processor " + trackFileProcessor
-							+ " with filter " + filter);
-				}
-				if (processFiles4Filter) {
-					System.out.println("Running filter run for track file processor " + trackFileProcessor + " with filter "
-							+ filter);
-					for (ITrackFile trackFile : orderedFiles) {
-						try {
-							System.out.println("Processing track id:" + trackFile.getTrackId());
-							trackFileProcessor.processFile(trackFile);
-						} catch (ProcessingException e) {
-							Logger.getLogger(getClass())
-							.error("Partially correct data for for track id " + trackFile.getTrackId());
-						}
+				if(trackFileProcessor != null) {
+					trackFileProcessor.setFilter(bestSensors);
+					// tie the reading processor to the filter
+					filter.setBestSensors(bestSensors);
+					trackFileProcessor.setMeasurementProcessor(filter);
+					if (filter.requiresAbsoluteTime() && trackFileProcessor.hasAbsoluteTime()) {
+						processFiles4Filter = true;
+					} else if (filter.requiresRelativeTime() && trackFileProcessor.hasRelativeTime()) {
+						processFiles4Filter = true;
+					} else if (!filter.requiresAbsoluteTime() && !filter.requiresRelativeTime()) {
+						processFiles4Filter = true;
 					}
-					filter.finish();
+					if (!processFiles4Filter) {
+						Logger.getLogger(getClass()).info("Skipping filter run for track file processor " + trackFileProcessor
+								+ " with filter " + filter);
+					}
+					if (processFiles4Filter) {
+						Logger.getLogger(getClass()).info("Running filter run for track file processor " + trackFileProcessor + " with filter "
+								+ filter);
+						for (ITrackFile trackFile : orderedFiles) {
+							try {
+								Logger.getLogger(getClass()).info("Processing track id:" + trackFile.getTrackId());
+								trackFileProcessor.processFile(trackFile);
+							} catch (ProcessingException e) {
+								Logger.getLogger(getClass())
+								.error("Partially correct data for for track id " + trackFile.getTrackId());
+							}
+						}
+						filter.finish();
+					}
 				}
 				
 			} finally {
@@ -212,7 +214,7 @@ public class FilterController implements IFilterController {
 		System.out.println("Best sensors chosen for processing are");
 		for (SensorDescriptionUpdateRate<Measurement> sensorDescriptionUpdateRate : bestSensors) {
 			if (sensorDescriptionUpdateRate != null) {
-				System.out.println(sensorDescriptionUpdateRate.toString());
+				Logger.getLogger(getClass()).info(sensorDescriptionUpdateRate.toString());
 			}
 		}
 	}

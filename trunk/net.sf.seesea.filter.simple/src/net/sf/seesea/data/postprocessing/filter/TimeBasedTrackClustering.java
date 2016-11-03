@@ -88,38 +88,42 @@ public class TimeBasedTrackClustering implements ITrackClustering {
 		// get start and end point
 		for (ITrackFile trackFile : orderedFiles) {
 			ITrackFileProcessor locationPreprocessor = fileTypeProcessingFactory.createLocationPreProcessor(trackFile);
-			IDepthPositionPreProcessor measurmentProcessor = new DepthPositionPreprocessor();
-			locationPreprocessor.setMeasurementProcessor(measurmentProcessor);
-			// format supported
 			if(locationPreprocessor != null) {
-				try {
+				IDepthPositionPreProcessor measurmentProcessor = new DepthPositionPreprocessor();
+				locationPreprocessor.setMeasurementProcessor(measurmentProcessor);
+				// format supported
+				if(locationPreprocessor != null) {
 					try {
-						locationPreprocessor.processFile(trackFile);
-						trackFile.setBoundingBox(measurmentProcessor.getBoundingBox());
-						if(!measurmentProcessor.hasDepthData() || measurmentProcessor.getPointCount() == 0) {
-							// set no depth
-							noTrackFiles.add(trackFile);
-						} else {
-							subclassifyTracks(newOrderedFiles, noTimeMeasurementFiles, trackFile, measurmentProcessor);
-						}
-					} catch (ProcessingException e) {
-						if(measurmentProcessor.getPointCount() > 0) {
-							if(!measurmentProcessor.hasDepthData()) {
+						try {
+							locationPreprocessor.processFile(trackFile);
+							trackFile.setBoundingBox(measurmentProcessor.getBoundingBox());
+							if(!measurmentProcessor.hasDepthData() || measurmentProcessor.getPointCount() == 0) {
 								// set no depth
 								noTrackFiles.add(trackFile);
 							} else {
 								subclassifyTracks(newOrderedFiles, noTimeMeasurementFiles, trackFile, measurmentProcessor);
 							}
-							Logger.getLogger(getClass()).error("Partially correct data for for track id " + trackFile.getTrackId(), e);
-						} else {
-							corruptTrackFiles.add(trackFile);
+						} catch (ProcessingException e) {
+							if(measurmentProcessor.getPointCount() > 0) {
+								if(!measurmentProcessor.hasDepthData()) {
+									// set no depth
+									noTrackFiles.add(trackFile);
+								} else {
+									subclassifyTracks(newOrderedFiles, noTimeMeasurementFiles, trackFile, measurmentProcessor);
+								}
+								Logger.getLogger(getClass()).error("Partially correct data for for track id " + trackFile.getTrackId(), e);
+							} else {
+								corruptTrackFiles.add(trackFile);
+							}
 						}
+					} catch (IOException e) {
+						corruptTrackFiles.add(trackFile);
+						Logger.getLogger(getClass()).error("Failed to read file with track id" + trackFile.getTrackId(), e);
 					}
-				} catch (IOException e) {
-					corruptTrackFiles.add(trackFile);
-					Logger.getLogger(getClass()).error("Failed to read file with track id" + trackFile.getTrackId(), e);
+					fileTypeProcessingFactory.disposeLocationPreProcessor(trackFile);
 				}
-				fileTypeProcessingFactory.disposeLocationPreProcessor(trackFile);
+			} else {
+				
 			}
 		}
 		

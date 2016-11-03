@@ -28,12 +28,15 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package net.sf.seesea.data.postprocessing.filter;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
 import net.sf.seesea.model.core.geo.MeasuredPosition3D;
 import net.sf.seesea.track.api.data.ITrackFile;
 
-public class TrackFileComparator implements Comparator<ITrackFile> {
+public class TrackFileComparator implements Comparator<ITrackFile>, Serializable {
+
+	private static final long serialVersionUID = 8036589209330718053L;
 
 	@Override
 	public int compare(ITrackFile fileA, ITrackFile fileB) {
