@@ -329,18 +329,18 @@ public class ManualFilteredMeasurementProcessor implements IFilter {
 	public void setBestSensors(Set<SensorDescriptionUpdateRate<Measurement>> bestSensors) {
 		// determine best setup for track files that are no more than x seconds
 		// apart
-		long updateRate = 1000;
-		int positionPrecision = 0;
-
-		if (!bestSensors.isEmpty()) {
-			for (SensorDescriptionUpdateRate<Measurement> sensor : bestSensors) {
-				if (MeasuredPosition3D.class.isAssignableFrom(sensor.getMeasurement())) {
-					updateRate = sensor.getUpdateRate();
-					positionPrecision = sensor.getPrecision();
-					break;
-				}
-			}
-		}
+//		long updateRate = 1000;
+//		int positionPrecision = 0;
+//
+//		if (!bestSensors.isEmpty()) {
+//			for (SensorDescriptionUpdateRate<Measurement> sensor : bestSensors) {
+//				if (MeasuredPosition3D.class.isAssignableFrom(sensor.getMeasurement())) {
+//					updateRate = sensor.getUpdateRate();
+//					positionPrecision = sensor.getPrecision();
+//					break;
+//				}
+//			}
+//		}
 	}
 
 }
