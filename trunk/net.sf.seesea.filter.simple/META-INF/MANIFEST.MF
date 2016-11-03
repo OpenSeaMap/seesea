@@ -23,4 +23,3 @@ Import-Package: org.apache.log4j;version="[1.2.16,2.0.0)",
  org.osgi.service.component;version="1.2.2",
  org.osgi.service.component.annotations
 Bundle-ActivationPolicy: lazy
-Bundle-Activator: net.sf.seesea.data.postprocessing.filter.FilterActivator
