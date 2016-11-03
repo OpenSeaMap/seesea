@@ -20,6 +20,7 @@ import net.sf.seesea.data.postprocessing.process.IFilter;
 import net.sf.seesea.model.core.geo.Depth;
 import net.sf.seesea.model.core.geo.GeoBoundingBox;
 import net.sf.seesea.model.core.geo.GeoPosition;
+import net.sf.seesea.model.core.geo.GeoPosition3D;
 import net.sf.seesea.model.core.geo.MeasuredPosition3D;
 import net.sf.seesea.model.core.physx.CompositeMeasurement;
 import net.sf.seesea.model.core.physx.Measurement;
@@ -227,7 +228,8 @@ public class ManualFilteredMeasurementProcessor implements IFilter {
 					createNewDataWriter();
 				}
 			}
-			MeasuredPosition3D lastPosition = (MeasuredPosition3D) measurementWindow2.getPositions().get(measurementWindow2.getPositions().size() - 1);
+			List<GeoPosition3D> positions = measurementWindow2.getPositions();
+			MeasuredPosition3D lastPosition = (MeasuredPosition3D) positions.get(positions.size() - 1);
 			
 			Depth depth = null;
 			if(!measurementWindow2.getDepths().isEmpty()) {
