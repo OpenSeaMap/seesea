@@ -35,11 +35,15 @@ public interface IFileTypeProcessingFactory {
 	/**
 	 * creates a measurement processor for the track file that gathers location information
 	 * @param trackFile
-	 * @return
+	 * @return a track file processor for the given track file type, otherwise null
 	 */
 	ITrackFileProcessor createLocationPreProcessor(
 			ITrackFile trackFile);
 
+	/**
+	 * 
+	 * @param trackFile
+	 */
 	void disposeLocationPreProcessor(ITrackFile trackFile);
 
 
