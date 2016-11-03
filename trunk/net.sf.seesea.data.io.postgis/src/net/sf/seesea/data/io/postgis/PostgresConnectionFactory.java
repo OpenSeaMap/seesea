@@ -57,7 +57,7 @@ public class PostgresConnectionFactory {
 		}
 		String database = (String) properties.get(databaseProperty); //$NON-NLS-1$
 		
-		String url = "jdbc:postgresql:" + (host != null ? ("//" + host) + (port != null ? ":" + port : "") + "/" : "") + database ; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$
+		String url = "jdbc:postgresql://" + host + ":" + port + "/" + database ; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$
 
 		return DriverManager.getConnection (url, user, password);
 	}
