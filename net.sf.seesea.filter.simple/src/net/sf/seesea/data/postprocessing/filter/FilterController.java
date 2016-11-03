@@ -97,16 +97,17 @@ public class FilterController implements IFilterController {
 					// hm must be a zip file
 				} else {
 					preprocessor = processingFactory.createLocationPreProcessor(trackFile);
-					preprocessor.setMeasurementProcessor(measurmentProcessor);
-					if (!trackFile.getFileType().equals(lastFileType)) {
-						// file type changed -> run statistics again
-						if (preprocessor != null) {
-							Set<SensorDescriptionUpdateRate<Measurement>> bestSensors = measurmentProcessor.getBestSensors();
-							runFilters(trackFiles, bestSensors);
-						}
-						trackFiles.clear();
-						lastFileType = trackFile.getFileType();
-						if (executeSensorDistribution) {
+					if(preprocessor != null) {
+						preprocessor.setMeasurementProcessor(measurmentProcessor);
+						if (!trackFile.getFileType().equals(lastFileType)) {
+							// file type changed -> run statistics again
+							if (preprocessor != null) {
+								Set<SensorDescriptionUpdateRate<Measurement>> bestSensors = measurmentProcessor.getBestSensors();
+								runFilters(trackFiles, bestSensors);
+							}
+							trackFiles.clear();
+							lastFileType = trackFile.getFileType();
+							if (executeSensorDistribution) {
 //							try {
 								preprocessor.processFile(trackFile);
 //							} catch (StatisticsException e) {
@@ -114,14 +115,17 @@ public class FilterController implements IFilterController {
 //								// preprocessor passed it with depth points
 //								logger.error("Partially correct data for for track id " + trackFile.getTrackId());
 //							}
+							}
+							trackFiles.add(trackFile);
+						} else {
+							// continue processing this file
+							if (executeSensorDistribution) {
+								preprocessor.processFile(trackFile);
+							}
+							trackFiles.add(trackFile);
 						}
-						trackFiles.add(trackFile);
 					} else {
-						// continue processing this file
-						if (executeSensorDistribution) {
-							preprocessor.processFile(trackFile);
-						}
-						trackFiles.add(trackFile);
+						logger.error("No location preprocessor for file type: " + trackFile.getFileType()); //$NON-NLS-1$
 					}
 				}
 			} catch (Exception e) {
