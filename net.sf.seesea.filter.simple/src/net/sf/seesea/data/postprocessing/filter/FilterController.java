@@ -99,12 +99,10 @@ public class FilterController implements IFilterController {
 					preprocessor = processingFactory.createLocationPreProcessor(trackFile);
 					if(preprocessor != null) {
 						preprocessor.setMeasurementProcessor(measurmentProcessor);
+						// file type changed -> run statistics again
 						if (!trackFile.getFileType().equals(lastFileType)) {
-							// file type changed -> run statistics again
-							if (preprocessor != null) {
-								Set<SensorDescriptionUpdateRate<Measurement>> bestSensors = measurmentProcessor.getBestSensors();
-								runFilters(trackFiles, bestSensors);
-							}
+							Set<SensorDescriptionUpdateRate<Measurement>> bestSensors = measurmentProcessor.getBestSensors();
+							runFilters(trackFiles, bestSensors);
 							trackFiles.clear();
 							lastFileType = trackFile.getFileType();
 							if (executeSensorDistribution) {
