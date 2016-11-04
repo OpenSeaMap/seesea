@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Geometry API
 Bundle-SymbolicName: net.sf.seesea.geometry
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: net.sf.seesea.geometry.GeometryActivator
 Bundle-ActivationPolicy: lazy
 Export-Package: net.sf.seesea.geometry,
  net.sf.seesea.geometry.impl,
