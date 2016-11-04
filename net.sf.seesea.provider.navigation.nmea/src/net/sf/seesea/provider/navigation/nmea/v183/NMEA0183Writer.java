@@ -1,7 +1,9 @@
 package net.sf.seesea.provider.navigation.nmea.v183;
 
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.SimpleDateFormat;
@@ -26,7 +28,7 @@ public class NMEA0183Writer implements IDataWriter {
 
 
 	public NMEA0183Writer(OutputStream outputStream) {
-		printWriter = new PrintWriter(outputStream);
+		printWriter = new PrintWriter(new OutputStreamWriter(outputStream, StandardCharsets.US_ASCII));
 		singleDigitFormat = new DecimalFormat("0.0", new DecimalFormatSymbols(Locale.ENGLISH)); //$NON-NLS-1$
 		simpleTimeFormat = new SimpleDateFormat("HHmmss"); //$NON-NLS-1$
 		twoZero = new DecimalFormat("00", new DecimalFormatSymbols(Locale.ENGLISH)); //$NON-NLS-1$
