@@ -28,23 +28,24 @@ public class DoublePrecision {
 
 	private static double SPLITTER = 1.0D;
 
-	public static double EPSILON;
+	public final static double EPSILON;
 
 	static {
 		double check = 1.0d;
 		double half = 0.5d;
-		EPSILON = 1.0d;
+		double epsilon = 1.0d;
 		double lastcheck;
 		boolean every_other = true;
 		do {
 			lastcheck = check;
-			EPSILON *= half;
+			epsilon *= half;
 			if (every_other) {
 				SPLITTER *= 2.0d;
 			}
 			every_other = !every_other;
-			check = 1.0d + EPSILON;
+			check = 1.0d + epsilon;
 		} while ((check != 1.0d) && (check != lastcheck));
+		EPSILON = epsilon;
 		SPLITTER += 1.0d;
 	}
 
