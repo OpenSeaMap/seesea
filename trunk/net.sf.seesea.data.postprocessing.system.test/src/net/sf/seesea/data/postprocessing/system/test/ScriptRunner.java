@@ -23,8 +23,11 @@ package net.sf.seesea.data.postprocessing.system.test;
 
 import java.io.IOException;
 import java.io.LineNumberReader;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.Reader;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.sql.*;
 
 /**
@@ -39,8 +42,8 @@ public class ScriptRunner {
     private boolean stopOnError;
     private boolean autoCommit;
 
-    private PrintWriter logWriter = new PrintWriter(System.out);
-    private PrintWriter errorLogWriter = new PrintWriter(System.err);
+    private PrintWriter logWriter;
+    private PrintWriter errorLogWriter;
 
     private String delimiter = DEFAULT_DELIMITER;
     private boolean fullLineDelimiter = false;
@@ -50,6 +53,13 @@ public class ScriptRunner {
      */
     public ScriptRunner(Connection connection, boolean autoCommit,
             boolean stopOnError) {
+    	try {
+			logWriter = new PrintWriter(new OutputStreamWriter(System.out, "UTF-8"));
+			errorLogWriter = new PrintWriter(new OutputStreamWriter(System.err, "UTF-8"));
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         this.connection = connection;
         this.autoCommit = autoCommit;
         this.stopOnError = stopOnError;
