@@ -9,7 +9,6 @@ public class GeoUtil {
 	}
 
 	public static double getDistance(double latA, double latB,double  lonA,double lonB) {
-		double dLat = Math.toRadians(latB - latA);
 		double dLon = Math.toRadians(lonB - lonA);
 		double lat1 = Math.toRadians(latA);
 		double lat2 = Math.toRadians(latB);
@@ -29,7 +28,6 @@ public class GeoUtil {
 	}
 	
 	public static double getBearing(double latA,double latB,double lonA,double lonB) {
-		double dLat = Math.toRadians(latB-latA);
 		double dLon = Math.toRadians(lonB-lonA);
 		double lat1 = Math.toRadians(latA);
 		double lat2 = Math.toRadians(latB);
