@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Constrained Delaunay Triangulation
 Bundle-SymbolicName: net.sf.seesea.triangulation.cdelaunay
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: net.sf.seesea.triangulation.cdelaunay.DelaunayActivator
 Export-Package: net.sf.seesea.triangulation.cdelaunay;x-friends:="net.sf.seesea.triangulation.cdelaunay.test"
 Require-Bundle: net.sf.seesea.geometry;bundle-version="1.0.0",
  net.sf.seesea.triangulation;bundle-version="1.0.0"
