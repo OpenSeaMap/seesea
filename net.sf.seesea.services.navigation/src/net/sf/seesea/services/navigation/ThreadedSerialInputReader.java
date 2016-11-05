@@ -65,7 +65,7 @@ public class ThreadedSerialInputReader implements Callable<Void>{
 
 	private final IFeedbackMessageConsumer feedbackMessageConsumer;
 
-	private ServiceRegistration<?> serviceRegistration;
+//	private ServiceRegistration<?> serviceRegistration;
 
 //	private int retryCount;
 
@@ -145,11 +145,7 @@ public class ThreadedSerialInputReader implements Callable<Void>{
 //							Thread.sleep(1);
 							}
 						}
-						if(!continueProcessing) {
-							feedbackMessageConsumer.processingStopped();
-						} else {
-							feedbackMessageConsumer.processingStopped();
-						}
+						feedbackMessageConsumer.processingStopped();
 						close();
 //					} catch (SocketTimeoutException e) {
 //						streamProvider.close();
