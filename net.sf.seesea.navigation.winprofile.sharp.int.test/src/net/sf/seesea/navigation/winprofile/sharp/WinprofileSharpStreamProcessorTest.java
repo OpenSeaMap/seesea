@@ -20,15 +20,16 @@ public class WinprofileSharpStreamProcessorTest {
 		URL nextElement = WinprofileSharpActivator.getContext().getBundle().findEntries("res", "4180.dat", true).nextElement();
 		URL fileURL = FileLocator.resolve(nextElement);
 		File file = new File(fileURL.getFile());
-		FileInputStream fileInputStream = new FileInputStream(file);
-		int[] buffer = new int[1024];
-		for(int i = 0; i < 1024; i++) {
-			buffer[i] = fileInputStream.read();
+		try(FileInputStream fileInputStream = new FileInputStream(file)) {
+			int[] buffer = new int[1024];
+			for(int i = 0; i < 1024; i++) {
+				buffer[i] = fileInputStream.read();
+			}
+			
+			WinprofileSharpStreamProcessor winprofileSharpStreamProcessor = new WinprofileSharpStreamProcessor();
+			boolean valid = winprofileSharpStreamProcessor.isValidStreamProcessor(buffer);
+			assertTrue(valid);
 		}
-		
-		WinprofileSharpStreamProcessor winprofileSharpStreamProcessor = new WinprofileSharpStreamProcessor();
-		boolean valid = winprofileSharpStreamProcessor.isValidStreamProcessor(buffer);
-		assertTrue(valid);
 	}
 
 }
