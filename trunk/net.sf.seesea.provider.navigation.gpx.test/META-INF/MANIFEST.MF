@@ -11,4 +11,4 @@ Require-Bundle: org.eclipse.core.runtime,
  org.easymock;bundle-version="3.2.0",
  net.sf.seesea.track.api
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
