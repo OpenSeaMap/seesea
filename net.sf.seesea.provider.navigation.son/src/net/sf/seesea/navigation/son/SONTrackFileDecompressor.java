@@ -50,7 +50,7 @@ public class SONTrackFileDecompressor implements ITrackFileDecompressor {
 		ZipFile zipFile = null;
 		switch (compressionType) {
 		case ZIP:
-			List<ZipEntry> zipEntries = new ArrayList<ZipEntry>(1);
+			List<ZipEntry> zipEntries;
 			String encoding = null;
 			try {
 				zipFile = new ZipFile(file, Charset.forName("UTF-8"));
