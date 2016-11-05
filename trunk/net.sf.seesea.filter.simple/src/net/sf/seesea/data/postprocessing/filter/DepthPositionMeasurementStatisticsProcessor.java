@@ -39,7 +39,6 @@ import net.sf.seesea.data.postprocessing.process.IStatisticsPreprocessor;
 import net.sf.seesea.data.postprocessing.process.StatisticsException;
 import net.sf.seesea.model.core.geo.Depth;
 import net.sf.seesea.model.core.geo.GNSSMeasuredPosition;
-import net.sf.seesea.model.core.geo.GeoBoundingBox;
 import net.sf.seesea.model.core.geo.MeasuredPosition3D;
 import net.sf.seesea.model.core.physx.CompositeMeasurement;
 import net.sf.seesea.model.core.physx.Heading;

@@ -85,7 +85,7 @@ public class FileTypeProcessingFactory implements IFileTypeProcessingFactory {
 				ServiceReference<?>[] serviceReferences = bundleContext.getServiceReferences(ComponentFactory.class.getName(), filter);
 				if(serviceReferences != null && serviceReferences.length > 0) {
 					ComponentFactory componentFactory = (ComponentFactory) bundleContext.getService(serviceReferences[0]);
-					Hashtable properties = new Hashtable();
+					Hashtable<String, Object> properties = new Hashtable<>();
 					ComponentInstance componentInstance = componentFactory.newInstance(properties);
 					return componentInstance;
 					

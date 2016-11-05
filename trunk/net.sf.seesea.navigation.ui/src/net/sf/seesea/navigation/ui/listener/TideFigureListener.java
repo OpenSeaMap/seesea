@@ -8,8 +8,10 @@ import net.sf.seesea.navigation.ui.figures.DescriptiveInstrumentFigure;
 import net.sf.seesea.services.navigation.listener.IPositionListener;
 import net.sf.seesea.waterlevel.ocean.IOceanTideProvider;
 import net.sf.seesea.waterlevel.ocean.LengthUnit;
+import net.sf.seesea.waterlevel.ocean.TideCalculationException;
 import net.sf.seesea.waterlevel.ocean.TideLevel;
 
+import org.apache.log4j.Logger;
 import org.eclipse.swt.widgets.Display;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
@@ -33,17 +35,24 @@ public class TideFigureListener extends InvalidatingFigureListener<MeasuredPosit
 		ServiceReference<IOceanTideProvider> reference = bundleContext.getServiceReference(IOceanTideProvider.class);
 		if (reference != null) {
 			IOceanTideProvider oceanTideProvider = bundleContext.getService(reference);
-			final double tideHeight = oceanTideProvider.getTideHeight(TideLevel.LOWESTATRONOMICALTIDE, LengthUnit.METERS, sensorData.getLatitude()
-					.getDecimalDegree(), sensorData.getLongitude().getDecimalDegree(), sensorData.getTime());
+			double tideHeight;
+			try {
+				tideHeight = oceanTideProvider.getTideHeight(TideLevel.LOWESTATRONOMICALTIDE, LengthUnit.METERS, sensorData.getLatitude()
+						.getDecimalDegree(), sensorData.getLongitude().getDecimalDegree(), sensorData.getTime());
+				Display.getDefault().asyncExec(new Runnable() {
+					@Override
+					public void run() {
+						figure.setVisible(true);
+						figure.setValue(tideFormat.format(tideHeight) + "m");
+					}
+				});
+				bundleContext.ungetService(reference);
+			} catch (TideCalculationException e) {
+				Logger.getLogger(getClass()).error("Error during tide calculation", e);
+				figure.setVisible(true);
+				figure.setValidData(false);
+			}
 
-			Display.getDefault().asyncExec(new Runnable() {
-				@Override
-				public void run() {
-					figure.setVisible(true);
-					figure.setValue(tideFormat.format(tideHeight) + "m");
-				}
-			});
-			bundleContext.ungetService(reference);
 		}
 	}
 

@@ -27,8 +27,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.data.postprocessing.filter;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,10 +37,6 @@ import net.sf.seesea.model.core.geo.GeoFactory;
 import net.sf.seesea.model.core.geo.MeasuredPosition3D;
 import net.sf.seesea.model.core.physx.CompositeMeasurement;
 import net.sf.seesea.model.core.physx.Measurement;
-import net.sf.seesea.model.core.physx.PhysxFactory;
-//import net.sf.seesea.services.navigation.GeoBoundingBox;
-//import net.sf.seesea.services.navigation.IGeoBoundingBox;
-import net.sf.seesea.track.api.ITrackFileProcessor;
 import net.sf.seesea.track.api.data.ITrackFile;
 import net.sf.seesea.track.api.exception.ProcessingException;
 

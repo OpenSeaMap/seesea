@@ -26,6 +26,7 @@ import net.sf.seesea.track.api.data.IBoatParameters;
 import net.sf.seesea.track.api.data.ITrackFile;
 import net.sf.seesea.track.api.exception.ProcessingException;
 import net.sf.seesea.waterlevel.IWaterLevelCorrection;
+import net.sf.seesea.waterlevel.WaterLevelCorrectionException;
 import net.sf.seesea.waterlevel.ocean.ITideProvider;
 
 public class UnfilteredMeasurementProcessorTest {
@@ -129,7 +130,7 @@ public class UnfilteredMeasurementProcessorTest {
 	}
 	
 	@Test
-	public void testBoatOffsetAndTideProcessSingleMeasurments() throws ProcessingException, WriterException {
+	public void testBoatOffsetAndTideProcessSingleMeasurments() throws ProcessingException, WriterException, WaterLevelCorrectionException {
 		List<Measurement> measurements = new ArrayList<>();
 		GeoFactory geoFactory = GeoFactory.eINSTANCE;
 		

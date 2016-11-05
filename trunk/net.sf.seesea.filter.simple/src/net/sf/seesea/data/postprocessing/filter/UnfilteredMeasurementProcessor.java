@@ -53,6 +53,7 @@ import net.sf.seesea.track.api.data.ITrackFile;
 import net.sf.seesea.track.api.data.SensorDescriptionUpdateRate;
 import net.sf.seesea.track.api.exception.ProcessingException;
 import net.sf.seesea.waterlevel.IWaterLevelCorrection;
+import net.sf.seesea.waterlevel.WaterLevelCorrectionException;
 
 /**
  * this processor does not filter measurements and writes out the raw values.
@@ -189,17 +190,24 @@ public class UnfilteredMeasurementProcessor implements IFilter {
 			IWaterLevelCorrection tideProvider = waterLevelCorrectionAR.get();
 			if (tideProvider != null) {
 				Depth depthOut = EcoreUtil.copy(depth);
-				double tideHeight = tideProvider.getCorrection(lastPosition.getLatitude().getDecimalDegree(),
-						lastPosition.getLongitude().getDecimalDegree(), lastPosition.getTime());
-				if (!Double.isNaN(tideHeight)) {
-					depthOut.setDepth(depth.getDepth() - tideHeight);
-					correctDepthByBoat(depthOut);
-					measurements.add(depthOut);
-					writerFactoryAR.get().write(measurements, true, lastSourceTrackIdentifier);
-				} else {
+				double tideHeight;
+				try {
+					tideHeight = tideProvider.getCorrection(lastPosition.getLatitude().getDecimalDegree(),
+							lastPosition.getLongitude().getDecimalDegree(), lastPosition.getTime());
+					if (!Double.isNaN(tideHeight)) {
+						depthOut.setDepth(depth.getDepth() - tideHeight);
+						correctDepthByBoat(depthOut);
+						measurements.add(depthOut);
+						writerFactoryAR.get().write(measurements, true, lastSourceTrackIdentifier);
+					} else {
+						Logger.getLogger(getClass())
+						.info("No water level correction for:" + lastPosition.getLatitude().getDecimalDegree() + ":"
+								+ lastPosition.getLongitude().getDecimalDegree() + ":" + lastPosition.getTime());
+					}
+				} catch (WaterLevelCorrectionException e) {
 					Logger.getLogger(getClass())
-							.info("No water level correction for:" + lastPosition.getLatitude().getDecimalDegree() + ":"
-									+ lastPosition.getLongitude().getDecimalDegree() + ":" + lastPosition.getTime());
+					.info("No water level correction for:" + lastPosition.getLatitude().getDecimalDegree() + ":"
+							+ lastPosition.getLongitude().getDecimalDegree() + ":" + lastPosition.getTime());
 				}
 			} else {
 				if(enableBoatOffsetFiltering) {

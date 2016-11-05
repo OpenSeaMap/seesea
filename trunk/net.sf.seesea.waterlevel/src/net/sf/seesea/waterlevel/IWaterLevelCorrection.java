@@ -44,7 +44,7 @@ public interface IWaterLevelCorrection {
 	 * @param time the time of measurement
 	 * @return the water level correction for the given position and time
 	 */
-	double getCorrection(double lat, double lon, Date time);
+	double getCorrection(double lat, double lon, Date time) throws WaterLevelCorrectionException;
 
 	/**
 	 * this is intended for the tide provider to make fast decisions how to correct the requested values.<br>

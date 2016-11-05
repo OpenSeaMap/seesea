@@ -13,13 +13,14 @@ import org.junit.Test;
 
 import net.sf.seesea.waterlevel.ocean.IOceanTideProvider;
 import net.sf.seesea.waterlevel.ocean.LengthUnit;
+import net.sf.seesea.waterlevel.ocean.TideCalculationException;
 import net.sf.seesea.waterlevel.ocean.TideLevel;
 
 public class DTUTidePredictionTest {
 
 	
 	@Test
-	public void testTidePrediction() throws IOException {
+	public void testTidePrediction() throws IOException, TideCalculationException {
 		DTUTidePrediction dtuTidePrediction = new DTUTidePrediction();
 		DTU dtu = new DTU();
 		dtu.activate(Collections.<String, Object> emptyMap());

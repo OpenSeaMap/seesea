@@ -15,7 +15,6 @@ import net.sf.seesea.data.postprocessing.process.StatisticsException;
 import net.sf.seesea.model.core.geo.MeasuredPosition3D;
 import net.sf.seesea.model.core.physx.Measurement;
 import net.sf.seesea.track.api.ITrackFileProcessor;
-import net.sf.seesea.track.api.data.ITrack;
 import net.sf.seesea.track.api.data.ITrackFile;
 import net.sf.seesea.track.api.data.SensorDescriptionUpdateRate;
 import net.sf.seesea.track.api.exception.ProcessingException;
