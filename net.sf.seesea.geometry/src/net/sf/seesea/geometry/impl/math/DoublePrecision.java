@@ -31,7 +31,7 @@ public class DoublePrecision {
 	public final static double EPSILON;
 
 	static {
-		double check = 1.0d;
+		Double check = 1.0d;
 		double half = 0.5d;
 		double epsilon = 1.0d;
 		double lastcheck;
