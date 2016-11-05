@@ -38,9 +38,7 @@ public class SL2TrackFileProcessor implements ITrackFileProcessor, IMeasurementL
 	public void processFile(ITrackFile trackFile)
 			throws FileNotFoundException, IOException, ProcessingException {
 		this.currentProcessedFile = trackFile;
-		BufferedInputStream input;
-		try {
-			input = new BufferedInputStream(trackFile.getInputStream());
+		try (BufferedInputStream input = new BufferedInputStream(trackFile.getInputStream())){
 			byte[] buffer = new byte[512];
 			
 			while (input.read(buffer) != -1) {

@@ -16,3 +16,4 @@ Import-Package: net.sf.seesea.track.api;version="[1.0.0,2.0.0)",
 Service-Component: OSGI-INF/net.sf.seesea.navigation.sl2.SL2StreamProcessor.xml,
  OSGI-INF/net.sf.seesea.navigation.sl2.SL2TrackFileProcessor.xml
 Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
