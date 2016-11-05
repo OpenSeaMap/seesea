@@ -65,29 +65,31 @@ public class LatDump {
 			lats.put(lon, m);
 		}
 		
-		FileOutputStream fileOutputStream = new FileOutputStream("C:/pv4/LAT.ser");
-		ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-		for(int i = -1440 ; i < 1440; i++ ) {
-			for(int j = 720; j > -720 ; j--) {
-				NumberFormat format = NumberFormat.getInstance(Locale.ENGLISH);
-				float lon = 0.125f * i;
-				float lat = 0.125f * j;
-				String lonString = format.format(lon);
-				String latString = format.format(lat);
-				System.out.println(latString + ":" + lonString);
-				Map<String, Float> lats = contents.get(latString);
-				if(lats == null) {
-					objectOutputStream.writeFloat(0.0f);
-				} else {
-					Float float1 = lats.get(lonString);
-					if(float1 == null) {
+		try(FileOutputStream fileOutputStream = new FileOutputStream("C:/pv4/LAT.ser");
+		ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
+			for(int i = -1440 ; i < 1440; i++ ) {
+				for(int j = 720; j > -720 ; j--) {
+					NumberFormat format = NumberFormat.getInstance(Locale.ENGLISH);
+					float lon = 0.125f * i;
+					float lat = 0.125f * j;
+					String lonString = format.format(lon);
+					String latString = format.format(lat);
+					System.out.println(latString + ":" + lonString);
+					Map<String, Float> lats = contents.get(latString);
+					if(lats == null) {
 						objectOutputStream.writeFloat(0.0f);
 					} else {
-						objectOutputStream.writeFloat(float1);
+						Float float1 = lats.get(lonString);
+						if(float1 == null) {
+							objectOutputStream.writeFloat(0.0f);
+						} else {
+							objectOutputStream.writeFloat(float1);
+						}
 					}
 				}
+				objectOutputStream.flush();
 			}
-			objectOutputStream.flush();
+			
 		}
 		
 	}
