@@ -69,7 +69,7 @@ public class FSHStreamProcessor implements IStreamProcessor, IFSHReader {
 		byte[] header = new byte[28];
 		int read = is.read(header, 0, 28);
 		if(read < 28) {
-			throw new IOException("Failed to read FSH Header");
+			return null;
 		}
 //		System.out.println(read);
 		return readHeader(header);
@@ -223,7 +223,7 @@ public class FSHStreamProcessor implements IStreamProcessor, IFSHReader {
 		byte[] header = new byte[14];
 		int read = inputStream.read(header, 0, 14);
 		if(read < 14) {
-			throw new IOException("Failed to read FSH Header");
+			return null;
 		}
 		return readFlobHeader(header);
 	}
