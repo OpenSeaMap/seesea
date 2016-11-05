@@ -46,9 +46,8 @@ public class NMEA0183TrackFileProcessor implements ITrackFileProcessor {
 	public void processFile(ITrackFile recordedFile) throws FileNotFoundException,
 			IOException, ProcessingException {
 //		System.out.println("Reading file " + recordedFile.getFileReference());
-		try {
-			InputStream inputStream = recordedFile.getInputStream();
-			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "ISO646-US"));
+		try (			InputStream inputStream = recordedFile.getInputStream();
+			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "ISO646-US"));){
 			
 			String line = null;
 			while((line = bufferedReader.readLine()) != null) {
