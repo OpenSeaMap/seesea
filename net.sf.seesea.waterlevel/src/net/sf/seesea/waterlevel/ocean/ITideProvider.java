@@ -35,6 +35,6 @@ public interface ITideProvider {
 	 * @param position
 	 * @return the tide height in centimeters (+/-) above and below mean sea level
 	 */
-	double getTideHeight(double lat, double lon, Date time);
+	double getTideHeight(double lat, double lon, Date time) throws TideCalculationException;
 	
 }

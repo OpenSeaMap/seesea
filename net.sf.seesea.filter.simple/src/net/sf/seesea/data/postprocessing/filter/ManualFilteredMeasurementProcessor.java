@@ -30,6 +30,7 @@ import net.sf.seesea.track.api.data.ITrackFile;
 import net.sf.seesea.track.api.data.SensorDescriptionUpdateRate;
 import net.sf.seesea.track.api.exception.ProcessingException;
 import net.sf.seesea.waterlevel.IWaterLevelCorrection;
+import net.sf.seesea.waterlevel.WaterLevelCorrectionException;
 
 public class ManualFilteredMeasurementProcessor implements IFilter {
 
@@ -238,13 +239,18 @@ public class ManualFilteredMeasurementProcessor implements IFilter {
 				depth = measurementWindow2.getDepths().get(measurementWindow2.getDepths().size() -1 );
 				IWaterLevelCorrection tideProvider = waterLevelCorrectionAR.get();
 				if(tideProvider != null) {
-					double tideHeight = tideProvider.getCorrection(lastPosition.getLatitude().getDecimalDegree(), lastPosition.getLongitude().getDecimalDegree(), lastPosition.getTime());
-					if(!Double.isNaN(tideHeight)) {
-						depth.setDepth(depth.getDepth() - tideHeight);
-						depth.setDepth(depth.getDepth() - sensorOffsetToWaterline);
-						measurements.add(depth);
-						dataWriter.write(measurements, true, lastSourceTrackIdentifier);
-					} else {
+					double tideHeight;
+					try {
+						tideHeight = tideProvider.getCorrection(lastPosition.getLatitude().getDecimalDegree(), lastPosition.getLongitude().getDecimalDegree(), lastPosition.getTime());
+						if(!Double.isNaN(tideHeight)) {
+							depth.setDepth(depth.getDepth() - tideHeight);
+							depth.setDepth(depth.getDepth() - sensorOffsetToWaterline);
+							measurements.add(depth);
+							dataWriter.write(measurements, true, lastSourceTrackIdentifier);
+						} else {
+							Logger.getLogger(getClass()).info("No water level correction for:" + lastPosition.getLatitude().getDecimalDegree() + ":" + lastPosition.getLongitude().getDecimalDegree() + ":" + lastPosition.getTime());
+						}
+					} catch (WaterLevelCorrectionException e) {
 						Logger.getLogger(getClass()).info("No water level correction for:" + lastPosition.getLatitude().getDecimalDegree() + ":" + lastPosition.getLongitude().getDecimalDegree() + ":" + lastPosition.getTime());
 					}
 				} else {

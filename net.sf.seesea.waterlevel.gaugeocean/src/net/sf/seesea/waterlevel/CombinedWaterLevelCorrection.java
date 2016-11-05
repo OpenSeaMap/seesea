@@ -34,18 +34,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
-import net.sf.seesea.model.core.geo.GeoBoundingBox;
-import net.sf.seesea.model.core.geo.GeoFactory;
-import net.sf.seesea.model.core.geo.GeoPackage;
-import net.sf.seesea.waterlevel.ocean.IOceanTideProvider;
-import net.sf.seesea.waterlevel.ocean.LengthUnit;
-import net.sf.seesea.waterlevel.ocean.TideLevel;
-
 import org.apache.log4j.Logger;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
+
+import net.sf.seesea.model.core.geo.GeoBoundingBox;
+import net.sf.seesea.model.core.geo.GeoFactory;
+import net.sf.seesea.waterlevel.ocean.IOceanTideProvider;
+import net.sf.seesea.waterlevel.ocean.LengthUnit;
+import net.sf.seesea.waterlevel.ocean.TideCalculationException;
+import net.sf.seesea.waterlevel.ocean.TideLevel;
 
 @Component(property = {"type:String=oceantidegauge"})
 public class CombinedWaterLevelCorrection implements IWaterLevelCorrection {
@@ -83,11 +83,15 @@ public class CombinedWaterLevelCorrection implements IWaterLevelCorrection {
 	}
 
 	@Override
-	public double getCorrection(double lat, double lon, Date time) {
+	public double getCorrection(double lat, double lon, Date time) throws WaterLevelCorrectionException {
 
 		// we found the bbox to be completely on the ocean
 		if (CheckCoordinate.BBOX.equals(checkCoordinate) && TrackLocation.OCEAN.equals(trackLocation)) {
-			return oceantideProvider.getTideHeight(TideLevel.LOWESTATRONOMICALTIDE, LengthUnit.METERS, lat, lon, time);
+			try {
+				return oceantideProvider.getTideHeight(TideLevel.LOWESTATRONOMICALTIDE, LengthUnit.METERS, lat, lon, time);
+			} catch (TideCalculationException e) {
+				throw new WaterLevelCorrectionException(e);
+			}
 			// } else if(checkCoordinate.equals(CheckCoordinate.BBOX) &&
 			// trackLocation.equals(TrackLocation.UNDEFINED)) {
 			// // a bbox is provided but some portions of the bbox are on land,
@@ -98,7 +102,11 @@ public class CombinedWaterLevelCorrection implements IWaterLevelCorrection {
 			if (pointOnOpenSea) {
 				// FIXME if tide station with real data is nearby - choose that
 				// one
-				return oceantideProvider.getTideHeight(TideLevel.LOWESTATRONOMICALTIDE, LengthUnit.METERS, lat, lon, time);
+				try {
+					return oceantideProvider.getTideHeight(TideLevel.LOWESTATRONOMICALTIDE, LengthUnit.METERS, lat, lon, time);
+				} catch (TideCalculationException e) {
+					throw new WaterLevelCorrectionException(e);
+				}
 			} else { // river or lake
 				return gaugeCorrection.getCorrection(lat, lon, time);
 			}

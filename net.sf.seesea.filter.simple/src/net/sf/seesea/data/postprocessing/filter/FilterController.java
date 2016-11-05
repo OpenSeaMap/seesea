@@ -50,7 +50,6 @@ import net.sf.seesea.data.postprocessing.process.IFilter;
 import net.sf.seesea.data.postprocessing.process.IFilterController;
 import net.sf.seesea.data.postprocessing.process.IStatisticsPreprocessor;
 import net.sf.seesea.data.postprocessing.process.StatisticsException;
-import net.sf.seesea.model.core.geo.MeasuredPosition3D;
 import net.sf.seesea.model.core.physx.Measurement;
 import net.sf.seesea.track.api.ITrackFileProcessor;
 import net.sf.seesea.track.api.data.ITrackFile;

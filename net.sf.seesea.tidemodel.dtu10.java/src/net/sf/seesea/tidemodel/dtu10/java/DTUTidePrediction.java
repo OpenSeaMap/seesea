@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import net.sf.seesea.waterlevel.ocean.IOceanTideProvider;
 import net.sf.seesea.waterlevel.ocean.ITideProvider;
 import net.sf.seesea.waterlevel.ocean.LengthUnit;
+import net.sf.seesea.waterlevel.ocean.TideCalculationException;
 import net.sf.seesea.waterlevel.ocean.TideLevel;
 
 /**
@@ -62,7 +63,7 @@ public class DTUTidePrediction implements IOceanTideProvider {
 	}
 	
 	public double getTideHeight(TideLevel level, LengthUnit unit, double lat,
-			double lon, Date date) {
+			double lon, Date date) throws TideCalculationException {
 		LATTideCorrectionCache query = new LATTideCorrectionCache(lat, lon, date);
 		if(latTidePredictionCache != null && latTidePredictionCache.isQueryClose(query, latDistance, lonDistance, timeDistance)) {
 			return latTidePredictionCache.getLatCorrection();

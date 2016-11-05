@@ -29,6 +29,7 @@ import net.sf.seesea.tidemodel.dtu10.java.data.InterpolationValue;
 import net.sf.seesea.tidemodel.dtu10.java.data.TideConsituents;
 import net.sf.seesea.tidemodel.dtu10.java.data.TideHeight;
 import net.sf.seesea.waterlevel.ocean.ITideProvider;
+import net.sf.seesea.waterlevel.ocean.TideCalculationException;
 
 /**
  * This is the main DTU10 implementation. It provides a tide prediction based on the DTU 10 model and predicts the sea level at an arbitary point in time (limited by UTC time)
@@ -64,7 +65,7 @@ public class DTU implements ITideProvider {
 		wrap = Math.abs(lonmax - lonmin - 360.0) < 2 * dx;
 	}
 
-	public ITideHeight getTideHeight(double dlat, double dlon, double time) {
+	public ITideHeight getTideHeight(double dlat, double dlon, double time) throws TideCalculationException {
 		double f[] = new double[nt];
 		double u[] = new double[nt];
 		double arg[] = new double[nt];
@@ -519,18 +520,19 @@ public class DTU implements ITideProvider {
 	 * as an array; GRID is changed to 3 dimensions. ISDATA is still a scalar
 	 * (all grids assumed to have same nulls). Revised 1/10/95 to test longitude
 	 * limits when wrap=.false.
+	 * @throws TideCalculationException 
 	 */
 	private double[][] billinearGridInterpolation(double latmin, double latmax, double longmin, double longmax,
-			double dlat, double dlon, int nx, int ny) {
+			double dlat, double dlon, int nx, int ny) throws TideCalculationException {
 		double dx = (longmax - longmin) / (double) (nx - 1);
 		double dy = (latmax - latmin) / (double) (ny - 1);
 		int jlat1 = (int) ((dlat - latmin) / dy);
 		int jlat2 = jlat1 + 1;
-		boolean isData = true;
+//		boolean isData = true;
 		double val[][] = new double[2][28];
 
 		if (jlat1 < 1 || jlat2 > ny) {
-			isData = false;
+//			isData = false;
 			return null;
 		}
 		double xlon = dlon;
@@ -546,20 +548,19 @@ public class DTU implements ITideProvider {
 		int ilon1 = ((int) ((xlon - longmin) / dx));
 		int ilon2 = ilon1 + 1;
 		if (!wrap && (ilon1 < 1 || ilon2 > nx)) {
-			isData = false;
+//			isData = false;
 			return null;
 		}
 		if (ilon2 > nx) {
 			if (wrap) {
 				ilon2 = 1;
 			} else {
-				isData = false;
+//				isData = false;
 				return null;
 			}
 		}
 		if (ilon1 < 1 || ilon1 > nx) {
-			System.out.println("Something went terribly wrong");
-			System.exit(-1);
+			throw new TideCalculationException("Bilinnear interpolation failed, Lon: " + ilon1);
 		}
 		// undefined check
 		// if(array[ilon1, jlat1[]])
@@ -656,9 +657,9 @@ public class DTU implements ITideProvider {
 	 * 
 	 * 
 	 */
-	private void lpeqmt() {
-
-	}
+//	private void lpeqmt() {
+//
+//	}
 
 	/**
 	 * 
@@ -692,9 +693,9 @@ public class DTU implements ITideProvider {
 	 * Written by R. Ray Aug. 1990 Revised 8 Apr 1998 - change name. - handle 2
 	 * nulls on input file.
 	 */
-	private void gridin() {
-
-	}
+//	private void gridin() {
+//
+//	}
 
 	/**
 	 * Outputs an ascii gridfile in "standard" format. This format uses 80-byte
@@ -733,9 +734,9 @@ public class DTU implements ITideProvider {
 	 * possible use in multiple calls for many outputs. 3. Allowed FORMAT
 	 * variable length character. Revised 3/8/98 - changed name.
 	 */
-	private void grindout() {
-
-	}
+//	private void grindout() {
+//
+//	}
 
 	public double getTideHeight(double lat, double lon, Date time) {
 		Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC")); //$NON-NLS-1$

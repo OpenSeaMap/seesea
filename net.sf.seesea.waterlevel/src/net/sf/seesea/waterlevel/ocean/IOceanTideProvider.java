@@ -45,7 +45,7 @@ public interface IOceanTideProvider {
 	 * @param date the date for which to predict the tide
 	 * @return
 	 */
-	double getTideHeight(TideLevel level, LengthUnit unit, double lat, double lon, Date date);
+	double getTideHeight(TideLevel level, LengthUnit unit, double lat, double lon, Date date) throws TideCalculationException;
 	
 	static final String LATDISTANCECACHED =  "latdistance";
 
