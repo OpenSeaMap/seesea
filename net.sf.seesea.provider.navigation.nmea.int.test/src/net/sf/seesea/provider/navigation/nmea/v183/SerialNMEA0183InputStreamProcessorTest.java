@@ -18,18 +18,19 @@ public class SerialNMEA0183InputStreamProcessorTest {
 	@Test
 	public void testStreamProcessor() throws IOException, RawDataEventException {
 		URL fileEntry = NMEA0183Activator.getContext().getBundle().findEntries("res", "9220.dat", false).nextElement();
-		InputStream fileStream = FileLocator.resolve(fileEntry).openStream();
-		BufferedInputStream input = new BufferedInputStream(fileStream);
-
-		int[] buf = new int[100];
-		for(int i = 0; i < 100 ; i ++) {
-			buf[i] = input.read();
+		try(InputStream fileStream = FileLocator.resolve(fileEntry).openStream();
+		BufferedInputStream input = new BufferedInputStream(fileStream)) {
+			int[] buf = new int[100];
+			for(int i = 0; i < 100 ; i ++) {
+				buf[i] = input.read();
+			}
+			
+			SerialNMEA0183InputStreamProcessor serialNMEA0183InputStreamProcessor = new SerialNMEA0183InputStreamProcessor();
+			boolean validStreamProcessor = serialNMEA0183InputStreamProcessor.isValidStreamProcessor(buf);
+			
+			assertTrue(validStreamProcessor);
 		}
-		
-		SerialNMEA0183InputStreamProcessor serialNMEA0183InputStreamProcessor = new SerialNMEA0183InputStreamProcessor();
-		boolean validStreamProcessor = serialNMEA0183InputStreamProcessor.isValidStreamProcessor(buf);
-		
-		assertTrue(validStreamProcessor);
+
 	}
 	
 }
