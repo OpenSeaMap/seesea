@@ -31,7 +31,6 @@ package net.sf.seesea.provider.navigation.gpx.test;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.easymock.Capture;
@@ -56,8 +55,7 @@ public class FullGPXProfileHandlerTest extends TestCase {
 	public void testReadGPXFile() throws IOException, InputStreamNotFoundException, ProcessingException, SAXException {
 		
 		IMeasurmentProcessor measurmentProcessor = EasyMock.createNiceMock(IMeasurmentProcessor.class);
-		List<Measurement> list = new ArrayList<Measurement>();
-		Capture<List<Measurement>> measurements = new Capture<List<Measurement>>();
+		Capture<List<Measurement>> measurements = Capture.newInstance();
 		measurmentProcessor.processMeasurements(EasyMock.capture(measurements), EasyMock.anyString(), EasyMock.<ITrackFile>anyObject());
 		EasyMock.replay(measurmentProcessor);
 		
