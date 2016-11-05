@@ -18,17 +18,18 @@ public class ADMStreamProcessorTest {
 	public void testStreamProcessor() throws IOException, RawDataEventException {
 		URL fileEntry = ADMActivator.getContext().getBundle().findEntries("res", "9152.dat", false).nextElement();
 		InputStream fileStream = FileLocator.resolve(fileEntry).openStream();
-		BufferedInputStream input = new BufferedInputStream(fileStream);
-
-		int[] buf = new int[1024];
-		for(int i = 0; i < 1024 ; i ++) {
-			buf[i] = input.read();
+		try (BufferedInputStream input = new BufferedInputStream(fileStream)) {
+			int[] buf = new int[1024];
+			for(int i = 0; i < 1024 ; i ++) {
+				buf[i] = input.read();
+			}
+			
+			ADMStreamProcessor serialNMEA0183InputStreamProcessor = new ADMStreamProcessor();
+			boolean validStreamProcessor = serialNMEA0183InputStreamProcessor.isValidStreamProcessor(buf);
+			
+			assertTrue(validStreamProcessor);
 		}
-		
-		ADMStreamProcessor serialNMEA0183InputStreamProcessor = new ADMStreamProcessor();
-		boolean validStreamProcessor = serialNMEA0183InputStreamProcessor.isValidStreamProcessor(buf);
-		
-		assertTrue(validStreamProcessor);
+
 	}
 	
 }
