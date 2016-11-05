@@ -277,8 +277,7 @@ public class SONStreamProcessor implements IStreamProcessor {
 
 	public List<ITrack> getTracks(CompressionType compression, ZipFile zipFile) {
 		List<ITrack> tracks = new ArrayList<ITrack>(); 
-		List<ZipEntry> zipEntries = new ArrayList<ZipEntry>(1);
-		zipEntries = getZipEntries(zipFile);
+		List<ZipEntry> zipEntries = getZipEntries(zipFile);
 		return getSonFilesFromFile(zipFile, tracks, zipEntries, "ISO-8859-1");
 	}
 
@@ -288,7 +287,7 @@ public class SONStreamProcessor implements IStreamProcessor {
 		ZipFile zipFile = null;
 		switch (compressionType) {
 		case ZIP:
-			List<ZipEntry> zipEntries = new ArrayList<ZipEntry>(1);
+			List<ZipEntry> zipEntries ;
 			String encoding = null;
 			try {
 				zipFile = new ZipFile(file, Charset.forName("UTF-8"));
@@ -356,7 +355,7 @@ public class SONStreamProcessor implements IStreamProcessor {
 	}
 
 private List<ZipEntry> getZipEntries(ZipFile zipFile) {
-	List<ZipEntry> zipEntries = new ArrayList<ZipEntry>();
+	List<ZipEntry> zipEntries = new ArrayList<ZipEntry>(1);
 	Enumeration<? extends ZipEntry> entries = zipFile.entries();
 	while(entries.hasMoreElements()) {
 		ZipEntry nextElement = entries.nextElement();
