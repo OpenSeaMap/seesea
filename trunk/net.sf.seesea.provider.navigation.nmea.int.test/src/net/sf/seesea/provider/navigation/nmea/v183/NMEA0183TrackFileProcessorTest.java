@@ -1,6 +1,8 @@
 package net.sf.seesea.provider.navigation.nmea.v183;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -10,7 +12,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.emf.common.util.EList;
 import org.junit.Test;
 
 import net.sf.seesea.model.core.geo.Depth;
@@ -19,7 +20,6 @@ import net.sf.seesea.model.core.geo.Latitude;
 import net.sf.seesea.model.core.geo.Longitude;
 import net.sf.seesea.model.core.physx.CompositeMeasurement;
 import net.sf.seesea.model.core.physx.Heading;
-import net.sf.seesea.model.core.physx.HeadingType;
 import net.sf.seesea.model.core.physx.Measurement;
 import net.sf.seesea.model.core.physx.RelativeSpeed;
 import net.sf.seesea.model.core.physx.SpeedUnit;
