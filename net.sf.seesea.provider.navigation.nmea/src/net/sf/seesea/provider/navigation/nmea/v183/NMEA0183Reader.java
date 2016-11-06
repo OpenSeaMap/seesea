@@ -1061,6 +1061,8 @@ public class NMEA0183Reader implements IDataReader {
 		} else {
 			windMeasurement.setSpeedUnit(SpeedUnit.UNKNOWN);
 		}
+		windMeasurement.setValid(true);
+		
 		setSensorID(nmeaContent[0], windMeasurement);
 		return windMeasurement;
 	}

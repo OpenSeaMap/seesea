@@ -26,6 +26,8 @@ import net.sf.seesea.model.core.physx.Speed;
 import net.sf.seesea.model.core.physx.SpeedType;
 import net.sf.seesea.model.core.physx.SpeedUnit;
 import net.sf.seesea.model.core.physx.Time;
+import net.sf.seesea.model.core.weather.Reference;
+import net.sf.seesea.model.core.weather.WindMeasurement;
 import net.sf.seesea.provider.navigation.nmea.NMEA0183Activator;
 
 public class NMEA0183ReaderTest {
@@ -122,7 +124,22 @@ public class NMEA0183ReaderTest {
 		assertEquals(34.83,depth2.getDepth(), 0.000001);
 		
 	}
-	
+
+	@Test
+	public void testReaderMWV() throws IOException {
+		NMEA0183Reader nmea0183Reader = new NMEA0183Reader();
+		List<Measurement> results = new ArrayList<Measurement>();
+		List<Measurement> extractMeasurementsFromNMEA = nmea0183Reader.extractMeasurementsFromNMEA("03:46:37.560;B;$WIMWV,6.4,R,9.4,S,A*31", results);
+		WindMeasurement windMeasurement = (WindMeasurement) extractMeasurementsFromNMEA.get(0);
+		assertEquals(Reference.RELATIVE,windMeasurement.getReference());
+		assertEquals(6.4,windMeasurement.getAngle(), 0.000001);
+
+		assertEquals(9.4,windMeasurement.getSpeed(), 0.000001);
+		assertEquals(SpeedUnit.UNKNOWN,windMeasurement.getSpeedUnit());
+		assertTrue(windMeasurement.isValid());
+		
+	}
+
 	
 	
 	
