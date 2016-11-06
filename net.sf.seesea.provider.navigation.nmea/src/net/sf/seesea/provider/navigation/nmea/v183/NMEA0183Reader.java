@@ -305,6 +305,7 @@ public class NMEA0183Reader implements IDataReader {
 				if(useLastDateFromAnotherSentenceGGA) {
 					lastDate = time.getTime();
 				}
+				return time;
 			}
 		} catch (IllegalArgumentException e) {
 			Logger.getLogger(getClass()).error("Failed to parse timestamp " + nmeaContent[0]);
@@ -998,6 +999,7 @@ public class NMEA0183Reader implements IDataReader {
 			Heading heading = physxFactory.createHeading();
 			heading.setHeadingType(HeadingType.TRUE);
 			heading.setDegrees(Double.parseDouble(nmeaContent[1]));
+			heading.setValid(true);
 			measurements.add(heading);
 			setSensorID(nmeaContent[0], heading);
 		}
@@ -1005,6 +1007,7 @@ public class NMEA0183Reader implements IDataReader {
 			Heading heading = physxFactory.createHeading();
 			heading.setHeadingType(HeadingType.MAGNETIC);
 			heading.setDegrees(Double.parseDouble(nmeaContent[3]));
+			heading.setValid(true);
 			measurements.add(heading);
 			setSensorID(nmeaContent[0], heading);
 		}
@@ -1015,10 +1018,12 @@ public class NMEA0183Reader implements IDataReader {
 				Speed speed = PhysxFactory.eINSTANCE.createSpeed();
 				speed.setSpeed(Double.parseDouble(nmeaContent[5]));
 				speed.setSpeedUnit(SpeedUnit.N);
+				speed.setValid(true);
 				RelativeSpeed relativeSpeed = physxFactory
 						.createRelativeSpeed();
 				relativeSpeed.setKey(SpeedType.SPEEDTHOUGHWATER);
 				relativeSpeed.setValue(speed);
+				relativeSpeed.setValid(true);
 				setSensorID(nmeaContent[0], relativeSpeed);
 				measurements.add(relativeSpeed);
 				return measurement;
@@ -1026,10 +1031,12 @@ public class NMEA0183Reader implements IDataReader {
 				Speed speed = PhysxFactory.eINSTANCE.createSpeed();
 				speed.setSpeed(Double.parseDouble(nmeaContent[7]));
 				speed.setSpeedUnit(SpeedUnit.K);
+				speed.setValid(true);
 				RelativeSpeed relativeSpeed = physxFactory
 						.createRelativeSpeed();
 				relativeSpeed.setKey(SpeedType.SPEEDTHOUGHWATER);
 				relativeSpeed.setValue(speed);
+				relativeSpeed.setValid(true);
 				setSensorID(nmeaContent[0], relativeSpeed);
 				measurements.add(relativeSpeed);
 				return measurement;

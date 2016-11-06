@@ -202,5 +202,50 @@ public class NMEA0183ReaderTest {
 		assertTrue(temperature.isValid());
 	}
 
+	@Test
+	public void testReaderVHWOk() throws IOException {
+		NMEA0183Reader nmea0183Reader = new NMEA0183Reader();
+		List<Measurement> results = new ArrayList<Measurement>();
+		List<Measurement> extractMeasurementsFromNMEA = nmea0183Reader.extractMeasurementsFromNMEA("04:00:10.100;B;$IIVHW,196.0,T,189.0,M,2.51,N,4.65,K*5A", results);
+		Measurement h1 = extractMeasurementsFromNMEA.get(0);
+		assertTrue(h1 instanceof CompositeMeasurement);
+		CompositeMeasurement compositeMeasurement = (CompositeMeasurement) h1;
+		List<Measurement> measurements = compositeMeasurement.getMeasurements();
+		assertEquals(3, measurements.size());
+		Heading heading1 = (Heading) measurements.get(0);
+		assertEquals(196.0, heading1.getDegrees(), 0.000001);
+		assertEquals("II", heading1.getSensorID());
+		assertEquals(HeadingType.TRUE, heading1.getHeadingType());
+		assertTrue(heading1.isValid());
+
+		Heading heading2 = (Heading) measurements.get(1);
+		assertEquals(189.0, heading2.getDegrees(), 0.000001);
+		assertEquals("II", heading2.getSensorID());
+		assertEquals(HeadingType.MAGNETIC, heading2.getHeadingType());
+		assertTrue(heading2.isValid());
+
+		RelativeSpeed relativeSpead1 = (RelativeSpeed) measurements.get(2);
+		assertEquals(SpeedType.SPEEDTHOUGHWATER, relativeSpead1.getKey());
+		assertEquals("II",relativeSpead1.getSensorID());
+		assertNotNull(relativeSpead1.getValue());
+		Speed speed = relativeSpead1.getValue();
+		
+		assertEquals(2.51,speed.getSpeed(), 0.000001);
+		assertEquals(SpeedUnit.N,speed.getSpeedUnit());
+		assertTrue(speed.isValid());
+
+		}
+	
+	@Test
+	public void testReaderZDAOk() throws IOException {
+		NMEA0183Reader nmea0183Reader = new NMEA0183Reader();
+		List<Measurement> results = new ArrayList<Measurement>();
+		List<Measurement> extractMeasurementsFromNMEA = nmea0183Reader.extractMeasurementsFromNMEA("$GPZDA,172809.456,12,07,1996,00,00*57", results);
+		Time time = (Time) extractMeasurementsFromNMEA.get(0);
+		assertEquals("UTC",time.getTimezone());
+		assertEquals(837192489000L, time.getTime().getTime());
+	}
+
 	
 }
+
