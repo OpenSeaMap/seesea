@@ -140,7 +140,41 @@ public class NMEA0183ReaderTest {
 		
 	}
 
+	@Test
+	public void testReaderHDMOK() throws IOException {
+		NMEA0183Reader nmea0183Reader = new NMEA0183Reader();
+		List<Measurement> results = new ArrayList<Measurement>();
+		List<Measurement> extractMeasurementsFromNMEA = nmea0183Reader.extractMeasurementsFromNMEA("04:00:03.657;B;$IIHDM,194.0,M*2E", results);
+		Heading heading = (Heading) extractMeasurementsFromNMEA.get(0);
+		assertEquals(HeadingType.MAGNETIC,heading.getHeadingType());
+		assertEquals(194.0,heading.getDegrees(), 0.000001);
+		assertEquals("II",heading.getSensorID());
+		assertTrue(heading.isValid());
+	}
+
+
+	@Test
+	public void testReaderHDMWrongIdentifier() throws IOException {
+		NMEA0183Reader nmea0183Reader = new NMEA0183Reader();
+		List<Measurement> results = new ArrayList<Measurement>();
+		List<Measurement> extractMeasurementsFromNMEA = nmea0183Reader.extractMeasurementsFromNMEA("04:00:03.657;B;$IIHDM,194.0,T*37", results);
+		Heading heading2 = (Heading) extractMeasurementsFromNMEA.get(0);
+		assertEquals(HeadingType.UNKNOWN,heading2.getHeadingType());
+		assertEquals(194.0,heading2.getDegrees(), 0.000001);
+		assertFalse(heading2.isValid());
+	}
 	
-	
+
+	@Test
+	public void testReaderHDMEmptyValue() throws IOException {
+		NMEA0183Reader nmea0183Reader = new NMEA0183Reader();
+		List<Measurement> results = new ArrayList<Measurement>();
+		List<Measurement> extractMeasurementsFromNMEA = nmea0183Reader.extractMeasurementsFromNMEA("04:00:03.657;B;$IIHDM,,M*0C", results);
+		Heading heading2 = (Heading) extractMeasurementsFromNMEA.get(0);
+		assertEquals(HeadingType.MAGNETIC,heading2.getHeadingType());
+		assertEquals(0.0,heading2.getDegrees(), 0.000001);
+		assertFalse(heading2.isValid());
+	}
+
 	
 }
