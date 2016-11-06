@@ -875,12 +875,14 @@ public class NMEA0183Reader implements IDataReader {
 			heading.setHeadingType(HeadingType.TRUE);
 			heading.setDegrees(Double.parseDouble(nmeaContent[1]));
 			measurement.getMeasurements().add(heading);
+			heading.setValid(true);
 			setSensorID(nmeaContent[0], heading);
 		}
 		if (nmeaContent[3].length() > 0) {
 			Heading heading = physxFactory.createHeading();
 			heading.setHeadingType(HeadingType.MAGNETIC);
 			heading.setDegrees(Double.parseDouble(nmeaContent[3]));
+			heading.setValid(true);
 			measurement.getMeasurements().add(heading);
 			setSensorID(nmeaContent[0], heading);
 		}
@@ -888,10 +890,12 @@ public class NMEA0183Reader implements IDataReader {
 			Speed speed = PhysxFactory.eINSTANCE.createSpeed();
 			speed.setSpeed(Double.parseDouble(nmeaContent[5]));
 			speed.setSpeedUnit(SpeedUnit.N);
+			speed.setValid(true);
 
 			RelativeSpeed relativeSpeed = physxFactory.createRelativeSpeed();
 			relativeSpeed.setKey(SpeedType.COG);
 			relativeSpeed.setValue(speed);
+			relativeSpeed.setValid(true);
 			setSensorID(nmeaContent[0], relativeSpeed);
 			measurement.getMeasurements().add(relativeSpeed);
 		}
