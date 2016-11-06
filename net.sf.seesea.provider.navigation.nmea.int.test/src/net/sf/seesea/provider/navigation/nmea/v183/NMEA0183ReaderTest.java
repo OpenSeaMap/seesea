@@ -1,6 +1,10 @@
 package net.sf.seesea.provider.navigation.nmea.v183;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -11,13 +15,14 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.emf.common.util.EList;
 import org.junit.Test;
 
 import net.sf.seesea.model.core.geo.Depth;
 import net.sf.seesea.model.core.geo.GNSSMeasuredPosition;
 import net.sf.seesea.model.core.geo.RelativeDepthMeasurementPosition;
 import net.sf.seesea.model.core.physx.CompositeMeasurement;
+import net.sf.seesea.model.core.physx.Distance;
+import net.sf.seesea.model.core.physx.DistanceType;
 import net.sf.seesea.model.core.physx.HandOrientation;
 import net.sf.seesea.model.core.physx.Heading;
 import net.sf.seesea.model.core.physx.HeadingType;
@@ -60,18 +65,6 @@ public class NMEA0183ReaderTest {
 		List<Measurement> measurements2 = compositeMeasurement.getMeasurements();
 		assertEquals(4, measurements2.size());
 		
-		Measurement m3 = measurements2.get(0);
-		GNSSMeasuredPosition gnssMeasuredPosition = (GNSSMeasuredPosition) m3;
-
-		Measurement m4 = measurements2.get(1);
-		RelativeSpeed relativeSpeed = (RelativeSpeed) m4;
-
-		Measurement m5 = measurements2.get(2);
-		Heading heading = (Heading) m5;
-
-		Measurement m6 = measurements2.get(3);
-		Time time = (Time) m6;
-
 		assertEquals(6228, measurements.size());
 	}
 
@@ -259,5 +252,35 @@ public class NMEA0183ReaderTest {
 		assertEquals(SpeedUnit.N, relativeWind.getSpeedUnit());
 	}
 
+	@Test
+	public void testReaderGGAOk() throws IOException {
+		
+		NMEA0183Reader nmea0183Reader = new NMEA0183Reader();
+		List<Measurement> results = new ArrayList<Measurement>();
+		List<Measurement> extractMeasurementsFromNMEA = nmea0183Reader.extractMeasurementsFromNMEA("$GPGGA,210853,3919.897,S,00310.223,W,2,07,1.5,0.0,M,,M,,*5B", results);
+		GNSSMeasuredPosition position = (GNSSMeasuredPosition) extractMeasurementsFromNMEA.get(0);
+		assertEquals(-39.33161666666667, position.getLatitude().getDecimalDegree(), 0.00001);
+		assertEquals(-3.1703833333333336, position.getLongitude().getDecimalDegree(), 0.00001);
+		String string = position.getAugmentation().get(0);
+		assertTrue(string.equals("DGPS"));
+		
+//		assertEquals(84.0, relativeWind.getDegrees(), 0.00001);
+//		assertEquals(SpeedUnit.N, relativeWind.getSpeedUnit());
+	}
+
+	@Test
+	public void testReaderVLWOk() throws IOException {
+		NMEA0183Reader nmea0183Reader = new NMEA0183Reader();
+		List<Measurement> results = new ArrayList<Measurement>();
+		List<Measurement> extractMeasurementsFromNMEA = nmea0183Reader.extractMeasurementsFromNMEA("$IIVLW,7803.2,N,0.00,N*43", results);
+		Distance distance = (Distance) extractMeasurementsFromNMEA.get(0);
+		assertEquals(DistanceType.TOTAL, distance.getDistanceType());
+		assertEquals(7803.2, distance.getValue(), 0.00001);
+	}
+
+	
+
+	
+	//GPGGA,210853,9119.897,S,00310.223,W,2,07,1.5,0.0,M,,M,,
 }
 
