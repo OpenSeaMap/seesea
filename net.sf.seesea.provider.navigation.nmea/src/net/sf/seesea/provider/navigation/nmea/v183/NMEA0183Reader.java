@@ -412,18 +412,32 @@ public class NMEA0183Reader implements IDataReader {
 	}
 
 	private Heading HDM_HeadingCompass(String[] nmeaContent) {
-		try {
-			Heading heading = PhysxFactory.eINSTANCE.createHeading();
-			if (!nmeaContent[1].isEmpty()) {
-				heading.setHeadingType(HeadingType.MAGNETIC);
-				heading.setDegrees(Double.parseDouble(nmeaContent[1]));
-			}
+		Heading heading = PhysxFactory.eINSTANCE.createHeading();
+		if(nmeaContent.length < 3) {
+			heading.setValid(false);
 			return heading;
-
-		} catch (NumberFormatException e) {
-			// nothing to do. fail silently
-		}
-		return null;
+		} else {
+//			if(nmeaContent[1].isEmpty() || nmeaContent[2].isEmpty()) {
+//				heading.setValid(false);
+//				return heading;
+//			} else {
+			if(nmeaContent[2].toUpperCase().equals("M")) {
+				heading.setHeadingType(HeadingType.MAGNETIC);
+				heading.setValid(true);
+			} else {
+				heading.setHeadingType(HeadingType.UNKNOWN);
+				heading.setValid(false);
+			}
+				try {
+					double headingValue = Double.parseDouble(nmeaContent[1]);
+					heading.setDegrees(headingValue);
+				} catch (NumberFormatException e) {
+					heading.setValid(false);
+				}
+				setSensorID(nmeaContent[0], heading);
+				return heading;
+			}
+//		}
 	}
 
 	private List<Measurement> VLW_TotalTrip(String[] nmeaContent) {
