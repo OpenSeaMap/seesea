@@ -18,10 +18,12 @@ import net.sf.seesea.model.core.geo.Depth;
 import net.sf.seesea.model.core.geo.GNSSMeasuredPosition;
 import net.sf.seesea.model.core.geo.RelativeDepthMeasurementPosition;
 import net.sf.seesea.model.core.physx.CompositeMeasurement;
+import net.sf.seesea.model.core.physx.HandOrientation;
 import net.sf.seesea.model.core.physx.Heading;
 import net.sf.seesea.model.core.physx.HeadingType;
 import net.sf.seesea.model.core.physx.Measurement;
 import net.sf.seesea.model.core.physx.RelativeSpeed;
+import net.sf.seesea.model.core.physx.RelativeWind;
 import net.sf.seesea.model.core.physx.Speed;
 import net.sf.seesea.model.core.physx.SpeedType;
 import net.sf.seesea.model.core.physx.SpeedUnit;
@@ -246,6 +248,16 @@ public class NMEA0183ReaderTest {
 		assertEquals(837192489000L, time.getTime().getTime());
 	}
 
-	
+	@Test
+	public void testReaderVWROk() throws IOException {
+		NMEA0183Reader nmea0183Reader = new NMEA0183Reader();
+		List<Measurement> results = new ArrayList<Measurement>();
+		List<Measurement> extractMeasurementsFromNMEA = nmea0183Reader.extractMeasurementsFromNMEA("$IIVWR,084.0,R,10.4,N,5.4,M,19.3,K*4A", results);
+		RelativeWind relativeWind = (RelativeWind) extractMeasurementsFromNMEA.get(0);
+		assertEquals(HandOrientation.RIGHT, relativeWind.getBowOrientation());
+		assertEquals(84.0, relativeWind.getDegrees(), 0.00001);
+		assertEquals(SpeedUnit.N, relativeWind.getSpeedUnit());
+	}
+
 }
 
