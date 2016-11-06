@@ -25,6 +25,8 @@ import net.sf.seesea.model.core.physx.RelativeSpeed;
 import net.sf.seesea.model.core.physx.Speed;
 import net.sf.seesea.model.core.physx.SpeedType;
 import net.sf.seesea.model.core.physx.SpeedUnit;
+import net.sf.seesea.model.core.physx.Temperature;
+import net.sf.seesea.model.core.physx.TemperatureUnit;
 import net.sf.seesea.model.core.physx.Time;
 import net.sf.seesea.model.core.weather.Reference;
 import net.sf.seesea.model.core.weather.WindMeasurement;
@@ -174,6 +176,30 @@ public class NMEA0183ReaderTest {
 		assertEquals(HeadingType.MAGNETIC,heading2.getHeadingType());
 		assertEquals(0.0,heading2.getDegrees(), 0.000001);
 		assertFalse(heading2.isValid());
+	}
+
+	@Test
+	public void testReaderMTWOkCelcius() throws IOException {
+		NMEA0183Reader nmea0183Reader = new NMEA0183Reader();
+		List<Measurement> results = new ArrayList<Measurement>();
+		List<Measurement> extractMeasurementsFromNMEA = nmea0183Reader.extractMeasurementsFromNMEA("04:00:11.060;B;$IIMTW,14.9,C*1F", results);
+		Temperature temperature = (Temperature) extractMeasurementsFromNMEA.get(0);
+		assertEquals(TemperatureUnit.CELSIUS,temperature.getUnit());
+		assertEquals(14.9,temperature.getValue(), 0.00001);
+		assertEquals("II",temperature.getSensorID());
+		assertTrue(temperature.isValid());
+	}
+
+	@Test
+	public void testReaderMTWOkFahrenheit() throws IOException {
+		NMEA0183Reader nmea0183Reader = new NMEA0183Reader();
+		List<Measurement> results = new ArrayList<Measurement>();
+		List<Measurement> extractMeasurementsFromNMEA = nmea0183Reader.extractMeasurementsFromNMEA("04:00:11.060;B;$IIMTW,14.9,F*1A", results);
+		Temperature temperature = (Temperature) extractMeasurementsFromNMEA.get(0);
+		assertEquals(TemperatureUnit.FAHRENHEIT,temperature.getUnit());
+		assertEquals(14.9,temperature.getValue(), 0.00001);
+		assertEquals("II",temperature.getSensorID());
+		assertTrue(temperature.isValid());
 	}
 
 	
