@@ -233,25 +233,30 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 						}
 					}
 
-					Statement orderStatement = connection.createStatement();
 
 					ResultSet singleUserTrackFiles = null;
 					if (preprocessed) {
-						singleUserTrackFiles = orderStatement.executeQuery(
+						PreparedStatement userTracksStatement = connection.prepareStatement(
 								"SELECT track_id, filetype, compression, file_ref, vesselconfigid FROM user_tracks  " + //$NON-NLS-1$
-										"WHERE (user_tracks.user_name = '" + user + "' OR user_tracks.user_name = '" //$NON-NLS-1$ //$NON-NLS-2$
-										+ sha1Username + "')" + //$NON-NLS-1$
-										"AND upload_state = '" + ProcessingState.PREPROCESSED.ordinal() + "' " + //$NON-NLS-1$ //$NON-NLS-2$
-										"AND containertrack IS NULL " + //$NON-NLS-1$
-										"AND track_id NOT IN (SELECT containertrack FROM user_tracks WHERE containertrack IS NOT NULL)"); //$NON-NLS-1$
+								"WHERE (user_tracks.user_name = ? OR user_tracks.user_name = ?) "+ 
+								"AND upload_state = ? " + //$NON-NLS-1$ //$NON-NLS-2$
+								"AND containertrack IS NULL " + //$NON-NLS-1$
+								"AND track_id NOT IN (SELECT containertrack FROM user_tracks WHERE containertrack IS NOT NULL)"); //$NON-NLS-1$
+						userTracksStatement.setString(1, user);
+						userTracksStatement.setString(2, sha1Username);
+						userTracksStatement.setInt(3, ProcessingState.PREPROCESSED.getIndex());
+						singleUserTrackFiles = userTracksStatement.executeQuery();
 					} else {
-						singleUserTrackFiles = orderStatement.executeQuery(
+						PreparedStatement userTracksStatement = connection.prepareStatement(
 								"SELECT track_id, filetype, compression, file_ref, vesselconfigid FROM user_tracks " + //$NON-NLS-1$
-										"WHERE (user_tracks.user_name = '" + user + "' OR user_tracks.user_name = '" //$NON-NLS-1$ //$NON-NLS-2$
-										+ sha1Username + "')" + //$NON-NLS-1$
-										"AND upload_state = '" + ProcessingState.FILE_PROCESSED.ordinal() + "' " + //$NON-NLS-1$ //$NON-NLS-2$
+										"WHERE (user_tracks.user_name = ? OR user_tracks.user_name = ?) " + //$NON-NLS-1$
+										"AND upload_state = ? " +
 										"AND containertrack IS NULL " + //$NON-NLS-1$
 										"AND track_id NOT IN (SELECT containertrack FROM user_tracks WHERE containertrack IS NOT NULL)"); //$NON-NLS-1$
+						userTracksStatement.setString(1, user);
+						userTracksStatement.setString(2, sha1Username);
+						userTracksStatement.setInt(3, ProcessingState.FILE_PROCESSED.getIndex());
+						singleUserTrackFiles = userTracksStatement.executeQuery();
 					}
 
 					while (singleUserTrackFiles.next()) {
@@ -313,27 +318,33 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 						}
 					}
 
-					orderStatement = connection.createStatement();
-					ResultSet mutliTrackFiles = orderStatement
-							.executeQuery("SELECT track_id, filetype, compression, vesselconfigid FROM user_tracks " + //$NON-NLS-1$
-									"WHERE (user_name = '" + user + "' OR user_name = '" + sha1Username + "')" + //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-									"AND upload_state = '" + ProcessingState.PREPROCESSED.ordinal() + "' " + //$NON-NLS-1$ //$NON-NLS-2$
-									"AND containertrack IS NULL " + //$NON-NLS-1$
-									"AND track_id IN (SELECT containertrack FROM user_tracks WHERE containertrack IS NOT NULL)"); //$NON-NLS-1$
+					PreparedStatement containerTrackUserStatement = connection.prepareStatement(
+							"SELECT track_id, filetype, compression, vesselconfigid FROM user_tracks " + //$NON-NLS-1$
+							"WHERE (user_name = ? OR user_name = ?) " + //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+							"AND upload_state = ? " + //$NON-NLS-1$ //$NON-NLS-2$
+							"AND containertrack IS NULL " + //$NON-NLS-1$
+							"AND track_id IN (SELECT containertrack FROM user_tracks WHERE containertrack IS NOT NULL)"); //$NON-NLS-1$
+					containerTrackUserStatement.setString(1, user);
+					containerTrackUserStatement.setString(2, sha1Username);
+					containerTrackUserStatement.setInt(3, ProcessingState.PREPROCESSED.getIndex());
+					ResultSet mutliTrackFiles = containerTrackUserStatement.executeQuery();
 					while (mutliTrackFiles.next()) {
 						long id = mutliTrackFiles.getLong("track_id"); //$NON-NLS-1$
 						String trackFile = basedir + "/" //$NON-NLS-1$
 								+ format.format((id / 100) * 100) + "/" + id + ".dat"; //$NON-NLS-1$ //$NON-NLS-2$
 						String compression = mutliTrackFiles.getString("compression"); //$NON-NLS-1$
 						Long vesselConfigId = singleUserTrackFiles.getLong("vesselconfigid"); //$NON-NLS-1$
-						Statement compressedFilesStatement = connection.createStatement();
-						ResultSet compressedTracks = compressedFilesStatement
-
-						.executeQuery("SELECT track_id, filetype, compression, file_ref FROM user_tracks " + //$NON-NLS-1$
-								"WHERE (user_name = '" + user + "' OR user_name = '" + sha1Username + "')" + //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-								"AND upload_state = '" + ProcessingState.PREPROCESSED.ordinal() + "' " + //$NON-NLS-1$ //$NON-NLS-2$
-								"AND containertrack = '" + id + "' " + //$NON-NLS-1$ //$NON-NLS-2$
+						PreparedStatement compressedFilesStatement = connection.prepareStatement(
+								"SELECT track_id, filetype, compression, file_ref FROM user_tracks " + //$NON-NLS-1$
+								"WHERE (user_name = ? OR user_name = ?) " + //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+								"AND upload_state = ? " + //$NON-NLS-1$ //$NON-NLS-2$
+								"AND containertrack = ? " + //$NON-NLS-1$ //$NON-NLS-2$
 								"ORDER BY track_id"); //$NON-NLS-1$
+						compressedFilesStatement.setString(1, user);
+						compressedFilesStatement.setString(2, sha1Username);
+						compressedFilesStatement.setInt(3, ProcessingState.PREPROCESSED.getIndex());
+						compressedFilesStatement.setLong(4, id);
+						ResultSet compressedTracks = compressedFilesStatement.executeQuery();
 						while (compressedTracks.next()) {
 							String uncompressedTrackFile = compressedTracks.getString("file_ref"); //$NON-NLS-1$
 							String mimeType = compressedTracks.getString("filetype"); //$NON-NLS-1$
@@ -383,18 +394,6 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 						}
 
 					}
-
-					// TODO : process multiple files contained in another
-					// compressed file
-
-					// orderStatement = connection.createStatement();
-					// ResultSet userCompositeTrackFiles = orderStatement
-					// .executeQuery("SELECT track_id, filetype, compression
-					// FROM user_tracks WHERE user_name = '" + user + "' AND
-					// upload_state = '" +
-					// ProcessingState.PREPROCESSED.ordinal() + "' AND
-					// containertrack IS NULL"); //$NON-NLS-1$ //$NON-NLS-2$
-					// //$NON-NLS-3$
 				}
 				if (!orderedFiles.isEmpty()) {
 					user2Tracks.put(user, orderedFiles);
