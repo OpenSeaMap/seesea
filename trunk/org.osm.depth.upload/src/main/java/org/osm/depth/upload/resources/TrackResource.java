@@ -373,6 +373,7 @@ public class TrackResource {
 	@GET
 	@RolesAllowed("ADMIN")
 	@Path("{id}/download")
+	@Produces(MediaType.APPLICATION_OCTET_STREAM)
 	public Response download(@PathParam(value = "id") String id) {
 		Context initContext;
 		try {
