@@ -8,4 +8,5 @@
     <reference name="ContentDetector" interface="net.sf.seesea.content.api.IContentDetector" cardinality="0..1" policy="dynamic" bind="bindContentDetector" unbind="unbindContentDetector"/>
     <reference name="FilterEngine" interface="net.sf.seesea.data.postprocessing.process.IFilterEngine" cardinality="0..1" policy="dynamic" bind="bindFilterEngine" unbind="unbindFilterEngine"/>
     <reference name="StreamProcessor" interface="net.sf.seesea.contour.api.IContourLineGeneration" cardinality="0..1" policy="dynamic" bind="bindStreamProcessor" unbind="unbindStreamProcessor"/>
+    <reference name="DepthSync" interface="net.sf.seesea.data.sync.api.IDepthDataSync" cardinality="0..1" policy="dynamic" bind="bindDepthSync" unbind="unbindDepthSync"/>
 </scr:component>
