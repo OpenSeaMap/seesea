@@ -11,10 +11,13 @@ import net.sf.seesea.content.api.ContentDetectionException;
 import net.sf.seesea.content.api.IContentDetector;
 import net.sf.seesea.contour.api.IContourLineGeneration;
 import net.sf.seesea.data.postprocessing.process.IFilterEngine;
+import net.sf.seesea.data.sync.api.IDepthDataSync;
 
 @Component
 public class UploadedData2Contours implements IUploadedData2Contours {
 
+	private AtomicReference<IDepthDataSync> dataSync = new AtomicReference<IDepthDataSync>();
+	
 	private AtomicReference<IContentDetector> contentDetector = new AtomicReference<IContentDetector>();
 	
 	private AtomicReference<IFilterEngine> filterEngine = new AtomicReference<IFilterEngine>();
@@ -22,6 +25,11 @@ public class UploadedData2Contours implements IUploadedData2Contours {
 	private AtomicReference<IContourLineGeneration> contourLineGeneration = new AtomicReference<IContourLineGeneration>();
 	
 	public void processData() {
+		IDepthDataSync depthDataSync = dataSync.get();
+		if(depthDataSync != null) {
+			depthDataSync.downloadFiles();
+		}
+		
 		IContentDetector contentDetector2 = contentDetector.get();
 		if(contentDetector2 != null) {
 			try {
@@ -65,6 +73,15 @@ public class UploadedData2Contours implements IUploadedData2Contours {
 
 	public void unbindStreamProcessor(IContourLineGeneration contourLineGeneration) {
 		this.contourLineGeneration.compareAndSet(null, contourLineGeneration);
+	}
+
+	@Reference(cardinality = ReferenceCardinality.OPTIONAL, policy = ReferencePolicy.DYNAMIC)
+	public void bindDepthSync(IDepthDataSync contourLineGeneration) {
+		this.dataSync.set(contourLineGeneration);
+	}
+
+	public void unbindDepthSync(IDepthDataSync contourLineGeneration) {
+		this.dataSync.compareAndSet(null, contourLineGeneration);
 	}
 
 }
