@@ -37,5 +37,9 @@ public enum ProcessingState {
 	private ProcessingState(int i) {
 		this.i = i;
 	}
+
+	public int getIndex() {
+		return i;
+	}
 	
 }
