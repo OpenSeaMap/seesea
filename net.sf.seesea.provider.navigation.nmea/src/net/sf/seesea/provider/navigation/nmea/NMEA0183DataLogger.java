@@ -31,6 +31,7 @@ package net.sf.seesea.provider.navigation.nmea;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLDecoder;
@@ -104,7 +105,7 @@ public class NMEA0183DataLogger implements RawDataEventListener, IDataLogger {
 			loggingDirectory = (String) properties.get("loggingDirectory"); //$NON-NLS-1$
 			rotateFileName = (Boolean) properties.get("rotateFileName"); //$NON-NLS-1$
 			URL url = new URL(loggingDirectory);
-			File directory = new File(URLDecoder.decode(url.getFile())); //$NON-NLS-1$
+			File directory = new File(URLDecoder.decode(url.getFile(), java.nio.charset.StandardCharsets.ISO_8859_1.toString())); //$NON-NLS-1$
 			if (!directory.exists()) {
 				directory.mkdirs();
 			}
@@ -255,10 +256,10 @@ public class NMEA0183DataLogger implements RawDataEventListener, IDataLogger {
 		URL url;
 		try {
 			url = new URL(loggingDirectory);
-			File directory = new File(URLDecoder.decode(url.getFile()));
+			File directory = new File(URLDecoder.decode(url.getFile(), java.nio.charset.StandardCharsets.ISO_8859_1.toString()));
 			List<File> file2Upload = Arrays.asList(directory.listFiles());
 			return file2Upload;
-		} catch (MalformedURLException e) {
+		} catch (MalformedURLException | UnsupportedEncodingException e) {
 			return new ArrayList<File>();
 		}
 	}
@@ -271,7 +272,7 @@ public class NMEA0183DataLogger implements RawDataEventListener, IDataLogger {
 		URL url;
 		try {
 			url = new URL(loggingDirectory);
-			File directory = new File(URLDecoder.decode(url.getFile()));
+			File directory = new File(URLDecoder.decode(url.getFile(), java.nio.charset.StandardCharsets.ISO_8859_1.toString()));
 			File parentDir = directory.getParentFile();
 			File archiveDir = new File(parentDir, "archive");
 			archiveDir.mkdir();
@@ -300,7 +301,7 @@ public class NMEA0183DataLogger implements RawDataEventListener, IDataLogger {
 				}
 			}
 			return multiStatus;
-		} catch (MalformedURLException e) {
+		} catch (MalformedURLException | UnsupportedEncodingException e) {
 			return new Status(IStatus.ERROR, NMEA0183Activator.PLUGIN_ID,
 					"Logging directory not an URL", e);
 		}

@@ -27,12 +27,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.data.sync;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -194,7 +191,7 @@ public class HttpDepthDataSync implements IDepthDataSync {
 		password = (String) config.get("password");
 		checkSSLCertificate = Boolean.valueOf("checkSSLCertificate");
 		apiURL = (String) config.get("apiURL"); // "https://depth.openseamap.org:8443";
-		URL url = new URL(apiURL);
+//		URL url = new URL(apiURL);
 
 		storageLocation = new File((String) config.get("storageLocation"));
 		if (!storageLocation.exists()) {
@@ -242,21 +239,15 @@ public class HttpDepthDataSync implements IDepthDataSync {
 	}
 
 	public void downloadSQL() {
-		String s;
 		File sqlFile = new File(storageLocation, "dumpAll.sql.gz");
 
 		try {
 			URL u = new URL("http://depth.openseamap.org/dumpAll.sql.gz");
 			try (InputStream is = u.openStream()) {
-				
-				BufferedReader d = new BufferedReader(new InputStreamReader(is));
-				
-				
 				FileOutputStream fos = new FileOutputStream(sqlFile);
 				IOUtils.copy(is, fos);
 				fos.flush();
 				fos.close();
-				
 			} catch (IOException ioe) {
 				Logger.getLogger(getClass()).error("Failed to read stream", ioe);
 			}

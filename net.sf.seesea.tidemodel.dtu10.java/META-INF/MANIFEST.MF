@@ -11,3 +11,4 @@ Import-Package: net.sf.seesea.waterlevel.ocean;version="[1.0.0,2.0.0)",
 Bundle-ActivationPolicy: lazy
 Service-Component: OSGI-INF/net.sf.seesea.tidemodel.dtu10.java.DTU.xml,
  OSGI-INF/net.sf.seesea.tidemodel.dtu10.java.DTUTidePrediction.xml
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

@@ -32,13 +32,10 @@ package net.sf.seesea.model.core.data;
 
 import net.sf.seesea.model.core.ModelObject;
 import net.sf.seesea.model.core.geo.MeasuredPosition3D;
-import net.sf.seesea.model.core.geo.GeoPosition3D;
-
 import net.sf.seesea.model.core.physx.SatellitesVisible;
 import net.sf.seesea.model.core.physx.Temperature;
 
 import net.sf.seesea.model.core.weather.WindMeasurement;
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->

@@ -117,6 +117,9 @@ public class NMEA0183Writer implements IDataWriter {
 				case TRANSDUCER:
 					message.append("DBS,"); //$NON-NLS-1$
 					break;
+				default:
+					message.append("DBS,"); //$NON-NLS-1$
+					break;
 				}
 				double depthValue = depth.getDepth();
 				message.append(singleDigitFormat.format(depthValue * 3.2808399));

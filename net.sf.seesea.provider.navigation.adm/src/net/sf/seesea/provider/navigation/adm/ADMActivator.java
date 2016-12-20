@@ -8,12 +8,12 @@ public class ADMActivator implements BundleActivator {
 
 	@Override
 	public void start(BundleContext context) throws Exception {
-		this.context = context;
+		ADMActivator.context = context;
 	}
 
 	@Override
 	public void stop(BundleContext context) throws Exception {
-		this.context = null;		
+		ADMActivator.context = null;		
 	}
 
 	public static BundleContext getContext() {

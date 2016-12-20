@@ -51,7 +51,7 @@ public class NMEA0183Activator implements BundleActivator {
 	 */
 	@Override
 	public void start(BundleContext context) throws Exception {
-		this.context = context;
+		NMEA0183Activator.context = context;
 	}
 
 	/*
@@ -60,7 +60,7 @@ public class NMEA0183Activator implements BundleActivator {
 	 */
 	@Override
 	public void stop(BundleContext context) throws Exception {
-		this.context = null;
+		NMEA0183Activator.context = null;
 	}
 
 	public static BundleContext getContext() {

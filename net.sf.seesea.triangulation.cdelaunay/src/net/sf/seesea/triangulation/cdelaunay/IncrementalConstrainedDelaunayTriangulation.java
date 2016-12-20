@@ -125,7 +125,7 @@ public class IncrementalConstrainedDelaunayTriangulation implements
 		long time = System.currentTimeMillis();
 		
 		if(holes != null) {
-			x : for (IPolygon polygon : holes) {
+			 for (IPolygon polygon : holes) {
 				List<IPoint> boundaryPoints = polygon.getPoints();
 				for (int i = 0; i < boundaryPoints.size() - 1; i++) {
 					IPoint point = boundaryPoints.get(i);

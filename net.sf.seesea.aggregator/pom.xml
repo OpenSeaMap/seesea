@@ -1,6 +1,5 @@
 <project>
   <modelVersion>4.0.0</modelVersion>
-  <groupId>net.sf.seesea</groupId>
   <artifactId>net.sf.seesea.aggregator</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>

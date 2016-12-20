@@ -2,15 +2,10 @@ package net.sf.seesea.content.tika.test;
 
 import org.easymock.EasyMock;
 import org.junit.*;
-import static org.junit.Assert.*;
-
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-
 import net.sf.seesea.content.api.ContentDetectionException;
 import net.sf.seesea.content.impl.ContentDetector;
 import net.sf.seesea.track.api.ITrackPersistence;

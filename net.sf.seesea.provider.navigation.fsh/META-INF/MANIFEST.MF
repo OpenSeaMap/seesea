@@ -12,3 +12,4 @@ Service-Component: OSGI-INF/net.sf.seesea.provider.navigation.fsh.FSHStreamProce
  OSGI-INF/net.sf.seesea.provider.navigation.fsh.FSHTrackFileProcessor.xml
 Import-Package: org.osgi.service.component.annotations
 Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

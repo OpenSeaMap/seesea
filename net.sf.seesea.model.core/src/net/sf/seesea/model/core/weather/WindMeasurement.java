@@ -32,8 +32,6 @@ package net.sf.seesea.model.core.weather;
 
 import net.sf.seesea.model.core.physx.Measurement;
 import net.sf.seesea.model.core.physx.Speed;
-import net.sf.seesea.model.core.physx.SpeedUnit;
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->

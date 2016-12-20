@@ -30,9 +30,6 @@ package net.sf.seesea.track.model;
 import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
-
-import net.sf.seesea.geometry.impl.Point3D;
 import net.sf.seesea.model.core.geo.GeoBoundingBox;
 import net.sf.seesea.model.core.geo.MeasuredPosition3D;
 import net.sf.seesea.track.api.data.CompressionType;

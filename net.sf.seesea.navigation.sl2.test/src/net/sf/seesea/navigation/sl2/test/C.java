@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.WindowConstants;
 
+@SuppressWarnings("unused")
 public class C {
 
 	private static final double RAD_CONVERSION = 180/Math.PI;

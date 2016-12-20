@@ -20,7 +20,6 @@ import net.sf.seesea.model.int1.buoysandbeacons.AbstractCommonBuoyBeacon;
 import net.sf.seesea.model.int1.buoysandbeacons.BuoyType;
 import net.sf.seesea.model.int1.buoysandbeacons.BuoysandbeaconsPackage;
 import net.sf.seesea.model.int1.buoysandbeacons.Topmark;
-import net.sf.seesea.model.int1.buoysandbeacons.TopmarkType;
 import net.sf.seesea.model.int1.lights.Color;
 import net.sf.seesea.model.int1.lights.Orientation;
 import net.sf.seesea.model.int1.lights.impl.LightCharacterImpl;
@@ -32,7 +31,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EDataTypeEList;
-import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 
 /**
  * <!-- begin-user-doc -->

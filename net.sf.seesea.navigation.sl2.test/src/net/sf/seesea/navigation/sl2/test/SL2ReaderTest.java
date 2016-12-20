@@ -1,11 +1,7 @@
 package net.sf.seesea.navigation.sl2.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
 
 import org.easymock.Capture;
@@ -14,8 +10,6 @@ import org.junit.Test;
 
 import net.sf.seesea.model.core.physx.Measurement;
 import net.sf.seesea.navigation.sl2.SL2Reader;
-import net.sf.seesea.navigation.sl2.SL2StreamProcessor;
-import net.sf.seesea.navigation.sl2.SL2TrackFileProcessor;
 import net.sf.seesea.track.api.IMeasurementListener;
 
 public class SL2ReaderTest {
@@ -25,7 +19,7 @@ public class SL2ReaderTest {
 	public void testReadNoData() {
 		SL2Reader sl2Reader = new SL2Reader();
 		IMeasurementListener measurementListener = EasyMock.createNiceMock(IMeasurementListener.class);
-		Capture<List<Measurement>> measurements = new Capture<List<Measurement>>();
+		Capture<List<Measurement>> measurements = Capture.<List<Measurement>>newInstance();
 		measurementListener.notify(EasyMock.capture(measurements));
 		sl2Reader.addMeasurementListener(measurementListener);
 		int[] data = new int[144];

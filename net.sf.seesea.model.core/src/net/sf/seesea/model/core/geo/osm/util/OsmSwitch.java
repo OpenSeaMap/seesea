@@ -30,8 +30,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.geo.osm.util;
 
-import java.util.List;
-
 import net.sf.seesea.model.core.ModelObject;
 import net.sf.seesea.model.core.geo.Chart;
 import net.sf.seesea.model.core.geo.NamedArtifact;
@@ -39,7 +37,6 @@ import net.sf.seesea.model.core.geo.NamedArtifact;
 import net.sf.seesea.model.core.geo.NavigationCompound;
 import net.sf.seesea.model.core.geo.osm.*;
 
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;

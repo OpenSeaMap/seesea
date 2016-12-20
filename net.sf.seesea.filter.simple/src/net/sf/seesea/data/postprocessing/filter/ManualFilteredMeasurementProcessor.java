@@ -18,7 +18,6 @@ import net.sf.seesea.data.io.IWriterFactory;
 import net.sf.seesea.data.io.WriterException;
 import net.sf.seesea.data.postprocessing.process.IFilter;
 import net.sf.seesea.model.core.geo.Depth;
-import net.sf.seesea.model.core.geo.GeoBoundingBox;
 import net.sf.seesea.model.core.geo.GeoPosition;
 import net.sf.seesea.model.core.geo.GeoPosition3D;
 import net.sf.seesea.model.core.geo.MeasuredPosition3D;

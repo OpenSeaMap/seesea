@@ -34,8 +34,6 @@ import net.sf.seesea.model.core.ModelObject;
 import net.sf.seesea.model.core.geo.osm.Area;
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Routing Container</b></em>'.

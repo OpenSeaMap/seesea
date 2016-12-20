@@ -39,6 +39,11 @@ import net.sf.seesea.geometry.IPoint;
  */
 public class PointComparator implements Comparator<IPoint>, Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 837338157003416901L;
+
 	@Override
 	public int compare(IPoint o1, IPoint o2) {
 		int compareTo = Double.compare(o1.getX(),o2.getX());

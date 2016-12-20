@@ -7,7 +7,6 @@
 package net.sf.seesea.model.int1.base;
 
 import net.sf.seesea.model.core.geo.GeoPosition;
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->

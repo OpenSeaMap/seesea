@@ -28,36 +28,25 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.provider.navigation.nmea.v2000.pgn;
 
-import java.util.Date;
-
-import net.sf.seesea.provider.navigation.nmea.v2000.datadictionary.ModeData;
-import net.sf.seesea.provider.navigation.nmea.v2000.datadictionary.WaterCurrentState;
-import net.sf.seesea.provider.navigation.nmea.v2000.dataformat.Angle;
-import net.sf.seesea.provider.navigation.nmea.v2000.dataformat.Distance;
-import net.sf.seesea.provider.navigation.nmea.v2000.dataformat.Latitude;
-import net.sf.seesea.provider.navigation.nmea.v2000.dataformat.Longitude;
-import net.sf.seesea.provider.navigation.nmea.v2000.dataformat.Speed;
-import net.sf.seesea.provider.navigation.nmea.v2000.dataformat.Temperature;
-
 public class CurrentStationData extends PGN {
 
-	private ModeData modeData;
-	
-	private WaterCurrentState waterCurrentState;
-	
-	private Date measurementDateAndTime;
-	
-	private Latitude stationLocationLatitude;
-	
-	private Longitude stationLocationLongitude;
-
-	private Distance measurementDepth;
-	
-	private Speed genericSpeed;
-	
-	private Angle currentFlowDirection;
-	
-	private Temperature genericTemperature;
+//	private ModeData modeData;
+//	
+//	private WaterCurrentState waterCurrentState;
+//	
+//	private Date measurementDateAndTime;
+//	
+//	private Latitude stationLocationLatitude;
+//	
+//	private Longitude stationLocationLongitude;
+//
+//	private Distance measurementDepth;
+//	
+//	private Speed genericSpeed;
+//	
+//	private Angle currentFlowDirection;
+//	
+//	private Temperature genericTemperature;
 	
 	// station id;
 //	private 

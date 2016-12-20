@@ -12,8 +12,6 @@ import net.sf.seesea.model.int1.base.BasePackage;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Abstract Seamark</b></em>'.

@@ -30,18 +30,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.physx.impl;
 
-import java.util.Date;
-
-import net.sf.seesea.model.core.impl.ModelObjectImpl;
-import net.sf.seesea.model.core.physx.PhysxPackage;
-import net.sf.seesea.model.core.physx.Time;
-
-import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import net.sf.seesea.model.core.physx.PhysxPackage;
+import net.sf.seesea.model.core.physx.Time;
 
 /**
  * <!-- begin-user-doc -->

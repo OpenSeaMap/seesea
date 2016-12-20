@@ -34,8 +34,6 @@ import net.sf.seesea.model.core.data.DataPackage;
 import net.sf.seesea.model.core.data.Instruments;
 
 import net.sf.seesea.model.core.geo.MeasuredPosition3D;
-import net.sf.seesea.model.core.geo.GeoPosition3D;
-
 import net.sf.seesea.model.core.impl.ModelObjectImpl;
 import net.sf.seesea.model.core.physx.SatellitesVisible;
 import net.sf.seesea.model.core.physx.Temperature;
@@ -48,7 +46,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
  * <!-- begin-user-doc -->

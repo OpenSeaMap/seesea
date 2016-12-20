@@ -24,7 +24,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import org.osgi.service.component.annotations.Component;
 
 import net.sf.seesea.track.api.IStreamProcessor;
-import net.sf.seesea.track.api.exception.NMEAProcessingException;
 import net.sf.seesea.track.api.exception.RawDataEventException;
 
 

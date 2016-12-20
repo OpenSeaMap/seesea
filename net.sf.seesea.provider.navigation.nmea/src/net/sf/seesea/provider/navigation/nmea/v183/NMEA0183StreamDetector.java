@@ -30,7 +30,6 @@ package net.sf.seesea.provider.navigation.nmea.v183;
 
 import net.sf.seesea.services.navigation.RawDataEvent;
 import net.sf.seesea.services.navigation.RawDataEventListener;
-import net.sf.seesea.track.api.exception.NMEAProcessingException;
 import net.sf.seesea.track.api.exception.RawDataEventException;
 
 public class NMEA0183StreamDetector implements RawDataEventListener {

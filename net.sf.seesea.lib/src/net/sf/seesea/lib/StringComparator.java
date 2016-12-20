@@ -37,6 +37,11 @@ import java.util.Comparator;
  */
 public class StringComparator implements Comparator<String>, Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4361365062021718626L;
+
 	/* (non-Javadoc)
 	 * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
 	 */

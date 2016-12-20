@@ -8,13 +8,13 @@ public class SL2Activator implements BundleActivator {
 
 	@Override
 	public void start(BundleContext context) throws Exception {
-		this.context = context;
+		SL2Activator.context = context;
 		
 	}
 
 	@Override
 	public void stop(BundleContext context) throws Exception {
-		this.context = null;
+		SL2Activator.context = null;
 	}
 
 	public static BundleContext getContext() {

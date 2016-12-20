@@ -312,15 +312,6 @@ public class GeoPositionFormatter {
 		return null;
 	}
 	
-	/**
-	 * @param string
-	 * @param string2
-	 * @return
-	 */
-	private static Latitude parseLatitudeNumerical(String input, String pattern) {
-		return null;
-	}
-
 	public static void parseCoordinateNumerical(Coordinate coordinate, String longitudeString) {
 //		Longitude longitude = GeoFactory.eINSTANCE.createLongitude();
 		
