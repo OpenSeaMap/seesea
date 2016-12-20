@@ -7,7 +7,6 @@
 package net.sf.seesea.model.int1.base;
 
 import net.sf.seesea.model.core.geo.GeoPackage;
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;

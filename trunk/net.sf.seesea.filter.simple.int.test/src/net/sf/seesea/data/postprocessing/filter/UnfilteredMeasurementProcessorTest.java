@@ -13,7 +13,6 @@ import java.util.Map;
 import org.easymock.EasyMock;
 import org.junit.Test;
 
-import net.sf.seesea.data.io.IWriterFactory;
 import net.sf.seesea.data.io.MemoryDataWriter;
 import net.sf.seesea.data.io.WriterException;
 import net.sf.seesea.model.core.geo.Depth;
@@ -27,7 +26,6 @@ import net.sf.seesea.track.api.data.ITrackFile;
 import net.sf.seesea.track.api.exception.ProcessingException;
 import net.sf.seesea.waterlevel.IWaterLevelCorrection;
 import net.sf.seesea.waterlevel.WaterLevelCorrectionException;
-import net.sf.seesea.waterlevel.ocean.ITideProvider;
 
 public class UnfilteredMeasurementProcessorTest {
 

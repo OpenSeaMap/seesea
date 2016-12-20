@@ -10,12 +10,9 @@ import java.util.Date;
 import java.util.List;
 
 import org.easymock.EasyMock;
-import org.easymock.IAnswer;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import net.sf.seesea.data.postprocessing.process.FilterException;
-import net.sf.seesea.data.postprocessing.process.IDepthPositionPreProcessor;
 import net.sf.seesea.data.postprocessing.process.IFileTypeProcessingFactory;
 import net.sf.seesea.data.postprocessing.process.TrackClusterResult;
 import net.sf.seesea.model.core.geo.Depth;

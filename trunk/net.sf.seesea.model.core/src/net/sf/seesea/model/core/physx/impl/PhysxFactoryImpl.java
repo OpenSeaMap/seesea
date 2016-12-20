@@ -30,7 +30,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.physx.impl;
 
-import java.util.Map;
 import net.sf.seesea.model.core.physx.*;
 
 import org.eclipse.emf.ecore.EClass;

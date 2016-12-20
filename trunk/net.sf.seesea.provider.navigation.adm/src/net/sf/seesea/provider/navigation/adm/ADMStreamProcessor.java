@@ -2,8 +2,6 @@ package net.sf.seesea.provider.navigation.adm;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -387,18 +385,6 @@ public class ADMStreamProcessor implements IStreamProcessor, IADMReader {
 		return null;
 	}
 	
-	private int getInt(int[] data, int start) {
- 		ByteBuffer allocate = ByteBuffer.allocate(4);
- 		allocate.put((byte) data[start]);
- 		allocate.put((byte) data[start + 1]);
- 		allocate.put((byte) data[start + 2]);
- 		allocate.put((byte) data[start + 3]);
- 		allocate.order(ByteOrder.LITTLE_ENDIAN);
- 		allocate.flip();
-		return allocate.getInt();
-	}
-
-
 	public TrackMetadata getTrackMetadata(InputStream inputStream, TRKHeader trkHeader1) throws IOException {
 		List<MetadataDescription> headerDataDescriptions = trkHeader1
 				.getHeaderDataDescriptions();

@@ -17,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.WindowConstants;
 
+@SuppressWarnings("unused")
 public class D {
 
 	private static final double RAD_CONVERSION = 180/Math.PI;
@@ -24,7 +25,6 @@ public class D {
 	private static final float FEET_TO_METERS = 0.3048f;
 	private static final float KNOTS = 1.852f;
 
-	
 	public static void main(String[] args) throws IOException {
 //				 File file = new File("S:\\Segeln\\Data\\markus\\sl2\\Sonar0000.sl2"); //$NON-NLS-1$
 //				 File file = new File("S:\\Segeln\\Data\\markus\\sl2\\sonar1.sl2"); //$NON-NLS-1$

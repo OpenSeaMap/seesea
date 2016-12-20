@@ -472,10 +472,6 @@ public class NMEA0183Reader implements IDataReader {
 		return Collections.<Measurement> emptyList();
 	}
 
-	private void GSA_SatelliteData(String[] nmeaContent) {
-
-	}
-
 	/**
 	 * 
 	 * @param nmeaContent
@@ -709,11 +705,11 @@ public class NMEA0183Reader implements IDataReader {
 					Calendar measurmentTimeCalendar = Calendar.getInstance();
 					measurmentTimeCalendar.setTimeZone(TimeZone.getTimeZone("UTC"));
 					measurmentTimeCalendar.setTimeInMillis(0);
-					measurmentTimeCalendar.set(Calendar.YEAR, lastTimeCalendar.get(lastTimeCalendar.YEAR));
-					measurmentTimeCalendar.set(Calendar.DAY_OF_YEAR, lastTimeCalendar.get(lastTimeCalendar.DAY_OF_YEAR));
-					measurmentTimeCalendar.set(Calendar.HOUR_OF_DAY, time.getHours());
-					measurmentTimeCalendar.set(Calendar.MINUTE, time.getMinutes());
-					measurmentTimeCalendar.set(Calendar.SECOND, time.getSeconds());
+					measurmentTimeCalendar.set(Calendar.YEAR, lastTimeCalendar.get(Calendar.YEAR));
+					measurmentTimeCalendar.set(Calendar.DAY_OF_YEAR, lastTimeCalendar.get(Calendar.DAY_OF_YEAR));
+					measurmentTimeCalendar.set(Calendar.HOUR_OF_DAY, lastTimeCalendar.get(Calendar.HOUR_OF_DAY));
+					measurmentTimeCalendar.set(Calendar.MINUTE, lastTimeCalendar.get(Calendar.MINUTE));
+					measurmentTimeCalendar.set(Calendar.SECOND, lastTimeCalendar.get(Calendar.SECOND));
 					geoPosition.setTime(measurmentTimeCalendar.getTime());
 				}
 			}
@@ -965,8 +961,8 @@ public class NMEA0183Reader implements IDataReader {
 								.parseInt(nmeaContent[5].substring(4, 6).trim()));
 						lastTimeCalendar.set(Calendar.MILLISECOND, 0);
 						lastTimeCalendar.setTimeZone(TimeZone.getTimeZone("UTC")); //$NON-NLS-1$
-						lastTimeCalendar.set(Calendar.YEAR, lastTimeCalendar.get(lastTimeCalendar.YEAR));
-						lastTimeCalendar.set(Calendar.DAY_OF_YEAR, lastTimeCalendar.get(lastTimeCalendar.DAY_OF_YEAR));
+						lastTimeCalendar.set(Calendar.YEAR, lastTimeCalendar.get(Calendar.YEAR));
+						lastTimeCalendar.set(Calendar.DAY_OF_YEAR, lastTimeCalendar.get(Calendar.DAY_OF_YEAR));
 						geoPosition.setTime(lastTimeCalendar.getTime());
 					}
 				}

@@ -32,7 +32,6 @@ package net.sf.seesea.model.core.geo;
 
 import net.sf.seesea.model.core.ModelObject;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->

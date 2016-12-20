@@ -6,7 +6,9 @@
  */
 package net.sf.seesea.model.int1.base.util;
 
-import java.util.List;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.util.Switch;
 
 import net.sf.seesea.model.core.ModelObject;
 import net.sf.seesea.model.core.geo.Chart;
@@ -15,12 +17,9 @@ import net.sf.seesea.model.core.geo.NamedArtifact;
 import net.sf.seesea.model.core.geo.NavigationCompound;
 import net.sf.seesea.model.core.geo.osm.Area;
 import net.sf.seesea.model.core.geo.osm.World;
-import net.sf.seesea.model.int1.base.*;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.util.Switch;
+import net.sf.seesea.model.int1.base.AbstractSeamark;
+import net.sf.seesea.model.int1.base.BasePackage;
+import net.sf.seesea.model.int1.base.MarineChart;
 
 /**
  * <!-- begin-user-doc -->

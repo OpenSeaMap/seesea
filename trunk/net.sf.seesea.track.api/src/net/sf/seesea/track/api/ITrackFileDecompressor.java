@@ -1,6 +1,5 @@
 package net.sf.seesea.track.api;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;

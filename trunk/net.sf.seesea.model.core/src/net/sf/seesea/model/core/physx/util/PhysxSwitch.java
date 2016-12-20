@@ -30,13 +30,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.physx.util;
 
-import java.util.List;
-
-import java.util.Map;
 import net.sf.seesea.model.core.ModelObject;
 import net.sf.seesea.model.core.physx.*;
 
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;

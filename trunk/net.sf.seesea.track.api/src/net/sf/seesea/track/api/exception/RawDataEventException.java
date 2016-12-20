@@ -5,6 +5,11 @@ public class RawDataEventException extends Exception {
 	/**
 	 * 
 	 */
+	private static final long serialVersionUID = 6175561607705680215L;
+
+	/**
+	 * 
+	 */
 	public RawDataEventException() {
 		// 
 	}

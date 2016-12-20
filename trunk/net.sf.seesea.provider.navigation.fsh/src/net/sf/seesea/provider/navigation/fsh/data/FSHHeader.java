@@ -44,24 +44,6 @@ public class FSHHeader {
 
 	private String rl90;
 	
-	private int a;
-
-	private int b;
-
-	private int c;
-
-	private int d;
-
-	private int e;
-
-	private String rflob;
-	
-	private int f;
-	
-	private int g;
-	
-	private int h;
-
 	public String getRl90() {
 		return rl90;
 	}

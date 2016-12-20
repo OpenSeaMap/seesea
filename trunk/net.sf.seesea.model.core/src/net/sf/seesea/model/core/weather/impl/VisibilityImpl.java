@@ -31,8 +31,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package net.sf.seesea.model.core.weather.impl;
 
 import net.sf.seesea.model.core.physx.LengthUnit;
-import net.sf.seesea.model.core.physx.Length;
-
 import net.sf.seesea.model.core.physx.impl.MeasurementImpl;
 
 import net.sf.seesea.model.core.weather.Visibility;

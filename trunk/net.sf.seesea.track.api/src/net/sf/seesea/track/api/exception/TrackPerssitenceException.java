@@ -2,6 +2,11 @@ package net.sf.seesea.track.api.exception;
 
 public class TrackPerssitenceException extends Exception {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6195488929509426074L;
+
 	public TrackPerssitenceException() {
 	}
 

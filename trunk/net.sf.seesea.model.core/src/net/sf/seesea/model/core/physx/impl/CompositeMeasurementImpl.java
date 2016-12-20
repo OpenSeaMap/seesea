@@ -33,13 +33,8 @@ import net.sf.seesea.model.core.physx.Measurement;
 import net.sf.seesea.model.core.physx.PhysxPackage;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->

@@ -4,6 +4,6 @@
     <service>
         <provide interface="net.sf.seesea.data.sync.api.IDepthDataSync"/>
     </service>
+    <reference name="DepthConnection" interface="javax.sql.DataSource" cardinality="1..1" policy="dynamic" target="(db=userData)" bind="bindDepthConnection" unbind="unbindDepthConnection"/>
     <implementation class="net.sf.seesea.data.sync.HttpDepthDataSync"/>
-    <reference bind="bindDepthConnection" cardinality="1..1" interface="java.sql.Connection" name="Connection" policy="dynamic" target="(db=userData)" unbind="unbindDepthConnection"/>
 </scr:component>

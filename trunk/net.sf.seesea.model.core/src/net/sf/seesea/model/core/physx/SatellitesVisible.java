@@ -32,8 +32,6 @@ package net.sf.seesea.model.core.physx;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Satellites Visible</b></em>'.

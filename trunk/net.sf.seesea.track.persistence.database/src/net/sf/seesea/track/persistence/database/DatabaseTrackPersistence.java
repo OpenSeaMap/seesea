@@ -20,12 +20,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.zip.ZipFile;
 
 import javax.sql.DataSource;
 
-import org.apache.log4j.Logger;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
@@ -34,8 +32,6 @@ import org.osgi.service.component.annotations.ReferencePolicy;
 
 import net.sf.seesea.geometry.impl.Point3D;
 import net.sf.seesea.model.core.physx.CompositeMeasurement;
-//import net.sf.seesea.track.api.CompositeMeasurement;
-import net.sf.seesea.track.api.IStreamProcessor;
 import net.sf.seesea.track.api.ITrackPersistence;
 import net.sf.seesea.track.api.data.CompressionType;
 import net.sf.seesea.track.api.data.IContainedTrackFile;

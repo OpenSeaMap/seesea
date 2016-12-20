@@ -14,8 +14,6 @@ import net.sf.seesea.model.int1.base.AbstractSeamark;
 import net.sf.seesea.model.int1.base.BaseFactory;
 import net.sf.seesea.model.int1.base.BasePackage;
 import net.sf.seesea.model.int1.base.MarineChart;
-import net.sf.seesea.model.int1.base.ChartSymbols;
-
 import net.sf.seesea.model.int1.buoysandbeacons.BuoysandbeaconsPackage;
 
 import net.sf.seesea.model.int1.buoysandbeacons.impl.BuoysandbeaconsPackageImpl;
@@ -28,7 +26,6 @@ import net.sf.seesea.model.int1.natureofseabed.NatureofseabedPackage;
 import net.sf.seesea.model.int1.natureofseabed.impl.NatureofseabedPackageImpl;
 import net.sf.seesea.model.int1.tracksandroutes.TracksandroutesPackage;
 import net.sf.seesea.model.int1.tracksandroutes.impl.TracksandroutesPackageImpl;
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;

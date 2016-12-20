@@ -6,11 +6,8 @@
  */
 package net.sf.seesea.model.int1.lights.util;
 
-import java.util.List;
-
 import net.sf.seesea.model.int1.lights.*;
 
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;

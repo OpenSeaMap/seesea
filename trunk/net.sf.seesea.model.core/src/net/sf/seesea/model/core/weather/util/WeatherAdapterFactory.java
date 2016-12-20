@@ -33,7 +33,6 @@ package net.sf.seesea.model.core.weather.util;
 import net.sf.seesea.model.core.ModelObject;
 import net.sf.seesea.model.core.physx.Measurement;
 import net.sf.seesea.model.core.physx.Speed;
-import net.sf.seesea.model.core.physx.Time;
 import net.sf.seesea.model.core.weather.*;
 
 import org.eclipse.emf.common.notify.Adapter;

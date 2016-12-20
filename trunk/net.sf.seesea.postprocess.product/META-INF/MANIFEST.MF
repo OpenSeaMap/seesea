@@ -4,3 +4,4 @@ Bundle-Name: Postprocess Product
 Bundle-SymbolicName: net.sf.seesea.postprocess.product
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: SeeSea
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

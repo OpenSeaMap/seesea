@@ -11,3 +11,4 @@ Import-Package: net.sf.seesea.track.api;version="1.0.0",
  org.osgi.framework;version="1.8.0",
  org.osgi.service.component.annotations
 Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

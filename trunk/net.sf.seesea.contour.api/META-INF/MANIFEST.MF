@@ -8,3 +8,4 @@ Require-Bundle: net.sf.seesea.geometry;bundle-version="1.0.0",
 Bundle-ActivationPolicy: lazy
 Export-Package: net.sf.seesea.contour.api
 Bundle-Vendor: SeeSea
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

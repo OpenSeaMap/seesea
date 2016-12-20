@@ -18,7 +18,7 @@ public class SL2ReaderTest {
 	public void testReadNoData() {
 		SL2Reader sl2Reader = new SL2Reader();
 		IMeasurementListener measurementListener = EasyMock.createNiceMock(IMeasurementListener.class);
-		Capture<List<Measurement>> measurements = new Capture<List<Measurement>>();
+		Capture<List<Measurement>> measurements = Capture.<List<Measurement>>newInstance();
 		measurementListener.notify(EasyMock.capture(measurements));
 		sl2Reader.addMeasurementListener(measurementListener);
 		int[] data = new int[144];

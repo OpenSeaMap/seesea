@@ -209,7 +209,7 @@ public class DatabaseTriangulationPersistence implements ITriangulationPersisten
 		DecimalFormat format = new DecimalFormat("#####0.0#########", otherSymbols); //$NON-NLS-1$
 		IPoint firstPoint = null;
 		int j = 0;
-		for (Iterator iterator = points.iterator(); iterator.hasNext();) {
+		for (Iterator<IPoint> iterator = points.iterator(); iterator.hasNext();) {
 			IPoint triangulationPoint = (IPoint) iterator.next();
 			if (j == 0) {
 				firstPoint = triangulationPoint;

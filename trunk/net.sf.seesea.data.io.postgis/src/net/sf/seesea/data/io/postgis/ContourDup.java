@@ -66,7 +66,7 @@ public class ContourDup {
 			}
 		}
 		StringBuffer buf = new StringBuffer();
-		for (Iterator iterator = duplicates.iterator(); iterator.hasNext();) {
+		for (Iterator<String> iterator = duplicates.iterator(); iterator.hasNext();) {
 			String string = (String) iterator.next();
 			buf.append(string);
 			if(iterator.hasNext()) {

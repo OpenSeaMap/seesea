@@ -35,7 +35,6 @@ import net.sf.seesea.model.core.geo.*;
 
 import net.sf.seesea.model.core.geo.osm.Area;
 import net.sf.seesea.model.core.physx.Measurement;
-import net.sf.seesea.model.core.physx.Time;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 

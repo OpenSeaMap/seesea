@@ -11,7 +11,6 @@ package net.sf.seesea.tidemodel.dtu10.java;
 
 import java.io.BufferedInputStream;
 import java.io.DataInputStream;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -321,9 +320,9 @@ public class DTU implements ITideProvider {
 
 	}
 
-	private void check1() {
-
-	}
+//	private void check1() {
+//
+//	}
 
 	/**
 	 * 

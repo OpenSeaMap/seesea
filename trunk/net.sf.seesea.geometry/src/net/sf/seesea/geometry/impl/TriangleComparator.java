@@ -39,6 +39,10 @@ import net.sf.seesea.geometry.IPoint;
  */
 public class TriangleComparator implements Comparator<IPoint>, Serializable {
  
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5241068249174069470L;
 	private IPoint M;
 	
     public TriangleComparator(IPoint point) {

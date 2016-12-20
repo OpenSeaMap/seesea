@@ -29,20 +29,15 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package net.sf.seesea.provider.navigation.nmea.v2000;
 
 import java.io.BufferedInputStream;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import org.osgi.service.component.annotations.Component;
 
 import net.sf.seesea.track.api.IStreamProcessor;
-import net.sf.seesea.track.api.data.CompressionType;
-import net.sf.seesea.track.api.data.ITrack;
-import net.sf.seesea.track.api.exception.NMEAProcessingException;
 
 /**
  * This stream procesor takes binary streams from the actisense ngt1 NMEA2000 to USB converter and assembles
