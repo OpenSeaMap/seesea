@@ -60,6 +60,8 @@
   	<module>../net.sf.seesea.filter.api</module>
   	<module>../net.sf.seesea.filter.simple</module>
   	<module>../net.sf.seesea.filter.simple.int.test</module>
+  	<module>../net.sf.seesea.data.sync.api</module>
+  	<module>../net.sf.seesea.data.sync</module>
 
 	<!-- gauge related stuff -->
   	<module>../net.sf.seesea.gauge</module>  
