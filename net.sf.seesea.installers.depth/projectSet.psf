@@ -27,9 +27,7 @@
 <project reference="0.9.3,https://svn.code.sf.net/p/seesea/code/trunk/net.sf.seesea.geometry.test,net.sf.seesea.geometry.test"/>
 <project reference="0.9.3,https://svn.code.sf.net/p/seesea/code/trunk/net.sf.seesea.lib,net.sf.seesea.lib"/>
 <project reference="0.9.3,https://svn.code.sf.net/p/seesea/code/trunk/net.sf.seesea.model.core,net.sf.seesea.model.core"/>
-<project reference="0.9.3,https://svn.code.sf.net/p/seesea/code/trunk/net.sf.seesea.model.core.edit,net.sf.seesea.model.core.edit"/>
 <project reference="0.9.3,https://svn.code.sf.net/p/seesea/code/trunk/net.sf.seesea.model.int1,net.sf.seesea.model.int1"/>
-<project reference="0.9.3,https://svn.code.sf.net/p/seesea/code/trunk/net.sf.seesea.model.int1.edit,net.sf.seesea.model.int1.edit"/>
 <project reference="0.9.3,https://svn.code.sf.net/p/seesea/code/trunk/net.sf.seesea.navigation.sl2,net.sf.seesea.navigation.sl2"/>
 <project reference="0.9.3,https://svn.code.sf.net/p/seesea/code/trunk/net.sf.seesea.navigation.sl2.int.test,net.sf.seesea.navigation.sl2.int.test"/>
 <project reference="0.9.3,https://svn.code.sf.net/p/seesea/code/trunk/net.sf.seesea.navigation.sl2.test,net.sf.seesea.navigation.sl2.test"/>
@@ -39,14 +37,13 @@
 <project reference="0.9.3,https://svn.code.sf.net/p/seesea/code/trunk/net.sf.seesea.postprocessing.eclipse.feature,net.sf.seesea.postprocessing.eclipse.feature"/>
 <project reference="0.9.3,https://svn.code.sf.net/p/seesea/code/trunk/net.sf.seesea.provider.navigation.adm,net.sf.seesea.provider.navigation.adm"/>
 <project reference="0.9.3,https://svn.code.sf.net/p/seesea/code/trunk/net.sf.seesea.provider.navigation.adm.int.test,net.sf.seesea.provider.navigation.adm.int.test"/>
-<project reference="0.9.3,https://svn.code.sf.net/p/seesea/code/trunk/net.sf.seesea.provider.navigation.ais,net.sf.seesea.provider.navigation.ais"/>
 <project reference="0.9.3,https://svn.code.sf.net/p/seesea/code/trunk/net.sf.seesea.provider.navigation.fsh,net.sf.seesea.provider.navigation.fsh"/>
 <project reference="0.9.3,https://svn.code.sf.net/p/seesea/code/trunk/net.sf.seesea.provider.navigation.fsh.test,net.sf.seesea.provider.navigation.fsh.test"/>
 <project reference="0.9.3,https://svn.code.sf.net/p/seesea/code/trunk/net.sf.seesea.provider.navigation.gpx,net.sf.seesea.provider.navigation.gpx"/>
 <project reference="0.9.3,https://svn.code.sf.net/p/seesea/code/trunk/net.sf.seesea.provider.navigation.gpx.test,net.sf.seesea.provider.navigation.gpx.test"/>
 <project reference="0.9.3,https://svn.code.sf.net/p/seesea/code/trunk/net.sf.seesea.provider.navigation.nmea,net.sf.seesea.provider.navigation.nmea"/>
-<project reference="0.9.3,https://svn.code.sf.net/p/seesea/code/trunk/net.sf.seesea.provider.navigation.nmea.build,net.sf.seesea.provider.navigation.nmea.build"/>
 <project reference="0.9.3,https://svn.code.sf.net/p/seesea/code/trunk/net.sf.seesea.provider.navigation.nmea.feature,net.sf.seesea.provider.navigation.nmea.feature"/>
+<project reference="0.9.3,https://svn.code.sf.net/p/seesea/code/trunk/net.sf.seesea.backend.target,net.sf.seesea.backend.target"/>
 <project reference="0.9.3,https://svn.code.sf.net/p/seesea/code/trunk/net.sf.seesea.provider.navigation.nmea.int.test,net.sf.seesea.provider.navigation.nmea.int.test"/>
 <project reference="0.9.3,https://svn.code.sf.net/p/seesea/code/trunk/net.sf.seesea.provider.navigation.son,net.sf.seesea.provider.navigation.son"/>
 <project reference="0.9.3,https://svn.code.sf.net/p/seesea/code/trunk/net.sf.seesea.provider.navigation.son.int.test,net.sf.seesea.provider.navigation.son.int.test"/>
