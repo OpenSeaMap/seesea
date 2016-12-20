@@ -27,23 +27,34 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.data.sync;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.DataInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.zip.GZIPInputStream;
 
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
+import javax.sql.DataSource;
 import javax.ws.rs.ProcessingException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -61,7 +72,11 @@ import org.glassfish.jersey.filter.LoggingFilter;
 import org.glassfish.jersey.moxy.json.MoxyJsonFeature;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
+import org.osgi.service.component.annotations.ReferencePolicy;
 
+import net.sf.seesea.data.io.postgis.ScriptRunner;
 import net.sf.seesea.data.sync.api.IDepthDataSync;
 
 @Component
@@ -75,10 +90,10 @@ public class HttpDepthDataSync implements IDepthDataSync {
 	private Boolean checkSSLCertificate;
 	/** url for API access */
 	private String apiURL;
-	
+
 	/** target storage location */
 	private File storageLocation;
-	
+
 	/** limit download to certain users. not used */
 	private List<String> users;
 
@@ -86,46 +101,57 @@ public class HttpDepthDataSync implements IDepthDataSync {
 	private Long lowerBound;
 	/** highest track id */
 	private Long upperBound;
+	private DataSource uploadDataSource;
 
 	@Override
 	public boolean downloadFiles() {
-	  SSLContext sslcontext;
+
+		SSLContext sslcontext;
 		try {
 			Client client;
-			if(!checkSSLCertificate) {
+			if (!checkSSLCertificate) {
 				sslcontext = SSLContext.getInstance("TLS");
-				sslcontext.init(null, new TrustManager[]{new X509TrustManager() {
-					public void checkClientTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {}
-					public void checkServerTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {}
-					public X509Certificate[] getAcceptedIssuers() { return new X509Certificate[0]; }
-					
-				}}, new java.security.SecureRandom());
+				sslcontext.init(null, new TrustManager[] { new X509TrustManager() {
+					public void checkClientTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {
+					}
+
+					public void checkServerTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {
+					}
+
+					public X509Certificate[] getAcceptedIssuers() {
+						return new X509Certificate[0];
+					}
+
+				} }, new java.security.SecureRandom());
 				client = ClientBuilder.newBuilder().sslContext(sslcontext).hostnameVerifier((s1, s2) -> true).build();
 			} else {
 				client = ClientBuilder.newClient();
 			}
-			
+
 			HttpAuthenticationFeature feature = HttpAuthenticationFeature.basic(user, password);
 			client.register(MoxyJsonFeature.class);
-			client.register(feature); 
-			client.property(ClientProperties.CONNECT_TIMEOUT,    10000);
+			client.register(feature);
+			client.property(ClientProperties.CONNECT_TIMEOUT, 10000);
 			LoggingFilter loggingFilter = new LoggingFilter();
 			client.register(loggingFilter);
-			
-			
+
 			WebTarget apiURLPath = client.target(apiURL);
 			WebTarget fullApiPath = apiURLPath;
 			Builder trackRequest = fullApiPath.request(MediaType.APPLICATION_JSON);
-			trackRequest.property(ClientProperties.READ_TIMEOUT,    600000); // ten minute timeout
+			trackRequest.property(ClientProperties.READ_TIMEOUT, 600000); // ten
+																			// minute
+																			// timeout
 			Response response = trackRequest.get();
-			if(response.getStatus() == 200) {
-				List<Track> readEntity = response.readEntity(new GenericType<List<Track>>(){});
+			if (response.getStatus() == 200) {
+				List<Track> readEntity = response.readEntity(new GenericType<List<Track>>() {
+				});
 				for (Track track : readEntity) {
-					if(track.containertrack == 0) {
-						if((lowerBound == null && upperBound == null) || (lowerBound >= track.id && upperBound <= track.id)) {
+					if (track.containertrack == 0) {
+						if ((lowerBound == null && upperBound == null)
+								|| (lowerBound >= track.id && upperBound <= track.id)) {
 							Logger.getLogger(getClass()).info("Downloading track id " + track.id);
 							File file = getFile(storageLocation, track.id);
-							if(!file.exists() || file.length() != 0L) {
+							if (!file.exists() || file.length() != 0L) {
 								try {
 									WebTarget downloadPath = fullApiPath.path(Long.toString(track.id)).path("download");
 									Builder request = downloadPath.request();
@@ -138,21 +164,28 @@ public class HttpDepthDataSync implements IDepthDataSync {
 									fos.flush();
 									fos.close();
 								} catch (ProcessingException e) {
-									Logger.getLogger(getClass()).error("Failed to download file " + track.containertrack,e);
+									Logger.getLogger(getClass())
+											.error("Failed to download file " + track.containertrack, e);
 								}
 							}
 						}
-						
+
 					}
 				}
-				
-        	return true;
+
+				return true;
 			}
-		} catch (NoSuchAlgorithmException | KeyManagementException | IOException e) {
-			Logger.getLogger(getClass()).error("Failed to synchronize files",e);
+
+		} catch (NoSuchAlgorithmException | KeyManagementException |
+
+		IOException e)
+
+		{
+			Logger.getLogger(getClass()).error("Failed to synchronize files", e);
 		}
-		
-        return false;
+
+		return false;
+
 	}
 
 	@Activate
@@ -160,31 +193,31 @@ public class HttpDepthDataSync implements IDepthDataSync {
 		user = (String) config.get("user");
 		password = (String) config.get("password");
 		checkSSLCertificate = Boolean.valueOf("checkSSLCertificate");
-		apiURL = (String)config.get("apiURL"); // "https://depth.openseamap.org:8443";
+		apiURL = (String) config.get("apiURL"); // "https://depth.openseamap.org:8443";
 		URL url = new URL(apiURL);
 
 		storageLocation = new File((String) config.get("storageLocation"));
-		if(!storageLocation.exists()) {
+		if (!storageLocation.exists()) {
 			boolean mkdirs = storageLocation.mkdirs();
 			if (!mkdirs) {
 				throw new IOException("Failed to create directory:" + storageLocation.getAbsolutePath()); //$NON-NLS-1$
 			}
 		}
 		String trackrange = (String) config.get("trackRange");
-		if(trackrange != null && trackrange.trim().length() > 0) {
+		if (trackrange != null && trackrange.trim().length() > 0) {
 			List<String> ranges = Arrays.asList(trackrange.split(","));
 			lowerBound = Long.valueOf(ranges.get(0));
 			upperBound = Long.valueOf(ranges.get(1));
 		}
 
 		String usersX = (String) config.get("users");
-		if(usersX != null && usersX.trim().length() > 0) {
+		if (usersX != null && usersX.trim().length() > 0) {
 			users = Arrays.asList(usersX.split(","));
 		} else {
-			users = Collections.<String>emptyList();
+			users = Collections.<String> emptyList();
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param trackId
@@ -206,6 +239,51 @@ public class HttpDepthDataSync implements IDepthDataSync {
 			return new File(fileDirectory, trackIDString + ".dat");
 		}
 		throw new IOException("Failed to create directory" + fileDirectory.getAbsolutePath()); //$NON-NLS-1$
+	}
+
+	public void downloadSQL() {
+		String s;
+		File sqlFile = new File(storageLocation, "dumpAll.sql.gz");
+
+		try {
+			URL u = new URL("http://depth.openseamap.org/dumpAll.sql.gz");
+			try (InputStream is = u.openStream()) {
+				
+				BufferedReader d = new BufferedReader(new InputStreamReader(is));
+				
+				
+				FileOutputStream fos = new FileOutputStream(sqlFile);
+				IOUtils.copy(is, fos);
+				fos.flush();
+				fos.close();
+				
+			} catch (IOException ioe) {
+				Logger.getLogger(getClass()).error("Failed to read stream", ioe);
+			}
+		} catch (MalformedURLException mue) {
+			Logger.getLogger(getClass()).error("Failed to parse URL", mue);
+		}
+		try(Connection connection = uploadDataSource.getConnection()) {
+			try(GZIPInputStream gzipInputStream = new GZIPInputStream(new FileInputStream(sqlFile))) {
+				BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(gzipInputStream));
+				ScriptRunner runner = new ScriptRunner(connection, true, false);
+				runner.runScript(bufferedReader);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	@Reference(cardinality = ReferenceCardinality.MANDATORY, policy = ReferencePolicy.DYNAMIC, target = "(db=userData)")
+	public synchronized void bindDepthConnection(DataSource dataSource) {
+		this.uploadDataSource = dataSource;
+	}
+
+	public synchronized void unbindDepthConnection(DataSource connection) {
+		this.uploadDataSource = null;
 	}
 
 
