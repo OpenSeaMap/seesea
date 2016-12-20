@@ -34,4 +34,6 @@ public interface IDepthDataSync {
 	
 	boolean downloadFiles();
 
+	void downloadSQL();
+
 }
