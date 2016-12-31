@@ -102,6 +102,7 @@ public class HttpDepthDataSync implements IDepthDataSync {
 
 	@Override
 	public boolean downloadFiles() {
+		Logger.getLogger(getClass()).info("Downloading Files");
 
 		SSLContext sslcontext;
 		try {
@@ -195,6 +196,7 @@ public class HttpDepthDataSync implements IDepthDataSync {
 
 		storageLocation = new File((String) config.get("storageLocation"));
 		if (!storageLocation.exists()) {
+			Logger.getLogger(getClass()).info("Creating data directory " + storageLocation.getAbsolutePath());
 			boolean mkdirs = storageLocation.mkdirs();
 			if (!mkdirs) {
 				throw new IOException("Failed to create directory:" + storageLocation.getAbsolutePath()); //$NON-NLS-1$
