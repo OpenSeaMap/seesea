@@ -141,16 +141,19 @@ public class HttpDepthDataSync implements IDepthDataSync {
 																			// timeout
 			Response response = trackRequest.get();
 			if (response.getStatus() == 200) {
-				List<Track> readEntity = response.readEntity(new GenericType<List<Track>>() {
-				});
+				GenericType<List<Track>> entityType = new GenericType<List<Track>>() {
+				};
+				List<Track> readEntity = response.readEntity(entityType);
 				for (Track track : readEntity) {
 					if (track.containertrack == 0) {
 						if ((lowerBound == null && upperBound == null)
-								|| (lowerBound >= track.id && upperBound <= track.id)) {
+								|| (lowerBound <= track.id && upperBound >= track.id)) {
 							Logger.getLogger(getClass()).info("Downloading track id " + track.id);
 							File file = getFile(storageLocation, track.id);
 							if (!file.exists() || file.length() != 0L) {
 								try {
+									Logger.getLogger(getClass())
+									.error("Downloading file " + file.getName());
 									WebTarget downloadPath = fullApiPath.path(Long.toString(track.id)).path("download");
 									Builder request = downloadPath.request();
 									request.property(ClientProperties.READ_TIMEOUT, 10000);
@@ -174,9 +177,7 @@ public class HttpDepthDataSync implements IDepthDataSync {
 				return true;
 			}
 
-		} catch (NoSuchAlgorithmException | KeyManagementException |
-
-		IOException e)
+		} catch (Throwable e)
 
 		{
 			Logger.getLogger(getClass()).error("Failed to synchronize files", e);

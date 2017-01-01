@@ -2,6 +2,7 @@ package net.sf.seesea.data.postprocessing.database;
 
 import java.util.concurrent.atomic.AtomicReference;
 
+import org.apache.log4j.Logger;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
@@ -28,6 +29,8 @@ public class UploadedData2Contours implements IUploadedData2Contours {
 		IDepthDataSync depthDataSync = dataSync.get();
 		if(depthDataSync != null) {
 			depthDataSync.downloadFiles();
+		} else {
+			Logger.getLogger(getClass()).info("Depth sync not or falsely configured. Skipping file synchronization");
 		}
 		
 		IContentDetector contentDetector2 = contentDetector.get();
@@ -37,15 +40,21 @@ public class UploadedData2Contours implements IUploadedData2Contours {
 			} catch (ContentDetectionException e) {
 				e.printStackTrace();
 			}
+		} else {
+			Logger.getLogger(getClass()).info("Content detection not or falsely configured. Skipping content detection");
 		}
 		IFilterEngine filterEngine2 = filterEngine.get();
 		if(filterEngine2 != null) {
 			filterEngine2.filterTracks();
+		} else {
+			Logger.getLogger(getClass()).info("Filters not or falsely configured. Skipping filtering");
 		}
 		IContourLineGeneration contourLineGeneration2 = contourLineGeneration.get();
 		if(contourLineGeneration2 != null) {
 			contourLineGeneration2.updateContourLines(null, null, null, null);
-		}
+		} else {
+			Logger.getLogger(getClass()).info("Contour generation not or falsely configured. Skipping contour generation");
+		} 
 	}
 	
 	@Reference(cardinality = ReferenceCardinality.OPTIONAL, policy = ReferencePolicy.DYNAMIC)
