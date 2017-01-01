@@ -150,20 +150,24 @@ public class HttpDepthDataSync implements IDepthDataSync {
 								|| (lowerBound <= track.id && upperBound >= track.id)) {
 							Logger.getLogger(getClass()).info("Downloading track id " + track.id);
 							File file = getFile(storageLocation, track.id);
-							if (!file.exists() || file.length() != 0L) {
+							if (!file.exists() || file.length() == 0L) {
 								try {
 									Logger.getLogger(getClass())
-									.error("Downloading file " + file.getName());
+									.error("Downloading file " + file.getAbsolutePath());
 									WebTarget downloadPath = fullApiPath.path(Long.toString(track.id)).path("download");
 									Builder request = downloadPath.request();
 									request.property(ClientProperties.READ_TIMEOUT, 10000);
 									request.property(ClientProperties.REQUEST_ENTITY_PROCESSING, "CHUNKED");
 									Response downloadResponse = request.get();
-									InputStream is = downloadResponse.readEntity(InputStream.class);
-									FileOutputStream fos = new FileOutputStream(file);
-									IOUtils.copy(is, fos);
-									fos.flush();
-									fos.close();
+									if(downloadResponse.getStatus() == 200) {
+										InputStream is = downloadResponse.readEntity(InputStream.class);
+										FileOutputStream fos = new FileOutputStream(file);
+										IOUtils.copy(is, fos);
+										fos.flush();
+										fos.close();
+									} else {
+										Logger.getLogger(getClass()).error("Download request was denied: HTTP Status code " + downloadResponse.getStatus() + " : " + downloadResponse.readEntity(String.class));
+									}
 								} catch (ProcessingException e) {
 									Logger.getLogger(getClass())
 											.error("Failed to download file " + track.containertrack, e);
@@ -175,6 +179,8 @@ public class HttpDepthDataSync implements IDepthDataSync {
 				}
 
 				return true;
+			} else if(response.getStatus() == 401) {
+				Logger.getLogger(getClass()).error("User is unauthorized:" + user);
 			}
 
 		} catch (Throwable e)
