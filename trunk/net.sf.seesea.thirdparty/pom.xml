@@ -32,9 +32,9 @@
                                     <artifact><id>org.glassfish.jersey.media:jersey-media-moxy:2.25</id><source>true</source></artifact>
                                     <artifact><id>org.glassfish.jersey.core:jersey-client:jar:2.25</id><source>true</source></artifact>
                                     <artifact><id>org.glassfish.jersey.core:jersey-common:jar:2.25</id><source>true</source></artifact>
-                                    <artifact><id>org.eclipse.persistence:org.eclipse.persistence.moxy:jar:2.6.4</id><source>false</source></artifact>
+<!--                                     <artifact><id>org.eclipse.persistence:org.eclipse.persistence.moxy:jar:2.6.4</id><source>false</source></artifact>
                                     <artifact><id>org.eclipse.persistence:org.eclipse.persistence.core:jar:2.6.4</id><source>false</source></artifact>
-                                    <artifact><id>org.eclipse.persistence:org.eclipse.persistence.asm:jar:2.6.4</id><source>false</source></artifact>
+                                    <artifact><id>org.eclipse.persistence:org.eclipse.persistence.asm:jar:2.6.4</id><source>false</source></artifact> -->
                                     <artifact><id>org.glassfish.jersey.ext:jersey-entity-filtering:2.25</id><source>true</source></artifact>
                                     <artifact><id>org.glassfish.jersey.core:jersey-server:2.25</id><source>true</source></artifact>
                                     <artifact><id>org.postgresql:postgresql:9.4.1208.jre7</id><source>true</source></artifact>
