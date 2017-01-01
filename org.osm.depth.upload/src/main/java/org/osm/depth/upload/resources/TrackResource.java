@@ -377,12 +377,12 @@ public class TrackResource {
 	public Response download(@PathParam(value = "id") String id) {
 		Context initContext;
 		try {
-			long trackId = Long.parseLong(id);
 			initContext = new InitialContext();
-			DataSource ds = (DataSource) initContext.lookup("java:/comp/env/jdbc/postgres"); //$NON-NLS-1$
-			Connection connection = ds.getConnection();
+			DataSource ds = (DataSource) initContext.lookup("java:/comp/env/jdbc/postgres");
+			long trackId = Long.parseLong(id);
 
-			try (PreparedStatement statement = connection.prepareStatement(
+			try (Connection connection = ds.getConnection();
+				PreparedStatement statement = connection.prepareStatement(
 					"SELECT filetype, file_ref FROM user_tracks u WHERE track_id = ? AND upload_state != 0")) {
 				statement.setLong(1, trackId);
 				try (ResultSet resultSet = statement.executeQuery()) {
