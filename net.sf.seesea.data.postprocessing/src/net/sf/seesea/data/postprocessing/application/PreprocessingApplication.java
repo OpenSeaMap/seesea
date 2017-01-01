@@ -56,6 +56,7 @@ public class PreprocessingApplication implements IApplication {
 	 */
 	@Override
 	public Object start(IApplicationContext context)  {
+		Logger.getLogger(getClass()).info("Application started");
 		BundleContext bundleContext = DataPostprocessingActivator.getContext();
 		
 		// this receives the service either through lookup or through a service event whatever comes first
@@ -76,11 +77,13 @@ public class PreprocessingApplication implements IApplication {
 					}
 		});  
 		try {
+			Logger.getLogger(getClass()).info("Commencing processing");
 			IUploadedData2Contours uploadedData2Contours = result.get(120, TimeUnit.SECONDS);
 			uploadedData2Contours.processData();
 		} catch (InterruptedException | ExecutionException | TimeoutException e ) {
 			Logger.getLogger(getClass()).error("Failed to start processing in time. Some service seem not to have started.", e);
 		}
+		Logger.getLogger(getClass()).info("Processing complete");
 		return 0;
 	}
 
