@@ -22,7 +22,7 @@ public class FileStreamingOutput implements StreamingOutput {
 		FileInputStream in = null;
 		try {
 			in = new FileInputStream(file);
-			byte[] buffer = new byte[16384];
+			byte[] buffer = new byte[131072];
 			int len;
 			while ((len = in.read(buffer)) != -1) {
 				out.write(buffer, 0, len);
