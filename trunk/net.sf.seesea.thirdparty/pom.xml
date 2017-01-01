@@ -47,6 +47,7 @@
                                     <artifact><id>commons-codec:commons-codec:jar:1.9</id><source>true</source></artifact>
                                     <artifact><id>commons-logging:commons-logging:jar:1.2</id><source>true</source></artifact>
                                     <artifact><id>org.apache.httpcomponents:httpcore-osgi:jar:4.4.5</id><source>true</source></artifact>
+                                    <artifact><id>org.glassfish:javax.json:jar:1.0.4</id><source>true</source></artifact>
                                 </artifacts>
                             </configuration>
                         </execution>
