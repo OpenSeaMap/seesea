@@ -19,6 +19,7 @@ import java.util.zip.GZIPInputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
+import org.apache.log4j.Logger;
 import org.apache.tika.Tika;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
@@ -26,6 +27,7 @@ import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
+
 
 import net.sf.seesea.content.api.ContentDetectionException;
 import net.sf.seesea.content.api.IContentDetector;
@@ -52,6 +54,8 @@ public class ContentDetector implements IContentDetector {
 
 	private boolean fullprocess;
 
+	private Logger logger;
+
 	public ContentDetector() {
 		// TODO Auto-generated constructor stub
 	}
@@ -60,6 +64,7 @@ public class ContentDetector implements IContentDetector {
 	public void activate(Map<String, Object> properties) {
 		basedir = (String) properties.get("basedir");
 		fullprocess = "true".equals(properties.get("fullprocess"));
+		logger = Logger.getLogger(getClass());
 	}
 
 	@Override
@@ -86,6 +91,10 @@ public class ContentDetector implements IContentDetector {
 				File file = new File(trackFile);
 				if(file.length() == 0L) {
 					trackFileX.setUploadState(net.sf.seesea.track.api.data.ProcessingState.FILE_NODATA);
+					if(logger.isDebugEnabled()) {
+						logger.debug("No file content for track id" + id);
+
+					}
 				} else {
 					try (FileInputStream fis = new FileInputStream(file)) {
 						String mimeType = getMimeType(fis);
@@ -191,6 +200,9 @@ public class ContentDetector implements IContentDetector {
 									zipEntryTrackFile.setUsername(trackFileX.getUsername());
 									// zipEntryTrackFile.setTrackId(trackId);
 									trackFileX.getTrackFiles().add(zipEntryTrackFile);
+									trackFileX.setUploadState(net.sf.seesea.track.api.data.ProcessingState.PREPROCESSED);
+									trackFileX.setCompression(CompressionType.ZIP);
+									
 								}
 							}
 							
