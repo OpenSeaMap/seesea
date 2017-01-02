@@ -29,7 +29,7 @@ public class UploadedData2Contours implements IUploadedData2Contours {
 		IDepthDataSync depthDataSync = dataSync.get();
 		if(depthDataSync != null) {
 			depthDataSync.downloadFiles();
-			depthDataSync.downloadSQL();
+//			depthDataSync.downloadSQL();
 		} else {
 			Logger.getLogger(getClass()).info("Depth sync not or falsely configured. Skipping file synchronization");
 		}
@@ -39,7 +39,7 @@ public class UploadedData2Contours implements IUploadedData2Contours {
 			try {
 				contentDetector2.setContentTypes();
 			} catch (ContentDetectionException e) {
-				e.printStackTrace();
+				Logger.getLogger(getClass()).error("An error occurred during content detection", e);
 			}
 		} else {
 			Logger.getLogger(getClass()).info("Content detection not or falsely configured. Skipping content detection");
