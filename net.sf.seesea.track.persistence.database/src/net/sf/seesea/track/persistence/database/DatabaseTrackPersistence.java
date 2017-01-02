@@ -69,12 +69,7 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 
 	public void activate(Map<String, Object> properties) {
 		basedir = (String) properties.get("basedir");
-		Boolean fp = (Boolean) properties.get("fullprocess");
-		if (fp == null) {
-			fullprocess = false;
-		} else {
-			fullprocess = fp.booleanValue();
-		}
+		fullprocess = Boolean.valueOf((String)properties.get("fullprocess"));
 
 		whitelistUsers = getValues("whitelistUsers", properties);
 		blacklistUsers = getValues("blacklistUsers", properties);
