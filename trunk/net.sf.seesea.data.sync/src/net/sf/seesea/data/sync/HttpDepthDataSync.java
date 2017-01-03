@@ -273,6 +273,10 @@ public class HttpDepthDataSync implements IDepthDataSync {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			SQLException nextException = e.getNextException();
+			if(nextException != null) {
+				nextException.printStackTrace();
+			}
 		}
 
 	}
