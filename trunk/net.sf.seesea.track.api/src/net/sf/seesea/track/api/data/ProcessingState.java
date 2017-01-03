@@ -42,4 +42,13 @@ public enum ProcessingState {
 		return i;
 	}
 	
+	public static ProcessingState forCode(int code) {
+	    for (ProcessingState typе : ProcessingState.values()) {
+	        if (typе.i == code) {
+	            return typе;
+	        }
+	    }
+	    return null;
+	 }
+	
 }
