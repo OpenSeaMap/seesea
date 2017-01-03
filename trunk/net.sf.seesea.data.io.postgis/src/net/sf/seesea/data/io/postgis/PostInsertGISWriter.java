@@ -30,7 +30,9 @@ package net.sf.seesea.data.io.postgis;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -87,6 +89,21 @@ public class PostInsertGISWriter implements IDataWriter {
 	public void activate(Map<String, Object> properties) throws SQLException {
 		tableNames = Arrays.asList(((String) properties.get("outputTables")).split(",")); 
 		connection = outputDataSource.getConnection();
+//		for (String tableName : tableNames) {
+//			try(Statement statement = connection.createStatement()) {
+//				statement.execute("CREATE SEQUENCE IF NOT EXISTS " + tableName +"_gid_seq"); 
+//			}
+//		}
+		try(Statement statement = connection.createStatement()) {//NOT NULL DEFAULT nextval('" + tableNames.get(0) + "_gid_seq'::regclass)
+			boolean execute = statement.execute("CREATE TABLE IF NOT EXISTS " + tableNames.get(0) +" ( lat numeric, lon numeric(11, 8), dbs numeric(8, 2), valid boolean, gid serial , datasetid integer, the_geom geometry,latvar double precision DEFAULT 0, lonvar double precision DEFAULT 0, depthvar double precision DEFAULT 0,recordingdate timestamp with time zone, CONSTRAINT " + tableNames.get(0) + "_pkey PRIMARY KEY (gid), CONSTRAINT enforce_srid_the_geom CHECK (st_srid(the_geom) = 4326), CONSTRAINT enforce_geotype_the_geom CHECK (geometrytype(the_geom) = 'POINT'::text OR the_geom IS NULL),CONSTRAINT enforce_dims_the_geom CHECK (st_ndims(the_geom) = 2))"); 
+		} catch (SQLException e) {
+			e.getNextException().printStackTrace();
+		}
+		for (String tableName : tableNames.subList(1, tableNames.size())) {
+			try(Statement statement = connection.createStatement()) {// NOT NULL DEFAULT nextval('" + tableName + "_gid_seq'::regclass)
+				statement.execute("CREATE TABLE IF NOT EXISTS " + tableName +" ( lat numeric, lon numeric(11, 8), dbs numeric(8, 2), valid boolean, gid serial , datasetid integer, the_geom geometry, recordingdate timestamp with time zone, CONSTRAINT "+ tableName +"_pkey PRIMARY KEY (gid), CONSTRAINT enforce_srid_the_geom CHECK (st_srid(the_geom) = 4326), CONSTRAINT enforce_geotype_the_geom CHECK (geometrytype(the_geom) = 'POINT'::text OR the_geom IS NULL),CONSTRAINT enforce_dims_the_geom CHECK (st_ndims(the_geom) = 2))");
+			}
+		}
 		insertStatements = new ArrayList<PreparedStatement>(tableNames.size());
 		prepareInsertStatement();
 		batchSizeCounter = 0;
@@ -232,6 +249,11 @@ public class PostInsertGISWriter implements IDataWriter {
 			}
 		}
 		} catch (SQLException e) {
+			e.printStackTrace();
+			SQLException nextException = e.getNextException();
+			if(nextException != null) {
+				nextException.printStackTrace();
+			}
 			throw new WriterException("Failed to insert data into table", e); //$NON-NLS-1$
 		}
 	}
