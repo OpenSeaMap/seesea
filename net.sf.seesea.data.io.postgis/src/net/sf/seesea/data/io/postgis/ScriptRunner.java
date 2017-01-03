@@ -162,7 +162,7 @@ public class ScriptRunner {
                             .lastIndexOf(getDelimiter())));
                     command.append(" ");
                     
-                    if(batchI % 100 == 0) {
+                    if(batchI % 500 == 0) {
                     	println(command);
                     }
 
@@ -188,7 +188,7 @@ public class ScriptRunner {
                     if (autoCommit && !conn.getAutoCommit()) {
                         conn.commit();
                     }
-                    if(batchI == 1000) {
+                    if(batchI == 5000) {
                     	batchI = 0;
                     	statement.executeBatch();
                     	statement = conn.createStatement();
