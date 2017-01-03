@@ -8,6 +8,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import org.apache.log4j.Logger;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
@@ -30,7 +31,7 @@ import net.sf.seesea.track.api.exception.TrackPerssitenceException;
  * @author Jens
  *
  */
-@Component
+@Component(configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class FilterEngine implements IFilterEngine {
 
 	private AtomicReference<ITrackPersistence> trackPersistenceAR = new AtomicReference<ITrackPersistence>();
@@ -42,7 +43,7 @@ public class FilterEngine implements IFilterEngine {
 	private AtomicReference<ITrackClustering> trackClusteringAR = new AtomicReference<ITrackClustering>();;
 
 	public void activate(Map<String, Object> config) {
-		preprocessRun = (boolean) config.get("preprocessRun");
+		preprocessRun = Boolean.valueOf((String)config.get("preprocessRun"));
 	}
 
 	@Override
@@ -59,8 +60,7 @@ public class FilterEngine implements IFilterEngine {
 					String user = user2TrackListEntry.getKey();
 					List<ITrackFile> trackFiles = user2TrackListEntry.getValue();
 					// FIXME set content type directly
-					TrackClusterResult trackClusterResult;
-					trackClusterResult = trackClustering.classifyTracks(trackFiles);
+					TrackClusterResult trackClusterResult = trackClustering.classifyTracks(trackFiles);
 
 					// // FIXME: maybe a different method
 					// if(preprocessRun) {
@@ -108,7 +108,7 @@ public class FilterEngine implements IFilterEngine {
 
 							if (preprocessRun) {
 								// mark as processed
-								trackPersistence.storePreprocessingStates(trackFiles);
+								trackPersistence.storePreprocessingStates(clusterOfTrackFiles);
 							}
 						} catch (FilterException | TrackPerssitenceException e) {
 							// TODO Auto-generated catch block
