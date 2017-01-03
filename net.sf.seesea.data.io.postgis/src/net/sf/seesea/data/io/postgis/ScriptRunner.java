@@ -112,7 +112,7 @@ public class ScriptRunner {
             }
         } catch (IOException e) {
             throw e;
-        } catch (SQLException e) {
+        } catch (SQLException e) {e.printStackTrace();
             throw e;
         } catch (Exception e) {
             throw new RuntimeException("Error running script.  Cause: " + e, e);
@@ -178,13 +178,17 @@ public class ScriptRunner {
                             e.fillInStackTrace();
                             printlnError("Error executing: " + command);
                             printlnError(e);
+                            SQLException nextException = e.getNextException();
+							if(nextException != null) {
+								nextException.printStackTrace();
+							}
                         }
                     }
 
                     if (autoCommit && !conn.getAutoCommit()) {
                         conn.commit();
                     }
-                    if(batchI == 10000) {
+                    if(batchI == 1000) {
                     	batchI = 0;
                     	statement.executeBatch();
                     	statement = conn.createStatement();
@@ -220,14 +224,18 @@ public class ScriptRunner {
                     command.append(" ");
                 }
             }
+            statement.executeBatch();
             if (!autoCommit) {
-            	statement.executeBatch();
                 conn.commit();
             }
         } catch (SQLException e) {
             e.fillInStackTrace();e.printStackTrace();
             printlnError("Error executing: " + command);
             printlnError(e);
+            SQLException nextException = e.getNextException();
+			if(nextException != null) {
+				nextException.printStackTrace();
+			}
             throw e;
         } catch (IOException e) {
             e.fillInStackTrace();
@@ -235,7 +243,9 @@ public class ScriptRunner {
             printlnError(e);
             throw e;
         } finally {
-            conn.rollback();
+            if (!autoCommit) {
+            	conn.rollback();
+            }
             flush();
         }
     }
