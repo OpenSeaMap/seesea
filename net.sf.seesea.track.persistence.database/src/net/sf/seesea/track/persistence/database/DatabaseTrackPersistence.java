@@ -228,7 +228,7 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 					ResultSet singleUserTrackFiles = null;
 					if (preprocessed) {
 						PreparedStatement userTracksStatement = connection.prepareStatement(
-								"SELECT track_id, filetype, compression, file_ref, vesselconfigid FROM user_tracks  " + //$NON-NLS-1$
+								"SELECT track_id, filetype, compression, file_ref, vesselconfigid, upload_state FROM user_tracks  " + //$NON-NLS-1$
 								"WHERE (user_tracks.user_name = ? OR user_tracks.user_name = ?) "+ 
 								"AND upload_state = ? " + //$NON-NLS-1$ //$NON-NLS-2$
 								"AND containertrack IS NULL " + //$NON-NLS-1$
@@ -239,7 +239,7 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 						singleUserTrackFiles = userTracksStatement.executeQuery();
 					} else {
 						PreparedStatement userTracksStatement = connection.prepareStatement(
-								"SELECT track_id, filetype, compression, file_ref, vesselconfigid FROM user_tracks " + //$NON-NLS-1$
+								"SELECT track_id, filetype, compression, file_ref, vesselconfigid,upload_state FROM user_tracks " + //$NON-NLS-1$
 										"WHERE (user_tracks.user_name = ? OR user_tracks.user_name = ?) " + //$NON-NLS-1$
 										"AND upload_state = ? " +
 										"AND containertrack IS NULL " + //$NON-NLS-1$
@@ -257,6 +257,7 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 						String compression = singleUserTrackFiles.getString("compression"); //$NON-NLS-1$
 						String fileType = singleUserTrackFiles.getString("filetype"); //$NON-NLS-1$
 						Long vesselConfigId = singleUserTrackFiles.getLong("vesselconfigid"); //$NON-NLS-1$
+						ProcessingState processingState = ProcessingState.forCode(singleUserTrackFiles.getInt("upload_state"));
 
 						if (compression == null) {
 							SimpleTrackFile trackFileX = new SimpleTrackFile();
@@ -266,6 +267,7 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 							trackFileX.setFileType(fileType);
 							trackFileX.setName(singleUserTrackFiles.getString("file_ref"));
 							trackFileX.setVesselConfiguration(vesselConfigurationList.get(vesselConfigId));
+							trackFileX.setUploadState(processingState);
 							orderedFiles.add(trackFileX);
 						} else {
 							CompressionType compressionType = CompressionType.getCompressionType(compression);
@@ -278,6 +280,7 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 								trackFileX.setFileType(fileType);
 								trackFileX.setName(singleUserTrackFiles.getString("file_ref"));
 								trackFileX.setVesselConfiguration(vesselConfigurationList.get(vesselConfigId));
+								trackFileX.setUploadState(processingState);
 								orderedFiles.add(trackFileX);
 								break;
 							case ZIP:
@@ -290,6 +293,7 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 									trackFileY.setFileType(fileType);
 									trackFileY.setName(singleUserTrackFiles.getString("file_ref"));
 									trackFileY.setVesselConfiguration(vesselConfigurationList.get(vesselConfigId));
+									trackFileY.setUploadState(processingState);
 									orderedFiles.add(trackFileY);
 								} catch (IllegalArgumentException e) {
 									e.printStackTrace();
@@ -301,6 +305,7 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 									trackFileY.setFileType(fileType);
 									trackFileY.setName(singleUserTrackFiles.getString("file_ref"));
 									trackFileY.setVesselConfiguration(vesselConfigurationList.get(vesselConfigId));
+									trackFileY.setUploadState(processingState);
 									orderedFiles.add(trackFileY);
 								}
 							default:
@@ -324,7 +329,7 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 						String trackFile = basedir + "/" //$NON-NLS-1$
 								+ format.format((id / 100) * 100) + "/" + id + ".dat"; //$NON-NLS-1$ //$NON-NLS-2$
 						String compression = mutliTrackFiles.getString("compression"); //$NON-NLS-1$
-						Long vesselConfigId = singleUserTrackFiles.getLong("vesselconfigid"); //$NON-NLS-1$
+						Long vesselConfigId = mutliTrackFiles.getLong("vesselconfigid"); //$NON-NLS-1$
 						PreparedStatement compressedFilesStatement = connection.prepareStatement(
 								"SELECT track_id, filetype, compression, file_ref FROM user_tracks " + //$NON-NLS-1$
 								"WHERE (user_name = ? OR user_name = ?) " + //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
