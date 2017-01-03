@@ -31,6 +31,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
@@ -74,8 +75,7 @@ public class ZipEntryTrackFile extends AbstractTrackFile implements IContainedTr
 
 	@Override
 	public Collection<ITrackFile> getTrackFiles() {
-		// TODO Auto-generated method stub
-		return null;
+		return Collections.<ITrackFile>emptyList();
 	}
 
 }
