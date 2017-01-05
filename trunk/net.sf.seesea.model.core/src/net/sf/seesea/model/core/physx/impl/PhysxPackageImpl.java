@@ -513,6 +513,15 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getTime_Relative() {
+		return (EAttribute)timeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDistance() {
 		return distanceEClass;
 	}
@@ -747,6 +756,7 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 		createEReference(satellitesVisibleEClass, SATELLITES_VISIBLE__SATELLITE_INFO);
 
 		timeEClass = createEClass(TIME);
+		createEAttribute(timeEClass, TIME__RELATIVE);
 
 		distanceEClass = createEClass(DISTANCE);
 		createEAttribute(distanceEClass, DISTANCE__VALUE);
@@ -852,6 +862,7 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 		initEReference(getSatellitesVisible_SatelliteInfo(), this.getSatelliteInfo(), null, "satelliteInfo", null, 0, -1, SatellitesVisible.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(timeEClass, Time.class, "Time", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(getTime_Relative(), ecorePackage.getEBoolean(), "relative", "true", 0, 1, Time.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
 
 		initEClass(distanceEClass, Distance.class, "Distance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(getDistance_Value(), ecorePackage.getEDouble(), "value", null, 0, 1, Distance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$

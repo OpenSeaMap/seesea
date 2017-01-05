@@ -661,13 +661,22 @@ public interface PhysxPackage extends EPackage {
 	int TIME__VALID = MEASUREMENT__VALID;
 
 	/**
+	 * The feature id for the '<em><b>Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME__RELATIVE = MEASUREMENT_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Time</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TIME_FEATURE_COUNT = MEASUREMENT_FEATURE_COUNT + 0;
+	int TIME_FEATURE_COUNT = MEASUREMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link net.sf.seesea.model.core.physx.impl.DistanceImpl <em>Distance</em>}' class.
@@ -1300,6 +1309,17 @@ public interface PhysxPackage extends EPackage {
 	EClass getTime();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.physx.Time#isRelative <em>Relative</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Relative</em>'.
+	 * @see net.sf.seesea.model.core.physx.Time#isRelative()
+	 * @see #getTime()
+	 * @generated
+	 */
+	EAttribute getTime_Relative();
+
+	/**
 	 * Returns the meta object for class '{@link net.sf.seesea.model.core.physx.Distance <em>Distance</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1737,6 +1757,14 @@ public interface PhysxPackage extends EPackage {
 		 * @generated
 		 */
 		EClass TIME = eINSTANCE.getTime();
+
+		/**
+		 * The meta object literal for the '<em><b>Relative</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TIME__RELATIVE = eINSTANCE.getTime_Relative();
 
 		/**
 		 * The meta object literal for the '{@link net.sf.seesea.model.core.physx.impl.DistanceImpl <em>Distance</em>}' class.

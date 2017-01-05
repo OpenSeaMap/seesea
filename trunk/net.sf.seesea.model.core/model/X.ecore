@@ -253,7 +253,10 @@
               <eLiterals name="COG" value="1"/>
               <eLiterals name="SPEEDTHOUGHWATER" value="2"/>
             </eClassifiers>
-            <eClassifiers xsi:type="ecore:EClass" name="Time" eSuperTypes="#//sf/seesea/model/core/physx/Measurement"/>
+            <eClassifiers xsi:type="ecore:EClass" name="Time" eSuperTypes="#//sf/seesea/model/core/physx/Measurement">
+              <eStructuralFeatures xsi:type="ecore:EAttribute" name="relative" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+                  defaultValueLiteral="true"/>
+            </eClassifiers>
             <eClassifiers xsi:type="ecore:EClass" name="Distance" eSuperTypes="#//sf/seesea/model/core/physx/Measurement">
               <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
               <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="#//sf/seesea/model/core/physx/LengthUnit"/>
