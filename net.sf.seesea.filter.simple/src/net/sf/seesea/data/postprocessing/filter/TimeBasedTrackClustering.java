@@ -89,7 +89,7 @@ public class TimeBasedTrackClustering implements ITrackClustering {
 		for (ITrackFile trackFile : orderedFiles) {
 			ITrackFileProcessor locationPreprocessor = fileTypeProcessingFactory.createLocationPreProcessor(trackFile);
 			if(locationPreprocessor != null) {
-				IDepthPositionPreProcessor measurmentProcessor = new DepthPositionPreprocessor();
+				IDepthPositionPreProcessor measurmentProcessor = new DepthPositionPreprocessor(locationPreprocessor.hasAbsoluteTime(), locationPreprocessor.hasRelativeTime());
 				locationPreprocessor.setMeasurementProcessor(measurmentProcessor);
 				// format supported
 				if(locationPreprocessor != null) {
@@ -101,7 +101,7 @@ public class TimeBasedTrackClustering implements ITrackClustering {
 								// set no depth
 								noTrackFiles.add(trackFile);
 							} else {
-								subclassifyTracks(newOrderedFiles, noTimeMeasurementFiles, trackFile, measurmentProcessor);
+								subclassifyTracks(newOrderedFiles, noTimeMeasurementFiles, trackFile, measurmentProcessor, locationPreprocessor);
 							}
 						} catch (ProcessingException e) {
 							if(measurmentProcessor.getPointCount() > 0) {
@@ -109,7 +109,7 @@ public class TimeBasedTrackClustering implements ITrackClustering {
 									// set no depth
 									noTrackFiles.add(trackFile);
 								} else {
-									subclassifyTracks(newOrderedFiles, noTimeMeasurementFiles, trackFile, measurmentProcessor);
+									subclassifyTracks(newOrderedFiles, noTimeMeasurementFiles, trackFile, measurmentProcessor, locationPreprocessor);
 								}
 								Logger.getLogger(getClass()).error("Partially correct data for for track id " + trackFile.getTrackId(), e);
 							} else {
@@ -172,9 +172,7 @@ public class TimeBasedTrackClustering implements ITrackClustering {
 	}
 
 	private void subclassifyTracks(List<ITrackFile> newOrderedFiles, Set<ITrackFile> noTimeMeasurementFiles,
-			ITrackFile trackFile, IDepthPositionPreProcessor locationPreprocessor) {
-		trackFile.setAbsoluteTimeMeasurements(locationPreprocessor.hasAbsoluteTimedMeasurements());
-		trackFile.setRelativeTimeMeasurements(locationPreprocessor.hasRelativeTimedMeasurements());
+			ITrackFile trackFile, IDepthPositionPreProcessor locationPreprocessor, ITrackFileProcessor trackFileProcessor) {
 		if(locationPreprocessor.getStart() != null && (locationPreprocessor.hasAbsoluteTimedMeasurements() || locationPreprocessor.hasRelativeTimedMeasurements())) {
 			trackFile.setFirstPositions(locationPreprocessor.getFirstTrackPoints());
 			trackFile.setStart(locationPreprocessor.getStart());
