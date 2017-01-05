@@ -44,25 +44,30 @@ public class TrackFileComparator implements Comparator<ITrackFile>, Serializable
 		MeasuredPosition3D endA = fileA.getEnd();
 		MeasuredPosition3D startA = fileA.getStart();
 		MeasuredPosition3D startB = fileB.getStart();
-		if(endB.getTime() != null && endA.getTime() != null && startB.getTime() != null && startA.getTime() != null &&
-				endA.getTime().getTime() - startA.getTime().getTime() > 0 && (endB.getTime().getTime() - startB.getTime().getTime()) > 0) {
-			if(endA.getTime().getTime() == endB.getTime().getTime() && startA.getTime().getTime() == startB.getTime().getTime()) {
-				return compareNameId(fileA, fileB);
-			}
-			// fail safe handling for overlapping times
-			if(startA.getTime().getTime() < startB.getTime().getTime() && endA.getTime().getTime() > startB.getTime().getTime()) {
-				return compareNameId(fileA, fileB);
-			}
-			if(startB.getTime().getTime() < startA.getTime().getTime() && endB.getTime().getTime() > startA.getTime().getTime()) {
-				return compareNameId(fileA, fileB);
-			}
-			
-			
-			long a = (endA.getTime().getTime() - startB.getTime().getTime());
-			if(a < 0 ) {
-				return -1;
-			} else if(a > 0) {
-				return 1;
+		boolean notnull = endB.getTime() != null && endA.getTime() != null && startB.getTime() != null && startA.getTime() != null;
+		if(notnull) {
+			boolean endAfterStartA = endA.getTime().getTime() - startA.getTime().getTime() > 0;
+			boolean endAfterStartB = (endB.getTime().getTime() - startB.getTime().getTime()) > 0;
+			if(endAfterStartA && endAfterStartB) {
+				boolean sameStartAndEndTime = endA.getTime().getTime() == endB.getTime().getTime() && startA.getTime().getTime() == startB.getTime().getTime();
+				if(sameStartAndEndTime) {
+					return compareNameId(fileA, fileB);
+				}
+				// fail safe handling for overlapping times
+				if(startA.getTime().getTime() < startB.getTime().getTime() && endA.getTime().getTime() > startB.getTime().getTime()) {
+					return compareNameId(fileA, fileB);
+				}
+				if(startB.getTime().getTime() < startA.getTime().getTime() && endB.getTime().getTime() > startA.getTime().getTime()) {
+					return compareNameId(fileA, fileB);
+				}
+				
+				
+				long endAAfterStartB = (endA.getTime().getTime() - startB.getTime().getTime());
+				if(endAAfterStartB < 0 ) {
+					return -1;
+				} else if(endAAfterStartB > 0) {
+					return 1;
+				}
 			}
 		}
 		return compareNameId(fileA, fileB);

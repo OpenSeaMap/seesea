@@ -42,8 +42,9 @@ import net.sf.seesea.track.api.exception.ProcessingException;
 
 public class DepthPositionPreprocessor implements IDepthPositionPreProcessor {
 
-	public DepthPositionPreprocessor() {
-		timedRelativeMeasurements = false;
+	public DepthPositionPreprocessor(boolean canHaveAbsoluteTime, boolean canHaveRelativeTime) {
+		timedRelativeMeasurements = canHaveRelativeTime;
+		timedAbsoluteMeasurements = canHaveAbsoluteTime;
 		pointCount = 0;
 	}
 
@@ -92,11 +93,12 @@ public class DepthPositionPreprocessor implements IDepthPositionPreProcessor {
 			} else if (measurement instanceof MeasuredPosition3D && measurement.isValid()) {
 				// && (measurement.getTime() != null || !trackFileProcessor.hasTimedMeasurments())  &&
 				if(measurement.getTime() != null && measurement.getTime().getTime() > 0L) {
-					if(trackfile.isHasAbsoluteTimedMeasurements()) {
-						timedAbsoluteMeasurements = true;
+					if(timedAbsoluteMeasurements) {
+						// TODO: be more picky about absolute measurements
+						trackfile.setAbsoluteTimeMeasurements(timedAbsoluteMeasurements);
 					}
-					if(trackfile.isHasRelativeTimedMeasurements()) {
-						timedRelativeMeasurements = true;
+					if(timedRelativeMeasurements) {
+						trackfile.setRelativeTimeMeasurements(timedRelativeMeasurements);
 					}
 				}
 				MeasuredPosition3D measuredPosition3D = (MeasuredPosition3D) measurement;
