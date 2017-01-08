@@ -11,6 +11,7 @@ import java.util.Collection;
 import java.util.Locale;
 
 import net.sf.seesea.data.io.IDataWriter;
+import net.sf.seesea.data.io.WriterException;
 import net.sf.seesea.model.core.geo.Depth;
 import net.sf.seesea.model.core.geo.MeasuredPosition3D;
 import net.sf.seesea.model.core.geo.RelativeDepthMeasurementPosition;
@@ -182,5 +183,17 @@ public class NMEA0183Writer implements IDataWriter {
         //return the calculated checksum
         return chk_s;
     }
+
+	@Override
+	public void clearOutput(Long trackId) throws WriterException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void clearAllOutput() throws WriterException {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

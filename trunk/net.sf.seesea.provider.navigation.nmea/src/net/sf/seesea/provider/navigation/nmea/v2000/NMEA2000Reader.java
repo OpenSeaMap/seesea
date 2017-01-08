@@ -200,6 +200,7 @@ public class NMEA2000Reader {
 							.getValue());
 					measuredPosition3D.setSensorID(Integer.toString(source));
 					measuredPosition3D.setTime(gnssPositionData.getTime());
+					measuredPosition3D.setRelative(false);
 					measuredPosition3D.setValid(true);
 					measuredPosition3D.setTimezone("UTC");
 					Time time = PhysxFactory.eINSTANCE.createTime();
