@@ -202,13 +202,22 @@ public interface PhysxPackage extends EPackage {
 	int MEASUREMENT__VALID = CorePackage.MODEL_OBJECT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEASUREMENT__RELATIVE = CorePackage.MODEL_OBJECT_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Measurement</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MEASUREMENT_FEATURE_COUNT = CorePackage.MODEL_OBJECT_FEATURE_COUNT + 4;
+	int MEASUREMENT_FEATURE_COUNT = CorePackage.MODEL_OBJECT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Sensor ID</b></em>' attribute.
@@ -245,6 +254,15 @@ public interface PhysxPackage extends EPackage {
 	 * @ordered
 	 */
 	int TEMPERATURE__VALID = MEASUREMENT__VALID;
+
+	/**
+	 * The feature id for the '<em><b>Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPERATURE__RELATIVE = MEASUREMENT__RELATIVE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -310,6 +328,15 @@ public interface PhysxPackage extends EPackage {
 	int SPEED__VALID = MEASUREMENT__VALID;
 
 	/**
+	 * The feature id for the '<em><b>Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPEED__RELATIVE = MEASUREMENT__RELATIVE;
+
+	/**
 	 * The feature id for the '<em><b>Speed</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -373,6 +400,15 @@ public interface PhysxPackage extends EPackage {
 	int HEADING__VALID = MEASUREMENT__VALID;
 
 	/**
+	 * The feature id for the '<em><b>Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HEADING__RELATIVE = MEASUREMENT__RELATIVE;
+
+	/**
 	 * The feature id for the '<em><b>Degrees</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -434,6 +470,15 @@ public interface PhysxPackage extends EPackage {
 	 * @ordered
 	 */
 	int RELATIVE_WIND__VALID = HEADING__VALID;
+
+	/**
+	 * The feature id for the '<em><b>Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELATIVE_WIND__RELATIVE = HEADING__RELATIVE;
 
 	/**
 	 * The feature id for the '<em><b>Degrees</b></em>' attribute.
@@ -526,6 +571,15 @@ public interface PhysxPackage extends EPackage {
 	int SATELLITE_INFO__VALID = MEASUREMENT__VALID;
 
 	/**
+	 * The feature id for the '<em><b>Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SATELLITE_INFO__RELATIVE = MEASUREMENT__RELATIVE;
+
+	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -607,6 +661,15 @@ public interface PhysxPackage extends EPackage {
 	int SATELLITES_VISIBLE__VALID = MEASUREMENT__VALID;
 
 	/**
+	 * The feature id for the '<em><b>Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SATELLITES_VISIBLE__RELATIVE = MEASUREMENT__RELATIVE;
+
+	/**
 	 * The feature id for the '<em><b>Satellite Info</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -667,7 +730,7 @@ public interface PhysxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TIME__RELATIVE = MEASUREMENT_FEATURE_COUNT + 0;
+	int TIME__RELATIVE = MEASUREMENT__RELATIVE;
 
 	/**
 	 * The number of structural features of the '<em>Time</em>' class.
@@ -676,7 +739,7 @@ public interface PhysxPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TIME_FEATURE_COUNT = MEASUREMENT_FEATURE_COUNT + 1;
+	int TIME_FEATURE_COUNT = MEASUREMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link net.sf.seesea.model.core.physx.impl.DistanceImpl <em>Distance</em>}' class.
@@ -723,6 +786,15 @@ public interface PhysxPackage extends EPackage {
 	 * @ordered
 	 */
 	int DISTANCE__VALID = MEASUREMENT__VALID;
+
+	/**
+	 * The feature id for the '<em><b>Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISTANCE__RELATIVE = MEASUREMENT__RELATIVE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -807,6 +879,15 @@ public interface PhysxPackage extends EPackage {
 	int COMPOSITE_MEASUREMENT__VALID = MEASUREMENT__VALID;
 
 	/**
+	 * The feature id for the '<em><b>Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_MEASUREMENT__RELATIVE = MEASUREMENT__RELATIVE;
+
+	/**
 	 * The feature id for the '<em><b>Measurements</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -869,6 +950,15 @@ public interface PhysxPackage extends EPackage {
 	 * @ordered
 	 */
 	int RELATIVE_SPEED__VALID = MEASUREMENT__VALID;
+
+	/**
+	 * The feature id for the '<em><b>Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELATIVE_SPEED__RELATIVE = MEASUREMENT__RELATIVE;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -942,6 +1032,15 @@ public interface PhysxPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACCELERATION__VALID = MEASUREMENT__VALID;
+
+	/**
+	 * The feature id for the '<em><b>Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCELERATION__RELATIVE = MEASUREMENT__RELATIVE;
 
 	/**
 	 * The feature id for the '<em><b>X</b></em>' attribute.
@@ -1203,6 +1302,17 @@ public interface PhysxPackage extends EPackage {
 	EAttribute getMeasurement_Valid();
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.physx.Measurement#isRelative <em>Relative</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Relative</em>'.
+	 * @see net.sf.seesea.model.core.physx.Measurement#isRelative()
+	 * @see #getMeasurement()
+	 * @generated
+	 */
+	EAttribute getMeasurement_Relative();
+
+	/**
 	 * Returns the meta object for class '{@link net.sf.seesea.model.core.physx.RelativeWind <em>Relative Wind</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1307,17 +1417,6 @@ public interface PhysxPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getTime();
-
-	/**
-	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.physx.Time#isRelative <em>Relative</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Relative</em>'.
-	 * @see net.sf.seesea.model.core.physx.Time#isRelative()
-	 * @see #getTime()
-	 * @generated
-	 */
-	EAttribute getTime_Relative();
 
 	/**
 	 * Returns the meta object for class '{@link net.sf.seesea.model.core.physx.Distance <em>Distance</em>}'.
@@ -1671,6 +1770,14 @@ public interface PhysxPackage extends EPackage {
 		EAttribute MEASUREMENT__VALID = eINSTANCE.getMeasurement_Valid();
 
 		/**
+		 * The meta object literal for the '<em><b>Relative</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MEASUREMENT__RELATIVE = eINSTANCE.getMeasurement_Relative();
+
+		/**
 		 * The meta object literal for the '{@link net.sf.seesea.model.core.physx.impl.RelativeWindImpl <em>Relative Wind</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1757,14 +1864,6 @@ public interface PhysxPackage extends EPackage {
 		 * @generated
 		 */
 		EClass TIME = eINSTANCE.getTime();
-
-		/**
-		 * The meta object literal for the '<em><b>Relative</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TIME__RELATIVE = eINSTANCE.getTime_Relative();
 
 		/**
 		 * The meta object literal for the '{@link net.sf.seesea.model.core.physx.impl.DistanceImpl <em>Distance</em>}' class.

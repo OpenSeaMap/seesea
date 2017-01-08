@@ -637,6 +637,15 @@ public interface GeoPackage extends EPackage {
 	int MEASURED_POSITION3_D__VALID = PhysxPackage.MEASUREMENT__VALID;
 
 	/**
+	 * The feature id for the '<em><b>Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEASURED_POSITION3_D__RELATIVE = PhysxPackage.MEASUREMENT__RELATIVE;
+
+	/**
 	 * The feature id for the '<em><b>Longitude</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -952,6 +961,15 @@ public interface GeoPackage extends EPackage {
 	int DEPTH__VALID = PhysxPackage.MEASUREMENT__VALID;
 
 	/**
+	 * The feature id for the '<em><b>Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPTH__RELATIVE = PhysxPackage.MEASUREMENT__RELATIVE;
+
+	/**
 	 * The feature id for the '<em><b>Measurement Position</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1023,6 +1041,15 @@ public interface GeoPackage extends EPackage {
 	 * @ordered
 	 */
 	int GNSS_MEASURED_POSITION__VALID = MEASURED_POSITION3_D__VALID;
+
+	/**
+	 * The feature id for the '<em><b>Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GNSS_MEASURED_POSITION__RELATIVE = MEASURED_POSITION3_D__RELATIVE;
 
 	/**
 	 * The feature id for the '<em><b>Longitude</b></em>' containment reference.

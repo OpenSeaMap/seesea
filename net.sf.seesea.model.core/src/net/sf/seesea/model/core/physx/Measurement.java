@@ -46,6 +46,7 @@ import net.sf.seesea.model.core.ModelObject;
  *   <li>{@link net.sf.seesea.model.core.physx.Measurement#getTime <em>Time</em>}</li>
  *   <li>{@link net.sf.seesea.model.core.physx.Measurement#getTimezone <em>Timezone</em>}</li>
  *   <li>{@link net.sf.seesea.model.core.physx.Measurement#isValid <em>Valid</em>}</li>
+ *   <li>{@link net.sf.seesea.model.core.physx.Measurement#isRelative <em>Relative</em>}</li>
  * </ul>
  *
  * @see net.sf.seesea.model.core.physx.PhysxPackage#getMeasurement()
@@ -157,4 +158,31 @@ public interface Measurement extends ModelObject {
 	 * @generated
 	 */
 	void setValid(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Relative</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Relative</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Relative</em>' attribute.
+	 * @see #setRelative(boolean)
+	 * @see net.sf.seesea.model.core.physx.PhysxPackage#getMeasurement_Relative()
+	 * @model default="true"
+	 * @generated
+	 */
+	boolean isRelative();
+
+	/**
+	 * Sets the value of the '{@link net.sf.seesea.model.core.physx.Measurement#isRelative <em>Relative</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Relative</em>' attribute.
+	 * @see #isRelative()
+	 * @generated
+	 */
+	void setRelative(boolean value);
 } // Measurement
