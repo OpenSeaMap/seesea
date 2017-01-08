@@ -43,8 +43,8 @@ import net.sf.seesea.track.api.exception.ProcessingException;
 public class DepthPositionPreprocessor implements IDepthPositionPreProcessor {
 
 	public DepthPositionPreprocessor(boolean canHaveAbsoluteTime, boolean canHaveRelativeTime) {
-		timedRelativeMeasurements = canHaveRelativeTime;
-		timedAbsoluteMeasurements = canHaveAbsoluteTime;
+		formatSupportsRelativeTime = canHaveRelativeTime;
+		formatSupportsAbsoluteTime = canHaveAbsoluteTime;
 		pointCount = 0;
 	}
 
@@ -53,17 +53,20 @@ public class DepthPositionPreprocessor implements IDepthPositionPreProcessor {
 	private MeasuredPosition3D start;
 	
 	private MeasuredPosition3D end;
+
+	private MeasuredPosition3D absouluteTimeEnd;
 	
 	private boolean containsDepthData = false;
 	
-	private boolean timedRelativeMeasurements;
+	private boolean formatSupportsRelativeTime;
 	
 	private long pointCount;
 
 	/** used to compare the first 10 points */
 	private List<MeasuredPosition3D> firstTrackPoints = new ArrayList<MeasuredPosition3D>();
 
-	private boolean timedAbsoluteMeasurements;
+	private boolean formatSupportsAbsoluteTime;
+
 
 	@Override
 	public MeasuredPosition3D getStart() {
@@ -93,12 +96,12 @@ public class DepthPositionPreprocessor implements IDepthPositionPreProcessor {
 			} else if (measurement instanceof MeasuredPosition3D && measurement.isValid()) {
 				// && (measurement.getTime() != null || !trackFileProcessor.hasTimedMeasurments())  &&
 				if(measurement.getTime() != null && measurement.getTime().getTime() > 0L) {
-					if(timedAbsoluteMeasurements) {
+					if(formatSupportsAbsoluteTime && !measurement.isRelative()) {
 						// TODO: be more picky about absolute measurements
-						trackfile.setAbsoluteTimeMeasurements(timedAbsoluteMeasurements);
+						trackfile.setAbsoluteTimeMeasurements(true);
 					}
-					if(timedRelativeMeasurements) {
-						trackfile.setRelativeTimeMeasurements(timedRelativeMeasurements);
+					if(formatSupportsRelativeTime && measurement.isRelative()) {
+						trackfile.setRelativeTimeMeasurements(true);
 					}
 				}
 				MeasuredPosition3D measuredPosition3D = (MeasuredPosition3D) measurement;
@@ -107,8 +110,18 @@ public class DepthPositionPreprocessor implements IDepthPositionPreProcessor {
 				}
 				if(firstTrackPoints.size() < 10) {
 					firstTrackPoints.add(measuredPosition3D);
+					// favor absoulte starting time over relative starting times
+					// this is used for nmea sentences having GLL and RMC sentences and favoring those with absolute time to archive a good clustering
+					if(start.isRelative() && !measuredPosition3D.isRelative()) {
+						start = measuredPosition3D;
+					}
+				}
+				if(!measuredPosition3D.isRelative()) {
+					absouluteTimeEnd = measuredPosition3D;
+					end = measuredPosition3D;
 				}
 				end = measuredPosition3D;
+				
 				if(this.boundingBox == null) {
 					this.boundingBox = GeoFactory.eINSTANCE.createGeoBoundingBox();
 					this.boundingBox.setLeft(measuredPosition3D.getLongitude().getDecimalDegree());
@@ -145,7 +158,7 @@ public class DepthPositionPreprocessor implements IDepthPositionPreProcessor {
 	}
 
 	public boolean hasRelativeTimedMeasurements() {
-		return timedRelativeMeasurements;
+		return formatSupportsRelativeTime;
 	}
 
 	public long getPointCount() {
@@ -154,7 +167,7 @@ public class DepthPositionPreprocessor implements IDepthPositionPreProcessor {
 
 	@Override
 	public boolean hasAbsoluteTimedMeasurements() {
-		return timedAbsoluteMeasurements;
+		return formatSupportsAbsoluteTime;
 	}
 
 
