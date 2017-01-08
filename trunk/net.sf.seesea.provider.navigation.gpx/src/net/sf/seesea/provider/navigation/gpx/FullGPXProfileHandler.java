@@ -156,6 +156,7 @@ public class FullGPXProfileHandler extends DefaultHandler {
 					geoPositionInTrackPoint.setTimezone(dateFormat.getTimeZone().getID());
 					geoPositionInTrackPoint.setSensorID("unknown");
 					geoPositionInTrackPoint.setValid(true);
+					geoPositionInTrackPoint.setRelative(false);
 				} else {
 					geoPositionInTrackPoint = null;
 				}
