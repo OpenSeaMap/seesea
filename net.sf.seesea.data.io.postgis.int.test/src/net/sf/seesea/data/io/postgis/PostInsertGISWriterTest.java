@@ -47,6 +47,8 @@ public class PostInsertGISWriterTest {
 		Connection connection = EasyMock.createNiceMock(Connection.class);
 		EasyMock.expect(connection.prepareStatement(EasyMock.anyString())).andReturn(statement);
 		EasyMock.expectLastCall().anyTimes();
+		EasyMock.expect(connection.createStatement()).andReturn(statement);
+		EasyMock.expectLastCall().anyTimes();
 		EasyMock.replay(connection);
 		
 		DataSource dataSource = EasyMock.createNiceMock(DataSource.class);
