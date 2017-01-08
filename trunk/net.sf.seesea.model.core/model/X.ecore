@@ -220,6 +220,8 @@
               <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
               <eStructuralFeatures xsi:type="ecore:EAttribute" name="timezone" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
               <eStructuralFeatures xsi:type="ecore:EAttribute" name="valid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+              <eStructuralFeatures xsi:type="ecore:EAttribute" name="relative" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+                  defaultValueLiteral="true"/>
             </eClassifiers>
             <eClassifiers xsi:type="ecore:EClass" name="RelativeWind" eSuperTypes="#//sf/seesea/model/core/physx/Heading #//sf/seesea/model/core/physx/Speed">
               <eStructuralFeatures xsi:type="ecore:EAttribute" name="bowOrientation"
@@ -253,10 +255,7 @@
               <eLiterals name="COG" value="1"/>
               <eLiterals name="SPEEDTHOUGHWATER" value="2"/>
             </eClassifiers>
-            <eClassifiers xsi:type="ecore:EClass" name="Time" eSuperTypes="#//sf/seesea/model/core/physx/Measurement">
-              <eStructuralFeatures xsi:type="ecore:EAttribute" name="relative" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-                  defaultValueLiteral="true"/>
-            </eClassifiers>
+            <eClassifiers xsi:type="ecore:EClass" name="Time" eSuperTypes="#//sf/seesea/model/core/physx/Measurement"/>
             <eClassifiers xsi:type="ecore:EClass" name="Distance" eSuperTypes="#//sf/seesea/model/core/physx/Measurement">
               <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
               <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="#//sf/seesea/model/core/physx/LengthUnit"/>

@@ -423,6 +423,15 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getMeasurement_Relative() {
+		return (EAttribute)measurementEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getRelativeWind() {
 		return relativeWindEClass;
 	}
@@ -506,15 +515,6 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	 */
 	public EClass getTime() {
 		return timeEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTime_Relative() {
-		return (EAttribute)timeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -742,6 +742,7 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 		createEAttribute(measurementEClass, MEASUREMENT__TIME);
 		createEAttribute(measurementEClass, MEASUREMENT__TIMEZONE);
 		createEAttribute(measurementEClass, MEASUREMENT__VALID);
+		createEAttribute(measurementEClass, MEASUREMENT__RELATIVE);
 
 		relativeWindEClass = createEClass(RELATIVE_WIND);
 		createEAttribute(relativeWindEClass, RELATIVE_WIND__BOW_ORIENTATION);
@@ -756,7 +757,6 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 		createEReference(satellitesVisibleEClass, SATELLITES_VISIBLE__SATELLITE_INFO);
 
 		timeEClass = createEClass(TIME);
-		createEAttribute(timeEClass, TIME__RELATIVE);
 
 		distanceEClass = createEClass(DISTANCE);
 		createEAttribute(distanceEClass, DISTANCE__VALUE);
@@ -848,6 +848,7 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 		initEAttribute(getMeasurement_Time(), ecorePackage.getEDate(), "time", null, 0, 1, Measurement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getMeasurement_Timezone(), ecorePackage.getEString(), "timezone", null, 0, 1, Measurement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getMeasurement_Valid(), ecorePackage.getEBoolean(), "valid", null, 0, 1, Measurement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getMeasurement_Relative(), ecorePackage.getEBoolean(), "relative", "true", 0, 1, Measurement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
 
 		initEClass(relativeWindEClass, RelativeWind.class, "RelativeWind", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(getRelativeWind_BowOrientation(), this.getHandOrientation(), "bowOrientation", null, 0, 1, RelativeWind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -862,7 +863,6 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 		initEReference(getSatellitesVisible_SatelliteInfo(), this.getSatelliteInfo(), null, "satelliteInfo", null, 0, -1, SatellitesVisible.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(timeEClass, Time.class, "Time", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getTime_Relative(), ecorePackage.getEBoolean(), "relative", "true", 0, 1, Time.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
 
 		initEClass(distanceEClass, Distance.class, "Distance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(getDistance_Value(), ecorePackage.getEDouble(), "value", null, 0, 1, Distance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$

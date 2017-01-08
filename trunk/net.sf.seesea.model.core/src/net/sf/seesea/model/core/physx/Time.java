@@ -35,44 +35,11 @@ package net.sf.seesea.model.core.physx;
  * A representation of the model object '<em><b>Time</b></em>'.
  * <!-- end-user-doc -->
  *
- * <p>
- * The following features are supported:
- * </p>
- * <ul>
- *   <li>{@link net.sf.seesea.model.core.physx.Time#isRelative <em>Relative</em>}</li>
- * </ul>
  *
  * @see net.sf.seesea.model.core.physx.PhysxPackage#getTime()
  * @model
  * @generated
  */
 public interface Time extends Measurement {
-
-	/**
-	 * Returns the value of the '<em><b>Relative</b></em>' attribute.
-	 * The default value is <code>"true"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Relative</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Relative</em>' attribute.
-	 * @see #setRelative(boolean)
-	 * @see net.sf.seesea.model.core.physx.PhysxPackage#getTime_Relative()
-	 * @model default="true"
-	 * @generated
-	 */
-	boolean isRelative();
-
-	/**
-	 * Sets the value of the '{@link net.sf.seesea.model.core.physx.Time#isRelative <em>Relative</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Relative</em>' attribute.
-	 * @see #isRelative()
-	 * @generated
-	 */
-	void setRelative(boolean value);
 
 } // Time

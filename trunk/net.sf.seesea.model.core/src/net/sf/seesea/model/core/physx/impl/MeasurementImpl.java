@@ -52,6 +52,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link net.sf.seesea.model.core.physx.impl.MeasurementImpl#getTime <em>Time</em>}</li>
  *   <li>{@link net.sf.seesea.model.core.physx.impl.MeasurementImpl#getTimezone <em>Timezone</em>}</li>
  *   <li>{@link net.sf.seesea.model.core.physx.impl.MeasurementImpl#isValid <em>Valid</em>}</li>
+ *   <li>{@link net.sf.seesea.model.core.physx.impl.MeasurementImpl#isRelative <em>Relative</em>}</li>
  * </ul>
  *
  * @generated
@@ -129,6 +130,24 @@ public abstract class MeasurementImpl extends ModelObjectImpl implements Measure
 	 * @ordered
 	 */
 	protected boolean valid = VALID_EDEFAULT;
+	/**
+	 * The default value of the '{@link #isRelative() <em>Relative</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRelative()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean RELATIVE_EDEFAULT = true;
+	/**
+	 * The cached value of the '{@link #isRelative() <em>Relative</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRelative()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean relative = RELATIVE_EDEFAULT;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -237,6 +256,27 @@ public abstract class MeasurementImpl extends ModelObjectImpl implements Measure
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isRelative() {
+		return relative;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRelative(boolean newRelative) {
+		boolean oldRelative = relative;
+		relative = newRelative;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackage.MEASUREMENT__RELATIVE, oldRelative, relative));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -248,6 +288,8 @@ public abstract class MeasurementImpl extends ModelObjectImpl implements Measure
 				return getTimezone();
 			case PhysxPackage.MEASUREMENT__VALID:
 				return isValid();
+			case PhysxPackage.MEASUREMENT__RELATIVE:
+				return isRelative();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -271,6 +313,9 @@ public abstract class MeasurementImpl extends ModelObjectImpl implements Measure
 				return;
 			case PhysxPackage.MEASUREMENT__VALID:
 				setValid((Boolean)newValue);
+				return;
+			case PhysxPackage.MEASUREMENT__RELATIVE:
+				setRelative((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -296,6 +341,9 @@ public abstract class MeasurementImpl extends ModelObjectImpl implements Measure
 			case PhysxPackage.MEASUREMENT__VALID:
 				setValid(VALID_EDEFAULT);
 				return;
+			case PhysxPackage.MEASUREMENT__RELATIVE:
+				setRelative(RELATIVE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -316,6 +364,8 @@ public abstract class MeasurementImpl extends ModelObjectImpl implements Measure
 				return TIMEZONE_EDEFAULT == null ? timezone != null : !TIMEZONE_EDEFAULT.equals(timezone);
 			case PhysxPackage.MEASUREMENT__VALID:
 				return valid != VALID_EDEFAULT;
+			case PhysxPackage.MEASUREMENT__RELATIVE:
+				return relative != RELATIVE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -338,6 +388,8 @@ public abstract class MeasurementImpl extends ModelObjectImpl implements Measure
 		result.append(timezone);
 		result.append(", valid: "); //$NON-NLS-1$
 		result.append(valid);
+		result.append(", relative: "); //$NON-NLS-1$
+		result.append(relative);
 		result.append(')');
 		return result.toString();
 	}

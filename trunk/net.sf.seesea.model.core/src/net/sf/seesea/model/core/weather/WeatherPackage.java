@@ -131,6 +131,15 @@ public interface WeatherPackage extends EPackage {
 	int WIND_MEASUREMENT__VALID = PhysxPackage.MEASUREMENT__VALID;
 
 	/**
+	 * The feature id for the '<em><b>Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WIND_MEASUREMENT__RELATIVE = PhysxPackage.MEASUREMENT__RELATIVE;
+
+	/**
 	 * The feature id for the '<em><b>Speed</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -222,6 +231,15 @@ public interface WeatherPackage extends EPackage {
 	int BAROMETRIC_PRESSURE__VALID = PhysxPackage.MEASUREMENT__VALID;
 
 	/**
+	 * The feature id for the '<em><b>Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BAROMETRIC_PRESSURE__RELATIVE = PhysxPackage.MEASUREMENT__RELATIVE;
+
+	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -295,6 +313,15 @@ public interface WeatherPackage extends EPackage {
 	int CLOUD_MEASUREMENT__VALID = PhysxPackage.MEASUREMENT__VALID;
 
 	/**
+	 * The feature id for the '<em><b>Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLOUD_MEASUREMENT__RELATIVE = PhysxPackage.MEASUREMENT__RELATIVE;
+
+	/**
 	 * The feature id for the '<em><b>Cloud Coverage</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -366,6 +393,15 @@ public interface WeatherPackage extends EPackage {
 	 * @ordered
 	 */
 	int VISIBILITY__VALID = PhysxPackage.MEASUREMENT__VALID;
+
+	/**
+	 * The feature id for the '<em><b>Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VISIBILITY__RELATIVE = PhysxPackage.MEASUREMENT__RELATIVE;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
