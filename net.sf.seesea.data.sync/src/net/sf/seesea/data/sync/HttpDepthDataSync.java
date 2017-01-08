@@ -69,6 +69,7 @@ import org.glassfish.jersey.filter.LoggingFilter;
 import org.glassfish.jersey.moxy.json.MoxyJsonFeature;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
@@ -76,7 +77,7 @@ import org.osgi.service.component.annotations.ReferencePolicy;
 import net.sf.seesea.data.io.postgis.ScriptRunner;
 import net.sf.seesea.data.sync.api.IDepthDataSync;
 
-@Component
+@Component(configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class HttpDepthDataSync implements IDepthDataSync {
 
 	/** user for api access */
