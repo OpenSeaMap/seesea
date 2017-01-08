@@ -28,6 +28,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package net.sf.seesea.data.postprocessing.application;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -55,8 +59,15 @@ public class PreprocessingApplication implements IApplication {
 	 * IApplicationContext)
 	 */
 	@Override
-	public Object start(IApplicationContext context)  {
+	public Object start(IApplicationContext context) throws FileNotFoundException  {
 		Logger.getLogger(getClass()).info("Application started");
+		Logger.getLogger(getClass()).info("Redirecting stderr to file err.txt");
+		
+		File file = new File("err.txt");
+		FileOutputStream fos = new FileOutputStream(file);
+		PrintStream ps = new PrintStream(fos);
+		System.setErr(ps);
+		
 		BundleContext bundleContext = DataPostprocessingActivator.getContext();
 		
 		// this receives the service either through lookup or through a service event whatever comes first
