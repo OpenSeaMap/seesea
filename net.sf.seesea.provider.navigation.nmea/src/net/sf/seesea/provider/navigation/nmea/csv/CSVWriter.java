@@ -11,6 +11,7 @@ import java.util.Collection;
 import java.util.Locale;
 
 import net.sf.seesea.data.io.IDataWriter;
+import net.sf.seesea.data.io.WriterException;
 import net.sf.seesea.model.core.geo.Depth;
 import net.sf.seesea.model.core.geo.MeasuredPosition3D;
 import net.sf.seesea.model.core.physx.CompositeMeasurement;
@@ -85,6 +86,20 @@ public class CSVWriter implements IDataWriter {
 		if(printWriter != null) {
 			printWriter.close();
 		}
+	}
+
+
+	@Override
+	public void clearOutput(Long trackId) throws WriterException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void clearAllOutput() throws WriterException {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

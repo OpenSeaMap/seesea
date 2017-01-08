@@ -57,6 +57,8 @@ import org.eclipse.emf.common.util.EList;
 
 public class NMEA0183Reader implements IDataReader {
 
+	private static final double DEEPEST_PLACE_ON_EARTH = 12000;
+
 	private BufferedReader bufferedReader;
 
 	private static final String LEFT = "L"; //$NON-NLS-1$
@@ -260,6 +262,7 @@ public class NMEA0183Reader implements IDataReader {
 	private Measurement ZDA_Timestamp(String[] nmeaContent) {
 		PhysxFactory physxFactory = PhysxFactory.eINSTANCE;
 		Time time = physxFactory.createTime();
+		time.setRelative(true);
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTimeZone(TimeZone.getTimeZone("UTC")); //$NON-NLS-1$
 		if(nmeaContent.length > 1) {
@@ -285,6 +288,7 @@ public class NMEA0183Reader implements IDataReader {
 							Calendar.YEAR,
 							Integer.parseInt(nmeaContent[4].trim()));
 					calendar.setTimeZone(TimeZone.getTimeZone("UTC")); //$NON-NLS-1$
+					time.setRelative(false);
 				}
 			} else {
 				if(nmeaContent.length > 2 && !nmeaContent[3].isEmpty()) {
@@ -296,6 +300,7 @@ public class NMEA0183Reader implements IDataReader {
 							Calendar.YEAR,
 							Integer.parseInt(nmeaContent[5].trim()) + 2000);
 					calendar.setTimeZone(TimeZone.getTimeZone("UTC")); //$NON-NLS-1$
+					time.setRelative(false);
 				}
 			}
 			
@@ -304,6 +309,7 @@ public class NMEA0183Reader implements IDataReader {
 				time.setTimezone("UTC"); //$NON-NLS-1$
 				if(useLastDateFromAnotherSentenceGGA) {
 					lastDate = time.getTime();
+					time.setRelative(false);
 				}
 				return time;
 			}
@@ -338,8 +344,7 @@ public class NMEA0183Reader implements IDataReader {
 				setSensorID(nmeaContent[0], depthBelowTransducer);
 				try {
 					double depthInMeters = Double.parseDouble(nmeaContent[1]);
-					depthBelowTransducer.setDepth(depthInMeters);
-					depthBelowTransducer.setValid(true);
+					validateDepth(depthBelowTransducer, depthInMeters);
 					depthBelowTransducer
 							.setMeasurementPosition(RelativeDepthMeasurementPosition.TRANSDUCER);
 					measurements.add(depthBelowTransducer);
@@ -371,6 +376,16 @@ public class NMEA0183Reader implements IDataReader {
 			}
 		}
 		return measurement;
+	}
+
+	private void validateDepth(Depth depthBelowTransducer, double depthInMeters) {
+		if(depthInMeters < 0.0 || depthInMeters > DEEPEST_PLACE_ON_EARTH) {
+			depthBelowTransducer.setDepth(depthInMeters);
+			depthBelowTransducer.setValid(false);
+		} else {
+			depthBelowTransducer.setDepth(depthInMeters);
+			depthBelowTransducer.setValid(true);
+		}
 	}
 
 	/**
@@ -596,6 +611,7 @@ public class NMEA0183Reader implements IDataReader {
 		Time time = physxFactory.createTime();
 		Calendar calendar = Calendar.getInstance();
 		try {
+			boolean relativeTime = true;
 			if(!nmeaContent[1].isEmpty() && nmeaContent[1].length() > 5) { 
 				calendar.set(Calendar.HOUR_OF_DAY,
 						Integer.parseInt(nmeaContent[1].substring(0, 2).trim()));
@@ -615,6 +631,7 @@ public class NMEA0183Reader implements IDataReader {
 						Calendar.YEAR,
 						Integer.parseInt(nmeaContent[9].substring(4, 6).trim()) + 2000);
 				calendar.setTimeZone(TimeZone.getTimeZone("UTC")); //$NON-NLS-1$
+				relativeTime = false;
 			}
 			if(!nmeaContent[9].isEmpty() || !nmeaContent[1].isEmpty()) {
 				time.setTime(calendar.getTime());
@@ -625,6 +642,7 @@ public class NMEA0183Reader implements IDataReader {
 				relativeSpeed.setTimezone("UTC"); //$NON-NLS-1$
 				geoPosition.setTime(calendar.getTime());
 				geoPosition.setTimezone("UTC"); //$NON-NLS-1$
+				geoPosition.setRelative(relativeTime);
 			}
 			
 			if(useLastDateFromAnotherSentenceGGA) {
@@ -711,6 +729,7 @@ public class NMEA0183Reader implements IDataReader {
 					measurmentTimeCalendar.set(Calendar.MINUTE, lastTimeCalendar.get(Calendar.MINUTE));
 					measurmentTimeCalendar.set(Calendar.SECOND, lastTimeCalendar.get(Calendar.SECOND));
 					geoPosition.setTime(measurmentTimeCalendar.getTime());
+					geoPosition.setRelative(false);
 				}
 			}
 			PrecisionCoordinate precisionCoordinate = parseLatitude(
@@ -964,6 +983,7 @@ public class NMEA0183Reader implements IDataReader {
 						lastTimeCalendar.set(Calendar.YEAR, lastTimeCalendar.get(Calendar.YEAR));
 						lastTimeCalendar.set(Calendar.DAY_OF_YEAR, lastTimeCalendar.get(Calendar.DAY_OF_YEAR));
 						geoPosition.setTime(lastTimeCalendar.getTime());
+						geoPosition.setRelative(false);
 					}
 				}
 
@@ -1123,16 +1143,13 @@ public class NMEA0183Reader implements IDataReader {
 	private void setDepthFromContent(String[] nmeaContent, Depth depth) {
 		if (nmeaContent.length > 3 && !nmeaContent[3].isEmpty()) {
 			double depthInMeters = Double.parseDouble(nmeaContent[3]);
-			depth.setDepth(depthInMeters);
-			depth.setValid(true);
+			validateDepth(depth, depthInMeters);
 		} else if (nmeaContent.length > 1 && !nmeaContent[1].isEmpty()) {
 			double depthInMeters = Double.parseDouble(nmeaContent[1]) * 0.3048;
-			depth.setDepth(depthInMeters);
-			depth.setValid(true);
+			validateDepth(depth, depthInMeters);
 		} else if (nmeaContent.length > 5 && !nmeaContent[5].isEmpty()) {
 			double depthInMeters = Double.parseDouble(nmeaContent[1]) * 1.8288;
-			depth.setDepth(depthInMeters);
-			depth.setValid(true);
+			validateDepth(depth, depthInMeters);
 		}
 		setSensorID(nmeaContent[0], depth);
 	}
