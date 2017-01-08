@@ -5,6 +5,6 @@
         <provide interface="net.sf.seesea.track.api.ITrackPersistence"/>
     </service>
     <reference name="DepthConnection" interface="javax.sql.DataSource" cardinality="1..1" policy="dynamic" target="(db=userData)" bind="bindDepthConnection" unbind="unbindDepthConnection"/>
-    <reference name="OutputConnection" interface="javax.sql.DataSource" cardinality="0..n" policy="dynamic" target="(db=depth)" bind="bindOutputConnection" unbind="unbindOutputConnection"/>
+    <reference name="DataWriter" interface="net.sf.seesea.data.io.IDataWriter" cardinality="0..n" policy="dynamic" bind="bindDataWriter" unbind="unbindDataWriter"/>
     <implementation class="net.sf.seesea.track.persistence.database.DatabaseTrackPersistence"/>
 </scr:component>

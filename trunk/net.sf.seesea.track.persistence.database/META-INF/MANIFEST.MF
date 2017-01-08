@@ -6,7 +6,8 @@ Bundle-Version: 1.0.0.qualifier
 Require-Bundle: net.sf.seesea.track.api;bundle-version="1.0.0",
  net.sf.seesea.track.model,
  net.sf.seesea.geometry,
- net.sf.seesea.model.core
+ net.sf.seesea.model.core,
+ net.sf.seesea.data.io;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: org.apache.log4j;version="[1.2.17,2.0.0)",
  org.osgi.framework;version="1.8.0",

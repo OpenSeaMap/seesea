@@ -30,6 +30,21 @@ public interface IDataWriter {
 	 * @throws WriterException
 	 */
 	void closeOutput() throws WriterException;
+
+	/**
+	 * Clears all data for the given track
+	 * 
+	 * @param trackId
+	 * @throws WriterException
+	 */
+	void clearOutput(Long trackId) throws WriterException;
+
+	/**
+	 * Clears all data in the given output. 
+	 * 
+	 * @throws WriterException
+	 */
+	void clearAllOutput() throws WriterException;
 	
 //	void write(double lat, double lon, double depth, long sourceTrackIdentifier, double latVariance, double lonVariance, double depthVariance, Date time) throws WriterException;
 
