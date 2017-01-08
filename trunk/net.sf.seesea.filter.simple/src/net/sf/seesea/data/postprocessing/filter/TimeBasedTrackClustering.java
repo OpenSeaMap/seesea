@@ -62,6 +62,8 @@ import net.sf.seesea.track.api.exception.ProcessingException;
 public class TimeBasedTrackClustering implements ITrackClustering {
 
 	private AtomicReference<IFileTypeProcessingFactory> fileTypeProcessingFactoryAR = new AtomicReference<IFileTypeProcessingFactory>();
+	
+	private Logger log = Logger.getLogger(getClass());
 
 	/**
 	 * assemble tracks in order
@@ -100,6 +102,9 @@ public class TimeBasedTrackClustering implements ITrackClustering {
 							if(!measurmentProcessor.hasDepthData() || measurmentProcessor.getPointCount() == 0) {
 								// set no depth
 								noTrackFiles.add(trackFile);
+								if(log.isDebugEnabled()) {
+									log.debug("Track file contains no depth data and no points: " + trackFile.getTrackId() + ":" + trackFile.getFileType());
+								}
 							} else {
 								subclassifyTracks(newOrderedFiles, noTimeMeasurementFiles, trackFile, measurmentProcessor, locationPreprocessor);
 							}
@@ -137,6 +142,9 @@ public class TimeBasedTrackClustering implements ITrackClustering {
 							&& trackFileA.getStart().getLongitude().getDecimalDegree() == trackFileB.getStart().getLongitude().getDecimalDegree() 
 							&& !duplicateTrackFiles.contains(trackFileA)) {
 						duplicateTrackFiles.add(trackFileB);
+						if(log.isDebugEnabled()) {
+							log.debug("Track file " + trackFileB.getTrackId() + " is a a duplicate of track file " + trackFileA.getTrackId() + " Dropping second file");
+						}
 					}
 				}
 			}
@@ -146,6 +154,12 @@ public class TimeBasedTrackClustering implements ITrackClustering {
 			Collections.sort(newOrderedFiles, new TrackFileComparator());
 		} catch (IllegalArgumentException e) {
 			Logger.getLogger(getClass()).error("Failed to sort track collection"); //$NON-NLS-1$
+		}
+		if(log.isDebugEnabled()) {
+			log.debug("Track file order for cluster is");
+			for (ITrackFile trackFile : newOrderedFiles) {
+				log.debug(trackFile.getTrackId() + ":" + trackFile.getStart() + ":" + trackFile.getEnd());
+			}
 		}
 		
 		List<ITrackFile> currentCluster = new ArrayList<ITrackFile>();
@@ -157,7 +171,7 @@ public class TimeBasedTrackClustering implements ITrackClustering {
 			currentCluster.add(lastTrackFile);
 			for (; iterator.hasNext();) {
 				ITrackFile currentTrackFile = (ITrackFile) iterator.next();
-				if((currentTrackFile.getStartTime() == null || lastTrackFile.getEnd() == null) || currentTrackFile.getStartTime() == null ||  lastTrackFile.getEnd().getTime() == null||  currentTrackFile.getStartTime().getTime() - lastTrackFile.getEnd().getTime().getTime() > 20000) {
+				if((currentTrackFile.getStartTime() == null || lastTrackFile.getEnd() == null) || currentTrackFile.getStartTime() == null ||  lastTrackFile.getEnd().getTime() == null ||  currentTrackFile.getStartTime().getTime() - lastTrackFile.getEnd().getTime().getTime() > 20000) {
 					currentCluster = new ArrayList<ITrackFile>();
 					currentCluster.add(currentTrackFile);
 					clusterOfTracks.add(currentCluster);
@@ -167,19 +181,35 @@ public class TimeBasedTrackClustering implements ITrackClustering {
 				lastTrackFile = currentTrackFile;
 			} 
 		}
+		if(log.isDebugEnabled()) {
+			log.debug("Track Clusters are " + clusterOfTracks.size());
+			for(List<ITrackFile> cluster : clusterOfTracks) {
+				log.debug("Cluster:");
+				for (ITrackFile trackFile : cluster) {
+					log.debug(trackFile.getTrackId() + ":" + trackFile.getStart() + ":" + trackFile.getEnd());
+				}
+			}
+		}
+
 		
 		return new TrackClusterResult(clusterOfTracks, duplicateTrackFiles, corruptTrackFiles, noTrackFiles, noTimeMeasurementFiles);
 	}
 
 	private void subclassifyTracks(List<ITrackFile> newOrderedFiles, Set<ITrackFile> noTimeMeasurementFiles,
 			ITrackFile trackFile, IDepthPositionPreProcessor locationPreprocessor, ITrackFileProcessor trackFileProcessor) {
-		if(locationPreprocessor.getStart() != null && (locationPreprocessor.hasAbsoluteTimedMeasurements() || locationPreprocessor.hasRelativeTimedMeasurements())) {
+		if(locationPreprocessor.getStart() != null && (trackFile.isHasAbsoluteTimedMeasurements() || trackFile.isHasRelativeTimedMeasurements())) {
 			trackFile.setFirstPositions(locationPreprocessor.getFirstTrackPoints());
 			trackFile.setStart(locationPreprocessor.getStart());
 			trackFile.setEnd(locationPreprocessor.getEnd());
 			newOrderedFiles.add(trackFile);
+			if(log.isDebugEnabled()) {
+				log.debug("Track file either absolute or relative time measurements: " + trackFile.getTrackId() + ":" + trackFile.getFileType());
+			}
 		} else {
 			noTimeMeasurementFiles.add(trackFile);
+			if(log.isDebugEnabled()) {
+				log.debug("Track file contains no time measurements: " + trackFile.getTrackId() + ":" + trackFile.getFileType());
+			}
 		}
 	}
 
