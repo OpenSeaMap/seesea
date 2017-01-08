@@ -208,7 +208,7 @@ public class FilterController implements IFilterController {
 	}
 
 	private void logBestSensorChoice(Set<SensorDescriptionUpdateRate<Measurement>> bestSensors) {
-		System.out.println("Best sensors chosen for processing are");
+		Logger.getLogger(getClass()).info("Best sensors chosen for processing are");
 		for (SensorDescriptionUpdateRate<Measurement> sensorDescriptionUpdateRate : bestSensors) {
 			if (sensorDescriptionUpdateRate != null) {
 				Logger.getLogger(getClass()).info(sensorDescriptionUpdateRate.toString());
