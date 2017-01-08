@@ -20,16 +20,20 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.zip.ZipFile;
 
 import javax.sql.DataSource;
 
+import org.apache.log4j.Logger;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
 
+import net.sf.seesea.data.io.IDataWriter;
+import net.sf.seesea.data.io.WriterException;
 import net.sf.seesea.geometry.impl.Point3D;
 import net.sf.seesea.model.core.physx.CompositeMeasurement;
 import net.sf.seesea.track.api.ITrackPersistence;
@@ -62,10 +66,8 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 	private Set<String> blacklistUsers;
 
 	private DataSource uploadDataSource;
-
-	private DataSource outputDataSource;
-
-	// FIMXE: configured with the connection
+	
+	private List<IDataWriter> dataWriters = new CopyOnWriteArrayList<>();
 
 	public void activate(Map<String, Object> properties) {
 		basedir = (String) properties.get("basedir");
@@ -87,12 +89,11 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 			}
 
 			// should we reset data for either the processTrackIds or everything
-			// ?
 			// TODO: erase only whitelist / blacklist users
 			if (fullprocess) { // $NON-NLS-1$ //$NON-NLS-2$
 				resetAllAnalyzedData(sourceConnection);
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | WriterException e) {
 			throw new TrackPerssitenceException(e);
 		}
 	}
@@ -109,33 +110,37 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 			for (ITrackFile iTrackFile : trackFiles) {
 				// i += 1L;
 				net.sf.seesea.track.api.data.ProcessingState processingState = iTrackFile.getUploadState();
-				switch (processingState) {
-				case PREPROCESSED:
-					updateTrackFileStatement.setString(1, iTrackFile.getFileType());
-					updateTrackFileStatement.setString(2, iTrackFile.getCompression().getMimeType());
-					updateTrackFileStatement.setInt(3, processingState.ordinal());
-					updateTrackFileStatement.setLong(4, iTrackFile.getTrackId());
-					updateTrackFileStatement.addBatch();
-					// if (i % 20 == 0) {
-					// updateTrackFileStatement.executeBatch();
-					// updateTrackFileStatement =
-					// sourceConnection.prepareStatement("UPDATE user_tracks SET
-					// filetype=?, compression=?, upload_state=? WHERE track_id
-					// = ?"); //$NON-NLS-1$
-					// }
-					break;
-				case FILE_CORRUPT:
-				case FILE_CONTENT_UNKNOWN:
-				case FILE_NODATA:
-				case FILE_PROCESSED:
-					setUploadStateStatement.setInt(1, processingState.ordinal());
-					setUploadStateStatement.setLong(2, iTrackFile.getTrackId());
-					// execute it right away since we expect this does not
-					// happen very often
-					setUploadStateStatement.execute();
-					break;
-				default:
-					break;
+				if(processingState != null) {
+					switch (processingState) {
+					case PREPROCESSED:
+						updateTrackFileStatement.setString(1, iTrackFile.getFileType());
+						updateTrackFileStatement.setString(2, iTrackFile.getCompression().getMimeType());
+						updateTrackFileStatement.setInt(3, processingState.ordinal());
+						updateTrackFileStatement.setLong(4, iTrackFile.getTrackId());
+						updateTrackFileStatement.addBatch();
+						// if (i % 20 == 0) {
+						// updateTrackFileStatement.executeBatch();
+						// updateTrackFileStatement =
+						// sourceConnection.prepareStatement("UPDATE user_tracks SET
+						// filetype=?, compression=?, upload_state=? WHERE track_id
+						// = ?"); //$NON-NLS-1$
+						// }
+						break;
+					case FILE_CORRUPT:
+					case FILE_CONTENT_UNKNOWN:
+					case FILE_NODATA:
+					case FILE_PROCESSED:
+						setUploadStateStatement.setInt(1, processingState.ordinal());
+						setUploadStateStatement.setLong(2, iTrackFile.getTrackId());
+						// execute it right away since we expect this does not
+						// happen very often
+						setUploadStateStatement.execute();
+						break;
+					default:
+						break;
+					}
+				} else {
+					Logger.getLogger(getClass()).error("Track has no processing state " + iTrackFile.getTrackId() + ":" + iTrackFile.toString());
 				}
 				if (iTrackFile.getTrackFiles().size() == 1) {
 					// use the current track id for information
@@ -463,7 +468,7 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 		return trackIDs;
 	}
 
-	private void resetAllAnalyzedData(Connection connection) throws SQLException {
+	private void resetAllAnalyzedData(Connection connection) throws SQLException, WriterException {
 		try (PreparedStatement updateTrackFileStatement = connection.prepareStatement(
 				"UPDATE user_tracks SET filetype=?, compression=?, upload_state=? WHERE upload_state != '" //$NON-NLS-1$
 						+ ProcessingState.UPLOAD_INCOMPLETE.ordinal() + "'");
@@ -477,7 +482,9 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 
 			// delete derived tracks from zip files
 			statement.execute(); // $NON-NLS-1$
-			deleteOutputContents4Tracks();
+			for (IDataWriter dataWriter : dataWriters) {
+				dataWriter.clearAllOutput();
+			}
 		}
 	}
 
@@ -489,8 +496,9 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 	 * @param processTrackIds
 	 * @param filterProperties
 	 * @throws SQLException
+	 * @throws WriterException 
 	 */
-	private void resetAnalyzedData(Connection connection, Set<String> processTrackIds) throws SQLException {
+	private void resetAnalyzedData(Connection connection, Set<String> processTrackIds) throws SQLException, WriterException {
 
 		// FIXME: delete filter data
 
@@ -513,13 +521,17 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 					try (ResultSet containedTracksIds = containedTracks.executeQuery()) {
 						while (containedTracksIds.next()) {
 							long containedId = containedTracksIds.getLong(1);
-							deleteOutputContents4Tracks(containedId);
+							for (IDataWriter dataWriter : dataWriters) {
+								dataWriter.clearOutput(containedId);
+							}
 						}
 					}
 					// delete derived tracks from zip files
 					deletestatement.setLong(1, trackId);
 					deletestatement.execute();
-					deleteOutputContents4Tracks(trackId);
+					for (IDataWriter dataWriter : dataWriters) {
+						dataWriter.clearOutput(trackId);
+					}
 				}
 
 				PreparedStatement updateTrackFileStatement = connection.prepareStatement(
@@ -537,69 +549,6 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 		}
 	}
 
-	/**
-	 * delete output tables for each configured filter. all content will be
-	 * erased
-	 * 
-	 * @param filterProperties
-	 *            the configured filters referencing output databases and tables
-	 * @param trackId
-	 *            the track id to be reset
-	 * @throws SQLException
-	 */
-	private void deleteOutputContents4Tracks() throws SQLException {
-		deleteOutputContents4Tracks(null);
-	}
-
-	/**
-	 * delete output tables for each configured filter
-	 * 
-	 * @param filterProperties
-	 *            the configured filters referencing output databases and tables
-	 * @param trackId
-	 *            the track id to be reset
-	 * @throws SQLException
-	 */
-	private void deleteOutputContents4Tracks(Long trackId) throws SQLException {
-		// for (Map<String, Object> filterProperty : filterProperties) {
-		// String outputDatabase = (String)
-		// filterProperty.get("outputDatabase"); //$NON-NLS-1$
-		// if (outputDatabase != null) {
-		// PreparedStatement deletePostprocessStatement = null;
-		// try {
-		// // FIXME: a connection for each filter
-		// // outputConnection =
-		// // PostgresConnectionFactory.getDBConnection(_properties,
-		// // outputDatabase);
-		// String tablesString = (String) filterProperty.get("outputTable");
-		// //$NON-NLS-1$
-		// String[] tables = tablesString.split(","); //$NON-NLS-1$
-		// for (String table : tables) {
-		// if (trackId == null) {
-		// deletePostprocessStatement =
-		// outputConnection.prepareStatement("DELETE FROM " + table);
-		// //$NON-NLS-1$
-		// deletePostprocessStatement.executeUpdate();
-		// } else {
-		// deletePostprocessStatement = outputConnection
-		// .prepareStatement("DELETE FROM " + table + " WHERE datasetid = ?");
-		// //$NON-NLS-1$
-		// deletePostprocessStatement.setLong(1, trackId);
-		// deletePostprocessStatement.executeUpdate();
-		// }
-		// }
-		// } finally {
-		// if (deletePostprocessStatement != null) {
-		// deletePostprocessStatement.close();
-		// }
-		// if (outputConnection != null) {
-		// outputConnection.close();
-		// }
-		// }
-		// }
-		// }
-	}
-
 	// private void cleanDeadData(Connection connection) {
 	// Statement statement;
 	// try {
@@ -611,6 +560,8 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 	// reference", e); //$NON-NLS-1$
 	// }
 	// }
+	
+	
 
 	@Reference(cardinality = ReferenceCardinality.MANDATORY, policy = ReferencePolicy.DYNAMIC, target = "(db=userData)")
 	public synchronized void bindDepthConnection(DataSource dataSource) {
@@ -620,16 +571,14 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 	public synchronized void unbindDepthConnection(DataSource connection) {
 		this.uploadDataSource = null;
 	}
-
-	// bind database outputs based on filters
-
-	@Reference(cardinality = ReferenceCardinality.MULTIPLE, policy = ReferencePolicy.DYNAMIC, target = "(db=depth)")
-	public synchronized void bindOutputConnection(DataSource outputDataSource) {
-		this.outputDataSource = outputDataSource;
+	
+	@Reference(cardinality = ReferenceCardinality.MULTIPLE, policy = ReferencePolicy.DYNAMIC)
+	public void bindDataWriter(IDataWriter dataWriter) {
+		dataWriters.add(dataWriter);
 	}
 
-	public synchronized void unbindOutputConnection(DataSource outputDataSource) {
-		this.outputDataSource = null;
+	public void unbindDataWriter(IDataWriter dataWriter) {
+		dataWriters.remove(dataWriter);
 	}
 
 	private Set<String> getValues(String usertype, Map<String, Object> _properties) {

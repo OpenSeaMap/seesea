@@ -36,4 +36,18 @@ public class MemoryDataWriter implements IDataWriter {
 		return measurements;
 	}
 
+
+	@Override
+	public void clearOutput(Long trackId) throws WriterException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void clearAllOutput() throws WriterException {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
