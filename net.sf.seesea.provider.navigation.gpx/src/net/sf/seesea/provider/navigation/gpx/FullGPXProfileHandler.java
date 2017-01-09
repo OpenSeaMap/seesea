@@ -194,7 +194,7 @@ public class FullGPXProfileHandler extends DefaultHandler {
 			list.add(depth);
 			geoPositionInTrackPoint = null;
 			try {
-				measurmentProcessor.processMeasurements(list, "lgb", null);
+				measurmentProcessor.processMeasurements(list, "lgb", trackFile);
 			} catch (ProcessingException e) {
 				e.printStackTrace();
 			}
