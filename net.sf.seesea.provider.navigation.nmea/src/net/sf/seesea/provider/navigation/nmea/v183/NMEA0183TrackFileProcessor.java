@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 import org.osgi.service.component.annotations.Component;
 
 import net.sf.seesea.model.core.physx.Measurement;
@@ -56,7 +57,9 @@ public class NMEA0183TrackFileProcessor implements ITrackFileProcessor {
 				try {
 					results = nmea0183Reader.extractMeasurementsFromNMEA(line, extractedMeasurments);
 				} catch (IllegalArgumentException e) {
-					e.printStackTrace();
+					Logger.getLogger(getClass()).error("Failed to parse " + line + " from " + recordedFile.getTrackId());
+				} catch (StringIndexOutOfBoundsException e) {
+					Logger.getLogger(getClass()).error("Failed to parse " + line + " from " + recordedFile.getTrackId());
 				}
 				if(results !=null && !results.isEmpty()) {
 					int startOfMessage = line.indexOf("$"); //$NON-NLS-1$
@@ -83,14 +86,18 @@ public class NMEA0183TrackFileProcessor implements ITrackFileProcessor {
 
 
 	@Override
-	public void setFilter(Set<SensorDescriptionUpdateRate<Measurement>> bestSensors) {
-		Map<NMEA0183MessageTypes,Set<String>> filter = new HashMap<NMEA0183MessageTypes, Set<String>>();
-		for (SensorDescription<Measurement> sensorDescription : bestSensors) {
-			Set<String> sensorIds = new HashSet<String>();
-			sensorIds.add(sensorDescription.getSensorID());
-			filter.put(NMEA0183MessageTypes.valueOf(sensorDescription.getMessageType()), sensorIds);
+	public void setFilter(Set<SensorDescriptionUpdateRate<Measurement>> bestSensors) throws ProcessingException {
+		try {
+			Map<NMEA0183MessageTypes,Set<String>> filter = new HashMap<NMEA0183MessageTypes, Set<String>>();
+			for (SensorDescription<Measurement> sensorDescription : bestSensors) {
+				Set<String> sensorIds = new HashSet<String>();
+				sensorIds.add(sensorDescription.getSensorID());
+				filter.put(NMEA0183MessageTypes.valueOf(sensorDescription.getMessageType()), sensorIds);
+			}
+			nmea0183Reader = new NMEA0183Reader(filter, true);
+		} catch (IllegalArgumentException e) {
+			throw new ProcessingException("Failed to set filter", e);
 		}
-		nmea0183Reader = new NMEA0183Reader(filter, true);
 	}
 
 	@Override

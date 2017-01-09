@@ -94,6 +94,7 @@ public class NMEA2000Reader {
 				} else {
 					heading.setHeadingType(HeadingType.UNKNOWN);
 				}
+				heading.setSensorID(Integer.toString(source));
 				results.add(heading);
 				break;
 			case 127251:
@@ -116,6 +117,7 @@ public class NMEA2000Reader {
 				speed.setKey(SpeedType.SPEEDTHOUGHWATER);
 				speed.setValue(speedx);
 				speed.setValid(true);
+				speed.setSensorID(Integer.toString(source));
 				results.add(speed);
 				break;
 			case 128267:
@@ -123,6 +125,7 @@ public class NMEA2000Reader {
 				if(!waterDepth.getWaterDepthAtTransducer().isNaN() && waterDepth.getWaterDepthAtTransducer() < 12000 && waterDepth.getWaterDepthAtTransducer() >= 0.0) {
 					Depth depth = GeoFactory.eINSTANCE.createDepth();
 					depth.setDepth(waterDepth.getWaterDepthAtTransducer());
+					depth.setSensorID(Integer.toString(source));
 					depth.setValid(true);
 					depth.setMeasurementPosition(RelativeDepthMeasurementPosition.TRANSDUCER);
 					results.add(depth);
@@ -137,6 +140,7 @@ public class NMEA2000Reader {
 					tripDistanceObject.setValue(tripDistance);
 					tripDistanceObject.setUnit(LengthUnit.METERS);
 					tripDistanceObject.setDistanceType(DistanceType.TRIP);
+					tripDistanceObject.setSensorID(Integer.toString(source));
 				}
 				if(log.getTotalDistance().isValid()) {
 					double totalDistance = log.getTotalDistance().getValue();
@@ -145,6 +149,7 @@ public class NMEA2000Reader {
 					totalDistanceObject.setValue(totalDistance);
 					totalDistanceObject.setUnit(LengthUnit.METERS);
 					totalDistanceObject.setDistanceType(DistanceType.TOTAL);
+					totalDistanceObject.setSensorID(Integer.toString(source));
 				}
 				break;
 			case 129025:
@@ -172,11 +177,15 @@ public class NMEA2000Reader {
 				Speed speed1 = PhysxFactory.eINSTANCE.createSpeed();
 				speed1.setSpeed(cogsog.getSpeed().getValue());
 				speed1.setSpeedUnit(SpeedUnit.N);
+				speed1.setSensorID(Integer.toString(source));
+
 				relSpeed.setValue(speed1);
 				Heading heading2 = PhysxFactory.eINSTANCE.createHeading();
 				heading2.setDegrees(cogsog.getCourseOverGround().getValue() * 180
 						/ Math.PI);
 				heading2.setHeadingType(cogsog.getHeadingType());
+				heading2.setSensorID(Integer.toString(source));
+
 				results.add(relSpeed);
 				results.add(heading2);
 				break;
@@ -248,6 +257,8 @@ public class NMEA2000Reader {
 				wind.setSpeed(windData.getGenericSpeed().getValue());
 				wind.setSpeedUnit(SpeedUnit.N);
 				wind.setValid(true);
+				wind.setSensorID(Integer.toString(source));
+
 				results.add(wind);
 				break;
 			case 130310:
@@ -258,6 +269,7 @@ public class NMEA2000Reader {
 						.createTemperature();
 				temperature.setUnit(TemperatureUnit.KELVIN);
 				temperature.setValue(parameters1.getWaterTemperature().getValue());
+				temperature.setSensorID(Integer.toString(source));
 				results.add(temperature);
 				break;
 			case 130311:
@@ -267,6 +279,7 @@ public class NMEA2000Reader {
 							.createTemperature();
 					wtemperature.setUnit(TemperatureUnit.KELVIN);
 					wtemperature.setValue(parameters2.getTemperature().getValue());
+					wtemperature.setSensorID(Integer.toString(source));
 					results.add(wtemperature);
 				}
 				
