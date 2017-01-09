@@ -38,10 +38,11 @@ public enum NMEA0183MessageTypes {
 
 	AAM,
 	ACC,
-	ALM, 
+	ALM,
+	ALR, // AIS alarm
 	APA, 
 	APB, 
-	ASD, 
+	ASD,
 	BEC, 
 	BOD, 
 	BWC, 
@@ -99,8 +100,11 @@ public enum NMEA0183MessageTypes {
 	STN, 
 	TLL, 
 	TRF, 
-	TTM, 
+	TTM,
+	TXT, // AIS text message
 	VBW, 
+	VDM, // AIS remote vessel report
+	VDO, // AIS own vessel report
 	VDR, 
 	VHW, 
 	VLW, 
