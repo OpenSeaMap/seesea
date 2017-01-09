@@ -26,8 +26,11 @@ import net.sf.seesea.track.api.data.ProcessingState;
 import net.sf.seesea.track.api.exception.TrackPerssitenceException;
 
 /**
- * The Filter Engine processes track cluster results. It stores results to persistent storage and triggers filter runs for a single cluster with a filter controller.
- * Since this is a convenient place to update candidate gauges this done as well.
+ * The Filter Engine processes track cluster results. It stores results to
+ * persistent storage and triggers filter runs for a single cluster with a
+ * filter controller. Since this is a convenient place to update candidate
+ * gauges this done as well.
+ * 
  * @author Jens
  *
  */
@@ -43,7 +46,7 @@ public class FilterEngine implements IFilterEngine {
 	private AtomicReference<ITrackClustering> trackClusteringAR = new AtomicReference<ITrackClustering>();;
 
 	public void activate(Map<String, Object> config) {
-		preprocessRun = Boolean.valueOf((String)config.get("preprocessRun"));
+		preprocessRun = Boolean.valueOf((String) config.get("preprocessRun"));
 	}
 
 	@Override
@@ -62,16 +65,9 @@ public class FilterEngine implements IFilterEngine {
 					// FIXME set content type directly
 					TrackClusterResult trackClusterResult = trackClustering.classifyTracks(trackFiles);
 
-					// // FIXME: maybe a different method
-					// if(preprocessRun) {
-					// // update bounding box an internal processing states
-					// trackPersistence.storePreprocessingStates(trackFiles);
-					// }
-
 					try {
 						// those measurements that have no time need to be
-						// processed
-						// separately
+						// processed separately
 						for (ITrackFile abstractTrackFile : trackClusterResult.getNoTimeMeasurementFiles()) {
 							List<ITrackFile> singleTrackList = new ArrayList<ITrackFile>();
 							singleTrackList.add(abstractTrackFile);
@@ -86,8 +82,7 @@ public class FilterEngine implements IFilterEngine {
 						e1.printStackTrace();
 					}
 
-					// those measurements that logically form a single track
-					// that is
+					// those measurements that logically form a single track that is
 					// spread across several files
 					for (List<ITrackFile> clusterOfTrackFiles : trackClusterResult.getOrderedTrackFiles()) {
 						try {

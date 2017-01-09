@@ -57,8 +57,8 @@ import net.sf.seesea.track.api.data.SensorDescriptionUpdateRate;
 import net.sf.seesea.track.api.exception.ProcessingException;
 
 /**
- * The main class that controls a filtering process for a cluster of track files. A cluster of track files
- * is a ordered
+ * The main class that controls a filtering process for a cluster of track
+ * files. A cluster of track files is a ordered
  */
 @Component
 public class FilterController implements IFilterController {
@@ -96,22 +96,17 @@ public class FilterController implements IFilterController {
 					// hm must be a zip file
 				} else {
 					preprocessor = processingFactory.createLocationPreProcessor(trackFile);
-					if(preprocessor != null) {
+					if (preprocessor != null) {
 						preprocessor.setMeasurementProcessor(measurmentProcessor);
 						// file type changed -> run statistics again
 						if (!trackFile.getFileType().equals(lastFileType)) {
-							Set<SensorDescriptionUpdateRate<Measurement>> bestSensors = measurmentProcessor.getBestSensors();
+							Set<SensorDescriptionUpdateRate<Measurement>> bestSensors = measurmentProcessor
+									.getBestSensors();
 							runFilters(trackFiles, bestSensors);
 							trackFiles.clear();
 							lastFileType = trackFile.getFileType();
 							if (executeSensorDistribution) {
-//							try {
 								preprocessor.processFile(trackFile);
-//							} catch (StatisticsException e) {
-//								// must be correct at this point since the
-//								// preprocessor passed it with depth points
-//								logger.error("Partially correct data for for track id " + trackFile.getTrackId());
-//							}
 							}
 							trackFiles.add(trackFile);
 						} else {
@@ -168,39 +163,46 @@ public class FilterController implements IFilterController {
 		ITrackFile firstTrack = orderedFiles.iterator().next();
 		for (IFilter filter : filters) {
 			try {
-				ITrackFileProcessor trackFileProcessor = fileTypeProcessingFactory.createLocationPreProcessor(firstTrack);
-				if(trackFileProcessor != null) {
-					trackFileProcessor.setFilter(bestSensors);
-					// tie the reading processor to the filter
-					filter.setBestSensors(bestSensors);
-					trackFileProcessor.setMeasurementProcessor(filter);
-					if (filter.requiresAbsoluteTime() && trackFileProcessor.hasAbsoluteTime()) {
-						processFiles4Filter = true;
-					} else if (filter.requiresRelativeTime() && trackFileProcessor.hasRelativeTime()) {
-						processFiles4Filter = true;
-					} else if (!filter.requiresAbsoluteTime() && !filter.requiresRelativeTime()) {
-						processFiles4Filter = true;
-					}
-					if (!processFiles4Filter) {
-						Logger.getLogger(getClass()).info("Skipping filter run for track file processor " + trackFileProcessor
-								+ " with filter " + filter);
-					}
-					if (processFiles4Filter) {
-						Logger.getLogger(getClass()).info("Running filter run for track file processor " + trackFileProcessor + " with filter "
-								+ filter);
-						for (ITrackFile trackFile : orderedFiles) {
-							try {
-								Logger.getLogger(getClass()).info("Processing track id:" + trackFile.getTrackId());
-								trackFileProcessor.processFile(trackFile);
-							} catch (ProcessingException e) {
-								Logger.getLogger(getClass())
-								.error("Partially correct data for for track id " + trackFile.getTrackId());
-							}
+				ITrackFileProcessor trackFileProcessor = fileTypeProcessingFactory
+						.createLocationPreProcessor(firstTrack);
+				if (trackFileProcessor != null) {
+					try {
+						trackFileProcessor.setFilter(bestSensors);
+						// tie the reading processor to the filter
+						filter.setBestSensors(bestSensors);
+						trackFileProcessor.setMeasurementProcessor(filter);
+						if (filter.requiresAbsoluteTime() && trackFileProcessor.hasAbsoluteTime()) {
+							processFiles4Filter = true;
+						} else if (filter.requiresRelativeTime() && trackFileProcessor.hasRelativeTime()) {
+							processFiles4Filter = true;
+						} else if (!filter.requiresAbsoluteTime() && !filter.requiresRelativeTime()) {
+							processFiles4Filter = true;
 						}
-						filter.finish();
+						if (!processFiles4Filter) {
+							Logger.getLogger(getClass()).info("Skipping filter run for track file processor "
+									+ trackFileProcessor + " with filter " + filter);
+						}
+						if (processFiles4Filter) {
+							Logger.getLogger(getClass()).info("Running filter run for track file processor "
+									+ trackFileProcessor + " with filter " + filter);
+							for (ITrackFile trackFile : orderedFiles) {
+								try {
+									Logger.getLogger(getClass()).info("Processing track id:" + trackFile.getTrackId());
+									trackFileProcessor.processFile(trackFile);
+								} catch (ProcessingException e) {
+									Logger.getLogger(getClass())
+											.error("Partially correct data for for track id " + trackFile.getTrackId());
+								}
+							}
+							filter.finish();
+						}
+					} catch (ProcessingException e) {
+						Logger.getLogger(getClass())
+								.error("Failed to process file", e);
 					}
+
 				}
-				
+
 			} finally {
 				fileTypeProcessingFactory.disposeLocationPreProcessor(firstTrack);
 			}
