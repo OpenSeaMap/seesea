@@ -35,7 +35,7 @@ public interface ITrackFileProcessor {
 	 * the filter may be used to choose a particular sensor or channel in the measurement processor if there is more than one sensor or data available.
 	 * @param bestSensors
 	 */
-	void setFilter(Set<SensorDescriptionUpdateRate<Measurement>> bestSensors);
+	void setFilter(Set<SensorDescriptionUpdateRate<Measurement>> bestSensors) throws ProcessingException;
 
 	/**
 	 * 
