@@ -386,12 +386,14 @@ public class DepthPositionMeasurementStatisticsProcessor<T extends Measurement> 
 								sensorIds2Distribution.getKey());
 						Integer measurementCount = sensorIds2Distribution
 								.getValue().get(updateRate);
-						if (updateRate * measurementCount > bestMeasurment) {
-							bestMeasurment = updateRate * measurementCount;
-							description = new SensorDescriptionUpdateRate<Depth>(
-									Depth.class, sensor.getKey(),
-									sensorIds2Distribution.getKey(),
-									updateRate, 0);
+						if(measurementCount != null) {
+							if (updateRate * measurementCount > bestMeasurment) {
+								bestMeasurment = updateRate * measurementCount;
+								description = new SensorDescriptionUpdateRate<Depth>(
+										Depth.class, sensor.getKey(),
+										sensorIds2Distribution.getKey(),
+										updateRate, 0);
+							}
 						}
 					}
 

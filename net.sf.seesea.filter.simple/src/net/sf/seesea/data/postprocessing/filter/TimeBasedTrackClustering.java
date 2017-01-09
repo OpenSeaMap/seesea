@@ -103,7 +103,7 @@ public class TimeBasedTrackClustering implements ITrackClustering {
 								// set no depth
 								noTrackFiles.add(trackFile);
 								if(log.isDebugEnabled()) {
-									log.debug("Track file contains no depth data and no points: " + trackFile.getTrackId() + ":" + trackFile.getFileType());
+									log.debug("Track file contains no depth data and no points: " + trackFile.getTrackId() + ":" + ":" + trackFile.getFileType());
 								}
 							} else {
 								subclassifyTracks(newOrderedFiles, noTimeMeasurementFiles, trackFile, measurmentProcessor, locationPreprocessor);
@@ -123,7 +123,7 @@ public class TimeBasedTrackClustering implements ITrackClustering {
 						}
 					} catch (IOException e) {
 						corruptTrackFiles.add(trackFile);
-						Logger.getLogger(getClass()).error("Failed to read file with track id" + trackFile.getTrackId(), e);
+						Logger.getLogger(getClass()).error("Failed to read file with track id " + trackFile.getTrackId(), e);
 					}
 					fileTypeProcessingFactory.disposeLocationPreProcessor(trackFile);
 				}
