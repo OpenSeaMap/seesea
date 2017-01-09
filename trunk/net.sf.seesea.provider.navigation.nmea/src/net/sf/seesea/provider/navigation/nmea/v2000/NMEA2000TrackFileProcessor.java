@@ -61,7 +61,7 @@ public class NMEA2000TrackFileProcessor implements ITrackFileProcessor,
 		List<Measurement> measurements = nmea2000Reader
 				.extractMeasurementsFromNMEA(data); 
 		try {
-			measurmentProcessor.processMeasurements(measurements, null, currentProcessedFile);
+			measurmentProcessor.processMeasurements(measurements, "actisense", currentProcessedFile);
 		} catch (ProcessingException e) {
 			Logger.getLogger(getClass()).error("Failed to process", e);
 		}
