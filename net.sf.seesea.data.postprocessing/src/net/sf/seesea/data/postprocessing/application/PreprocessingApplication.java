@@ -86,7 +86,13 @@ public class PreprocessingApplication implements IApplication {
 					{
 						return CompletableFuture.completedFuture(b);
 					}
-		});  
+		});
+		// since declarative services 1.2 does not allow to configure required references, we wait for services to come up
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		}
 		try {
 			Logger.getLogger(getClass()).info("Commencing processing");
 			IUploadedData2Contours uploadedData2Contours = result.get(120, TimeUnit.SECONDS);
