@@ -991,7 +991,7 @@ public class NMEA0183Reader implements IDataReader {
 			}
 			setSensorID(nmeaContent[0], measurement);
 
-			if (nmeaContent.length > 5) {
+			if (nmeaContent.length > 6) {
 				if ("A".equals(nmeaContent[6])) { //$NON-NLS-1$
 					geoPosition.setValid(true);
 				}
