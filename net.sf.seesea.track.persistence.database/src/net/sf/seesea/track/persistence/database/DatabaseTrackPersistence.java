@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 import javax.sql.DataSource;
@@ -66,12 +67,12 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 	private Set<String> blacklistUsers;
 
 	private DataSource uploadDataSource;
-	
+
 	private List<IDataWriter> dataWriters = new CopyOnWriteArrayList<>();
 
 	public void activate(Map<String, Object> properties) {
 		basedir = (String) properties.get("basedir");
-		fullprocess = Boolean.valueOf((String)properties.get("fullprocess"));
+		fullprocess = Boolean.valueOf((String) properties.get("fullprocess"));
 
 		whitelistUsers = getValues("whitelistUsers", properties);
 		blacklistUsers = getValues("blacklistUsers", properties);
@@ -110,7 +111,7 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 			for (ITrackFile iTrackFile : trackFiles) {
 				// i += 1L;
 				net.sf.seesea.track.api.data.ProcessingState processingState = iTrackFile.getUploadState();
-				if(processingState != null) {
+				if (processingState != null) {
 					switch (processingState) {
 					case PREPROCESSED:
 						updateTrackFileStatement.setString(1, iTrackFile.getFileType());
@@ -121,8 +122,10 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 						// if (i % 20 == 0) {
 						// updateTrackFileStatement.executeBatch();
 						// updateTrackFileStatement =
-						// sourceConnection.prepareStatement("UPDATE user_tracks SET
-						// filetype=?, compression=?, upload_state=? WHERE track_id
+						// sourceConnection.prepareStatement("UPDATE user_tracks
+						// SET
+						// filetype=?, compression=?, upload_state=? WHERE
+						// track_id
 						// = ?"); //$NON-NLS-1$
 						// }
 						break;
@@ -140,7 +143,8 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 						break;
 					}
 				} else {
-					Logger.getLogger(getClass()).error("Track has no processing state " + iTrackFile.getTrackId() + ":" + iTrackFile.toString());
+					Logger.getLogger(getClass()).error(
+							"Track has no processing state " + iTrackFile.getTrackId() + ":" + iTrackFile.toString());
 				}
 				if (iTrackFile.getTrackFiles().size() == 1) {
 					// use the current track id for information
@@ -229,25 +233,25 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 						}
 					}
 
-
 					ResultSet singleUserTrackFiles = null;
 					if (preprocessed) {
 						PreparedStatement userTracksStatement = connection.prepareStatement(
-								"SELECT track_id, filetype, compression, file_ref, vesselconfigid, upload_state FROM user_tracks  " + //$NON-NLS-1$
-								"WHERE (user_tracks.user_name = ? OR user_tracks.user_name = ?) "+ 
-								"AND upload_state = ? " + //$NON-NLS-1$ //$NON-NLS-2$
-								"AND containertrack IS NULL " + //$NON-NLS-1$
-								"AND track_id NOT IN (SELECT containertrack FROM user_tracks WHERE containertrack IS NOT NULL)"); //$NON-NLS-1$
+								"SELECT track_id, filetype, compression, file_ref, vesselconfigid, upload_state FROM user_tracks  " //$NON-NLS-1$
+										+
+										"WHERE (user_tracks.user_name = ? OR user_tracks.user_name = ?) "
+										+ "AND upload_state = ? " + //$NON-NLS-1$ //$NON-NLS-2$
+										"AND containertrack IS NULL " + //$NON-NLS-1$
+										"AND track_id NOT IN (SELECT containertrack FROM user_tracks WHERE containertrack IS NOT NULL)"); //$NON-NLS-1$
 						userTracksStatement.setString(1, user);
 						userTracksStatement.setString(2, sha1Username);
 						userTracksStatement.setInt(3, ProcessingState.PREPROCESSED.getIndex());
 						singleUserTrackFiles = userTracksStatement.executeQuery();
 					} else {
 						PreparedStatement userTracksStatement = connection.prepareStatement(
-								"SELECT track_id, filetype, compression, file_ref, vesselconfigid,upload_state FROM user_tracks " + //$NON-NLS-1$
-										"WHERE (user_tracks.user_name = ? OR user_tracks.user_name = ?) " + //$NON-NLS-1$
-										"AND upload_state = ? " +
-										"AND containertrack IS NULL " + //$NON-NLS-1$
+								"SELECT track_id, filetype, compression, file_ref, vesselconfigid,upload_state FROM user_tracks " //$NON-NLS-1$
+										+
+										"WHERE (user_tracks.user_name = ? OR user_tracks.user_name = ?) " +
+										"AND upload_state = ? " + "AND containertrack IS NULL " + //$NON-NLS-2$
 										"AND track_id NOT IN (SELECT containertrack FROM user_tracks WHERE containertrack IS NOT NULL)"); //$NON-NLS-1$
 						userTracksStatement.setString(1, user);
 						userTracksStatement.setString(2, sha1Username);
@@ -262,7 +266,8 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 						String compression = singleUserTrackFiles.getString("compression"); //$NON-NLS-1$
 						String fileType = singleUserTrackFiles.getString("filetype"); //$NON-NLS-1$
 						Long vesselConfigId = singleUserTrackFiles.getLong("vesselconfigid"); //$NON-NLS-1$
-						ProcessingState processingState = ProcessingState.forCode(singleUserTrackFiles.getInt("upload_state"));
+						ProcessingState processingState = ProcessingState
+								.forCode(singleUserTrackFiles.getInt("upload_state"));
 
 						if (compression == null) {
 							SimpleTrackFile trackFileX = new SimpleTrackFile();
@@ -301,7 +306,8 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 									trackFileY.setUploadState(processingState);
 									orderedFiles.add(trackFileY);
 								} catch (IllegalArgumentException e) {
-									e.printStackTrace();
+									Logger.getLogger(getClass()).warn("Failed to determine charset for track id:" + id,
+											e);
 									ZipFile zipFile = new ZipFile(trackFile, Charset.forName("ISO_8859_1")); //$NON-NLS-1$
 									ZipEntryTrackFile trackFileY = new ZipEntryTrackFile(zipFile,
 											zipFile.entries().nextElement());
@@ -321,10 +327,11 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 
 					PreparedStatement containerTrackUserStatement = connection.prepareStatement(
 							"SELECT track_id, filetype, compression, vesselconfigid FROM user_tracks " + //$NON-NLS-1$
-							"WHERE (user_name = ? OR user_name = ?) " + //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-							"AND upload_state = ? " + //$NON-NLS-1$ //$NON-NLS-2$
-							"AND containertrack IS NULL " + //$NON-NLS-1$
-							"AND track_id IN (SELECT containertrack FROM user_tracks WHERE containertrack IS NOT NULL)"); //$NON-NLS-1$
+									"WHERE (user_name = ? OR user_name = ?) " + //$NON-NLS-1$ //$NON-NLS-2$
+																				// //$NON-NLS-3$
+									"AND upload_state = ? " + //$NON-NLS-1$ //$NON-NLS-2$
+									"AND containertrack IS NULL " + //$NON-NLS-1$
+									"AND track_id IN (SELECT containertrack FROM user_tracks WHERE containertrack IS NOT NULL)"); //$NON-NLS-1$
 					containerTrackUserStatement.setString(1, user);
 					containerTrackUserStatement.setString(2, sha1Username);
 					containerTrackUserStatement.setInt(3, ProcessingState.PREPROCESSED.getIndex());
@@ -335,12 +342,13 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 								+ format.format((id / 100) * 100) + "/" + id + ".dat"; //$NON-NLS-1$ //$NON-NLS-2$
 						String compression = mutliTrackFiles.getString("compression"); //$NON-NLS-1$
 						Long vesselConfigId = mutliTrackFiles.getLong("vesselconfigid"); //$NON-NLS-1$
-						PreparedStatement compressedFilesStatement = connection.prepareStatement(
-								"SELECT track_id, filetype, compression, file_ref FROM user_tracks " + //$NON-NLS-1$
-								"WHERE (user_name = ? OR user_name = ?) " + //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-								"AND upload_state = ? " + //$NON-NLS-1$ //$NON-NLS-2$
-								"AND containertrack = ? " + //$NON-NLS-1$ //$NON-NLS-2$
-								"ORDER BY track_id"); //$NON-NLS-1$
+						PreparedStatement compressedFilesStatement = connection
+								.prepareStatement("SELECT track_id, filetype, compression, file_ref FROM user_tracks " + //$NON-NLS-1$
+										"WHERE (user_name = ? OR user_name = ?) " + //$NON-NLS-1$ //$NON-NLS-2$
+																					// //$NON-NLS-3$
+										"AND upload_state = ? " + //$NON-NLS-1$ //$NON-NLS-2$
+										"AND containertrack = ? " + //$NON-NLS-1$ //$NON-NLS-2$
+										"ORDER BY track_id"); //$NON-NLS-1$
 						compressedFilesStatement.setString(1, user);
 						compressedFilesStatement.setString(2, sha1Username);
 						compressedFilesStatement.setInt(3, ProcessingState.PREPROCESSED.getIndex());
@@ -354,22 +362,34 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 							case ZIP:
 								try {
 									ZipFile zipFile = new ZipFile(trackFile);
-									ZipEntryTrackFile zippedTrack = new ZipEntryTrackFile(zipFile,
-											zipFile.getEntry(uncompressedTrackFile));
-									zippedTrack.setFileType(mimeType);
-									zippedTrack.setTrackId(compressedTracks.getLong("track_id"));
-									zippedTrack.setName(compressedTracks.getString("file_ref"));
-									zippedTrack.setVesselConfiguration(vesselConfigurationList.get(vesselConfigId));
+									ZipEntry entry = zipFile.getEntry(uncompressedTrackFile);
+									if (entry != null) {
+										ZipEntryTrackFile zippedTrack = new ZipEntryTrackFile(zipFile, entry);
+										zippedTrack.setFileType(mimeType);
+										zippedTrack.setTrackId(compressedTracks.getLong("track_id"));
+										zippedTrack.setName(compressedTracks.getString("file_ref"));
+										zippedTrack.setVesselConfiguration(vesselConfigurationList.get(vesselConfigId));
 
-									orderedFiles.add(zippedTrack);
+										orderedFiles.add(zippedTrack);
+									} else {
+										Logger.getLogger(getClass())
+												.warn("Zip entry could not be found. Potentially wrong zip encoding");
+									}
 								} catch (IllegalArgumentException e) {
+									Logger.getLogger(getClass()).warn("Failed to determine charset for track id:" + id,
+											e);
 									ZipFile zipFile = new ZipFile(trackFile, Charset.forName("ISO_8859_1")); //$NON-NLS-1$
-									ZipEntryTrackFile zippedTrack = new ZipEntryTrackFile(zipFile,
-											zipFile.getEntry(uncompressedTrackFile));
-									zippedTrack.setFileType(mimeType);
-									zippedTrack.setTrackId(compressedTracks.getLong("track_id"));
-									zippedTrack.setName(compressedTracks.getString("file_ref"));
-									orderedFiles.add(zippedTrack);
+									ZipEntry entry = zipFile.getEntry(uncompressedTrackFile);
+									if (entry != null) {
+										ZipEntryTrackFile zippedTrack = new ZipEntryTrackFile(zipFile, entry);
+										zippedTrack.setFileType(mimeType);
+										zippedTrack.setTrackId(compressedTracks.getLong("track_id"));
+										zippedTrack.setName(compressedTracks.getString("file_ref"));
+										orderedFiles.add(zippedTrack);
+									} else {
+										Logger.getLogger(getClass())
+												.warn("Zip entry could not be found. Potentially wrong zip encoding");
+									}
 								}
 								break;
 							case GZ:
@@ -496,9 +516,10 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 	 * @param processTrackIds
 	 * @param filterProperties
 	 * @throws SQLException
-	 * @throws WriterException 
+	 * @throws WriterException
 	 */
-	private void resetAnalyzedData(Connection connection, Set<String> processTrackIds) throws SQLException, WriterException {
+	private void resetAnalyzedData(Connection connection, Set<String> processTrackIds)
+			throws SQLException, WriterException {
 
 		// FIXME: delete filter data
 
@@ -560,8 +581,6 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 	// reference", e); //$NON-NLS-1$
 	// }
 	// }
-	
-	
 
 	@Reference(cardinality = ReferenceCardinality.MANDATORY, policy = ReferencePolicy.DYNAMIC, target = "(db=userData)")
 	public synchronized void bindDepthConnection(DataSource dataSource) {
@@ -571,7 +590,7 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 	public synchronized void unbindDepthConnection(DataSource connection) {
 		this.uploadDataSource = null;
 	}
-	
+
 	@Reference(cardinality = ReferenceCardinality.MULTIPLE, policy = ReferencePolicy.DYNAMIC)
 	public void bindDataWriter(IDataWriter dataWriter) {
 		dataWriters.add(dataWriter);
