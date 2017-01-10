@@ -54,7 +54,7 @@ public class ContentDetector implements IContentDetector {
 
 	private boolean fullprocess;
 
-	private Logger logger;
+	private Logger logger = Logger.getLogger(getClass());
 
 	public ContentDetector() {
 		// TODO Auto-generated constructor stub
@@ -64,7 +64,6 @@ public class ContentDetector implements IContentDetector {
 	public void activate(Map<String, Object> properties) {
 		basedir = (String) properties.get("basedir");
 		fullprocess = "true".equals(properties.get("fullprocess"));
-		logger = Logger.getLogger(getClass());
 	}
 
 	@Override
@@ -110,7 +109,7 @@ public class ContentDetector implements IContentDetector {
 						// only one file may be compressed in gz (tar not yet
 						// considered
 						// here)
-						if (CompressionType.GZ.getMimeType().equals(mimeType)) {
+						if (CompressionType.GZ.getMimeType().equals(mimeType) || "application/gzip".equals(mimeType)) {
 							try {
 								GZIPInputStream gzipInputStream = new GZIPInputStream(
 										new FileInputStream(new File(trackFile)));
