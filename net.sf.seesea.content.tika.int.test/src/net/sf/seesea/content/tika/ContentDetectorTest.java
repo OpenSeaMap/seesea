@@ -6,13 +6,16 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
+import org.osgi.framework.FrameworkUtil;
 
 import net.sf.seesea.content.api.ContentDetectionException;
 import net.sf.seesea.content.impl.ContentDetector;
@@ -50,7 +53,8 @@ public class ContentDetectorTest {
 		List<ITrackFile> tracks = new ArrayList<ITrackFile>();
 		SimpleTrackFile simpleTrackFile = new SimpleTrackFile();
 		tracks.add(simpleTrackFile);
-		simpleTrackFile.setTrackURL(new File("C:\\Users\\jens\\openseamap4\\ws\\net.sf.seesea.content.tika.int.test\\res\\31.dat").toURI().toURL());
+		URL trackURL = FrameworkUtil.getBundle(ContentDetector.class).findEntries("/res/gz/000", "31.dat", false).nextElement();
+		simpleTrackFile.setTrackURL(trackURL);
 		simpleTrackFile.setTrackId(31);
 		
 		ITrackPersistence trackPersistence = EasyMock.createNiceMock(ITrackPersistence.class);
