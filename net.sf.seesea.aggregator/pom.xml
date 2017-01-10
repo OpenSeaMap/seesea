@@ -33,7 +33,7 @@
   	<!--  -->
   	<module>../net.sf.seesea.content.api</module>
   	<module>../net.sf.seesea.content.tika</module>
-<!--   	<module>../net.sf.seesea.content.tika.test</module> -->
+  	<module>../net.sf.seesea.content.tika.int.test</module>
   	<!--  -->
  	<module>../net.sf.seesea.lib</module>
  	
