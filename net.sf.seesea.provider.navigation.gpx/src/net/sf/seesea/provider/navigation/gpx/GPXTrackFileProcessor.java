@@ -94,11 +94,6 @@ public class GPXTrackFileProcessor implements ITrackFileProcessor {
 	}
 
 	@Override
-	public boolean hasTimedMeasurments() {
-		return false;
-	}
-
-	@Override
 	public void setFilter(Set<SensorDescriptionUpdateRate<Measurement>> bestSensors) {
 		// TODO Auto-generated method stub
 		

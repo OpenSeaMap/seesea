@@ -40,12 +40,6 @@ public class TestTrackProcessor implements ITrackFileProcessor {
 	}
 
 	@Override
-	public boolean hasTimedMeasurments() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public boolean hasRelativeTime() {
 		return relativeTime;
 	}

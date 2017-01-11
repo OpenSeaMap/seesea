@@ -63,11 +63,6 @@ public class SL2TrackFileProcessor implements ITrackFileProcessor, IMeasurementL
 	}
 
 	@Override
-	public boolean hasTimedMeasurments() {
-		return false;
-	}
-
-	@Override
 	public void notify(List<Measurement> measurements) {
 		try {
 			measurmentProcessor.processMeasurements(measurements, null, currentProcessedFile);
@@ -89,7 +84,7 @@ public class SL2TrackFileProcessor implements ITrackFileProcessor, IMeasurementL
 
 	@Override
 	public boolean hasAbsoluteTime() {
-		return false;
+		return true;
 	}
 
 }

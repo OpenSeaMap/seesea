@@ -74,11 +74,6 @@ public class NMEA2000TrackFileProcessor implements ITrackFileProcessor,
 	}
 
 	@Override
-	public boolean hasTimedMeasurments() {
-		return true;
-	}
-
-	@Override
 	public void setFilter(Set<SensorDescriptionUpdateRate<Measurement>> bestSensors) {
 		
 	}

@@ -38,12 +38,6 @@ public interface ITrackFileProcessor {
 	void setFilter(Set<SensorDescriptionUpdateRate<Measurement>> bestSensors) throws ProcessingException;
 
 	/**
-	 * 
-	 * @return true if the format has a time base. This may be used to filter for timed events
-	 */
-	boolean hasTimedMeasurments();
-	
-	/**
 	 * @return true if the format does have a consecutive time base which is usually starting at the time of recording  
 	 */
 	boolean hasRelativeTime();

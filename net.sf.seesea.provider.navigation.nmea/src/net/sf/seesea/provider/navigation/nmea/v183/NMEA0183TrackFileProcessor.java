@@ -80,12 +80,6 @@ public class NMEA0183TrackFileProcessor implements ITrackFileProcessor {
 	}
 
 	@Override
-	public boolean hasTimedMeasurments() {
-		return true;
-	}
-
-
-	@Override
 	public void setFilter(Set<SensorDescriptionUpdateRate<Measurement>> bestSensors) throws ProcessingException {
 		try {
 			Map<NMEA0183MessageTypes,Set<String>> filter = new HashMap<NMEA0183MessageTypes, Set<String>>();
