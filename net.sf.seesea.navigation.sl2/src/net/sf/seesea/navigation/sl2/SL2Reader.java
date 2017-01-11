@@ -20,6 +20,7 @@ import net.sf.seesea.track.api.IMeasurementListener;
 public class SL2Reader implements ISL2Listener {
 
 	private Collection<IMeasurementListener> listeners;
+	private Long utctime;
 
 	public SL2Reader() {
 		listeners = new ArrayList<IMeasurementListener>();
@@ -81,6 +82,10 @@ public class SL2Reader implements ISL2Listener {
 		// dataInputStream.read(x, 0, 4);
 		// float waterTemp = Float.intBitsToFloat(toBigEndianInt(x,0)); // 100
 		 float surfaceDepth = Float.intBitsToFloat(getInt(data,64)) * 0.3048f;
+		 int time2 = getInt(data,60);
+		 if(utctime == null && time2 != -1) {
+			 utctime = ((long)time2) * 1000L; // the first value contains the absolute time if available
+		 }
 
 		 float waterTemperature = Float.intBitsToFloat(getInt(data,104));
 		 try {
@@ -88,6 +93,7 @@ public class SL2Reader implements ISL2Listener {
 			 Latitude latitude = GeoParser.parseLatitude(toLatitude(getInt(data, 112))); // 104
 			 float speed = Float.intBitsToFloat(getInt(data,116));
 			 float cog = Float.intBitsToFloat(getInt(data,120));
+			 short bitmask = getShort(data, 128);
 			 
 			 int time = getInt(data,140);
 			 
@@ -108,18 +114,25 @@ public class SL2Reader implements ISL2Listener {
 			 // int time2 = toBigEndianInt(dataInputStream.readInt()); // 136
 			 //
 			 // short y = toBigEndianShort(dataInputStream.readShort()); // 26
-			 
 			 MeasuredPosition3D geoPosition3D = GeoFactory.eINSTANCE.createMeasuredPosition3D();
 			 geoPosition3D.setLatitude(latitude);
 			 geoPosition3D.setLongitude(longitude);
 			 geoPosition3D.setValid(true);
-			 geoPosition3D.setTime(new Date(time));
+			 if(utctime != null) {
+				 geoPosition3D.setTime(new Date(utctime + time));
+			 } else {
+				 geoPosition3D.setTime(new Date(time));
+			 }
 			 Depth depth = GeoFactory.eINSTANCE.createDepth();
 			 depth.setMeasurementPosition(RelativeDepthMeasurementPosition.SURFACE);
 			 depth.setDepth(surfaceDepth);
 			 depth.setSensorID(sensorID.toString());
 			 depth.setValid(true);
-			 depth.setTime(new Date(time));
+			 if(utctime != null) {
+				 depth.setTime(new Date(utctime + time));
+			 } else {
+				 depth.setTime(new Date(time));
+			 }
 			 
 			 List<Measurement> measurements = new ArrayList<Measurement>(2);
 			 measurements.add(geoPosition3D);

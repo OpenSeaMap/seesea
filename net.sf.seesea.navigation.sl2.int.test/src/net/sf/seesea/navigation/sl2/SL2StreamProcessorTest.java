@@ -19,8 +19,8 @@ public class SL2StreamProcessorTest {
 		URL fileEntry = SL2Activator.getContext().getBundle().findEntries("res", "50127.dat", false).nextElement();
 		InputStream fileStream = FileLocator.resolve(fileEntry).openStream();
 		try(BufferedInputStream input = new BufferedInputStream(fileStream)) {
-			int[] buf = new int[1024];
-			for(int i = 0; i < 1024 ; i ++) {
+			int[] buf = new int[4096];
+			for(int i = 0; i < 4096 ; i ++) {
 				buf[i] = input.read();
 			}
 			
@@ -31,5 +31,5 @@ public class SL2StreamProcessorTest {
 		}
 
 	}
-	
+		
 }
