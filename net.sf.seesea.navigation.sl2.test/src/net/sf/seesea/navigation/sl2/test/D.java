@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -28,14 +29,16 @@ public class D {
 	public static void main(String[] args) throws IOException {
 //				 File file = new File("S:\\Segeln\\Data\\markus\\sl2\\Sonar0000.sl2"); //$NON-NLS-1$
 //				 File file = new File("S:\\Segeln\\Data\\markus\\sl2\\sonar1.sl2"); //$NON-NLS-1$
-		 File file = new File("C:\\pv4\\e37\\27079.dat"); //$NON-NLS-1$
+		 File file = new File("C:\\Users\\jens\\openseamap4\\ws\\net.sf.seesea.navigation.sl2.test\\res\\54185.dat"); //$NON-NLS-1$
 //		File file = new File("S:\\8774.dat"); //$NON-NLS-1$
 		RandomAccessFile raf = new RandomAccessFile(file, "r");
 		DataInputStream dataInputStream = new DataInputStream(new FileInputStream(file));
 		byte[] x = new byte[4096];
 		// header is 8 bytes;
 		dataInputStream.read(x, 0, 8);
-		
+
+//		dataInputStream.read(x, 0, 639);
+
 		
 		 JFrame fr = new JFrame();
 		    fr.setSize(3760, 1600);
@@ -63,6 +66,7 @@ public class D {
 
 			int a31 = toBigEndianShortAsInt(dataInputStream.readUnsignedShort()); // 8
 			int a32 = toBigEndianShortAsInt(dataInputStream.readUnsignedShort()); // 10
+			long positionX = a32 + (a31 * 65536);
 
 			int a34 = toBigEndianShortAsInt(dataInputStream.readUnsignedShort()); // 12
 			int a36 = toBigEndianShortAsInt(dataInputStream.readUnsignedShort()); // 14
@@ -96,9 +100,20 @@ public class D {
 			float depth3 = Float.intBitsToFloat(toBigEndianInt(x,0)) * 0.3048f ; // 64
 //			double cog = (course / Math.PI) * 180;
 			int time1 = toBigEndianInt(dataInputStream.readInt()); // 68
-			int f2 = toBigEndianInt(dataInputStream.readInt()); // 72
+			int f1 = toBigEndianShortAsInt(dataInputStream.readShort());
+			
+			int f2 = toBigEndianInt(dataInputStream.readInt()); // 60
+			
+//			dataInputStream.read(x, 0, 4);
+//			float f2 = Float.intBitsToFloat(toBigEndianInt(x,0)); // 80
 
-			int xxx1 = toBigEndianShortAsInt(dataInputStream.readUnsignedShort()); // 0
+//			int f2 = toBigEndianInt(dataInputStream.readInt());
+//			byte f1 = dataInputStream.readByte();
+//			byte f2 = dataInputStream.readByte();
+//			byte f3 = dataInputStream.readByte();
+//			byte f4 = dataInputStream.readByte();
+			
+//			int xxx1 = toBigEndianShortAsInt(dataInputStream.readUnsignedShort()); // 0
 			int xxx2 = toBigEndianShortAsInt(dataInputStream.readUnsignedShort()); // 2
 //			dataInputStream.read(x, 0, 4); // 76
 //			float keelDepth = Float.intBitsToFloat(toBigEndianInt(x,0)); 
@@ -111,8 +126,10 @@ public class D {
 			float m = Float.intBitsToFloat(toBigEndianInt(x,0)); // 88
 			dataInputStream.read(x, 0, 4);
 			float n = Float.intBitsToFloat(toBigEndianInt(x,0)); // 92
-			dataInputStream.read(x, 0, 4);
-			float o = Float.intBitsToFloat(toBigEndianInt(x,0)); // 96
+			int o = toBigEndianShortAsInt(dataInputStream.readUnsignedShort()); // 60
+			int o2 = toBigEndianShortAsInt(dataInputStream.readUnsignedShort()); // 60
+//			dataInputStream.read(x, 0, 4);
+//			float o = Float.intBitsToFloat(toBigEndianInt(x,0)); // 96
 			dataInputStream.read(x, 0, 4);
 			float speed = Float.intBitsToFloat(toBigEndianInt(x,0)); // 100
 			dataInputStream.read(x, 0, 4);
@@ -189,9 +206,9 @@ public class D {
 				}
 			}
 			blockcounter++;
-			System.out.println(latitude + ":" + longitude + ":" + depth3 + ":" + waterTemp);
+			Date date = new Date(((long)timeX) * 1000L);
+			System.out.println(latitude + ":" + longitude + ":" + depth3 + ":" + waterTemp + ":" + date.toString() + ":" + k);
 //			System.out.println(blockcounter + ":" + frameIndex);
-
 			
 			// header is 10 bytes;
 
@@ -207,6 +224,14 @@ public class D {
 	public static short toBigEndianShort(short littleendian) {
 		return (short) (((0xFF00&littleendian)>>8)&0x00FF |
 				((0x00FF&littleendian)<<8)&0xFF00);
+	}
+
+ 	public static long toBigEndianLong(int raw) {
+ 		ByteBuffer allocate = ByteBuffer.allocate(4);
+ 		allocate.putInt(raw);
+ 		allocate.flip();
+ 		allocate.order(ByteOrder.LITTLE_ENDIAN);
+ 		return allocate.getLong();
 	}
 
  	public static int toBigEndianInt(int raw) {
