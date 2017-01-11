@@ -94,11 +94,6 @@ public class ADMFileProcessor implements ITrackFileProcessor {
 	}
 
 	@Override
-	public boolean hasTimedMeasurments() {
-		return true;
-	}
-
-	@Override
 	public void setFilter(Set<SensorDescriptionUpdateRate<Measurement>> bestSensors) {
 		// TODO Auto-generated method stub
 		
