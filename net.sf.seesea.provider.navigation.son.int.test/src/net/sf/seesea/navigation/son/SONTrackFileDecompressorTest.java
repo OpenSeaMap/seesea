@@ -15,6 +15,7 @@ import java.util.zip.ZipFile;
 import org.eclipse.core.runtime.FileLocator;
 import org.junit.Test;
 
+import net.sf.seesea.track.api.data.CompressionType;
 import net.sf.seesea.track.api.data.ITrackFile;
 
 public class SONTrackFileDecompressorTest {
@@ -40,9 +41,12 @@ public class SONTrackFileDecompressorTest {
 		List<ITrackFile> unzippedFiles = sonTrackFIleDecompressor.getUnzippedFiles(zipFile, zipEntires, "UTF-8");
 		assertEquals("Expecting one track file", 1,unzippedFiles.size());
 		ITrackFile trackFile = unzippedFiles.get(0);
+		trackFile.getCompression();
 		
 		assertEquals("application/x-humminbird",trackFile.getFileType());
 		assertEquals("R00016.DAT", trackFile.getTrackQualifier());
+		assertEquals(trackFile.getUploadState(), net.sf.seesea.track.api.data.ProcessingState.PREPROCESSED);
+		assertEquals(trackFile.getCompression(), CompressionType.ZIP);
 	}
 
 }
