@@ -177,10 +177,13 @@ public class ContentDetector implements IContentDetector {
 							// decompression
 							List<ITrackFile> unzippedFiles = new ArrayList<ITrackFile>();
 							for (ITrackFileDecompressor trackFileDecompressor : trackFileDecompressors) {
-								unzippedFiles.addAll(trackFileDecompressor.getUnzippedFiles(zipFile, zipEntries, encoding));
+								List<ITrackFile> unzippedFiles2 = trackFileDecompressor.getUnzippedFiles(zipFile, zipEntries, encoding);
+								unzippedFiles.addAll(unzippedFiles2);
 							}
 							if (!unzippedFiles.isEmpty()) {
 								trackFileX.getTrackFiles().addAll(unzippedFiles);
+								trackFileX.setCompression(CompressionType.ZIP);
+								trackFileX.setUploadState(net.sf.seesea.track.api.data.ProcessingState.PREPROCESSED);
 								continue; // format prececeds single decompression
 							}
 							
@@ -291,6 +294,17 @@ public class ContentDetector implements IContentDetector {
 	public void unbindTrackPersistence(ITrackPersistence trackPersistence) {
 		trackPersistenceAR.compareAndSet(null, trackPersistence);
 	}
+
+	@Reference(cardinality = ReferenceCardinality.MULTIPLE, policy = ReferencePolicy.DYNAMIC)
+	public void bindTrackFileDecompressors(ITrackFileDecompressor trackFileDecompressor) {
+		trackFileDecompressors.add(trackFileDecompressor);
+	}
+
+	public void unbindTrackFileDecompressors(ITrackFileDecompressor trackFileDecompressor) {
+		trackFileDecompressors.remove(trackFileDecompressor);
+	}
+
+	
 	
 
 }
