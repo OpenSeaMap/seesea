@@ -37,8 +37,6 @@ import net.sf.seesea.navigation.son.data.SONRoot;
 import net.sf.seesea.navigation.son.data.ZippedSonTrack;
 import net.sf.seesea.track.api.IMeasurmentProcessor;
 import net.sf.seesea.track.api.ITrackFileProcessor;
-import net.sf.seesea.track.api.data.CompressionType;
-import net.sf.seesea.track.api.data.ITrack;
 import net.sf.seesea.track.api.data.ITrackFile;
 import net.sf.seesea.track.api.data.SensorDescriptionUpdateRate;
 import net.sf.seesea.track.api.exception.ProcessingException;
@@ -51,13 +49,9 @@ public class SONTrackFileProcessor implements ITrackFileProcessor {
 	@Override
 	public void processFile(ITrackFile trackFile) throws FileNotFoundException,
 			IOException, ProcessingException {
-		if(CompressionType.ZIP.equals(trackFile.getCompression())) {
-
 			SONStreamProcessor sonStreamProcessor = new SONStreamProcessor();
 			if(trackFile instanceof ZippedSonTrack) {
-				List<ITrack> tracks = sonStreamProcessor.getTracks(trackFile.getCompression(), ((ZippedSonTrack) trackFile).getZipFile());
-				for (ITrack track : tracks) {
-					ZippedSonTrack sonTrack = (ZippedSonTrack) track;
+					ZippedSonTrack sonTrack = (ZippedSonTrack) trackFile;
 					ZipFile file = sonTrack.getZipFile();
 					InputStream rootInputStream = file.getInputStream(sonTrack.getRootFile());
 					SONRoot sonRoot = sonStreamProcessor.readDat(rootInputStream);
@@ -133,8 +127,6 @@ public class SONTrackFileProcessor implements ITrackFileProcessor {
 						tempFile.delete();
 					}
 				}
-			}
-		}
 	}
 
 	@Override

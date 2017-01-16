@@ -28,6 +28,7 @@ package net.sf.seesea.navigation.son.data;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
@@ -60,6 +61,9 @@ public class ZippedSonTrack extends AbstractTrackFile implements IContainedTrack
 		return rootFile.getName();
 	}
 
+	/**
+	 * This one does not use input streams
+	 */
 	@Override
 	public InputStream getInputStream() {
 		return null;
@@ -68,14 +72,6 @@ public class ZippedSonTrack extends AbstractTrackFile implements IContainedTrack
 	@Override
 	public String getFileType() {
 		return "application/x-humminbird"; //$NON-NLS-1$
-	}
-
-	public InputStream getRootInputStream() {
-		return null;
-	}
-	
-	public Map<InputStream, InputStream> getIndex2DataInputStreams() {
-		return null;
 	}
 
 	public ZipEntry getRootFile() {
@@ -96,14 +92,12 @@ public class ZippedSonTrack extends AbstractTrackFile implements IContainedTrack
 
 	@Override
 	public URL getTrackURL() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Collection<ITrackFile> getTrackFiles() {
-		// TODO Auto-generated method stub
-		return null;
+		return Collections.emptyList();
 	}
 	
 	
