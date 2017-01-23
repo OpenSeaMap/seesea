@@ -20,22 +20,24 @@ import org.osgi.service.component.annotations.Component;
 import net.sf.seesea.navigation.son.data.ZippedSonTrack;
 import net.sf.seesea.track.api.ITrackFileDecompressor;
 import net.sf.seesea.track.api.data.CompressionType;
+import net.sf.seesea.track.api.data.IContainedTrackFile;
 import net.sf.seesea.track.api.data.ITrackFile;
 import net.sf.seesea.track.api.data.ProcessingState;
+import net.sf.seesea.track.model.FileType;
 
 @Component
 public class SONTrackFileDecompressor implements ITrackFileDecompressor {
 
 	@Override
-	public List<ITrackFile> getUnzippedFiles(ZipFile file, List<ZipEntry> zipEntries, String encoding) {
-		List<ITrackFile> tracks = new ArrayList<ITrackFile>();
-		List<ITrackFile> sonFilesFromFile = getSonFilesFromFile(file, tracks, zipEntries, encoding);
+	public List<IContainedTrackFile> getUnzippedFiles(ZipFile file, List<ZipEntry> zipEntries, String encoding) {
+		List<IContainedTrackFile> tracks = new ArrayList<IContainedTrackFile>();
+		List<IContainedTrackFile> sonFilesFromFile = getSonFilesFromFile(file, tracks, zipEntries, encoding);
 		return sonFilesFromFile;
 	}
 
-	// @Override
-	public List<ITrackFile> getTracks(CompressionType compressionType, File file) throws ZipException, IOException {
-		List<ITrackFile> tracks = new ArrayList<ITrackFile>();
+	 @Override
+	public List<IContainedTrackFile> getTracks(CompressionType compressionType, File file) throws ZipException, IOException {
+		List<IContainedTrackFile> tracks = new ArrayList<IContainedTrackFile>();
 		ZipFile zipFile = null;
 		switch (compressionType) {
 		case ZIP:
@@ -76,7 +78,7 @@ public class SONTrackFileDecompressor implements ITrackFileDecompressor {
 	 * @param encoding
 	 * @return
 	 */
-	private List<ITrackFile> getSonFilesFromFile(ZipFile file, List<ITrackFile> tracks, List<ZipEntry> zipEntries,
+	private List<IContainedTrackFile> getSonFilesFromFile(ZipFile file, List<IContainedTrackFile> tracks, List<ZipEntry> zipEntries,
 			String encoding) {
 		Map<ZipEntry, Map<ZipEntry, ZipEntry>> sonFiles = new HashMap<ZipEntry, Map<ZipEntry, ZipEntry>>();
 		for (ZipEntry zipEntry : zipEntries) {
@@ -117,6 +119,8 @@ public class SONTrackFileDecompressor implements ITrackFileDecompressor {
 				if (!zipEntry.getValue().isEmpty()) {
 					ZippedSonTrack zippedSonTrack = new ZippedSonTrack(file, zipEntry.getKey(), zipEntry.getValue(),
 							encoding);
+					zippedSonTrack.setCompression(CompressionType.ZIP);
+					zippedSonTrack.setFileType(FileType.HUMMINBIRD_SON.getMimeType());
 					zippedSonTrack.setUploadState(ProcessingState.PREPROCESSED);
 					tracks.add(zippedSonTrack);
 				}

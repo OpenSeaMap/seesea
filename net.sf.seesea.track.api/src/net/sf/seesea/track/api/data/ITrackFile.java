@@ -104,4 +104,6 @@ public interface ITrackFile {
 	
 	String getTrackQualifier();
 
+	void setUsername(String username);
+
 }

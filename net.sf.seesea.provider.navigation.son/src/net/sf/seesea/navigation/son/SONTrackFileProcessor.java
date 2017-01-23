@@ -142,14 +142,12 @@ public class SONTrackFileProcessor implements ITrackFileProcessor {
 
 	@Override
 	public boolean hasRelativeTime() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean hasAbsoluteTime() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 }
