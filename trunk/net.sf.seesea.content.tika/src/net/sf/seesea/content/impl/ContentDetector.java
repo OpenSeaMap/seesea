@@ -36,6 +36,7 @@ import net.sf.seesea.track.api.IStreamProcessorDetection;
 import net.sf.seesea.track.api.ITrackFileDecompressor;
 import net.sf.seesea.track.api.ITrackPersistence;
 import net.sf.seesea.track.api.data.CompressionType;
+import net.sf.seesea.track.api.data.IContainedTrackFile;
 import net.sf.seesea.track.api.data.ITrackFile;
 import net.sf.seesea.track.api.exception.RawDataEventException;
 import net.sf.seesea.track.api.exception.TrackPerssitenceException;
@@ -175,16 +176,26 @@ public class ContentDetector implements IContentDetector {
 							}
 							// if it is compressed, ask the providers for
 							// decompression
-							List<ITrackFile> unzippedFiles = new ArrayList<ITrackFile>();
+							List<IContainedTrackFile> unzippedFiles = new ArrayList<IContainedTrackFile>();
 							for (ITrackFileDecompressor trackFileDecompressor : trackFileDecompressors) {
-								List<ITrackFile> unzippedFiles2 = trackFileDecompressor.getUnzippedFiles(zipFile, zipEntries, encoding);
+								List<IContainedTrackFile> unzippedFiles2 = trackFileDecompressor.getUnzippedFiles(zipFile, zipEntries, encoding);
 								unzippedFiles.addAll(unzippedFiles2);
 							}
 							if (!unzippedFiles.isEmpty()) {
-								trackFileX.getTrackFiles().addAll(unzippedFiles);
-								trackFileX.setCompression(CompressionType.ZIP);
-								trackFileX.setUploadState(net.sf.seesea.track.api.data.ProcessingState.PREPROCESSED);
-								continue; // format prececeds single decompression
+								if(unzippedFiles.size() == 1) {
+									trackFileX.setCompression(CompressionType.ZIP);
+									trackFileX.setFileType(unzippedFiles.get(0).getFileType());
+									trackFileX.setUploadState(net.sf.seesea.track.api.data.ProcessingState.PREPROCESSED);
+									continue; // format prececeds single decompression
+								} else {
+									for (IContainedTrackFile zipTrackFile : unzippedFiles) {
+										zipTrackFile.setUsername(trackFileX.getUsername());
+									}
+									trackFileX.getTrackFiles().addAll(unzippedFiles);
+									trackFileX.setCompression(CompressionType.ZIP);
+									trackFileX.setUploadState(net.sf.seesea.track.api.data.ProcessingState.PREPROCESSED);
+									continue; // format prececeds single decompression
+								}
 							}
 							
 							// if it is not decompressed by the format, treat every

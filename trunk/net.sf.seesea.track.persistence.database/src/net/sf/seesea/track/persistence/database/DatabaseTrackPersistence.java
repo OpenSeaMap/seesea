@@ -1,5 +1,6 @@
 package net.sf.seesea.track.persistence.database;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
@@ -37,6 +38,7 @@ import net.sf.seesea.data.io.IDataWriter;
 import net.sf.seesea.data.io.WriterException;
 import net.sf.seesea.geometry.impl.Point3D;
 import net.sf.seesea.model.core.physx.CompositeMeasurement;
+import net.sf.seesea.track.api.ITrackFileDecompressor;
 import net.sf.seesea.track.api.ITrackPersistence;
 import net.sf.seesea.track.api.data.CompressionType;
 import net.sf.seesea.track.api.data.IContainedTrackFile;
@@ -146,29 +148,30 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 					Logger.getLogger(getClass()).error(
 							"Track has no processing state " + iTrackFile.getTrackId() + ":" + iTrackFile.toString());
 				}
-				if (iTrackFile.getTrackFiles().size() == 1) {
-					// use the current track id for information
-					updateTrackFileStatement.setString(1, iTrackFile.getFileType());
-					updateTrackFileStatement.setString(2, iTrackFile.getCompression().getMimeType());
-					updateTrackFileStatement.setInt(3, iTrackFile.getUploadState().ordinal());
-					updateTrackFileStatement.setLong(4, iTrackFile.getTrackId());
-					updateTrackFileStatement.addBatch();
-				} else if (iTrackFile.getTrackFiles().size() > 1) {
-					try (PreparedStatement createTrackFileStatement = sourceConnection.prepareStatement(
+//				if (iTrackFile.getTrackFiles().size() == 1) {
+//					// use the current track id for information
+//					updateTrackFileStatement.setString(1, iTrackFile.getFileType());
+//					updateTrackFileStatement.setString(2, iTrackFile.getCompression().getMimeType());
+//					updateTrackFileStatement.setInt(3, iTrackFile.getUploadState().ordinal());
+//					updateTrackFileStatement.setLong(4, iTrackFile.getTrackId());
+//					updateTrackFileStatement.addBatch();
+//				} else 
+				if (iTrackFile.getTrackFiles().size() > 0) {
+					for (ITrackFile track : iTrackFile.getTrackFiles()) {
+						try (PreparedStatement createTrackFileStatement = sourceConnection.prepareStatement(
 							"INSERT INTO user_tracks (track_id, user_name, file_ref, upload_state,  filetype, compression, containertrack) VALUES(nextval('user_tracks_track_id_seq'), ?, ?, ?, ?, ?, ?)")) {
-						for (ITrackFile track : iTrackFile.getTrackFiles()) {
 							createTrackFileStatement.setString(1, track.getUsername());
 							createTrackFileStatement.setString(2, ((IContainedTrackFile) track).getTrackQualifier());
 							createTrackFileStatement.setInt(3, ProcessingState.PREPROCESSED.ordinal());
 							createTrackFileStatement.setString(4, track.getFileType());
 							createTrackFileStatement.setString(5, track.getCompression().getMimeType());
 							createTrackFileStatement.setLong(6, iTrackFile.getTrackId());
-							createTrackFileStatement.addBatch();
-						}
-						if (!iTrackFile.getTrackFiles().isEmpty()) {
-							createTrackFileStatement.executeBatch();
+							createTrackFileStatement.execute();
 						}
 					}
+//					if (!iTrackFile.getTrackFiles().isEmpty()) {
+//						createTrackFileStatement.executeBatch();
+//					}
 					// don't store format type for container track
 					updateTrackFileStatement.setString(1, null);
 					updateTrackFileStatement.setString(2, iTrackFile.getCompression().getMimeType());
@@ -295,6 +298,7 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 								break;
 							case ZIP:
 								try {
+									
 									ZipFile zipFile = new ZipFile(trackFile);
 									ZipEntryTrackFile trackFileY = new ZipEntryTrackFile(zipFile,
 											zipFile.entries().nextElement());
@@ -304,7 +308,19 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 									trackFileY.setName(singleUserTrackFiles.getString("file_ref"));
 									trackFileY.setVesselConfiguration(vesselConfigurationList.get(vesselConfigId));
 									trackFileY.setUploadState(processingState);
-									orderedFiles.add(trackFileY);
+									List<IContainedTrackFile> unzippedFiles2 = new ArrayList<>();
+									for (ITrackFileDecompressor trackFileDecompressor : trackFileDecompressors) {
+										long id2 = trackFileY.getTrackId();
+										String trackFile2 = MessageFormat.format("{0}/{1}/{2}.dat", basedir, format.format((id2 / 100) * 100), //$NON-NLS-1$
+												fileFormat.format(id));
+										File file = new File(trackFile2);
+										unzippedFiles2 = trackFileDecompressor.getTracks(compressionType, file);
+										orderedFiles.addAll(unzippedFiles2);
+									}
+									if(unzippedFiles2.size() == 0) {
+										orderedFiles.add(trackFileY);
+									}
+									
 								} catch (IllegalArgumentException e) {
 									Logger.getLogger(getClass()).warn("Failed to determine charset for track id:" + id,
 											e);
@@ -317,7 +333,18 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 									trackFileY.setName(singleUserTrackFiles.getString("file_ref"));
 									trackFileY.setVesselConfiguration(vesselConfigurationList.get(vesselConfigId));
 									trackFileY.setUploadState(processingState);
-									orderedFiles.add(trackFileY);
+									List<IContainedTrackFile> unzippedFiles2 = new ArrayList<>();
+									for (ITrackFileDecompressor trackFileDecompressor : trackFileDecompressors) {
+										long id2 = trackFileY.getTrackId();
+										String trackFile2 = MessageFormat.format("{0}/{1}/{2}.dat", basedir, format.format((id2 / 100) * 100), //$NON-NLS-1$
+												fileFormat.format(id));
+										File file = new File(trackFile2);
+										unzippedFiles2 = trackFileDecompressor.getTracks(compressionType, file);
+										orderedFiles.addAll(unzippedFiles2);
+									}
+									if(unzippedFiles2.size() == 0) {
+										orderedFiles.add(trackFileY);
+									}
 								}
 							default:
 								break;
@@ -642,5 +669,17 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	private List<ITrackFileDecompressor> trackFileDecompressors = new CopyOnWriteArrayList<ITrackFileDecompressor>();;
+	
+	@Reference(cardinality = ReferenceCardinality.MULTIPLE, policy = ReferencePolicy.DYNAMIC)
+	public void bindTrackFileDecompressors(ITrackFileDecompressor trackFileDecompressor) {
+		trackFileDecompressors.add(trackFileDecompressor);
+	}
+
+	public void unbindTrackFileDecompressors(ITrackFileDecompressor trackFileDecompressor) {
+		trackFileDecompressors.remove(trackFileDecompressor);
+	}
+
 
 }

@@ -18,6 +18,7 @@ import org.junit.Test;
 
 import net.sf.seesea.model.core.physx.Measurement;
 import net.sf.seesea.track.api.IMeasurmentProcessor;
+import net.sf.seesea.track.api.data.IContainedTrackFile;
 import net.sf.seesea.track.api.data.ITrackFile;
 import net.sf.seesea.track.api.exception.ProcessingException;
 
@@ -44,7 +45,7 @@ public class SONProcessingIntegrationTest {
 		}
 		
 		SONTrackFileDecompressor sonTrackFIleDecompressor = new SONTrackFileDecompressor();
-		List<ITrackFile> unzippedFiles = sonTrackFIleDecompressor.getUnzippedFiles(zipFile, zipEntires, "UTF-8");
+		List<IContainedTrackFile> unzippedFiles = sonTrackFIleDecompressor.getUnzippedFiles(zipFile, zipEntires, "UTF-8");
 
 		SONTrackFileProcessor sonTrackFileProcessor = new SONTrackFileProcessor();
 		final List<Measurement> measurements = new ArrayList<>();
