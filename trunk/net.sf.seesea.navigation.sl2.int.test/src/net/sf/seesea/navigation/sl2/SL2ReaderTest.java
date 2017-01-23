@@ -60,5 +60,32 @@ public class SL2ReaderTest {
 		MeasuredPosition3D m = (MeasuredPosition3D) measurements2.get(0);
 		assertEquals(1474704286062L, m.getTime().getTime());
 	}
+	
+	@Test
+	public void testReadSecondBlockUTCDate() throws IOException {
+		URL sl2File = FrameworkUtil.getBundle(ISL2Reader.class).findEntries("res", "timeStrippedHeader.dat", false).nextElement();
+		DataInputStream dataInputStream = new DataInputStream(sl2File.openStream());
+		byte[] input = new byte[8192];
+		int[] input2 = new int[8192];
+		int read = dataInputStream.read(input, 0, 8); // skip file header
+		read = dataInputStream.read(input);
+		for (int i = 0; i < input.length; i++) {
+			input2[i] = input[i];
+		}
+		SL2Reader sl2Reader = new SL2Reader();
+		final List<Measurement> measurements2 = new ArrayList<>();
+		IMeasurementListener measurementListener2 = new IMeasurementListener() {
+			
+			@Override
+			public void notify(List<Measurement> measurements) {
+				measurements2.addAll(measurements);				
+			}
+		};
+		sl2Reader.addMeasurementListener(measurementListener2);
+//		int[] data = new int[144];
+		sl2Reader.notifySL2Block(input2);
+		MeasuredPosition3D m = (MeasuredPosition3D) measurements2.get(0);
+		assertEquals(1474704286062L, m.getTime().getTime());
+	}
 
 }
