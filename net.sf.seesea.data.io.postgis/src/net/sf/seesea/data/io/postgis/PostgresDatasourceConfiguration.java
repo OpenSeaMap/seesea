@@ -1,5 +1,9 @@
 package net.sf.seesea.data.io.postgis;
 
+import java.io.IOException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.Dictionary;
 import java.util.Hashtable;
@@ -36,13 +40,13 @@ public class PostgresDatasourceConfiguration {
 	}
 
 	@Activate
-	public void activate(ComponentContext context) {
+	public void activate(ComponentContext context) throws NoSuchAlgorithmException {
 		Dictionary<String, Object> properties = context.getProperties();
 		Properties dbProps = new Properties();
 		dbProps.put(DataSourceFactory.JDBC_DATABASE_NAME, properties.get("dbname"));
 		dbProps.put(DataSourceFactory.JDBC_USER, properties.get("user"));
 		if(properties.get("password") != null) {
-			dbProps.put(DataSourceFactory.JDBC_PASSWORD, properties.get("password"));
+			dbProps.put(DataSourceFactory.JDBC_PASSWORD, (String) properties.get("password"));
 		}
 		dbProps.put(DataSourceFactory.JDBC_SERVER_NAME, properties.get("server"));
 		dbProps.put(DataSourceFactory.JDBC_PORT_NUMBER, properties.get("port"));
@@ -57,6 +61,14 @@ public class PostgresDatasourceConfiguration {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	private String md5Password(String pass) throws NoSuchAlgorithmException {
+	    MessageDigest m = MessageDigest.getInstance("MD5");
+	    byte[] data = pass.getBytes(); 
+	    m.update(data,0,data.length);
+	    BigInteger i = new BigInteger(1,m.digest());
+	    return String.format("%1$032X", i);
 	}
 
 	@Deactivate
