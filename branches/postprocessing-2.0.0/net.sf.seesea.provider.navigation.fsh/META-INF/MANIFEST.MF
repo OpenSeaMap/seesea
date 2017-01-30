@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: FSH Processors
+Bundle-SymbolicName: net.sf.seesea.provider.navigation.fsh
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: SeeSea
+Export-Package: net.sf.seesea.provider.navigation.fsh,
+ net.sf.seesea.provider.navigation.fsh.data
+Require-Bundle: net.sf.seesea.model.core;bundle-version="1.0.0",
+ net.sf.seesea.track.api;bundle-version="1.0.0"
+Service-Component: OSGI-INF/net.sf.seesea.provider.navigation.fsh.FSHStreamProcessor.xml,
+ OSGI-INF/net.sf.seesea.provider.navigation.fsh.FSHTrackFileProcessor.xml
+Import-Package: org.osgi.service.component.annotations
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

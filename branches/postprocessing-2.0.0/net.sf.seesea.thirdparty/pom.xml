@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001 XMLSchema-instance"
+             xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+        <modelVersion>4.0.0</modelVersion>
+
+        <groupId>net.sf.seesea.thirdparty</groupId>
+        <artifactId>seesea-p2-site</artifactId>
+        <packaging>pom</packaging>
+        <version>1.2.0-SNAPSHOT</version>
+
+        <build>
+            <plugins>
+                <plugin>
+                    <groupId>org.reficio</groupId>
+                    <artifactId>p2-maven-plugin</artifactId>
+                    <version>1.2.0-SNAPSHOT</version>
+                    <executions>
+                        <execution>
+                            <id>default-cli</id>
+                            <configuration>
+                                <artifacts>
+                                    <!-- specify your depencies here -->
+                                    <!-- groupId:artifactId:version -->
+                                    <artifact><id>org.easymock:easymock:3.4</id><source>true</source></artifact>
+                                    <artifact><id>org.apache.logging.log4j:log4j-api:2.5</id><source>true</source></artifact>
+                                    <artifact><id>org.apache.logging.log4j:log4j-core:2.5</id><source>true</source></artifact>
+                                    <artifact><id>org.apache.logging.log4j:log4j-1.2-api:2.5</id><source>true</source></artifact>
+                                    <artifact><id>commons-httpclient:commons-httpclient:jar:3.1</id><source>true</source></artifact>
+                                    <artifact><id>org.apache.tika:tika-bundle:1.12</id><source>true</source></artifact>
+                                    <artifact><id>javax.ws.rs:javax.ws.rs-api:2.0.1</id><source>true</source></artifact>
+                                    <artifact><id>log4j:log4j:jar:1.2.17</id><source>true</source></artifact>
+                                    <artifact><id>org.glassfish.jersey.media:jersey-media-moxy:2.25</id><source>true</source></artifact>
+                                    <artifact><id>org.glassfish.jersey.core:jersey-client:jar:2.25</id><source>true</source></artifact>
+                                    <artifact><id>org.glassfish.jersey.core:jersey-common:jar:2.25</id><source>true</source></artifact>
+<!--                                     <artifact><id>org.eclipse.persistence:org.eclipse.persistence.moxy:jar:2.6.4</id><source>false</source></artifact>
+                                    <artifact><id>org.eclipse.persistence:org.eclipse.persistence.core:jar:2.6.4</id><source>false</source></artifact>
+                                    <artifact><id>org.eclipse.persistence:org.eclipse.persistence.asm:jar:2.6.4</id><source>false</source></artifact> -->
+                                    <artifact><id>org.glassfish.jersey.ext:jersey-entity-filtering:2.25</id><source>true</source></artifact>
+                                    <artifact><id>org.glassfish.jersey.core:jersey-server:2.25</id><source>true</source></artifact>
+                                    <artifact><id>org.postgresql:postgresql:9.4.1212.jre7</id><source>true</source></artifact>
+                                    <artifact><id>org.apache.commons:commons-math3:3.6.1</id><source>true</source></artifact>
+                                    <artifact><id>org.hsqldb:hsqldb:2.3.3</id><source>true</source></artifact>
+                                    <artifact><id>org.osgi:org.osgi.enterprise:5.0.0</id><source>true</source></artifact>
+                                    <artifact><id>org.xerial:sqlite-jdbc:3.8.11.2</id><source>true</source></artifact>
+                                    <artifact><id>org.apache.felix:org.apache.felix.fileinstall:jar:3.5.4</id><source>true</source></artifact>
+                                    <artifact><id>org.apache.felix:org.apache.felix.webconsole:jar:4.2.16</id><source>true</source></artifact>
+                                    <artifact><id>org.osgi:osgi.promise:jar:6.0.0</id><source>true</source></artifact>
+                                    <artifact><id>org.apache.httpcomponents:httpclient-osgi:jar:4.5.2</id><source>true</source></artifact>
+                                    <artifact><id>commons-codec:commons-codec:jar:1.9</id><source>true</source></artifact>
+                                    <artifact><id>commons-logging:commons-logging:jar:1.2</id><source>true</source></artifact>
+                                    <artifact><id>org.apache.httpcomponents:httpcore-osgi:jar:4.4.5</id><source>true</source></artifact>
+                                    <artifact><id>org.glassfish:javax.json:jar:1.0.4</id><source>true</source></artifact>
+                                </artifacts>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+
+<!--                 <plugin>
+                    <groupId>org.mortbay.jetty</groupId>
+                    <artifactId>jetty-maven-plugin</artifactId>
+                    <version>8.1.5.v20120716</version>
+                    <configuration>
+                        <scanIntervalSeconds>10</scanIntervalSeconds>
+                        <webAppSourceDirectory>${basedir}/target/repository/</webAppSourceDirectory>
+                        <webApp>
+                            <contextPath>/site</contextPath>
+                        </webApp>
+                   </configuration>
+                </plugin> -->
+
+            </plugins>
+        </build>
+
+        <pluginRepositories>
+            <pluginRepository>
+                <id>reficio</id>
+                <url>http://repo.reficio.org/maven/</url>
+            </pluginRepository>
+        </pluginRepositories>
+
+    </project>
