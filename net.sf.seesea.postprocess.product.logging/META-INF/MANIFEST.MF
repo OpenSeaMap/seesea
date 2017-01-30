@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Postprocess Logging
+Bundle-SymbolicName: net.sf.seesea.postprocess.product.logging
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: SeeSea
+Fragment-Host: log4j;bundle-version="1.2.17"
