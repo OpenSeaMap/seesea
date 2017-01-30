@@ -270,12 +270,13 @@ public class HttpDepthDataSync implements IDepthDataSync {
 				ScriptRunner runner = new ScriptRunner(connection, true, false);
 				runner.runScript(bufferedReader);
 			} catch (IOException e) {
-				e.printStackTrace();
+				Logger.getLogger(getClass()).error("Failed process SQL Script", e);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			Logger.getLogger(getClass()).error("Failed to connect to database", e);
 			SQLException nextException = e.getNextException();
 			if(nextException != null) {
+				Logger.getLogger(getClass()).error("Failed to connect to database", nextException);
 				nextException.printStackTrace();
 			}
 		}
