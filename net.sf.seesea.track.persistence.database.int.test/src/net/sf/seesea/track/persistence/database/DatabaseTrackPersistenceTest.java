@@ -23,6 +23,7 @@ import java.util.Map;
 
 import org.eclipse.core.runtime.FileLocator;
 import org.hsqldb.jdbc.JDBCDataSource;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import net.sf.seesea.track.api.data.CompressionType;
@@ -255,6 +256,7 @@ public class DatabaseTrackPersistenceTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testCompositeStoreStates() throws TrackPerssitenceException, IOException, SQLException {
 		JDBCDataSource uploadDataSource = new JDBCDataSource();
 		uploadDataSource.setDatabase("jdbc:hsqldb:" + "uploadUnitTest");
