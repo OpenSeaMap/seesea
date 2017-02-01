@@ -66,6 +66,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.SecurityContext;
+import javax.ws.rs.core.UriBuilder;
+import javax.ws.rs.core.UriInfo;
 
 import jj.play.ns.nl.captcha.Captcha.Builder;
 import jj.play.ns.nl.captcha.gimpy.BlockGimpyRenderer;
@@ -391,6 +393,70 @@ public class UserResource {
 		}
 	}
 
+	@SuppressWarnings("nls")
+	@POST
+	@Path("upgrade2DownloadRole")
+	@RolesAllowed({ "ADMIN", "USER" })
+	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@ApiOperation(value = "Request downloader role for user. Users having this role do have")
+	public Response requestUpgradeUserRole(@javax.ws.rs.core.Context SecurityContext context, @javax.ws.rs.core.Context UriInfo uriInfo) {
+		String username = context.getUserPrincipal().getName();
+		Context initContext;
+		try {
+			initContext = new InitialContext();
+			DataSource ds = (DataSource) initContext.lookup("java:/comp/env/jdbc/postgres");
+			try (Connection conn = ds.getConnection();
+					PreparedStatement emailStatement = conn.prepareStatement("SELECT user_name FROM user_profiles AS P INNER JOIN user_roles AS R ON P.user_name=R.user_name WHERE user_roles ='ADMIN'");
+					PreparedStatement statement = conn.prepareStatement("SELECT user_name FROM rolechange WHERE username = ?");
+					PreparedStatement insertstatement = conn.prepareStatement("INSERT INTO rolechange (user_name, role) VALUES (?,?)")) {
+				statement.setString(1, username);
+				try(ResultSet rs = statement.executeQuery()) {
+					if(!rs.next()) {
+						insertstatement.setString(1, username);
+						insertstatement.setString(2, "CONTRIBUTOR");
+						boolean execute = insertstatement.execute();
+						if(execute) {
+							Context envCtx = (Context) initContext.lookup("java:comp/env");
+							Session session = (Session) envCtx.lookup("mail/Session");
+
+							List<String> emails = new ArrayList<>(10);
+							Message message = new MimeMessage(session);
+							message.setFrom(new InternetAddress("openseamap-depth@rachael.franken.de"));
+							try(ResultSet emailResultSet = emailStatement.executeQuery();
+									ResultSet resultSet =	statement.executeQuery()) {
+								while(emailResultSet.next()) {
+									emails.add(emailResultSet.getString(1));
+								}
+							}
+							
+							InternetAddress to[] = new InternetAddress[emails.size()];
+							for (int i = 0; i < to.length; i++) {
+								to[i] = new InternetAddress(emails.get(1));
+							}
+							message.setRecipients(Message.RecipientType.TO, to);
+							message.setSubject("[NO REPLY] OpenSeaMap Role Upgrade request");
+							UriBuilder path = uriInfo.getBaseUriBuilder().path("rolechange");
+//							URI contextUrl = URI.create(req.getRequestURL().toString()).resolve(req.getContextPath());
+							message.setContent("User " + username + " has requested the contributor role. You can grant it through the following link " + path.toString(), "text/plain");
+							Transport.send(message);
+							return Response.status(204).build();
+						}
+					}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DatabaseException("Internal SQL Error");
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		}
+		} catch (NamingException e) {
+			e.printStackTrace();
+			throw new DatabaseException("Database unavailable");
+		}
+		return Response.status(404).build();
+	}
+	
 	@GET
 	@Path("current")
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
