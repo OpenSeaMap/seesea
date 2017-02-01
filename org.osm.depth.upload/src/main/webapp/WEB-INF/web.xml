@@ -108,8 +108,19 @@
       <http-method>TRACE</http-method>
       <http-method>POST</http-method>
     </web-resource-collection>
+    <web-resource-collection>
+      <web-resource-name>Role Changes Restricted</web-resource-name>
+      <url-pattern>/api2/rolechange</url-pattern>
+      <http-method>GET</http-method>
+      <http-method>DELETE</http-method>
+      <http-method>PUT</http-method>
+      <http-method>HEAD</http-method>
+      <http-method>TRACE</http-method>
+      <http-method>POST</http-method>
+    </web-resource-collection>
     <auth-constraint>
       <role-name>USER</role-name>
+      <role-name>CONTRIBUTOR</role-name>
       <role-name>ADMIN</role-name>
     </auth-constraint>
   </security-constraint>

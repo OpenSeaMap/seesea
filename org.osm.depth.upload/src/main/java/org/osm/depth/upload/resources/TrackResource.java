@@ -371,7 +371,7 @@ public class TrackResource {
 
 	@ApiOperation(value = "Downloads a track", notes = "Only available to administators right now")
 	@GET
-	@RolesAllowed("ADMIN")
+	@RolesAllowed({"ADMIN","CONTRIBUTOR"})
 	@Path("{id}/download")
 	@Produces(MediaType.APPLICATION_OCTET_STREAM)
 	public Response download(@PathParam(value = "id") String id) {
