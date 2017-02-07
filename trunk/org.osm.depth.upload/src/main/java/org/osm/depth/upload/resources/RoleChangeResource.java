@@ -76,10 +76,10 @@ public class RoleChangeResource {
 			initContext = new InitialContext();
 			DataSource ds = (DataSource)initContext.lookup("java:/comp/env/jdbc/postgres"); //$NON-NLS-1$
 			try (Connection conn = ds.getConnection();
-				 PreparedStatement selectRoleChange = conn.prepareStatement("SELECT user_name, role FROM rolechange WHERE id = ?");
+				 PreparedStatement selectRoleChange = conn.prepareStatement("SELECT user_name, role FROM rolechange WHERE user_name = ?");
 				 PreparedStatement changeRole = conn.prepareStatement("UPDATE userroles SET role = ? WHERE user_name = ?");
-					PreparedStatement deleteRoleChange = conn.prepareStatement("DELETE FROM rolechange WHERE id = ?")) {
-				selectRoleChange.setLong(1, roleChange.id);
+					PreparedStatement deleteRoleChange = conn.prepareStatement("DELETE FROM rolechange WHERE user_name = ?")) {
+				selectRoleChange.setString(1, roleChange.user_name);
 				try(ResultSet resultSet = selectRoleChange.executeQuery()) {
 					if(resultSet.next()) {
 						String userName = resultSet.getString(1);
@@ -88,7 +88,7 @@ public class RoleChangeResource {
 						changeRole.setString(2, userName);
 						boolean execute = changeRole.execute();
 						if(execute) {
-							deleteRoleChange.setLong(1, roleChange.id);
+							deleteRoleChange.setString(1, roleChange.user_name);
 							boolean deletedRole = deleteRoleChange.execute();
 							if(deletedRole) {
 								return Response.ok().build();
