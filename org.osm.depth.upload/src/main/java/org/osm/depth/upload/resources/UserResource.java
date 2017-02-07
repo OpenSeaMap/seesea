@@ -408,7 +408,7 @@ public class UserResource {
 			DataSource ds = (DataSource) initContext.lookup("java:/comp/env/jdbc/postgres");
 			try (Connection conn = ds.getConnection();
 					PreparedStatement emailStatement = conn.prepareStatement("SELECT user_name FROM user_profiles AS P INNER JOIN user_roles AS R ON P.user_name=R.user_name WHERE user_roles ='ADMIN'");
-					PreparedStatement statement = conn.prepareStatement("SELECT user_name FROM rolechange WHERE username = ?");
+					PreparedStatement statement = conn.prepareStatement("SELECT user_name FROM rolechange WHERE user_name = ?");
 					PreparedStatement insertstatement = conn.prepareStatement("INSERT INTO rolechange (user_name, role) VALUES (?,?)")) {
 				statement.setString(1, username);
 				try(ResultSet rs = statement.executeQuery()) {
