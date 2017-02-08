@@ -394,8 +394,8 @@ public class UserResource {
 	}
 
 	@SuppressWarnings("nls")
-	@POST
-	@Path("upgrade2DownloadRole")
+	@GET
+	@Path("upgrade")
 	@RolesAllowed({ "ADMIN", "USER" })
 	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
