@@ -422,8 +422,7 @@ public class UserResource {
 							List<String> emails = new ArrayList<>(10);
 							Message message = new MimeMessage(session);
 							message.setFrom(new InternetAddress("openseamap-depth@rachael.franken.de"));
-							try(ResultSet emailResultSet = emailStatement.executeQuery();
-									ResultSet resultSet =	statement.executeQuery()) {
+							try(ResultSet emailResultSet = emailStatement.executeQuery()) {
 								while(emailResultSet.next()) {
 									emails.add(emailResultSet.getString(1));
 								}
@@ -431,7 +430,7 @@ public class UserResource {
 							
 							InternetAddress to[] = new InternetAddress[emails.size()];
 							for (int i = 0; i < to.length; i++) {
-								to[i] = new InternetAddress(emails.get(1));
+								to[i] = new InternetAddress(emails.get(0));
 							}
 							message.setRecipients(Message.RecipientType.TO, to);
 							message.setSubject("[NO REPLY] OpenSeaMap Role Upgrade request");
