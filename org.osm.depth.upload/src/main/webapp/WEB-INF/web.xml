@@ -100,6 +100,12 @@
       <http-method>GET</http-method>
     </web-resource-collection>
     <web-resource-collection>
+      <web-resource-name>User Management Upgrade</web-resource-name>
+      <url-pattern>/api2/users/upgrade</url-pattern>
+      <http-method>POST</http-method>
+      <http-method>GET</http-method>
+    </web-resource-collection>
+    <web-resource-collection>
       <web-resource-name>Gauges Restricted</web-resource-name>
       <url-pattern>/api2/gauge</url-pattern>
       <http-method>DELETE</http-method>
