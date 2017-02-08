@@ -436,7 +436,7 @@ public class UserResource {
 							message.setSubject("[NO REPLY] OpenSeaMap Role Upgrade request");
 							UriBuilder path = uriInfo.getBaseUriBuilder().path("rolechange");
 //							URI contextUrl = URI.create(req.getRequestURL().toString()).resolve(req.getContextPath());
-							message.setContent("User " + username + " has requested the contributor role. You can grant it through the following link " + path.toString() + ":" + uriInfo.toString(), "text/plain");
+							message.setContent(getMessageText(username, path.toString()), "text/html; charset=utf-8");
 							Transport.send(message);
 							return Response.status(204).build();
 					}
@@ -518,6 +518,17 @@ public class UserResource {
 		String result = formatter.toString();
 		formatter.close();
 		return result;
+	}
+	
+	private String getMessageText(String user, String uri) {
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("<html>");
+		stringBuilder.append("<head><script src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js\"></script><script>function button_onClick() {$.ajax({ url: 'http://testdepth.openseamap.org/org.osm.depth.upload.stage/api2/rolechange/approveRoleChange',type: 'DELETE',success: function(result) {alert('Approved')}});}</script></head>");
+		stringBuilder.append("<body><h2>User ");
+		stringBuilder.append(user);
+		stringBuilder.append("has requested the contributor role. You can grant by pressing the Approve Role Upgrade button.");
+		stringBuilder.append("<form><input type=\"button\" value=\"Approve Role Upgrade\" onclick=\"button_onClick()\"></form></body></html>");
+		return stringBuilder.toString();
 	}
 
 }
