@@ -415,8 +415,7 @@ public class UserResource {
 					if(!rs.next()) {
 						insertstatement.setString(1, username);
 						insertstatement.setString(2, "CONTRIBUTOR");
-						boolean execute = insertstatement.execute();
-						if(execute) {
+						insertstatement.execute();
 							Context envCtx = (Context) initContext.lookup("java:comp/env");
 							Session session = (Session) envCtx.lookup("mail/Session");
 
@@ -438,10 +437,9 @@ public class UserResource {
 							message.setSubject("[NO REPLY] OpenSeaMap Role Upgrade request");
 							UriBuilder path = uriInfo.getBaseUriBuilder().path("rolechange");
 //							URI contextUrl = URI.create(req.getRequestURL().toString()).resolve(req.getContextPath());
-							message.setContent("User " + username + " has requested the contributor role. You can grant it through the following link " + path.toString(), "text/plain");
+							message.setContent("User " + username + " has requested the contributor role. You can grant it through the following link " + path.toString() + ":" + uriInfo.toString(), "text/plain");
 							Transport.send(message);
 							return Response.status(204).build();
-						}
 					}
 			}
 		} catch (SQLException e) {
