@@ -523,10 +523,10 @@ public class UserResource {
 	private String getMessageText(String user, String uri) {
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append("<html>");
-		stringBuilder.append("<head><script src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js\"></script><script>function button_onClick() {$.ajax({ url: 'http://testdepth.openseamap.org/org.osm.depth.upload.stage/api2/rolechange/approveRoleChange',type: 'DELETE',success: function(result) {alert('Approved')}});}</script></head>");
+		stringBuilder.append("<head><script src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js\"></script><script>function button_onClick() {$.ajax({ url: '" + uri + "',type: 'DELETE',success: function(result) {alert('Approved')}});}</script></head>");
 		stringBuilder.append("<body><h2>User ");
 		stringBuilder.append(user);
-		stringBuilder.append("has requested the contributor role. You can grant by pressing the Approve Role Upgrade button.");
+		stringBuilder.append("has requested the contributor role. You can grant by pressing the Approve Role Upgrade button.</h2>");
 		stringBuilder.append("<form><input type=\"button\" value=\"Approve Role Upgrade\" onclick=\"button_onClick()\"></form></body></html>");
 		return stringBuilder.toString();
 	}
