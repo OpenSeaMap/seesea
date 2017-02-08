@@ -407,7 +407,7 @@ public class UserResource {
 			initContext = new InitialContext();
 			DataSource ds = (DataSource) initContext.lookup("java:/comp/env/jdbc/postgres");
 			try (Connection conn = ds.getConnection();
-					PreparedStatement emailStatement = conn.prepareStatement("SELECT user_name FROM user_profiles AS P INNER JOIN user_roles AS R ON P.user_name=R.user_name WHERE user_roles ='ADMIN'");
+					PreparedStatement emailStatement = conn.prepareStatement("SELECT P.user_name FROM user_profiles AS P LEFT JOIN userroles AS R ON P.user_name=R.user_name WHERE role ='ADMIN'");
 					PreparedStatement statement = conn.prepareStatement("SELECT user_name FROM rolechange WHERE user_name = ?");
 					PreparedStatement insertstatement = conn.prepareStatement("INSERT INTO rolechange (user_name, role) VALUES (?,?)")) {
 				statement.setString(1, username);
@@ -454,7 +454,7 @@ public class UserResource {
 			e.printStackTrace();
 			throw new DatabaseException("Database unavailable");
 		}
-		return Response.status(404).build();
+		return Response.status(500).build();
 	}
 	
 	@GET
