@@ -15,4 +15,6 @@ public class Gauge {
 	public double longitude;
 
 	public GaugeType gaugeType;
+	
+	public double waterlevel;
 }

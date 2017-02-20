@@ -110,7 +110,7 @@ public class GaugeResource {
 			try {
 				Statement createIDStatement = conn.createStatement();
 				try {
-					PreparedStatement statement = conn.prepareStatement("INSERT INTO gauge (id, name, gaugetype, geom) VALUES (?,?,?, ST_SetSRID(ST_MakePoint(?, ?), 4326))"); //$NON-NLS-1$
+					PreparedStatement statement = conn.prepareStatement("INSERT INTO gauge (id, name, gaugetype, waterlevel, geom) VALUES (?,?,?,?, ST_SetSRID(ST_MakePoint(?, ?), 4326))"); //$NON-NLS-1$
 					try {
 						ResultSet executeQuery = createIDStatement.executeQuery("SELECT nextval('gauge_id_seq')"); //$NON-NLS-1$
 						if(executeQuery.next()) {
@@ -118,8 +118,9 @@ public class GaugeResource {
 							statement.setLong(1, id);
 							statement.setString(2, gauge.name);
 							statement.setString(3, gauge.gaugeType.toString());
-							statement.setDouble(5, gauge.latitude);
-							statement.setDouble(4, gauge.longitude);
+							statement.setDouble(4, gauge.waterlevel);
+							statement.setDouble(6, gauge.latitude);
+							statement.setDouble(5, gauge.longitude);
 							statement.execute();
 							return gauge;
 						} else {
