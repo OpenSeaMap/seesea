@@ -56,7 +56,7 @@ public class GaugeResource {
 				Statement statement = conn.createStatement();
 				try {
 					ResultSet executeQuery;
-					executeQuery = statement.executeQuery("SELECT id, name, gaugetype, ST_AsText(geom) as geom FROM gauge g"); //$NON-NLS-1$
+					executeQuery = statement.executeQuery("SELECT id, name, gaugetype, waterlevel, ST_AsText(geom) as geom FROM gauge g"); //$NON-NLS-1$
 					List<Gauge> list = new ArrayList<Gauge>();
 					while(executeQuery.next()) {
 						Gauge gauge = new Gauge();
@@ -77,6 +77,7 @@ public class GaugeResource {
 						} catch (IllegalArgumentException e) {
 							gauge.gaugeType = GaugeType.UNDEFINED; // no such gauge type
 						}
+						gauge.waterlevel = executeQuery.getDouble("waterlevel");
 						list.add(gauge);
 					}
 					return list;
@@ -110,7 +111,7 @@ public class GaugeResource {
 			try {
 				Statement createIDStatement = conn.createStatement();
 				try {
-					PreparedStatement statement = conn.prepareStatement("INSERT INTO gauge (id, name, gaugetype, waterlevel, geom) VALUES (?,?,?,?, ST_SetSRID(ST_MakePoint(?, ?), 4326))"); //$NON-NLS-1$
+					PreparedStatement statement = conn.prepareStatement("INSERT INTO gauge (id, name, gaugetype, waterlevel, lat, lon, geom) VALUES (?,?,?,?, ST_SetSRID(ST_MakePoint(?, ?), 4326))"); //$NON-NLS-1$
 					try {
 						ResultSet executeQuery = createIDStatement.executeQuery("SELECT nextval('gauge_id_seq')"); //$NON-NLS-1$
 						if(executeQuery.next()) {
@@ -119,8 +120,10 @@ public class GaugeResource {
 							statement.setString(2, gauge.name);
 							statement.setString(3, gauge.gaugeType.toString());
 							statement.setDouble(4, gauge.waterlevel);
-							statement.setDouble(6, gauge.latitude);
-							statement.setDouble(5, gauge.longitude);
+							statement.setDouble(5, gauge.latitude);
+							statement.setDouble(6, gauge.longitude);
+							statement.setDouble(8, gauge.latitude);
+							statement.setDouble(7, gauge.longitude);
 							statement.execute();
 							return gauge;
 						} else {
