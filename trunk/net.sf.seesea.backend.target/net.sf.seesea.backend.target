@@ -97,7 +97,7 @@
 <unit id="javassist.source" version="3.20.0.GA"/>
 <unit id="org.objenesis" version="2.2.0"/>
 <unit id="org.apache.logging.log4j.api" version="2.5.0"/>
-<repository location="http://depth.openseamap.org/p2"/>
+<repository location="http://depth.openseamap.org/p2/repository"/>
 </location>
 </locations>
 <includeBundles>
