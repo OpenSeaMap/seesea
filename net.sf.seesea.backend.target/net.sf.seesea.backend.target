@@ -560,9 +560,7 @@
 <plugin id="org.json"/>
 <plugin id="org.junit"/>
 <plugin id="org.objectweb.asm"/>
-<plugin id="org.objectweb.asm.source"/>
 <plugin id="org.objectweb.asm.tree"/>
-<plugin id="org.objectweb.asm.tree.source"/>
 <plugin id="org.objenesis"/>
 <plugin id="org.objenesis.source"/>
 <plugin id="org.postgresql.jdbc41"/>
