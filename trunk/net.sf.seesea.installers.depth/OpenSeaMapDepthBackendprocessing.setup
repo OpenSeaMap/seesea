@@ -184,7 +184,7 @@
   <setupTask
       xsi:type="projectset:ProjectSetImportTask"
       id="Backend Processing"
-      uRL="http://svn.code.sf.net/p/seesea/code/net.sf.seesea.installers.depth/trunk/projectSet.psf"/>
+      uRL="http://svn.code.sf.net/p/seesea/code/net.sf.seesea.installers.depth/code/trunk/projectSet.psf"/>
   <setupTask
       xsi:type="pde:TargetPlatformTask"
       id="net.sf.seesea.backend.target"
