@@ -165,7 +165,7 @@
     <requirement
         name="org.apache.log4j"/>
     <repository
-        url="http://depth.openseamap.org/p2"/>
+        url="http://depth.openseamap.org/p2/repository"/>
     <description></description>
   </setupTask>
   <setupTask
