@@ -66,13 +66,6 @@
          unpack="false"/>
 
    <plugin
-         id="net.sf.seesea.nmea.rcp.logging"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         fragment="true"/>
-
-   <plugin
          id="net.sf.seesea.provider.navigation.fsh"
          download-size="0"
          install-size="0"
@@ -257,6 +250,14 @@
          download-size="0"
          install-size="0"
          version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="net.sf.seesea.postprocess.product.logging"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
          unpack="false"/>
 
 </feature>
