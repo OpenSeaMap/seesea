@@ -46,6 +46,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.zip.GZIPInputStream;
 
 import javax.net.ssl.SSLContext;
@@ -99,7 +100,7 @@ public class HttpDepthDataSync implements IDepthDataSync {
 	private Long lowerBound;
 	/** highest track id */
 	private Long upperBound;
-	private DataSource uploadDataSource;
+	private AtomicReference<DataSource> uploadDataSource = new AtomicReference<>();
 
 	@Override
 	public boolean downloadFiles() {
@@ -249,6 +250,7 @@ public class HttpDepthDataSync implements IDepthDataSync {
 	}
 
 	public void downloadSQL() {
+		Logger.getLogger(getClass()).info("Downloading SQL dump file");
 		File sqlFile = new File(storageLocation, "dumpAll.sql.gz");
 
 		try {
@@ -264,7 +266,7 @@ public class HttpDepthDataSync implements IDepthDataSync {
 		} catch (MalformedURLException mue) {
 			Logger.getLogger(getClass()).error("Failed to parse URL", mue);
 		}
-		try(Connection connection = uploadDataSource.getConnection()) {
+		try(Connection connection = uploadDataSource.get().getConnection()) {
 			try(GZIPInputStream gzipInputStream = new GZIPInputStream(new FileInputStream(sqlFile))) {
 				BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(gzipInputStream));
 				ScriptRunner runner = new ScriptRunner(connection, true, false);
@@ -285,11 +287,11 @@ public class HttpDepthDataSync implements IDepthDataSync {
 	
 	@Reference(cardinality = ReferenceCardinality.MANDATORY, policy = ReferencePolicy.DYNAMIC, target = "(db=userData)")
 	public synchronized void bindDepthConnection(DataSource dataSource) {
-		this.uploadDataSource = dataSource;
+		uploadDataSource.set(dataSource);
 	}
 
 	public synchronized void unbindDepthConnection(DataSource connection) {
-		this.uploadDataSource = null;
+		uploadDataSource.compareAndSet(connection, null);
 	}
 
 
