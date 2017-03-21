@@ -34,6 +34,7 @@
 <project reference="0.9.3,https://svn.code.sf.net/p/seesea/code/trunk/net.sf.seesea.navigation.winprofile.sharp,net.sf.seesea.navigation.winprofile.sharp"/>
 <project reference="0.9.3,https://svn.code.sf.net/p/seesea/code/trunk/net.sf.seesea.navigation.winprofile.sharp.int.test,net.sf.seesea.navigation.winprofile.sharp.int.test"/>
 <project reference="0.9.3,https://svn.code.sf.net/p/seesea/code/trunk/net.sf.seesea.postprocess.product,net.sf.seesea.postprocess.product"/>
+<project reference="0.9.3,https://svn.code.sf.net/p/seesea/code/trunk/net.sf.seesea.postprocess.product.logging,net.sf.seesea.postprocess.product.logging"/>
 <project reference="0.9.3,https://svn.code.sf.net/p/seesea/code/trunk/net.sf.seesea.postprocessing.eclipse.feature,net.sf.seesea.postprocessing.eclipse.feature"/>
 <project reference="0.9.3,https://svn.code.sf.net/p/seesea/code/trunk/net.sf.seesea.provider.navigation.adm,net.sf.seesea.provider.navigation.adm"/>
 <project reference="0.9.3,https://svn.code.sf.net/p/seesea/code/trunk/net.sf.seesea.provider.navigation.adm.int.test,net.sf.seesea.provider.navigation.adm.int.test"/>
