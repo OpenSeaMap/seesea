@@ -3,7 +3,6 @@
 
 <product name="Postprocessing" uid="postprocessing" id="net.sf.seesea.data.postprocessing.product" application="net.sf.seesea.data.postprocessing.application" version="2.0.1.qualifier" useFeatures="true" includeLaunchers="true">
 
-
    <configIni use="default">
    </configIni>
 
@@ -11,7 +10,7 @@
       <programArgs>-console
       </programArgs>
       <vmArgs>-Xss1M
--Dfelix.fileinstall.dir=${workspace_loc}\net.sf.seesea.data.processing.feature\rootfiles\config
+-Dfelix.fileinstall.dir=config
       </vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
       </vmArgsMac>
@@ -25,7 +24,6 @@
          <bmp/>
       </win>
    </launcher>
-
 
    <vm>
    </vm>
