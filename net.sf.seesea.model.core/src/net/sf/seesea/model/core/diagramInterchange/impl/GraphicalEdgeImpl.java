@@ -30,10 +30,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.diagramInterchange.impl;
 
-import net.sf.seesea.model.core.diagramInterchange.DiagramInterchangePackage;
-import net.sf.seesea.model.core.diagramInterchange.GraphicalEdge;
-
 import org.eclipse.emf.ecore.EClass;
+
+import net.sf.seesea.model.core.diagramInterchange.GraphicalEdge;
 
 /**
  * <!-- begin-user-doc -->
@@ -59,7 +58,7 @@ public class GraphicalEdgeImpl extends GraphicalElementImpl implements Graphical
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return DiagramInterchangePackage.Literals.GRAPHICAL_EDGE;
+		return DiagramInterchangePackageImpl.Literals.GRAPHICAL_EDGE;
 	}
 
 } //GraphicalEdgeImpl

@@ -30,17 +30,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.weather.impl;
 
-import net.sf.seesea.model.core.physx.impl.MeasurementImpl;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import net.sf.seesea.model.core.physx.impl.MeasurementImpl;
 import net.sf.seesea.model.core.weather.BarometricPressure;
 import net.sf.seesea.model.core.weather.PressureUnit;
-import net.sf.seesea.model.core.weather.WeatherPackage;
-
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -113,7 +109,7 @@ public class BarometricPressureImpl extends MeasurementImpl implements Barometri
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return WeatherPackage.Literals.BAROMETRIC_PRESSURE;
+		return WeatherPackageImpl.Literals.BAROMETRIC_PRESSURE;
 	}
 
 	/**
@@ -134,7 +130,7 @@ public class BarometricPressureImpl extends MeasurementImpl implements Barometri
 		double oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WeatherPackage.BAROMETRIC_PRESSURE__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, WeatherPackageImpl.BAROMETRIC_PRESSURE__VALUE, oldValue, value));
 	}
 
 	/**
@@ -155,7 +151,7 @@ public class BarometricPressureImpl extends MeasurementImpl implements Barometri
 		PressureUnit oldUnit = unit;
 		unit = newUnit == null ? UNIT_EDEFAULT : newUnit;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WeatherPackage.BAROMETRIC_PRESSURE__UNIT, oldUnit, unit));
+			eNotify(new ENotificationImpl(this, Notification.SET, WeatherPackageImpl.BAROMETRIC_PRESSURE__UNIT, oldUnit, unit));
 	}
 
 	/**
@@ -166,9 +162,9 @@ public class BarometricPressureImpl extends MeasurementImpl implements Barometri
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case WeatherPackage.BAROMETRIC_PRESSURE__VALUE:
+			case WeatherPackageImpl.BAROMETRIC_PRESSURE__VALUE:
 				return getValue();
-			case WeatherPackage.BAROMETRIC_PRESSURE__UNIT:
+			case WeatherPackageImpl.BAROMETRIC_PRESSURE__UNIT:
 				return getUnit();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -182,10 +178,10 @@ public class BarometricPressureImpl extends MeasurementImpl implements Barometri
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case WeatherPackage.BAROMETRIC_PRESSURE__VALUE:
+			case WeatherPackageImpl.BAROMETRIC_PRESSURE__VALUE:
 				setValue((Double)newValue);
 				return;
-			case WeatherPackage.BAROMETRIC_PRESSURE__UNIT:
+			case WeatherPackageImpl.BAROMETRIC_PRESSURE__UNIT:
 				setUnit((PressureUnit)newValue);
 				return;
 		}
@@ -200,10 +196,10 @@ public class BarometricPressureImpl extends MeasurementImpl implements Barometri
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case WeatherPackage.BAROMETRIC_PRESSURE__VALUE:
+			case WeatherPackageImpl.BAROMETRIC_PRESSURE__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
-			case WeatherPackage.BAROMETRIC_PRESSURE__UNIT:
+			case WeatherPackageImpl.BAROMETRIC_PRESSURE__UNIT:
 				setUnit(UNIT_EDEFAULT);
 				return;
 		}
@@ -218,9 +214,9 @@ public class BarometricPressureImpl extends MeasurementImpl implements Barometri
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case WeatherPackage.BAROMETRIC_PRESSURE__VALUE:
+			case WeatherPackageImpl.BAROMETRIC_PRESSURE__VALUE:
 				return value != VALUE_EDEFAULT;
-			case WeatherPackage.BAROMETRIC_PRESSURE__UNIT:
+			case WeatherPackageImpl.BAROMETRIC_PRESSURE__UNIT:
 				return unit != UNIT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

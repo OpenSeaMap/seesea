@@ -30,15 +30,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.physx.impl;
 
-import net.sf.seesea.model.core.physx.PhysxPackage;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import net.sf.seesea.model.core.physx.Temperature;
 import net.sf.seesea.model.core.physx.TemperatureUnit;
-
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -111,7 +108,7 @@ public class TemperatureImpl extends MeasurementImpl implements Temperature {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return PhysxPackage.Literals.TEMPERATURE;
+		return PhysxPackageImpl.Literals.TEMPERATURE;
 	}
 
 	/**
@@ -132,7 +129,7 @@ public class TemperatureImpl extends MeasurementImpl implements Temperature {
 		double oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackage.TEMPERATURE__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackageImpl.TEMPERATURE__VALUE, oldValue, value));
 	}
 
 	/**
@@ -153,7 +150,7 @@ public class TemperatureImpl extends MeasurementImpl implements Temperature {
 		TemperatureUnit oldUnit = unit;
 		unit = newUnit == null ? UNIT_EDEFAULT : newUnit;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackage.TEMPERATURE__UNIT, oldUnit, unit));
+			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackageImpl.TEMPERATURE__UNIT, oldUnit, unit));
 	}
 
 	/**
@@ -164,9 +161,9 @@ public class TemperatureImpl extends MeasurementImpl implements Temperature {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PhysxPackage.TEMPERATURE__VALUE:
+			case PhysxPackageImpl.TEMPERATURE__VALUE:
 				return getValue();
-			case PhysxPackage.TEMPERATURE__UNIT:
+			case PhysxPackageImpl.TEMPERATURE__UNIT:
 				return getUnit();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -180,10 +177,10 @@ public class TemperatureImpl extends MeasurementImpl implements Temperature {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PhysxPackage.TEMPERATURE__VALUE:
+			case PhysxPackageImpl.TEMPERATURE__VALUE:
 				setValue((Double)newValue);
 				return;
-			case PhysxPackage.TEMPERATURE__UNIT:
+			case PhysxPackageImpl.TEMPERATURE__UNIT:
 				setUnit((TemperatureUnit)newValue);
 				return;
 		}
@@ -198,10 +195,10 @@ public class TemperatureImpl extends MeasurementImpl implements Temperature {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PhysxPackage.TEMPERATURE__VALUE:
+			case PhysxPackageImpl.TEMPERATURE__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
-			case PhysxPackage.TEMPERATURE__UNIT:
+			case PhysxPackageImpl.TEMPERATURE__UNIT:
 				setUnit(UNIT_EDEFAULT);
 				return;
 		}
@@ -216,9 +213,9 @@ public class TemperatureImpl extends MeasurementImpl implements Temperature {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PhysxPackage.TEMPERATURE__VALUE:
+			case PhysxPackageImpl.TEMPERATURE__VALUE:
 				return value != VALUE_EDEFAULT;
-			case PhysxPackage.TEMPERATURE__UNIT:
+			case PhysxPackageImpl.TEMPERATURE__UNIT:
 				return unit != UNIT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

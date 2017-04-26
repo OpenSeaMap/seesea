@@ -30,12 +30,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.diagramInterchange.impl;
 
-import net.sf.seesea.model.core.diagramInterchange.DiagramInterchangePackage;
-import net.sf.seesea.model.core.diagramInterchange.GraphicalElement;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
+import net.sf.seesea.model.core.diagramInterchange.GraphicalElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -61,7 +59,7 @@ public class GraphicalElementImpl extends EObjectImpl implements GraphicalElemen
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return DiagramInterchangePackage.Literals.GRAPHICAL_ELEMENT;
+		return DiagramInterchangePackageImpl.Literals.GRAPHICAL_ELEMENT;
 	}
 
 } //GraphicalElementImpl

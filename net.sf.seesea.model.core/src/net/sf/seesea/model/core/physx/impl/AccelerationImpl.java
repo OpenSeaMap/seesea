@@ -27,14 +27,11 @@
  */
 package net.sf.seesea.model.core.physx.impl;
 
-import net.sf.seesea.model.core.physx.Acceleration;
-import net.sf.seesea.model.core.physx.PhysxPackage;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import net.sf.seesea.model.core.physx.Acceleration;
 
 /**
  * <!-- begin-user-doc -->
@@ -128,7 +125,7 @@ public class AccelerationImpl extends MeasurementImpl implements Acceleration {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return PhysxPackage.Literals.ACCELERATION;
+		return PhysxPackageImpl.Literals.ACCELERATION;
 	}
 
 	/**
@@ -149,7 +146,7 @@ public class AccelerationImpl extends MeasurementImpl implements Acceleration {
 		double oldX = x;
 		x = newX;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackage.ACCELERATION__X, oldX, x));
+			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackageImpl.ACCELERATION__X, oldX, x));
 	}
 
 	/**
@@ -170,7 +167,7 @@ public class AccelerationImpl extends MeasurementImpl implements Acceleration {
 		double oldY = y;
 		y = newY;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackage.ACCELERATION__Y, oldY, y));
+			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackageImpl.ACCELERATION__Y, oldY, y));
 	}
 
 	/**
@@ -191,7 +188,7 @@ public class AccelerationImpl extends MeasurementImpl implements Acceleration {
 		double oldZ = z;
 		z = newZ;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackage.ACCELERATION__Z, oldZ, z));
+			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackageImpl.ACCELERATION__Z, oldZ, z));
 	}
 
 	/**
@@ -202,11 +199,11 @@ public class AccelerationImpl extends MeasurementImpl implements Acceleration {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PhysxPackage.ACCELERATION__X:
+			case PhysxPackageImpl.ACCELERATION__X:
 				return getX();
-			case PhysxPackage.ACCELERATION__Y:
+			case PhysxPackageImpl.ACCELERATION__Y:
 				return getY();
-			case PhysxPackage.ACCELERATION__Z:
+			case PhysxPackageImpl.ACCELERATION__Z:
 				return getZ();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -220,13 +217,13 @@ public class AccelerationImpl extends MeasurementImpl implements Acceleration {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PhysxPackage.ACCELERATION__X:
+			case PhysxPackageImpl.ACCELERATION__X:
 				setX((Double)newValue);
 				return;
-			case PhysxPackage.ACCELERATION__Y:
+			case PhysxPackageImpl.ACCELERATION__Y:
 				setY((Double)newValue);
 				return;
-			case PhysxPackage.ACCELERATION__Z:
+			case PhysxPackageImpl.ACCELERATION__Z:
 				setZ((Double)newValue);
 				return;
 		}
@@ -241,13 +238,13 @@ public class AccelerationImpl extends MeasurementImpl implements Acceleration {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PhysxPackage.ACCELERATION__X:
+			case PhysxPackageImpl.ACCELERATION__X:
 				setX(X_EDEFAULT);
 				return;
-			case PhysxPackage.ACCELERATION__Y:
+			case PhysxPackageImpl.ACCELERATION__Y:
 				setY(Y_EDEFAULT);
 				return;
-			case PhysxPackage.ACCELERATION__Z:
+			case PhysxPackageImpl.ACCELERATION__Z:
 				setZ(Z_EDEFAULT);
 				return;
 		}
@@ -262,11 +259,11 @@ public class AccelerationImpl extends MeasurementImpl implements Acceleration {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PhysxPackage.ACCELERATION__X:
+			case PhysxPackageImpl.ACCELERATION__X:
 				return x != X_EDEFAULT;
-			case PhysxPackage.ACCELERATION__Y:
+			case PhysxPackageImpl.ACCELERATION__Y:
 				return y != Y_EDEFAULT;
-			case PhysxPackage.ACCELERATION__Z:
+			case PhysxPackageImpl.ACCELERATION__Z:
 				return z != Z_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

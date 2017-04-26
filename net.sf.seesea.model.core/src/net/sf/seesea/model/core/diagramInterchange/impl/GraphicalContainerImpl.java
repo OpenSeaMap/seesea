@@ -31,13 +31,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package net.sf.seesea.model.core.diagramInterchange.impl;
 
 import java.util.Collection;
-import net.sf.seesea.model.core.diagramInterchange.DiagramInterchangePackage;
-import net.sf.seesea.model.core.diagramInterchange.GraphicalContainer;
-import net.sf.seesea.model.core.diagramInterchange.GraphicalElement;
+import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+
+import net.sf.seesea.model.core.diagramInterchange.GraphicalContainer;
+import net.sf.seesea.model.core.diagramInterchange.GraphicalElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -79,7 +80,7 @@ public class GraphicalContainerImpl extends GraphicalElementImpl implements Grap
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return DiagramInterchangePackage.Literals.GRAPHICAL_CONTAINER;
+		return DiagramInterchangePackageImpl.Literals.GRAPHICAL_CONTAINER;
 	}
 
 	/**
@@ -87,9 +88,9 @@ public class GraphicalContainerImpl extends GraphicalElementImpl implements Grap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<GraphicalElement> getChildren() {
+	public List<GraphicalElement> getChildren() {
 		if (children == null) {
-			children = new EObjectResolvingEList<GraphicalElement>(GraphicalElement.class, this, DiagramInterchangePackage.GRAPHICAL_CONTAINER__CHILDREN);
+			children = new EObjectResolvingEList<GraphicalElement>(GraphicalElement.class, this, DiagramInterchangePackageImpl.GRAPHICAL_CONTAINER__CHILDREN);
 		}
 		return children;
 	}
@@ -102,7 +103,7 @@ public class GraphicalContainerImpl extends GraphicalElementImpl implements Grap
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case DiagramInterchangePackage.GRAPHICAL_CONTAINER__CHILDREN:
+			case DiagramInterchangePackageImpl.GRAPHICAL_CONTAINER__CHILDREN:
 				return getChildren();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -117,7 +118,7 @@ public class GraphicalContainerImpl extends GraphicalElementImpl implements Grap
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case DiagramInterchangePackage.GRAPHICAL_CONTAINER__CHILDREN:
+			case DiagramInterchangePackageImpl.GRAPHICAL_CONTAINER__CHILDREN:
 				getChildren().clear();
 				getChildren().addAll((Collection<? extends GraphicalElement>)newValue);
 				return;
@@ -133,7 +134,7 @@ public class GraphicalContainerImpl extends GraphicalElementImpl implements Grap
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case DiagramInterchangePackage.GRAPHICAL_CONTAINER__CHILDREN:
+			case DiagramInterchangePackageImpl.GRAPHICAL_CONTAINER__CHILDREN:
 				getChildren().clear();
 				return;
 		}
@@ -148,7 +149,7 @@ public class GraphicalContainerImpl extends GraphicalElementImpl implements Grap
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case DiagramInterchangePackage.GRAPHICAL_CONTAINER__CHILDREN:
+			case DiagramInterchangePackageImpl.GRAPHICAL_CONTAINER__CHILDREN:
 				return children != null && !children.isEmpty();
 		}
 		return super.eIsSet(featureID);

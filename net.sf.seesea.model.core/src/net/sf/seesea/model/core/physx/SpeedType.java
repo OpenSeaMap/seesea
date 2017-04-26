@@ -41,11 +41,11 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Speed Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see net.sf.seesea.model.core.physx.PhysxPackage#getSpeedType()
+ * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getSpeedType()
  * @model
  * @generated
  */
-public enum SpeedType implements Enumerator {
+public enum SpeedType implements InternalSpeedType {
 	/**
 	 * The '<em><b>Unknown</b></em>' literal object.
 	 * <!-- begin-user-doc -->
@@ -267,3 +267,13 @@ public enum SpeedType implements Enumerator {
 	}
 	
 } //SpeedType
+
+/**
+ * A private implementation interface used to hide the inheritance from Enumerator.
+ * <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
+ * @generated
+ */
+interface InternalSpeedType extends org.eclipse.emf.common.util.Enumerator {
+	// Empty 
+}

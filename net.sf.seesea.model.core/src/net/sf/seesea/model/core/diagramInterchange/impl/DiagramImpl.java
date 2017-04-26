@@ -30,10 +30,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.diagramInterchange.impl;
 
-import net.sf.seesea.model.core.diagramInterchange.Diagram;
-import net.sf.seesea.model.core.diagramInterchange.DiagramInterchangePackage;
-
 import org.eclipse.emf.ecore.EClass;
+
+import net.sf.seesea.model.core.diagramInterchange.Diagram;
 
 /**
  * <!-- begin-user-doc -->
@@ -59,7 +58,7 @@ public class DiagramImpl extends GraphicalContainerImpl implements Diagram {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return DiagramInterchangePackage.Literals.DIAGRAM;
+		return DiagramInterchangePackageImpl.Literals.DIAGRAM;
 	}
 
 } //DiagramImpl

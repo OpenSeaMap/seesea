@@ -37,18 +37,16 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see net.sf.seesea.model.core.geo.GeoPackage
  * @generated
  */
-public interface GeoFactory extends EFactory {
+public interface GeoFactory {
 	/**
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	GeoFactory eINSTANCE = net.sf.seesea.model.core.geo.impl.GeoFactoryImpl.init();
-
+	GeoFactory INSTANCE = net.sf.seesea.model.core.geo.impl.GeoFactoryImpl.eINSTANCE;
 	/**
 	 * Returns a new object of class '<em>Position</em>'.
 	 * <!-- begin-user-doc -->
@@ -264,14 +262,5 @@ public interface GeoFactory extends EFactory {
 	 * @generated
 	 */
 	ChartWay createChartWay();
-
-	/**
-	 * Returns the package supported by this factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the package supported by this factory.
-	 * @generated
-	 */
-	GeoPackage getGeoPackage();
 
 } //GeoFactory

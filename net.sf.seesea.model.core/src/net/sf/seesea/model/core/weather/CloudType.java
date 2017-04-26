@@ -41,11 +41,11 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Cloud Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see net.sf.seesea.model.core.weather.WeatherPackage#getCloudType()
+ * @see net.sf.seesea.model.core.weather.impl.WeatherPackageImpl#getCloudType()
  * @model
  * @generated
  */
-public enum CloudType implements Enumerator {
+public enum CloudType implements InternalCloudType {
 	/**
 	 * The '<em><b>Undefined</b></em>' literal object.
 	 * <!-- begin-user-doc -->
@@ -483,3 +483,13 @@ public enum CloudType implements Enumerator {
 	}
 	
 } //CloudType
+
+/**
+ * A private implementation interface used to hide the inheritance from Enumerator.
+ * <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
+ * @generated
+ */
+interface InternalCloudType extends org.eclipse.emf.common.util.Enumerator {
+	// Empty 
+}

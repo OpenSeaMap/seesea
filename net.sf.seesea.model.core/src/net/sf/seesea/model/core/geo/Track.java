@@ -30,6 +30,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.geo;
 
+import java.util.List;
 import net.sf.seesea.model.core.ModelObject;
 import org.eclipse.emf.common.util.EList;
 
@@ -45,7 +46,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link net.sf.seesea.model.core.geo.Track#getMeasuredPosition <em>Measured Position</em>}</li>
  * </ul>
  *
- * @see net.sf.seesea.model.core.geo.GeoPackage#getTrack()
  * @model
  * @generated
  */
@@ -60,10 +60,9 @@ public interface Track extends ModelObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Measured Position</em>' containment reference list.
-	 * @see net.sf.seesea.model.core.geo.GeoPackage#getTrack_MeasuredPosition()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<MeasuredPosition3D> getMeasuredPosition();
+	List<MeasuredPosition3D> getMeasuredPosition();
 
 } // Track

@@ -30,6 +30,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.geo;
 
+import java.util.List;
 import net.sf.seesea.model.core.ModelObject;
 import org.eclipse.emf.common.util.EList;
 
@@ -45,7 +46,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link net.sf.seesea.model.core.geo.ChartArea#getBounds <em>Bounds</em>}</li>
  * </ul>
  *
- * @see net.sf.seesea.model.core.geo.GeoPackage#getChartArea()
  * @model
  * @generated
  */
@@ -61,9 +61,8 @@ public interface ChartArea extends ModelObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Bounds</em>' containment reference list.
-	 * @see net.sf.seesea.model.core.geo.GeoPackage#getChartArea_Bounds()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<GeoPosition> getBounds();
+	List<GeoPosition> getBounds();
 } // ChartArea

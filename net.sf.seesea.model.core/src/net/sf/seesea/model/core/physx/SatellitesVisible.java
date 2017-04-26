@@ -30,6 +30,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.physx;
 
+import java.util.List;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -44,7 +45,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link net.sf.seesea.model.core.physx.SatellitesVisible#getSatelliteInfo <em>Satellite Info</em>}</li>
  * </ul>
  *
- * @see net.sf.seesea.model.core.physx.PhysxPackage#getSatellitesVisible()
  * @model
  * @generated
  */
@@ -59,10 +59,9 @@ public interface SatellitesVisible extends Measurement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Satellite Info</em>' containment reference list.
-	 * @see net.sf.seesea.model.core.physx.PhysxPackage#getSatellitesVisible_SatelliteInfo()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<SatelliteInfo> getSatelliteInfo();
+	List<SatelliteInfo> getSatelliteInfo();
 
 } // SatellitesVisible

@@ -49,7 +49,6 @@ import net.sf.seesea.model.core.ModelObject;
  *   <li>{@link net.sf.seesea.model.core.physx.Measurement#isRelative <em>Relative</em>}</li>
  * </ul>
  *
- * @see net.sf.seesea.model.core.physx.PhysxPackage#getMeasurement()
  * @model abstract="true"
  * @generated
  */
@@ -65,7 +64,6 @@ public interface Measurement extends ModelObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Sensor ID</em>' attribute.
 	 * @see #setSensorID(String)
-	 * @see net.sf.seesea.model.core.physx.PhysxPackage#getMeasurement_SensorID()
 	 * @model
 	 * @generated
 	 */
@@ -91,7 +89,6 @@ public interface Measurement extends ModelObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Time</em>' attribute.
 	 * @see #setTime(Date)
-	 * @see net.sf.seesea.model.core.physx.PhysxPackage#getMeasurement_Time()
 	 * @model
 	 * @generated
 	 */
@@ -117,7 +114,6 @@ public interface Measurement extends ModelObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Timezone</em>' attribute.
 	 * @see #setTimezone(String)
-	 * @see net.sf.seesea.model.core.physx.PhysxPackage#getMeasurement_Timezone()
 	 * @model
 	 * @generated
 	 */
@@ -143,7 +139,6 @@ public interface Measurement extends ModelObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Valid</em>' attribute.
 	 * @see #setValid(boolean)
-	 * @see net.sf.seesea.model.core.physx.PhysxPackage#getMeasurement_Valid()
 	 * @model
 	 * @generated
 	 */
@@ -170,7 +165,6 @@ public interface Measurement extends ModelObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Relative</em>' attribute.
 	 * @see #setRelative(boolean)
-	 * @see net.sf.seesea.model.core.physx.PhysxPackage#getMeasurement_Relative()
 	 * @model default="true"
 	 * @generated
 	 */

@@ -41,11 +41,11 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Cloud Coverage</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see net.sf.seesea.model.core.weather.WeatherPackage#getCloudCoverage()
+ * @see net.sf.seesea.model.core.weather.impl.WeatherPackageImpl#getCloudCoverage()
  * @model
  * @generated
  */
-public enum CloudCoverage implements Enumerator {
+public enum CloudCoverage implements InternalCloudCoverage {
 	/**
 	 * The '<em><b>Undefined</b></em>' literal object.
 	 * <!-- begin-user-doc -->
@@ -471,3 +471,13 @@ public enum CloudCoverage implements Enumerator {
 	}
 	
 } //CloudCoverage
+
+/**
+ * A private implementation interface used to hide the inheritance from Enumerator.
+ * <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
+ * @generated
+ */
+interface InternalCloudCoverage extends org.eclipse.emf.common.util.Enumerator {
+	// Empty 
+}

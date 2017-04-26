@@ -30,42 +30,146 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.data.impl;
 
-import net.sf.seesea.model.core.CorePackage;
-import net.sf.seesea.model.core.data.DataFactory;
-import net.sf.seesea.model.core.data.DataPackage;
-import net.sf.seesea.model.core.data.Instruments;
-import net.sf.seesea.model.core.data.Series;
-
-import net.sf.seesea.model.core.diagramInterchange.DiagramInterchangePackage;
-import net.sf.seesea.model.core.diagramInterchange.impl.DiagramInterchangePackageImpl;
-import net.sf.seesea.model.core.geo.GeoPackage;
-
-import net.sf.seesea.model.core.geo.impl.GeoPackageImpl;
-
-import net.sf.seesea.model.core.geo.osm.OsmPackage;
-import net.sf.seesea.model.core.geo.osm.impl.OsmPackageImpl;
-import net.sf.seesea.model.core.impl.CorePackageImpl;
-import net.sf.seesea.model.core.physx.PhysxPackage;
-
-import net.sf.seesea.model.core.physx.impl.PhysxPackageImpl;
-
-import net.sf.seesea.model.core.weather.WeatherPackage;
-
-import net.sf.seesea.model.core.weather.impl.WeatherPackageImpl;
-
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
+import net.sf.seesea.model.core.data.DataFactory;
+import net.sf.seesea.model.core.data.Instruments;
+import net.sf.seesea.model.core.data.Series;
+import net.sf.seesea.model.core.diagramInterchange.impl.DiagramInterchangePackageImpl;
+import net.sf.seesea.model.core.geo.impl.GeoPackageImpl;
+import net.sf.seesea.model.core.geo.osm.impl.OsmPackageImpl;
+import net.sf.seesea.model.core.impl.CorePackageImpl;
+import net.sf.seesea.model.core.physx.impl.PhysxPackageImpl;
+import net.sf.seesea.model.core.weather.impl.WeatherPackageImpl;
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Package</b>.
  * <!-- end-user-doc -->
+ * @see net.sf.seesea.model.core.data.DataFactory
+ * @model kind="package"
  * @generated
  */
-public class DataPackageImpl extends EPackageImpl implements DataPackage {
+public class DataPackageImpl extends EPackageImpl {
+	/**
+	 * The package name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String eNAME = "data"; //$NON-NLS-1$
+
+	/**
+	 * The package namespace URI.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String eNS_URI = "data"; //$NON-NLS-1$
+
+	/**
+	 * The package namespace name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String eNS_PREFIX = "data"; //$NON-NLS-1$
+
+	/**
+	 * The singleton instance of the package.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final DataPackageImpl eINSTANCE = net.sf.seesea.model.core.data.impl.DataPackageImpl.init();
+
+	/**
+	 * The meta object id for the '{@link net.sf.seesea.model.core.data.impl.SeriesImpl <em>Series</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.sf.seesea.model.core.data.impl.SeriesImpl
+	 * @see net.sf.seesea.model.core.data.impl.DataPackageImpl#getSeries()
+	 * @generated
+	 */
+	public static final int SERIES = 0;
+
+	/**
+	 * The feature id for the '<em><b>Measurement</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SERIES__MEASUREMENT = CorePackageImpl.MODEL_OBJECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Series</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SERIES_FEATURE_COUNT = CorePackageImpl.MODEL_OBJECT_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link net.sf.seesea.model.core.data.impl.InstrumentsImpl <em>Instruments</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.sf.seesea.model.core.data.impl.InstrumentsImpl
+	 * @see net.sf.seesea.model.core.data.impl.DataPackageImpl#getInstruments()
+	 * @generated
+	 */
+	public static final int INSTRUMENTS = 1;
+
+	/**
+	 * The feature id for the '<em><b>Position</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int INSTRUMENTS__POSITION = CorePackageImpl.MODEL_OBJECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Water Temperature</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int INSTRUMENTS__WATER_TEMPERATURE = CorePackageImpl.MODEL_OBJECT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Satellites Visible</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int INSTRUMENTS__SATELLITES_VISIBLE = CorePackageImpl.MODEL_OBJECT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Wind Vector</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int INSTRUMENTS__WIND_VECTOR = CorePackageImpl.MODEL_OBJECT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Instruments</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int INSTRUMENTS_FEATURE_COUNT = CorePackageImpl.MODEL_OBJECT_FEATURE_COUNT + 4;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -91,12 +195,12 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see net.sf.seesea.model.core.data.DataPackage#eNS_URI
+	 * @see net.sf.seesea.model.core.data.impl.DataPackageImpl#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
 	private DataPackageImpl() {
-		super(eNS_URI, DataFactory.eINSTANCE);
+		super(eNS_URI, ((EFactory)DataFactory.INSTANCE));
 	}
 
 	/**
@@ -109,7 +213,7 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
 	 * 
-	 * <p>This method is used to initialize {@link DataPackage#eINSTANCE} when that field is accessed.
+	 * <p>This method is used to initialize {@link DataPackageImpl#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -118,8 +222,8 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
-	public static DataPackage init() {
-		if (isInited) return (DataPackage)EPackage.Registry.INSTANCE.getEPackage(DataPackage.eNS_URI);
+	public static DataPackageImpl init() {
+		if (isInited) return (DataPackageImpl)EPackage.Registry.INSTANCE.getEPackage(DataPackageImpl.eNS_URI);
 
 		// Obtain or create and register package
 		DataPackageImpl theDataPackage = (DataPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof DataPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new DataPackageImpl());
@@ -127,12 +231,12 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		isInited = true;
 
 		// Obtain or create and register interdependencies
-		CorePackageImpl theCorePackage = (CorePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CorePackage.eNS_URI) instanceof CorePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CorePackage.eNS_URI) : CorePackage.eINSTANCE);
-		GeoPackageImpl theGeoPackage = (GeoPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(GeoPackage.eNS_URI) instanceof GeoPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(GeoPackage.eNS_URI) : GeoPackage.eINSTANCE);
-		OsmPackageImpl theOsmPackage = (OsmPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(OsmPackage.eNS_URI) instanceof OsmPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(OsmPackage.eNS_URI) : OsmPackage.eINSTANCE);
-		PhysxPackageImpl thePhysxPackage = (PhysxPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(PhysxPackage.eNS_URI) instanceof PhysxPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(PhysxPackage.eNS_URI) : PhysxPackage.eINSTANCE);
-		WeatherPackageImpl theWeatherPackage = (WeatherPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WeatherPackage.eNS_URI) instanceof WeatherPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WeatherPackage.eNS_URI) : WeatherPackage.eINSTANCE);
-		DiagramInterchangePackageImpl theDiagramInterchangePackage = (DiagramInterchangePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(DiagramInterchangePackage.eNS_URI) instanceof DiagramInterchangePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(DiagramInterchangePackage.eNS_URI) : DiagramInterchangePackage.eINSTANCE);
+		CorePackageImpl theCorePackage = (CorePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CorePackageImpl.eNS_URI) instanceof CorePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CorePackageImpl.eNS_URI) : CorePackageImpl.eINSTANCE);
+		GeoPackageImpl theGeoPackage = (GeoPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(GeoPackageImpl.eNS_URI) instanceof GeoPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(GeoPackageImpl.eNS_URI) : GeoPackageImpl.eINSTANCE);
+		OsmPackageImpl theOsmPackage = (OsmPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(OsmPackageImpl.eNS_URI) instanceof OsmPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(OsmPackageImpl.eNS_URI) : OsmPackageImpl.eINSTANCE);
+		PhysxPackageImpl thePhysxPackage = (PhysxPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(PhysxPackageImpl.eNS_URI) instanceof PhysxPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(PhysxPackageImpl.eNS_URI) : PhysxPackageImpl.eINSTANCE);
+		WeatherPackageImpl theWeatherPackage = (WeatherPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WeatherPackageImpl.eNS_URI) instanceof WeatherPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WeatherPackageImpl.eNS_URI) : WeatherPackageImpl.eINSTANCE);
+		DiagramInterchangePackageImpl theDiagramInterchangePackage = (DiagramInterchangePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(DiagramInterchangePackageImpl.eNS_URI) instanceof DiagramInterchangePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(DiagramInterchangePackageImpl.eNS_URI) : DiagramInterchangePackageImpl.eINSTANCE);
 
 		// Create package meta-data objects
 		theDataPackage.createPackageContents();
@@ -157,13 +261,16 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 
   
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(DataPackage.eNS_URI, theDataPackage);
+		EPackage.Registry.INSTANCE.put(DataPackageImpl.eNS_URI, theDataPackage);
 		return theDataPackage;
 	}
 
 	/**
+	 * Returns the meta object for class '{@link net.sf.seesea.model.core.data.Series <em>Series</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Series</em>'.
+	 * @see net.sf.seesea.model.core.data.Series
 	 * @generated
 	 */
 	public EClass getSeries() {
@@ -171,8 +278,12 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	}
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link net.sf.seesea.model.core.data.Series#getMeasurement <em>Measurement</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Measurement</em>'.
+	 * @see net.sf.seesea.model.core.data.Series#getMeasurement()
+	 * @see #getSeries()
 	 * @generated
 	 */
 	public EReference getSeries_Measurement() {
@@ -180,8 +291,11 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	}
 
 	/**
+	 * Returns the meta object for class '{@link net.sf.seesea.model.core.data.Instruments <em>Instruments</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Instruments</em>'.
+	 * @see net.sf.seesea.model.core.data.Instruments
 	 * @generated
 	 */
 	public EClass getInstruments() {
@@ -189,8 +303,12 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	}
 
 	/**
+	 * Returns the meta object for the reference '{@link net.sf.seesea.model.core.data.Instruments#getPosition <em>Position</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Position</em>'.
+	 * @see net.sf.seesea.model.core.data.Instruments#getPosition()
+	 * @see #getInstruments()
 	 * @generated
 	 */
 	public EReference getInstruments_Position() {
@@ -198,8 +316,12 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	}
 
 	/**
+	 * Returns the meta object for the containment reference '{@link net.sf.seesea.model.core.data.Instruments#getWaterTemperature <em>Water Temperature</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Water Temperature</em>'.
+	 * @see net.sf.seesea.model.core.data.Instruments#getWaterTemperature()
+	 * @see #getInstruments()
 	 * @generated
 	 */
 	public EReference getInstruments_WaterTemperature() {
@@ -207,8 +329,12 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	}
 
 	/**
+	 * Returns the meta object for the containment reference '{@link net.sf.seesea.model.core.data.Instruments#getSatellitesVisible <em>Satellites Visible</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Satellites Visible</em>'.
+	 * @see net.sf.seesea.model.core.data.Instruments#getSatellitesVisible()
+	 * @see #getInstruments()
 	 * @generated
 	 */
 	public EReference getInstruments_SatellitesVisible() {
@@ -216,8 +342,12 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	}
 
 	/**
+	 * Returns the meta object for the containment reference '{@link net.sf.seesea.model.core.data.Instruments#getWindVector <em>Wind Vector</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Wind Vector</em>'.
+	 * @see net.sf.seesea.model.core.data.Instruments#getWindVector()
+	 * @see #getInstruments()
 	 * @generated
 	 */
 	public EReference getInstruments_WindVector() {
@@ -225,8 +355,10 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 	}
 
 	/**
+	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
 	public DataFactory getDataFactory() {
@@ -286,10 +418,10 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		CorePackage theCorePackage = (CorePackage)EPackage.Registry.INSTANCE.getEPackage(CorePackage.eNS_URI);
-		PhysxPackage thePhysxPackage = (PhysxPackage)EPackage.Registry.INSTANCE.getEPackage(PhysxPackage.eNS_URI);
-		GeoPackage theGeoPackage = (GeoPackage)EPackage.Registry.INSTANCE.getEPackage(GeoPackage.eNS_URI);
-		WeatherPackage theWeatherPackage = (WeatherPackage)EPackage.Registry.INSTANCE.getEPackage(WeatherPackage.eNS_URI);
+		CorePackageImpl theCorePackage = (CorePackageImpl)EPackage.Registry.INSTANCE.getEPackage(CorePackageImpl.eNS_URI);
+		PhysxPackageImpl thePhysxPackage = (PhysxPackageImpl)EPackage.Registry.INSTANCE.getEPackage(PhysxPackageImpl.eNS_URI);
+		GeoPackageImpl theGeoPackage = (GeoPackageImpl)EPackage.Registry.INSTANCE.getEPackage(GeoPackageImpl.eNS_URI);
+		WeatherPackageImpl theWeatherPackage = (WeatherPackageImpl)EPackage.Registry.INSTANCE.getEPackage(WeatherPackageImpl.eNS_URI);
 
 		// Create type parameters
 
@@ -308,6 +440,81 @@ public class DataPackageImpl extends EPackageImpl implements DataPackage {
 		initEReference(getInstruments_WaterTemperature(), thePhysxPackage.getTemperature(), null, "waterTemperature", null, 0, 1, Instruments.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getInstruments_SatellitesVisible(), thePhysxPackage.getSatellitesVisible(), null, "satellitesVisible", null, 0, 1, Instruments.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getInstruments_WindVector(), theWeatherPackage.getWindMeasurement(), null, "windVector", null, 0, 1, Instruments.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Defines literals for the meta objects that represent
+	 * <ul>
+	 *   <li>each class,</li>
+	 *   <li>each feature of each class,</li>
+	 *   <li>each enum,</li>
+	 *   <li>and each data type</li>
+	 * </ul>
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public interface Literals {
+		/**
+		 * The meta object literal for the '{@link net.sf.seesea.model.core.data.impl.SeriesImpl <em>Series</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.sf.seesea.model.core.data.impl.SeriesImpl
+		 * @see net.sf.seesea.model.core.data.impl.DataPackageImpl#getSeries()
+		 * @generated
+		 */
+		public static final EClass SERIES = eINSTANCE.getSeries();
+
+		/**
+		 * The meta object literal for the '<em><b>Measurement</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference SERIES__MEASUREMENT = eINSTANCE.getSeries_Measurement();
+
+		/**
+		 * The meta object literal for the '{@link net.sf.seesea.model.core.data.impl.InstrumentsImpl <em>Instruments</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.sf.seesea.model.core.data.impl.InstrumentsImpl
+		 * @see net.sf.seesea.model.core.data.impl.DataPackageImpl#getInstruments()
+		 * @generated
+		 */
+		public static final EClass INSTRUMENTS = eINSTANCE.getInstruments();
+
+		/**
+		 * The meta object literal for the '<em><b>Position</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference INSTRUMENTS__POSITION = eINSTANCE.getInstruments_Position();
+
+		/**
+		 * The meta object literal for the '<em><b>Water Temperature</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference INSTRUMENTS__WATER_TEMPERATURE = eINSTANCE.getInstruments_WaterTemperature();
+
+		/**
+		 * The meta object literal for the '<em><b>Satellites Visible</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference INSTRUMENTS__SATELLITES_VISIBLE = eINSTANCE.getInstruments_SatellitesVisible();
+
+		/**
+		 * The meta object literal for the '<em><b>Wind Vector</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference INSTRUMENTS__WIND_VECTOR = eINSTANCE.getInstruments_WindVector();
+
 	}
 
 } //DataPackageImpl

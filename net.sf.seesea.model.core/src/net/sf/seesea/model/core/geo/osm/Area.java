@@ -30,6 +30,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.geo.osm;
 
+import java.util.List;
 import net.sf.seesea.model.core.geo.Chart;
 import net.sf.seesea.model.core.geo.GeoPosition;
 
@@ -50,7 +51,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link net.sf.seesea.model.core.geo.osm.Area#getSubArea <em>Sub Area</em>}</li>
  * </ul>
  *
- * @see net.sf.seesea.model.core.geo.osm.OsmPackage#getArea()
  * @model
  * @generated
  */
@@ -66,7 +66,6 @@ public interface Area extends Chart, NavigationCompound {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Zoom Level</em>' attribute.
 	 * @see #setZoomLevel(int)
-	 * @see net.sf.seesea.model.core.geo.osm.OsmPackage#getArea_ZoomLevel()
 	 * @model default="0"
 	 * @generated
 	 */
@@ -92,7 +91,6 @@ public interface Area extends Chart, NavigationCompound {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Map Center Position</em>' containment reference.
 	 * @see #setMapCenterPosition(GeoPosition)
-	 * @see net.sf.seesea.model.core.geo.osm.OsmPackage#getArea_MapCenterPosition()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -118,10 +116,9 @@ public interface Area extends Chart, NavigationCompound {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Sub Area</em>' containment reference list.
-	 * @see net.sf.seesea.model.core.geo.osm.OsmPackage#getArea_SubArea()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Area> getSubArea();
+	List<Area> getSubArea();
 
 } // Area

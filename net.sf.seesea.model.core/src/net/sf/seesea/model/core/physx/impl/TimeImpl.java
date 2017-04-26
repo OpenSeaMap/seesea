@@ -32,10 +32,7 @@ package net.sf.seesea.model.core.physx.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import net.sf.seesea.model.core.physx.PhysxPackage;
 import net.sf.seesea.model.core.physx.Time;
-import org.eclipse.emf.common.notify.Notification;
 
 /**
  * <!-- begin-user-doc -->
@@ -61,7 +58,7 @@ public class TimeImpl extends MeasurementImpl implements Time {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return PhysxPackage.Literals.TIME;
+		return PhysxPackageImpl.Literals.TIME;
 	}
 
 } //TimeImpl

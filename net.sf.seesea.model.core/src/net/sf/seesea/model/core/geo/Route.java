@@ -30,6 +30,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.geo;
 
+import java.util.List;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -44,7 +45,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link net.sf.seesea.model.core.geo.Route#getWaypoints <em>Waypoints</em>}</li>
  * </ul>
  *
- * @see net.sf.seesea.model.core.geo.GeoPackage#getRoute()
  * @model
  * @generated
  */
@@ -59,10 +59,9 @@ public interface Route extends NamedArtifact {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Waypoints</em>' reference list.
-	 * @see net.sf.seesea.model.core.geo.GeoPackage#getRoute_Waypoints()
 	 * @model
 	 * @generated
 	 */
-	EList<NamedPosition> getWaypoints();
+	List<NamedPosition> getWaypoints();
 
 } // Route

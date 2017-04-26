@@ -38,9 +38,8 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- end-user-doc -->
  *
  *
- * @see net.sf.seesea.model.core.CorePackage#getModelObject()
  * @model
  * @generated
  */
-public interface ModelObject extends EObject {
+public interface ModelObject {
 } // ModelObject

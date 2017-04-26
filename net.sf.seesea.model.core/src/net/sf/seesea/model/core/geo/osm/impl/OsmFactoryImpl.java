@@ -48,14 +48,22 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  */
 public class OsmFactoryImpl extends EFactoryImpl implements OsmFactory {
 	/**
+	 * The singleton instance of the factory.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final OsmFactoryImpl eINSTANCE = init();
+
+	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static OsmFactory init() {
+	public static OsmFactoryImpl init() {
 		try {
-			OsmFactory theOsmFactory = (OsmFactory)EPackage.Registry.INSTANCE.getEFactory(OsmPackage.eNS_URI);
+			OsmFactoryImpl theOsmFactory = (OsmFactoryImpl)EPackage.Registry.INSTANCE.getEFactory(OsmPackageImpl.eNS_URI);
 			if (theOsmFactory != null) {
 				return theOsmFactory;
 			}
@@ -84,8 +92,8 @@ public class OsmFactoryImpl extends EFactoryImpl implements OsmFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case OsmPackage.AREA: return createArea();
-			case OsmPackage.WORLD: return createWorld();
+			case OsmPackageImpl.AREA: return (EObject)createArea();
+			case OsmPackageImpl.WORLD: return (EObject)createWorld();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
@@ -116,8 +124,8 @@ public class OsmFactoryImpl extends EFactoryImpl implements OsmFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OsmPackage getOsmPackage() {
-		return (OsmPackage)getEPackage();
+	public OsmPackageImpl getOsmPackage() {
+		return (OsmPackageImpl)getEPackage();
 	}
 
 	/**
@@ -127,8 +135,8 @@ public class OsmFactoryImpl extends EFactoryImpl implements OsmFactory {
 	 * @generated
 	 */
 	@Deprecated
-	public static OsmPackage getPackage() {
-		return OsmPackage.eINSTANCE;
+	public static OsmPackageImpl getPackage() {
+		return OsmPackageImpl.eINSTANCE;
 	}
 
 } //OsmFactoryImpl

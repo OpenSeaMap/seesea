@@ -31,21 +31,18 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package net.sf.seesea.model.core.geo.impl;
 
 import java.util.Collection;
+import java.util.List;
+
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 import net.sf.seesea.model.core.geo.Chart;
 import net.sf.seesea.model.core.geo.ChartContainer;
-import net.sf.seesea.model.core.geo.GeoPackage;
-
 import net.sf.seesea.model.core.impl.ModelObjectImpl;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -87,7 +84,7 @@ public class ChartContainerImpl extends ModelObjectImpl implements ChartContaine
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return GeoPackage.Literals.CHART_CONTAINER;
+		return GeoPackageImpl.Literals.CHART_CONTAINER;
 	}
 
 	/**
@@ -95,9 +92,9 @@ public class ChartContainerImpl extends ModelObjectImpl implements ChartContaine
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Chart> getCharts() {
+	public List<Chart> getCharts() {
 		if (charts == null) {
-			charts = new EObjectContainmentEList<Chart>(Chart.class, this, GeoPackage.CHART_CONTAINER__CHARTS);
+			charts = new EObjectContainmentEList<Chart>(Chart.class, this, GeoPackageImpl.CHART_CONTAINER__CHARTS);
 		}
 		return charts;
 	}
@@ -110,7 +107,7 @@ public class ChartContainerImpl extends ModelObjectImpl implements ChartContaine
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case GeoPackage.CHART_CONTAINER__CHARTS:
+			case GeoPackageImpl.CHART_CONTAINER__CHARTS:
 				return ((InternalEList<?>)getCharts()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -124,7 +121,7 @@ public class ChartContainerImpl extends ModelObjectImpl implements ChartContaine
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GeoPackage.CHART_CONTAINER__CHARTS:
+			case GeoPackageImpl.CHART_CONTAINER__CHARTS:
 				return getCharts();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -139,7 +136,7 @@ public class ChartContainerImpl extends ModelObjectImpl implements ChartContaine
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GeoPackage.CHART_CONTAINER__CHARTS:
+			case GeoPackageImpl.CHART_CONTAINER__CHARTS:
 				getCharts().clear();
 				getCharts().addAll((Collection<? extends Chart>)newValue);
 				return;
@@ -155,7 +152,7 @@ public class ChartContainerImpl extends ModelObjectImpl implements ChartContaine
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GeoPackage.CHART_CONTAINER__CHARTS:
+			case GeoPackageImpl.CHART_CONTAINER__CHARTS:
 				getCharts().clear();
 				return;
 		}
@@ -170,7 +167,7 @@ public class ChartContainerImpl extends ModelObjectImpl implements ChartContaine
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GeoPackage.CHART_CONTAINER__CHARTS:
+			case GeoPackageImpl.CHART_CONTAINER__CHARTS:
 				return charts != null && !charts.isEmpty();
 		}
 		return super.eIsSet(featureID);

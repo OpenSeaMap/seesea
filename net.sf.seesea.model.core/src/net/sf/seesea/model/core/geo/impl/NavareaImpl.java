@@ -30,16 +30,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.geo.impl;
 
-import net.sf.seesea.model.core.geo.GeoPackage;
-import net.sf.seesea.model.core.geo.Navarea;
-
-import net.sf.seesea.model.core.geo.osm.impl.AreaImpl;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import net.sf.seesea.model.core.geo.Navarea;
+import net.sf.seesea.model.core.geo.osm.impl.AreaImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -91,7 +87,7 @@ public class NavareaImpl extends AreaImpl implements Navarea {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return GeoPackage.Literals.NAVAREA;
+		return GeoPackageImpl.Literals.NAVAREA;
 	}
 
 	/**
@@ -112,7 +108,7 @@ public class NavareaImpl extends AreaImpl implements Navarea {
 		int oldAreanumber = areanumber;
 		areanumber = newAreanumber;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackage.NAVAREA__AREANUMBER, oldAreanumber, areanumber));
+			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackageImpl.NAVAREA__AREANUMBER, oldAreanumber, areanumber));
 	}
 
 	/**
@@ -123,7 +119,7 @@ public class NavareaImpl extends AreaImpl implements Navarea {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GeoPackage.NAVAREA__AREANUMBER:
+			case GeoPackageImpl.NAVAREA__AREANUMBER:
 				return getAreanumber();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -137,7 +133,7 @@ public class NavareaImpl extends AreaImpl implements Navarea {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GeoPackage.NAVAREA__AREANUMBER:
+			case GeoPackageImpl.NAVAREA__AREANUMBER:
 				setAreanumber((Integer)newValue);
 				return;
 		}
@@ -152,7 +148,7 @@ public class NavareaImpl extends AreaImpl implements Navarea {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GeoPackage.NAVAREA__AREANUMBER:
+			case GeoPackageImpl.NAVAREA__AREANUMBER:
 				setAreanumber(AREANUMBER_EDEFAULT);
 				return;
 		}
@@ -167,7 +163,7 @@ public class NavareaImpl extends AreaImpl implements Navarea {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GeoPackage.NAVAREA__AREANUMBER:
+			case GeoPackageImpl.NAVAREA__AREANUMBER:
 				return areanumber != AREANUMBER_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

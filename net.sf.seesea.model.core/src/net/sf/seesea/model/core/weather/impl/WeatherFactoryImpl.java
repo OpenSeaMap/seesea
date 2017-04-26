@@ -49,14 +49,22 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  */
 public class WeatherFactoryImpl extends EFactoryImpl implements WeatherFactory {
 	/**
+	 * The singleton instance of the factory.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final WeatherFactoryImpl eINSTANCE = init();
+
+	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static WeatherFactory init() {
+	public static WeatherFactoryImpl init() {
 		try {
-			WeatherFactory theWeatherFactory = (WeatherFactory)EPackage.Registry.INSTANCE.getEFactory(WeatherPackage.eNS_URI);
+			WeatherFactoryImpl theWeatherFactory = (WeatherFactoryImpl)EPackage.Registry.INSTANCE.getEFactory(WeatherPackageImpl.eNS_URI);
 			if (theWeatherFactory != null) {
 				return theWeatherFactory;
 			}
@@ -85,11 +93,11 @@ public class WeatherFactoryImpl extends EFactoryImpl implements WeatherFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case WeatherPackage.WIND_MEASUREMENT: return createWindMeasurement();
-			case WeatherPackage.BAROMETRIC_PRESSURE: return createBarometricPressure();
-			case WeatherPackage.CLOUD_MEASUREMENT: return createCloudMeasurement();
-			case WeatherPackage.VISIBILITY: return createVisibility();
-			case WeatherPackage.WAVE_HEIGHT: return createWaveHeight();
+			case WeatherPackageImpl.WIND_MEASUREMENT: return (EObject)createWindMeasurement();
+			case WeatherPackageImpl.BAROMETRIC_PRESSURE: return (EObject)createBarometricPressure();
+			case WeatherPackageImpl.CLOUD_MEASUREMENT: return (EObject)createCloudMeasurement();
+			case WeatherPackageImpl.VISIBILITY: return (EObject)createVisibility();
+			case WeatherPackageImpl.WAVE_HEIGHT: return (EObject)createWaveHeight();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
@@ -103,17 +111,17 @@ public class WeatherFactoryImpl extends EFactoryImpl implements WeatherFactory {
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case WeatherPackage.REFERENCE:
+			case WeatherPackageImpl.REFERENCE:
 				return createReferenceFromString(eDataType, initialValue);
-			case WeatherPackage.PRESSURE_UNIT:
+			case WeatherPackageImpl.PRESSURE_UNIT:
 				return createPressureUnitFromString(eDataType, initialValue);
-			case WeatherPackage.CLOUD_TYPE:
+			case WeatherPackageImpl.CLOUD_TYPE:
 				return createCloudTypeFromString(eDataType, initialValue);
-			case WeatherPackage.CLOUD_COVERAGE:
+			case WeatherPackageImpl.CLOUD_COVERAGE:
 				return createCloudCoverageFromString(eDataType, initialValue);
-			case WeatherPackage.BEAUFORT:
+			case WeatherPackageImpl.BEAUFORT:
 				return createBeaufortFromString(eDataType, initialValue);
-			case WeatherPackage.SEA_STATE:
+			case WeatherPackageImpl.SEA_STATE:
 				return createSeaStateFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
@@ -128,17 +136,17 @@ public class WeatherFactoryImpl extends EFactoryImpl implements WeatherFactory {
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case WeatherPackage.REFERENCE:
+			case WeatherPackageImpl.REFERENCE:
 				return convertReferenceToString(eDataType, instanceValue);
-			case WeatherPackage.PRESSURE_UNIT:
+			case WeatherPackageImpl.PRESSURE_UNIT:
 				return convertPressureUnitToString(eDataType, instanceValue);
-			case WeatherPackage.CLOUD_TYPE:
+			case WeatherPackageImpl.CLOUD_TYPE:
 				return convertCloudTypeToString(eDataType, instanceValue);
-			case WeatherPackage.CLOUD_COVERAGE:
+			case WeatherPackageImpl.CLOUD_COVERAGE:
 				return convertCloudCoverageToString(eDataType, instanceValue);
-			case WeatherPackage.BEAUFORT:
+			case WeatherPackageImpl.BEAUFORT:
 				return convertBeaufortToString(eDataType, instanceValue);
-			case WeatherPackage.SEA_STATE:
+			case WeatherPackageImpl.SEA_STATE:
 				return convertSeaStateToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
@@ -320,8 +328,8 @@ public class WeatherFactoryImpl extends EFactoryImpl implements WeatherFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public WeatherPackage getWeatherPackage() {
-		return (WeatherPackage)getEPackage();
+	public WeatherPackageImpl getWeatherPackage() {
+		return (WeatherPackageImpl)getEPackage();
 	}
 
 	/**
@@ -331,8 +339,8 @@ public class WeatherFactoryImpl extends EFactoryImpl implements WeatherFactory {
 	 * @generated
 	 */
 	@Deprecated
-	public static WeatherPackage getPackage() {
-		return WeatherPackage.eINSTANCE;
+	public static WeatherPackageImpl getPackage() {
+		return WeatherPackageImpl.eINSTANCE;
 	}
 
 } //WeatherFactoryImpl

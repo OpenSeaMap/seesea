@@ -37,7 +37,6 @@ package net.sf.seesea.model.core.geo;
  * <!-- end-user-doc -->
  *
  *
- * @see net.sf.seesea.model.core.geo.GeoPackage#getLongitude()
  * @model
  * @generated
  */

@@ -41,11 +41,11 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Speed Unit</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see net.sf.seesea.model.core.physx.PhysxPackage#getSpeedUnit()
+ * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getSpeedUnit()
  * @model
  * @generated
  */
-public enum SpeedUnit implements Enumerator {
+public enum SpeedUnit implements InternalSpeedUnit {
 	/**
 	 * The '<em><b>K</b></em>' literal object.
 	 * <!-- begin-user-doc -->
@@ -297,3 +297,13 @@ public enum SpeedUnit implements Enumerator {
 	}
 	
 } //SpeedUnit
+
+/**
+ * A private implementation interface used to hide the inheritance from Enumerator.
+ * <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
+ * @generated
+ */
+interface InternalSpeedUnit extends org.eclipse.emf.common.util.Enumerator {
+	// Empty 
+}

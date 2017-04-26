@@ -30,6 +30,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.geo;
 
+import java.util.List;
 import net.sf.seesea.model.core.ModelObject;
 import org.eclipse.emf.common.util.EList;
 
@@ -45,7 +46,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link net.sf.seesea.model.core.geo.ChartWay#getWaypoints <em>Waypoints</em>}</li>
  * </ul>
  *
- * @see net.sf.seesea.model.core.geo.GeoPackage#getChartWay()
  * @model
  * @generated
  */
@@ -61,9 +61,8 @@ public interface ChartWay extends ModelObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Waypoints</em>' reference list.
-	 * @see net.sf.seesea.model.core.geo.GeoPackage#getChartWay_Waypoints()
 	 * @model
 	 * @generated
 	 */
-	EList<GeoPosition> getWaypoints();
+	List<GeoPosition> getWaypoints();
 } // ChartWay

@@ -41,11 +41,11 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Longitude Hemisphere</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see net.sf.seesea.model.core.geo.GeoPackage#getLongitudeHemisphere()
+ * @see net.sf.seesea.model.core.geo.impl.GeoPackageImpl#getLongitudeHemisphere()
  * @model
  * @generated
  */
-public enum LongitudeHemisphere implements Enumerator {
+public enum LongitudeHemisphere implements InternalLongitudeHemisphere {
 	/**
 	 * The '<em><b>W</b></em>' literal object.
 	 * <!-- begin-user-doc -->
@@ -240,3 +240,13 @@ public enum LongitudeHemisphere implements Enumerator {
 	}
 	
 } //LongitudeHemisphere
+
+/**
+ * A private implementation interface used to hide the inheritance from Enumerator.
+ * <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
+ * @generated
+ */
+interface InternalLongitudeHemisphere extends org.eclipse.emf.common.util.Enumerator {
+	// Empty 
+}

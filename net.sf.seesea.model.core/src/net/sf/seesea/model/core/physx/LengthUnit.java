@@ -41,11 +41,11 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Length Unit</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see net.sf.seesea.model.core.physx.PhysxPackage#getLengthUnit()
+ * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getLengthUnit()
  * @model
  * @generated
  */
-public enum LengthUnit implements Enumerator {
+public enum LengthUnit implements InternalLengthUnit {
 	/**
 	 * The '<em><b>Undefined</b></em>' literal object.
 	 * <!-- begin-user-doc -->
@@ -294,3 +294,13 @@ public enum LengthUnit implements Enumerator {
 	}
 	
 } //LengthUnit
+
+/**
+ * A private implementation interface used to hide the inheritance from Enumerator.
+ * <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
+ * @generated
+ */
+interface InternalLengthUnit extends org.eclipse.emf.common.util.Enumerator {
+	// Empty 
+}

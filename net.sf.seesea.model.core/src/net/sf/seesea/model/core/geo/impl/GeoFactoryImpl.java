@@ -49,14 +49,22 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  */
 public class GeoFactoryImpl extends EFactoryImpl implements GeoFactory {
 	/**
+	 * The singleton instance of the factory.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final GeoFactoryImpl eINSTANCE = init();
+
+	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static GeoFactory init() {
+	public static GeoFactoryImpl init() {
 		try {
-			GeoFactory theGeoFactory = (GeoFactory)EPackage.Registry.INSTANCE.getEFactory(GeoPackage.eNS_URI);
+			GeoFactoryImpl theGeoFactory = (GeoFactoryImpl)EPackage.Registry.INSTANCE.getEFactory(GeoPackageImpl.eNS_URI);
 			if (theGeoFactory != null) {
 				return theGeoFactory;
 			}
@@ -85,30 +93,30 @@ public class GeoFactoryImpl extends EFactoryImpl implements GeoFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case GeoPackage.GEO_POSITION: return createGeoPosition();
-			case GeoPackage.COORDINATE: return createCoordinate();
-			case GeoPackage.LATITUDE: return createLatitude();
-			case GeoPackage.LONGITUDE: return createLongitude();
-			case GeoPackage.ROUTE: return createRoute();
-			case GeoPackage.NAMED_ARTIFACT: return createNamedArtifact();
-			case GeoPackage.NAMED_POSITION: return createNamedPosition();
-			case GeoPackage.ROUTING_CONTAINER: return createRoutingContainer();
-			case GeoPackage.POI_CONTAINER: return createPOIContainer();
-			case GeoPackage.CHART_CONTAINER: return createChartContainer();
-			case GeoPackage.NAVIGATION_COMPOUND: return createNavigationCompound();
-			case GeoPackage.CHART: return createChart();
-			case GeoPackage.GEO_POSITION3_D: return createGeoPosition3D();
-			case GeoPackage.MEASURED_POSITION3_D: return createMeasuredPosition3D();
-			case GeoPackage.TRACKS_CONTAINER: return createTracksContainer();
-			case GeoPackage.TRACK: return createTrack();
-			case GeoPackage.CHART_SYMBOL: return createChartSymbol();
-			case GeoPackage.CHART_AREA: return createChartArea();
-			case GeoPackage.CHART_WAY: return createChartWay();
-			case GeoPackage.NAVAREA: return createNavarea();
-			case GeoPackage.DEPTH: return createDepth();
-			case GeoPackage.GNSS_MEASURED_POSITION: return createGNSSMeasuredPosition();
-			case GeoPackage.ANCHOR_POSITION: return createAnchorPosition();
-			case GeoPackage.GEO_BOUNDING_BOX: return createGeoBoundingBox();
+			case GeoPackageImpl.GEO_POSITION: return (EObject)createGeoPosition();
+			case GeoPackageImpl.COORDINATE: return (EObject)createCoordinate();
+			case GeoPackageImpl.LATITUDE: return (EObject)createLatitude();
+			case GeoPackageImpl.LONGITUDE: return (EObject)createLongitude();
+			case GeoPackageImpl.ROUTE: return (EObject)createRoute();
+			case GeoPackageImpl.NAMED_ARTIFACT: return (EObject)createNamedArtifact();
+			case GeoPackageImpl.NAMED_POSITION: return (EObject)createNamedPosition();
+			case GeoPackageImpl.ROUTING_CONTAINER: return (EObject)createRoutingContainer();
+			case GeoPackageImpl.POI_CONTAINER: return (EObject)createPOIContainer();
+			case GeoPackageImpl.CHART_CONTAINER: return (EObject)createChartContainer();
+			case GeoPackageImpl.NAVIGATION_COMPOUND: return (EObject)createNavigationCompound();
+			case GeoPackageImpl.CHART: return (EObject)createChart();
+			case GeoPackageImpl.GEO_POSITION3_D: return (EObject)createGeoPosition3D();
+			case GeoPackageImpl.MEASURED_POSITION3_D: return (EObject)createMeasuredPosition3D();
+			case GeoPackageImpl.TRACKS_CONTAINER: return (EObject)createTracksContainer();
+			case GeoPackageImpl.TRACK: return (EObject)createTrack();
+			case GeoPackageImpl.CHART_SYMBOL: return (EObject)createChartSymbol();
+			case GeoPackageImpl.CHART_AREA: return (EObject)createChartArea();
+			case GeoPackageImpl.CHART_WAY: return (EObject)createChartWay();
+			case GeoPackageImpl.NAVAREA: return (EObject)createNavarea();
+			case GeoPackageImpl.DEPTH: return (EObject)createDepth();
+			case GeoPackageImpl.GNSS_MEASURED_POSITION: return (EObject)createGNSSMeasuredPosition();
+			case GeoPackageImpl.ANCHOR_POSITION: return (EObject)createAnchorPosition();
+			case GeoPackageImpl.GEO_BOUNDING_BOX: return (EObject)createGeoBoundingBox();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
@@ -122,13 +130,13 @@ public class GeoFactoryImpl extends EFactoryImpl implements GeoFactory {
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case GeoPackage.DIRECTION:
+			case GeoPackageImpl.DIRECTION:
 				return createDirectionFromString(eDataType, initialValue);
-			case GeoPackage.LATITUDE_HEMISPHERE:
+			case GeoPackageImpl.LATITUDE_HEMISPHERE:
 				return createLatitudeHemisphereFromString(eDataType, initialValue);
-			case GeoPackage.LONGITUDE_HEMISPHERE:
+			case GeoPackageImpl.LONGITUDE_HEMISPHERE:
 				return createLongitudeHemisphereFromString(eDataType, initialValue);
-			case GeoPackage.RELATIVE_DEPTH_MEASUREMENT_POSITION:
+			case GeoPackageImpl.RELATIVE_DEPTH_MEASUREMENT_POSITION:
 				return createRelativeDepthMeasurementPositionFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
@@ -143,13 +151,13 @@ public class GeoFactoryImpl extends EFactoryImpl implements GeoFactory {
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case GeoPackage.DIRECTION:
+			case GeoPackageImpl.DIRECTION:
 				return convertDirectionToString(eDataType, instanceValue);
-			case GeoPackage.LATITUDE_HEMISPHERE:
+			case GeoPackageImpl.LATITUDE_HEMISPHERE:
 				return convertLatitudeHemisphereToString(eDataType, instanceValue);
-			case GeoPackage.LONGITUDE_HEMISPHERE:
+			case GeoPackageImpl.LONGITUDE_HEMISPHERE:
 				return convertLongitudeHemisphereToString(eDataType, instanceValue);
-			case GeoPackage.RELATIVE_DEPTH_MEASUREMENT_POSITION:
+			case GeoPackageImpl.RELATIVE_DEPTH_MEASUREMENT_POSITION:
 				return convertRelativeDepthMeasurementPositionToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
@@ -481,8 +489,8 @@ public class GeoFactoryImpl extends EFactoryImpl implements GeoFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public GeoPackage getGeoPackage() {
-		return (GeoPackage)getEPackage();
+	public GeoPackageImpl getGeoPackage() {
+		return (GeoPackageImpl)getEPackage();
 	}
 
 	/**
@@ -492,8 +500,8 @@ public class GeoFactoryImpl extends EFactoryImpl implements GeoFactory {
 	 * @generated
 	 */
 	@Deprecated
-	public static GeoPackage getPackage() {
-		return GeoPackage.eINSTANCE;
+	public static GeoPackageImpl getPackage() {
+		return GeoPackageImpl.eINSTANCE;
 	}
 
 } //GeoFactoryImpl

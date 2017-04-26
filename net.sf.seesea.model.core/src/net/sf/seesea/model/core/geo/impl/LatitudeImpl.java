@@ -30,10 +30,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.geo.impl;
 
-import net.sf.seesea.model.core.geo.GeoPackage;
-import net.sf.seesea.model.core.geo.Latitude;
-
 import org.eclipse.emf.ecore.EClass;
+
+import net.sf.seesea.model.core.geo.Latitude;
 
 /**
  * <!-- begin-user-doc -->
@@ -50,7 +49,7 @@ public class LatitudeImpl extends CoordinateImpl implements Latitude {
 	 */
 	protected LatitudeImpl() {
 		super();
-	}
+	}	
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -59,7 +58,7 @@ public class LatitudeImpl extends CoordinateImpl implements Latitude {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return GeoPackage.Literals.LATITUDE;
+		return GeoPackageImpl.Literals.LATITUDE;
 	}
 
 } //LatitudeImpl

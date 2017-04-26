@@ -31,25 +31,22 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package net.sf.seesea.model.core.geo.impl;
 
 import java.util.Collection;
+import java.util.List;
 
-import net.sf.seesea.model.core.geo.GeoPackage;
-import net.sf.seesea.model.core.geo.NamedPosition;
-import net.sf.seesea.model.core.geo.POIContainer;
-
-import net.sf.seesea.model.core.geo.osm.Area;
-
-import net.sf.seesea.model.core.impl.ModelObjectImpl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import net.sf.seesea.model.core.geo.NamedPosition;
+import net.sf.seesea.model.core.geo.POIContainer;
+import net.sf.seesea.model.core.geo.osm.Area;
+import net.sf.seesea.model.core.impl.ModelObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -102,7 +99,7 @@ public class POIContainerImpl extends ModelObjectImpl implements POIContainer {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return GeoPackage.Literals.POI_CONTAINER;
+		return GeoPackageImpl.Literals.POI_CONTAINER;
 	}
 
 	/**
@@ -110,9 +107,9 @@ public class POIContainerImpl extends ModelObjectImpl implements POIContainer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<NamedPosition> getPois() {
+	public List<NamedPosition> getPois() {
 		if (pois == null) {
-			pois = new EObjectContainmentEList<NamedPosition>(NamedPosition.class, this, GeoPackage.POI_CONTAINER__POIS);
+			pois = new EObjectContainmentEList<NamedPosition>(NamedPosition.class, this, GeoPackageImpl.POI_CONTAINER__POIS);
 		}
 		return pois;
 	}
@@ -123,12 +120,12 @@ public class POIContainerImpl extends ModelObjectImpl implements POIContainer {
 	 * @generated
 	 */
 	public Area getArea() {
-		if (area != null && area.eIsProxy()) {
+		if (area != null && ((EObject)area).eIsProxy()) {
 			InternalEObject oldArea = (InternalEObject)area;
 			area = (Area)eResolveProxy(oldArea);
 			if (area != oldArea) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GeoPackage.POI_CONTAINER__AREA, oldArea, area));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GeoPackageImpl.POI_CONTAINER__AREA, oldArea, area));
 			}
 		}
 		return area;
@@ -152,7 +149,7 @@ public class POIContainerImpl extends ModelObjectImpl implements POIContainer {
 		Area oldArea = area;
 		area = newArea;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackage.POI_CONTAINER__AREA, oldArea, area));
+			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackageImpl.POI_CONTAINER__AREA, oldArea, area));
 	}
 
 	/**
@@ -163,7 +160,7 @@ public class POIContainerImpl extends ModelObjectImpl implements POIContainer {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case GeoPackage.POI_CONTAINER__POIS:
+			case GeoPackageImpl.POI_CONTAINER__POIS:
 				return ((InternalEList<?>)getPois()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -177,9 +174,9 @@ public class POIContainerImpl extends ModelObjectImpl implements POIContainer {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GeoPackage.POI_CONTAINER__POIS:
+			case GeoPackageImpl.POI_CONTAINER__POIS:
 				return getPois();
-			case GeoPackage.POI_CONTAINER__AREA:
+			case GeoPackageImpl.POI_CONTAINER__AREA:
 				if (resolve) return getArea();
 				return basicGetArea();
 		}
@@ -195,11 +192,11 @@ public class POIContainerImpl extends ModelObjectImpl implements POIContainer {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GeoPackage.POI_CONTAINER__POIS:
+			case GeoPackageImpl.POI_CONTAINER__POIS:
 				getPois().clear();
 				getPois().addAll((Collection<? extends NamedPosition>)newValue);
 				return;
-			case GeoPackage.POI_CONTAINER__AREA:
+			case GeoPackageImpl.POI_CONTAINER__AREA:
 				setArea((Area)newValue);
 				return;
 		}
@@ -214,10 +211,10 @@ public class POIContainerImpl extends ModelObjectImpl implements POIContainer {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GeoPackage.POI_CONTAINER__POIS:
+			case GeoPackageImpl.POI_CONTAINER__POIS:
 				getPois().clear();
 				return;
-			case GeoPackage.POI_CONTAINER__AREA:
+			case GeoPackageImpl.POI_CONTAINER__AREA:
 				setArea((Area)null);
 				return;
 		}
@@ -232,9 +229,9 @@ public class POIContainerImpl extends ModelObjectImpl implements POIContainer {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GeoPackage.POI_CONTAINER__POIS:
+			case GeoPackageImpl.POI_CONTAINER__POIS:
 				return pois != null && !pois.isEmpty();
-			case GeoPackage.POI_CONTAINER__AREA:
+			case GeoPackageImpl.POI_CONTAINER__AREA:
 				return area != null;
 		}
 		return super.eIsSet(featureID);

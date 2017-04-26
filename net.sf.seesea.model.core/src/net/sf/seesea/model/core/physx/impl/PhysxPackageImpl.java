@@ -30,14 +30,17 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.physx.impl;
 
-import net.sf.seesea.model.core.CorePackage;
-import net.sf.seesea.model.core.data.DataPackage;
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EFactory;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import net.sf.seesea.model.core.data.impl.DataPackageImpl;
-import net.sf.seesea.model.core.diagramInterchange.DiagramInterchangePackage;
 import net.sf.seesea.model.core.diagramInterchange.impl.DiagramInterchangePackageImpl;
-import net.sf.seesea.model.core.geo.GeoPackage;
 import net.sf.seesea.model.core.geo.impl.GeoPackageImpl;
-import net.sf.seesea.model.core.geo.osm.OsmPackage;
 import net.sf.seesea.model.core.geo.osm.impl.OsmPackageImpl;
 import net.sf.seesea.model.core.impl.CorePackageImpl;
 import net.sf.seesea.model.core.physx.Acceleration;
@@ -50,7 +53,6 @@ import net.sf.seesea.model.core.physx.HeadingType;
 import net.sf.seesea.model.core.physx.LengthUnit;
 import net.sf.seesea.model.core.physx.Measurement;
 import net.sf.seesea.model.core.physx.PhysxFactory;
-import net.sf.seesea.model.core.physx.PhysxPackage;
 import net.sf.seesea.model.core.physx.RelativeSpeed;
 import net.sf.seesea.model.core.physx.RelativeWind;
 import net.sf.seesea.model.core.physx.SatelliteInfo;
@@ -61,23 +63,1112 @@ import net.sf.seesea.model.core.physx.SpeedUnit;
 import net.sf.seesea.model.core.physx.Temperature;
 import net.sf.seesea.model.core.physx.TemperatureUnit;
 import net.sf.seesea.model.core.physx.Time;
-import net.sf.seesea.model.core.weather.WeatherPackage;
 import net.sf.seesea.model.core.weather.impl.WeatherPackageImpl;
-
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Package</b>.
  * <!-- end-user-doc -->
+ * @see net.sf.seesea.model.core.physx.PhysxFactory
+ * @model kind="package"
  * @generated
  */
-public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
+public class PhysxPackageImpl extends EPackageImpl {
+	/**
+	 * The package name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String eNAME = "physx"; //$NON-NLS-1$
+
+	/**
+	 * The package namespace URI.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String eNS_URI = "physx"; //$NON-NLS-1$
+
+	/**
+	 * The package namespace name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String eNS_PREFIX = "physx"; //$NON-NLS-1$
+
+	/**
+	 * The singleton instance of the package.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final PhysxPackageImpl eINSTANCE = net.sf.seesea.model.core.physx.impl.PhysxPackageImpl.init();
+
+	/**
+	 * The meta object id for the '{@link net.sf.seesea.model.core.physx.impl.MeasurementImpl <em>Measurement</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.sf.seesea.model.core.physx.impl.MeasurementImpl
+	 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getMeasurement()
+	 * @generated
+	 */
+	public static final int MEASUREMENT = 3;
+
+	/**
+	 * The feature id for the '<em><b>Sensor ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MEASUREMENT__SENSOR_ID = CorePackageImpl.MODEL_OBJECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MEASUREMENT__TIME = CorePackageImpl.MODEL_OBJECT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Timezone</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MEASUREMENT__TIMEZONE = CorePackageImpl.MODEL_OBJECT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Valid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MEASUREMENT__VALID = CorePackageImpl.MODEL_OBJECT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MEASUREMENT__RELATIVE = CorePackageImpl.MODEL_OBJECT_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of structural features of the '<em>Measurement</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MEASUREMENT_FEATURE_COUNT = CorePackageImpl.MODEL_OBJECT_FEATURE_COUNT + 5;
+
+	/**
+	 * The meta object id for the '{@link net.sf.seesea.model.core.physx.impl.TemperatureImpl <em>Temperature</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.sf.seesea.model.core.physx.impl.TemperatureImpl
+	 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getTemperature()
+	 * @generated
+	 */
+	public static final int TEMPERATURE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Sensor ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TEMPERATURE__SENSOR_ID = MEASUREMENT__SENSOR_ID;
+
+	/**
+	 * The feature id for the '<em><b>Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TEMPERATURE__TIME = MEASUREMENT__TIME;
+
+	/**
+	 * The feature id for the '<em><b>Timezone</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TEMPERATURE__TIMEZONE = MEASUREMENT__TIMEZONE;
+
+	/**
+	 * The feature id for the '<em><b>Valid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TEMPERATURE__VALID = MEASUREMENT__VALID;
+
+	/**
+	 * The feature id for the '<em><b>Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TEMPERATURE__RELATIVE = MEASUREMENT__RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TEMPERATURE__VALUE = MEASUREMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Unit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TEMPERATURE__UNIT = MEASUREMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Temperature</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TEMPERATURE_FEATURE_COUNT = MEASUREMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link net.sf.seesea.model.core.physx.impl.SpeedImpl <em>Speed</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.sf.seesea.model.core.physx.impl.SpeedImpl
+	 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getSpeed()
+	 * @generated
+	 */
+	public static final int SPEED = 1;
+
+	/**
+	 * The feature id for the '<em><b>Sensor ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SPEED__SENSOR_ID = MEASUREMENT__SENSOR_ID;
+
+	/**
+	 * The feature id for the '<em><b>Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SPEED__TIME = MEASUREMENT__TIME;
+
+	/**
+	 * The feature id for the '<em><b>Timezone</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SPEED__TIMEZONE = MEASUREMENT__TIMEZONE;
+
+	/**
+	 * The feature id for the '<em><b>Valid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SPEED__VALID = MEASUREMENT__VALID;
+
+	/**
+	 * The feature id for the '<em><b>Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SPEED__RELATIVE = MEASUREMENT__RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Speed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SPEED__SPEED = MEASUREMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Speed Unit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SPEED__SPEED_UNIT = MEASUREMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Speed</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SPEED_FEATURE_COUNT = MEASUREMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link net.sf.seesea.model.core.physx.impl.HeadingImpl <em>Heading</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.sf.seesea.model.core.physx.impl.HeadingImpl
+	 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getHeading()
+	 * @generated
+	 */
+	public static final int HEADING = 2;
+
+	/**
+	 * The feature id for the '<em><b>Sensor ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int HEADING__SENSOR_ID = MEASUREMENT__SENSOR_ID;
+
+	/**
+	 * The feature id for the '<em><b>Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int HEADING__TIME = MEASUREMENT__TIME;
+
+	/**
+	 * The feature id for the '<em><b>Timezone</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int HEADING__TIMEZONE = MEASUREMENT__TIMEZONE;
+
+	/**
+	 * The feature id for the '<em><b>Valid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int HEADING__VALID = MEASUREMENT__VALID;
+
+	/**
+	 * The feature id for the '<em><b>Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int HEADING__RELATIVE = MEASUREMENT__RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Degrees</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int HEADING__DEGREES = MEASUREMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Heading Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int HEADING__HEADING_TYPE = MEASUREMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Heading</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int HEADING_FEATURE_COUNT = MEASUREMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link net.sf.seesea.model.core.physx.impl.RelativeWindImpl <em>Relative Wind</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.sf.seesea.model.core.physx.impl.RelativeWindImpl
+	 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getRelativeWind()
+	 * @generated
+	 */
+	public static final int RELATIVE_WIND = 4;
+
+	/**
+	 * The feature id for the '<em><b>Sensor ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RELATIVE_WIND__SENSOR_ID = HEADING__SENSOR_ID;
+
+	/**
+	 * The feature id for the '<em><b>Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RELATIVE_WIND__TIME = HEADING__TIME;
+
+	/**
+	 * The feature id for the '<em><b>Timezone</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RELATIVE_WIND__TIMEZONE = HEADING__TIMEZONE;
+
+	/**
+	 * The feature id for the '<em><b>Valid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RELATIVE_WIND__VALID = HEADING__VALID;
+
+	/**
+	 * The feature id for the '<em><b>Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RELATIVE_WIND__RELATIVE = HEADING__RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Degrees</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RELATIVE_WIND__DEGREES = HEADING__DEGREES;
+
+	/**
+	 * The feature id for the '<em><b>Heading Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RELATIVE_WIND__HEADING_TYPE = HEADING__HEADING_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Speed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RELATIVE_WIND__SPEED = HEADING_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Speed Unit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RELATIVE_WIND__SPEED_UNIT = HEADING_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Bow Orientation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RELATIVE_WIND__BOW_ORIENTATION = HEADING_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Relative Wind</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RELATIVE_WIND_FEATURE_COUNT = HEADING_FEATURE_COUNT + 3;
+
+	/**
+	 * The meta object id for the '{@link net.sf.seesea.model.core.physx.impl.SatelliteInfoImpl <em>Satellite Info</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.sf.seesea.model.core.physx.impl.SatelliteInfoImpl
+	 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getSatelliteInfo()
+	 * @generated
+	 */
+	public static final int SATELLITE_INFO = 5;
+
+	/**
+	 * The feature id for the '<em><b>Sensor ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SATELLITE_INFO__SENSOR_ID = MEASUREMENT__SENSOR_ID;
+
+	/**
+	 * The feature id for the '<em><b>Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SATELLITE_INFO__TIME = MEASUREMENT__TIME;
+
+	/**
+	 * The feature id for the '<em><b>Timezone</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SATELLITE_INFO__TIMEZONE = MEASUREMENT__TIMEZONE;
+
+	/**
+	 * The feature id for the '<em><b>Valid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SATELLITE_INFO__VALID = MEASUREMENT__VALID;
+
+	/**
+	 * The feature id for the '<em><b>Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SATELLITE_INFO__RELATIVE = MEASUREMENT__RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SATELLITE_INFO__ID = MEASUREMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Elevation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SATELLITE_INFO__ELEVATION = MEASUREMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Azimuth</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SATELLITE_INFO__AZIMUTH = MEASUREMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Signal Strength</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SATELLITE_INFO__SIGNAL_STRENGTH = MEASUREMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Satellite Info</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SATELLITE_INFO_FEATURE_COUNT = MEASUREMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The meta object id for the '{@link net.sf.seesea.model.core.physx.impl.SatellitesVisibleImpl <em>Satellites Visible</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.sf.seesea.model.core.physx.impl.SatellitesVisibleImpl
+	 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getSatellitesVisible()
+	 * @generated
+	 */
+	public static final int SATELLITES_VISIBLE = 6;
+
+	/**
+	 * The feature id for the '<em><b>Sensor ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SATELLITES_VISIBLE__SENSOR_ID = MEASUREMENT__SENSOR_ID;
+
+	/**
+	 * The feature id for the '<em><b>Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SATELLITES_VISIBLE__TIME = MEASUREMENT__TIME;
+
+	/**
+	 * The feature id for the '<em><b>Timezone</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SATELLITES_VISIBLE__TIMEZONE = MEASUREMENT__TIMEZONE;
+
+	/**
+	 * The feature id for the '<em><b>Valid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SATELLITES_VISIBLE__VALID = MEASUREMENT__VALID;
+
+	/**
+	 * The feature id for the '<em><b>Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SATELLITES_VISIBLE__RELATIVE = MEASUREMENT__RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Satellite Info</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SATELLITES_VISIBLE__SATELLITE_INFO = MEASUREMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Satellites Visible</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SATELLITES_VISIBLE_FEATURE_COUNT = MEASUREMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link net.sf.seesea.model.core.physx.impl.TimeImpl <em>Time</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.sf.seesea.model.core.physx.impl.TimeImpl
+	 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getTime()
+	 * @generated
+	 */
+	public static final int TIME = 7;
+
+	/**
+	 * The feature id for the '<em><b>Sensor ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TIME__SENSOR_ID = MEASUREMENT__SENSOR_ID;
+
+	/**
+	 * The feature id for the '<em><b>Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TIME__TIME = MEASUREMENT__TIME;
+
+	/**
+	 * The feature id for the '<em><b>Timezone</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TIME__TIMEZONE = MEASUREMENT__TIMEZONE;
+
+	/**
+	 * The feature id for the '<em><b>Valid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TIME__VALID = MEASUREMENT__VALID;
+
+	/**
+	 * The feature id for the '<em><b>Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TIME__RELATIVE = MEASUREMENT__RELATIVE;
+
+	/**
+	 * The number of structural features of the '<em>Time</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TIME_FEATURE_COUNT = MEASUREMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link net.sf.seesea.model.core.physx.impl.DistanceImpl <em>Distance</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.sf.seesea.model.core.physx.impl.DistanceImpl
+	 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getDistance()
+	 * @generated
+	 */
+	public static final int DISTANCE = 8;
+
+	/**
+	 * The feature id for the '<em><b>Sensor ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int DISTANCE__SENSOR_ID = MEASUREMENT__SENSOR_ID;
+
+	/**
+	 * The feature id for the '<em><b>Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int DISTANCE__TIME = MEASUREMENT__TIME;
+
+	/**
+	 * The feature id for the '<em><b>Timezone</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int DISTANCE__TIMEZONE = MEASUREMENT__TIMEZONE;
+
+	/**
+	 * The feature id for the '<em><b>Valid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int DISTANCE__VALID = MEASUREMENT__VALID;
+
+	/**
+	 * The feature id for the '<em><b>Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int DISTANCE__RELATIVE = MEASUREMENT__RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int DISTANCE__VALUE = MEASUREMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Unit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int DISTANCE__UNIT = MEASUREMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Distance Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int DISTANCE__DISTANCE_TYPE = MEASUREMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Distance</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int DISTANCE_FEATURE_COUNT = MEASUREMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The meta object id for the '{@link net.sf.seesea.model.core.physx.impl.CompositeMeasurementImpl <em>Composite Measurement</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.sf.seesea.model.core.physx.impl.CompositeMeasurementImpl
+	 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getCompositeMeasurement()
+	 * @generated
+	 */
+	public static final int COMPOSITE_MEASUREMENT = 9;
+
+	/**
+	 * The feature id for the '<em><b>Sensor ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int COMPOSITE_MEASUREMENT__SENSOR_ID = MEASUREMENT__SENSOR_ID;
+
+	/**
+	 * The feature id for the '<em><b>Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int COMPOSITE_MEASUREMENT__TIME = MEASUREMENT__TIME;
+
+	/**
+	 * The feature id for the '<em><b>Timezone</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int COMPOSITE_MEASUREMENT__TIMEZONE = MEASUREMENT__TIMEZONE;
+
+	/**
+	 * The feature id for the '<em><b>Valid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int COMPOSITE_MEASUREMENT__VALID = MEASUREMENT__VALID;
+
+	/**
+	 * The feature id for the '<em><b>Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int COMPOSITE_MEASUREMENT__RELATIVE = MEASUREMENT__RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Measurements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int COMPOSITE_MEASUREMENT__MEASUREMENTS = MEASUREMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Composite Measurement</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int COMPOSITE_MEASUREMENT_FEATURE_COUNT = MEASUREMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link net.sf.seesea.model.core.physx.impl.RelativeSpeedImpl <em>Relative Speed</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.sf.seesea.model.core.physx.impl.RelativeSpeedImpl
+	 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getRelativeSpeed()
+	 * @generated
+	 */
+	public static final int RELATIVE_SPEED = 10;
+
+	/**
+	 * The feature id for the '<em><b>Sensor ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RELATIVE_SPEED__SENSOR_ID = MEASUREMENT__SENSOR_ID;
+
+	/**
+	 * The feature id for the '<em><b>Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RELATIVE_SPEED__TIME = MEASUREMENT__TIME;
+
+	/**
+	 * The feature id for the '<em><b>Timezone</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RELATIVE_SPEED__TIMEZONE = MEASUREMENT__TIMEZONE;
+
+	/**
+	 * The feature id for the '<em><b>Valid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RELATIVE_SPEED__VALID = MEASUREMENT__VALID;
+
+	/**
+	 * The feature id for the '<em><b>Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RELATIVE_SPEED__RELATIVE = MEASUREMENT__RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RELATIVE_SPEED__KEY = MEASUREMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RELATIVE_SPEED__VALUE = MEASUREMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Relative Speed</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RELATIVE_SPEED_FEATURE_COUNT = MEASUREMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link net.sf.seesea.model.core.physx.impl.AccelerationImpl <em>Acceleration</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.sf.seesea.model.core.physx.impl.AccelerationImpl
+	 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getAcceleration()
+	 * @generated
+	 */
+	public static final int ACCELERATION = 11;
+
+	/**
+	 * The feature id for the '<em><b>Sensor ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ACCELERATION__SENSOR_ID = MEASUREMENT__SENSOR_ID;
+
+	/**
+	 * The feature id for the '<em><b>Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ACCELERATION__TIME = MEASUREMENT__TIME;
+
+	/**
+	 * The feature id for the '<em><b>Timezone</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ACCELERATION__TIMEZONE = MEASUREMENT__TIMEZONE;
+
+	/**
+	 * The feature id for the '<em><b>Valid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ACCELERATION__VALID = MEASUREMENT__VALID;
+
+	/**
+	 * The feature id for the '<em><b>Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ACCELERATION__RELATIVE = MEASUREMENT__RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>X</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ACCELERATION__X = MEASUREMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Y</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ACCELERATION__Y = MEASUREMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Z</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ACCELERATION__Z = MEASUREMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Acceleration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ACCELERATION_FEATURE_COUNT = MEASUREMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The meta object id for the '{@link net.sf.seesea.model.core.physx.TemperatureUnit <em>Temperature Unit</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.sf.seesea.model.core.physx.TemperatureUnit
+	 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getTemperatureUnit()
+	 * @generated
+	 */
+	public static final int TEMPERATURE_UNIT = 12;
+
+	/**
+	 * The meta object id for the '{@link net.sf.seesea.model.core.physx.HeadingType <em>Heading Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.sf.seesea.model.core.physx.HeadingType
+	 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getHeadingType()
+	 * @generated
+	 */
+	public static final int HEADING_TYPE = 13;
+
+	/**
+	 * The meta object id for the '{@link net.sf.seesea.model.core.physx.SpeedUnit <em>Speed Unit</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.sf.seesea.model.core.physx.SpeedUnit
+	 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getSpeedUnit()
+	 * @generated
+	 */
+	public static final int SPEED_UNIT = 14;
+
+	/**
+	 * The meta object id for the '{@link net.sf.seesea.model.core.physx.HandOrientation <em>Hand Orientation</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.sf.seesea.model.core.physx.HandOrientation
+	 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getHandOrientation()
+	 * @generated
+	 */
+	public static final int HAND_ORIENTATION = 15;
+
+	/**
+	 * The meta object id for the '{@link net.sf.seesea.model.core.physx.LengthUnit <em>Length Unit</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.sf.seesea.model.core.physx.LengthUnit
+	 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getLengthUnit()
+	 * @generated
+	 */
+	public static final int LENGTH_UNIT = 16;
+
+	/**
+	 * The meta object id for the '{@link net.sf.seesea.model.core.physx.SpeedType <em>Speed Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.sf.seesea.model.core.physx.SpeedType
+	 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getSpeedType()
+	 * @generated
+	 */
+	public static final int SPEED_TYPE = 17;
+
+	/**
+	 * The meta object id for the '{@link net.sf.seesea.model.core.physx.DistanceType <em>Distance Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.sf.seesea.model.core.physx.DistanceType
+	 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getDistanceType()
+	 * @generated
+	 */
+	public static final int DISTANCE_TYPE = 18;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -222,12 +1313,12 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see net.sf.seesea.model.core.physx.PhysxPackage#eNS_URI
+	 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
 	private PhysxPackageImpl() {
-		super(eNS_URI, PhysxFactory.eINSTANCE);
+		super(eNS_URI, ((EFactory)PhysxFactory.INSTANCE));
 	}
 
 	/**
@@ -240,7 +1331,7 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
 	 * 
-	 * <p>This method is used to initialize {@link PhysxPackage#eINSTANCE} when that field is accessed.
+	 * <p>This method is used to initialize {@link PhysxPackageImpl#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -249,8 +1340,8 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
-	public static PhysxPackage init() {
-		if (isInited) return (PhysxPackage)EPackage.Registry.INSTANCE.getEPackage(PhysxPackage.eNS_URI);
+	public static PhysxPackageImpl init() {
+		if (isInited) return (PhysxPackageImpl)EPackage.Registry.INSTANCE.getEPackage(PhysxPackageImpl.eNS_URI);
 
 		// Obtain or create and register package
 		PhysxPackageImpl thePhysxPackage = (PhysxPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof PhysxPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new PhysxPackageImpl());
@@ -258,12 +1349,12 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 		isInited = true;
 
 		// Obtain or create and register interdependencies
-		CorePackageImpl theCorePackage = (CorePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CorePackage.eNS_URI) instanceof CorePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CorePackage.eNS_URI) : CorePackage.eINSTANCE);
-		GeoPackageImpl theGeoPackage = (GeoPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(GeoPackage.eNS_URI) instanceof GeoPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(GeoPackage.eNS_URI) : GeoPackage.eINSTANCE);
-		OsmPackageImpl theOsmPackage = (OsmPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(OsmPackage.eNS_URI) instanceof OsmPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(OsmPackage.eNS_URI) : OsmPackage.eINSTANCE);
-		WeatherPackageImpl theWeatherPackage = (WeatherPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WeatherPackage.eNS_URI) instanceof WeatherPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WeatherPackage.eNS_URI) : WeatherPackage.eINSTANCE);
-		DataPackageImpl theDataPackage = (DataPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(DataPackage.eNS_URI) instanceof DataPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(DataPackage.eNS_URI) : DataPackage.eINSTANCE);
-		DiagramInterchangePackageImpl theDiagramInterchangePackage = (DiagramInterchangePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(DiagramInterchangePackage.eNS_URI) instanceof DiagramInterchangePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(DiagramInterchangePackage.eNS_URI) : DiagramInterchangePackage.eINSTANCE);
+		CorePackageImpl theCorePackage = (CorePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CorePackageImpl.eNS_URI) instanceof CorePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CorePackageImpl.eNS_URI) : CorePackageImpl.eINSTANCE);
+		GeoPackageImpl theGeoPackage = (GeoPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(GeoPackageImpl.eNS_URI) instanceof GeoPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(GeoPackageImpl.eNS_URI) : GeoPackageImpl.eINSTANCE);
+		OsmPackageImpl theOsmPackage = (OsmPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(OsmPackageImpl.eNS_URI) instanceof OsmPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(OsmPackageImpl.eNS_URI) : OsmPackageImpl.eINSTANCE);
+		WeatherPackageImpl theWeatherPackage = (WeatherPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WeatherPackageImpl.eNS_URI) instanceof WeatherPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WeatherPackageImpl.eNS_URI) : WeatherPackageImpl.eINSTANCE);
+		DataPackageImpl theDataPackage = (DataPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(DataPackageImpl.eNS_URI) instanceof DataPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(DataPackageImpl.eNS_URI) : DataPackageImpl.eINSTANCE);
+		DiagramInterchangePackageImpl theDiagramInterchangePackage = (DiagramInterchangePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(DiagramInterchangePackageImpl.eNS_URI) instanceof DiagramInterchangePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(DiagramInterchangePackageImpl.eNS_URI) : DiagramInterchangePackageImpl.eINSTANCE);
 
 		// Create package meta-data objects
 		thePhysxPackage.createPackageContents();
@@ -288,13 +1379,16 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 
   
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(PhysxPackage.eNS_URI, thePhysxPackage);
+		EPackage.Registry.INSTANCE.put(PhysxPackageImpl.eNS_URI, thePhysxPackage);
 		return thePhysxPackage;
 	}
 
 	/**
+	 * Returns the meta object for class '{@link net.sf.seesea.model.core.physx.Temperature <em>Temperature</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Temperature</em>'.
+	 * @see net.sf.seesea.model.core.physx.Temperature
 	 * @generated
 	 */
 	public EClass getTemperature() {
@@ -302,8 +1396,12 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.physx.Temperature#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see net.sf.seesea.model.core.physx.Temperature#getValue()
+	 * @see #getTemperature()
 	 * @generated
 	 */
 	public EAttribute getTemperature_Value() {
@@ -311,8 +1409,12 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.physx.Temperature#getUnit <em>Unit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Unit</em>'.
+	 * @see net.sf.seesea.model.core.physx.Temperature#getUnit()
+	 * @see #getTemperature()
 	 * @generated
 	 */
 	public EAttribute getTemperature_Unit() {
@@ -320,8 +1422,11 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for class '{@link net.sf.seesea.model.core.physx.Speed <em>Speed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Speed</em>'.
+	 * @see net.sf.seesea.model.core.physx.Speed
 	 * @generated
 	 */
 	public EClass getSpeed() {
@@ -329,8 +1434,12 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.physx.Speed#getSpeed <em>Speed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Speed</em>'.
+	 * @see net.sf.seesea.model.core.physx.Speed#getSpeed()
+	 * @see #getSpeed()
 	 * @generated
 	 */
 	public EAttribute getSpeed_Speed() {
@@ -338,8 +1447,12 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.physx.Speed#getSpeedUnit <em>Speed Unit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Speed Unit</em>'.
+	 * @see net.sf.seesea.model.core.physx.Speed#getSpeedUnit()
+	 * @see #getSpeed()
 	 * @generated
 	 */
 	public EAttribute getSpeed_SpeedUnit() {
@@ -347,8 +1460,11 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for class '{@link net.sf.seesea.model.core.physx.Heading <em>Heading</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Heading</em>'.
+	 * @see net.sf.seesea.model.core.physx.Heading
 	 * @generated
 	 */
 	public EClass getHeading() {
@@ -356,8 +1472,12 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.physx.Heading#getDegrees <em>Degrees</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Degrees</em>'.
+	 * @see net.sf.seesea.model.core.physx.Heading#getDegrees()
+	 * @see #getHeading()
 	 * @generated
 	 */
 	public EAttribute getHeading_Degrees() {
@@ -365,8 +1485,12 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.physx.Heading#getHeadingType <em>Heading Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Heading Type</em>'.
+	 * @see net.sf.seesea.model.core.physx.Heading#getHeadingType()
+	 * @see #getHeading()
 	 * @generated
 	 */
 	public EAttribute getHeading_HeadingType() {
@@ -374,8 +1498,11 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for class '{@link net.sf.seesea.model.core.physx.Measurement <em>Measurement</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Measurement</em>'.
+	 * @see net.sf.seesea.model.core.physx.Measurement
 	 * @generated
 	 */
 	public EClass getMeasurement() {
@@ -383,8 +1510,12 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.physx.Measurement#getSensorID <em>Sensor ID</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Sensor ID</em>'.
+	 * @see net.sf.seesea.model.core.physx.Measurement#getSensorID()
+	 * @see #getMeasurement()
 	 * @generated
 	 */
 	public EAttribute getMeasurement_SensorID() {
@@ -392,8 +1523,12 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.physx.Measurement#getTime <em>Time</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Time</em>'.
+	 * @see net.sf.seesea.model.core.physx.Measurement#getTime()
+	 * @see #getMeasurement()
 	 * @generated
 	 */
 	public EAttribute getMeasurement_Time() {
@@ -401,8 +1536,12 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.physx.Measurement#getTimezone <em>Timezone</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Timezone</em>'.
+	 * @see net.sf.seesea.model.core.physx.Measurement#getTimezone()
+	 * @see #getMeasurement()
 	 * @generated
 	 */
 	public EAttribute getMeasurement_Timezone() {
@@ -410,8 +1549,12 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.physx.Measurement#isValid <em>Valid</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Valid</em>'.
+	 * @see net.sf.seesea.model.core.physx.Measurement#isValid()
+	 * @see #getMeasurement()
 	 * @generated
 	 */
 	public EAttribute getMeasurement_Valid() {
@@ -419,8 +1562,12 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.physx.Measurement#isRelative <em>Relative</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Relative</em>'.
+	 * @see net.sf.seesea.model.core.physx.Measurement#isRelative()
+	 * @see #getMeasurement()
 	 * @generated
 	 */
 	public EAttribute getMeasurement_Relative() {
@@ -428,8 +1575,11 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for class '{@link net.sf.seesea.model.core.physx.RelativeWind <em>Relative Wind</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Relative Wind</em>'.
+	 * @see net.sf.seesea.model.core.physx.RelativeWind
 	 * @generated
 	 */
 	public EClass getRelativeWind() {
@@ -437,8 +1587,12 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.physx.RelativeWind#getBowOrientation <em>Bow Orientation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Bow Orientation</em>'.
+	 * @see net.sf.seesea.model.core.physx.RelativeWind#getBowOrientation()
+	 * @see #getRelativeWind()
 	 * @generated
 	 */
 	public EAttribute getRelativeWind_BowOrientation() {
@@ -446,8 +1600,11 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for class '{@link net.sf.seesea.model.core.physx.SatelliteInfo <em>Satellite Info</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Satellite Info</em>'.
+	 * @see net.sf.seesea.model.core.physx.SatelliteInfo
 	 * @generated
 	 */
 	public EClass getSatelliteInfo() {
@@ -455,8 +1612,12 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.physx.SatelliteInfo#getId <em>Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see net.sf.seesea.model.core.physx.SatelliteInfo#getId()
+	 * @see #getSatelliteInfo()
 	 * @generated
 	 */
 	public EAttribute getSatelliteInfo_Id() {
@@ -464,8 +1625,12 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.physx.SatelliteInfo#getElevation <em>Elevation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Elevation</em>'.
+	 * @see net.sf.seesea.model.core.physx.SatelliteInfo#getElevation()
+	 * @see #getSatelliteInfo()
 	 * @generated
 	 */
 	public EAttribute getSatelliteInfo_Elevation() {
@@ -473,8 +1638,12 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.physx.SatelliteInfo#getAzimuth <em>Azimuth</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Azimuth</em>'.
+	 * @see net.sf.seesea.model.core.physx.SatelliteInfo#getAzimuth()
+	 * @see #getSatelliteInfo()
 	 * @generated
 	 */
 	public EAttribute getSatelliteInfo_Azimuth() {
@@ -482,8 +1651,12 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.physx.SatelliteInfo#getSignalStrength <em>Signal Strength</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Signal Strength</em>'.
+	 * @see net.sf.seesea.model.core.physx.SatelliteInfo#getSignalStrength()
+	 * @see #getSatelliteInfo()
 	 * @generated
 	 */
 	public EAttribute getSatelliteInfo_SignalStrength() {
@@ -491,8 +1664,11 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for class '{@link net.sf.seesea.model.core.physx.SatellitesVisible <em>Satellites Visible</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Satellites Visible</em>'.
+	 * @see net.sf.seesea.model.core.physx.SatellitesVisible
 	 * @generated
 	 */
 	public EClass getSatellitesVisible() {
@@ -500,8 +1676,12 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link net.sf.seesea.model.core.physx.SatellitesVisible#getSatelliteInfo <em>Satellite Info</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Satellite Info</em>'.
+	 * @see net.sf.seesea.model.core.physx.SatellitesVisible#getSatelliteInfo()
+	 * @see #getSatellitesVisible()
 	 * @generated
 	 */
 	public EReference getSatellitesVisible_SatelliteInfo() {
@@ -509,8 +1689,11 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for class '{@link net.sf.seesea.model.core.physx.Time <em>Time</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Time</em>'.
+	 * @see net.sf.seesea.model.core.physx.Time
 	 * @generated
 	 */
 	public EClass getTime() {
@@ -518,8 +1701,11 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for class '{@link net.sf.seesea.model.core.physx.Distance <em>Distance</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Distance</em>'.
+	 * @see net.sf.seesea.model.core.physx.Distance
 	 * @generated
 	 */
 	public EClass getDistance() {
@@ -527,8 +1713,12 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.physx.Distance#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see net.sf.seesea.model.core.physx.Distance#getValue()
+	 * @see #getDistance()
 	 * @generated
 	 */
 	public EAttribute getDistance_Value() {
@@ -536,8 +1726,12 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.physx.Distance#getUnit <em>Unit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Unit</em>'.
+	 * @see net.sf.seesea.model.core.physx.Distance#getUnit()
+	 * @see #getDistance()
 	 * @generated
 	 */
 	public EAttribute getDistance_Unit() {
@@ -545,8 +1739,12 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.physx.Distance#getDistanceType <em>Distance Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Distance Type</em>'.
+	 * @see net.sf.seesea.model.core.physx.Distance#getDistanceType()
+	 * @see #getDistance()
 	 * @generated
 	 */
 	public EAttribute getDistance_DistanceType() {
@@ -554,8 +1752,11 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for class '{@link net.sf.seesea.model.core.physx.CompositeMeasurement <em>Composite Measurement</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Composite Measurement</em>'.
+	 * @see net.sf.seesea.model.core.physx.CompositeMeasurement
 	 * @generated
 	 */
 	public EClass getCompositeMeasurement() {
@@ -563,8 +1764,12 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for the reference list '{@link net.sf.seesea.model.core.physx.CompositeMeasurement#getMeasurements <em>Measurements</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Measurements</em>'.
+	 * @see net.sf.seesea.model.core.physx.CompositeMeasurement#getMeasurements()
+	 * @see #getCompositeMeasurement()
 	 * @generated
 	 */
 	public EReference getCompositeMeasurement_Measurements() {
@@ -572,8 +1777,11 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for class '{@link net.sf.seesea.model.core.physx.RelativeSpeed <em>Relative Speed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Relative Speed</em>'.
+	 * @see net.sf.seesea.model.core.physx.RelativeSpeed
 	 * @generated
 	 */
 	public EClass getRelativeSpeed() {
@@ -581,8 +1789,12 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.physx.RelativeSpeed#getKey <em>Key</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Key</em>'.
+	 * @see net.sf.seesea.model.core.physx.RelativeSpeed#getKey()
+	 * @see #getRelativeSpeed()
 	 * @generated
 	 */
 	public EAttribute getRelativeSpeed_Key() {
@@ -590,8 +1802,12 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for the reference '{@link net.sf.seesea.model.core.physx.RelativeSpeed#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Value</em>'.
+	 * @see net.sf.seesea.model.core.physx.RelativeSpeed#getValue()
+	 * @see #getRelativeSpeed()
 	 * @generated
 	 */
 	public EReference getRelativeSpeed_Value() {
@@ -599,8 +1815,11 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for class '{@link net.sf.seesea.model.core.physx.Acceleration <em>Acceleration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Acceleration</em>'.
+	 * @see net.sf.seesea.model.core.physx.Acceleration
 	 * @generated
 	 */
 	public EClass getAcceleration() {
@@ -608,8 +1827,12 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.physx.Acceleration#getX <em>X</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>X</em>'.
+	 * @see net.sf.seesea.model.core.physx.Acceleration#getX()
+	 * @see #getAcceleration()
 	 * @generated
 	 */
 	public EAttribute getAcceleration_X() {
@@ -617,8 +1840,12 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.physx.Acceleration#getY <em>Y</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Y</em>'.
+	 * @see net.sf.seesea.model.core.physx.Acceleration#getY()
+	 * @see #getAcceleration()
 	 * @generated
 	 */
 	public EAttribute getAcceleration_Y() {
@@ -626,8 +1853,12 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.physx.Acceleration#getZ <em>Z</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Z</em>'.
+	 * @see net.sf.seesea.model.core.physx.Acceleration#getZ()
+	 * @see #getAcceleration()
 	 * @generated
 	 */
 	public EAttribute getAcceleration_Z() {
@@ -635,8 +1866,11 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for enum '{@link net.sf.seesea.model.core.physx.TemperatureUnit <em>Temperature Unit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Temperature Unit</em>'.
+	 * @see net.sf.seesea.model.core.physx.TemperatureUnit
 	 * @generated
 	 */
 	public EEnum getTemperatureUnit() {
@@ -644,8 +1878,11 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for enum '{@link net.sf.seesea.model.core.physx.HeadingType <em>Heading Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Heading Type</em>'.
+	 * @see net.sf.seesea.model.core.physx.HeadingType
 	 * @generated
 	 */
 	public EEnum getHeadingType() {
@@ -653,8 +1890,11 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for enum '{@link net.sf.seesea.model.core.physx.SpeedUnit <em>Speed Unit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Speed Unit</em>'.
+	 * @see net.sf.seesea.model.core.physx.SpeedUnit
 	 * @generated
 	 */
 	public EEnum getSpeedUnit() {
@@ -662,8 +1902,11 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for enum '{@link net.sf.seesea.model.core.physx.HandOrientation <em>Hand Orientation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Hand Orientation</em>'.
+	 * @see net.sf.seesea.model.core.physx.HandOrientation
 	 * @generated
 	 */
 	public EEnum getHandOrientation() {
@@ -671,8 +1914,11 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for enum '{@link net.sf.seesea.model.core.physx.LengthUnit <em>Length Unit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Length Unit</em>'.
+	 * @see net.sf.seesea.model.core.physx.LengthUnit
 	 * @generated
 	 */
 	public EEnum getLengthUnit() {
@@ -680,8 +1926,11 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for enum '{@link net.sf.seesea.model.core.physx.SpeedType <em>Speed Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Speed Type</em>'.
+	 * @see net.sf.seesea.model.core.physx.SpeedType
 	 * @generated
 	 */
 	public EEnum getSpeedType() {
@@ -689,8 +1938,11 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the meta object for enum '{@link net.sf.seesea.model.core.physx.DistanceType <em>Distance Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Distance Type</em>'.
+	 * @see net.sf.seesea.model.core.physx.DistanceType
 	 * @generated
 	 */
 	public EEnum getDistanceType() {
@@ -698,8 +1950,10 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 	}
 
 	/**
+	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
 	public PhysxFactory getPhysxFactory() {
@@ -809,7 +2063,7 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		CorePackage theCorePackage = (CorePackage)EPackage.Registry.INSTANCE.getEPackage(CorePackage.eNS_URI);
+		CorePackageImpl theCorePackage = (CorePackageImpl)EPackage.Registry.INSTANCE.getEPackage(CorePackageImpl.eNS_URI);
 
 		// Create type parameters
 
@@ -922,6 +2176,419 @@ public class PhysxPackageImpl extends EPackageImpl implements PhysxPackage {
 		addEEnumLiteral(distanceTypeEEnum, DistanceType.UNKNOWN);
 		addEEnumLiteral(distanceTypeEEnum, DistanceType.TRIP);
 		addEEnumLiteral(distanceTypeEEnum, DistanceType.TOTAL);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Defines literals for the meta objects that represent
+	 * <ul>
+	 *   <li>each class,</li>
+	 *   <li>each feature of each class,</li>
+	 *   <li>each enum,</li>
+	 *   <li>and each data type</li>
+	 * </ul>
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public interface Literals {
+		/**
+		 * The meta object literal for the '{@link net.sf.seesea.model.core.physx.impl.TemperatureImpl <em>Temperature</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.sf.seesea.model.core.physx.impl.TemperatureImpl
+		 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getTemperature()
+		 * @generated
+		 */
+		public static final EClass TEMPERATURE = eINSTANCE.getTemperature();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute TEMPERATURE__VALUE = eINSTANCE.getTemperature_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Unit</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute TEMPERATURE__UNIT = eINSTANCE.getTemperature_Unit();
+
+		/**
+		 * The meta object literal for the '{@link net.sf.seesea.model.core.physx.impl.SpeedImpl <em>Speed</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.sf.seesea.model.core.physx.impl.SpeedImpl
+		 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getSpeed()
+		 * @generated
+		 */
+		public static final EClass SPEED = eINSTANCE.getSpeed();
+
+		/**
+		 * The meta object literal for the '<em><b>Speed</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute SPEED__SPEED = eINSTANCE.getSpeed_Speed();
+
+		/**
+		 * The meta object literal for the '<em><b>Speed Unit</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute SPEED__SPEED_UNIT = eINSTANCE.getSpeed_SpeedUnit();
+
+		/**
+		 * The meta object literal for the '{@link net.sf.seesea.model.core.physx.impl.HeadingImpl <em>Heading</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.sf.seesea.model.core.physx.impl.HeadingImpl
+		 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getHeading()
+		 * @generated
+		 */
+		public static final EClass HEADING = eINSTANCE.getHeading();
+
+		/**
+		 * The meta object literal for the '<em><b>Degrees</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute HEADING__DEGREES = eINSTANCE.getHeading_Degrees();
+
+		/**
+		 * The meta object literal for the '<em><b>Heading Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute HEADING__HEADING_TYPE = eINSTANCE.getHeading_HeadingType();
+
+		/**
+		 * The meta object literal for the '{@link net.sf.seesea.model.core.physx.impl.MeasurementImpl <em>Measurement</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.sf.seesea.model.core.physx.impl.MeasurementImpl
+		 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getMeasurement()
+		 * @generated
+		 */
+		public static final EClass MEASUREMENT = eINSTANCE.getMeasurement();
+
+		/**
+		 * The meta object literal for the '<em><b>Sensor ID</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute MEASUREMENT__SENSOR_ID = eINSTANCE.getMeasurement_SensorID();
+
+		/**
+		 * The meta object literal for the '<em><b>Time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute MEASUREMENT__TIME = eINSTANCE.getMeasurement_Time();
+
+		/**
+		 * The meta object literal for the '<em><b>Timezone</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute MEASUREMENT__TIMEZONE = eINSTANCE.getMeasurement_Timezone();
+
+		/**
+		 * The meta object literal for the '<em><b>Valid</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute MEASUREMENT__VALID = eINSTANCE.getMeasurement_Valid();
+
+		/**
+		 * The meta object literal for the '<em><b>Relative</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute MEASUREMENT__RELATIVE = eINSTANCE.getMeasurement_Relative();
+
+		/**
+		 * The meta object literal for the '{@link net.sf.seesea.model.core.physx.impl.RelativeWindImpl <em>Relative Wind</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.sf.seesea.model.core.physx.impl.RelativeWindImpl
+		 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getRelativeWind()
+		 * @generated
+		 */
+		public static final EClass RELATIVE_WIND = eINSTANCE.getRelativeWind();
+
+		/**
+		 * The meta object literal for the '<em><b>Bow Orientation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute RELATIVE_WIND__BOW_ORIENTATION = eINSTANCE.getRelativeWind_BowOrientation();
+
+		/**
+		 * The meta object literal for the '{@link net.sf.seesea.model.core.physx.impl.SatelliteInfoImpl <em>Satellite Info</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.sf.seesea.model.core.physx.impl.SatelliteInfoImpl
+		 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getSatelliteInfo()
+		 * @generated
+		 */
+		public static final EClass SATELLITE_INFO = eINSTANCE.getSatelliteInfo();
+
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute SATELLITE_INFO__ID = eINSTANCE.getSatelliteInfo_Id();
+
+		/**
+		 * The meta object literal for the '<em><b>Elevation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute SATELLITE_INFO__ELEVATION = eINSTANCE.getSatelliteInfo_Elevation();
+
+		/**
+		 * The meta object literal for the '<em><b>Azimuth</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute SATELLITE_INFO__AZIMUTH = eINSTANCE.getSatelliteInfo_Azimuth();
+
+		/**
+		 * The meta object literal for the '<em><b>Signal Strength</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute SATELLITE_INFO__SIGNAL_STRENGTH = eINSTANCE.getSatelliteInfo_SignalStrength();
+
+		/**
+		 * The meta object literal for the '{@link net.sf.seesea.model.core.physx.impl.SatellitesVisibleImpl <em>Satellites Visible</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.sf.seesea.model.core.physx.impl.SatellitesVisibleImpl
+		 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getSatellitesVisible()
+		 * @generated
+		 */
+		public static final EClass SATELLITES_VISIBLE = eINSTANCE.getSatellitesVisible();
+
+		/**
+		 * The meta object literal for the '<em><b>Satellite Info</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference SATELLITES_VISIBLE__SATELLITE_INFO = eINSTANCE.getSatellitesVisible_SatelliteInfo();
+
+		/**
+		 * The meta object literal for the '{@link net.sf.seesea.model.core.physx.impl.TimeImpl <em>Time</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.sf.seesea.model.core.physx.impl.TimeImpl
+		 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getTime()
+		 * @generated
+		 */
+		public static final EClass TIME = eINSTANCE.getTime();
+
+		/**
+		 * The meta object literal for the '{@link net.sf.seesea.model.core.physx.impl.DistanceImpl <em>Distance</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.sf.seesea.model.core.physx.impl.DistanceImpl
+		 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getDistance()
+		 * @generated
+		 */
+		public static final EClass DISTANCE = eINSTANCE.getDistance();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute DISTANCE__VALUE = eINSTANCE.getDistance_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Unit</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute DISTANCE__UNIT = eINSTANCE.getDistance_Unit();
+
+		/**
+		 * The meta object literal for the '<em><b>Distance Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute DISTANCE__DISTANCE_TYPE = eINSTANCE.getDistance_DistanceType();
+
+		/**
+		 * The meta object literal for the '{@link net.sf.seesea.model.core.physx.impl.CompositeMeasurementImpl <em>Composite Measurement</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.sf.seesea.model.core.physx.impl.CompositeMeasurementImpl
+		 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getCompositeMeasurement()
+		 * @generated
+		 */
+		public static final EClass COMPOSITE_MEASUREMENT = eINSTANCE.getCompositeMeasurement();
+
+		/**
+		 * The meta object literal for the '<em><b>Measurements</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference COMPOSITE_MEASUREMENT__MEASUREMENTS = eINSTANCE.getCompositeMeasurement_Measurements();
+
+		/**
+		 * The meta object literal for the '{@link net.sf.seesea.model.core.physx.impl.RelativeSpeedImpl <em>Relative Speed</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.sf.seesea.model.core.physx.impl.RelativeSpeedImpl
+		 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getRelativeSpeed()
+		 * @generated
+		 */
+		public static final EClass RELATIVE_SPEED = eINSTANCE.getRelativeSpeed();
+
+		/**
+		 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute RELATIVE_SPEED__KEY = eINSTANCE.getRelativeSpeed_Key();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference RELATIVE_SPEED__VALUE = eINSTANCE.getRelativeSpeed_Value();
+
+		/**
+		 * The meta object literal for the '{@link net.sf.seesea.model.core.physx.impl.AccelerationImpl <em>Acceleration</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.sf.seesea.model.core.physx.impl.AccelerationImpl
+		 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getAcceleration()
+		 * @generated
+		 */
+		public static final EClass ACCELERATION = eINSTANCE.getAcceleration();
+
+		/**
+		 * The meta object literal for the '<em><b>X</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute ACCELERATION__X = eINSTANCE.getAcceleration_X();
+
+		/**
+		 * The meta object literal for the '<em><b>Y</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute ACCELERATION__Y = eINSTANCE.getAcceleration_Y();
+
+		/**
+		 * The meta object literal for the '<em><b>Z</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute ACCELERATION__Z = eINSTANCE.getAcceleration_Z();
+
+		/**
+		 * The meta object literal for the '{@link net.sf.seesea.model.core.physx.TemperatureUnit <em>Temperature Unit</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.sf.seesea.model.core.physx.TemperatureUnit
+		 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getTemperatureUnit()
+		 * @generated
+		 */
+		public static final EEnum TEMPERATURE_UNIT = eINSTANCE.getTemperatureUnit();
+
+		/**
+		 * The meta object literal for the '{@link net.sf.seesea.model.core.physx.HeadingType <em>Heading Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.sf.seesea.model.core.physx.HeadingType
+		 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getHeadingType()
+		 * @generated
+		 */
+		public static final EEnum HEADING_TYPE = eINSTANCE.getHeadingType();
+
+		/**
+		 * The meta object literal for the '{@link net.sf.seesea.model.core.physx.SpeedUnit <em>Speed Unit</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.sf.seesea.model.core.physx.SpeedUnit
+		 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getSpeedUnit()
+		 * @generated
+		 */
+		public static final EEnum SPEED_UNIT = eINSTANCE.getSpeedUnit();
+
+		/**
+		 * The meta object literal for the '{@link net.sf.seesea.model.core.physx.HandOrientation <em>Hand Orientation</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.sf.seesea.model.core.physx.HandOrientation
+		 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getHandOrientation()
+		 * @generated
+		 */
+		public static final EEnum HAND_ORIENTATION = eINSTANCE.getHandOrientation();
+
+		/**
+		 * The meta object literal for the '{@link net.sf.seesea.model.core.physx.LengthUnit <em>Length Unit</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.sf.seesea.model.core.physx.LengthUnit
+		 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getLengthUnit()
+		 * @generated
+		 */
+		public static final EEnum LENGTH_UNIT = eINSTANCE.getLengthUnit();
+
+		/**
+		 * The meta object literal for the '{@link net.sf.seesea.model.core.physx.SpeedType <em>Speed Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.sf.seesea.model.core.physx.SpeedType
+		 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getSpeedType()
+		 * @generated
+		 */
+		public static final EEnum SPEED_TYPE = eINSTANCE.getSpeedType();
+
+		/**
+		 * The meta object literal for the '{@link net.sf.seesea.model.core.physx.DistanceType <em>Distance Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.sf.seesea.model.core.physx.DistanceType
+		 * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getDistanceType()
+		 * @generated
+		 */
+		public static final EEnum DISTANCE_TYPE = eINSTANCE.getDistanceType();
+
 	}
 
 } //PhysxPackageImpl

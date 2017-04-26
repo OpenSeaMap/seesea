@@ -30,13 +30,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.geo.impl;
 
-import net.sf.seesea.model.core.geo.Coordinate;
-import net.sf.seesea.model.core.geo.GeoPackage;
-
-import net.sf.seesea.model.core.impl.ModelObjectImpl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import net.sf.seesea.model.core.geo.Coordinate;
+import net.sf.seesea.model.core.impl.ModelObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -88,7 +87,7 @@ public class CoordinateImpl extends ModelObjectImpl implements Coordinate {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return GeoPackage.Literals.COORDINATE;
+		return GeoPackageImpl.Literals.COORDINATE;
 	}
 
 	/**
@@ -109,7 +108,7 @@ public class CoordinateImpl extends ModelObjectImpl implements Coordinate {
 		double oldDecimalDegree = decimalDegree;
 		decimalDegree = newDecimalDegree;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackage.COORDINATE__DECIMAL_DEGREE, oldDecimalDegree, decimalDegree));
+			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackageImpl.COORDINATE__DECIMAL_DEGREE, oldDecimalDegree, decimalDegree));
 	}
 
 	/**
@@ -183,7 +182,7 @@ public class CoordinateImpl extends ModelObjectImpl implements Coordinate {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GeoPackage.COORDINATE__DECIMAL_DEGREE:
+			case GeoPackageImpl.COORDINATE__DECIMAL_DEGREE:
 				return getDecimalDegree();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -197,7 +196,7 @@ public class CoordinateImpl extends ModelObjectImpl implements Coordinate {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GeoPackage.COORDINATE__DECIMAL_DEGREE:
+			case GeoPackageImpl.COORDINATE__DECIMAL_DEGREE:
 				setDecimalDegree((Double)newValue);
 				return;
 		}
@@ -212,7 +211,7 @@ public class CoordinateImpl extends ModelObjectImpl implements Coordinate {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GeoPackage.COORDINATE__DECIMAL_DEGREE:
+			case GeoPackageImpl.COORDINATE__DECIMAL_DEGREE:
 				setDecimalDegree(DECIMAL_DEGREE_EDEFAULT);
 				return;
 		}
@@ -227,7 +226,7 @@ public class CoordinateImpl extends ModelObjectImpl implements Coordinate {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GeoPackage.COORDINATE__DECIMAL_DEGREE:
+			case GeoPackageImpl.COORDINATE__DECIMAL_DEGREE:
 				return decimalDegree != DECIMAL_DEGREE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

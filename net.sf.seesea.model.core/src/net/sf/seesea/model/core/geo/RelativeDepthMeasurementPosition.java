@@ -41,11 +41,11 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Relative Depth Measurement Position</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see net.sf.seesea.model.core.geo.GeoPackage#getRelativeDepthMeasurementPosition()
+ * @see net.sf.seesea.model.core.geo.impl.GeoPackageImpl#getRelativeDepthMeasurementPosition()
  * @model
  * @generated
  */
-public enum RelativeDepthMeasurementPosition implements Enumerator {
+public enum RelativeDepthMeasurementPosition implements InternalRelativeDepthMeasurementPosition {
 	/**
 	 * The '<em><b>Unknown</b></em>' literal object.
 	 * <!-- begin-user-doc -->
@@ -294,3 +294,13 @@ public enum RelativeDepthMeasurementPosition implements Enumerator {
 	}
 	
 } //RelativeDepthMeasurementPosition
+
+/**
+ * A private implementation interface used to hide the inheritance from Enumerator.
+ * <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
+ * @generated
+ */
+interface InternalRelativeDepthMeasurementPosition extends org.eclipse.emf.common.util.Enumerator {
+	// Empty 
+}

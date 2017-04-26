@@ -36,7 +36,6 @@ package net.sf.seesea.model.core.physx;
  * <!-- end-user-doc -->
  *
  *
- * @see net.sf.seesea.model.core.physx.PhysxPackage#getTime()
  * @model
  * @generated
  */

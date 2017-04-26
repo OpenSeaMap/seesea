@@ -41,11 +41,11 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Heading Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see net.sf.seesea.model.core.physx.PhysxPackage#getHeadingType()
+ * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getHeadingType()
  * @model
  * @generated
  */
-public enum HeadingType implements Enumerator {
+public enum HeadingType implements InternalHeadingType {
 	/**
 	 * The '<em><b>Unknown</b></em>' literal object.
 	 * <!-- begin-user-doc -->
@@ -367,3 +367,13 @@ public enum HeadingType implements Enumerator {
 	}
 	
 } //HeadingType
+
+/**
+ * A private implementation interface used to hide the inheritance from Enumerator.
+ * <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
+ * @generated
+ */
+interface InternalHeadingType extends org.eclipse.emf.common.util.Enumerator {
+	// Empty 
+}

@@ -30,12 +30,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.impl;
 
-import net.sf.seesea.model.core.CorePackage;
-import net.sf.seesea.model.core.ModelObject;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
+import net.sf.seesea.model.core.ModelObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -61,7 +59,7 @@ public class ModelObjectImpl extends EObjectImpl implements ModelObject {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return CorePackage.Literals.MODEL_OBJECT;
+		return CorePackageImpl.Literals.MODEL_OBJECT;
 	}
 
 } //ModelObjectImpl

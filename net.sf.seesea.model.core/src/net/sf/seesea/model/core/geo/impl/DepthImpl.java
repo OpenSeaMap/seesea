@@ -30,17 +30,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.geo.impl;
 
-import net.sf.seesea.model.core.geo.Depth;
-import net.sf.seesea.model.core.geo.GeoPackage;
-import net.sf.seesea.model.core.geo.RelativeDepthMeasurementPosition;
-
-import net.sf.seesea.model.core.physx.impl.MeasurementImpl;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import net.sf.seesea.model.core.geo.Depth;
+import net.sf.seesea.model.core.geo.RelativeDepthMeasurementPosition;
+import net.sf.seesea.model.core.physx.impl.MeasurementImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -113,7 +109,7 @@ public class DepthImpl extends MeasurementImpl implements Depth {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return GeoPackage.Literals.DEPTH;
+		return GeoPackageImpl.Literals.DEPTH;
 	}
 
 	/**
@@ -134,7 +130,7 @@ public class DepthImpl extends MeasurementImpl implements Depth {
 		RelativeDepthMeasurementPosition oldMeasurementPosition = measurementPosition;
 		measurementPosition = newMeasurementPosition == null ? MEASUREMENT_POSITION_EDEFAULT : newMeasurementPosition;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackage.DEPTH__MEASUREMENT_POSITION, oldMeasurementPosition, measurementPosition));
+			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackageImpl.DEPTH__MEASUREMENT_POSITION, oldMeasurementPosition, measurementPosition));
 	}
 
 	/**
@@ -155,7 +151,7 @@ public class DepthImpl extends MeasurementImpl implements Depth {
 		double oldDepth = depth;
 		depth = newDepth;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackage.DEPTH__DEPTH, oldDepth, depth));
+			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackageImpl.DEPTH__DEPTH, oldDepth, depth));
 	}
 
 	/**
@@ -166,9 +162,9 @@ public class DepthImpl extends MeasurementImpl implements Depth {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GeoPackage.DEPTH__MEASUREMENT_POSITION:
+			case GeoPackageImpl.DEPTH__MEASUREMENT_POSITION:
 				return getMeasurementPosition();
-			case GeoPackage.DEPTH__DEPTH:
+			case GeoPackageImpl.DEPTH__DEPTH:
 				return getDepth();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -182,10 +178,10 @@ public class DepthImpl extends MeasurementImpl implements Depth {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GeoPackage.DEPTH__MEASUREMENT_POSITION:
+			case GeoPackageImpl.DEPTH__MEASUREMENT_POSITION:
 				setMeasurementPosition((RelativeDepthMeasurementPosition)newValue);
 				return;
-			case GeoPackage.DEPTH__DEPTH:
+			case GeoPackageImpl.DEPTH__DEPTH:
 				setDepth((Double)newValue);
 				return;
 		}
@@ -200,10 +196,10 @@ public class DepthImpl extends MeasurementImpl implements Depth {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GeoPackage.DEPTH__MEASUREMENT_POSITION:
+			case GeoPackageImpl.DEPTH__MEASUREMENT_POSITION:
 				setMeasurementPosition(MEASUREMENT_POSITION_EDEFAULT);
 				return;
-			case GeoPackage.DEPTH__DEPTH:
+			case GeoPackageImpl.DEPTH__DEPTH:
 				setDepth(DEPTH_EDEFAULT);
 				return;
 		}
@@ -218,9 +214,9 @@ public class DepthImpl extends MeasurementImpl implements Depth {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GeoPackage.DEPTH__MEASUREMENT_POSITION:
+			case GeoPackageImpl.DEPTH__MEASUREMENT_POSITION:
 				return measurementPosition != MEASUREMENT_POSITION_EDEFAULT;
-			case GeoPackage.DEPTH__DEPTH:
+			case GeoPackageImpl.DEPTH__DEPTH:
 				return depth != DEPTH_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

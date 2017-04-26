@@ -31,18 +31,18 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package net.sf.seesea.model.core.geo.impl;
 
 import java.util.Collection;
-import net.sf.seesea.model.core.geo.ChartArea;
-import net.sf.seesea.model.core.geo.GeoPackage;
+import java.util.List;
 
-import net.sf.seesea.model.core.geo.GeoPosition;
-import net.sf.seesea.model.core.impl.ModelObjectImpl;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import net.sf.seesea.model.core.geo.ChartArea;
+import net.sf.seesea.model.core.geo.GeoPosition;
+import net.sf.seesea.model.core.impl.ModelObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -84,7 +84,7 @@ public class ChartAreaImpl extends ModelObjectImpl implements ChartArea {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return GeoPackage.Literals.CHART_AREA;
+		return GeoPackageImpl.Literals.CHART_AREA;
 	}
 
 	/**
@@ -92,9 +92,9 @@ public class ChartAreaImpl extends ModelObjectImpl implements ChartArea {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<GeoPosition> getBounds() {
+	public List<GeoPosition> getBounds() {
 		if (bounds == null) {
-			bounds = new EObjectContainmentEList<GeoPosition>(GeoPosition.class, this, GeoPackage.CHART_AREA__BOUNDS);
+			bounds = new EObjectContainmentEList<GeoPosition>(GeoPosition.class, this, GeoPackageImpl.CHART_AREA__BOUNDS);
 		}
 		return bounds;
 	}
@@ -107,7 +107,7 @@ public class ChartAreaImpl extends ModelObjectImpl implements ChartArea {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case GeoPackage.CHART_AREA__BOUNDS:
+			case GeoPackageImpl.CHART_AREA__BOUNDS:
 				return ((InternalEList<?>)getBounds()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -121,7 +121,7 @@ public class ChartAreaImpl extends ModelObjectImpl implements ChartArea {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GeoPackage.CHART_AREA__BOUNDS:
+			case GeoPackageImpl.CHART_AREA__BOUNDS:
 				return getBounds();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -136,7 +136,7 @@ public class ChartAreaImpl extends ModelObjectImpl implements ChartArea {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GeoPackage.CHART_AREA__BOUNDS:
+			case GeoPackageImpl.CHART_AREA__BOUNDS:
 				getBounds().clear();
 				getBounds().addAll((Collection<? extends GeoPosition>)newValue);
 				return;
@@ -152,7 +152,7 @@ public class ChartAreaImpl extends ModelObjectImpl implements ChartArea {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GeoPackage.CHART_AREA__BOUNDS:
+			case GeoPackageImpl.CHART_AREA__BOUNDS:
 				getBounds().clear();
 				return;
 		}
@@ -167,7 +167,7 @@ public class ChartAreaImpl extends ModelObjectImpl implements ChartArea {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GeoPackage.CHART_AREA__BOUNDS:
+			case GeoPackageImpl.CHART_AREA__BOUNDS:
 				return bounds != null && !bounds.isEmpty();
 		}
 		return super.eIsSet(featureID);

@@ -31,20 +31,17 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package net.sf.seesea.model.core.physx.impl;
 
 import java.util.Collection;
-
-import net.sf.seesea.model.core.physx.PhysxPackage;
-import net.sf.seesea.model.core.physx.SatelliteInfo;
-import net.sf.seesea.model.core.physx.SatellitesVisible;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import net.sf.seesea.model.core.physx.SatelliteInfo;
+import net.sf.seesea.model.core.physx.SatellitesVisible;
 
 /**
  * <!-- begin-user-doc -->
@@ -86,7 +83,7 @@ public class SatellitesVisibleImpl extends MeasurementImpl implements Satellites
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return PhysxPackage.Literals.SATELLITES_VISIBLE;
+		return PhysxPackageImpl.Literals.SATELLITES_VISIBLE;
 	}
 
 	/**
@@ -94,9 +91,9 @@ public class SatellitesVisibleImpl extends MeasurementImpl implements Satellites
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<SatelliteInfo> getSatelliteInfo() {
+	public List<SatelliteInfo> getSatelliteInfo() {
 		if (satelliteInfo == null) {
-			satelliteInfo = new EObjectContainmentEList<SatelliteInfo>(SatelliteInfo.class, this, PhysxPackage.SATELLITES_VISIBLE__SATELLITE_INFO);
+			satelliteInfo = new EObjectContainmentEList<SatelliteInfo>(SatelliteInfo.class, this, PhysxPackageImpl.SATELLITES_VISIBLE__SATELLITE_INFO);
 		}
 		return satelliteInfo;
 	}
@@ -109,7 +106,7 @@ public class SatellitesVisibleImpl extends MeasurementImpl implements Satellites
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case PhysxPackage.SATELLITES_VISIBLE__SATELLITE_INFO:
+			case PhysxPackageImpl.SATELLITES_VISIBLE__SATELLITE_INFO:
 				return ((InternalEList<?>)getSatelliteInfo()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -123,7 +120,7 @@ public class SatellitesVisibleImpl extends MeasurementImpl implements Satellites
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PhysxPackage.SATELLITES_VISIBLE__SATELLITE_INFO:
+			case PhysxPackageImpl.SATELLITES_VISIBLE__SATELLITE_INFO:
 				return getSatelliteInfo();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -138,7 +135,7 @@ public class SatellitesVisibleImpl extends MeasurementImpl implements Satellites
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PhysxPackage.SATELLITES_VISIBLE__SATELLITE_INFO:
+			case PhysxPackageImpl.SATELLITES_VISIBLE__SATELLITE_INFO:
 				getSatelliteInfo().clear();
 				getSatelliteInfo().addAll((Collection<? extends SatelliteInfo>)newValue);
 				return;
@@ -154,7 +151,7 @@ public class SatellitesVisibleImpl extends MeasurementImpl implements Satellites
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PhysxPackage.SATELLITES_VISIBLE__SATELLITE_INFO:
+			case PhysxPackageImpl.SATELLITES_VISIBLE__SATELLITE_INFO:
 				getSatelliteInfo().clear();
 				return;
 		}
@@ -169,7 +166,7 @@ public class SatellitesVisibleImpl extends MeasurementImpl implements Satellites
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PhysxPackage.SATELLITES_VISIBLE__SATELLITE_INFO:
+			case PhysxPackageImpl.SATELLITES_VISIBLE__SATELLITE_INFO:
 				return satelliteInfo != null && !satelliteInfo.isEmpty();
 		}
 		return super.eIsSet(featureID);

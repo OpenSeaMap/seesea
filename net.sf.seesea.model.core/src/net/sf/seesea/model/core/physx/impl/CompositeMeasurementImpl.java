@@ -28,13 +28,14 @@
 package net.sf.seesea.model.core.physx.impl;
 
 import java.util.Collection;
-import net.sf.seesea.model.core.physx.CompositeMeasurement;
-import net.sf.seesea.model.core.physx.Measurement;
-import net.sf.seesea.model.core.physx.PhysxPackage;
+import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+
+import net.sf.seesea.model.core.physx.CompositeMeasurement;
+import net.sf.seesea.model.core.physx.Measurement;
 
 /**
  * <!-- begin-user-doc -->
@@ -76,7 +77,7 @@ public class CompositeMeasurementImpl extends MeasurementImpl implements Composi
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return PhysxPackage.Literals.COMPOSITE_MEASUREMENT;
+		return PhysxPackageImpl.Literals.COMPOSITE_MEASUREMENT;
 	}
 
 	/**
@@ -84,9 +85,9 @@ public class CompositeMeasurementImpl extends MeasurementImpl implements Composi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Measurement> getMeasurements() {
+	public List<Measurement> getMeasurements() {
 		if (measurements == null) {
-			measurements = new EObjectResolvingEList<Measurement>(Measurement.class, this, PhysxPackage.COMPOSITE_MEASUREMENT__MEASUREMENTS);
+			measurements = new EObjectResolvingEList<Measurement>(Measurement.class, this, PhysxPackageImpl.COMPOSITE_MEASUREMENT__MEASUREMENTS);
 		}
 		return measurements;
 	}
@@ -99,7 +100,7 @@ public class CompositeMeasurementImpl extends MeasurementImpl implements Composi
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PhysxPackage.COMPOSITE_MEASUREMENT__MEASUREMENTS:
+			case PhysxPackageImpl.COMPOSITE_MEASUREMENT__MEASUREMENTS:
 				return getMeasurements();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -114,7 +115,7 @@ public class CompositeMeasurementImpl extends MeasurementImpl implements Composi
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PhysxPackage.COMPOSITE_MEASUREMENT__MEASUREMENTS:
+			case PhysxPackageImpl.COMPOSITE_MEASUREMENT__MEASUREMENTS:
 				getMeasurements().clear();
 				getMeasurements().addAll((Collection<? extends Measurement>)newValue);
 				return;
@@ -130,7 +131,7 @@ public class CompositeMeasurementImpl extends MeasurementImpl implements Composi
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PhysxPackage.COMPOSITE_MEASUREMENT__MEASUREMENTS:
+			case PhysxPackageImpl.COMPOSITE_MEASUREMENT__MEASUREMENTS:
 				getMeasurements().clear();
 				return;
 		}
@@ -145,7 +146,7 @@ public class CompositeMeasurementImpl extends MeasurementImpl implements Composi
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PhysxPackage.COMPOSITE_MEASUREMENT__MEASUREMENTS:
+			case PhysxPackageImpl.COMPOSITE_MEASUREMENT__MEASUREMENTS:
 				return measurements != null && !measurements.isEmpty();
 		}
 		return super.eIsSet(featureID);

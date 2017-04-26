@@ -30,51 +30,188 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.diagramInterchange.impl;
 
-import net.sf.seesea.model.core.CorePackage;
-
-import net.sf.seesea.model.core.data.DataPackage;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EFactory;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import net.sf.seesea.model.core.data.impl.DataPackageImpl;
-
 import net.sf.seesea.model.core.diagramInterchange.Diagram;
 import net.sf.seesea.model.core.diagramInterchange.DiagramInterchangeFactory;
-import net.sf.seesea.model.core.diagramInterchange.DiagramInterchangePackage;
 import net.sf.seesea.model.core.diagramInterchange.GraphicalContainer;
 import net.sf.seesea.model.core.diagramInterchange.GraphicalEdge;
 import net.sf.seesea.model.core.diagramInterchange.GraphicalElement;
 import net.sf.seesea.model.core.diagramInterchange.GraphicalNode;
-
-import net.sf.seesea.model.core.geo.GeoPackage;
-
 import net.sf.seesea.model.core.geo.impl.GeoPackageImpl;
-
-import net.sf.seesea.model.core.geo.osm.OsmPackage;
-
 import net.sf.seesea.model.core.geo.osm.impl.OsmPackageImpl;
-
 import net.sf.seesea.model.core.impl.CorePackageImpl;
-
-import net.sf.seesea.model.core.physx.PhysxPackage;
-
 import net.sf.seesea.model.core.physx.impl.PhysxPackageImpl;
-
-import net.sf.seesea.model.core.weather.WeatherPackage;
-
 import net.sf.seesea.model.core.weather.impl.WeatherPackageImpl;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Package</b>.
  * <!-- end-user-doc -->
+ * @see net.sf.seesea.model.core.diagramInterchange.DiagramInterchangeFactory
+ * @model kind="package"
  * @generated
  */
-public class DiagramInterchangePackageImpl extends EPackageImpl implements DiagramInterchangePackage {
+public class DiagramInterchangePackageImpl extends EPackageImpl {
+	/**
+	 * The package name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String eNAME = "diagramInterchange"; //$NON-NLS-1$
+
+	/**
+	 * The package namespace URI.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String eNS_URI = "diagramInterchange"; //$NON-NLS-1$
+
+	/**
+	 * The package namespace name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String eNS_PREFIX = "diagramInterchange"; //$NON-NLS-1$
+
+	/**
+	 * The singleton instance of the package.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final DiagramInterchangePackageImpl eINSTANCE = net.sf.seesea.model.core.diagramInterchange.impl.DiagramInterchangePackageImpl.init();
+
+	/**
+	 * The meta object id for the '{@link net.sf.seesea.model.core.diagramInterchange.impl.GraphicalElementImpl <em>Graphical Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.sf.seesea.model.core.diagramInterchange.impl.GraphicalElementImpl
+	 * @see net.sf.seesea.model.core.diagramInterchange.impl.DiagramInterchangePackageImpl#getGraphicalElement()
+	 * @generated
+	 */
+	public static final int GRAPHICAL_ELEMENT = 4;
+
+	/**
+	 * The number of structural features of the '<em>Graphical Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int GRAPHICAL_ELEMENT_FEATURE_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link net.sf.seesea.model.core.diagramInterchange.impl.GraphicalNodeImpl <em>Graphical Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.sf.seesea.model.core.diagramInterchange.impl.GraphicalNodeImpl
+	 * @see net.sf.seesea.model.core.diagramInterchange.impl.DiagramInterchangePackageImpl#getGraphicalNode()
+	 * @generated
+	 */
+	public static final int GRAPHICAL_NODE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Represents</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int GRAPHICAL_NODE__REPRESENTS = GRAPHICAL_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Graphical Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int GRAPHICAL_NODE_FEATURE_COUNT = GRAPHICAL_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link net.sf.seesea.model.core.diagramInterchange.impl.GraphicalEdgeImpl <em>Graphical Edge</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.sf.seesea.model.core.diagramInterchange.impl.GraphicalEdgeImpl
+	 * @see net.sf.seesea.model.core.diagramInterchange.impl.DiagramInterchangePackageImpl#getGraphicalEdge()
+	 * @generated
+	 */
+	public static final int GRAPHICAL_EDGE = 1;
+
+	/**
+	 * The number of structural features of the '<em>Graphical Edge</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int GRAPHICAL_EDGE_FEATURE_COUNT = GRAPHICAL_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link net.sf.seesea.model.core.diagramInterchange.impl.GraphicalContainerImpl <em>Graphical Container</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.sf.seesea.model.core.diagramInterchange.impl.GraphicalContainerImpl
+	 * @see net.sf.seesea.model.core.diagramInterchange.impl.DiagramInterchangePackageImpl#getGraphicalContainer()
+	 * @generated
+	 */
+	public static final int GRAPHICAL_CONTAINER = 2;
+
+	/**
+	 * The feature id for the '<em><b>Children</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int GRAPHICAL_CONTAINER__CHILDREN = GRAPHICAL_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Graphical Container</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int GRAPHICAL_CONTAINER_FEATURE_COUNT = GRAPHICAL_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link net.sf.seesea.model.core.diagramInterchange.impl.DiagramImpl <em>Diagram</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.sf.seesea.model.core.diagramInterchange.impl.DiagramImpl
+	 * @see net.sf.seesea.model.core.diagramInterchange.impl.DiagramInterchangePackageImpl#getDiagram()
+	 * @generated
+	 */
+	public static final int DIAGRAM = 3;
+
+	/**
+	 * The feature id for the '<em><b>Children</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int DIAGRAM__CHILDREN = GRAPHICAL_CONTAINER__CHILDREN;
+
+	/**
+	 * The number of structural features of the '<em>Diagram</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int DIAGRAM_FEATURE_COUNT = GRAPHICAL_CONTAINER_FEATURE_COUNT + 0;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -121,12 +258,12 @@ public class DiagramInterchangePackageImpl extends EPackageImpl implements Diagr
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see net.sf.seesea.model.core.diagramInterchange.DiagramInterchangePackage#eNS_URI
+	 * @see net.sf.seesea.model.core.diagramInterchange.impl.DiagramInterchangePackageImpl#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
 	private DiagramInterchangePackageImpl() {
-		super(eNS_URI, DiagramInterchangeFactory.eINSTANCE);
+		super(eNS_URI, ((EFactory)DiagramInterchangeFactory.INSTANCE));
 	}
 
 	/**
@@ -139,7 +276,7 @@ public class DiagramInterchangePackageImpl extends EPackageImpl implements Diagr
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
 	 * 
-	 * <p>This method is used to initialize {@link DiagramInterchangePackage#eINSTANCE} when that field is accessed.
+	 * <p>This method is used to initialize {@link DiagramInterchangePackageImpl#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -148,8 +285,8 @@ public class DiagramInterchangePackageImpl extends EPackageImpl implements Diagr
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
-	public static DiagramInterchangePackage init() {
-		if (isInited) return (DiagramInterchangePackage)EPackage.Registry.INSTANCE.getEPackage(DiagramInterchangePackage.eNS_URI);
+	public static DiagramInterchangePackageImpl init() {
+		if (isInited) return (DiagramInterchangePackageImpl)EPackage.Registry.INSTANCE.getEPackage(DiagramInterchangePackageImpl.eNS_URI);
 
 		// Obtain or create and register package
 		DiagramInterchangePackageImpl theDiagramInterchangePackage = (DiagramInterchangePackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof DiagramInterchangePackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new DiagramInterchangePackageImpl());
@@ -157,12 +294,12 @@ public class DiagramInterchangePackageImpl extends EPackageImpl implements Diagr
 		isInited = true;
 
 		// Obtain or create and register interdependencies
-		CorePackageImpl theCorePackage = (CorePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CorePackage.eNS_URI) instanceof CorePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CorePackage.eNS_URI) : CorePackage.eINSTANCE);
-		GeoPackageImpl theGeoPackage = (GeoPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(GeoPackage.eNS_URI) instanceof GeoPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(GeoPackage.eNS_URI) : GeoPackage.eINSTANCE);
-		OsmPackageImpl theOsmPackage = (OsmPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(OsmPackage.eNS_URI) instanceof OsmPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(OsmPackage.eNS_URI) : OsmPackage.eINSTANCE);
-		PhysxPackageImpl thePhysxPackage = (PhysxPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(PhysxPackage.eNS_URI) instanceof PhysxPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(PhysxPackage.eNS_URI) : PhysxPackage.eINSTANCE);
-		WeatherPackageImpl theWeatherPackage = (WeatherPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WeatherPackage.eNS_URI) instanceof WeatherPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WeatherPackage.eNS_URI) : WeatherPackage.eINSTANCE);
-		DataPackageImpl theDataPackage = (DataPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(DataPackage.eNS_URI) instanceof DataPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(DataPackage.eNS_URI) : DataPackage.eINSTANCE);
+		CorePackageImpl theCorePackage = (CorePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CorePackageImpl.eNS_URI) instanceof CorePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CorePackageImpl.eNS_URI) : CorePackageImpl.eINSTANCE);
+		GeoPackageImpl theGeoPackage = (GeoPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(GeoPackageImpl.eNS_URI) instanceof GeoPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(GeoPackageImpl.eNS_URI) : GeoPackageImpl.eINSTANCE);
+		OsmPackageImpl theOsmPackage = (OsmPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(OsmPackageImpl.eNS_URI) instanceof OsmPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(OsmPackageImpl.eNS_URI) : OsmPackageImpl.eINSTANCE);
+		PhysxPackageImpl thePhysxPackage = (PhysxPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(PhysxPackageImpl.eNS_URI) instanceof PhysxPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(PhysxPackageImpl.eNS_URI) : PhysxPackageImpl.eINSTANCE);
+		WeatherPackageImpl theWeatherPackage = (WeatherPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WeatherPackageImpl.eNS_URI) instanceof WeatherPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WeatherPackageImpl.eNS_URI) : WeatherPackageImpl.eINSTANCE);
+		DataPackageImpl theDataPackage = (DataPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(DataPackageImpl.eNS_URI) instanceof DataPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(DataPackageImpl.eNS_URI) : DataPackageImpl.eINSTANCE);
 
 		// Create package meta-data objects
 		theDiagramInterchangePackage.createPackageContents();
@@ -187,13 +324,16 @@ public class DiagramInterchangePackageImpl extends EPackageImpl implements Diagr
 
   
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(DiagramInterchangePackage.eNS_URI, theDiagramInterchangePackage);
+		EPackage.Registry.INSTANCE.put(DiagramInterchangePackageImpl.eNS_URI, theDiagramInterchangePackage);
 		return theDiagramInterchangePackage;
 	}
 
 	/**
+	 * Returns the meta object for class '{@link net.sf.seesea.model.core.diagramInterchange.GraphicalNode <em>Graphical Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Graphical Node</em>'.
+	 * @see net.sf.seesea.model.core.diagramInterchange.GraphicalNode
 	 * @generated
 	 */
 	public EClass getGraphicalNode() {
@@ -201,8 +341,12 @@ public class DiagramInterchangePackageImpl extends EPackageImpl implements Diagr
 	}
 
 	/**
+	 * Returns the meta object for the reference '{@link net.sf.seesea.model.core.diagramInterchange.GraphicalNode#getRepresents <em>Represents</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Represents</em>'.
+	 * @see net.sf.seesea.model.core.diagramInterchange.GraphicalNode#getRepresents()
+	 * @see #getGraphicalNode()
 	 * @generated
 	 */
 	public EReference getGraphicalNode_Represents() {
@@ -210,8 +354,11 @@ public class DiagramInterchangePackageImpl extends EPackageImpl implements Diagr
 	}
 
 	/**
+	 * Returns the meta object for class '{@link net.sf.seesea.model.core.diagramInterchange.GraphicalEdge <em>Graphical Edge</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Graphical Edge</em>'.
+	 * @see net.sf.seesea.model.core.diagramInterchange.GraphicalEdge
 	 * @generated
 	 */
 	public EClass getGraphicalEdge() {
@@ -219,8 +366,11 @@ public class DiagramInterchangePackageImpl extends EPackageImpl implements Diagr
 	}
 
 	/**
+	 * Returns the meta object for class '{@link net.sf.seesea.model.core.diagramInterchange.GraphicalContainer <em>Graphical Container</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Graphical Container</em>'.
+	 * @see net.sf.seesea.model.core.diagramInterchange.GraphicalContainer
 	 * @generated
 	 */
 	public EClass getGraphicalContainer() {
@@ -228,8 +378,12 @@ public class DiagramInterchangePackageImpl extends EPackageImpl implements Diagr
 	}
 
 	/**
+	 * Returns the meta object for the reference list '{@link net.sf.seesea.model.core.diagramInterchange.GraphicalContainer#getChildren <em>Children</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Children</em>'.
+	 * @see net.sf.seesea.model.core.diagramInterchange.GraphicalContainer#getChildren()
+	 * @see #getGraphicalContainer()
 	 * @generated
 	 */
 	public EReference getGraphicalContainer_Children() {
@@ -237,8 +391,11 @@ public class DiagramInterchangePackageImpl extends EPackageImpl implements Diagr
 	}
 
 	/**
+	 * Returns the meta object for class '{@link net.sf.seesea.model.core.diagramInterchange.Diagram <em>Diagram</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Diagram</em>'.
+	 * @see net.sf.seesea.model.core.diagramInterchange.Diagram
 	 * @generated
 	 */
 	public EClass getDiagram() {
@@ -246,8 +403,11 @@ public class DiagramInterchangePackageImpl extends EPackageImpl implements Diagr
 	}
 
 	/**
+	 * Returns the meta object for class '{@link net.sf.seesea.model.core.diagramInterchange.GraphicalElement <em>Graphical Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Graphical Element</em>'.
+	 * @see net.sf.seesea.model.core.diagramInterchange.GraphicalElement
 	 * @generated
 	 */
 	public EClass getGraphicalElement() {
@@ -255,8 +415,10 @@ public class DiagramInterchangePackageImpl extends EPackageImpl implements Diagr
 	}
 
 	/**
+	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
 	public DiagramInterchangeFactory getDiagramInterchangeFactory() {
@@ -319,7 +481,7 @@ public class DiagramInterchangePackageImpl extends EPackageImpl implements Diagr
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		CorePackage theCorePackage = (CorePackage)EPackage.Registry.INSTANCE.getEPackage(CorePackage.eNS_URI);
+		CorePackageImpl theCorePackage = (CorePackageImpl)EPackage.Registry.INSTANCE.getEPackage(CorePackageImpl.eNS_URI);
 
 		// Create type parameters
 
@@ -343,6 +505,87 @@ public class DiagramInterchangePackageImpl extends EPackageImpl implements Diagr
 		initEClass(diagramEClass, Diagram.class, "Diagram", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
 		initEClass(graphicalElementEClass, GraphicalElement.class, "GraphicalElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Defines literals for the meta objects that represent
+	 * <ul>
+	 *   <li>each class,</li>
+	 *   <li>each feature of each class,</li>
+	 *   <li>each enum,</li>
+	 *   <li>and each data type</li>
+	 * </ul>
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public interface Literals {
+		/**
+		 * The meta object literal for the '{@link net.sf.seesea.model.core.diagramInterchange.impl.GraphicalNodeImpl <em>Graphical Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.sf.seesea.model.core.diagramInterchange.impl.GraphicalNodeImpl
+		 * @see net.sf.seesea.model.core.diagramInterchange.impl.DiagramInterchangePackageImpl#getGraphicalNode()
+		 * @generated
+		 */
+		public static final EClass GRAPHICAL_NODE = eINSTANCE.getGraphicalNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Represents</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference GRAPHICAL_NODE__REPRESENTS = eINSTANCE.getGraphicalNode_Represents();
+
+		/**
+		 * The meta object literal for the '{@link net.sf.seesea.model.core.diagramInterchange.impl.GraphicalEdgeImpl <em>Graphical Edge</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.sf.seesea.model.core.diagramInterchange.impl.GraphicalEdgeImpl
+		 * @see net.sf.seesea.model.core.diagramInterchange.impl.DiagramInterchangePackageImpl#getGraphicalEdge()
+		 * @generated
+		 */
+		public static final EClass GRAPHICAL_EDGE = eINSTANCE.getGraphicalEdge();
+
+		/**
+		 * The meta object literal for the '{@link net.sf.seesea.model.core.diagramInterchange.impl.GraphicalContainerImpl <em>Graphical Container</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.sf.seesea.model.core.diagramInterchange.impl.GraphicalContainerImpl
+		 * @see net.sf.seesea.model.core.diagramInterchange.impl.DiagramInterchangePackageImpl#getGraphicalContainer()
+		 * @generated
+		 */
+		public static final EClass GRAPHICAL_CONTAINER = eINSTANCE.getGraphicalContainer();
+
+		/**
+		 * The meta object literal for the '<em><b>Children</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference GRAPHICAL_CONTAINER__CHILDREN = eINSTANCE.getGraphicalContainer_Children();
+
+		/**
+		 * The meta object literal for the '{@link net.sf.seesea.model.core.diagramInterchange.impl.DiagramImpl <em>Diagram</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.sf.seesea.model.core.diagramInterchange.impl.DiagramImpl
+		 * @see net.sf.seesea.model.core.diagramInterchange.impl.DiagramInterchangePackageImpl#getDiagram()
+		 * @generated
+		 */
+		public static final EClass DIAGRAM = eINSTANCE.getDiagram();
+
+		/**
+		 * The meta object literal for the '{@link net.sf.seesea.model.core.diagramInterchange.impl.GraphicalElementImpl <em>Graphical Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.sf.seesea.model.core.diagramInterchange.impl.GraphicalElementImpl
+		 * @see net.sf.seesea.model.core.diagramInterchange.impl.DiagramInterchangePackageImpl#getGraphicalElement()
+		 * @generated
+		 */
+		public static final EClass GRAPHICAL_ELEMENT = eINSTANCE.getGraphicalElement();
+
 	}
 
 } //DiagramInterchangePackageImpl

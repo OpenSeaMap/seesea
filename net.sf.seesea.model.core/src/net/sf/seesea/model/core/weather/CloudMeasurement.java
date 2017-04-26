@@ -30,6 +30,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.weather;
 
+import java.util.List;
 import net.sf.seesea.model.core.physx.Measurement;
 
 import org.eclipse.emf.common.util.EList;
@@ -47,7 +48,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link net.sf.seesea.model.core.weather.CloudMeasurement#getCloudTypes <em>Cloud Types</em>}</li>
  * </ul>
  *
- * @see net.sf.seesea.model.core.weather.WeatherPackage#getCloudMeasurement()
  * @model
  * @generated
  */
@@ -64,7 +64,6 @@ public interface CloudMeasurement extends Measurement {
 	 * @return the value of the '<em>Cloud Coverage</em>' attribute.
 	 * @see net.sf.seesea.model.core.weather.CloudCoverage
 	 * @see #setCloudCoverage(CloudCoverage)
-	 * @see net.sf.seesea.model.core.weather.WeatherPackage#getCloudMeasurement_CloudCoverage()
 	 * @model
 	 * @generated
 	 */
@@ -93,10 +92,9 @@ public interface CloudMeasurement extends Measurement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Cloud Types</em>' attribute list.
 	 * @see net.sf.seesea.model.core.weather.CloudType
-	 * @see net.sf.seesea.model.core.weather.WeatherPackage#getCloudMeasurement_CloudTypes()
 	 * @model
 	 * @generated
 	 */
-	EList<CloudType> getCloudTypes();
+	List<CloudType> getCloudTypes();
 
 } // CloudMeasurement

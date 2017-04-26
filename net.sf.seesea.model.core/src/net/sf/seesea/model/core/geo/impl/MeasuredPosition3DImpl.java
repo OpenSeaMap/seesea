@@ -30,22 +30,18 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.geo.impl;
 
-import net.sf.seesea.model.core.geo.GeoPackage;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import net.sf.seesea.model.core.geo.GeoPosition;
 import net.sf.seesea.model.core.geo.GeoPosition3D;
 import net.sf.seesea.model.core.geo.Latitude;
 import net.sf.seesea.model.core.geo.Longitude;
 import net.sf.seesea.model.core.geo.MeasuredPosition3D;
-
 import net.sf.seesea.model.core.physx.impl.MeasurementImpl;
-
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -140,7 +136,7 @@ public class MeasuredPosition3DImpl extends MeasurementImpl implements MeasuredP
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return GeoPackage.Literals.MEASURED_POSITION3_D;
+		return GeoPackageImpl.Literals.MEASURED_POSITION3_D;
 	}
 
 	/**
@@ -161,7 +157,7 @@ public class MeasuredPosition3DImpl extends MeasurementImpl implements MeasuredP
 		Longitude oldLongitude = longitude;
 		longitude = newLongitude;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GeoPackage.MEASURED_POSITION3_D__LONGITUDE, oldLongitude, newLongitude);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GeoPackageImpl.MEASURED_POSITION3_D__LONGITUDE, oldLongitude, newLongitude);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -176,14 +172,14 @@ public class MeasuredPosition3DImpl extends MeasurementImpl implements MeasuredP
 		if (newLongitude != longitude) {
 			NotificationChain msgs = null;
 			if (longitude != null)
-				msgs = ((InternalEObject)longitude).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GeoPackage.MEASURED_POSITION3_D__LONGITUDE, null, msgs);
+				msgs = ((InternalEObject)longitude).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GeoPackageImpl.MEASURED_POSITION3_D__LONGITUDE, null, msgs);
 			if (newLongitude != null)
-				msgs = ((InternalEObject)newLongitude).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GeoPackage.MEASURED_POSITION3_D__LONGITUDE, null, msgs);
+				msgs = ((InternalEObject)newLongitude).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GeoPackageImpl.MEASURED_POSITION3_D__LONGITUDE, null, msgs);
 			msgs = basicSetLongitude(newLongitude, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackage.MEASURED_POSITION3_D__LONGITUDE, newLongitude, newLongitude));
+			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackageImpl.MEASURED_POSITION3_D__LONGITUDE, newLongitude, newLongitude));
 	}
 
 	/**
@@ -204,7 +200,7 @@ public class MeasuredPosition3DImpl extends MeasurementImpl implements MeasuredP
 		Latitude oldLatitude = latitude;
 		latitude = newLatitude;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GeoPackage.MEASURED_POSITION3_D__LATITUDE, oldLatitude, newLatitude);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GeoPackageImpl.MEASURED_POSITION3_D__LATITUDE, oldLatitude, newLatitude);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -219,14 +215,14 @@ public class MeasuredPosition3DImpl extends MeasurementImpl implements MeasuredP
 		if (newLatitude != latitude) {
 			NotificationChain msgs = null;
 			if (latitude != null)
-				msgs = ((InternalEObject)latitude).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GeoPackage.MEASURED_POSITION3_D__LATITUDE, null, msgs);
+				msgs = ((InternalEObject)latitude).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GeoPackageImpl.MEASURED_POSITION3_D__LATITUDE, null, msgs);
 			if (newLatitude != null)
-				msgs = ((InternalEObject)newLatitude).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GeoPackage.MEASURED_POSITION3_D__LATITUDE, null, msgs);
+				msgs = ((InternalEObject)newLatitude).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GeoPackageImpl.MEASURED_POSITION3_D__LATITUDE, null, msgs);
 			msgs = basicSetLatitude(newLatitude, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackage.MEASURED_POSITION3_D__LATITUDE, newLatitude, newLatitude));
+			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackageImpl.MEASURED_POSITION3_D__LATITUDE, newLatitude, newLatitude));
 	}
 
 	/**
@@ -247,7 +243,7 @@ public class MeasuredPosition3DImpl extends MeasurementImpl implements MeasuredP
 		int oldPrecision = precision;
 		precision = newPrecision;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackage.MEASURED_POSITION3_D__PRECISION, oldPrecision, precision));
+			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackageImpl.MEASURED_POSITION3_D__PRECISION, oldPrecision, precision));
 	}
 
 	/**
@@ -268,7 +264,7 @@ public class MeasuredPosition3DImpl extends MeasurementImpl implements MeasuredP
 		double oldAltitude = altitude;
 		altitude = newAltitude;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackage.MEASURED_POSITION3_D__ALTITUDE, oldAltitude, altitude));
+			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackageImpl.MEASURED_POSITION3_D__ALTITUDE, oldAltitude, altitude));
 	}
 
 	/**
@@ -279,9 +275,9 @@ public class MeasuredPosition3DImpl extends MeasurementImpl implements MeasuredP
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case GeoPackage.MEASURED_POSITION3_D__LONGITUDE:
+			case GeoPackageImpl.MEASURED_POSITION3_D__LONGITUDE:
 				return basicSetLongitude(null, msgs);
-			case GeoPackage.MEASURED_POSITION3_D__LATITUDE:
+			case GeoPackageImpl.MEASURED_POSITION3_D__LATITUDE:
 				return basicSetLatitude(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -295,13 +291,13 @@ public class MeasuredPosition3DImpl extends MeasurementImpl implements MeasuredP
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GeoPackage.MEASURED_POSITION3_D__LONGITUDE:
+			case GeoPackageImpl.MEASURED_POSITION3_D__LONGITUDE:
 				return getLongitude();
-			case GeoPackage.MEASURED_POSITION3_D__LATITUDE:
+			case GeoPackageImpl.MEASURED_POSITION3_D__LATITUDE:
 				return getLatitude();
-			case GeoPackage.MEASURED_POSITION3_D__PRECISION:
+			case GeoPackageImpl.MEASURED_POSITION3_D__PRECISION:
 				return getPrecision();
-			case GeoPackage.MEASURED_POSITION3_D__ALTITUDE:
+			case GeoPackageImpl.MEASURED_POSITION3_D__ALTITUDE:
 				return getAltitude();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -315,16 +311,16 @@ public class MeasuredPosition3DImpl extends MeasurementImpl implements MeasuredP
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GeoPackage.MEASURED_POSITION3_D__LONGITUDE:
+			case GeoPackageImpl.MEASURED_POSITION3_D__LONGITUDE:
 				setLongitude((Longitude)newValue);
 				return;
-			case GeoPackage.MEASURED_POSITION3_D__LATITUDE:
+			case GeoPackageImpl.MEASURED_POSITION3_D__LATITUDE:
 				setLatitude((Latitude)newValue);
 				return;
-			case GeoPackage.MEASURED_POSITION3_D__PRECISION:
+			case GeoPackageImpl.MEASURED_POSITION3_D__PRECISION:
 				setPrecision((Integer)newValue);
 				return;
-			case GeoPackage.MEASURED_POSITION3_D__ALTITUDE:
+			case GeoPackageImpl.MEASURED_POSITION3_D__ALTITUDE:
 				setAltitude((Double)newValue);
 				return;
 		}
@@ -339,16 +335,16 @@ public class MeasuredPosition3DImpl extends MeasurementImpl implements MeasuredP
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GeoPackage.MEASURED_POSITION3_D__LONGITUDE:
+			case GeoPackageImpl.MEASURED_POSITION3_D__LONGITUDE:
 				setLongitude((Longitude)null);
 				return;
-			case GeoPackage.MEASURED_POSITION3_D__LATITUDE:
+			case GeoPackageImpl.MEASURED_POSITION3_D__LATITUDE:
 				setLatitude((Latitude)null);
 				return;
-			case GeoPackage.MEASURED_POSITION3_D__PRECISION:
+			case GeoPackageImpl.MEASURED_POSITION3_D__PRECISION:
 				setPrecision(PRECISION_EDEFAULT);
 				return;
-			case GeoPackage.MEASURED_POSITION3_D__ALTITUDE:
+			case GeoPackageImpl.MEASURED_POSITION3_D__ALTITUDE:
 				setAltitude(ALTITUDE_EDEFAULT);
 				return;
 		}
@@ -363,13 +359,13 @@ public class MeasuredPosition3DImpl extends MeasurementImpl implements MeasuredP
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GeoPackage.MEASURED_POSITION3_D__LONGITUDE:
+			case GeoPackageImpl.MEASURED_POSITION3_D__LONGITUDE:
 				return longitude != null;
-			case GeoPackage.MEASURED_POSITION3_D__LATITUDE:
+			case GeoPackageImpl.MEASURED_POSITION3_D__LATITUDE:
 				return latitude != null;
-			case GeoPackage.MEASURED_POSITION3_D__PRECISION:
+			case GeoPackageImpl.MEASURED_POSITION3_D__PRECISION:
 				return precision != PRECISION_EDEFAULT;
-			case GeoPackage.MEASURED_POSITION3_D__ALTITUDE:
+			case GeoPackageImpl.MEASURED_POSITION3_D__ALTITUDE:
 				return altitude != ALTITUDE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
@@ -384,15 +380,15 @@ public class MeasuredPosition3DImpl extends MeasurementImpl implements MeasuredP
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == GeoPosition.class) {
 			switch (derivedFeatureID) {
-				case GeoPackage.MEASURED_POSITION3_D__LONGITUDE: return GeoPackage.GEO_POSITION__LONGITUDE;
-				case GeoPackage.MEASURED_POSITION3_D__LATITUDE: return GeoPackage.GEO_POSITION__LATITUDE;
-				case GeoPackage.MEASURED_POSITION3_D__PRECISION: return GeoPackage.GEO_POSITION__PRECISION;
+				case GeoPackageImpl.MEASURED_POSITION3_D__LONGITUDE: return GeoPackageImpl.GEO_POSITION__LONGITUDE;
+				case GeoPackageImpl.MEASURED_POSITION3_D__LATITUDE: return GeoPackageImpl.GEO_POSITION__LATITUDE;
+				case GeoPackageImpl.MEASURED_POSITION3_D__PRECISION: return GeoPackageImpl.GEO_POSITION__PRECISION;
 				default: return -1;
 			}
 		}
 		if (baseClass == GeoPosition3D.class) {
 			switch (derivedFeatureID) {
-				case GeoPackage.MEASURED_POSITION3_D__ALTITUDE: return GeoPackage.GEO_POSITION3_D__ALTITUDE;
+				case GeoPackageImpl.MEASURED_POSITION3_D__ALTITUDE: return GeoPackageImpl.GEO_POSITION3_D__ALTITUDE;
 				default: return -1;
 			}
 		}
@@ -408,15 +404,15 @@ public class MeasuredPosition3DImpl extends MeasurementImpl implements MeasuredP
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == GeoPosition.class) {
 			switch (baseFeatureID) {
-				case GeoPackage.GEO_POSITION__LONGITUDE: return GeoPackage.MEASURED_POSITION3_D__LONGITUDE;
-				case GeoPackage.GEO_POSITION__LATITUDE: return GeoPackage.MEASURED_POSITION3_D__LATITUDE;
-				case GeoPackage.GEO_POSITION__PRECISION: return GeoPackage.MEASURED_POSITION3_D__PRECISION;
+				case GeoPackageImpl.GEO_POSITION__LONGITUDE: return GeoPackageImpl.MEASURED_POSITION3_D__LONGITUDE;
+				case GeoPackageImpl.GEO_POSITION__LATITUDE: return GeoPackageImpl.MEASURED_POSITION3_D__LATITUDE;
+				case GeoPackageImpl.GEO_POSITION__PRECISION: return GeoPackageImpl.MEASURED_POSITION3_D__PRECISION;
 				default: return -1;
 			}
 		}
 		if (baseClass == GeoPosition3D.class) {
 			switch (baseFeatureID) {
-				case GeoPackage.GEO_POSITION3_D__ALTITUDE: return GeoPackage.MEASURED_POSITION3_D__ALTITUDE;
+				case GeoPackageImpl.GEO_POSITION3_D__ALTITUDE: return GeoPackageImpl.MEASURED_POSITION3_D__ALTITUDE;
 				default: return -1;
 			}
 		}

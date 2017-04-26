@@ -37,7 +37,6 @@ package net.sf.seesea.model.core.diagramInterchange;
  * <!-- end-user-doc -->
  *
  *
- * @see net.sf.seesea.model.core.diagramInterchange.DiagramInterchangePackage#getGraphicalEdge()
  * @model
  * @generated
  */

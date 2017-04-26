@@ -41,11 +41,11 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Sea State</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see net.sf.seesea.model.core.weather.WeatherPackage#getSeaState()
+ * @see net.sf.seesea.model.core.weather.impl.WeatherPackageImpl#getSeaState()
  * @model
  * @generated
  */
-public enum SeaState implements Enumerator {
+public enum SeaState implements InternalSeaState {
 	/**
 	 * The '<em><b>Calm Glassy</b></em>' literal object.
 	 * <!-- begin-user-doc -->
@@ -483,3 +483,13 @@ public enum SeaState implements Enumerator {
 	}
 	
 } //SeaState
+
+/**
+ * A private implementation interface used to hide the inheritance from Enumerator.
+ * <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
+ * @generated
+ */
+interface InternalSeaState extends org.eclipse.emf.common.util.Enumerator {
+	// Empty 
+}

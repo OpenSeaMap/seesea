@@ -37,18 +37,16 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see net.sf.seesea.model.core.CorePackage
  * @generated
  */
-public interface CoreFactory extends EFactory {
+public interface CoreFactory {
 	/**
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	CoreFactory eINSTANCE = net.sf.seesea.model.core.impl.CoreFactoryImpl.init();
-
+	CoreFactory INSTANCE = net.sf.seesea.model.core.impl.CoreFactoryImpl.eINSTANCE;
 	/**
 	 * Returns a new object of class '<em>Model Root</em>'.
 	 * <!-- begin-user-doc -->
@@ -66,14 +64,5 @@ public interface CoreFactory extends EFactory {
 	 * @generated
 	 */
 	ModelObject createModelObject();
-
-	/**
-	 * Returns the package supported by this factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the package supported by this factory.
-	 * @generated
-	 */
-	CorePackage getCorePackage();
 
 } //CoreFactory

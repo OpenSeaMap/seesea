@@ -30,19 +30,16 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.geo.impl;
 
-import net.sf.seesea.model.core.geo.GeoPackage;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import net.sf.seesea.model.core.geo.GeoPosition;
 import net.sf.seesea.model.core.geo.Latitude;
 import net.sf.seesea.model.core.geo.Longitude;
-
 import net.sf.seesea.model.core.impl.ModelObjectImpl;
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -116,7 +113,7 @@ public class GeoPositionImpl extends ModelObjectImpl implements GeoPosition {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return GeoPackage.Literals.GEO_POSITION;
+		return GeoPackageImpl.Literals.GEO_POSITION;
 	}
 
 	/**
@@ -137,7 +134,7 @@ public class GeoPositionImpl extends ModelObjectImpl implements GeoPosition {
 		Longitude oldLongitude = longitude;
 		longitude = newLongitude;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GeoPackage.GEO_POSITION__LONGITUDE, oldLongitude, newLongitude);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GeoPackageImpl.GEO_POSITION__LONGITUDE, oldLongitude, newLongitude);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -152,14 +149,14 @@ public class GeoPositionImpl extends ModelObjectImpl implements GeoPosition {
 		if (newLongitude != longitude) {
 			NotificationChain msgs = null;
 			if (longitude != null)
-				msgs = ((InternalEObject)longitude).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GeoPackage.GEO_POSITION__LONGITUDE, null, msgs);
+				msgs = ((InternalEObject)longitude).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GeoPackageImpl.GEO_POSITION__LONGITUDE, null, msgs);
 			if (newLongitude != null)
-				msgs = ((InternalEObject)newLongitude).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GeoPackage.GEO_POSITION__LONGITUDE, null, msgs);
+				msgs = ((InternalEObject)newLongitude).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GeoPackageImpl.GEO_POSITION__LONGITUDE, null, msgs);
 			msgs = basicSetLongitude(newLongitude, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackage.GEO_POSITION__LONGITUDE, newLongitude, newLongitude));
+			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackageImpl.GEO_POSITION__LONGITUDE, newLongitude, newLongitude));
 	}
 
 	/**
@@ -180,7 +177,7 @@ public class GeoPositionImpl extends ModelObjectImpl implements GeoPosition {
 		Latitude oldLatitude = latitude;
 		latitude = newLatitude;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GeoPackage.GEO_POSITION__LATITUDE, oldLatitude, newLatitude);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GeoPackageImpl.GEO_POSITION__LATITUDE, oldLatitude, newLatitude);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -195,14 +192,14 @@ public class GeoPositionImpl extends ModelObjectImpl implements GeoPosition {
 		if (newLatitude != latitude) {
 			NotificationChain msgs = null;
 			if (latitude != null)
-				msgs = ((InternalEObject)latitude).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GeoPackage.GEO_POSITION__LATITUDE, null, msgs);
+				msgs = ((InternalEObject)latitude).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GeoPackageImpl.GEO_POSITION__LATITUDE, null, msgs);
 			if (newLatitude != null)
-				msgs = ((InternalEObject)newLatitude).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GeoPackage.GEO_POSITION__LATITUDE, null, msgs);
+				msgs = ((InternalEObject)newLatitude).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GeoPackageImpl.GEO_POSITION__LATITUDE, null, msgs);
 			msgs = basicSetLatitude(newLatitude, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackage.GEO_POSITION__LATITUDE, newLatitude, newLatitude));
+			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackageImpl.GEO_POSITION__LATITUDE, newLatitude, newLatitude));
 	}
 
 	/**
@@ -223,7 +220,7 @@ public class GeoPositionImpl extends ModelObjectImpl implements GeoPosition {
 		int oldPrecision = precision;
 		precision = newPrecision;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackage.GEO_POSITION__PRECISION, oldPrecision, precision));
+			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackageImpl.GEO_POSITION__PRECISION, oldPrecision, precision));
 	}
 
 	/**
@@ -234,9 +231,9 @@ public class GeoPositionImpl extends ModelObjectImpl implements GeoPosition {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case GeoPackage.GEO_POSITION__LONGITUDE:
+			case GeoPackageImpl.GEO_POSITION__LONGITUDE:
 				return basicSetLongitude(null, msgs);
-			case GeoPackage.GEO_POSITION__LATITUDE:
+			case GeoPackageImpl.GEO_POSITION__LATITUDE:
 				return basicSetLatitude(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -250,11 +247,11 @@ public class GeoPositionImpl extends ModelObjectImpl implements GeoPosition {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GeoPackage.GEO_POSITION__LONGITUDE:
+			case GeoPackageImpl.GEO_POSITION__LONGITUDE:
 				return getLongitude();
-			case GeoPackage.GEO_POSITION__LATITUDE:
+			case GeoPackageImpl.GEO_POSITION__LATITUDE:
 				return getLatitude();
-			case GeoPackage.GEO_POSITION__PRECISION:
+			case GeoPackageImpl.GEO_POSITION__PRECISION:
 				return getPrecision();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -268,13 +265,13 @@ public class GeoPositionImpl extends ModelObjectImpl implements GeoPosition {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GeoPackage.GEO_POSITION__LONGITUDE:
+			case GeoPackageImpl.GEO_POSITION__LONGITUDE:
 				setLongitude((Longitude)newValue);
 				return;
-			case GeoPackage.GEO_POSITION__LATITUDE:
+			case GeoPackageImpl.GEO_POSITION__LATITUDE:
 				setLatitude((Latitude)newValue);
 				return;
-			case GeoPackage.GEO_POSITION__PRECISION:
+			case GeoPackageImpl.GEO_POSITION__PRECISION:
 				setPrecision((Integer)newValue);
 				return;
 		}
@@ -289,13 +286,13 @@ public class GeoPositionImpl extends ModelObjectImpl implements GeoPosition {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GeoPackage.GEO_POSITION__LONGITUDE:
+			case GeoPackageImpl.GEO_POSITION__LONGITUDE:
 				setLongitude((Longitude)null);
 				return;
-			case GeoPackage.GEO_POSITION__LATITUDE:
+			case GeoPackageImpl.GEO_POSITION__LATITUDE:
 				setLatitude((Latitude)null);
 				return;
-			case GeoPackage.GEO_POSITION__PRECISION:
+			case GeoPackageImpl.GEO_POSITION__PRECISION:
 				setPrecision(PRECISION_EDEFAULT);
 				return;
 		}
@@ -310,11 +307,11 @@ public class GeoPositionImpl extends ModelObjectImpl implements GeoPosition {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GeoPackage.GEO_POSITION__LONGITUDE:
+			case GeoPackageImpl.GEO_POSITION__LONGITUDE:
 				return longitude != null;
-			case GeoPackage.GEO_POSITION__LATITUDE:
+			case GeoPackageImpl.GEO_POSITION__LATITUDE:
 				return latitude != null;
-			case GeoPackage.GEO_POSITION__PRECISION:
+			case GeoPackageImpl.GEO_POSITION__PRECISION:
 				return precision != PRECISION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

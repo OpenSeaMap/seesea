@@ -30,6 +30,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.geo;
 
+import java.util.List;
 import net.sf.seesea.model.core.ModelObject;
 import org.eclipse.emf.common.util.EList;
 
@@ -45,7 +46,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link net.sf.seesea.model.core.geo.ChartContainer#getCharts <em>Charts</em>}</li>
  * </ul>
  *
- * @see net.sf.seesea.model.core.geo.GeoPackage#getChartContainer()
  * @model
  * @generated
  */
@@ -60,10 +60,9 @@ public interface ChartContainer extends ModelObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Charts</em>' containment reference list.
-	 * @see net.sf.seesea.model.core.geo.GeoPackage#getChartContainer_Charts()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Chart> getCharts();
+	List<Chart> getCharts();
 
 } // ChartContainer

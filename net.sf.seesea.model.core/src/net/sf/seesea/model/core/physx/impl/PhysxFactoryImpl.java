@@ -49,14 +49,22 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  */
 public class PhysxFactoryImpl extends EFactoryImpl implements PhysxFactory {
 	/**
+	 * The singleton instance of the factory.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final PhysxFactoryImpl eINSTANCE = init();
+
+	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static PhysxFactory init() {
+	public static PhysxFactoryImpl init() {
 		try {
-			PhysxFactory thePhysxFactory = (PhysxFactory)EPackage.Registry.INSTANCE.getEFactory(PhysxPackage.eNS_URI);
+			PhysxFactoryImpl thePhysxFactory = (PhysxFactoryImpl)EPackage.Registry.INSTANCE.getEFactory(PhysxPackageImpl.eNS_URI);
 			if (thePhysxFactory != null) {
 				return thePhysxFactory;
 			}
@@ -85,17 +93,17 @@ public class PhysxFactoryImpl extends EFactoryImpl implements PhysxFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case PhysxPackage.TEMPERATURE: return createTemperature();
-			case PhysxPackage.SPEED: return createSpeed();
-			case PhysxPackage.HEADING: return createHeading();
-			case PhysxPackage.RELATIVE_WIND: return createRelativeWind();
-			case PhysxPackage.SATELLITE_INFO: return createSatelliteInfo();
-			case PhysxPackage.SATELLITES_VISIBLE: return createSatellitesVisible();
-			case PhysxPackage.TIME: return createTime();
-			case PhysxPackage.DISTANCE: return createDistance();
-			case PhysxPackage.COMPOSITE_MEASUREMENT: return createCompositeMeasurement();
-			case PhysxPackage.RELATIVE_SPEED: return createRelativeSpeed();
-			case PhysxPackage.ACCELERATION: return createAcceleration();
+			case PhysxPackageImpl.TEMPERATURE: return (EObject)createTemperature();
+			case PhysxPackageImpl.SPEED: return (EObject)createSpeed();
+			case PhysxPackageImpl.HEADING: return (EObject)createHeading();
+			case PhysxPackageImpl.RELATIVE_WIND: return (EObject)createRelativeWind();
+			case PhysxPackageImpl.SATELLITE_INFO: return (EObject)createSatelliteInfo();
+			case PhysxPackageImpl.SATELLITES_VISIBLE: return (EObject)createSatellitesVisible();
+			case PhysxPackageImpl.TIME: return (EObject)createTime();
+			case PhysxPackageImpl.DISTANCE: return (EObject)createDistance();
+			case PhysxPackageImpl.COMPOSITE_MEASUREMENT: return (EObject)createCompositeMeasurement();
+			case PhysxPackageImpl.RELATIVE_SPEED: return (EObject)createRelativeSpeed();
+			case PhysxPackageImpl.ACCELERATION: return (EObject)createAcceleration();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
@@ -109,19 +117,19 @@ public class PhysxFactoryImpl extends EFactoryImpl implements PhysxFactory {
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case PhysxPackage.TEMPERATURE_UNIT:
+			case PhysxPackageImpl.TEMPERATURE_UNIT:
 				return createTemperatureUnitFromString(eDataType, initialValue);
-			case PhysxPackage.HEADING_TYPE:
+			case PhysxPackageImpl.HEADING_TYPE:
 				return createHeadingTypeFromString(eDataType, initialValue);
-			case PhysxPackage.SPEED_UNIT:
+			case PhysxPackageImpl.SPEED_UNIT:
 				return createSpeedUnitFromString(eDataType, initialValue);
-			case PhysxPackage.HAND_ORIENTATION:
+			case PhysxPackageImpl.HAND_ORIENTATION:
 				return createHandOrientationFromString(eDataType, initialValue);
-			case PhysxPackage.LENGTH_UNIT:
+			case PhysxPackageImpl.LENGTH_UNIT:
 				return createLengthUnitFromString(eDataType, initialValue);
-			case PhysxPackage.SPEED_TYPE:
+			case PhysxPackageImpl.SPEED_TYPE:
 				return createSpeedTypeFromString(eDataType, initialValue);
-			case PhysxPackage.DISTANCE_TYPE:
+			case PhysxPackageImpl.DISTANCE_TYPE:
 				return createDistanceTypeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
@@ -136,19 +144,19 @@ public class PhysxFactoryImpl extends EFactoryImpl implements PhysxFactory {
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case PhysxPackage.TEMPERATURE_UNIT:
+			case PhysxPackageImpl.TEMPERATURE_UNIT:
 				return convertTemperatureUnitToString(eDataType, instanceValue);
-			case PhysxPackage.HEADING_TYPE:
+			case PhysxPackageImpl.HEADING_TYPE:
 				return convertHeadingTypeToString(eDataType, instanceValue);
-			case PhysxPackage.SPEED_UNIT:
+			case PhysxPackageImpl.SPEED_UNIT:
 				return convertSpeedUnitToString(eDataType, instanceValue);
-			case PhysxPackage.HAND_ORIENTATION:
+			case PhysxPackageImpl.HAND_ORIENTATION:
 				return convertHandOrientationToString(eDataType, instanceValue);
-			case PhysxPackage.LENGTH_UNIT:
+			case PhysxPackageImpl.LENGTH_UNIT:
 				return convertLengthUnitToString(eDataType, instanceValue);
-			case PhysxPackage.SPEED_TYPE:
+			case PhysxPackageImpl.SPEED_TYPE:
 				return convertSpeedTypeToString(eDataType, instanceValue);
-			case PhysxPackage.DISTANCE_TYPE:
+			case PhysxPackageImpl.DISTANCE_TYPE:
 				return convertDistanceTypeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
@@ -410,8 +418,8 @@ public class PhysxFactoryImpl extends EFactoryImpl implements PhysxFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PhysxPackage getPhysxPackage() {
-		return (PhysxPackage)getEPackage();
+	public PhysxPackageImpl getPhysxPackage() {
+		return (PhysxPackageImpl)getEPackage();
 	}
 
 	/**
@@ -421,8 +429,8 @@ public class PhysxFactoryImpl extends EFactoryImpl implements PhysxFactory {
 	 * @generated
 	 */
 	@Deprecated
-	public static PhysxPackage getPackage() {
-		return PhysxPackage.eINSTANCE;
+	public static PhysxPackageImpl getPackage() {
+		return PhysxPackageImpl.eINSTANCE;
 	}
 
 } //PhysxFactoryImpl

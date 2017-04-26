@@ -48,14 +48,22 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  */
 public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 	/**
+	 * The singleton instance of the factory.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final CoreFactoryImpl eINSTANCE = init();
+
+	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static CoreFactory init() {
+	public static CoreFactoryImpl init() {
 		try {
-			CoreFactory theCoreFactory = (CoreFactory)EPackage.Registry.INSTANCE.getEFactory(CorePackage.eNS_URI);
+			CoreFactoryImpl theCoreFactory = (CoreFactoryImpl)EPackage.Registry.INSTANCE.getEFactory(CorePackageImpl.eNS_URI);
 			if (theCoreFactory != null) {
 				return theCoreFactory;
 			}
@@ -84,8 +92,8 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case CorePackage.MODEL_ROOT: return createModelRoot();
-			case CorePackage.MODEL_OBJECT: return createModelObject();
+			case CorePackageImpl.MODEL_ROOT: return (EObject)createModelRoot();
+			case CorePackageImpl.MODEL_OBJECT: return (EObject)createModelObject();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
@@ -116,8 +124,8 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CorePackage getCorePackage() {
-		return (CorePackage)getEPackage();
+	public CorePackageImpl getCorePackage() {
+		return (CorePackageImpl)getEPackage();
 	}
 
 	/**
@@ -127,8 +135,8 @@ public class CoreFactoryImpl extends EFactoryImpl implements CoreFactory {
 	 * @generated
 	 */
 	@Deprecated
-	public static CorePackage getPackage() {
-		return CorePackage.eINSTANCE;
+	public static CorePackageImpl getPackage() {
+		return CorePackageImpl.eINSTANCE;
 	}
 
 } //CoreFactoryImpl

@@ -30,47 +30,300 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.geo.osm.impl;
 
-import net.sf.seesea.model.core.CorePackage;
-
-import net.sf.seesea.model.core.data.DataPackage;
-
-import net.sf.seesea.model.core.data.impl.DataPackageImpl;
-
-import net.sf.seesea.model.core.diagramInterchange.DiagramInterchangePackage;
-import net.sf.seesea.model.core.diagramInterchange.impl.DiagramInterchangePackageImpl;
-import net.sf.seesea.model.core.geo.GeoPackage;
-
-import net.sf.seesea.model.core.geo.impl.GeoPackageImpl;
-
-import net.sf.seesea.model.core.geo.osm.Area;
-import net.sf.seesea.model.core.geo.osm.OsmFactory;
-import net.sf.seesea.model.core.geo.osm.OsmPackage;
-import net.sf.seesea.model.core.geo.osm.World;
-
-import net.sf.seesea.model.core.impl.CorePackageImpl;
-
-import net.sf.seesea.model.core.physx.PhysxPackage;
-
-import net.sf.seesea.model.core.physx.impl.PhysxPackageImpl;
-
-import net.sf.seesea.model.core.weather.WeatherPackage;
-
-import net.sf.seesea.model.core.weather.impl.WeatherPackageImpl;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
+import net.sf.seesea.model.core.data.impl.DataPackageImpl;
+import net.sf.seesea.model.core.diagramInterchange.impl.DiagramInterchangePackageImpl;
+import net.sf.seesea.model.core.geo.impl.GeoPackageImpl;
+import net.sf.seesea.model.core.geo.osm.Area;
+import net.sf.seesea.model.core.geo.osm.OsmFactory;
+import net.sf.seesea.model.core.geo.osm.World;
+import net.sf.seesea.model.core.impl.CorePackageImpl;
+import net.sf.seesea.model.core.physx.impl.PhysxPackageImpl;
+import net.sf.seesea.model.core.weather.impl.WeatherPackageImpl;
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Package</b>.
  * <!-- end-user-doc -->
+ * @see net.sf.seesea.model.core.geo.osm.OsmFactory
+ * @model kind="package"
  * @generated
  */
-public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
+public class OsmPackageImpl extends EPackageImpl {
+	/**
+	 * The package name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String eNAME = "osm"; //$NON-NLS-1$
+
+	/**
+	 * The package namespace URI.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String eNS_URI = "osm"; //$NON-NLS-1$
+
+	/**
+	 * The package namespace name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String eNS_PREFIX = "osm"; //$NON-NLS-1$
+
+	/**
+	 * The singleton instance of the package.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final OsmPackageImpl eINSTANCE = net.sf.seesea.model.core.geo.osm.impl.OsmPackageImpl.init();
+
+	/**
+	 * The meta object id for the '{@link net.sf.seesea.model.core.geo.osm.impl.AreaImpl <em>Area</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.sf.seesea.model.core.geo.osm.impl.AreaImpl
+	 * @see net.sf.seesea.model.core.geo.osm.impl.OsmPackageImpl#getArea()
+	 * @generated
+	 */
+	public static final int AREA = 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int AREA__NAME = GeoPackageImpl.CHART__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Chart Configuration</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int AREA__CHART_CONFIGURATION = GeoPackageImpl.CHART__CHART_CONFIGURATION;
+
+	/**
+	 * The feature id for the '<em><b>Poi Container</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int AREA__POI_CONTAINER = GeoPackageImpl.CHART_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Routing Container</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int AREA__ROUTING_CONTAINER = GeoPackageImpl.CHART_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Tracks Container</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int AREA__TRACKS_CONTAINER = GeoPackageImpl.CHART_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Zoom Level</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int AREA__ZOOM_LEVEL = GeoPackageImpl.CHART_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Map Center Position</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int AREA__MAP_CENTER_POSITION = GeoPackageImpl.CHART_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Sub Area</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int AREA__SUB_AREA = GeoPackageImpl.CHART_FEATURE_COUNT + 5;
+
+	/**
+	 * The number of structural features of the '<em>Area</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int AREA_FEATURE_COUNT = GeoPackageImpl.CHART_FEATURE_COUNT + 6;
+
+	/**
+	 * The meta object id for the '{@link net.sf.seesea.model.core.geo.osm.impl.WorldImpl <em>World</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.sf.seesea.model.core.geo.osm.impl.WorldImpl
+	 * @see net.sf.seesea.model.core.geo.osm.impl.OsmPackageImpl#getWorld()
+	 * @generated
+	 */
+	public static final int WORLD = 1;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int WORLD__NAME = AREA__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Chart Configuration</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int WORLD__CHART_CONFIGURATION = AREA__CHART_CONFIGURATION;
+
+	/**
+	 * The feature id for the '<em><b>Poi Container</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int WORLD__POI_CONTAINER = AREA__POI_CONTAINER;
+
+	/**
+	 * The feature id for the '<em><b>Routing Container</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int WORLD__ROUTING_CONTAINER = AREA__ROUTING_CONTAINER;
+
+	/**
+	 * The feature id for the '<em><b>Tracks Container</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int WORLD__TRACKS_CONTAINER = AREA__TRACKS_CONTAINER;
+
+	/**
+	 * The feature id for the '<em><b>Zoom Level</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int WORLD__ZOOM_LEVEL = AREA__ZOOM_LEVEL;
+
+	/**
+	 * The feature id for the '<em><b>Map Center Position</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int WORLD__MAP_CENTER_POSITION = AREA__MAP_CENTER_POSITION;
+
+	/**
+	 * The feature id for the '<em><b>Sub Area</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int WORLD__SUB_AREA = AREA__SUB_AREA;
+
+	/**
+	 * The feature id for the '<em><b>Longitude Scale</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int WORLD__LONGITUDE_SCALE = AREA_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Latitude Scale</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int WORLD__LATITUDE_SCALE = AREA_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Anchor Position</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int WORLD__ANCHOR_POSITION = AREA_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Cursor Position</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int WORLD__CURSOR_POSITION = AREA_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Trip</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int WORLD__TRIP = AREA_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Total Trip</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int WORLD__TOTAL_TRIP = AREA_FEATURE_COUNT + 5;
+
+	/**
+	 * The number of structural features of the '<em>World</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int WORLD_FEATURE_COUNT = AREA_FEATURE_COUNT + 6;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -96,12 +349,12 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see net.sf.seesea.model.core.geo.osm.OsmPackage#eNS_URI
+	 * @see net.sf.seesea.model.core.geo.osm.impl.OsmPackageImpl#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
 	private OsmPackageImpl() {
-		super(eNS_URI, OsmFactory.eINSTANCE);
+		super(eNS_URI, ((EFactory)OsmFactory.INSTANCE));
 	}
 
 	/**
@@ -114,7 +367,7 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
 	 * 
-	 * <p>This method is used to initialize {@link OsmPackage#eINSTANCE} when that field is accessed.
+	 * <p>This method is used to initialize {@link OsmPackageImpl#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -123,8 +376,8 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
-	public static OsmPackage init() {
-		if (isInited) return (OsmPackage)EPackage.Registry.INSTANCE.getEPackage(OsmPackage.eNS_URI);
+	public static OsmPackageImpl init() {
+		if (isInited) return (OsmPackageImpl)EPackage.Registry.INSTANCE.getEPackage(OsmPackageImpl.eNS_URI);
 
 		// Obtain or create and register package
 		OsmPackageImpl theOsmPackage = (OsmPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof OsmPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new OsmPackageImpl());
@@ -132,12 +385,12 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 		isInited = true;
 
 		// Obtain or create and register interdependencies
-		CorePackageImpl theCorePackage = (CorePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CorePackage.eNS_URI) instanceof CorePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CorePackage.eNS_URI) : CorePackage.eINSTANCE);
-		GeoPackageImpl theGeoPackage = (GeoPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(GeoPackage.eNS_URI) instanceof GeoPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(GeoPackage.eNS_URI) : GeoPackage.eINSTANCE);
-		PhysxPackageImpl thePhysxPackage = (PhysxPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(PhysxPackage.eNS_URI) instanceof PhysxPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(PhysxPackage.eNS_URI) : PhysxPackage.eINSTANCE);
-		WeatherPackageImpl theWeatherPackage = (WeatherPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WeatherPackage.eNS_URI) instanceof WeatherPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WeatherPackage.eNS_URI) : WeatherPackage.eINSTANCE);
-		DataPackageImpl theDataPackage = (DataPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(DataPackage.eNS_URI) instanceof DataPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(DataPackage.eNS_URI) : DataPackage.eINSTANCE);
-		DiagramInterchangePackageImpl theDiagramInterchangePackage = (DiagramInterchangePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(DiagramInterchangePackage.eNS_URI) instanceof DiagramInterchangePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(DiagramInterchangePackage.eNS_URI) : DiagramInterchangePackage.eINSTANCE);
+		CorePackageImpl theCorePackage = (CorePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CorePackageImpl.eNS_URI) instanceof CorePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CorePackageImpl.eNS_URI) : CorePackageImpl.eINSTANCE);
+		GeoPackageImpl theGeoPackage = (GeoPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(GeoPackageImpl.eNS_URI) instanceof GeoPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(GeoPackageImpl.eNS_URI) : GeoPackageImpl.eINSTANCE);
+		PhysxPackageImpl thePhysxPackage = (PhysxPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(PhysxPackageImpl.eNS_URI) instanceof PhysxPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(PhysxPackageImpl.eNS_URI) : PhysxPackageImpl.eINSTANCE);
+		WeatherPackageImpl theWeatherPackage = (WeatherPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WeatherPackageImpl.eNS_URI) instanceof WeatherPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WeatherPackageImpl.eNS_URI) : WeatherPackageImpl.eINSTANCE);
+		DataPackageImpl theDataPackage = (DataPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(DataPackageImpl.eNS_URI) instanceof DataPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(DataPackageImpl.eNS_URI) : DataPackageImpl.eINSTANCE);
+		DiagramInterchangePackageImpl theDiagramInterchangePackage = (DiagramInterchangePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(DiagramInterchangePackageImpl.eNS_URI) instanceof DiagramInterchangePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(DiagramInterchangePackageImpl.eNS_URI) : DiagramInterchangePackageImpl.eINSTANCE);
 
 		// Create package meta-data objects
 		theOsmPackage.createPackageContents();
@@ -162,13 +415,16 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 
   
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(OsmPackage.eNS_URI, theOsmPackage);
+		EPackage.Registry.INSTANCE.put(OsmPackageImpl.eNS_URI, theOsmPackage);
 		return theOsmPackage;
 	}
 
 	/**
+	 * Returns the meta object for class '{@link net.sf.seesea.model.core.geo.osm.Area <em>Area</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Area</em>'.
+	 * @see net.sf.seesea.model.core.geo.osm.Area
 	 * @generated
 	 */
 	public EClass getArea() {
@@ -176,8 +432,12 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 	}
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.geo.osm.Area#getZoomLevel <em>Zoom Level</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Zoom Level</em>'.
+	 * @see net.sf.seesea.model.core.geo.osm.Area#getZoomLevel()
+	 * @see #getArea()
 	 * @generated
 	 */
 	public EAttribute getArea_ZoomLevel() {
@@ -185,8 +445,12 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 	}
 
 	/**
+	 * Returns the meta object for the containment reference '{@link net.sf.seesea.model.core.geo.osm.Area#getMapCenterPosition <em>Map Center Position</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Map Center Position</em>'.
+	 * @see net.sf.seesea.model.core.geo.osm.Area#getMapCenterPosition()
+	 * @see #getArea()
 	 * @generated
 	 */
 	public EReference getArea_MapCenterPosition() {
@@ -194,8 +458,12 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 	}
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link net.sf.seesea.model.core.geo.osm.Area#getSubArea <em>Sub Area</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Sub Area</em>'.
+	 * @see net.sf.seesea.model.core.geo.osm.Area#getSubArea()
+	 * @see #getArea()
 	 * @generated
 	 */
 	public EReference getArea_SubArea() {
@@ -203,8 +471,11 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 	}
 
 	/**
+	 * Returns the meta object for class '{@link net.sf.seesea.model.core.geo.osm.World <em>World</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>World</em>'.
+	 * @see net.sf.seesea.model.core.geo.osm.World
 	 * @generated
 	 */
 	public EClass getWorld() {
@@ -212,8 +483,12 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 	}
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.geo.osm.World#isLongitudeScale <em>Longitude Scale</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Longitude Scale</em>'.
+	 * @see net.sf.seesea.model.core.geo.osm.World#isLongitudeScale()
+	 * @see #getWorld()
 	 * @generated
 	 */
 	public EAttribute getWorld_LongitudeScale() {
@@ -221,8 +496,12 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 	}
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.geo.osm.World#isLatitudeScale <em>Latitude Scale</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Latitude Scale</em>'.
+	 * @see net.sf.seesea.model.core.geo.osm.World#isLatitudeScale()
+	 * @see #getWorld()
 	 * @generated
 	 */
 	public EAttribute getWorld_LatitudeScale() {
@@ -230,8 +509,12 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 	}
 
 	/**
+	 * Returns the meta object for the containment reference '{@link net.sf.seesea.model.core.geo.osm.World#getAnchorPosition <em>Anchor Position</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Anchor Position</em>'.
+	 * @see net.sf.seesea.model.core.geo.osm.World#getAnchorPosition()
+	 * @see #getWorld()
 	 * @generated
 	 */
 	public EReference getWorld_AnchorPosition() {
@@ -239,8 +522,12 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 	}
 
 	/**
+	 * Returns the meta object for the containment reference '{@link net.sf.seesea.model.core.geo.osm.World#getCursorPosition <em>Cursor Position</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Cursor Position</em>'.
+	 * @see net.sf.seesea.model.core.geo.osm.World#getCursorPosition()
+	 * @see #getWorld()
 	 * @generated
 	 */
 	public EReference getWorld_CursorPosition() {
@@ -248,8 +535,12 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 	}
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.geo.osm.World#getTrip <em>Trip</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Trip</em>'.
+	 * @see net.sf.seesea.model.core.geo.osm.World#getTrip()
+	 * @see #getWorld()
 	 * @generated
 	 */
 	public EAttribute getWorld_Trip() {
@@ -257,8 +548,12 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 	}
 
 	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.geo.osm.World#getTotalTrip <em>Total Trip</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Total Trip</em>'.
+	 * @see net.sf.seesea.model.core.geo.osm.World#getTotalTrip()
+	 * @see #getWorld()
 	 * @generated
 	 */
 	public EAttribute getWorld_TotalTrip() {
@@ -266,8 +561,10 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 	}
 
 	/**
+	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
 	public OsmFactory getOsmFactory() {
@@ -331,7 +628,7 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		GeoPackage theGeoPackage = (GeoPackage)EPackage.Registry.INSTANCE.getEPackage(GeoPackage.eNS_URI);
+		GeoPackageImpl theGeoPackage = (GeoPackageImpl)EPackage.Registry.INSTANCE.getEPackage(GeoPackageImpl.eNS_URI);
 
 		// Create type parameters
 
@@ -355,6 +652,113 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 		initEReference(getWorld_CursorPosition(), theGeoPackage.getGeoPosition(), null, "cursorPosition", null, 0, 1, World.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getWorld_Trip(), ecorePackage.getEDouble(), "trip", null, 0, 1, World.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getWorld_TotalTrip(), ecorePackage.getEDouble(), "totalTrip", null, 0, 1, World.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Defines literals for the meta objects that represent
+	 * <ul>
+	 *   <li>each class,</li>
+	 *   <li>each feature of each class,</li>
+	 *   <li>each enum,</li>
+	 *   <li>and each data type</li>
+	 * </ul>
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public interface Literals {
+		/**
+		 * The meta object literal for the '{@link net.sf.seesea.model.core.geo.osm.impl.AreaImpl <em>Area</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.sf.seesea.model.core.geo.osm.impl.AreaImpl
+		 * @see net.sf.seesea.model.core.geo.osm.impl.OsmPackageImpl#getArea()
+		 * @generated
+		 */
+		public static final EClass AREA = eINSTANCE.getArea();
+
+		/**
+		 * The meta object literal for the '<em><b>Zoom Level</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute AREA__ZOOM_LEVEL = eINSTANCE.getArea_ZoomLevel();
+
+		/**
+		 * The meta object literal for the '<em><b>Map Center Position</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference AREA__MAP_CENTER_POSITION = eINSTANCE.getArea_MapCenterPosition();
+
+		/**
+		 * The meta object literal for the '<em><b>Sub Area</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference AREA__SUB_AREA = eINSTANCE.getArea_SubArea();
+
+		/**
+		 * The meta object literal for the '{@link net.sf.seesea.model.core.geo.osm.impl.WorldImpl <em>World</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.sf.seesea.model.core.geo.osm.impl.WorldImpl
+		 * @see net.sf.seesea.model.core.geo.osm.impl.OsmPackageImpl#getWorld()
+		 * @generated
+		 */
+		public static final EClass WORLD = eINSTANCE.getWorld();
+
+		/**
+		 * The meta object literal for the '<em><b>Longitude Scale</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute WORLD__LONGITUDE_SCALE = eINSTANCE.getWorld_LongitudeScale();
+
+		/**
+		 * The meta object literal for the '<em><b>Latitude Scale</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute WORLD__LATITUDE_SCALE = eINSTANCE.getWorld_LatitudeScale();
+
+		/**
+		 * The meta object literal for the '<em><b>Anchor Position</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference WORLD__ANCHOR_POSITION = eINSTANCE.getWorld_AnchorPosition();
+
+		/**
+		 * The meta object literal for the '<em><b>Cursor Position</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference WORLD__CURSOR_POSITION = eINSTANCE.getWorld_CursorPosition();
+
+		/**
+		 * The meta object literal for the '<em><b>Trip</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute WORLD__TRIP = eINSTANCE.getWorld_Trip();
+
+		/**
+		 * The meta object literal for the '<em><b>Total Trip</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute WORLD__TOTAL_TRIP = eINSTANCE.getWorld_TotalTrip();
+
 	}
 
 } //OsmPackageImpl

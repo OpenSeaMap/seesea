@@ -42,7 +42,6 @@ package net.sf.seesea.model.core.physx;
  *   <li>{@link net.sf.seesea.model.core.physx.RelativeWind#getBowOrientation <em>Bow Orientation</em>}</li>
  * </ul>
  *
- * @see net.sf.seesea.model.core.physx.PhysxPackage#getRelativeWind()
  * @model
  * @generated
  */
@@ -59,7 +58,6 @@ public interface RelativeWind extends Heading, Speed {
 	 * @return the value of the '<em>Bow Orientation</em>' attribute.
 	 * @see net.sf.seesea.model.core.physx.HandOrientation
 	 * @see #setBowOrientation(HandOrientation)
-	 * @see net.sf.seesea.model.core.physx.PhysxPackage#getRelativeWind_BowOrientation()
 	 * @model
 	 * @generated
 	 */

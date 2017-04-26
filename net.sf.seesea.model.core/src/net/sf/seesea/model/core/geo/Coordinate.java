@@ -44,7 +44,6 @@ import net.sf.seesea.model.core.ModelObject;
  *   <li>{@link net.sf.seesea.model.core.geo.Coordinate#getDecimalDegree <em>Decimal Degree</em>}</li>
  * </ul>
  *
- * @see net.sf.seesea.model.core.geo.GeoPackage#getCoordinate()
  * @model
  * @generated
  */

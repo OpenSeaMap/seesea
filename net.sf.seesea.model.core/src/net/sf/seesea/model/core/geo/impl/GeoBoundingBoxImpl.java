@@ -27,16 +27,12 @@
  */
 package net.sf.seesea.model.core.geo.impl;
 
-import net.sf.seesea.model.core.geo.GeoBoundingBox;
-import net.sf.seesea.model.core.geo.GeoPackage;
-
-import net.sf.seesea.model.core.impl.ModelObjectImpl;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import net.sf.seesea.model.core.geo.GeoBoundingBox;
+import net.sf.seesea.model.core.impl.ModelObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -151,7 +147,7 @@ public class GeoBoundingBoxImpl extends ModelObjectImpl implements GeoBoundingBo
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return GeoPackage.Literals.GEO_BOUNDING_BOX;
+		return GeoPackageImpl.Literals.GEO_BOUNDING_BOX;
 	}
 
 	/**
@@ -172,7 +168,7 @@ public class GeoBoundingBoxImpl extends ModelObjectImpl implements GeoBoundingBo
 		double oldTop = top;
 		top = newTop;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackage.GEO_BOUNDING_BOX__TOP, oldTop, top));
+			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackageImpl.GEO_BOUNDING_BOX__TOP, oldTop, top));
 	}
 
 	/**
@@ -193,7 +189,7 @@ public class GeoBoundingBoxImpl extends ModelObjectImpl implements GeoBoundingBo
 		double oldBottom = bottom;
 		bottom = newBottom;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackage.GEO_BOUNDING_BOX__BOTTOM, oldBottom, bottom));
+			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackageImpl.GEO_BOUNDING_BOX__BOTTOM, oldBottom, bottom));
 	}
 
 	/**
@@ -214,7 +210,7 @@ public class GeoBoundingBoxImpl extends ModelObjectImpl implements GeoBoundingBo
 		double oldLeft = left;
 		left = newLeft;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackage.GEO_BOUNDING_BOX__LEFT, oldLeft, left));
+			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackageImpl.GEO_BOUNDING_BOX__LEFT, oldLeft, left));
 	}
 
 	/**
@@ -235,7 +231,7 @@ public class GeoBoundingBoxImpl extends ModelObjectImpl implements GeoBoundingBo
 		double oldRight = right;
 		right = newRight;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackage.GEO_BOUNDING_BOX__RIGHT, oldRight, right));
+			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackageImpl.GEO_BOUNDING_BOX__RIGHT, oldRight, right));
 	}
 
 	/**
@@ -246,13 +242,13 @@ public class GeoBoundingBoxImpl extends ModelObjectImpl implements GeoBoundingBo
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GeoPackage.GEO_BOUNDING_BOX__TOP:
+			case GeoPackageImpl.GEO_BOUNDING_BOX__TOP:
 				return getTop();
-			case GeoPackage.GEO_BOUNDING_BOX__BOTTOM:
+			case GeoPackageImpl.GEO_BOUNDING_BOX__BOTTOM:
 				return getBottom();
-			case GeoPackage.GEO_BOUNDING_BOX__LEFT:
+			case GeoPackageImpl.GEO_BOUNDING_BOX__LEFT:
 				return getLeft();
-			case GeoPackage.GEO_BOUNDING_BOX__RIGHT:
+			case GeoPackageImpl.GEO_BOUNDING_BOX__RIGHT:
 				return getRight();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -266,16 +262,16 @@ public class GeoBoundingBoxImpl extends ModelObjectImpl implements GeoBoundingBo
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GeoPackage.GEO_BOUNDING_BOX__TOP:
+			case GeoPackageImpl.GEO_BOUNDING_BOX__TOP:
 				setTop((Double)newValue);
 				return;
-			case GeoPackage.GEO_BOUNDING_BOX__BOTTOM:
+			case GeoPackageImpl.GEO_BOUNDING_BOX__BOTTOM:
 				setBottom((Double)newValue);
 				return;
-			case GeoPackage.GEO_BOUNDING_BOX__LEFT:
+			case GeoPackageImpl.GEO_BOUNDING_BOX__LEFT:
 				setLeft((Double)newValue);
 				return;
-			case GeoPackage.GEO_BOUNDING_BOX__RIGHT:
+			case GeoPackageImpl.GEO_BOUNDING_BOX__RIGHT:
 				setRight((Double)newValue);
 				return;
 		}
@@ -290,16 +286,16 @@ public class GeoBoundingBoxImpl extends ModelObjectImpl implements GeoBoundingBo
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GeoPackage.GEO_BOUNDING_BOX__TOP:
+			case GeoPackageImpl.GEO_BOUNDING_BOX__TOP:
 				setTop(TOP_EDEFAULT);
 				return;
-			case GeoPackage.GEO_BOUNDING_BOX__BOTTOM:
+			case GeoPackageImpl.GEO_BOUNDING_BOX__BOTTOM:
 				setBottom(BOTTOM_EDEFAULT);
 				return;
-			case GeoPackage.GEO_BOUNDING_BOX__LEFT:
+			case GeoPackageImpl.GEO_BOUNDING_BOX__LEFT:
 				setLeft(LEFT_EDEFAULT);
 				return;
-			case GeoPackage.GEO_BOUNDING_BOX__RIGHT:
+			case GeoPackageImpl.GEO_BOUNDING_BOX__RIGHT:
 				setRight(RIGHT_EDEFAULT);
 				return;
 		}
@@ -314,13 +310,13 @@ public class GeoBoundingBoxImpl extends ModelObjectImpl implements GeoBoundingBo
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GeoPackage.GEO_BOUNDING_BOX__TOP:
+			case GeoPackageImpl.GEO_BOUNDING_BOX__TOP:
 				return top != TOP_EDEFAULT;
-			case GeoPackage.GEO_BOUNDING_BOX__BOTTOM:
+			case GeoPackageImpl.GEO_BOUNDING_BOX__BOTTOM:
 				return bottom != BOTTOM_EDEFAULT;
-			case GeoPackage.GEO_BOUNDING_BOX__LEFT:
+			case GeoPackageImpl.GEO_BOUNDING_BOX__LEFT:
 				return left != LEFT_EDEFAULT;
-			case GeoPackage.GEO_BOUNDING_BOX__RIGHT:
+			case GeoPackageImpl.GEO_BOUNDING_BOX__RIGHT:
 				return right != RIGHT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

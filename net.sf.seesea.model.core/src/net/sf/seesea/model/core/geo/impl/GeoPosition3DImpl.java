@@ -30,14 +30,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.geo.impl;
 
-import net.sf.seesea.model.core.geo.GeoPackage;
-import net.sf.seesea.model.core.geo.GeoPosition3D;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import net.sf.seesea.model.core.geo.GeoPosition3D;
 
 /**
  * <!-- begin-user-doc -->
@@ -89,7 +86,7 @@ public class GeoPosition3DImpl extends GeoPositionImpl implements GeoPosition3D 
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return GeoPackage.Literals.GEO_POSITION3_D;
+		return GeoPackageImpl.Literals.GEO_POSITION3_D;
 	}
 
 	/**
@@ -110,7 +107,7 @@ public class GeoPosition3DImpl extends GeoPositionImpl implements GeoPosition3D 
 		double oldAltitude = altitude;
 		altitude = newAltitude;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackage.GEO_POSITION3_D__ALTITUDE, oldAltitude, altitude));
+			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackageImpl.GEO_POSITION3_D__ALTITUDE, oldAltitude, altitude));
 	}
 
 	/**
@@ -121,7 +118,7 @@ public class GeoPosition3DImpl extends GeoPositionImpl implements GeoPosition3D 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GeoPackage.GEO_POSITION3_D__ALTITUDE:
+			case GeoPackageImpl.GEO_POSITION3_D__ALTITUDE:
 				return getAltitude();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -135,7 +132,7 @@ public class GeoPosition3DImpl extends GeoPositionImpl implements GeoPosition3D 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GeoPackage.GEO_POSITION3_D__ALTITUDE:
+			case GeoPackageImpl.GEO_POSITION3_D__ALTITUDE:
 				setAltitude((Double)newValue);
 				return;
 		}
@@ -150,7 +147,7 @@ public class GeoPosition3DImpl extends GeoPositionImpl implements GeoPosition3D 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GeoPackage.GEO_POSITION3_D__ALTITUDE:
+			case GeoPackageImpl.GEO_POSITION3_D__ALTITUDE:
 				setAltitude(ALTITUDE_EDEFAULT);
 				return;
 		}
@@ -165,7 +162,7 @@ public class GeoPosition3DImpl extends GeoPositionImpl implements GeoPosition3D 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GeoPackage.GEO_POSITION3_D__ALTITUDE:
+			case GeoPackageImpl.GEO_POSITION3_D__ALTITUDE:
 				return altitude != ALTITUDE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

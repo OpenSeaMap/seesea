@@ -48,14 +48,22 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  */
 public class DiagramInterchangeFactoryImpl extends EFactoryImpl implements DiagramInterchangeFactory {
 	/**
+	 * The singleton instance of the factory.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final DiagramInterchangeFactoryImpl eINSTANCE = init();
+
+	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static DiagramInterchangeFactory init() {
+	public static DiagramInterchangeFactoryImpl init() {
 		try {
-			DiagramInterchangeFactory theDiagramInterchangeFactory = (DiagramInterchangeFactory)EPackage.Registry.INSTANCE.getEFactory(DiagramInterchangePackage.eNS_URI);
+			DiagramInterchangeFactoryImpl theDiagramInterchangeFactory = (DiagramInterchangeFactoryImpl)EPackage.Registry.INSTANCE.getEFactory(DiagramInterchangePackageImpl.eNS_URI);
 			if (theDiagramInterchangeFactory != null) {
 				return theDiagramInterchangeFactory;
 			}
@@ -84,11 +92,11 @@ public class DiagramInterchangeFactoryImpl extends EFactoryImpl implements Diagr
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case DiagramInterchangePackage.GRAPHICAL_NODE: return createGraphicalNode();
-			case DiagramInterchangePackage.GRAPHICAL_EDGE: return createGraphicalEdge();
-			case DiagramInterchangePackage.GRAPHICAL_CONTAINER: return createGraphicalContainer();
-			case DiagramInterchangePackage.DIAGRAM: return createDiagram();
-			case DiagramInterchangePackage.GRAPHICAL_ELEMENT: return createGraphicalElement();
+			case DiagramInterchangePackageImpl.GRAPHICAL_NODE: return (EObject)createGraphicalNode();
+			case DiagramInterchangePackageImpl.GRAPHICAL_EDGE: return (EObject)createGraphicalEdge();
+			case DiagramInterchangePackageImpl.GRAPHICAL_CONTAINER: return (EObject)createGraphicalContainer();
+			case DiagramInterchangePackageImpl.DIAGRAM: return (EObject)createDiagram();
+			case DiagramInterchangePackageImpl.GRAPHICAL_ELEMENT: return (EObject)createGraphicalElement();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
@@ -149,8 +157,8 @@ public class DiagramInterchangeFactoryImpl extends EFactoryImpl implements Diagr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DiagramInterchangePackage getDiagramInterchangePackage() {
-		return (DiagramInterchangePackage)getEPackage();
+	public DiagramInterchangePackageImpl getDiagramInterchangePackage() {
+		return (DiagramInterchangePackageImpl)getEPackage();
 	}
 
 	/**
@@ -160,8 +168,8 @@ public class DiagramInterchangeFactoryImpl extends EFactoryImpl implements Diagr
 	 * @generated
 	 */
 	@Deprecated
-	public static DiagramInterchangePackage getPackage() {
-		return DiagramInterchangePackage.eINSTANCE;
+	public static DiagramInterchangePackageImpl getPackage() {
+		return DiagramInterchangePackageImpl.eINSTANCE;
 	}
 
 } //DiagramInterchangeFactoryImpl

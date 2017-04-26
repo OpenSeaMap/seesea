@@ -30,6 +30,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.data;
 
+import java.util.List;
 import net.sf.seesea.model.core.ModelObject;
 import net.sf.seesea.model.core.physx.Measurement;
 
@@ -47,7 +48,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link net.sf.seesea.model.core.data.Series#getMeasurement <em>Measurement</em>}</li>
  * </ul>
  *
- * @see net.sf.seesea.model.core.data.DataPackage#getSeries()
  * @model
  * @generated
  */
@@ -62,10 +62,9 @@ public interface Series extends ModelObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Measurement</em>' containment reference list.
-	 * @see net.sf.seesea.model.core.data.DataPackage#getSeries_Measurement()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Measurement> getMeasurement();
+	List<Measurement> getMeasurement();
 
 } // Series

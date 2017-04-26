@@ -31,14 +31,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package net.sf.seesea.model.core.physx.impl;
 
 import java.util.Date;
-import net.sf.seesea.model.core.impl.ModelObjectImpl;
-import net.sf.seesea.model.core.physx.Measurement;
-import net.sf.seesea.model.core.physx.PhysxPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import net.sf.seesea.model.core.impl.ModelObjectImpl;
+import net.sf.seesea.model.core.physx.Measurement;
 
 /**
  * <!-- begin-user-doc -->
@@ -164,7 +163,7 @@ public abstract class MeasurementImpl extends ModelObjectImpl implements Measure
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return PhysxPackage.Literals.MEASUREMENT;
+		return PhysxPackageImpl.Literals.MEASUREMENT;
 	}
 
 	/**
@@ -185,7 +184,7 @@ public abstract class MeasurementImpl extends ModelObjectImpl implements Measure
 		String oldSensorID = sensorID;
 		sensorID = newSensorID;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackage.MEASUREMENT__SENSOR_ID, oldSensorID, sensorID));
+			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackageImpl.MEASUREMENT__SENSOR_ID, oldSensorID, sensorID));
 	}
 
 	/**
@@ -206,7 +205,7 @@ public abstract class MeasurementImpl extends ModelObjectImpl implements Measure
 		Date oldTime = time;
 		time = newTime;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackage.MEASUREMENT__TIME, oldTime, time));
+			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackageImpl.MEASUREMENT__TIME, oldTime, time));
 	}
 
 	/**
@@ -227,7 +226,7 @@ public abstract class MeasurementImpl extends ModelObjectImpl implements Measure
 		String oldTimezone = timezone;
 		timezone = newTimezone;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackage.MEASUREMENT__TIMEZONE, oldTimezone, timezone));
+			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackageImpl.MEASUREMENT__TIMEZONE, oldTimezone, timezone));
 	}
 
 	/**
@@ -248,7 +247,7 @@ public abstract class MeasurementImpl extends ModelObjectImpl implements Measure
 		boolean oldValid = valid;
 		valid = newValid;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackage.MEASUREMENT__VALID, oldValid, valid));
+			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackageImpl.MEASUREMENT__VALID, oldValid, valid));
 	}
 
 	/**
@@ -269,7 +268,7 @@ public abstract class MeasurementImpl extends ModelObjectImpl implements Measure
 		boolean oldRelative = relative;
 		relative = newRelative;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackage.MEASUREMENT__RELATIVE, oldRelative, relative));
+			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackageImpl.MEASUREMENT__RELATIVE, oldRelative, relative));
 	}
 
 	/**
@@ -280,15 +279,15 @@ public abstract class MeasurementImpl extends ModelObjectImpl implements Measure
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PhysxPackage.MEASUREMENT__SENSOR_ID:
+			case PhysxPackageImpl.MEASUREMENT__SENSOR_ID:
 				return getSensorID();
-			case PhysxPackage.MEASUREMENT__TIME:
+			case PhysxPackageImpl.MEASUREMENT__TIME:
 				return getTime();
-			case PhysxPackage.MEASUREMENT__TIMEZONE:
+			case PhysxPackageImpl.MEASUREMENT__TIMEZONE:
 				return getTimezone();
-			case PhysxPackage.MEASUREMENT__VALID:
+			case PhysxPackageImpl.MEASUREMENT__VALID:
 				return isValid();
-			case PhysxPackage.MEASUREMENT__RELATIVE:
+			case PhysxPackageImpl.MEASUREMENT__RELATIVE:
 				return isRelative();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -302,19 +301,19 @@ public abstract class MeasurementImpl extends ModelObjectImpl implements Measure
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PhysxPackage.MEASUREMENT__SENSOR_ID:
+			case PhysxPackageImpl.MEASUREMENT__SENSOR_ID:
 				setSensorID((String)newValue);
 				return;
-			case PhysxPackage.MEASUREMENT__TIME:
+			case PhysxPackageImpl.MEASUREMENT__TIME:
 				setTime((Date)newValue);
 				return;
-			case PhysxPackage.MEASUREMENT__TIMEZONE:
+			case PhysxPackageImpl.MEASUREMENT__TIMEZONE:
 				setTimezone((String)newValue);
 				return;
-			case PhysxPackage.MEASUREMENT__VALID:
+			case PhysxPackageImpl.MEASUREMENT__VALID:
 				setValid((Boolean)newValue);
 				return;
-			case PhysxPackage.MEASUREMENT__RELATIVE:
+			case PhysxPackageImpl.MEASUREMENT__RELATIVE:
 				setRelative((Boolean)newValue);
 				return;
 		}
@@ -329,19 +328,19 @@ public abstract class MeasurementImpl extends ModelObjectImpl implements Measure
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PhysxPackage.MEASUREMENT__SENSOR_ID:
+			case PhysxPackageImpl.MEASUREMENT__SENSOR_ID:
 				setSensorID(SENSOR_ID_EDEFAULT);
 				return;
-			case PhysxPackage.MEASUREMENT__TIME:
+			case PhysxPackageImpl.MEASUREMENT__TIME:
 				setTime(TIME_EDEFAULT);
 				return;
-			case PhysxPackage.MEASUREMENT__TIMEZONE:
+			case PhysxPackageImpl.MEASUREMENT__TIMEZONE:
 				setTimezone(TIMEZONE_EDEFAULT);
 				return;
-			case PhysxPackage.MEASUREMENT__VALID:
+			case PhysxPackageImpl.MEASUREMENT__VALID:
 				setValid(VALID_EDEFAULT);
 				return;
-			case PhysxPackage.MEASUREMENT__RELATIVE:
+			case PhysxPackageImpl.MEASUREMENT__RELATIVE:
 				setRelative(RELATIVE_EDEFAULT);
 				return;
 		}
@@ -356,15 +355,15 @@ public abstract class MeasurementImpl extends ModelObjectImpl implements Measure
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PhysxPackage.MEASUREMENT__SENSOR_ID:
+			case PhysxPackageImpl.MEASUREMENT__SENSOR_ID:
 				return SENSOR_ID_EDEFAULT == null ? sensorID != null : !SENSOR_ID_EDEFAULT.equals(sensorID);
-			case PhysxPackage.MEASUREMENT__TIME:
+			case PhysxPackageImpl.MEASUREMENT__TIME:
 				return TIME_EDEFAULT == null ? time != null : !TIME_EDEFAULT.equals(time);
-			case PhysxPackage.MEASUREMENT__TIMEZONE:
+			case PhysxPackageImpl.MEASUREMENT__TIMEZONE:
 				return TIMEZONE_EDEFAULT == null ? timezone != null : !TIMEZONE_EDEFAULT.equals(timezone);
-			case PhysxPackage.MEASUREMENT__VALID:
+			case PhysxPackageImpl.MEASUREMENT__VALID:
 				return valid != VALID_EDEFAULT;
-			case PhysxPackage.MEASUREMENT__RELATIVE:
+			case PhysxPackageImpl.MEASUREMENT__RELATIVE:
 				return relative != RELATIVE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

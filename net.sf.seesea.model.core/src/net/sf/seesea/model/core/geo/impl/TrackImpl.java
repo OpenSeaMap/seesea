@@ -31,21 +31,18 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package net.sf.seesea.model.core.geo.impl;
 
 import java.util.Collection;
+import java.util.List;
 
-import net.sf.seesea.model.core.geo.GeoPackage;
-import net.sf.seesea.model.core.geo.MeasuredPosition3D;
-import net.sf.seesea.model.core.geo.Track;
-
-import net.sf.seesea.model.core.impl.ModelObjectImpl;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import net.sf.seesea.model.core.geo.MeasuredPosition3D;
+import net.sf.seesea.model.core.geo.Track;
+import net.sf.seesea.model.core.impl.ModelObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -87,7 +84,7 @@ public class TrackImpl extends ModelObjectImpl implements Track {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return GeoPackage.Literals.TRACK;
+		return GeoPackageImpl.Literals.TRACK;
 	}
 
 	/**
@@ -95,9 +92,9 @@ public class TrackImpl extends ModelObjectImpl implements Track {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<MeasuredPosition3D> getMeasuredPosition() {
+	public List<MeasuredPosition3D> getMeasuredPosition() {
 		if (measuredPosition == null) {
-			measuredPosition = new EObjectContainmentEList<MeasuredPosition3D>(MeasuredPosition3D.class, this, GeoPackage.TRACK__MEASURED_POSITION);
+			measuredPosition = new EObjectContainmentEList<MeasuredPosition3D>(MeasuredPosition3D.class, this, GeoPackageImpl.TRACK__MEASURED_POSITION);
 		}
 		return measuredPosition;
 	}
@@ -110,7 +107,7 @@ public class TrackImpl extends ModelObjectImpl implements Track {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case GeoPackage.TRACK__MEASURED_POSITION:
+			case GeoPackageImpl.TRACK__MEASURED_POSITION:
 				return ((InternalEList<?>)getMeasuredPosition()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -124,7 +121,7 @@ public class TrackImpl extends ModelObjectImpl implements Track {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GeoPackage.TRACK__MEASURED_POSITION:
+			case GeoPackageImpl.TRACK__MEASURED_POSITION:
 				return getMeasuredPosition();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -139,7 +136,7 @@ public class TrackImpl extends ModelObjectImpl implements Track {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GeoPackage.TRACK__MEASURED_POSITION:
+			case GeoPackageImpl.TRACK__MEASURED_POSITION:
 				getMeasuredPosition().clear();
 				getMeasuredPosition().addAll((Collection<? extends MeasuredPosition3D>)newValue);
 				return;
@@ -155,7 +152,7 @@ public class TrackImpl extends ModelObjectImpl implements Track {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GeoPackage.TRACK__MEASURED_POSITION:
+			case GeoPackageImpl.TRACK__MEASURED_POSITION:
 				getMeasuredPosition().clear();
 				return;
 		}
@@ -170,7 +167,7 @@ public class TrackImpl extends ModelObjectImpl implements Track {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GeoPackage.TRACK__MEASURED_POSITION:
+			case GeoPackageImpl.TRACK__MEASURED_POSITION:
 				return measuredPosition != null && !measuredPosition.isEmpty();
 		}
 		return super.eIsSet(featureID);

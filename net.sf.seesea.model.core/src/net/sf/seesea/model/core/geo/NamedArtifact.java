@@ -44,7 +44,6 @@ import net.sf.seesea.model.core.ModelObject;
  *   <li>{@link net.sf.seesea.model.core.geo.NamedArtifact#getName <em>Name</em>}</li>
  * </ul>
  *
- * @see net.sf.seesea.model.core.geo.GeoPackage#getNamedArtifact()
  * @model
  * @generated
  */
@@ -59,7 +58,6 @@ public interface NamedArtifact extends ModelObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see net.sf.seesea.model.core.geo.GeoPackage#getNamedArtifact_Name()
 	 * @model
 	 * @generated
 	 */

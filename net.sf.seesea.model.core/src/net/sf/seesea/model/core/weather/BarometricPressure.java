@@ -45,7 +45,6 @@ import net.sf.seesea.model.core.physx.Measurement;
  *   <li>{@link net.sf.seesea.model.core.weather.BarometricPressure#getUnit <em>Unit</em>}</li>
  * </ul>
  *
- * @see net.sf.seesea.model.core.weather.WeatherPackage#getBarometricPressure()
  * @model
  * @generated
  */
@@ -60,7 +59,6 @@ public interface BarometricPressure extends Measurement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(double)
-	 * @see net.sf.seesea.model.core.weather.WeatherPackage#getBarometricPressure_Value()
 	 * @model
 	 * @generated
 	 */
@@ -88,7 +86,6 @@ public interface BarometricPressure extends Measurement {
 	 * @return the value of the '<em>Unit</em>' attribute.
 	 * @see net.sf.seesea.model.core.weather.PressureUnit
 	 * @see #setUnit(PressureUnit)
-	 * @see net.sf.seesea.model.core.weather.WeatherPackage#getBarometricPressure_Unit()
 	 * @model
 	 * @generated
 	 */

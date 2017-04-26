@@ -30,15 +30,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.physx.impl;
 
-import net.sf.seesea.model.core.physx.HandOrientation;
-import net.sf.seesea.model.core.physx.PhysxPackage;
-import net.sf.seesea.model.core.physx.RelativeWind;
-
-import net.sf.seesea.model.core.physx.Speed;
-import net.sf.seesea.model.core.physx.SpeedUnit;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import net.sf.seesea.model.core.physx.HandOrientation;
+import net.sf.seesea.model.core.physx.RelativeWind;
+import net.sf.seesea.model.core.physx.Speed;
+import net.sf.seesea.model.core.physx.SpeedUnit;
 
 /**
  * <!-- begin-user-doc -->
@@ -132,7 +131,7 @@ public class RelativeWindImpl extends HeadingImpl implements RelativeWind {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return PhysxPackage.Literals.RELATIVE_WIND;
+		return PhysxPackageImpl.Literals.RELATIVE_WIND;
 	}
 
 	/**
@@ -153,7 +152,7 @@ public class RelativeWindImpl extends HeadingImpl implements RelativeWind {
 		double oldSpeed = speed;
 		speed = newSpeed;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackage.RELATIVE_WIND__SPEED, oldSpeed, speed));
+			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackageImpl.RELATIVE_WIND__SPEED, oldSpeed, speed));
 	}
 
 	/**
@@ -174,7 +173,7 @@ public class RelativeWindImpl extends HeadingImpl implements RelativeWind {
 		SpeedUnit oldSpeedUnit = speedUnit;
 		speedUnit = newSpeedUnit == null ? SPEED_UNIT_EDEFAULT : newSpeedUnit;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackage.RELATIVE_WIND__SPEED_UNIT, oldSpeedUnit, speedUnit));
+			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackageImpl.RELATIVE_WIND__SPEED_UNIT, oldSpeedUnit, speedUnit));
 	}
 
 	/**
@@ -195,7 +194,7 @@ public class RelativeWindImpl extends HeadingImpl implements RelativeWind {
 		HandOrientation oldBowOrientation = bowOrientation;
 		bowOrientation = newBowOrientation == null ? BOW_ORIENTATION_EDEFAULT : newBowOrientation;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackage.RELATIVE_WIND__BOW_ORIENTATION, oldBowOrientation, bowOrientation));
+			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackageImpl.RELATIVE_WIND__BOW_ORIENTATION, oldBowOrientation, bowOrientation));
 	}
 
 	/**
@@ -206,11 +205,11 @@ public class RelativeWindImpl extends HeadingImpl implements RelativeWind {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PhysxPackage.RELATIVE_WIND__SPEED:
+			case PhysxPackageImpl.RELATIVE_WIND__SPEED:
 				return getSpeed();
-			case PhysxPackage.RELATIVE_WIND__SPEED_UNIT:
+			case PhysxPackageImpl.RELATIVE_WIND__SPEED_UNIT:
 				return getSpeedUnit();
-			case PhysxPackage.RELATIVE_WIND__BOW_ORIENTATION:
+			case PhysxPackageImpl.RELATIVE_WIND__BOW_ORIENTATION:
 				return getBowOrientation();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -224,13 +223,13 @@ public class RelativeWindImpl extends HeadingImpl implements RelativeWind {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PhysxPackage.RELATIVE_WIND__SPEED:
+			case PhysxPackageImpl.RELATIVE_WIND__SPEED:
 				setSpeed((Double)newValue);
 				return;
-			case PhysxPackage.RELATIVE_WIND__SPEED_UNIT:
+			case PhysxPackageImpl.RELATIVE_WIND__SPEED_UNIT:
 				setSpeedUnit((SpeedUnit)newValue);
 				return;
-			case PhysxPackage.RELATIVE_WIND__BOW_ORIENTATION:
+			case PhysxPackageImpl.RELATIVE_WIND__BOW_ORIENTATION:
 				setBowOrientation((HandOrientation)newValue);
 				return;
 		}
@@ -245,13 +244,13 @@ public class RelativeWindImpl extends HeadingImpl implements RelativeWind {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PhysxPackage.RELATIVE_WIND__SPEED:
+			case PhysxPackageImpl.RELATIVE_WIND__SPEED:
 				setSpeed(SPEED_EDEFAULT);
 				return;
-			case PhysxPackage.RELATIVE_WIND__SPEED_UNIT:
+			case PhysxPackageImpl.RELATIVE_WIND__SPEED_UNIT:
 				setSpeedUnit(SPEED_UNIT_EDEFAULT);
 				return;
-			case PhysxPackage.RELATIVE_WIND__BOW_ORIENTATION:
+			case PhysxPackageImpl.RELATIVE_WIND__BOW_ORIENTATION:
 				setBowOrientation(BOW_ORIENTATION_EDEFAULT);
 				return;
 		}
@@ -266,11 +265,11 @@ public class RelativeWindImpl extends HeadingImpl implements RelativeWind {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PhysxPackage.RELATIVE_WIND__SPEED:
+			case PhysxPackageImpl.RELATIVE_WIND__SPEED:
 				return speed != SPEED_EDEFAULT;
-			case PhysxPackage.RELATIVE_WIND__SPEED_UNIT:
+			case PhysxPackageImpl.RELATIVE_WIND__SPEED_UNIT:
 				return speedUnit != SPEED_UNIT_EDEFAULT;
-			case PhysxPackage.RELATIVE_WIND__BOW_ORIENTATION:
+			case PhysxPackageImpl.RELATIVE_WIND__BOW_ORIENTATION:
 				return bowOrientation != BOW_ORIENTATION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
@@ -285,8 +284,8 @@ public class RelativeWindImpl extends HeadingImpl implements RelativeWind {
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == Speed.class) {
 			switch (derivedFeatureID) {
-				case PhysxPackage.RELATIVE_WIND__SPEED: return PhysxPackage.SPEED__SPEED;
-				case PhysxPackage.RELATIVE_WIND__SPEED_UNIT: return PhysxPackage.SPEED__SPEED_UNIT;
+				case PhysxPackageImpl.RELATIVE_WIND__SPEED: return PhysxPackageImpl.SPEED__SPEED;
+				case PhysxPackageImpl.RELATIVE_WIND__SPEED_UNIT: return PhysxPackageImpl.SPEED__SPEED_UNIT;
 				default: return -1;
 			}
 		}
@@ -302,8 +301,8 @@ public class RelativeWindImpl extends HeadingImpl implements RelativeWind {
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == Speed.class) {
 			switch (baseFeatureID) {
-				case PhysxPackage.SPEED__SPEED: return PhysxPackage.RELATIVE_WIND__SPEED;
-				case PhysxPackage.SPEED__SPEED_UNIT: return PhysxPackage.RELATIVE_WIND__SPEED_UNIT;
+				case PhysxPackageImpl.SPEED__SPEED: return PhysxPackageImpl.RELATIVE_WIND__SPEED;
+				case PhysxPackageImpl.SPEED__SPEED_UNIT: return PhysxPackageImpl.RELATIVE_WIND__SPEED_UNIT;
 				default: return -1;
 			}
 		}

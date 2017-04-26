@@ -27,14 +27,11 @@
  */
 package net.sf.seesea.model.core.geo.impl;
 
-import net.sf.seesea.model.core.geo.AnchorPosition;
-import net.sf.seesea.model.core.geo.GeoPackage;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import net.sf.seesea.model.core.geo.AnchorPosition;
 
 /**
  * <!-- begin-user-doc -->
@@ -107,7 +104,7 @@ public class AnchorPositionImpl extends GeoPositionImpl implements AnchorPositio
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return GeoPackage.Literals.ANCHOR_POSITION;
+		return GeoPackageImpl.Literals.ANCHOR_POSITION;
 	}
 
 	/**
@@ -128,7 +125,7 @@ public class AnchorPositionImpl extends GeoPositionImpl implements AnchorPositio
 		double oldXExtent = xExtent;
 		xExtent = newXExtent;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackage.ANCHOR_POSITION__XEXTENT, oldXExtent, xExtent));
+			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackageImpl.ANCHOR_POSITION__XEXTENT, oldXExtent, xExtent));
 	}
 
 	/**
@@ -149,7 +146,7 @@ public class AnchorPositionImpl extends GeoPositionImpl implements AnchorPositio
 		double oldYExtent = yExtent;
 		yExtent = newYExtent;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackage.ANCHOR_POSITION__YEXTENT, oldYExtent, yExtent));
+			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackageImpl.ANCHOR_POSITION__YEXTENT, oldYExtent, yExtent));
 	}
 
 	/**
@@ -160,9 +157,9 @@ public class AnchorPositionImpl extends GeoPositionImpl implements AnchorPositio
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GeoPackage.ANCHOR_POSITION__XEXTENT:
+			case GeoPackageImpl.ANCHOR_POSITION__XEXTENT:
 				return getXExtent();
-			case GeoPackage.ANCHOR_POSITION__YEXTENT:
+			case GeoPackageImpl.ANCHOR_POSITION__YEXTENT:
 				return getYExtent();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -176,10 +173,10 @@ public class AnchorPositionImpl extends GeoPositionImpl implements AnchorPositio
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GeoPackage.ANCHOR_POSITION__XEXTENT:
+			case GeoPackageImpl.ANCHOR_POSITION__XEXTENT:
 				setXExtent((Double)newValue);
 				return;
-			case GeoPackage.ANCHOR_POSITION__YEXTENT:
+			case GeoPackageImpl.ANCHOR_POSITION__YEXTENT:
 				setYExtent((Double)newValue);
 				return;
 		}
@@ -194,10 +191,10 @@ public class AnchorPositionImpl extends GeoPositionImpl implements AnchorPositio
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GeoPackage.ANCHOR_POSITION__XEXTENT:
+			case GeoPackageImpl.ANCHOR_POSITION__XEXTENT:
 				setXExtent(XEXTENT_EDEFAULT);
 				return;
-			case GeoPackage.ANCHOR_POSITION__YEXTENT:
+			case GeoPackageImpl.ANCHOR_POSITION__YEXTENT:
 				setYExtent(YEXTENT_EDEFAULT);
 				return;
 		}
@@ -212,9 +209,9 @@ public class AnchorPositionImpl extends GeoPositionImpl implements AnchorPositio
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GeoPackage.ANCHOR_POSITION__XEXTENT:
+			case GeoPackageImpl.ANCHOR_POSITION__XEXTENT:
 				return xExtent != XEXTENT_EDEFAULT;
-			case GeoPackage.ANCHOR_POSITION__YEXTENT:
+			case GeoPackageImpl.ANCHOR_POSITION__YEXTENT:
 				return yExtent != YEXTENT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

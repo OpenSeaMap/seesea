@@ -41,7 +41,6 @@ package net.sf.seesea.model.core.geo;
  *   <li>{@link net.sf.seesea.model.core.geo.AnchorPosition#getYExtent <em>YExtent</em>}</li>
  * </ul>
  *
- * @see net.sf.seesea.model.core.geo.GeoPackage#getAnchorPosition()
  * @model
  * @generated
  */
@@ -56,7 +55,6 @@ public interface AnchorPosition extends GeoPosition {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>XExtent</em>' attribute.
 	 * @see #setXExtent(double)
-	 * @see net.sf.seesea.model.core.geo.GeoPackage#getAnchorPosition_XExtent()
 	 * @model
 	 * @generated
 	 */
@@ -82,7 +80,6 @@ public interface AnchorPosition extends GeoPosition {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>YExtent</em>' attribute.
 	 * @see #setYExtent(double)
-	 * @see net.sf.seesea.model.core.geo.GeoPackage#getAnchorPosition_YExtent()
 	 * @model
 	 * @generated
 	 */

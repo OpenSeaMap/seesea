@@ -30,22 +30,19 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.data.impl;
 
-import net.sf.seesea.model.core.data.DataPackage;
-import net.sf.seesea.model.core.data.Instruments;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import net.sf.seesea.model.core.data.Instruments;
 import net.sf.seesea.model.core.geo.MeasuredPosition3D;
 import net.sf.seesea.model.core.impl.ModelObjectImpl;
 import net.sf.seesea.model.core.physx.SatellitesVisible;
 import net.sf.seesea.model.core.physx.Temperature;
-
 import net.sf.seesea.model.core.weather.WindMeasurement;
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -120,7 +117,7 @@ public class InstrumentsImpl extends ModelObjectImpl implements Instruments {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return DataPackage.Literals.INSTRUMENTS;
+		return DataPackageImpl.Literals.INSTRUMENTS;
 	}
 
 	/**
@@ -129,12 +126,12 @@ public class InstrumentsImpl extends ModelObjectImpl implements Instruments {
 	 * @generated
 	 */
 	public MeasuredPosition3D getPosition() {
-		if (position != null && position.eIsProxy()) {
+		if (position != null && ((EObject)position).eIsProxy()) {
 			InternalEObject oldPosition = (InternalEObject)position;
 			position = (MeasuredPosition3D)eResolveProxy(oldPosition);
 			if (position != oldPosition) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DataPackage.INSTRUMENTS__POSITION, oldPosition, position));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DataPackageImpl.INSTRUMENTS__POSITION, oldPosition, position));
 			}
 		}
 		return position;
@@ -158,7 +155,7 @@ public class InstrumentsImpl extends ModelObjectImpl implements Instruments {
 		MeasuredPosition3D oldPosition = position;
 		position = newPosition;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DataPackage.INSTRUMENTS__POSITION, oldPosition, position));
+			eNotify(new ENotificationImpl(this, Notification.SET, DataPackageImpl.INSTRUMENTS__POSITION, oldPosition, position));
 	}
 
 	/**
@@ -179,7 +176,7 @@ public class InstrumentsImpl extends ModelObjectImpl implements Instruments {
 		Temperature oldWaterTemperature = waterTemperature;
 		waterTemperature = newWaterTemperature;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DataPackage.INSTRUMENTS__WATER_TEMPERATURE, oldWaterTemperature, newWaterTemperature);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DataPackageImpl.INSTRUMENTS__WATER_TEMPERATURE, oldWaterTemperature, newWaterTemperature);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -194,14 +191,14 @@ public class InstrumentsImpl extends ModelObjectImpl implements Instruments {
 		if (newWaterTemperature != waterTemperature) {
 			NotificationChain msgs = null;
 			if (waterTemperature != null)
-				msgs = ((InternalEObject)waterTemperature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DataPackage.INSTRUMENTS__WATER_TEMPERATURE, null, msgs);
+				msgs = ((InternalEObject)waterTemperature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DataPackageImpl.INSTRUMENTS__WATER_TEMPERATURE, null, msgs);
 			if (newWaterTemperature != null)
-				msgs = ((InternalEObject)newWaterTemperature).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DataPackage.INSTRUMENTS__WATER_TEMPERATURE, null, msgs);
+				msgs = ((InternalEObject)newWaterTemperature).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DataPackageImpl.INSTRUMENTS__WATER_TEMPERATURE, null, msgs);
 			msgs = basicSetWaterTemperature(newWaterTemperature, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DataPackage.INSTRUMENTS__WATER_TEMPERATURE, newWaterTemperature, newWaterTemperature));
+			eNotify(new ENotificationImpl(this, Notification.SET, DataPackageImpl.INSTRUMENTS__WATER_TEMPERATURE, newWaterTemperature, newWaterTemperature));
 	}
 
 	/**
@@ -222,7 +219,7 @@ public class InstrumentsImpl extends ModelObjectImpl implements Instruments {
 		SatellitesVisible oldSatellitesVisible = satellitesVisible;
 		satellitesVisible = newSatellitesVisible;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DataPackage.INSTRUMENTS__SATELLITES_VISIBLE, oldSatellitesVisible, newSatellitesVisible);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DataPackageImpl.INSTRUMENTS__SATELLITES_VISIBLE, oldSatellitesVisible, newSatellitesVisible);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -237,14 +234,14 @@ public class InstrumentsImpl extends ModelObjectImpl implements Instruments {
 		if (newSatellitesVisible != satellitesVisible) {
 			NotificationChain msgs = null;
 			if (satellitesVisible != null)
-				msgs = ((InternalEObject)satellitesVisible).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DataPackage.INSTRUMENTS__SATELLITES_VISIBLE, null, msgs);
+				msgs = ((InternalEObject)satellitesVisible).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DataPackageImpl.INSTRUMENTS__SATELLITES_VISIBLE, null, msgs);
 			if (newSatellitesVisible != null)
-				msgs = ((InternalEObject)newSatellitesVisible).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DataPackage.INSTRUMENTS__SATELLITES_VISIBLE, null, msgs);
+				msgs = ((InternalEObject)newSatellitesVisible).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DataPackageImpl.INSTRUMENTS__SATELLITES_VISIBLE, null, msgs);
 			msgs = basicSetSatellitesVisible(newSatellitesVisible, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DataPackage.INSTRUMENTS__SATELLITES_VISIBLE, newSatellitesVisible, newSatellitesVisible));
+			eNotify(new ENotificationImpl(this, Notification.SET, DataPackageImpl.INSTRUMENTS__SATELLITES_VISIBLE, newSatellitesVisible, newSatellitesVisible));
 	}
 
 	/**
@@ -265,7 +262,7 @@ public class InstrumentsImpl extends ModelObjectImpl implements Instruments {
 		WindMeasurement oldWindVector = windVector;
 		windVector = newWindVector;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DataPackage.INSTRUMENTS__WIND_VECTOR, oldWindVector, newWindVector);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DataPackageImpl.INSTRUMENTS__WIND_VECTOR, oldWindVector, newWindVector);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -280,14 +277,14 @@ public class InstrumentsImpl extends ModelObjectImpl implements Instruments {
 		if (newWindVector != windVector) {
 			NotificationChain msgs = null;
 			if (windVector != null)
-				msgs = ((InternalEObject)windVector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DataPackage.INSTRUMENTS__WIND_VECTOR, null, msgs);
+				msgs = ((InternalEObject)windVector).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DataPackageImpl.INSTRUMENTS__WIND_VECTOR, null, msgs);
 			if (newWindVector != null)
-				msgs = ((InternalEObject)newWindVector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DataPackage.INSTRUMENTS__WIND_VECTOR, null, msgs);
+				msgs = ((InternalEObject)newWindVector).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DataPackageImpl.INSTRUMENTS__WIND_VECTOR, null, msgs);
 			msgs = basicSetWindVector(newWindVector, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DataPackage.INSTRUMENTS__WIND_VECTOR, newWindVector, newWindVector));
+			eNotify(new ENotificationImpl(this, Notification.SET, DataPackageImpl.INSTRUMENTS__WIND_VECTOR, newWindVector, newWindVector));
 	}
 
 	/**
@@ -298,11 +295,11 @@ public class InstrumentsImpl extends ModelObjectImpl implements Instruments {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case DataPackage.INSTRUMENTS__WATER_TEMPERATURE:
+			case DataPackageImpl.INSTRUMENTS__WATER_TEMPERATURE:
 				return basicSetWaterTemperature(null, msgs);
-			case DataPackage.INSTRUMENTS__SATELLITES_VISIBLE:
+			case DataPackageImpl.INSTRUMENTS__SATELLITES_VISIBLE:
 				return basicSetSatellitesVisible(null, msgs);
-			case DataPackage.INSTRUMENTS__WIND_VECTOR:
+			case DataPackageImpl.INSTRUMENTS__WIND_VECTOR:
 				return basicSetWindVector(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -316,14 +313,14 @@ public class InstrumentsImpl extends ModelObjectImpl implements Instruments {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case DataPackage.INSTRUMENTS__POSITION:
+			case DataPackageImpl.INSTRUMENTS__POSITION:
 				if (resolve) return getPosition();
 				return basicGetPosition();
-			case DataPackage.INSTRUMENTS__WATER_TEMPERATURE:
+			case DataPackageImpl.INSTRUMENTS__WATER_TEMPERATURE:
 				return getWaterTemperature();
-			case DataPackage.INSTRUMENTS__SATELLITES_VISIBLE:
+			case DataPackageImpl.INSTRUMENTS__SATELLITES_VISIBLE:
 				return getSatellitesVisible();
-			case DataPackage.INSTRUMENTS__WIND_VECTOR:
+			case DataPackageImpl.INSTRUMENTS__WIND_VECTOR:
 				return getWindVector();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -337,16 +334,16 @@ public class InstrumentsImpl extends ModelObjectImpl implements Instruments {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case DataPackage.INSTRUMENTS__POSITION:
+			case DataPackageImpl.INSTRUMENTS__POSITION:
 				setPosition((MeasuredPosition3D)newValue);
 				return;
-			case DataPackage.INSTRUMENTS__WATER_TEMPERATURE:
+			case DataPackageImpl.INSTRUMENTS__WATER_TEMPERATURE:
 				setWaterTemperature((Temperature)newValue);
 				return;
-			case DataPackage.INSTRUMENTS__SATELLITES_VISIBLE:
+			case DataPackageImpl.INSTRUMENTS__SATELLITES_VISIBLE:
 				setSatellitesVisible((SatellitesVisible)newValue);
 				return;
-			case DataPackage.INSTRUMENTS__WIND_VECTOR:
+			case DataPackageImpl.INSTRUMENTS__WIND_VECTOR:
 				setWindVector((WindMeasurement)newValue);
 				return;
 		}
@@ -361,16 +358,16 @@ public class InstrumentsImpl extends ModelObjectImpl implements Instruments {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case DataPackage.INSTRUMENTS__POSITION:
+			case DataPackageImpl.INSTRUMENTS__POSITION:
 				setPosition((MeasuredPosition3D)null);
 				return;
-			case DataPackage.INSTRUMENTS__WATER_TEMPERATURE:
+			case DataPackageImpl.INSTRUMENTS__WATER_TEMPERATURE:
 				setWaterTemperature((Temperature)null);
 				return;
-			case DataPackage.INSTRUMENTS__SATELLITES_VISIBLE:
+			case DataPackageImpl.INSTRUMENTS__SATELLITES_VISIBLE:
 				setSatellitesVisible((SatellitesVisible)null);
 				return;
-			case DataPackage.INSTRUMENTS__WIND_VECTOR:
+			case DataPackageImpl.INSTRUMENTS__WIND_VECTOR:
 				setWindVector((WindMeasurement)null);
 				return;
 		}
@@ -385,13 +382,13 @@ public class InstrumentsImpl extends ModelObjectImpl implements Instruments {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case DataPackage.INSTRUMENTS__POSITION:
+			case DataPackageImpl.INSTRUMENTS__POSITION:
 				return position != null;
-			case DataPackage.INSTRUMENTS__WATER_TEMPERATURE:
+			case DataPackageImpl.INSTRUMENTS__WATER_TEMPERATURE:
 				return waterTemperature != null;
-			case DataPackage.INSTRUMENTS__SATELLITES_VISIBLE:
+			case DataPackageImpl.INSTRUMENTS__SATELLITES_VISIBLE:
 				return satellitesVisible != null;
-			case DataPackage.INSTRUMENTS__WIND_VECTOR:
+			case DataPackageImpl.INSTRUMENTS__WIND_VECTOR:
 				return windVector != null;
 		}
 		return super.eIsSet(featureID);

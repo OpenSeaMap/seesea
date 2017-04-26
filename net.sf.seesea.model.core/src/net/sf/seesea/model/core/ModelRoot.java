@@ -47,7 +47,6 @@ import net.sf.seesea.model.core.geo.NavigationCompound;
  *   <li>{@link net.sf.seesea.model.core.ModelRoot#getInstruments <em>Instruments</em>}</li>
  * </ul>
  *
- * @see net.sf.seesea.model.core.CorePackage#getModelRoot()
  * @model
  * @generated
  */
@@ -62,7 +61,6 @@ public interface ModelRoot extends NavigationCompound {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Chart Container</em>' containment reference.
 	 * @see #setChartContainer(ChartContainer)
-	 * @see net.sf.seesea.model.core.CorePackage#getModelRoot_ChartContainer()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -88,7 +86,6 @@ public interface ModelRoot extends NavigationCompound {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Instruments</em>' containment reference.
 	 * @see #setInstruments(Instruments)
-	 * @see net.sf.seesea.model.core.CorePackage#getModelRoot_Instruments()
 	 * @model containment="true"
 	 * @generated
 	 */

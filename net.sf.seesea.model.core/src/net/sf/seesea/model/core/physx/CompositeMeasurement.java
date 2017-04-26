@@ -27,6 +27,7 @@
  */
 package net.sf.seesea.model.core.physx;
 
+import java.util.List;
 import org.eclipse.emf.common.util.EList;
 
 
@@ -42,7 +43,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link net.sf.seesea.model.core.physx.CompositeMeasurement#getMeasurements <em>Measurements</em>}</li>
  * </ul>
  *
- * @see net.sf.seesea.model.core.physx.PhysxPackage#getCompositeMeasurement()
  * @model
  * @generated
  */
@@ -57,10 +57,9 @@ public interface CompositeMeasurement extends Measurement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Measurements</em>' reference list.
-	 * @see net.sf.seesea.model.core.physx.PhysxPackage#getCompositeMeasurement_Measurements()
 	 * @model
 	 * @generated
 	 */
-	EList<Measurement> getMeasurements();
+	List<Measurement> getMeasurements();
 
 } // CompositeMeasurement

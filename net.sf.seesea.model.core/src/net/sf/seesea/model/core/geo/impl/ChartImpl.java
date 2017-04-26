@@ -30,15 +30,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.geo.impl;
 
-import net.sf.seesea.model.core.diagramInterchange.Diagram;
-import net.sf.seesea.model.core.geo.Chart;
-import net.sf.seesea.model.core.geo.GeoPackage;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import net.sf.seesea.model.core.diagramInterchange.Diagram;
+import net.sf.seesea.model.core.geo.Chart;
 
 /**
  * <!-- begin-user-doc -->
@@ -80,7 +79,7 @@ public class ChartImpl extends NamedArtifactImpl implements Chart {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return GeoPackage.Literals.CHART;
+		return GeoPackageImpl.Literals.CHART;
 	}
 
 	/**
@@ -101,7 +100,7 @@ public class ChartImpl extends NamedArtifactImpl implements Chart {
 		Diagram oldChartConfiguration = chartConfiguration;
 		chartConfiguration = newChartConfiguration;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GeoPackage.CHART__CHART_CONFIGURATION, oldChartConfiguration, newChartConfiguration);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GeoPackageImpl.CHART__CHART_CONFIGURATION, oldChartConfiguration, newChartConfiguration);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -116,14 +115,14 @@ public class ChartImpl extends NamedArtifactImpl implements Chart {
 		if (newChartConfiguration != chartConfiguration) {
 			NotificationChain msgs = null;
 			if (chartConfiguration != null)
-				msgs = ((InternalEObject)chartConfiguration).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GeoPackage.CHART__CHART_CONFIGURATION, null, msgs);
+				msgs = ((InternalEObject)chartConfiguration).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GeoPackageImpl.CHART__CHART_CONFIGURATION, null, msgs);
 			if (newChartConfiguration != null)
-				msgs = ((InternalEObject)newChartConfiguration).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GeoPackage.CHART__CHART_CONFIGURATION, null, msgs);
+				msgs = ((InternalEObject)newChartConfiguration).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GeoPackageImpl.CHART__CHART_CONFIGURATION, null, msgs);
 			msgs = basicSetChartConfiguration(newChartConfiguration, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackage.CHART__CHART_CONFIGURATION, newChartConfiguration, newChartConfiguration));
+			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackageImpl.CHART__CHART_CONFIGURATION, newChartConfiguration, newChartConfiguration));
 	}
 
 	/**
@@ -134,7 +133,7 @@ public class ChartImpl extends NamedArtifactImpl implements Chart {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case GeoPackage.CHART__CHART_CONFIGURATION:
+			case GeoPackageImpl.CHART__CHART_CONFIGURATION:
 				return basicSetChartConfiguration(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -148,7 +147,7 @@ public class ChartImpl extends NamedArtifactImpl implements Chart {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GeoPackage.CHART__CHART_CONFIGURATION:
+			case GeoPackageImpl.CHART__CHART_CONFIGURATION:
 				return getChartConfiguration();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -162,7 +161,7 @@ public class ChartImpl extends NamedArtifactImpl implements Chart {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GeoPackage.CHART__CHART_CONFIGURATION:
+			case GeoPackageImpl.CHART__CHART_CONFIGURATION:
 				setChartConfiguration((Diagram)newValue);
 				return;
 		}
@@ -177,7 +176,7 @@ public class ChartImpl extends NamedArtifactImpl implements Chart {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GeoPackage.CHART__CHART_CONFIGURATION:
+			case GeoPackageImpl.CHART__CHART_CONFIGURATION:
 				setChartConfiguration((Diagram)null);
 				return;
 		}
@@ -192,7 +191,7 @@ public class ChartImpl extends NamedArtifactImpl implements Chart {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GeoPackage.CHART__CHART_CONFIGURATION:
+			case GeoPackageImpl.CHART__CHART_CONFIGURATION:
 				return chartConfiguration != null;
 		}
 		return super.eIsSet(featureID);

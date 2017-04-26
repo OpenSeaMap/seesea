@@ -38,9 +38,8 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- end-user-doc -->
  *
  *
- * @see net.sf.seesea.model.core.diagramInterchange.DiagramInterchangePackage#getGraphicalElement()
  * @model
  * @generated
  */
-public interface GraphicalElement extends EObject {
+public interface GraphicalElement {
 } // GraphicalElement

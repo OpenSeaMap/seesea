@@ -30,14 +30,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.physx.impl;
 
-import net.sf.seesea.model.core.physx.PhysxPackage;
-import net.sf.seesea.model.core.physx.SatelliteInfo;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import net.sf.seesea.model.core.physx.SatelliteInfo;
 
 /**
  * <!-- begin-user-doc -->
@@ -152,7 +149,7 @@ public class SatelliteInfoImpl extends MeasurementImpl implements SatelliteInfo 
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return PhysxPackage.Literals.SATELLITE_INFO;
+		return PhysxPackageImpl.Literals.SATELLITE_INFO;
 	}
 
 	/**
@@ -173,7 +170,7 @@ public class SatelliteInfoImpl extends MeasurementImpl implements SatelliteInfo 
 		int oldId = id;
 		id = newId;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackage.SATELLITE_INFO__ID, oldId, id));
+			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackageImpl.SATELLITE_INFO__ID, oldId, id));
 	}
 
 	/**
@@ -194,7 +191,7 @@ public class SatelliteInfoImpl extends MeasurementImpl implements SatelliteInfo 
 		int oldElevation = elevation;
 		elevation = newElevation;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackage.SATELLITE_INFO__ELEVATION, oldElevation, elevation));
+			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackageImpl.SATELLITE_INFO__ELEVATION, oldElevation, elevation));
 	}
 
 	/**
@@ -215,7 +212,7 @@ public class SatelliteInfoImpl extends MeasurementImpl implements SatelliteInfo 
 		int oldAzimuth = azimuth;
 		azimuth = newAzimuth;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackage.SATELLITE_INFO__AZIMUTH, oldAzimuth, azimuth));
+			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackageImpl.SATELLITE_INFO__AZIMUTH, oldAzimuth, azimuth));
 	}
 
 	/**
@@ -236,7 +233,7 @@ public class SatelliteInfoImpl extends MeasurementImpl implements SatelliteInfo 
 		int oldSignalStrength = signalStrength;
 		signalStrength = newSignalStrength;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackage.SATELLITE_INFO__SIGNAL_STRENGTH, oldSignalStrength, signalStrength));
+			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackageImpl.SATELLITE_INFO__SIGNAL_STRENGTH, oldSignalStrength, signalStrength));
 	}
 
 	/**
@@ -247,13 +244,13 @@ public class SatelliteInfoImpl extends MeasurementImpl implements SatelliteInfo 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PhysxPackage.SATELLITE_INFO__ID:
+			case PhysxPackageImpl.SATELLITE_INFO__ID:
 				return getId();
-			case PhysxPackage.SATELLITE_INFO__ELEVATION:
+			case PhysxPackageImpl.SATELLITE_INFO__ELEVATION:
 				return getElevation();
-			case PhysxPackage.SATELLITE_INFO__AZIMUTH:
+			case PhysxPackageImpl.SATELLITE_INFO__AZIMUTH:
 				return getAzimuth();
-			case PhysxPackage.SATELLITE_INFO__SIGNAL_STRENGTH:
+			case PhysxPackageImpl.SATELLITE_INFO__SIGNAL_STRENGTH:
 				return getSignalStrength();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -267,16 +264,16 @@ public class SatelliteInfoImpl extends MeasurementImpl implements SatelliteInfo 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PhysxPackage.SATELLITE_INFO__ID:
+			case PhysxPackageImpl.SATELLITE_INFO__ID:
 				setId((Integer)newValue);
 				return;
-			case PhysxPackage.SATELLITE_INFO__ELEVATION:
+			case PhysxPackageImpl.SATELLITE_INFO__ELEVATION:
 				setElevation((Integer)newValue);
 				return;
-			case PhysxPackage.SATELLITE_INFO__AZIMUTH:
+			case PhysxPackageImpl.SATELLITE_INFO__AZIMUTH:
 				setAzimuth((Integer)newValue);
 				return;
-			case PhysxPackage.SATELLITE_INFO__SIGNAL_STRENGTH:
+			case PhysxPackageImpl.SATELLITE_INFO__SIGNAL_STRENGTH:
 				setSignalStrength((Integer)newValue);
 				return;
 		}
@@ -291,16 +288,16 @@ public class SatelliteInfoImpl extends MeasurementImpl implements SatelliteInfo 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PhysxPackage.SATELLITE_INFO__ID:
+			case PhysxPackageImpl.SATELLITE_INFO__ID:
 				setId(ID_EDEFAULT);
 				return;
-			case PhysxPackage.SATELLITE_INFO__ELEVATION:
+			case PhysxPackageImpl.SATELLITE_INFO__ELEVATION:
 				setElevation(ELEVATION_EDEFAULT);
 				return;
-			case PhysxPackage.SATELLITE_INFO__AZIMUTH:
+			case PhysxPackageImpl.SATELLITE_INFO__AZIMUTH:
 				setAzimuth(AZIMUTH_EDEFAULT);
 				return;
-			case PhysxPackage.SATELLITE_INFO__SIGNAL_STRENGTH:
+			case PhysxPackageImpl.SATELLITE_INFO__SIGNAL_STRENGTH:
 				setSignalStrength(SIGNAL_STRENGTH_EDEFAULT);
 				return;
 		}
@@ -315,13 +312,13 @@ public class SatelliteInfoImpl extends MeasurementImpl implements SatelliteInfo 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PhysxPackage.SATELLITE_INFO__ID:
+			case PhysxPackageImpl.SATELLITE_INFO__ID:
 				return id != ID_EDEFAULT;
-			case PhysxPackage.SATELLITE_INFO__ELEVATION:
+			case PhysxPackageImpl.SATELLITE_INFO__ELEVATION:
 				return elevation != ELEVATION_EDEFAULT;
-			case PhysxPackage.SATELLITE_INFO__AZIMUTH:
+			case PhysxPackageImpl.SATELLITE_INFO__AZIMUTH:
 				return azimuth != AZIMUTH_EDEFAULT;
-			case PhysxPackage.SATELLITE_INFO__SIGNAL_STRENGTH:
+			case PhysxPackageImpl.SATELLITE_INFO__SIGNAL_STRENGTH:
 				return signalStrength != SIGNAL_STRENGTH_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

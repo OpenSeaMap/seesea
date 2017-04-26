@@ -48,14 +48,22 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  */
 public class DataFactoryImpl extends EFactoryImpl implements DataFactory {
 	/**
+	 * The singleton instance of the factory.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final DataFactoryImpl eINSTANCE = init();
+
+	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static DataFactory init() {
+	public static DataFactoryImpl init() {
 		try {
-			DataFactory theDataFactory = (DataFactory)EPackage.Registry.INSTANCE.getEFactory(DataPackage.eNS_URI);
+			DataFactoryImpl theDataFactory = (DataFactoryImpl)EPackage.Registry.INSTANCE.getEFactory(DataPackageImpl.eNS_URI);
 			if (theDataFactory != null) {
 				return theDataFactory;
 			}
@@ -84,8 +92,8 @@ public class DataFactoryImpl extends EFactoryImpl implements DataFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case DataPackage.SERIES: return createSeries();
-			case DataPackage.INSTRUMENTS: return createInstruments();
+			case DataPackageImpl.SERIES: return (EObject)createSeries();
+			case DataPackageImpl.INSTRUMENTS: return (EObject)createInstruments();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
@@ -116,8 +124,8 @@ public class DataFactoryImpl extends EFactoryImpl implements DataFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DataPackage getDataPackage() {
-		return (DataPackage)getEPackage();
+	public DataPackageImpl getDataPackage() {
+		return (DataPackageImpl)getEPackage();
 	}
 
 	/**
@@ -127,8 +135,8 @@ public class DataFactoryImpl extends EFactoryImpl implements DataFactory {
 	 * @generated
 	 */
 	@Deprecated
-	public static DataPackage getPackage() {
-		return DataPackage.eINSTANCE;
+	public static DataPackageImpl getPackage() {
+		return DataPackageImpl.eINSTANCE;
 	}
 
 } //DataFactoryImpl

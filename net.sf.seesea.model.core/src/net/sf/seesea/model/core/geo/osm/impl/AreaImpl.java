@@ -31,31 +31,25 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package net.sf.seesea.model.core.geo.osm.impl;
 
 import java.util.Collection;
+import java.util.List;
 
-import net.sf.seesea.model.core.geo.GeoPackage;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import net.sf.seesea.model.core.geo.GeoPosition;
-
 import net.sf.seesea.model.core.geo.NavigationCompound;
 import net.sf.seesea.model.core.geo.POIContainer;
 import net.sf.seesea.model.core.geo.RoutingContainer;
 import net.sf.seesea.model.core.geo.TracksContainer;
 import net.sf.seesea.model.core.geo.impl.ChartImpl;
-
+import net.sf.seesea.model.core.geo.impl.GeoPackageImpl;
 import net.sf.seesea.model.core.geo.osm.Area;
-import net.sf.seesea.model.core.geo.osm.OsmPackage;
-
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -162,7 +156,7 @@ public class AreaImpl extends ChartImpl implements Area {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return OsmPackage.Literals.AREA;
+		return OsmPackageImpl.Literals.AREA;
 	}
 
 	/**
@@ -183,7 +177,7 @@ public class AreaImpl extends ChartImpl implements Area {
 		POIContainer oldPoiContainer = poiContainer;
 		poiContainer = newPoiContainer;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OsmPackage.AREA__POI_CONTAINER, oldPoiContainer, newPoiContainer);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OsmPackageImpl.AREA__POI_CONTAINER, oldPoiContainer, newPoiContainer);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -198,14 +192,14 @@ public class AreaImpl extends ChartImpl implements Area {
 		if (newPoiContainer != poiContainer) {
 			NotificationChain msgs = null;
 			if (poiContainer != null)
-				msgs = ((InternalEObject)poiContainer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OsmPackage.AREA__POI_CONTAINER, null, msgs);
+				msgs = ((InternalEObject)poiContainer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OsmPackageImpl.AREA__POI_CONTAINER, null, msgs);
 			if (newPoiContainer != null)
-				msgs = ((InternalEObject)newPoiContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OsmPackage.AREA__POI_CONTAINER, null, msgs);
+				msgs = ((InternalEObject)newPoiContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OsmPackageImpl.AREA__POI_CONTAINER, null, msgs);
 			msgs = basicSetPoiContainer(newPoiContainer, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OsmPackage.AREA__POI_CONTAINER, newPoiContainer, newPoiContainer));
+			eNotify(new ENotificationImpl(this, Notification.SET, OsmPackageImpl.AREA__POI_CONTAINER, newPoiContainer, newPoiContainer));
 	}
 
 	/**
@@ -226,7 +220,7 @@ public class AreaImpl extends ChartImpl implements Area {
 		RoutingContainer oldRoutingContainer = routingContainer;
 		routingContainer = newRoutingContainer;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OsmPackage.AREA__ROUTING_CONTAINER, oldRoutingContainer, newRoutingContainer);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OsmPackageImpl.AREA__ROUTING_CONTAINER, oldRoutingContainer, newRoutingContainer);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -241,14 +235,14 @@ public class AreaImpl extends ChartImpl implements Area {
 		if (newRoutingContainer != routingContainer) {
 			NotificationChain msgs = null;
 			if (routingContainer != null)
-				msgs = ((InternalEObject)routingContainer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OsmPackage.AREA__ROUTING_CONTAINER, null, msgs);
+				msgs = ((InternalEObject)routingContainer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OsmPackageImpl.AREA__ROUTING_CONTAINER, null, msgs);
 			if (newRoutingContainer != null)
-				msgs = ((InternalEObject)newRoutingContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OsmPackage.AREA__ROUTING_CONTAINER, null, msgs);
+				msgs = ((InternalEObject)newRoutingContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OsmPackageImpl.AREA__ROUTING_CONTAINER, null, msgs);
 			msgs = basicSetRoutingContainer(newRoutingContainer, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OsmPackage.AREA__ROUTING_CONTAINER, newRoutingContainer, newRoutingContainer));
+			eNotify(new ENotificationImpl(this, Notification.SET, OsmPackageImpl.AREA__ROUTING_CONTAINER, newRoutingContainer, newRoutingContainer));
 	}
 
 	/**
@@ -269,7 +263,7 @@ public class AreaImpl extends ChartImpl implements Area {
 		TracksContainer oldTracksContainer = tracksContainer;
 		tracksContainer = newTracksContainer;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OsmPackage.AREA__TRACKS_CONTAINER, oldTracksContainer, newTracksContainer);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OsmPackageImpl.AREA__TRACKS_CONTAINER, oldTracksContainer, newTracksContainer);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -284,14 +278,14 @@ public class AreaImpl extends ChartImpl implements Area {
 		if (newTracksContainer != tracksContainer) {
 			NotificationChain msgs = null;
 			if (tracksContainer != null)
-				msgs = ((InternalEObject)tracksContainer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OsmPackage.AREA__TRACKS_CONTAINER, null, msgs);
+				msgs = ((InternalEObject)tracksContainer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OsmPackageImpl.AREA__TRACKS_CONTAINER, null, msgs);
 			if (newTracksContainer != null)
-				msgs = ((InternalEObject)newTracksContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OsmPackage.AREA__TRACKS_CONTAINER, null, msgs);
+				msgs = ((InternalEObject)newTracksContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OsmPackageImpl.AREA__TRACKS_CONTAINER, null, msgs);
 			msgs = basicSetTracksContainer(newTracksContainer, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OsmPackage.AREA__TRACKS_CONTAINER, newTracksContainer, newTracksContainer));
+			eNotify(new ENotificationImpl(this, Notification.SET, OsmPackageImpl.AREA__TRACKS_CONTAINER, newTracksContainer, newTracksContainer));
 	}
 
 	/**
@@ -312,7 +306,7 @@ public class AreaImpl extends ChartImpl implements Area {
 		int oldZoomLevel = zoomLevel;
 		zoomLevel = newZoomLevel;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OsmPackage.AREA__ZOOM_LEVEL, oldZoomLevel, zoomLevel));
+			eNotify(new ENotificationImpl(this, Notification.SET, OsmPackageImpl.AREA__ZOOM_LEVEL, oldZoomLevel, zoomLevel));
 	}
 
 	/**
@@ -333,7 +327,7 @@ public class AreaImpl extends ChartImpl implements Area {
 		GeoPosition oldMapCenterPosition = mapCenterPosition;
 		mapCenterPosition = newMapCenterPosition;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OsmPackage.AREA__MAP_CENTER_POSITION, oldMapCenterPosition, newMapCenterPosition);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OsmPackageImpl.AREA__MAP_CENTER_POSITION, oldMapCenterPosition, newMapCenterPosition);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -348,14 +342,14 @@ public class AreaImpl extends ChartImpl implements Area {
 		if (newMapCenterPosition != mapCenterPosition) {
 			NotificationChain msgs = null;
 			if (mapCenterPosition != null)
-				msgs = ((InternalEObject)mapCenterPosition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OsmPackage.AREA__MAP_CENTER_POSITION, null, msgs);
+				msgs = ((InternalEObject)mapCenterPosition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OsmPackageImpl.AREA__MAP_CENTER_POSITION, null, msgs);
 			if (newMapCenterPosition != null)
-				msgs = ((InternalEObject)newMapCenterPosition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OsmPackage.AREA__MAP_CENTER_POSITION, null, msgs);
+				msgs = ((InternalEObject)newMapCenterPosition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OsmPackageImpl.AREA__MAP_CENTER_POSITION, null, msgs);
 			msgs = basicSetMapCenterPosition(newMapCenterPosition, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OsmPackage.AREA__MAP_CENTER_POSITION, newMapCenterPosition, newMapCenterPosition));
+			eNotify(new ENotificationImpl(this, Notification.SET, OsmPackageImpl.AREA__MAP_CENTER_POSITION, newMapCenterPosition, newMapCenterPosition));
 	}
 
 	/**
@@ -363,9 +357,9 @@ public class AreaImpl extends ChartImpl implements Area {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Area> getSubArea() {
+	public List<Area> getSubArea() {
 		if (subArea == null) {
-			subArea = new EObjectContainmentEList<Area>(Area.class, this, OsmPackage.AREA__SUB_AREA);
+			subArea = new EObjectContainmentEList<Area>(Area.class, this, OsmPackageImpl.AREA__SUB_AREA);
 		}
 		return subArea;
 	}
@@ -378,15 +372,15 @@ public class AreaImpl extends ChartImpl implements Area {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case OsmPackage.AREA__POI_CONTAINER:
+			case OsmPackageImpl.AREA__POI_CONTAINER:
 				return basicSetPoiContainer(null, msgs);
-			case OsmPackage.AREA__ROUTING_CONTAINER:
+			case OsmPackageImpl.AREA__ROUTING_CONTAINER:
 				return basicSetRoutingContainer(null, msgs);
-			case OsmPackage.AREA__TRACKS_CONTAINER:
+			case OsmPackageImpl.AREA__TRACKS_CONTAINER:
 				return basicSetTracksContainer(null, msgs);
-			case OsmPackage.AREA__MAP_CENTER_POSITION:
+			case OsmPackageImpl.AREA__MAP_CENTER_POSITION:
 				return basicSetMapCenterPosition(null, msgs);
-			case OsmPackage.AREA__SUB_AREA:
+			case OsmPackageImpl.AREA__SUB_AREA:
 				return ((InternalEList<?>)getSubArea()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -400,17 +394,17 @@ public class AreaImpl extends ChartImpl implements Area {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case OsmPackage.AREA__POI_CONTAINER:
+			case OsmPackageImpl.AREA__POI_CONTAINER:
 				return getPoiContainer();
-			case OsmPackage.AREA__ROUTING_CONTAINER:
+			case OsmPackageImpl.AREA__ROUTING_CONTAINER:
 				return getRoutingContainer();
-			case OsmPackage.AREA__TRACKS_CONTAINER:
+			case OsmPackageImpl.AREA__TRACKS_CONTAINER:
 				return getTracksContainer();
-			case OsmPackage.AREA__ZOOM_LEVEL:
+			case OsmPackageImpl.AREA__ZOOM_LEVEL:
 				return getZoomLevel();
-			case OsmPackage.AREA__MAP_CENTER_POSITION:
+			case OsmPackageImpl.AREA__MAP_CENTER_POSITION:
 				return getMapCenterPosition();
-			case OsmPackage.AREA__SUB_AREA:
+			case OsmPackageImpl.AREA__SUB_AREA:
 				return getSubArea();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -425,22 +419,22 @@ public class AreaImpl extends ChartImpl implements Area {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case OsmPackage.AREA__POI_CONTAINER:
+			case OsmPackageImpl.AREA__POI_CONTAINER:
 				setPoiContainer((POIContainer)newValue);
 				return;
-			case OsmPackage.AREA__ROUTING_CONTAINER:
+			case OsmPackageImpl.AREA__ROUTING_CONTAINER:
 				setRoutingContainer((RoutingContainer)newValue);
 				return;
-			case OsmPackage.AREA__TRACKS_CONTAINER:
+			case OsmPackageImpl.AREA__TRACKS_CONTAINER:
 				setTracksContainer((TracksContainer)newValue);
 				return;
-			case OsmPackage.AREA__ZOOM_LEVEL:
+			case OsmPackageImpl.AREA__ZOOM_LEVEL:
 				setZoomLevel((Integer)newValue);
 				return;
-			case OsmPackage.AREA__MAP_CENTER_POSITION:
+			case OsmPackageImpl.AREA__MAP_CENTER_POSITION:
 				setMapCenterPosition((GeoPosition)newValue);
 				return;
-			case OsmPackage.AREA__SUB_AREA:
+			case OsmPackageImpl.AREA__SUB_AREA:
 				getSubArea().clear();
 				getSubArea().addAll((Collection<? extends Area>)newValue);
 				return;
@@ -456,22 +450,22 @@ public class AreaImpl extends ChartImpl implements Area {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case OsmPackage.AREA__POI_CONTAINER:
+			case OsmPackageImpl.AREA__POI_CONTAINER:
 				setPoiContainer((POIContainer)null);
 				return;
-			case OsmPackage.AREA__ROUTING_CONTAINER:
+			case OsmPackageImpl.AREA__ROUTING_CONTAINER:
 				setRoutingContainer((RoutingContainer)null);
 				return;
-			case OsmPackage.AREA__TRACKS_CONTAINER:
+			case OsmPackageImpl.AREA__TRACKS_CONTAINER:
 				setTracksContainer((TracksContainer)null);
 				return;
-			case OsmPackage.AREA__ZOOM_LEVEL:
+			case OsmPackageImpl.AREA__ZOOM_LEVEL:
 				setZoomLevel(ZOOM_LEVEL_EDEFAULT);
 				return;
-			case OsmPackage.AREA__MAP_CENTER_POSITION:
+			case OsmPackageImpl.AREA__MAP_CENTER_POSITION:
 				setMapCenterPosition((GeoPosition)null);
 				return;
-			case OsmPackage.AREA__SUB_AREA:
+			case OsmPackageImpl.AREA__SUB_AREA:
 				getSubArea().clear();
 				return;
 		}
@@ -486,17 +480,17 @@ public class AreaImpl extends ChartImpl implements Area {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case OsmPackage.AREA__POI_CONTAINER:
+			case OsmPackageImpl.AREA__POI_CONTAINER:
 				return poiContainer != null;
-			case OsmPackage.AREA__ROUTING_CONTAINER:
+			case OsmPackageImpl.AREA__ROUTING_CONTAINER:
 				return routingContainer != null;
-			case OsmPackage.AREA__TRACKS_CONTAINER:
+			case OsmPackageImpl.AREA__TRACKS_CONTAINER:
 				return tracksContainer != null;
-			case OsmPackage.AREA__ZOOM_LEVEL:
+			case OsmPackageImpl.AREA__ZOOM_LEVEL:
 				return zoomLevel != ZOOM_LEVEL_EDEFAULT;
-			case OsmPackage.AREA__MAP_CENTER_POSITION:
+			case OsmPackageImpl.AREA__MAP_CENTER_POSITION:
 				return mapCenterPosition != null;
-			case OsmPackage.AREA__SUB_AREA:
+			case OsmPackageImpl.AREA__SUB_AREA:
 				return subArea != null && !subArea.isEmpty();
 		}
 		return super.eIsSet(featureID);
@@ -511,9 +505,9 @@ public class AreaImpl extends ChartImpl implements Area {
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == NavigationCompound.class) {
 			switch (derivedFeatureID) {
-				case OsmPackage.AREA__POI_CONTAINER: return GeoPackage.NAVIGATION_COMPOUND__POI_CONTAINER;
-				case OsmPackage.AREA__ROUTING_CONTAINER: return GeoPackage.NAVIGATION_COMPOUND__ROUTING_CONTAINER;
-				case OsmPackage.AREA__TRACKS_CONTAINER: return GeoPackage.NAVIGATION_COMPOUND__TRACKS_CONTAINER;
+				case OsmPackageImpl.AREA__POI_CONTAINER: return GeoPackageImpl.NAVIGATION_COMPOUND__POI_CONTAINER;
+				case OsmPackageImpl.AREA__ROUTING_CONTAINER: return GeoPackageImpl.NAVIGATION_COMPOUND__ROUTING_CONTAINER;
+				case OsmPackageImpl.AREA__TRACKS_CONTAINER: return GeoPackageImpl.NAVIGATION_COMPOUND__TRACKS_CONTAINER;
 				default: return -1;
 			}
 		}
@@ -529,9 +523,9 @@ public class AreaImpl extends ChartImpl implements Area {
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == NavigationCompound.class) {
 			switch (baseFeatureID) {
-				case GeoPackage.NAVIGATION_COMPOUND__POI_CONTAINER: return OsmPackage.AREA__POI_CONTAINER;
-				case GeoPackage.NAVIGATION_COMPOUND__ROUTING_CONTAINER: return OsmPackage.AREA__ROUTING_CONTAINER;
-				case GeoPackage.NAVIGATION_COMPOUND__TRACKS_CONTAINER: return OsmPackage.AREA__TRACKS_CONTAINER;
+				case GeoPackageImpl.NAVIGATION_COMPOUND__POI_CONTAINER: return OsmPackageImpl.AREA__POI_CONTAINER;
+				case GeoPackageImpl.NAVIGATION_COMPOUND__ROUTING_CONTAINER: return OsmPackageImpl.AREA__ROUTING_CONTAINER;
+				case GeoPackageImpl.NAVIGATION_COMPOUND__TRACKS_CONTAINER: return OsmPackageImpl.AREA__TRACKS_CONTAINER;
 				default: return -1;
 			}
 		}

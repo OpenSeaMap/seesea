@@ -47,11 +47,10 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link net.sf.seesea.model.core.weather.WaveHeight#getUnit <em>Unit</em>}</li>
  * </ul>
  *
- * @see net.sf.seesea.model.core.weather.WeatherPackage#getWaveHeight()
  * @model
  * @generated
  */
-public interface WaveHeight extends EObject {
+public interface WaveHeight {
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -62,7 +61,6 @@ public interface WaveHeight extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(double)
-	 * @see net.sf.seesea.model.core.weather.WeatherPackage#getWaveHeight_Value()
 	 * @model
 	 * @generated
 	 */
@@ -90,7 +88,6 @@ public interface WaveHeight extends EObject {
 	 * @return the value of the '<em>Unit</em>' attribute.
 	 * @see net.sf.seesea.model.core.physx.LengthUnit
 	 * @see #setUnit(LengthUnit)
-	 * @see net.sf.seesea.model.core.weather.WeatherPackage#getWaveHeight_Unit()
 	 * @model
 	 * @generated
 	 */

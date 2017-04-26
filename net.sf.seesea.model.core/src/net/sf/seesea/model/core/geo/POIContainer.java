@@ -30,6 +30,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.geo;
 
+import java.util.List;
 import net.sf.seesea.model.core.ModelObject;
 import net.sf.seesea.model.core.geo.osm.Area;
 import org.eclipse.emf.common.util.EList;
@@ -47,7 +48,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link net.sf.seesea.model.core.geo.POIContainer#getArea <em>Area</em>}</li>
  * </ul>
  *
- * @see net.sf.seesea.model.core.geo.GeoPackage#getPOIContainer()
  * @model
  * @generated
  */
@@ -62,11 +62,10 @@ public interface POIContainer extends ModelObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Pois</em>' containment reference list.
-	 * @see net.sf.seesea.model.core.geo.GeoPackage#getPOIContainer_Pois()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<NamedPosition> getPois();
+	List<NamedPosition> getPois();
 
 	/**
 	 * Returns the value of the '<em><b>Area</b></em>' reference.
@@ -78,7 +77,6 @@ public interface POIContainer extends ModelObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Area</em>' reference.
 	 * @see #setArea(Area)
-	 * @see net.sf.seesea.model.core.geo.GeoPackage#getPOIContainer_Area()
 	 * @model
 	 * @generated
 	 */

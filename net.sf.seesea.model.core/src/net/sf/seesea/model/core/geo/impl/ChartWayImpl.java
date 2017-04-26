@@ -31,15 +31,15 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package net.sf.seesea.model.core.geo.impl;
 
 import java.util.Collection;
-import net.sf.seesea.model.core.geo.ChartWay;
-import net.sf.seesea.model.core.geo.GeoPackage;
+import java.util.List;
 
-import net.sf.seesea.model.core.geo.GeoPosition;
-import net.sf.seesea.model.core.impl.ModelObjectImpl;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+
+import net.sf.seesea.model.core.geo.ChartWay;
+import net.sf.seesea.model.core.geo.GeoPosition;
+import net.sf.seesea.model.core.impl.ModelObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -81,7 +81,7 @@ public class ChartWayImpl extends ModelObjectImpl implements ChartWay {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return GeoPackage.Literals.CHART_WAY;
+		return GeoPackageImpl.Literals.CHART_WAY;
 	}
 
 	/**
@@ -89,9 +89,9 @@ public class ChartWayImpl extends ModelObjectImpl implements ChartWay {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<GeoPosition> getWaypoints() {
+	public List<GeoPosition> getWaypoints() {
 		if (waypoints == null) {
-			waypoints = new EObjectResolvingEList<GeoPosition>(GeoPosition.class, this, GeoPackage.CHART_WAY__WAYPOINTS);
+			waypoints = new EObjectResolvingEList<GeoPosition>(GeoPosition.class, this, GeoPackageImpl.CHART_WAY__WAYPOINTS);
 		}
 		return waypoints;
 	}
@@ -104,7 +104,7 @@ public class ChartWayImpl extends ModelObjectImpl implements ChartWay {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GeoPackage.CHART_WAY__WAYPOINTS:
+			case GeoPackageImpl.CHART_WAY__WAYPOINTS:
 				return getWaypoints();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -119,7 +119,7 @@ public class ChartWayImpl extends ModelObjectImpl implements ChartWay {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GeoPackage.CHART_WAY__WAYPOINTS:
+			case GeoPackageImpl.CHART_WAY__WAYPOINTS:
 				getWaypoints().clear();
 				getWaypoints().addAll((Collection<? extends GeoPosition>)newValue);
 				return;
@@ -135,7 +135,7 @@ public class ChartWayImpl extends ModelObjectImpl implements ChartWay {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GeoPackage.CHART_WAY__WAYPOINTS:
+			case GeoPackageImpl.CHART_WAY__WAYPOINTS:
 				getWaypoints().clear();
 				return;
 		}
@@ -150,7 +150,7 @@ public class ChartWayImpl extends ModelObjectImpl implements ChartWay {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GeoPackage.CHART_WAY__WAYPOINTS:
+			case GeoPackageImpl.CHART_WAY__WAYPOINTS:
 				return waypoints != null && !waypoints.isEmpty();
 		}
 		return super.eIsSet(featureID);

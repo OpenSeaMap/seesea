@@ -30,15 +30,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.physx.impl;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import net.sf.seesea.model.core.physx.Heading;
 import net.sf.seesea.model.core.physx.HeadingType;
-import net.sf.seesea.model.core.physx.PhysxPackage;
-
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -111,7 +108,7 @@ public class HeadingImpl extends MeasurementImpl implements Heading {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return PhysxPackage.Literals.HEADING;
+		return PhysxPackageImpl.Literals.HEADING;
 	}
 
 	/**
@@ -132,7 +129,7 @@ public class HeadingImpl extends MeasurementImpl implements Heading {
 		double oldDegrees = degrees;
 		degrees = newDegrees;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackage.HEADING__DEGREES, oldDegrees, degrees));
+			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackageImpl.HEADING__DEGREES, oldDegrees, degrees));
 	}
 
 	/**
@@ -153,7 +150,7 @@ public class HeadingImpl extends MeasurementImpl implements Heading {
 		HeadingType oldHeadingType = headingType;
 		headingType = newHeadingType == null ? HEADING_TYPE_EDEFAULT : newHeadingType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackage.HEADING__HEADING_TYPE, oldHeadingType, headingType));
+			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackageImpl.HEADING__HEADING_TYPE, oldHeadingType, headingType));
 	}
 
 	/**
@@ -164,9 +161,9 @@ public class HeadingImpl extends MeasurementImpl implements Heading {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PhysxPackage.HEADING__DEGREES:
+			case PhysxPackageImpl.HEADING__DEGREES:
 				return getDegrees();
-			case PhysxPackage.HEADING__HEADING_TYPE:
+			case PhysxPackageImpl.HEADING__HEADING_TYPE:
 				return getHeadingType();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -180,10 +177,10 @@ public class HeadingImpl extends MeasurementImpl implements Heading {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PhysxPackage.HEADING__DEGREES:
+			case PhysxPackageImpl.HEADING__DEGREES:
 				setDegrees((Double)newValue);
 				return;
-			case PhysxPackage.HEADING__HEADING_TYPE:
+			case PhysxPackageImpl.HEADING__HEADING_TYPE:
 				setHeadingType((HeadingType)newValue);
 				return;
 		}
@@ -198,10 +195,10 @@ public class HeadingImpl extends MeasurementImpl implements Heading {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PhysxPackage.HEADING__DEGREES:
+			case PhysxPackageImpl.HEADING__DEGREES:
 				setDegrees(DEGREES_EDEFAULT);
 				return;
-			case PhysxPackage.HEADING__HEADING_TYPE:
+			case PhysxPackageImpl.HEADING__HEADING_TYPE:
 				setHeadingType(HEADING_TYPE_EDEFAULT);
 				return;
 		}
@@ -216,9 +213,9 @@ public class HeadingImpl extends MeasurementImpl implements Heading {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PhysxPackage.HEADING__DEGREES:
+			case PhysxPackageImpl.HEADING__DEGREES:
 				return degrees != DEGREES_EDEFAULT;
-			case PhysxPackage.HEADING__HEADING_TYPE:
+			case PhysxPackageImpl.HEADING__HEADING_TYPE:
 				return headingType != HEADING_TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

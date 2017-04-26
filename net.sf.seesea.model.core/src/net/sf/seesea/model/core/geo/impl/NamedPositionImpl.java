@@ -30,15 +30,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.geo.impl;
 
-import net.sf.seesea.model.core.geo.GeoPackage;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import net.sf.seesea.model.core.geo.NamedArtifact;
 import net.sf.seesea.model.core.geo.NamedPosition;
-
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -90,7 +87,7 @@ public class NamedPositionImpl extends GeoPositionImpl implements NamedPosition 
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return GeoPackage.Literals.NAMED_POSITION;
+		return GeoPackageImpl.Literals.NAMED_POSITION;
 	}
 
 	/**
@@ -111,7 +108,7 @@ public class NamedPositionImpl extends GeoPositionImpl implements NamedPosition 
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackage.NAMED_POSITION__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackageImpl.NAMED_POSITION__NAME, oldName, name));
 	}
 
 	/**
@@ -122,7 +119,7 @@ public class NamedPositionImpl extends GeoPositionImpl implements NamedPosition 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GeoPackage.NAMED_POSITION__NAME:
+			case GeoPackageImpl.NAMED_POSITION__NAME:
 				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -136,7 +133,7 @@ public class NamedPositionImpl extends GeoPositionImpl implements NamedPosition 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GeoPackage.NAMED_POSITION__NAME:
+			case GeoPackageImpl.NAMED_POSITION__NAME:
 				setName((String)newValue);
 				return;
 		}
@@ -151,7 +148,7 @@ public class NamedPositionImpl extends GeoPositionImpl implements NamedPosition 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GeoPackage.NAMED_POSITION__NAME:
+			case GeoPackageImpl.NAMED_POSITION__NAME:
 				setName(NAME_EDEFAULT);
 				return;
 		}
@@ -166,7 +163,7 @@ public class NamedPositionImpl extends GeoPositionImpl implements NamedPosition 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GeoPackage.NAMED_POSITION__NAME:
+			case GeoPackageImpl.NAMED_POSITION__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
@@ -181,7 +178,7 @@ public class NamedPositionImpl extends GeoPositionImpl implements NamedPosition 
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == NamedArtifact.class) {
 			switch (derivedFeatureID) {
-				case GeoPackage.NAMED_POSITION__NAME: return GeoPackage.NAMED_ARTIFACT__NAME;
+				case GeoPackageImpl.NAMED_POSITION__NAME: return GeoPackageImpl.NAMED_ARTIFACT__NAME;
 				default: return -1;
 			}
 		}
@@ -197,7 +194,7 @@ public class NamedPositionImpl extends GeoPositionImpl implements NamedPosition 
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == NamedArtifact.class) {
 			switch (baseFeatureID) {
-				case GeoPackage.NAMED_ARTIFACT__NAME: return GeoPackage.NAMED_POSITION__NAME;
+				case GeoPackageImpl.NAMED_ARTIFACT__NAME: return GeoPackageImpl.NAMED_POSITION__NAME;
 				default: return -1;
 			}
 		}

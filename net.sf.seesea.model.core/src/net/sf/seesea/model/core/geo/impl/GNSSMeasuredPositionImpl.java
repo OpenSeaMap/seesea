@@ -28,16 +28,15 @@
 package net.sf.seesea.model.core.geo.impl;
 
 import java.util.Collection;
-import net.sf.seesea.model.core.geo.GNSSMeasuredPosition;
-import net.sf.seesea.model.core.geo.GeoPackage;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+
+import net.sf.seesea.model.core.geo.GNSSMeasuredPosition;
 
 /**
  * <!-- begin-user-doc -->
@@ -142,7 +141,7 @@ public class GNSSMeasuredPositionImpl extends MeasuredPosition3DImpl implements 
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return GeoPackage.Literals.GNSS_MEASURED_POSITION;
+		return GeoPackageImpl.Literals.GNSS_MEASURED_POSITION;
 	}
 
 	/**
@@ -163,7 +162,7 @@ public class GNSSMeasuredPositionImpl extends MeasuredPosition3DImpl implements 
 		double oldHdop = hdop;
 		hdop = newHdop;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackage.GNSS_MEASURED_POSITION__HDOP, oldHdop, hdop));
+			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackageImpl.GNSS_MEASURED_POSITION__HDOP, oldHdop, hdop));
 	}
 
 	/**
@@ -184,7 +183,7 @@ public class GNSSMeasuredPositionImpl extends MeasuredPosition3DImpl implements 
 		double oldVdop = vdop;
 		vdop = newVdop;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackage.GNSS_MEASURED_POSITION__VDOP, oldVdop, vdop));
+			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackageImpl.GNSS_MEASURED_POSITION__VDOP, oldVdop, vdop));
 	}
 
 	/**
@@ -205,7 +204,7 @@ public class GNSSMeasuredPositionImpl extends MeasuredPosition3DImpl implements 
 		double oldPdop = pdop;
 		pdop = newPdop;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackage.GNSS_MEASURED_POSITION__PDOP, oldPdop, pdop));
+			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackageImpl.GNSS_MEASURED_POSITION__PDOP, oldPdop, pdop));
 	}
 
 	/**
@@ -213,9 +212,9 @@ public class GNSSMeasuredPositionImpl extends MeasuredPosition3DImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<String> getAugmentation() {
+	public List<String> getAugmentation() {
 		if (augmentation == null) {
-			augmentation = new EDataTypeUniqueEList<String>(String.class, this, GeoPackage.GNSS_MEASURED_POSITION__AUGMENTATION);
+			augmentation = new EDataTypeUniqueEList<String>(String.class, this, GeoPackageImpl.GNSS_MEASURED_POSITION__AUGMENTATION);
 		}
 		return augmentation;
 	}
@@ -228,13 +227,13 @@ public class GNSSMeasuredPositionImpl extends MeasuredPosition3DImpl implements 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GeoPackage.GNSS_MEASURED_POSITION__HDOP:
+			case GeoPackageImpl.GNSS_MEASURED_POSITION__HDOP:
 				return getHdop();
-			case GeoPackage.GNSS_MEASURED_POSITION__VDOP:
+			case GeoPackageImpl.GNSS_MEASURED_POSITION__VDOP:
 				return getVdop();
-			case GeoPackage.GNSS_MEASURED_POSITION__PDOP:
+			case GeoPackageImpl.GNSS_MEASURED_POSITION__PDOP:
 				return getPdop();
-			case GeoPackage.GNSS_MEASURED_POSITION__AUGMENTATION:
+			case GeoPackageImpl.GNSS_MEASURED_POSITION__AUGMENTATION:
 				return getAugmentation();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -249,16 +248,16 @@ public class GNSSMeasuredPositionImpl extends MeasuredPosition3DImpl implements 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GeoPackage.GNSS_MEASURED_POSITION__HDOP:
+			case GeoPackageImpl.GNSS_MEASURED_POSITION__HDOP:
 				setHdop((Double)newValue);
 				return;
-			case GeoPackage.GNSS_MEASURED_POSITION__VDOP:
+			case GeoPackageImpl.GNSS_MEASURED_POSITION__VDOP:
 				setVdop((Double)newValue);
 				return;
-			case GeoPackage.GNSS_MEASURED_POSITION__PDOP:
+			case GeoPackageImpl.GNSS_MEASURED_POSITION__PDOP:
 				setPdop((Double)newValue);
 				return;
-			case GeoPackage.GNSS_MEASURED_POSITION__AUGMENTATION:
+			case GeoPackageImpl.GNSS_MEASURED_POSITION__AUGMENTATION:
 				getAugmentation().clear();
 				getAugmentation().addAll((Collection<? extends String>)newValue);
 				return;
@@ -274,16 +273,16 @@ public class GNSSMeasuredPositionImpl extends MeasuredPosition3DImpl implements 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GeoPackage.GNSS_MEASURED_POSITION__HDOP:
+			case GeoPackageImpl.GNSS_MEASURED_POSITION__HDOP:
 				setHdop(HDOP_EDEFAULT);
 				return;
-			case GeoPackage.GNSS_MEASURED_POSITION__VDOP:
+			case GeoPackageImpl.GNSS_MEASURED_POSITION__VDOP:
 				setVdop(VDOP_EDEFAULT);
 				return;
-			case GeoPackage.GNSS_MEASURED_POSITION__PDOP:
+			case GeoPackageImpl.GNSS_MEASURED_POSITION__PDOP:
 				setPdop(PDOP_EDEFAULT);
 				return;
-			case GeoPackage.GNSS_MEASURED_POSITION__AUGMENTATION:
+			case GeoPackageImpl.GNSS_MEASURED_POSITION__AUGMENTATION:
 				getAugmentation().clear();
 				return;
 		}
@@ -298,13 +297,13 @@ public class GNSSMeasuredPositionImpl extends MeasuredPosition3DImpl implements 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GeoPackage.GNSS_MEASURED_POSITION__HDOP:
+			case GeoPackageImpl.GNSS_MEASURED_POSITION__HDOP:
 				return hdop != HDOP_EDEFAULT;
-			case GeoPackage.GNSS_MEASURED_POSITION__VDOP:
+			case GeoPackageImpl.GNSS_MEASURED_POSITION__VDOP:
 				return vdop != VDOP_EDEFAULT;
-			case GeoPackage.GNSS_MEASURED_POSITION__PDOP:
+			case GeoPackageImpl.GNSS_MEASURED_POSITION__PDOP:
 				return pdop != PDOP_EDEFAULT;
-			case GeoPackage.GNSS_MEASURED_POSITION__AUGMENTATION:
+			case GeoPackageImpl.GNSS_MEASURED_POSITION__AUGMENTATION:
 				return augmentation != null && !augmentation.isEmpty();
 		}
 		return super.eIsSet(featureID);

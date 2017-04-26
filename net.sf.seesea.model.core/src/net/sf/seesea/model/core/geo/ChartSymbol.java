@@ -38,9 +38,8 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- end-user-doc -->
  *
  *
- * @see net.sf.seesea.model.core.geo.GeoPackage#getChartSymbol()
  * @model
  * @generated
  */
-public interface ChartSymbol extends EObject {
+public interface ChartSymbol {
 } // ChartSymbol

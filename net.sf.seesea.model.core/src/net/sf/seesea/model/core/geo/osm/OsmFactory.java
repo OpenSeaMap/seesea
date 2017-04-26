@@ -37,18 +37,16 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see net.sf.seesea.model.core.geo.osm.OsmPackage
  * @generated
  */
-public interface OsmFactory extends EFactory {
+public interface OsmFactory {
 	/**
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	OsmFactory eINSTANCE = net.sf.seesea.model.core.geo.osm.impl.OsmFactoryImpl.init();
-
+	OsmFactory INSTANCE = net.sf.seesea.model.core.geo.osm.impl.OsmFactoryImpl.eINSTANCE;
 	/**
 	 * Returns a new object of class '<em>Area</em>'.
 	 * <!-- begin-user-doc -->
@@ -66,14 +64,5 @@ public interface OsmFactory extends EFactory {
 	 * @generated
 	 */
 	World createWorld();
-
-	/**
-	 * Returns the package supported by this factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the package supported by this factory.
-	 * @generated
-	 */
-	OsmPackage getOsmPackage();
 
 } //OsmFactory

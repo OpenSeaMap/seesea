@@ -43,7 +43,6 @@ package net.sf.seesea.model.core.physx;
  *   <li>{@link net.sf.seesea.model.core.physx.Temperature#getUnit <em>Unit</em>}</li>
  * </ul>
  *
- * @see net.sf.seesea.model.core.physx.PhysxPackage#getTemperature()
  * @model
  * @generated
  */
@@ -58,7 +57,6 @@ public interface Temperature extends Measurement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(double)
-	 * @see net.sf.seesea.model.core.physx.PhysxPackage#getTemperature_Value()
 	 * @model
 	 * @generated
 	 */
@@ -86,7 +84,6 @@ public interface Temperature extends Measurement {
 	 * @return the value of the '<em>Unit</em>' attribute.
 	 * @see net.sf.seesea.model.core.physx.TemperatureUnit
 	 * @see #setUnit(TemperatureUnit)
-	 * @see net.sf.seesea.model.core.physx.PhysxPackage#getTemperature_Unit()
 	 * @model
 	 * @generated
 	 */

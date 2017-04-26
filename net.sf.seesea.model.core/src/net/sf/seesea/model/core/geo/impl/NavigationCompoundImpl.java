@@ -30,20 +30,17 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.geo.impl;
 
-import net.sf.seesea.model.core.geo.GeoPackage;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import net.sf.seesea.model.core.geo.NavigationCompound;
 import net.sf.seesea.model.core.geo.POIContainer;
 import net.sf.seesea.model.core.geo.RoutingContainer;
-
 import net.sf.seesea.model.core.geo.TracksContainer;
 import net.sf.seesea.model.core.impl.ModelObjectImpl;
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -107,7 +104,7 @@ public class NavigationCompoundImpl extends ModelObjectImpl implements Navigatio
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return GeoPackage.Literals.NAVIGATION_COMPOUND;
+		return GeoPackageImpl.Literals.NAVIGATION_COMPOUND;
 	}
 
 	/**
@@ -128,7 +125,7 @@ public class NavigationCompoundImpl extends ModelObjectImpl implements Navigatio
 		POIContainer oldPoiContainer = poiContainer;
 		poiContainer = newPoiContainer;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GeoPackage.NAVIGATION_COMPOUND__POI_CONTAINER, oldPoiContainer, newPoiContainer);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GeoPackageImpl.NAVIGATION_COMPOUND__POI_CONTAINER, oldPoiContainer, newPoiContainer);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -143,14 +140,14 @@ public class NavigationCompoundImpl extends ModelObjectImpl implements Navigatio
 		if (newPoiContainer != poiContainer) {
 			NotificationChain msgs = null;
 			if (poiContainer != null)
-				msgs = ((InternalEObject)poiContainer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GeoPackage.NAVIGATION_COMPOUND__POI_CONTAINER, null, msgs);
+				msgs = ((InternalEObject)poiContainer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GeoPackageImpl.NAVIGATION_COMPOUND__POI_CONTAINER, null, msgs);
 			if (newPoiContainer != null)
-				msgs = ((InternalEObject)newPoiContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GeoPackage.NAVIGATION_COMPOUND__POI_CONTAINER, null, msgs);
+				msgs = ((InternalEObject)newPoiContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GeoPackageImpl.NAVIGATION_COMPOUND__POI_CONTAINER, null, msgs);
 			msgs = basicSetPoiContainer(newPoiContainer, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackage.NAVIGATION_COMPOUND__POI_CONTAINER, newPoiContainer, newPoiContainer));
+			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackageImpl.NAVIGATION_COMPOUND__POI_CONTAINER, newPoiContainer, newPoiContainer));
 	}
 
 	/**
@@ -171,7 +168,7 @@ public class NavigationCompoundImpl extends ModelObjectImpl implements Navigatio
 		RoutingContainer oldRoutingContainer = routingContainer;
 		routingContainer = newRoutingContainer;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GeoPackage.NAVIGATION_COMPOUND__ROUTING_CONTAINER, oldRoutingContainer, newRoutingContainer);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GeoPackageImpl.NAVIGATION_COMPOUND__ROUTING_CONTAINER, oldRoutingContainer, newRoutingContainer);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -186,14 +183,14 @@ public class NavigationCompoundImpl extends ModelObjectImpl implements Navigatio
 		if (newRoutingContainer != routingContainer) {
 			NotificationChain msgs = null;
 			if (routingContainer != null)
-				msgs = ((InternalEObject)routingContainer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GeoPackage.NAVIGATION_COMPOUND__ROUTING_CONTAINER, null, msgs);
+				msgs = ((InternalEObject)routingContainer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GeoPackageImpl.NAVIGATION_COMPOUND__ROUTING_CONTAINER, null, msgs);
 			if (newRoutingContainer != null)
-				msgs = ((InternalEObject)newRoutingContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GeoPackage.NAVIGATION_COMPOUND__ROUTING_CONTAINER, null, msgs);
+				msgs = ((InternalEObject)newRoutingContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GeoPackageImpl.NAVIGATION_COMPOUND__ROUTING_CONTAINER, null, msgs);
 			msgs = basicSetRoutingContainer(newRoutingContainer, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackage.NAVIGATION_COMPOUND__ROUTING_CONTAINER, newRoutingContainer, newRoutingContainer));
+			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackageImpl.NAVIGATION_COMPOUND__ROUTING_CONTAINER, newRoutingContainer, newRoutingContainer));
 	}
 
 	/**
@@ -214,7 +211,7 @@ public class NavigationCompoundImpl extends ModelObjectImpl implements Navigatio
 		TracksContainer oldTracksContainer = tracksContainer;
 		tracksContainer = newTracksContainer;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GeoPackage.NAVIGATION_COMPOUND__TRACKS_CONTAINER, oldTracksContainer, newTracksContainer);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GeoPackageImpl.NAVIGATION_COMPOUND__TRACKS_CONTAINER, oldTracksContainer, newTracksContainer);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -229,14 +226,14 @@ public class NavigationCompoundImpl extends ModelObjectImpl implements Navigatio
 		if (newTracksContainer != tracksContainer) {
 			NotificationChain msgs = null;
 			if (tracksContainer != null)
-				msgs = ((InternalEObject)tracksContainer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GeoPackage.NAVIGATION_COMPOUND__TRACKS_CONTAINER, null, msgs);
+				msgs = ((InternalEObject)tracksContainer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GeoPackageImpl.NAVIGATION_COMPOUND__TRACKS_CONTAINER, null, msgs);
 			if (newTracksContainer != null)
-				msgs = ((InternalEObject)newTracksContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GeoPackage.NAVIGATION_COMPOUND__TRACKS_CONTAINER, null, msgs);
+				msgs = ((InternalEObject)newTracksContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GeoPackageImpl.NAVIGATION_COMPOUND__TRACKS_CONTAINER, null, msgs);
 			msgs = basicSetTracksContainer(newTracksContainer, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackage.NAVIGATION_COMPOUND__TRACKS_CONTAINER, newTracksContainer, newTracksContainer));
+			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackageImpl.NAVIGATION_COMPOUND__TRACKS_CONTAINER, newTracksContainer, newTracksContainer));
 	}
 
 	/**
@@ -247,11 +244,11 @@ public class NavigationCompoundImpl extends ModelObjectImpl implements Navigatio
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case GeoPackage.NAVIGATION_COMPOUND__POI_CONTAINER:
+			case GeoPackageImpl.NAVIGATION_COMPOUND__POI_CONTAINER:
 				return basicSetPoiContainer(null, msgs);
-			case GeoPackage.NAVIGATION_COMPOUND__ROUTING_CONTAINER:
+			case GeoPackageImpl.NAVIGATION_COMPOUND__ROUTING_CONTAINER:
 				return basicSetRoutingContainer(null, msgs);
-			case GeoPackage.NAVIGATION_COMPOUND__TRACKS_CONTAINER:
+			case GeoPackageImpl.NAVIGATION_COMPOUND__TRACKS_CONTAINER:
 				return basicSetTracksContainer(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -265,11 +262,11 @@ public class NavigationCompoundImpl extends ModelObjectImpl implements Navigatio
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GeoPackage.NAVIGATION_COMPOUND__POI_CONTAINER:
+			case GeoPackageImpl.NAVIGATION_COMPOUND__POI_CONTAINER:
 				return getPoiContainer();
-			case GeoPackage.NAVIGATION_COMPOUND__ROUTING_CONTAINER:
+			case GeoPackageImpl.NAVIGATION_COMPOUND__ROUTING_CONTAINER:
 				return getRoutingContainer();
-			case GeoPackage.NAVIGATION_COMPOUND__TRACKS_CONTAINER:
+			case GeoPackageImpl.NAVIGATION_COMPOUND__TRACKS_CONTAINER:
 				return getTracksContainer();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -283,13 +280,13 @@ public class NavigationCompoundImpl extends ModelObjectImpl implements Navigatio
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GeoPackage.NAVIGATION_COMPOUND__POI_CONTAINER:
+			case GeoPackageImpl.NAVIGATION_COMPOUND__POI_CONTAINER:
 				setPoiContainer((POIContainer)newValue);
 				return;
-			case GeoPackage.NAVIGATION_COMPOUND__ROUTING_CONTAINER:
+			case GeoPackageImpl.NAVIGATION_COMPOUND__ROUTING_CONTAINER:
 				setRoutingContainer((RoutingContainer)newValue);
 				return;
-			case GeoPackage.NAVIGATION_COMPOUND__TRACKS_CONTAINER:
+			case GeoPackageImpl.NAVIGATION_COMPOUND__TRACKS_CONTAINER:
 				setTracksContainer((TracksContainer)newValue);
 				return;
 		}
@@ -304,13 +301,13 @@ public class NavigationCompoundImpl extends ModelObjectImpl implements Navigatio
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GeoPackage.NAVIGATION_COMPOUND__POI_CONTAINER:
+			case GeoPackageImpl.NAVIGATION_COMPOUND__POI_CONTAINER:
 				setPoiContainer((POIContainer)null);
 				return;
-			case GeoPackage.NAVIGATION_COMPOUND__ROUTING_CONTAINER:
+			case GeoPackageImpl.NAVIGATION_COMPOUND__ROUTING_CONTAINER:
 				setRoutingContainer((RoutingContainer)null);
 				return;
-			case GeoPackage.NAVIGATION_COMPOUND__TRACKS_CONTAINER:
+			case GeoPackageImpl.NAVIGATION_COMPOUND__TRACKS_CONTAINER:
 				setTracksContainer((TracksContainer)null);
 				return;
 		}
@@ -325,11 +322,11 @@ public class NavigationCompoundImpl extends ModelObjectImpl implements Navigatio
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GeoPackage.NAVIGATION_COMPOUND__POI_CONTAINER:
+			case GeoPackageImpl.NAVIGATION_COMPOUND__POI_CONTAINER:
 				return poiContainer != null;
-			case GeoPackage.NAVIGATION_COMPOUND__ROUTING_CONTAINER:
+			case GeoPackageImpl.NAVIGATION_COMPOUND__ROUTING_CONTAINER:
 				return routingContainer != null;
-			case GeoPackage.NAVIGATION_COMPOUND__TRACKS_CONTAINER:
+			case GeoPackageImpl.NAVIGATION_COMPOUND__TRACKS_CONTAINER:
 				return tracksContainer != null;
 		}
 		return super.eIsSet(featureID);

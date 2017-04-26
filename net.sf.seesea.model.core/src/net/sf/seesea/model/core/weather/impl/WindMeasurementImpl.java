@@ -30,20 +30,16 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.weather.impl;
 
-import net.sf.seesea.model.core.physx.PhysxPackage;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import net.sf.seesea.model.core.physx.Speed;
 import net.sf.seesea.model.core.physx.SpeedUnit;
-
 import net.sf.seesea.model.core.physx.impl.MeasurementImpl;
+import net.sf.seesea.model.core.physx.impl.PhysxPackageImpl;
 import net.sf.seesea.model.core.weather.Reference;
-import net.sf.seesea.model.core.weather.WeatherPackage;
 import net.sf.seesea.model.core.weather.WindMeasurement;
-
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -158,7 +154,7 @@ public class WindMeasurementImpl extends MeasurementImpl implements WindMeasurem
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return WeatherPackage.Literals.WIND_MEASUREMENT;
+		return WeatherPackageImpl.Literals.WIND_MEASUREMENT;
 	}
 
 	/**
@@ -179,7 +175,7 @@ public class WindMeasurementImpl extends MeasurementImpl implements WindMeasurem
 		double oldAngle = angle;
 		angle = newAngle;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WeatherPackage.WIND_MEASUREMENT__ANGLE, oldAngle, angle));
+			eNotify(new ENotificationImpl(this, Notification.SET, WeatherPackageImpl.WIND_MEASUREMENT__ANGLE, oldAngle, angle));
 	}
 
 	/**
@@ -200,7 +196,7 @@ public class WindMeasurementImpl extends MeasurementImpl implements WindMeasurem
 		Reference oldReference = reference;
 		reference = newReference == null ? REFERENCE_EDEFAULT : newReference;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WeatherPackage.WIND_MEASUREMENT__REFERENCE, oldReference, reference));
+			eNotify(new ENotificationImpl(this, Notification.SET, WeatherPackageImpl.WIND_MEASUREMENT__REFERENCE, oldReference, reference));
 	}
 
 	/**
@@ -221,7 +217,7 @@ public class WindMeasurementImpl extends MeasurementImpl implements WindMeasurem
 		double oldSpeed = speed;
 		speed = newSpeed;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WeatherPackage.WIND_MEASUREMENT__SPEED, oldSpeed, speed));
+			eNotify(new ENotificationImpl(this, Notification.SET, WeatherPackageImpl.WIND_MEASUREMENT__SPEED, oldSpeed, speed));
 	}
 
 	/**
@@ -242,7 +238,7 @@ public class WindMeasurementImpl extends MeasurementImpl implements WindMeasurem
 		SpeedUnit oldSpeedUnit = speedUnit;
 		speedUnit = newSpeedUnit == null ? SPEED_UNIT_EDEFAULT : newSpeedUnit;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WeatherPackage.WIND_MEASUREMENT__SPEED_UNIT, oldSpeedUnit, speedUnit));
+			eNotify(new ENotificationImpl(this, Notification.SET, WeatherPackageImpl.WIND_MEASUREMENT__SPEED_UNIT, oldSpeedUnit, speedUnit));
 	}
 
 	/**
@@ -253,13 +249,13 @@ public class WindMeasurementImpl extends MeasurementImpl implements WindMeasurem
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case WeatherPackage.WIND_MEASUREMENT__SPEED:
+			case WeatherPackageImpl.WIND_MEASUREMENT__SPEED:
 				return getSpeed();
-			case WeatherPackage.WIND_MEASUREMENT__SPEED_UNIT:
+			case WeatherPackageImpl.WIND_MEASUREMENT__SPEED_UNIT:
 				return getSpeedUnit();
-			case WeatherPackage.WIND_MEASUREMENT__ANGLE:
+			case WeatherPackageImpl.WIND_MEASUREMENT__ANGLE:
 				return getAngle();
-			case WeatherPackage.WIND_MEASUREMENT__REFERENCE:
+			case WeatherPackageImpl.WIND_MEASUREMENT__REFERENCE:
 				return getReference();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -273,16 +269,16 @@ public class WindMeasurementImpl extends MeasurementImpl implements WindMeasurem
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case WeatherPackage.WIND_MEASUREMENT__SPEED:
+			case WeatherPackageImpl.WIND_MEASUREMENT__SPEED:
 				setSpeed((Double)newValue);
 				return;
-			case WeatherPackage.WIND_MEASUREMENT__SPEED_UNIT:
+			case WeatherPackageImpl.WIND_MEASUREMENT__SPEED_UNIT:
 				setSpeedUnit((SpeedUnit)newValue);
 				return;
-			case WeatherPackage.WIND_MEASUREMENT__ANGLE:
+			case WeatherPackageImpl.WIND_MEASUREMENT__ANGLE:
 				setAngle((Double)newValue);
 				return;
-			case WeatherPackage.WIND_MEASUREMENT__REFERENCE:
+			case WeatherPackageImpl.WIND_MEASUREMENT__REFERENCE:
 				setReference((Reference)newValue);
 				return;
 		}
@@ -297,16 +293,16 @@ public class WindMeasurementImpl extends MeasurementImpl implements WindMeasurem
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case WeatherPackage.WIND_MEASUREMENT__SPEED:
+			case WeatherPackageImpl.WIND_MEASUREMENT__SPEED:
 				setSpeed(SPEED_EDEFAULT);
 				return;
-			case WeatherPackage.WIND_MEASUREMENT__SPEED_UNIT:
+			case WeatherPackageImpl.WIND_MEASUREMENT__SPEED_UNIT:
 				setSpeedUnit(SPEED_UNIT_EDEFAULT);
 				return;
-			case WeatherPackage.WIND_MEASUREMENT__ANGLE:
+			case WeatherPackageImpl.WIND_MEASUREMENT__ANGLE:
 				setAngle(ANGLE_EDEFAULT);
 				return;
-			case WeatherPackage.WIND_MEASUREMENT__REFERENCE:
+			case WeatherPackageImpl.WIND_MEASUREMENT__REFERENCE:
 				setReference(REFERENCE_EDEFAULT);
 				return;
 		}
@@ -321,13 +317,13 @@ public class WindMeasurementImpl extends MeasurementImpl implements WindMeasurem
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case WeatherPackage.WIND_MEASUREMENT__SPEED:
+			case WeatherPackageImpl.WIND_MEASUREMENT__SPEED:
 				return speed != SPEED_EDEFAULT;
-			case WeatherPackage.WIND_MEASUREMENT__SPEED_UNIT:
+			case WeatherPackageImpl.WIND_MEASUREMENT__SPEED_UNIT:
 				return speedUnit != SPEED_UNIT_EDEFAULT;
-			case WeatherPackage.WIND_MEASUREMENT__ANGLE:
+			case WeatherPackageImpl.WIND_MEASUREMENT__ANGLE:
 				return angle != ANGLE_EDEFAULT;
-			case WeatherPackage.WIND_MEASUREMENT__REFERENCE:
+			case WeatherPackageImpl.WIND_MEASUREMENT__REFERENCE:
 				return reference != REFERENCE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
@@ -342,8 +338,8 @@ public class WindMeasurementImpl extends MeasurementImpl implements WindMeasurem
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == Speed.class) {
 			switch (derivedFeatureID) {
-				case WeatherPackage.WIND_MEASUREMENT__SPEED: return PhysxPackage.SPEED__SPEED;
-				case WeatherPackage.WIND_MEASUREMENT__SPEED_UNIT: return PhysxPackage.SPEED__SPEED_UNIT;
+				case WeatherPackageImpl.WIND_MEASUREMENT__SPEED: return PhysxPackageImpl.SPEED__SPEED;
+				case WeatherPackageImpl.WIND_MEASUREMENT__SPEED_UNIT: return PhysxPackageImpl.SPEED__SPEED_UNIT;
 				default: return -1;
 			}
 		}
@@ -359,8 +355,8 @@ public class WindMeasurementImpl extends MeasurementImpl implements WindMeasurem
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == Speed.class) {
 			switch (baseFeatureID) {
-				case PhysxPackage.SPEED__SPEED: return WeatherPackage.WIND_MEASUREMENT__SPEED;
-				case PhysxPackage.SPEED__SPEED_UNIT: return WeatherPackage.WIND_MEASUREMENT__SPEED_UNIT;
+				case PhysxPackageImpl.SPEED__SPEED: return WeatherPackageImpl.WIND_MEASUREMENT__SPEED;
+				case PhysxPackageImpl.SPEED__SPEED_UNIT: return WeatherPackageImpl.WIND_MEASUREMENT__SPEED_UNIT;
 				default: return -1;
 			}
 		}

@@ -31,22 +31,18 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package net.sf.seesea.model.core.data.impl;
 
 import java.util.Collection;
-
-import net.sf.seesea.model.core.data.DataPackage;
-import net.sf.seesea.model.core.data.Series;
-
-import net.sf.seesea.model.core.impl.ModelObjectImpl;
-import net.sf.seesea.model.core.physx.Measurement;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import net.sf.seesea.model.core.data.Series;
+import net.sf.seesea.model.core.impl.ModelObjectImpl;
+import net.sf.seesea.model.core.physx.Measurement;
 
 /**
  * <!-- begin-user-doc -->
@@ -88,7 +84,7 @@ public class SeriesImpl extends ModelObjectImpl implements Series {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return DataPackage.Literals.SERIES;
+		return DataPackageImpl.Literals.SERIES;
 	}
 
 	/**
@@ -96,9 +92,9 @@ public class SeriesImpl extends ModelObjectImpl implements Series {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Measurement> getMeasurement() {
+	public List<Measurement> getMeasurement() {
 		if (measurement == null) {
-			measurement = new EObjectContainmentEList<Measurement>(Measurement.class, this, DataPackage.SERIES__MEASUREMENT);
+			measurement = new EObjectContainmentEList<Measurement>(Measurement.class, this, DataPackageImpl.SERIES__MEASUREMENT);
 		}
 		return measurement;
 	}
@@ -111,7 +107,7 @@ public class SeriesImpl extends ModelObjectImpl implements Series {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case DataPackage.SERIES__MEASUREMENT:
+			case DataPackageImpl.SERIES__MEASUREMENT:
 				return ((InternalEList<?>)getMeasurement()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -125,7 +121,7 @@ public class SeriesImpl extends ModelObjectImpl implements Series {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case DataPackage.SERIES__MEASUREMENT:
+			case DataPackageImpl.SERIES__MEASUREMENT:
 				return getMeasurement();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -140,7 +136,7 @@ public class SeriesImpl extends ModelObjectImpl implements Series {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case DataPackage.SERIES__MEASUREMENT:
+			case DataPackageImpl.SERIES__MEASUREMENT:
 				getMeasurement().clear();
 				getMeasurement().addAll((Collection<? extends Measurement>)newValue);
 				return;
@@ -156,7 +152,7 @@ public class SeriesImpl extends ModelObjectImpl implements Series {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case DataPackage.SERIES__MEASUREMENT:
+			case DataPackageImpl.SERIES__MEASUREMENT:
 				getMeasurement().clear();
 				return;
 		}
@@ -171,7 +167,7 @@ public class SeriesImpl extends ModelObjectImpl implements Series {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case DataPackage.SERIES__MEASUREMENT:
+			case DataPackageImpl.SERIES__MEASUREMENT:
 				return measurement != null && !measurement.isEmpty();
 		}
 		return super.eIsSet(featureID);

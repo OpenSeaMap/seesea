@@ -30,21 +30,16 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.impl;
 
-import net.sf.seesea.model.core.CorePackage;
-import net.sf.seesea.model.core.ModelRoot;
-
-import net.sf.seesea.model.core.data.Instruments;
-import net.sf.seesea.model.core.geo.ChartContainer;
-
-import net.sf.seesea.model.core.geo.impl.NavigationCompoundImpl;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import net.sf.seesea.model.core.ModelRoot;
+import net.sf.seesea.model.core.data.Instruments;
+import net.sf.seesea.model.core.geo.ChartContainer;
+import net.sf.seesea.model.core.geo.impl.NavigationCompoundImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -97,7 +92,7 @@ public class ModelRootImpl extends NavigationCompoundImpl implements ModelRoot {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return CorePackage.Literals.MODEL_ROOT;
+		return CorePackageImpl.Literals.MODEL_ROOT;
 	}
 
 	/**
@@ -118,7 +113,7 @@ public class ModelRootImpl extends NavigationCompoundImpl implements ModelRoot {
 		ChartContainer oldChartContainer = chartContainer;
 		chartContainer = newChartContainer;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CorePackage.MODEL_ROOT__CHART_CONTAINER, oldChartContainer, newChartContainer);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CorePackageImpl.MODEL_ROOT__CHART_CONTAINER, oldChartContainer, newChartContainer);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -133,14 +128,14 @@ public class ModelRootImpl extends NavigationCompoundImpl implements ModelRoot {
 		if (newChartContainer != chartContainer) {
 			NotificationChain msgs = null;
 			if (chartContainer != null)
-				msgs = ((InternalEObject)chartContainer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CorePackage.MODEL_ROOT__CHART_CONTAINER, null, msgs);
+				msgs = ((InternalEObject)chartContainer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CorePackageImpl.MODEL_ROOT__CHART_CONTAINER, null, msgs);
 			if (newChartContainer != null)
-				msgs = ((InternalEObject)newChartContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CorePackage.MODEL_ROOT__CHART_CONTAINER, null, msgs);
+				msgs = ((InternalEObject)newChartContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CorePackageImpl.MODEL_ROOT__CHART_CONTAINER, null, msgs);
 			msgs = basicSetChartContainer(newChartContainer, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.MODEL_ROOT__CHART_CONTAINER, newChartContainer, newChartContainer));
+			eNotify(new ENotificationImpl(this, Notification.SET, CorePackageImpl.MODEL_ROOT__CHART_CONTAINER, newChartContainer, newChartContainer));
 	}
 
 	/**
@@ -161,7 +156,7 @@ public class ModelRootImpl extends NavigationCompoundImpl implements ModelRoot {
 		Instruments oldInstruments = instruments;
 		instruments = newInstruments;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CorePackage.MODEL_ROOT__INSTRUMENTS, oldInstruments, newInstruments);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CorePackageImpl.MODEL_ROOT__INSTRUMENTS, oldInstruments, newInstruments);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -176,14 +171,14 @@ public class ModelRootImpl extends NavigationCompoundImpl implements ModelRoot {
 		if (newInstruments != instruments) {
 			NotificationChain msgs = null;
 			if (instruments != null)
-				msgs = ((InternalEObject)instruments).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CorePackage.MODEL_ROOT__INSTRUMENTS, null, msgs);
+				msgs = ((InternalEObject)instruments).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CorePackageImpl.MODEL_ROOT__INSTRUMENTS, null, msgs);
 			if (newInstruments != null)
-				msgs = ((InternalEObject)newInstruments).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CorePackage.MODEL_ROOT__INSTRUMENTS, null, msgs);
+				msgs = ((InternalEObject)newInstruments).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CorePackageImpl.MODEL_ROOT__INSTRUMENTS, null, msgs);
 			msgs = basicSetInstruments(newInstruments, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CorePackage.MODEL_ROOT__INSTRUMENTS, newInstruments, newInstruments));
+			eNotify(new ENotificationImpl(this, Notification.SET, CorePackageImpl.MODEL_ROOT__INSTRUMENTS, newInstruments, newInstruments));
 	}
 
 	/**
@@ -194,9 +189,9 @@ public class ModelRootImpl extends NavigationCompoundImpl implements ModelRoot {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case CorePackage.MODEL_ROOT__CHART_CONTAINER:
+			case CorePackageImpl.MODEL_ROOT__CHART_CONTAINER:
 				return basicSetChartContainer(null, msgs);
-			case CorePackage.MODEL_ROOT__INSTRUMENTS:
+			case CorePackageImpl.MODEL_ROOT__INSTRUMENTS:
 				return basicSetInstruments(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -210,9 +205,9 @@ public class ModelRootImpl extends NavigationCompoundImpl implements ModelRoot {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CorePackage.MODEL_ROOT__CHART_CONTAINER:
+			case CorePackageImpl.MODEL_ROOT__CHART_CONTAINER:
 				return getChartContainer();
-			case CorePackage.MODEL_ROOT__INSTRUMENTS:
+			case CorePackageImpl.MODEL_ROOT__INSTRUMENTS:
 				return getInstruments();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -226,10 +221,10 @@ public class ModelRootImpl extends NavigationCompoundImpl implements ModelRoot {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CorePackage.MODEL_ROOT__CHART_CONTAINER:
+			case CorePackageImpl.MODEL_ROOT__CHART_CONTAINER:
 				setChartContainer((ChartContainer)newValue);
 				return;
-			case CorePackage.MODEL_ROOT__INSTRUMENTS:
+			case CorePackageImpl.MODEL_ROOT__INSTRUMENTS:
 				setInstruments((Instruments)newValue);
 				return;
 		}
@@ -244,10 +239,10 @@ public class ModelRootImpl extends NavigationCompoundImpl implements ModelRoot {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CorePackage.MODEL_ROOT__CHART_CONTAINER:
+			case CorePackageImpl.MODEL_ROOT__CHART_CONTAINER:
 				setChartContainer((ChartContainer)null);
 				return;
-			case CorePackage.MODEL_ROOT__INSTRUMENTS:
+			case CorePackageImpl.MODEL_ROOT__INSTRUMENTS:
 				setInstruments((Instruments)null);
 				return;
 		}
@@ -262,9 +257,9 @@ public class ModelRootImpl extends NavigationCompoundImpl implements ModelRoot {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CorePackage.MODEL_ROOT__CHART_CONTAINER:
+			case CorePackageImpl.MODEL_ROOT__CHART_CONTAINER:
 				return chartContainer != null;
-			case CorePackage.MODEL_ROOT__INSTRUMENTS:
+			case CorePackageImpl.MODEL_ROOT__INSTRUMENTS:
 				return instruments != null;
 		}
 		return super.eIsSet(featureID);

@@ -31,21 +31,18 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package net.sf.seesea.model.core.geo.impl;
 
 import java.util.Collection;
+import java.util.List;
 
-import net.sf.seesea.model.core.geo.GeoPackage;
-import net.sf.seesea.model.core.geo.Track;
-import net.sf.seesea.model.core.geo.TracksContainer;
-
-import net.sf.seesea.model.core.impl.ModelObjectImpl;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import net.sf.seesea.model.core.geo.Track;
+import net.sf.seesea.model.core.geo.TracksContainer;
+import net.sf.seesea.model.core.impl.ModelObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -87,7 +84,7 @@ public class TracksContainerImpl extends ModelObjectImpl implements TracksContai
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return GeoPackage.Literals.TRACKS_CONTAINER;
+		return GeoPackageImpl.Literals.TRACKS_CONTAINER;
 	}
 
 	/**
@@ -95,9 +92,9 @@ public class TracksContainerImpl extends ModelObjectImpl implements TracksContai
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Track> getTracks() {
+	public List<Track> getTracks() {
 		if (tracks == null) {
-			tracks = new EObjectContainmentEList<Track>(Track.class, this, GeoPackage.TRACKS_CONTAINER__TRACKS);
+			tracks = new EObjectContainmentEList<Track>(Track.class, this, GeoPackageImpl.TRACKS_CONTAINER__TRACKS);
 		}
 		return tracks;
 	}
@@ -110,7 +107,7 @@ public class TracksContainerImpl extends ModelObjectImpl implements TracksContai
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case GeoPackage.TRACKS_CONTAINER__TRACKS:
+			case GeoPackageImpl.TRACKS_CONTAINER__TRACKS:
 				return ((InternalEList<?>)getTracks()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -124,7 +121,7 @@ public class TracksContainerImpl extends ModelObjectImpl implements TracksContai
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GeoPackage.TRACKS_CONTAINER__TRACKS:
+			case GeoPackageImpl.TRACKS_CONTAINER__TRACKS:
 				return getTracks();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -139,7 +136,7 @@ public class TracksContainerImpl extends ModelObjectImpl implements TracksContai
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GeoPackage.TRACKS_CONTAINER__TRACKS:
+			case GeoPackageImpl.TRACKS_CONTAINER__TRACKS:
 				getTracks().clear();
 				getTracks().addAll((Collection<? extends Track>)newValue);
 				return;
@@ -155,7 +152,7 @@ public class TracksContainerImpl extends ModelObjectImpl implements TracksContai
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GeoPackage.TRACKS_CONTAINER__TRACKS:
+			case GeoPackageImpl.TRACKS_CONTAINER__TRACKS:
 				getTracks().clear();
 				return;
 		}
@@ -170,7 +167,7 @@ public class TracksContainerImpl extends ModelObjectImpl implements TracksContai
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GeoPackage.TRACKS_CONTAINER__TRACKS:
+			case GeoPackageImpl.TRACKS_CONTAINER__TRACKS:
 				return tracks != null && !tracks.isEmpty();
 		}
 		return super.eIsSet(featureID);

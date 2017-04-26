@@ -27,16 +27,13 @@
  */
 package net.sf.seesea.model.core.physx.impl;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import net.sf.seesea.model.core.physx.Distance;
 import net.sf.seesea.model.core.physx.DistanceType;
 import net.sf.seesea.model.core.physx.LengthUnit;
-import net.sf.seesea.model.core.physx.PhysxPackage;
-
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -130,7 +127,7 @@ public class DistanceImpl extends MeasurementImpl implements Distance {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return PhysxPackage.Literals.DISTANCE;
+		return PhysxPackageImpl.Literals.DISTANCE;
 	}
 
 	/**
@@ -151,7 +148,7 @@ public class DistanceImpl extends MeasurementImpl implements Distance {
 		double oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackage.DISTANCE__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackageImpl.DISTANCE__VALUE, oldValue, value));
 	}
 
 	/**
@@ -172,7 +169,7 @@ public class DistanceImpl extends MeasurementImpl implements Distance {
 		LengthUnit oldUnit = unit;
 		unit = newUnit == null ? UNIT_EDEFAULT : newUnit;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackage.DISTANCE__UNIT, oldUnit, unit));
+			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackageImpl.DISTANCE__UNIT, oldUnit, unit));
 	}
 
 	/**
@@ -193,7 +190,7 @@ public class DistanceImpl extends MeasurementImpl implements Distance {
 		DistanceType oldDistanceType = distanceType;
 		distanceType = newDistanceType == null ? DISTANCE_TYPE_EDEFAULT : newDistanceType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackage.DISTANCE__DISTANCE_TYPE, oldDistanceType, distanceType));
+			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackageImpl.DISTANCE__DISTANCE_TYPE, oldDistanceType, distanceType));
 	}
 
 	/**
@@ -204,11 +201,11 @@ public class DistanceImpl extends MeasurementImpl implements Distance {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PhysxPackage.DISTANCE__VALUE:
+			case PhysxPackageImpl.DISTANCE__VALUE:
 				return getValue();
-			case PhysxPackage.DISTANCE__UNIT:
+			case PhysxPackageImpl.DISTANCE__UNIT:
 				return getUnit();
-			case PhysxPackage.DISTANCE__DISTANCE_TYPE:
+			case PhysxPackageImpl.DISTANCE__DISTANCE_TYPE:
 				return getDistanceType();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -222,13 +219,13 @@ public class DistanceImpl extends MeasurementImpl implements Distance {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PhysxPackage.DISTANCE__VALUE:
+			case PhysxPackageImpl.DISTANCE__VALUE:
 				setValue((Double)newValue);
 				return;
-			case PhysxPackage.DISTANCE__UNIT:
+			case PhysxPackageImpl.DISTANCE__UNIT:
 				setUnit((LengthUnit)newValue);
 				return;
-			case PhysxPackage.DISTANCE__DISTANCE_TYPE:
+			case PhysxPackageImpl.DISTANCE__DISTANCE_TYPE:
 				setDistanceType((DistanceType)newValue);
 				return;
 		}
@@ -243,13 +240,13 @@ public class DistanceImpl extends MeasurementImpl implements Distance {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PhysxPackage.DISTANCE__VALUE:
+			case PhysxPackageImpl.DISTANCE__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
-			case PhysxPackage.DISTANCE__UNIT:
+			case PhysxPackageImpl.DISTANCE__UNIT:
 				setUnit(UNIT_EDEFAULT);
 				return;
-			case PhysxPackage.DISTANCE__DISTANCE_TYPE:
+			case PhysxPackageImpl.DISTANCE__DISTANCE_TYPE:
 				setDistanceType(DISTANCE_TYPE_EDEFAULT);
 				return;
 		}
@@ -264,11 +261,11 @@ public class DistanceImpl extends MeasurementImpl implements Distance {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PhysxPackage.DISTANCE__VALUE:
+			case PhysxPackageImpl.DISTANCE__VALUE:
 				return value != VALUE_EDEFAULT;
-			case PhysxPackage.DISTANCE__UNIT:
+			case PhysxPackageImpl.DISTANCE__UNIT:
 				return unit != UNIT_EDEFAULT;
-			case PhysxPackage.DISTANCE__DISTANCE_TYPE:
+			case PhysxPackageImpl.DISTANCE__DISTANCE_TYPE:
 				return distanceType != DISTANCE_TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

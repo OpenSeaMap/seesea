@@ -41,11 +41,11 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Reference</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see net.sf.seesea.model.core.weather.WeatherPackage#getReference()
+ * @see net.sf.seesea.model.core.weather.impl.WeatherPackageImpl#getReference()
  * @model
  * @generated
  */
-public enum Reference implements Enumerator {
+public enum Reference implements InternalReference {
 	/**
 	 * The '<em><b>Relative</b></em>' literal object.
 	 * <!-- begin-user-doc -->
@@ -265,3 +265,13 @@ public enum Reference implements Enumerator {
 	}
 	
 } //Reference
+
+/**
+ * A private implementation interface used to hide the inheritance from Enumerator.
+ * <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
+ * @generated
+ */
+interface InternalReference extends org.eclipse.emf.common.util.Enumerator {
+	// Empty 
+}

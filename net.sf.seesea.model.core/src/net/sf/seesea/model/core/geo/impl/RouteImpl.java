@@ -31,16 +31,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package net.sf.seesea.model.core.geo.impl;
 
 import java.util.Collection;
-
-import net.sf.seesea.model.core.geo.GeoPackage;
-import net.sf.seesea.model.core.geo.NamedPosition;
-import net.sf.seesea.model.core.geo.Route;
+import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+
+import net.sf.seesea.model.core.geo.NamedPosition;
+import net.sf.seesea.model.core.geo.Route;
 
 /**
  * <!-- begin-user-doc -->
@@ -82,7 +80,7 @@ public class RouteImpl extends NamedArtifactImpl implements Route {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return GeoPackage.Literals.ROUTE;
+		return GeoPackageImpl.Literals.ROUTE;
 	}
 
 	/**
@@ -90,9 +88,9 @@ public class RouteImpl extends NamedArtifactImpl implements Route {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<NamedPosition> getWaypoints() {
+	public List<NamedPosition> getWaypoints() {
 		if (waypoints == null) {
-			waypoints = new EObjectResolvingEList<NamedPosition>(NamedPosition.class, this, GeoPackage.ROUTE__WAYPOINTS);
+			waypoints = new EObjectResolvingEList<NamedPosition>(NamedPosition.class, this, GeoPackageImpl.ROUTE__WAYPOINTS);
 		}
 		return waypoints;
 	}
@@ -105,7 +103,7 @@ public class RouteImpl extends NamedArtifactImpl implements Route {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GeoPackage.ROUTE__WAYPOINTS:
+			case GeoPackageImpl.ROUTE__WAYPOINTS:
 				return getWaypoints();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -120,7 +118,7 @@ public class RouteImpl extends NamedArtifactImpl implements Route {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GeoPackage.ROUTE__WAYPOINTS:
+			case GeoPackageImpl.ROUTE__WAYPOINTS:
 				getWaypoints().clear();
 				getWaypoints().addAll((Collection<? extends NamedPosition>)newValue);
 				return;
@@ -136,7 +134,7 @@ public class RouteImpl extends NamedArtifactImpl implements Route {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GeoPackage.ROUTE__WAYPOINTS:
+			case GeoPackageImpl.ROUTE__WAYPOINTS:
 				getWaypoints().clear();
 				return;
 		}
@@ -151,7 +149,7 @@ public class RouteImpl extends NamedArtifactImpl implements Route {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GeoPackage.ROUTE__WAYPOINTS:
+			case GeoPackageImpl.ROUTE__WAYPOINTS:
 				return waypoints != null && !waypoints.isEmpty();
 		}
 		return super.eIsSet(featureID);

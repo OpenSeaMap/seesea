@@ -37,18 +37,16 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see net.sf.seesea.model.core.weather.WeatherPackage
  * @generated
  */
-public interface WeatherFactory extends EFactory {
+public interface WeatherFactory {
 	/**
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	WeatherFactory eINSTANCE = net.sf.seesea.model.core.weather.impl.WeatherFactoryImpl.init();
-
+	WeatherFactory INSTANCE = net.sf.seesea.model.core.weather.impl.WeatherFactoryImpl.eINSTANCE;
 	/**
 	 * Returns a new object of class '<em>Wind Measurement</em>'.
 	 * <!-- begin-user-doc -->
@@ -93,14 +91,5 @@ public interface WeatherFactory extends EFactory {
 	 * @generated
 	 */
 	WaveHeight createWaveHeight();
-
-	/**
-	 * Returns the package supported by this factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the package supported by this factory.
-	 * @generated
-	 */
-	WeatherPackage getWeatherPackage();
 
 } //WeatherFactory

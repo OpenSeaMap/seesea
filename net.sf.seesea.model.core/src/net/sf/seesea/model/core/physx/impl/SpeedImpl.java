@@ -30,15 +30,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.physx.impl;
 
-import net.sf.seesea.model.core.physx.PhysxPackage;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import net.sf.seesea.model.core.physx.Speed;
 import net.sf.seesea.model.core.physx.SpeedUnit;
-
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -111,7 +108,7 @@ public class SpeedImpl extends MeasurementImpl implements Speed {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return PhysxPackage.Literals.SPEED;
+		return PhysxPackageImpl.Literals.SPEED;
 	}
 
 	/**
@@ -132,7 +129,7 @@ public class SpeedImpl extends MeasurementImpl implements Speed {
 		double oldSpeed = speed;
 		speed = newSpeed;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackage.SPEED__SPEED, oldSpeed, speed));
+			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackageImpl.SPEED__SPEED, oldSpeed, speed));
 	}
 
 	/**
@@ -153,7 +150,7 @@ public class SpeedImpl extends MeasurementImpl implements Speed {
 		SpeedUnit oldSpeedUnit = speedUnit;
 		speedUnit = newSpeedUnit == null ? SPEED_UNIT_EDEFAULT : newSpeedUnit;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackage.SPEED__SPEED_UNIT, oldSpeedUnit, speedUnit));
+			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackageImpl.SPEED__SPEED_UNIT, oldSpeedUnit, speedUnit));
 	}
 
 	/**
@@ -164,9 +161,9 @@ public class SpeedImpl extends MeasurementImpl implements Speed {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PhysxPackage.SPEED__SPEED:
+			case PhysxPackageImpl.SPEED__SPEED:
 				return getSpeed();
-			case PhysxPackage.SPEED__SPEED_UNIT:
+			case PhysxPackageImpl.SPEED__SPEED_UNIT:
 				return getSpeedUnit();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -180,10 +177,10 @@ public class SpeedImpl extends MeasurementImpl implements Speed {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PhysxPackage.SPEED__SPEED:
+			case PhysxPackageImpl.SPEED__SPEED:
 				setSpeed((Double)newValue);
 				return;
-			case PhysxPackage.SPEED__SPEED_UNIT:
+			case PhysxPackageImpl.SPEED__SPEED_UNIT:
 				setSpeedUnit((SpeedUnit)newValue);
 				return;
 		}
@@ -198,10 +195,10 @@ public class SpeedImpl extends MeasurementImpl implements Speed {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PhysxPackage.SPEED__SPEED:
+			case PhysxPackageImpl.SPEED__SPEED:
 				setSpeed(SPEED_EDEFAULT);
 				return;
-			case PhysxPackage.SPEED__SPEED_UNIT:
+			case PhysxPackageImpl.SPEED__SPEED_UNIT:
 				setSpeedUnit(SPEED_UNIT_EDEFAULT);
 				return;
 		}
@@ -216,9 +213,9 @@ public class SpeedImpl extends MeasurementImpl implements Speed {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PhysxPackage.SPEED__SPEED:
+			case PhysxPackageImpl.SPEED__SPEED:
 				return speed != SPEED_EDEFAULT;
-			case PhysxPackage.SPEED__SPEED_UNIT:
+			case PhysxPackageImpl.SPEED__SPEED_UNIT:
 				return speedUnit != SPEED_UNIT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

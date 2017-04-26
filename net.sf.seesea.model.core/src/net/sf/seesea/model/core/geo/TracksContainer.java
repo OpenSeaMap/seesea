@@ -30,6 +30,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.geo;
 
+import java.util.List;
 import net.sf.seesea.model.core.ModelObject;
 import org.eclipse.emf.common.util.EList;
 
@@ -45,7 +46,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link net.sf.seesea.model.core.geo.TracksContainer#getTracks <em>Tracks</em>}</li>
  * </ul>
  *
- * @see net.sf.seesea.model.core.geo.GeoPackage#getTracksContainer()
  * @model
  * @generated
  */
@@ -60,10 +60,9 @@ public interface TracksContainer extends ModelObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Tracks</em>' containment reference list.
-	 * @see net.sf.seesea.model.core.geo.GeoPackage#getTracksContainer_Tracks()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Track> getTracks();
+	List<Track> getTracks();
 
 } // TracksContainer

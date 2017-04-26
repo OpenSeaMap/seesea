@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
+import org.osgi.service.component.annotations.Component;
 
 import net.sf.seesea.waterlevel.ocean.IOceanTideProvider;
 import net.sf.seesea.waterlevel.ocean.ITideProvider;
@@ -22,7 +23,7 @@ import net.sf.seesea.waterlevel.ocean.TideLevel;
  * @author Jens Kübler
  *
  */
-@org.osgi.service.component.annotations.Component(configurationPolicy = org.osgi.service.component.annotations.ConfigurationPolicy.REQUIRE)
+@Component(configurationPolicy = org.osgi.service.component.annotations.ConfigurationPolicy.REQUIRE)
 public class DTUTidePrediction implements IOceanTideProvider {
 
 	private float[][] msl2latCorrection;

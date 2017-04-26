@@ -30,12 +30,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.geo.impl;
 
-import net.sf.seesea.model.core.geo.ChartSymbol;
-import net.sf.seesea.model.core.geo.GeoPackage;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
+import net.sf.seesea.model.core.geo.ChartSymbol;
 
 /**
  * <!-- begin-user-doc -->
@@ -61,7 +59,7 @@ public class ChartSymbolImpl extends EObjectImpl implements ChartSymbol {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return GeoPackage.Literals.CHART_SYMBOL;
+		return GeoPackageImpl.Literals.CHART_SYMBOL;
 	}
 
 } //ChartSymbolImpl

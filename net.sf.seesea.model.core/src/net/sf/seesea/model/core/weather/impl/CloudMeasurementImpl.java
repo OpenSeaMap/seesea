@@ -31,23 +31,18 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package net.sf.seesea.model.core.weather.impl;
 
 import java.util.Collection;
+import java.util.List;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 
 import net.sf.seesea.model.core.physx.impl.MeasurementImpl;
-
 import net.sf.seesea.model.core.weather.CloudCoverage;
 import net.sf.seesea.model.core.weather.CloudMeasurement;
 import net.sf.seesea.model.core.weather.CloudType;
-import net.sf.seesea.model.core.weather.WeatherPackage;
-
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -110,7 +105,7 @@ public class CloudMeasurementImpl extends MeasurementImpl implements CloudMeasur
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return WeatherPackage.Literals.CLOUD_MEASUREMENT;
+		return WeatherPackageImpl.Literals.CLOUD_MEASUREMENT;
 	}
 
 	/**
@@ -131,7 +126,7 @@ public class CloudMeasurementImpl extends MeasurementImpl implements CloudMeasur
 		CloudCoverage oldCloudCoverage = cloudCoverage;
 		cloudCoverage = newCloudCoverage == null ? CLOUD_COVERAGE_EDEFAULT : newCloudCoverage;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WeatherPackage.CLOUD_MEASUREMENT__CLOUD_COVERAGE, oldCloudCoverage, cloudCoverage));
+			eNotify(new ENotificationImpl(this, Notification.SET, WeatherPackageImpl.CLOUD_MEASUREMENT__CLOUD_COVERAGE, oldCloudCoverage, cloudCoverage));
 	}
 
 	/**
@@ -139,9 +134,9 @@ public class CloudMeasurementImpl extends MeasurementImpl implements CloudMeasur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<CloudType> getCloudTypes() {
+	public List<CloudType> getCloudTypes() {
 		if (cloudTypes == null) {
-			cloudTypes = new EDataTypeUniqueEList<CloudType>(CloudType.class, this, WeatherPackage.CLOUD_MEASUREMENT__CLOUD_TYPES);
+			cloudTypes = new EDataTypeUniqueEList<CloudType>(CloudType.class, this, WeatherPackageImpl.CLOUD_MEASUREMENT__CLOUD_TYPES);
 		}
 		return cloudTypes;
 	}
@@ -154,9 +149,9 @@ public class CloudMeasurementImpl extends MeasurementImpl implements CloudMeasur
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case WeatherPackage.CLOUD_MEASUREMENT__CLOUD_COVERAGE:
+			case WeatherPackageImpl.CLOUD_MEASUREMENT__CLOUD_COVERAGE:
 				return getCloudCoverage();
-			case WeatherPackage.CLOUD_MEASUREMENT__CLOUD_TYPES:
+			case WeatherPackageImpl.CLOUD_MEASUREMENT__CLOUD_TYPES:
 				return getCloudTypes();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -171,10 +166,10 @@ public class CloudMeasurementImpl extends MeasurementImpl implements CloudMeasur
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case WeatherPackage.CLOUD_MEASUREMENT__CLOUD_COVERAGE:
+			case WeatherPackageImpl.CLOUD_MEASUREMENT__CLOUD_COVERAGE:
 				setCloudCoverage((CloudCoverage)newValue);
 				return;
-			case WeatherPackage.CLOUD_MEASUREMENT__CLOUD_TYPES:
+			case WeatherPackageImpl.CLOUD_MEASUREMENT__CLOUD_TYPES:
 				getCloudTypes().clear();
 				getCloudTypes().addAll((Collection<? extends CloudType>)newValue);
 				return;
@@ -190,10 +185,10 @@ public class CloudMeasurementImpl extends MeasurementImpl implements CloudMeasur
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case WeatherPackage.CLOUD_MEASUREMENT__CLOUD_COVERAGE:
+			case WeatherPackageImpl.CLOUD_MEASUREMENT__CLOUD_COVERAGE:
 				setCloudCoverage(CLOUD_COVERAGE_EDEFAULT);
 				return;
-			case WeatherPackage.CLOUD_MEASUREMENT__CLOUD_TYPES:
+			case WeatherPackageImpl.CLOUD_MEASUREMENT__CLOUD_TYPES:
 				getCloudTypes().clear();
 				return;
 		}
@@ -208,9 +203,9 @@ public class CloudMeasurementImpl extends MeasurementImpl implements CloudMeasur
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case WeatherPackage.CLOUD_MEASUREMENT__CLOUD_COVERAGE:
+			case WeatherPackageImpl.CLOUD_MEASUREMENT__CLOUD_COVERAGE:
 				return cloudCoverage != CLOUD_COVERAGE_EDEFAULT;
-			case WeatherPackage.CLOUD_MEASUREMENT__CLOUD_TYPES:
+			case WeatherPackageImpl.CLOUD_MEASUREMENT__CLOUD_TYPES:
 				return cloudTypes != null && !cloudTypes.isEmpty();
 		}
 		return super.eIsSet(featureID);

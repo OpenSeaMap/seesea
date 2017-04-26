@@ -30,18 +30,15 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.geo.osm.impl;
 
-import net.sf.seesea.model.core.geo.AnchorPosition;
-import net.sf.seesea.model.core.geo.GeoPosition;
-import net.sf.seesea.model.core.geo.osm.OsmPackage;
-import net.sf.seesea.model.core.geo.osm.World;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import net.sf.seesea.model.core.geo.AnchorPosition;
+import net.sf.seesea.model.core.geo.GeoPosition;
+import net.sf.seesea.model.core.geo.osm.World;
 
 /**
  * <!-- begin-user-doc -->
@@ -178,7 +175,7 @@ public class WorldImpl extends AreaImpl implements World {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return OsmPackage.Literals.WORLD;
+		return OsmPackageImpl.Literals.WORLD;
 	}
 
 	/**
@@ -199,7 +196,7 @@ public class WorldImpl extends AreaImpl implements World {
 		boolean oldLongitudeScale = longitudeScale;
 		longitudeScale = newLongitudeScale;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OsmPackage.WORLD__LONGITUDE_SCALE, oldLongitudeScale, longitudeScale));
+			eNotify(new ENotificationImpl(this, Notification.SET, OsmPackageImpl.WORLD__LONGITUDE_SCALE, oldLongitudeScale, longitudeScale));
 	}
 
 	/**
@@ -220,7 +217,7 @@ public class WorldImpl extends AreaImpl implements World {
 		boolean oldLatitudeScale = latitudeScale;
 		latitudeScale = newLatitudeScale;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OsmPackage.WORLD__LATITUDE_SCALE, oldLatitudeScale, latitudeScale));
+			eNotify(new ENotificationImpl(this, Notification.SET, OsmPackageImpl.WORLD__LATITUDE_SCALE, oldLatitudeScale, latitudeScale));
 	}
 
 	/**
@@ -241,7 +238,7 @@ public class WorldImpl extends AreaImpl implements World {
 		AnchorPosition oldAnchorPosition = anchorPosition;
 		anchorPosition = newAnchorPosition;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OsmPackage.WORLD__ANCHOR_POSITION, oldAnchorPosition, newAnchorPosition);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OsmPackageImpl.WORLD__ANCHOR_POSITION, oldAnchorPosition, newAnchorPosition);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -256,14 +253,14 @@ public class WorldImpl extends AreaImpl implements World {
 		if (newAnchorPosition != anchorPosition) {
 			NotificationChain msgs = null;
 			if (anchorPosition != null)
-				msgs = ((InternalEObject)anchorPosition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OsmPackage.WORLD__ANCHOR_POSITION, null, msgs);
+				msgs = ((InternalEObject)anchorPosition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OsmPackageImpl.WORLD__ANCHOR_POSITION, null, msgs);
 			if (newAnchorPosition != null)
-				msgs = ((InternalEObject)newAnchorPosition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OsmPackage.WORLD__ANCHOR_POSITION, null, msgs);
+				msgs = ((InternalEObject)newAnchorPosition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OsmPackageImpl.WORLD__ANCHOR_POSITION, null, msgs);
 			msgs = basicSetAnchorPosition(newAnchorPosition, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OsmPackage.WORLD__ANCHOR_POSITION, newAnchorPosition, newAnchorPosition));
+			eNotify(new ENotificationImpl(this, Notification.SET, OsmPackageImpl.WORLD__ANCHOR_POSITION, newAnchorPosition, newAnchorPosition));
 	}
 
 	/**
@@ -284,7 +281,7 @@ public class WorldImpl extends AreaImpl implements World {
 		GeoPosition oldCursorPosition = cursorPosition;
 		cursorPosition = newCursorPosition;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OsmPackage.WORLD__CURSOR_POSITION, oldCursorPosition, newCursorPosition);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OsmPackageImpl.WORLD__CURSOR_POSITION, oldCursorPosition, newCursorPosition);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -299,14 +296,14 @@ public class WorldImpl extends AreaImpl implements World {
 		if (newCursorPosition != cursorPosition) {
 			NotificationChain msgs = null;
 			if (cursorPosition != null)
-				msgs = ((InternalEObject)cursorPosition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OsmPackage.WORLD__CURSOR_POSITION, null, msgs);
+				msgs = ((InternalEObject)cursorPosition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OsmPackageImpl.WORLD__CURSOR_POSITION, null, msgs);
 			if (newCursorPosition != null)
-				msgs = ((InternalEObject)newCursorPosition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OsmPackage.WORLD__CURSOR_POSITION, null, msgs);
+				msgs = ((InternalEObject)newCursorPosition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OsmPackageImpl.WORLD__CURSOR_POSITION, null, msgs);
 			msgs = basicSetCursorPosition(newCursorPosition, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OsmPackage.WORLD__CURSOR_POSITION, newCursorPosition, newCursorPosition));
+			eNotify(new ENotificationImpl(this, Notification.SET, OsmPackageImpl.WORLD__CURSOR_POSITION, newCursorPosition, newCursorPosition));
 	}
 
 	/**
@@ -327,7 +324,7 @@ public class WorldImpl extends AreaImpl implements World {
 		double oldTrip = trip;
 		trip = newTrip;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OsmPackage.WORLD__TRIP, oldTrip, trip));
+			eNotify(new ENotificationImpl(this, Notification.SET, OsmPackageImpl.WORLD__TRIP, oldTrip, trip));
 	}
 
 	/**
@@ -348,7 +345,7 @@ public class WorldImpl extends AreaImpl implements World {
 		double oldTotalTrip = totalTrip;
 		totalTrip = newTotalTrip;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OsmPackage.WORLD__TOTAL_TRIP, oldTotalTrip, totalTrip));
+			eNotify(new ENotificationImpl(this, Notification.SET, OsmPackageImpl.WORLD__TOTAL_TRIP, oldTotalTrip, totalTrip));
 	}
 
 	/**
@@ -359,9 +356,9 @@ public class WorldImpl extends AreaImpl implements World {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case OsmPackage.WORLD__ANCHOR_POSITION:
+			case OsmPackageImpl.WORLD__ANCHOR_POSITION:
 				return basicSetAnchorPosition(null, msgs);
-			case OsmPackage.WORLD__CURSOR_POSITION:
+			case OsmPackageImpl.WORLD__CURSOR_POSITION:
 				return basicSetCursorPosition(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -375,17 +372,17 @@ public class WorldImpl extends AreaImpl implements World {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case OsmPackage.WORLD__LONGITUDE_SCALE:
+			case OsmPackageImpl.WORLD__LONGITUDE_SCALE:
 				return isLongitudeScale();
-			case OsmPackage.WORLD__LATITUDE_SCALE:
+			case OsmPackageImpl.WORLD__LATITUDE_SCALE:
 				return isLatitudeScale();
-			case OsmPackage.WORLD__ANCHOR_POSITION:
+			case OsmPackageImpl.WORLD__ANCHOR_POSITION:
 				return getAnchorPosition();
-			case OsmPackage.WORLD__CURSOR_POSITION:
+			case OsmPackageImpl.WORLD__CURSOR_POSITION:
 				return getCursorPosition();
-			case OsmPackage.WORLD__TRIP:
+			case OsmPackageImpl.WORLD__TRIP:
 				return getTrip();
-			case OsmPackage.WORLD__TOTAL_TRIP:
+			case OsmPackageImpl.WORLD__TOTAL_TRIP:
 				return getTotalTrip();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -399,22 +396,22 @@ public class WorldImpl extends AreaImpl implements World {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case OsmPackage.WORLD__LONGITUDE_SCALE:
+			case OsmPackageImpl.WORLD__LONGITUDE_SCALE:
 				setLongitudeScale((Boolean)newValue);
 				return;
-			case OsmPackage.WORLD__LATITUDE_SCALE:
+			case OsmPackageImpl.WORLD__LATITUDE_SCALE:
 				setLatitudeScale((Boolean)newValue);
 				return;
-			case OsmPackage.WORLD__ANCHOR_POSITION:
+			case OsmPackageImpl.WORLD__ANCHOR_POSITION:
 				setAnchorPosition((AnchorPosition)newValue);
 				return;
-			case OsmPackage.WORLD__CURSOR_POSITION:
+			case OsmPackageImpl.WORLD__CURSOR_POSITION:
 				setCursorPosition((GeoPosition)newValue);
 				return;
-			case OsmPackage.WORLD__TRIP:
+			case OsmPackageImpl.WORLD__TRIP:
 				setTrip((Double)newValue);
 				return;
-			case OsmPackage.WORLD__TOTAL_TRIP:
+			case OsmPackageImpl.WORLD__TOTAL_TRIP:
 				setTotalTrip((Double)newValue);
 				return;
 		}
@@ -429,22 +426,22 @@ public class WorldImpl extends AreaImpl implements World {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case OsmPackage.WORLD__LONGITUDE_SCALE:
+			case OsmPackageImpl.WORLD__LONGITUDE_SCALE:
 				setLongitudeScale(LONGITUDE_SCALE_EDEFAULT);
 				return;
-			case OsmPackage.WORLD__LATITUDE_SCALE:
+			case OsmPackageImpl.WORLD__LATITUDE_SCALE:
 				setLatitudeScale(LATITUDE_SCALE_EDEFAULT);
 				return;
-			case OsmPackage.WORLD__ANCHOR_POSITION:
+			case OsmPackageImpl.WORLD__ANCHOR_POSITION:
 				setAnchorPosition((AnchorPosition)null);
 				return;
-			case OsmPackage.WORLD__CURSOR_POSITION:
+			case OsmPackageImpl.WORLD__CURSOR_POSITION:
 				setCursorPosition((GeoPosition)null);
 				return;
-			case OsmPackage.WORLD__TRIP:
+			case OsmPackageImpl.WORLD__TRIP:
 				setTrip(TRIP_EDEFAULT);
 				return;
-			case OsmPackage.WORLD__TOTAL_TRIP:
+			case OsmPackageImpl.WORLD__TOTAL_TRIP:
 				setTotalTrip(TOTAL_TRIP_EDEFAULT);
 				return;
 		}
@@ -459,17 +456,17 @@ public class WorldImpl extends AreaImpl implements World {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case OsmPackage.WORLD__LONGITUDE_SCALE:
+			case OsmPackageImpl.WORLD__LONGITUDE_SCALE:
 				return longitudeScale != LONGITUDE_SCALE_EDEFAULT;
-			case OsmPackage.WORLD__LATITUDE_SCALE:
+			case OsmPackageImpl.WORLD__LATITUDE_SCALE:
 				return latitudeScale != LATITUDE_SCALE_EDEFAULT;
-			case OsmPackage.WORLD__ANCHOR_POSITION:
+			case OsmPackageImpl.WORLD__ANCHOR_POSITION:
 				return anchorPosition != null;
-			case OsmPackage.WORLD__CURSOR_POSITION:
+			case OsmPackageImpl.WORLD__CURSOR_POSITION:
 				return cursorPosition != null;
-			case OsmPackage.WORLD__TRIP:
+			case OsmPackageImpl.WORLD__TRIP:
 				return trip != TRIP_EDEFAULT;
-			case OsmPackage.WORLD__TOTAL_TRIP:
+			case OsmPackageImpl.WORLD__TOTAL_TRIP:
 				return totalTrip != TOTAL_TRIP_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

@@ -41,11 +41,11 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Latitude Hemisphere</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see net.sf.seesea.model.core.geo.GeoPackage#getLatitudeHemisphere()
+ * @see net.sf.seesea.model.core.geo.impl.GeoPackageImpl#getLatitudeHemisphere()
  * @model
  * @generated
  */
-public enum LatitudeHemisphere implements Enumerator {
+public enum LatitudeHemisphere implements InternalLatitudeHemisphere {
 	/**
 	 * The '<em><b>N</b></em>' literal object.
 	 * <!-- begin-user-doc -->
@@ -240,3 +240,13 @@ public enum LatitudeHemisphere implements Enumerator {
 	}
 	
 } //LatitudeHemisphere
+
+/**
+ * A private implementation interface used to hide the inheritance from Enumerator.
+ * <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
+ * @generated
+ */
+interface InternalLatitudeHemisphere extends org.eclipse.emf.common.util.Enumerator {
+	// Empty 
+}

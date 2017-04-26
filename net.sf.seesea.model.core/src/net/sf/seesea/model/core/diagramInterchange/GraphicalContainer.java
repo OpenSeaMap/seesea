@@ -30,6 +30,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.diagramInterchange;
 
+import java.util.List;
 import org.eclipse.emf.common.util.EList;
 
 
@@ -45,7 +46,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link net.sf.seesea.model.core.diagramInterchange.GraphicalContainer#getChildren <em>Children</em>}</li>
  * </ul>
  *
- * @see net.sf.seesea.model.core.diagramInterchange.DiagramInterchangePackage#getGraphicalContainer()
  * @model
  * @generated
  */
@@ -60,10 +60,9 @@ public interface GraphicalContainer extends GraphicalElement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Children</em>' reference list.
-	 * @see net.sf.seesea.model.core.diagramInterchange.DiagramInterchangePackage#getGraphicalContainer_Children()
 	 * @model
 	 * @generated
 	 */
-	EList<GraphicalElement> getChildren();
+	List<GraphicalElement> getChildren();
 
 } // GraphicalContainer

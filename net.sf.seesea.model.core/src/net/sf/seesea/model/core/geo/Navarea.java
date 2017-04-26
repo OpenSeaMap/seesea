@@ -45,7 +45,6 @@ import net.sf.seesea.model.core.geo.osm.Area;
  *   <li>{@link net.sf.seesea.model.core.geo.Navarea#getAreanumber <em>Areanumber</em>}</li>
  * </ul>
  *
- * @see net.sf.seesea.model.core.geo.GeoPackage#getNavarea()
  * @model
  * @generated
  */
@@ -60,7 +59,6 @@ public interface Navarea extends Area {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Areanumber</em>' attribute.
 	 * @see #setAreanumber(int)
-	 * @see net.sf.seesea.model.core.geo.GeoPackage#getNavarea_Areanumber()
 	 * @model
 	 * @generated
 	 */

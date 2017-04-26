@@ -30,15 +30,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.geo.impl;
 
-import net.sf.seesea.model.core.geo.GeoPackage;
-import net.sf.seesea.model.core.geo.NamedArtifact;
-
-import net.sf.seesea.model.core.impl.ModelObjectImpl;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import net.sf.seesea.model.core.geo.NamedArtifact;
+import net.sf.seesea.model.core.impl.ModelObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -90,7 +87,7 @@ public class NamedArtifactImpl extends ModelObjectImpl implements NamedArtifact 
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return GeoPackage.Literals.NAMED_ARTIFACT;
+		return GeoPackageImpl.Literals.NAMED_ARTIFACT;
 	}
 
 	/**
@@ -111,7 +108,7 @@ public class NamedArtifactImpl extends ModelObjectImpl implements NamedArtifact 
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackage.NAMED_ARTIFACT__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, GeoPackageImpl.NAMED_ARTIFACT__NAME, oldName, name));
 	}
 
 	/**
@@ -122,7 +119,7 @@ public class NamedArtifactImpl extends ModelObjectImpl implements NamedArtifact 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GeoPackage.NAMED_ARTIFACT__NAME:
+			case GeoPackageImpl.NAMED_ARTIFACT__NAME:
 				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -136,7 +133,7 @@ public class NamedArtifactImpl extends ModelObjectImpl implements NamedArtifact 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GeoPackage.NAMED_ARTIFACT__NAME:
+			case GeoPackageImpl.NAMED_ARTIFACT__NAME:
 				setName((String)newValue);
 				return;
 		}
@@ -151,7 +148,7 @@ public class NamedArtifactImpl extends ModelObjectImpl implements NamedArtifact 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GeoPackage.NAMED_ARTIFACT__NAME:
+			case GeoPackageImpl.NAMED_ARTIFACT__NAME:
 				setName(NAME_EDEFAULT);
 				return;
 		}
@@ -166,7 +163,7 @@ public class NamedArtifactImpl extends ModelObjectImpl implements NamedArtifact 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GeoPackage.NAMED_ARTIFACT__NAME:
+			case GeoPackageImpl.NAMED_ARTIFACT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);

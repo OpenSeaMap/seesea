@@ -41,11 +41,11 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Temperature Unit</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see net.sf.seesea.model.core.physx.PhysxPackage#getTemperatureUnit()
+ * @see net.sf.seesea.model.core.physx.impl.PhysxPackageImpl#getTemperatureUnit()
  * @model
  * @generated
  */
-public enum TemperatureUnit implements Enumerator {
+public enum TemperatureUnit implements InternalTemperatureUnit {
 	/**
 	 * The '<em><b>CELSIUS</b></em>' literal object.
 	 * <!-- begin-user-doc -->
@@ -267,3 +267,13 @@ public enum TemperatureUnit implements Enumerator {
 	}
 	
 } //TemperatureUnit
+
+/**
+ * A private implementation interface used to hide the inheritance from Enumerator.
+ * <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
+ * @generated
+ */
+interface InternalTemperatureUnit extends org.eclipse.emf.common.util.Enumerator {
+	// Empty 
+}

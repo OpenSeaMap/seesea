@@ -30,17 +30,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.weather.impl;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import net.sf.seesea.model.core.physx.LengthUnit;
 import net.sf.seesea.model.core.physx.impl.MeasurementImpl;
-
 import net.sf.seesea.model.core.weather.Visibility;
-import net.sf.seesea.model.core.weather.WeatherPackage;
-
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -113,7 +109,7 @@ public class VisibilityImpl extends MeasurementImpl implements Visibility {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return WeatherPackage.Literals.VISIBILITY;
+		return WeatherPackageImpl.Literals.VISIBILITY;
 	}
 
 	/**
@@ -134,7 +130,7 @@ public class VisibilityImpl extends MeasurementImpl implements Visibility {
 		Double oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WeatherPackage.VISIBILITY__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, WeatherPackageImpl.VISIBILITY__VALUE, oldValue, value));
 	}
 
 	/**
@@ -155,7 +151,7 @@ public class VisibilityImpl extends MeasurementImpl implements Visibility {
 		LengthUnit oldUnit = unit;
 		unit = newUnit == null ? UNIT_EDEFAULT : newUnit;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WeatherPackage.VISIBILITY__UNIT, oldUnit, unit));
+			eNotify(new ENotificationImpl(this, Notification.SET, WeatherPackageImpl.VISIBILITY__UNIT, oldUnit, unit));
 	}
 
 	/**
@@ -166,9 +162,9 @@ public class VisibilityImpl extends MeasurementImpl implements Visibility {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case WeatherPackage.VISIBILITY__VALUE:
+			case WeatherPackageImpl.VISIBILITY__VALUE:
 				return getValue();
-			case WeatherPackage.VISIBILITY__UNIT:
+			case WeatherPackageImpl.VISIBILITY__UNIT:
 				return getUnit();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -182,10 +178,10 @@ public class VisibilityImpl extends MeasurementImpl implements Visibility {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case WeatherPackage.VISIBILITY__VALUE:
+			case WeatherPackageImpl.VISIBILITY__VALUE:
 				setValue((Double)newValue);
 				return;
-			case WeatherPackage.VISIBILITY__UNIT:
+			case WeatherPackageImpl.VISIBILITY__UNIT:
 				setUnit((LengthUnit)newValue);
 				return;
 		}
@@ -200,10 +196,10 @@ public class VisibilityImpl extends MeasurementImpl implements Visibility {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case WeatherPackage.VISIBILITY__VALUE:
+			case WeatherPackageImpl.VISIBILITY__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
-			case WeatherPackage.VISIBILITY__UNIT:
+			case WeatherPackageImpl.VISIBILITY__UNIT:
 				setUnit(UNIT_EDEFAULT);
 				return;
 		}
@@ -218,9 +214,9 @@ public class VisibilityImpl extends MeasurementImpl implements Visibility {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case WeatherPackage.VISIBILITY__VALUE:
+			case WeatherPackageImpl.VISIBILITY__VALUE:
 				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
-			case WeatherPackage.VISIBILITY__UNIT:
+			case WeatherPackageImpl.VISIBILITY__UNIT:
 				return unit != UNIT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

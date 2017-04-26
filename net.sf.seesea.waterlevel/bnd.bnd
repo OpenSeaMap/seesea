@@ -1,0 +1,12 @@
+-baseline: *
+javac.source: 1.8
+javac.target: 1.8
+
+Bundle-Version: 1.0.0.${tstamp}
+Export-Package: \
+	net.sf.seesea.waterlevel,\
+	net.sf.seesea.waterlevel.ocean
+
+-buildpath: \
+	net.sf.seesea.model.core;version=latest,\
+	javax.ws.rs-api;version=2.0

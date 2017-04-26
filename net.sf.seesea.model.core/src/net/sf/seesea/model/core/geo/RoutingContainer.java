@@ -30,6 +30,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.geo;
 
+import java.util.List;
 import net.sf.seesea.model.core.ModelObject;
 import net.sf.seesea.model.core.geo.osm.Area;
 import org.eclipse.emf.common.util.EList;
@@ -47,7 +48,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link net.sf.seesea.model.core.geo.RoutingContainer#getArea <em>Area</em>}</li>
  * </ul>
  *
- * @see net.sf.seesea.model.core.geo.GeoPackage#getRoutingContainer()
  * @model
  * @generated
  */
@@ -62,11 +62,10 @@ public interface RoutingContainer extends ModelObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Routes</em>' containment reference list.
-	 * @see net.sf.seesea.model.core.geo.GeoPackage#getRoutingContainer_Routes()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Route> getRoutes();
+	List<Route> getRoutes();
 
 	/**
 	 * Returns the value of the '<em><b>Area</b></em>' reference.
@@ -78,7 +77,6 @@ public interface RoutingContainer extends ModelObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Area</em>' reference.
 	 * @see #setArea(Area)
-	 * @see net.sf.seesea.model.core.geo.GeoPackage#getRoutingContainer_Area()
 	 * @model
 	 * @generated
 	 */

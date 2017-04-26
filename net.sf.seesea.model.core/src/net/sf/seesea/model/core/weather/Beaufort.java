@@ -41,11 +41,11 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Beaufort</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see net.sf.seesea.model.core.weather.WeatherPackage#getBeaufort()
+ * @see net.sf.seesea.model.core.weather.impl.WeatherPackageImpl#getBeaufort()
  * @model
  * @generated
  */
-public enum Beaufort implements Enumerator {
+public enum Beaufort implements InternalBeaufort {
 	/**
 	 * The '<em><b>Undefined</b></em>' literal object.
 	 * <!-- begin-user-doc -->
@@ -567,3 +567,13 @@ public enum Beaufort implements Enumerator {
 	}
 	
 } //Beaufort
+
+/**
+ * A private implementation interface used to hide the inheritance from Enumerator.
+ * <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
+ * @generated
+ */
+interface InternalBeaufort extends org.eclipse.emf.common.util.Enumerator {
+	// Empty 
+}

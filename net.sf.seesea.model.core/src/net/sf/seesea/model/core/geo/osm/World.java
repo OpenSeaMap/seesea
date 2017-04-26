@@ -51,7 +51,6 @@ import net.sf.seesea.model.core.geo.GeoPosition;
  *   <li>{@link net.sf.seesea.model.core.geo.osm.World#getTotalTrip <em>Total Trip</em>}</li>
  * </ul>
  *
- * @see net.sf.seesea.model.core.geo.osm.OsmPackage#getWorld()
  * @model
  * @generated
  */
@@ -67,7 +66,6 @@ public interface World extends Area {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Longitude Scale</em>' attribute.
 	 * @see #setLongitudeScale(boolean)
-	 * @see net.sf.seesea.model.core.geo.osm.OsmPackage#getWorld_LongitudeScale()
 	 * @model default="true"
 	 * @generated
 	 */
@@ -94,7 +92,6 @@ public interface World extends Area {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Latitude Scale</em>' attribute.
 	 * @see #setLatitudeScale(boolean)
-	 * @see net.sf.seesea.model.core.geo.osm.OsmPackage#getWorld_LatitudeScale()
 	 * @model default="true"
 	 * @generated
 	 */
@@ -120,7 +117,6 @@ public interface World extends Area {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Anchor Position</em>' containment reference.
 	 * @see #setAnchorPosition(AnchorPosition)
-	 * @see net.sf.seesea.model.core.geo.osm.OsmPackage#getWorld_AnchorPosition()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -146,7 +142,6 @@ public interface World extends Area {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Cursor Position</em>' containment reference.
 	 * @see #setCursorPosition(GeoPosition)
-	 * @see net.sf.seesea.model.core.geo.osm.OsmPackage#getWorld_CursorPosition()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -172,7 +167,6 @@ public interface World extends Area {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Trip</em>' attribute.
 	 * @see #setTrip(double)
-	 * @see net.sf.seesea.model.core.geo.osm.OsmPackage#getWorld_Trip()
 	 * @model
 	 * @generated
 	 */
@@ -198,7 +192,6 @@ public interface World extends Area {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Total Trip</em>' attribute.
 	 * @see #setTotalTrip(double)
-	 * @see net.sf.seesea.model.core.geo.osm.OsmPackage#getWorld_TotalTrip()
 	 * @model
 	 * @generated
 	 */

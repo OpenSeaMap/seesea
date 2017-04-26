@@ -30,14 +30,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.diagramInterchange.impl;
 
-import net.sf.seesea.model.core.ModelObject;
-import net.sf.seesea.model.core.diagramInterchange.DiagramInterchangePackage;
-import net.sf.seesea.model.core.diagramInterchange.GraphicalNode;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import net.sf.seesea.model.core.ModelObject;
+import net.sf.seesea.model.core.diagramInterchange.GraphicalNode;
 
 /**
  * <!-- begin-user-doc -->
@@ -79,7 +79,7 @@ public class GraphicalNodeImpl extends GraphicalElementImpl implements Graphical
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return DiagramInterchangePackage.Literals.GRAPHICAL_NODE;
+		return DiagramInterchangePackageImpl.Literals.GRAPHICAL_NODE;
 	}
 
 	/**
@@ -88,12 +88,12 @@ public class GraphicalNodeImpl extends GraphicalElementImpl implements Graphical
 	 * @generated
 	 */
 	public ModelObject getRepresents() {
-		if (represents != null && represents.eIsProxy()) {
+		if (represents != null && ((EObject)represents).eIsProxy()) {
 			InternalEObject oldRepresents = (InternalEObject)represents;
 			represents = (ModelObject)eResolveProxy(oldRepresents);
 			if (represents != oldRepresents) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiagramInterchangePackage.GRAPHICAL_NODE__REPRESENTS, oldRepresents, represents));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiagramInterchangePackageImpl.GRAPHICAL_NODE__REPRESENTS, oldRepresents, represents));
 			}
 		}
 		return represents;
@@ -117,7 +117,7 @@ public class GraphicalNodeImpl extends GraphicalElementImpl implements Graphical
 		ModelObject oldRepresents = represents;
 		represents = newRepresents;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DiagramInterchangePackage.GRAPHICAL_NODE__REPRESENTS, oldRepresents, represents));
+			eNotify(new ENotificationImpl(this, Notification.SET, DiagramInterchangePackageImpl.GRAPHICAL_NODE__REPRESENTS, oldRepresents, represents));
 	}
 
 	/**
@@ -128,7 +128,7 @@ public class GraphicalNodeImpl extends GraphicalElementImpl implements Graphical
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case DiagramInterchangePackage.GRAPHICAL_NODE__REPRESENTS:
+			case DiagramInterchangePackageImpl.GRAPHICAL_NODE__REPRESENTS:
 				if (resolve) return getRepresents();
 				return basicGetRepresents();
 		}
@@ -143,7 +143,7 @@ public class GraphicalNodeImpl extends GraphicalElementImpl implements Graphical
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case DiagramInterchangePackage.GRAPHICAL_NODE__REPRESENTS:
+			case DiagramInterchangePackageImpl.GRAPHICAL_NODE__REPRESENTS:
 				setRepresents((ModelObject)newValue);
 				return;
 		}
@@ -158,7 +158,7 @@ public class GraphicalNodeImpl extends GraphicalElementImpl implements Graphical
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case DiagramInterchangePackage.GRAPHICAL_NODE__REPRESENTS:
+			case DiagramInterchangePackageImpl.GRAPHICAL_NODE__REPRESENTS:
 				setRepresents((ModelObject)null);
 				return;
 		}
@@ -173,7 +173,7 @@ public class GraphicalNodeImpl extends GraphicalElementImpl implements Graphical
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case DiagramInterchangePackage.GRAPHICAL_NODE__REPRESENTS:
+			case DiagramInterchangePackageImpl.GRAPHICAL_NODE__REPRESENTS:
 				return represents != null;
 		}
 		return super.eIsSet(featureID);

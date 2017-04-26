@@ -27,17 +27,15 @@
  */
 package net.sf.seesea.model.core.physx.impl;
 
-import net.sf.seesea.model.core.physx.PhysxPackage;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import net.sf.seesea.model.core.physx.RelativeSpeed;
 import net.sf.seesea.model.core.physx.Speed;
 import net.sf.seesea.model.core.physx.SpeedType;
-
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -100,7 +98,7 @@ public class RelativeSpeedImpl extends MeasurementImpl implements RelativeSpeed 
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return PhysxPackage.Literals.RELATIVE_SPEED;
+		return PhysxPackageImpl.Literals.RELATIVE_SPEED;
 	}
 
 	/**
@@ -121,7 +119,7 @@ public class RelativeSpeedImpl extends MeasurementImpl implements RelativeSpeed 
 		SpeedType oldKey = key;
 		key = newKey == null ? KEY_EDEFAULT : newKey;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackage.RELATIVE_SPEED__KEY, oldKey, key));
+			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackageImpl.RELATIVE_SPEED__KEY, oldKey, key));
 	}
 
 	/**
@@ -130,12 +128,12 @@ public class RelativeSpeedImpl extends MeasurementImpl implements RelativeSpeed 
 	 * @generated
 	 */
 	public Speed getValue() {
-		if (value != null && value.eIsProxy()) {
+		if (value != null && ((EObject)value).eIsProxy()) {
 			InternalEObject oldValue = (InternalEObject)value;
 			value = (Speed)eResolveProxy(oldValue);
 			if (value != oldValue) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PhysxPackage.RELATIVE_SPEED__VALUE, oldValue, value));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PhysxPackageImpl.RELATIVE_SPEED__VALUE, oldValue, value));
 			}
 		}
 		return value;
@@ -159,7 +157,7 @@ public class RelativeSpeedImpl extends MeasurementImpl implements RelativeSpeed 
 		Speed oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackage.RELATIVE_SPEED__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, PhysxPackageImpl.RELATIVE_SPEED__VALUE, oldValue, value));
 	}
 
 	/**
@@ -170,9 +168,9 @@ public class RelativeSpeedImpl extends MeasurementImpl implements RelativeSpeed 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case PhysxPackage.RELATIVE_SPEED__KEY:
+			case PhysxPackageImpl.RELATIVE_SPEED__KEY:
 				return getKey();
-			case PhysxPackage.RELATIVE_SPEED__VALUE:
+			case PhysxPackageImpl.RELATIVE_SPEED__VALUE:
 				if (resolve) return getValue();
 				return basicGetValue();
 		}
@@ -187,10 +185,10 @@ public class RelativeSpeedImpl extends MeasurementImpl implements RelativeSpeed 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case PhysxPackage.RELATIVE_SPEED__KEY:
+			case PhysxPackageImpl.RELATIVE_SPEED__KEY:
 				setKey((SpeedType)newValue);
 				return;
-			case PhysxPackage.RELATIVE_SPEED__VALUE:
+			case PhysxPackageImpl.RELATIVE_SPEED__VALUE:
 				setValue((Speed)newValue);
 				return;
 		}
@@ -205,10 +203,10 @@ public class RelativeSpeedImpl extends MeasurementImpl implements RelativeSpeed 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case PhysxPackage.RELATIVE_SPEED__KEY:
+			case PhysxPackageImpl.RELATIVE_SPEED__KEY:
 				setKey(KEY_EDEFAULT);
 				return;
-			case PhysxPackage.RELATIVE_SPEED__VALUE:
+			case PhysxPackageImpl.RELATIVE_SPEED__VALUE:
 				setValue((Speed)null);
 				return;
 		}
@@ -223,9 +221,9 @@ public class RelativeSpeedImpl extends MeasurementImpl implements RelativeSpeed 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case PhysxPackage.RELATIVE_SPEED__KEY:
+			case PhysxPackageImpl.RELATIVE_SPEED__KEY:
 				return key != KEY_EDEFAULT;
-			case PhysxPackage.RELATIVE_SPEED__VALUE:
+			case PhysxPackageImpl.RELATIVE_SPEED__VALUE:
 				return value != null;
 		}
 		return super.eIsSet(featureID);

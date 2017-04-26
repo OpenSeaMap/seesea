@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?NLS TYPE="org.eclipse.help.toc"?>
-
-<toc label="Inhalte">
-	<topic label="Daten Aufzeichnen"  href="html/Logging.html"> 
-		<topic label="Visualisierung" href="html/subtopic.html"/>
-	</topic>
-	<topic href="html/Upload.html" label="Daten hochladen"/>
-</toc>

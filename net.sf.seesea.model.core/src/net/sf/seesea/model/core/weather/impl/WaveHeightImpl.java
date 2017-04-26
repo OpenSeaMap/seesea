@@ -30,17 +30,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.model.core.weather.impl;
 
-import net.sf.seesea.model.core.physx.LengthUnit;
-
-import net.sf.seesea.model.core.weather.WaveHeight;
-import net.sf.seesea.model.core.weather.WeatherPackage;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
+import net.sf.seesea.model.core.physx.LengthUnit;
+import net.sf.seesea.model.core.weather.WaveHeight;
 
 /**
  * <!-- begin-user-doc -->
@@ -113,7 +109,7 @@ public class WaveHeightImpl extends EObjectImpl implements WaveHeight {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return WeatherPackage.Literals.WAVE_HEIGHT;
+		return WeatherPackageImpl.Literals.WAVE_HEIGHT;
 	}
 
 	/**
@@ -134,7 +130,7 @@ public class WaveHeightImpl extends EObjectImpl implements WaveHeight {
 		double oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WeatherPackage.WAVE_HEIGHT__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, WeatherPackageImpl.WAVE_HEIGHT__VALUE, oldValue, value));
 	}
 
 	/**
@@ -155,7 +151,7 @@ public class WaveHeightImpl extends EObjectImpl implements WaveHeight {
 		LengthUnit oldUnit = unit;
 		unit = newUnit == null ? UNIT_EDEFAULT : newUnit;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WeatherPackage.WAVE_HEIGHT__UNIT, oldUnit, unit));
+			eNotify(new ENotificationImpl(this, Notification.SET, WeatherPackageImpl.WAVE_HEIGHT__UNIT, oldUnit, unit));
 	}
 
 	/**
@@ -166,9 +162,9 @@ public class WaveHeightImpl extends EObjectImpl implements WaveHeight {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case WeatherPackage.WAVE_HEIGHT__VALUE:
+			case WeatherPackageImpl.WAVE_HEIGHT__VALUE:
 				return getValue();
-			case WeatherPackage.WAVE_HEIGHT__UNIT:
+			case WeatherPackageImpl.WAVE_HEIGHT__UNIT:
 				return getUnit();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -182,10 +178,10 @@ public class WaveHeightImpl extends EObjectImpl implements WaveHeight {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case WeatherPackage.WAVE_HEIGHT__VALUE:
+			case WeatherPackageImpl.WAVE_HEIGHT__VALUE:
 				setValue((Double)newValue);
 				return;
-			case WeatherPackage.WAVE_HEIGHT__UNIT:
+			case WeatherPackageImpl.WAVE_HEIGHT__UNIT:
 				setUnit((LengthUnit)newValue);
 				return;
 		}
@@ -200,10 +196,10 @@ public class WaveHeightImpl extends EObjectImpl implements WaveHeight {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case WeatherPackage.WAVE_HEIGHT__VALUE:
+			case WeatherPackageImpl.WAVE_HEIGHT__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
-			case WeatherPackage.WAVE_HEIGHT__UNIT:
+			case WeatherPackageImpl.WAVE_HEIGHT__UNIT:
 				setUnit(UNIT_EDEFAULT);
 				return;
 		}
@@ -218,9 +214,9 @@ public class WaveHeightImpl extends EObjectImpl implements WaveHeight {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case WeatherPackage.WAVE_HEIGHT__VALUE:
+			case WeatherPackageImpl.WAVE_HEIGHT__VALUE:
 				return value != VALUE_EDEFAULT;
-			case WeatherPackage.WAVE_HEIGHT__UNIT:
+			case WeatherPackageImpl.WAVE_HEIGHT__UNIT:
 				return unit != UNIT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
