@@ -1,0 +1,42 @@
+-buildpath: \
+	org.eclipse.emf.common,\
+	org.eclipse.emf.ecore
+	
+-testpath: \
+	junit;version=4.12,\
+	hamcrest-core;version=1.3.0
+
+Bundle-Version: 0.0.0.${tstamp}
+
+Provide-Capability: \
+	org.bndtools.template;\
+		org.bndtools.template=project; \
+		name=net.sf.seesea.model; \
+		category=Examples; \
+		dir=template; \
+		icon="${icondata}"; \
+		help=help.xml
+
+icondata: data:image/gif;base64,${base64;icon.gif}
+
+-buildpath: \
+	org.eclipse.emf.common,\
+	org.eclipse.emf.ecore
+Export-Package: \
+	net.sf.seesea.model.core,\
+	net.sf.seesea.model.core.data,\
+	net.sf.seesea.model.core.diagramInterchange,\
+	net.sf.seesea.model.core.geo,\
+	net.sf.seesea.model.core.geo.osm,\
+	net.sf.seesea.model.core.physx,\
+	net.sf.seesea.model.core.weather
+Private-Package: \
+	net.sf.seesea.model.core.data.impl,\
+	net.sf.seesea.model.core.diagramInterchange.impl,\
+	net.sf.seesea.model.core.geo.impl,\
+	net.sf.seesea.model.core.geo.osm.impl,\
+	net.sf.seesea.model.core.physx.impl,\
+	net.sf.seesea.model.core.weather.impl,\
+	net.sf.seesea.model.core.geo.util,\
+	net.sf.seesea.model.util,\
+	net.sf.seesea.model.core.impl,\
