@@ -1,0 +1,5 @@
+Private-Package: \
+	net.sf.seesea.tidemodel.dtu10.java,\
+	net.sf.seesea.tidemodel.dtu10.java.data
+Bundle-Version: 1.0.0.${tstamp}
+-buildpath: log4j;version=1.2

@@ -157,7 +157,7 @@ public class CombinedWaterLevelCorrection implements IWaterLevelCorrection {
 		// create a virtual bounding box spanning around 1 nautical mile around
 		// for cacheing purposes
 		if (_cacheBoundingBox == null || !contains(_cacheBoundingBox,lat, lon)) {
-			_cacheBoundingBox = GeoFactory.eINSTANCE.createGeoBoundingBox();
+			_cacheBoundingBox = GeoFactory.INSTANCE.createGeoBoundingBox();
 			_cacheBoundingBox.setLeft(lon - 0.016666666666);
 			_cacheBoundingBox.setRight(lon + 0.016666666666);
 			_cacheBoundingBox.setTop(lat + 0.016666666666);
@@ -170,7 +170,7 @@ public class CombinedWaterLevelCorrection implements IWaterLevelCorrection {
 			// lon);
 			return true;
 		} else {
-			_cacheBoundingBox = GeoFactory.eINSTANCE.createGeoBoundingBox();
+			_cacheBoundingBox = GeoFactory.INSTANCE.createGeoBoundingBox();
 			_cacheBoundingBox.setLeft(lon - 0.0025);
 			_cacheBoundingBox.setRight(lon + 0.0025);
 			_cacheBoundingBox.setTop(lat + 0.0025);
@@ -181,7 +181,7 @@ public class CombinedWaterLevelCorrection implements IWaterLevelCorrection {
 				// ":" + lon);
 				return true;
 			} else {
-				_cacheBoundingBox = GeoFactory.eINSTANCE.createGeoBoundingBox();
+				_cacheBoundingBox = GeoFactory.INSTANCE.createGeoBoundingBox();
 				_cacheBoundingBox.setLeft(lon - 0.0002);
 				_cacheBoundingBox.setRight(lon + 0.0002);
 				_cacheBoundingBox.setTop(lat + 0.0002);
