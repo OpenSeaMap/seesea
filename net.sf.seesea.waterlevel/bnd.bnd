@@ -1,0 +1,5 @@
+Export-Package: \
+	net.sf.seesea.waterlevel,\
+	net.sf.seesea.waterlevel.ocean
+Bundle-Version: 1.0.0.${tstamp}
+-buildpath: net.sf.seesea.model.core
