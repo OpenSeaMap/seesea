@@ -9,6 +9,6 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
-	<artifactId>net.sf.seesea.tidemodel.dtu10.java</artifactId>
+	<artifactId>net.sf.seesea.waterlevel</artifactId>
 
 </project>
