@@ -7,6 +7,7 @@
 	<packaging>pom</packaging>
 
 	<modules>
+		<module>net.sf.seesea.thirdparty.bnd</module>
 		<module>net.sf.seesea.model.core</module>
 		<module>net.sf.seesea.tidemodel.dtu10.java</module>
 		<module>net.sf.seesea.waterlevel</module>
