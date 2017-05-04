@@ -1,0 +1,7 @@
+-standalone: ${.}/net.sf.seesea.thirdparty.bnd/target/index.xml
+
+-runsystemcapabilities: ${native_capability}
+
+-resolve.effective: active;skip:="osgi.service"
+
+-runee: JavaSE-1.8
