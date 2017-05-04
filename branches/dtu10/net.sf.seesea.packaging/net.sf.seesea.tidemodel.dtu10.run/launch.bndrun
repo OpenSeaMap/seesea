@@ -1,0 +1,28 @@
+#-runfw: org.apache.felix.framework;version=5
+#-runee: JavaSE-1.7
+
+-runprovidedcapabilities: ${native_capability}
+
+-resolve.effective: active;skip:="osgi.service"
+
+-runbundles: \
+	javax.ws.rs-api;version='[2.0.1,2.0.2)',\
+	log4j;version='[1.2.17,1.2.18)',\
+	net.sf.seesea.model.core;version=snapshot,\
+	net.sf.seesea.tidemodel.dtu10.java;version=snapshot,\
+	net.sf.seesea.waterlevel;version=snapshot,\
+	org.apache.felix.gogo.command;version='[1.0.2,1.0.3)',\
+	org.apache.felix.gogo.runtime;version='[1.0.0,1.0.1)',\
+	org.apache.felix.gogo.shell;version='[1.0.0,1.0.1)',\
+	org.apache.felix.scr;version='[2.0.8,2.0.9)',\
+	org.eclipse.emf.common;version='[2.12.0,2.12.1)',\
+	org.eclipse.emf.ecore;version='[2.12.0,2.12.1)',\
+	org.apache.felix.configadmin;version='[1.8.14,1.8.15)'
+
+-runrequires: \
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
+	osgi.identity;filter:='(osgi.identity=net.sf.seesea.tidemodel.dtu10.java)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.configadmin)'
+-runfw: org.apache.felix.framework;version='[5.4.0,5.4.0]'
+-runee: JavaSE-1.8
