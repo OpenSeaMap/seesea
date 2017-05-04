@@ -156,6 +156,21 @@
 			<artifactId>pax-logging-service</artifactId>
 			<version>1.8.5</version>
 		</dependency>
+		<dependency>
+			<groupId>net.sf.seesea</groupId>
+			<artifactId>net.sf.seesea.tidemodel.dtu10.java</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.seesea</groupId>
+			<artifactId>net.sf.seesea.model.core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.seesea</groupId>
+			<artifactId>net.sf.seesea.waterlevel</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 
 		<!--Remote Service Admin -->
 		<!-- <dependency> <groupId>org.apache.aries.rsa</groupId> <artifactId>repository</artifactId> 
