@@ -6,13 +6,19 @@
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
+	<distributionManagement>
+		<repository>
+				<id>bndsnapshots</id>
+				<url>http://192.168.178.45:8085/nexus/content/repositories/bndsnapshot/</url>
+		</repository>
+	</distributionManagement>
 	<modules>
-		<module>net.sf.seesea.thirdparty.bnd</module>
+<!-- 		<module>net.sf.seesea.thirdparty.bnd</module> -->
 		<module>net.sf.seesea.model.core</module>
-		<module>net.sf.seesea.tidemodel.dtu10.java</module>
 		<module>net.sf.seesea.waterlevel</module>
+		<module>net.sf.seesea.tidemodel.dtu10.java</module>
 	</modules>
-	
+
 	<pluginRepositories>
 		<pluginRepository>
 			<id>bnd</id>
@@ -23,21 +29,20 @@
 		</pluginRepository>
 	</pluginRepositories>
 
-<!-- 	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>net.lr.demo.chat</groupId>
-				<artifactId>net.lr.demo.chat.api</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-	
+	<!-- <dependencyManagement> <dependencies> <dependency> <groupId>net.lr.demo.chat</groupId> 
+		<artifactId>net.lr.demo.chat.api</artifactId> <version>${project.version}</version> 
+		</dependency> </dependencies> </dependencyManagement> -->
+
 	<dependencies>
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.7.21</version>
+			<groupId>org.eclipse.emf</groupId>
+			<artifactId>org.eclipse.emf.common</artifactId>
+			<version>2.12.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.emf</groupId>
+			<artifactId>org.eclipse.emf.ecore</artifactId>
+			<version>2.12.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.osgi</groupId>
@@ -50,41 +55,31 @@
 			<artifactId>osgi.cmpn</artifactId>
 			<version>6.0.0</version>
 			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-jdk14</artifactId>
-			<version>1.7.21</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
-		</dependency>
+		</dependency><!-- <dependency> <groupId>org.slf4j</groupId> <artifactId>slf4j-jdk14</artifactId> 
+			<version>1.7.21</version> <scope>test</scope> </dependency> <dependency> 
+			<groupId>junit</groupId> <artifactId>junit</artifactId> <version>4.12</version> 
+			<scope>test</scope> </dependency> -->
 	</dependencies>
- -->
 	<build>
+		<sourceDirectory>src</sourceDirectory>
 		<pluginManagement>
 			<plugins>
-			    <plugin>
-                	<groupId>biz.aQute.bnd</groupId>
-                	<artifactId>bnd-export-maven-plugin</artifactId>
-                	<version>3.3.0</version>
-                	<configuration>
-    	                <resolve>true</resolve>
-    	                <failOnChanges>false</failOnChanges>
-        	        </configuration>
-            	    <executions>
-                	    <execution>
-                    	    <goals>
-                        	    <goal>export</goal>
-                        	</goals>
-                    	</execution>
-                	</executions>
-            	</plugin>
+				<plugin>
+					<groupId>biz.aQute.bnd</groupId>
+					<artifactId>bnd-export-maven-plugin</artifactId>
+					<version>3.3.0</version>
+					<configuration>
+						<resolve>true</resolve>
+						<failOnChanges>false</failOnChanges>
+					</configuration>
+					<executions>
+						<execution>
+							<goals>
+								<goal>export</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
