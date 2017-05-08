@@ -33,6 +33,37 @@
 					<files>target/dtutides.jar</files>
 				</configuration>
 			</plugin>
+				<plugin>
+					<groupId>io.fabric8</groupId>
+					<artifactId>docker-maven-plugin</artifactId>
+					<version>0.20.1</version>
+					<configuration>
+						<images>
+							<!-- HTTP Service image holding the FAT-Jar with embedded tomcat -->
+							<image>
+								<alias>service</alias>
+								<name>seesea/${project.artifactId}:${project.version}</name>
+								<build>
+									<from>java:8</from>
+									<assembly>
+										<descriptor>assembly.xml</descriptor>
+									</assembly>
+									<ports>
+										<port>8080</port>
+									</ports>
+									<cmd>
+										<shell>java -jar /maven/target/dtutides.jar</shell>
+									</cmd>
+								</build>
+							</image>
+						</images>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>io.fabric8</groupId>
+					<artifactId>fabric8-maven-plugin</artifactId>
+					<version>2.2.140</version>
+				</plugin>
 		</plugins>
 	</build>
 
