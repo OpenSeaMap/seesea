@@ -38,7 +38,7 @@
 					<artifactId>docker-maven-plugin</artifactId>
 					<version>0.20.1</version>
 					<configuration>
-					<dockerHost>localhost:2375</dockerHost>
+					<dockerHost>tcp://localhost:2375</dockerHost>
 						<images>
 							<!-- HTTP Service image holding the FAT-Jar with embedded tomcat -->
 							<image>
