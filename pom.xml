@@ -119,7 +119,7 @@
 					<artifactId>docker-maven-plugin</artifactId>
 					<version>0.20.1</version>
 					<configuration>
-					<dockerHost>tcp://localhost:2375</dockerHost>
+					<dockerHost>https://localhost:5000</dockerHost>
 					</configuration>
 				</plugin>
 		</plugins>
