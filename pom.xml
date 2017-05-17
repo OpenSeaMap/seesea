@@ -119,7 +119,7 @@
 					<artifactId>docker-maven-plugin</artifactId>
 					<version>0.21.0</version>
 					<configuration>
-					<dockerHost>https://tool:5000</dockerHost>
+					<dockerHost>https://tool:5000/v2</dockerHost>
 					<apiVersion>v2</apiVersion>
 					</configuration>
 				</plugin>
