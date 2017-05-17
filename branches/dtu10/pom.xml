@@ -120,6 +120,7 @@
 					<version>0.21.0</version>
 					<configuration>
 					<dockerHost>https://tool:5000</dockerHost>
+					<apiVersion>2</apiVersion>
 					</configuration>
 				</plugin>
 		</plugins>
