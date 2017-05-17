@@ -20,5 +20,16 @@
 		<module>net.sf.seesea.tidemodel.dtu10.run</module>
 	</modules>
 
-
+	<build>
+		<plugins>
+				<plugin>
+					<groupId>io.fabric8</groupId>
+					<artifactId>docker-maven-plugin</artifactId>
+					<version>0.20.1</version>
+					<configuration>
+					<dockerHost>tcp://localhost:2375</dockerHost>
+					</configuration>
+				</plugin>
+				</plugins>
+</build>
 </project>
