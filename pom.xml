@@ -13,10 +13,10 @@
 		</repository>
 	</distributionManagement>
 	<modules>
-<!-- 		<module>net.sf.seesea.thirdparty.bnd</module> -->
 		<module>net.sf.seesea.model.core</module>
 		<module>net.sf.seesea.waterlevel</module>
 		<module>net.sf.seesea.tidemodel.dtu10.java</module>
+<!--  		<module>net.sf.seesea.packaging</module> -->
 	</modules>
 
 	<pluginRepositories>
@@ -114,7 +114,14 @@
 					</archive>
 				</configuration>
 			</plugin>
-
+				<plugin>
+					<groupId>io.fabric8</groupId>
+					<artifactId>docker-maven-plugin</artifactId>
+					<version>0.20.1</version>
+					<configuration>
+					<dockerHost>tcp://localhost:2375</dockerHost>
+					</configuration>
+				</plugin>
 		</plugins>
 	</build>
 </project>
