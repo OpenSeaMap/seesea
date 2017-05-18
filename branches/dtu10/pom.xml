@@ -119,9 +119,9 @@
 					<artifactId>docker-maven-plugin</artifactId>
 					<version>0.21.0</version>
 					<configuration>
-					<registry>https://tool:5000</registry>
+<!-- 					<registry>https://tool:5000</registry> -->
  					<dockerHost>tcp://localhost:2376</dockerHost>
-<!--    					<certPath>/etc/docker/certs.d</certPath> -->
+<!--     					<certPath>certs</certPath> -->
    					<useColor>true</useColor>
 					</configuration>
 				</plugin>
