@@ -9,6 +9,13 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
+	<distributionManagement>
+		<repository>
+				<id>bndsnapshots</id>
+				<url>http://192.168.178.45:8085/nexus/content/repositories/bndsnapshot/</url>
+		</repository>
+	</distributionManagement>
+
 	<groupId>net.sf.seesea</groupId>
 	<artifactId>net.sf.seesea.packaging</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
