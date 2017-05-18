@@ -21,6 +21,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
+
 	<dependencies>
 		<dependency>
 			<groupId>javax.ws.rs</groupId>
@@ -178,6 +179,21 @@
 			<artifactId>cxf-dosgi-repository</artifactId> <version>2.1.0</version> <type>pom</type> 
 			</dependency> -->
 	</dependencies>
+	
+	<repositories>
+		<repository>
+			<id>nexus-snapshot</id>
+			<name>Nexus Repository</name>
+			<url>http://http://tool:8085/nexus/content/repositories/bndsnapshot/</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</repository>
+	</repositories>
 
 	<build>
 		<plugins>
