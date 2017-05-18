@@ -132,6 +132,13 @@
 			<artifactId>org.apache.felix.gogo.shell</artifactId>
 			<version>1.0.0</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.apache.felix</groupId>
 			<artifactId>org.apache.felix.http.jetty</artifactId>
@@ -179,7 +186,7 @@
 			<artifactId>cxf-dosgi-repository</artifactId> <version>2.1.0</version> <type>pom</type> 
 			</dependency> -->
 	</dependencies>
-	
+
 	<repositories>
 		<repository>
 			<id>nexus-snapshots</id>
@@ -221,17 +228,17 @@
 					</execution>
 				</executions>
 			</plugin>
-				<plugin>
-					<groupId>io.fabric8</groupId>
-					<artifactId>docker-maven-plugin</artifactId>
-					<version>0.21.0</version>
-					<configuration>
-<!-- 					<registry>https://tool:5000</registry> -->
- 					<dockerHost>tcp://tool:2376</dockerHost>
-<!--     					<certPath>certs</certPath> -->
-   					<useColor>true</useColor>
-					</configuration>
-				</plugin>
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.21.0</version>
+				<configuration>
+					<!-- <registry>https://tool:5000</registry> -->
+					<dockerHost>tcp://tool:2376</dockerHost>
+					<!-- <certPath>certs</certPath> -->
+					<useColor>true</useColor>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
