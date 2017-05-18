@@ -23,5 +23,6 @@
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
 	osgi.identity;filter:='(osgi.identity=net.sf.seesea.tidemodel.dtu10.java)',\
-	osgi.identity;filter:='(osgi.identity=org.apache.felix.configadmin)'
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.configadmin)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.http.jetty)'
 -runfw: org.apache.felix.framework;version='[5.4.0,5.4.0]'
