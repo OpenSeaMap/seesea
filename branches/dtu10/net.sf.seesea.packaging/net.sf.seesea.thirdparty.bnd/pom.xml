@@ -205,6 +205,17 @@
 					</execution>
 				</executions>
 			</plugin>
+				<plugin>
+					<groupId>io.fabric8</groupId>
+					<artifactId>docker-maven-plugin</artifactId>
+					<version>0.21.0</version>
+					<configuration>
+<!-- 					<registry>https://tool:5000</registry> -->
+ 					<dockerHost>tcp://tool:2376</dockerHost>
+<!--     					<certPath>certs</certPath> -->
+   					<useColor>true</useColor>
+					</configuration>
+				</plugin>
 		</plugins>
 	</build>
 
