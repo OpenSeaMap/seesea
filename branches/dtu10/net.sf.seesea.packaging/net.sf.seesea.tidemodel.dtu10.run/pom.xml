@@ -36,9 +36,9 @@
 				<plugin>
 					<groupId>io.fabric8</groupId>
 					<artifactId>docker-maven-plugin</artifactId>
-					<version>0.20.1</version>
+					<version>0.21.0</version>
 					<configuration>
-					<dockerHost>tcp://localhost:2375</dockerHost>
+					<dockerHost>tcp://tool:2376</dockerHost>
 						<images>
 							<!-- HTTP Service image holding the FAT-Jar with embedded tomcat -->
 							<image>
@@ -84,4 +84,5 @@
 		</plugins>
 	</build>
 
+	<name>DTU Tides Run Configurations</name>
 </project>
