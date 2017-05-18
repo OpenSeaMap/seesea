@@ -120,7 +120,7 @@
 					<version>0.21.0</version>
 					<configuration>
 					<registry>https://tool:5000</registry>
-<!-- 					<dockerHost>tcp://localhost:2375</dockerHost> -->
+ 					<dockerHost>tcp://localhost:2376</dockerHost>
 <!--    					<certPath>/etc/docker/certs.d</certPath> -->
    					<useColor>true</useColor>
 					</configuration>
