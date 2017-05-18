@@ -182,9 +182,9 @@
 	
 	<repositories>
 		<repository>
-			<id>nexus-snapshot</id>
+			<id>nexus-snapshots</id>
 			<name>Nexus Repository</name>
-			<url>http://http://tool:8085/nexus/content/repositories/bndsnapshot/</url>
+			<url>http://tool:8085/nexus/content/repositories/bndsnapshot/</url>
 			<layout>default</layout>
 			<snapshots>
 				<enabled>true</enabled>
