@@ -16,6 +16,7 @@
 		<module>net.sf.seesea.model.core</module>
 		<module>net.sf.seesea.waterlevel</module>
 		<module>net.sf.seesea.tidemodel.dtu10.java</module>
+		<module>net.sf.seesea.tidemodel.dtu10.web</module>
 <!--  		<module>net.sf.seesea.packaging</module> -->
 	</modules>
 
