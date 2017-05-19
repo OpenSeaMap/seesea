@@ -171,6 +171,11 @@
 		</dependency>
 		<dependency>
 			<groupId>net.sf.seesea</groupId>
+			<artifactId>net.sf.seesea.tidemodel.dtu10.web</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.seesea</groupId>
 			<artifactId>net.sf.seesea.model.core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
