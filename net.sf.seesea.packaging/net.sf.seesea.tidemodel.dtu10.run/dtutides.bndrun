@@ -9,7 +9,7 @@
 	javax.ws.rs-api;version='[2.0.1,2.0.2)',\
 	log4j;version='[1.2.17,1.2.18)',\
 	net.sf.seesea.model.core;version=snapshot,\
-	net.sf.seesea.tidemodel.dtu10.web;version=snapshot,\
+	net.sf.seesea.tidemodel.dtu10.web;version=latest,\
 	net.sf.seesea.tidemodel.dtu10.java;version=snapshot,\
 	net.sf.seesea.waterlevel;version=snapshot,\
 	org.apache.felix.gogo.command;version='[1.0.2,1.0.3)',\
