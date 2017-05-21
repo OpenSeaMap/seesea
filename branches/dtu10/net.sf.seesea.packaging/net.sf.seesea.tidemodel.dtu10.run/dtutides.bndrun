@@ -19,7 +19,8 @@
 	org.eclipse.emf.common;version='[2.12.0,2.12.1)',\
 	org.eclipse.emf.ecore;version='[2.12.0,2.12.1)',\
 	org.apache.felix.configadmin;version='[1.8.14,1.8.15)',\
-	org.apache.felix.http.api;version=3.0.0
+	org.apache.felix.http.api;version=3.0.0,\
+	com.eclipsesource.jaxrs.jersey-all;version=2.22.2
 
 -runrequires: \
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
