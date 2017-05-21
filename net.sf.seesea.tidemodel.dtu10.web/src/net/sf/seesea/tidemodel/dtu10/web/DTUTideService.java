@@ -7,14 +7,14 @@ import javax.ws.rs.core.MediaType;
 
 import org.osgi.service.component.annotations.Component;
 
-@Component
+@Component(service = DTUTideService.class)
 @Path("/tides")
 @Produces({ MediaType.APPLICATION_JSON })
 public class DTUTideService {
 
 	@GET
-	public double getTideHeight() {
-		return 5.5;
+	public String getTideHeight() {
+		return "5.5";
 	}
 	
 	
