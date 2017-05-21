@@ -28,5 +28,6 @@
 	osgi.identity;filter:='(osgi.identity=net.sf.seesea.tidemodel.dtu10.java)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.configadmin)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.http.jetty)',\
-	osgi.identity;filter:='(osgi.identity=net.sf.seesea.tidemodel.dtu10.web)'
+	osgi.identity;filter:='(osgi.identity=net.sf.seesea.tidemodel.dtu10.web)',\
+	osgi.identity;filter:='(&(osgi.identity=com.eclipsesource.jaxrs.jersey-all)(version>=2.22.2))'
 -runfw: org.apache.felix.framework;version='[5.4.0,5.4.0]'
