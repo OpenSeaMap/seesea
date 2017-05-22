@@ -3,10 +3,13 @@
 	osgi.core;version=6.0,\
 	osgi.cmpn;version=6.0,\
 	org.apache.felix.http.servlet-api;version=1.1,\
-	com.eclipsesource.jaxrs.jersey-all;version=2.22
+	com.eclipsesource.jaxrs.jersey-all;version=2.22,\
+	net.sf.seesea.waterlevel;version=latest
 
 javac.source: 1.8
 javac.target: 1.8
+
+-includeresource: static=static;recursive:=true
 
 Bundle-Version: 1.0.0.${tstamp}
 Private-Package: net.sf.seesea.tidemodel.dtu10.web

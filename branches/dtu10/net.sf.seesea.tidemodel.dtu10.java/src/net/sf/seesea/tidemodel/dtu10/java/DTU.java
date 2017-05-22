@@ -18,6 +18,7 @@ import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.TimeZone;
 import java.util.zip.GZIPInputStream;
 
@@ -37,7 +38,7 @@ import net.sf.seesea.waterlevel.ocean.TideCalculationException;
  * This is the main DTU10 implementation. It provides a tide prediction based on the DTU 10 model and predicts the sea level at an arbitary point in time (limited by UTC time)
  *
  */
-@Component(property = { "ocean:Boolean=true" })
+@Component(property = { "ocean:Boolean=true" }, immediate = true)
 public class DTU implements ITideProvider {
 
 	private static Charset charset = Charset.forName("ISO-8859-1");
@@ -61,7 +62,13 @@ public class DTU implements ITideProvider {
 
 	@Activate
 	public void activate(BundleContext bc) throws IOException {
-		dataLocation = bc.getBundle().getEntry("res/tidalConsituents.txt.gz");
+		System.out.println("hallo");
+		Enumeration<URL> findEntries = bc.getBundle().findEntries("/", "*", true);
+		while(findEntries.hasMoreElements()) {
+			System.out.println(findEntries.nextElement());
+		}
+		
+		dataLocation = bc.getBundle().getEntry("/res/tidalConsituents.txt.gz");
 		loadTidalConsituents();
 		double dx = (lonmax - lonmin) / (double) (nx - 1);
 		wrap = Math.abs(lonmax - lonmin - 360.0) < 2 * dx;
@@ -294,6 +301,7 @@ public class DTU implements ITideProvider {
 	 * @throws IOException
 	 */
 	private void loadTidalConsituents() throws IOException {
+		System.out.println("load");
 		double degree2radians = Math.toRadians(1);
 		InputStream openStream = dataLocation.openStream();
 		GZIPInputStream gzipInputStream = new GZIPInputStream(openStream);
