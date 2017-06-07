@@ -4,7 +4,8 @@
 	osgi.cmpn;version=6.0,\
 	org.apache.felix.http.servlet-api;version=1.1,\
 	com.eclipsesource.jaxrs.jersey-all;version=2.22,\
-	net.sf.seesea.waterlevel;version=latest
+	net.sf.seesea.waterlevel;version=latest,\
+	org.eclipse.jetty.websocket.api
 
 javac.source: 1.8
 javac.target: 1.8
