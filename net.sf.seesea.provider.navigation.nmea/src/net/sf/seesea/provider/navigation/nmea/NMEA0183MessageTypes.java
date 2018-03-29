@@ -91,6 +91,7 @@ public enum NMEA0183MessageTypes {
 	RSD, 
 	RTE, 
 	SFI,
+	SMCFG,
 	SMACC,
 	SMGYR,
 	SMVCC,
