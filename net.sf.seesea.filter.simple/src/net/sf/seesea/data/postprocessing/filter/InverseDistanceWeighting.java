@@ -33,8 +33,8 @@ public class InverseDistanceWeighting {
 			ds.addValue((distance * depthDifference) / depth.getDepth());
 			System.out.println("InverseDistanceWeighting.isValidPoint()");
 		}
-		double geometricMean = ds.getGeometricMean();
-		System.out.println(ds.toString());
+//		double geometricMean = ds.getGeometricMean();
+//		System.out.println(ds.toString());
 		// low mean, low std dev
 		if(ds.getMean() < 0.05 && ds.getStandardDeviation() < 0.001) {
 			return true;

@@ -229,10 +229,10 @@ public class ManualFilteredMeasurementProcessor implements IFilter {
 				}
 			}
 			List<GeoPosition3D> positions = measurementWindow2.getPositions();
-			MeasuredPosition3D lastPosition = (MeasuredPosition3D) positions.get(positions.size() - 1);
 			
 			Depth depth = null;
-			if(!measurementWindow2.getDepths().isEmpty()) {
+			if(!measurementWindow2.getDepths().isEmpty() && !positions.isEmpty()) {
+				MeasuredPosition3D lastPosition = (MeasuredPosition3D) positions.get(positions.size() - 1);
 				List<Measurement> measurements = new ArrayList<Measurement>(2);
 				measurements.add(lastPosition);
 				depth = measurementWindow2.getDepths().get(measurementWindow2.getDepths().size() -1 );

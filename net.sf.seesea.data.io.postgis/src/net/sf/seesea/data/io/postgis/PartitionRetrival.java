@@ -188,7 +188,7 @@ public class PartitionRetrival implements IParitionRetrival {
 		DataSource ds2 = userDataDataSourceReference.get();
 		userDataConnectionReference = ds2.getConnection();
 		DataSource ds3 = osmDataSourceReference.get();
-		osmConnectionReference = ds2.getConnection();
+		osmConnectionReference = ds3.getConnection();
 
 	}
 	

@@ -53,7 +53,7 @@ import net.sf.seesea.track.api.ITrackFileProcessor;
 import net.sf.seesea.track.api.data.ITrackFile;
 import net.sf.seesea.track.api.exception.ProcessingException;
 
-/**
+/**	
  * this clustering orders files according to their recorded date.
  * This clustering currently fails if more than one track is recorded at the same time frame for a single user
  * 
@@ -94,41 +94,37 @@ public class TimeBasedTrackClustering implements ITrackClustering {
 				IDepthPositionPreProcessor measurmentProcessor = new DepthPositionPreprocessor(locationPreprocessor.hasAbsoluteTime(), locationPreprocessor.hasRelativeTime());
 				locationPreprocessor.setMeasurementProcessor(measurmentProcessor);
 				// format supported
-				if(locationPreprocessor != null) {
+				try {
 					try {
-						try {
-							locationPreprocessor.processFile(trackFile);
-							trackFile.setBoundingBox(measurmentProcessor.getBoundingBox());
-							if(!measurmentProcessor.hasDepthData() || measurmentProcessor.getPointCount() == 0) {
+						locationPreprocessor.processFile(trackFile);
+						trackFile.setBoundingBox(measurmentProcessor.getBoundingBox());
+						if(!measurmentProcessor.hasDepthData() || measurmentProcessor.getPointCount() == 0) {
+							// set no depth
+							noTrackFiles.add(trackFile);
+							if(log.isDebugEnabled()) {
+								log.debug("Track file contains no depth data and no points: " + trackFile.getTrackId() + ":" + ":" + trackFile.getFileType());
+							}
+						} else {
+							subclassifyTracks(newOrderedFiles, noTimeMeasurementFiles, trackFile, measurmentProcessor, locationPreprocessor);
+						}
+					} catch (ProcessingException e) {
+						if(measurmentProcessor.getPointCount() > 0) {
+							if(!measurmentProcessor.hasDepthData()) {
 								// set no depth
 								noTrackFiles.add(trackFile);
-								if(log.isDebugEnabled()) {
-									log.debug("Track file contains no depth data and no points: " + trackFile.getTrackId() + ":" + ":" + trackFile.getFileType());
-								}
 							} else {
 								subclassifyTracks(newOrderedFiles, noTimeMeasurementFiles, trackFile, measurmentProcessor, locationPreprocessor);
 							}
-						} catch (ProcessingException e) {
-							if(measurmentProcessor.getPointCount() > 0) {
-								if(!measurmentProcessor.hasDepthData()) {
-									// set no depth
-									noTrackFiles.add(trackFile);
-								} else {
-									subclassifyTracks(newOrderedFiles, noTimeMeasurementFiles, trackFile, measurmentProcessor, locationPreprocessor);
-								}
-								Logger.getLogger(getClass()).error("Partially correct data for for track id " + trackFile.getTrackId(), e);
-							} else {
-								corruptTrackFiles.add(trackFile);
-							}
+							Logger.getLogger(getClass()).error("Partially correct data for for track id " + trackFile.getTrackId(), e);
+						} else {
+							corruptTrackFiles.add(trackFile);
 						}
-					} catch (IOException e) {
-						corruptTrackFiles.add(trackFile);
-						Logger.getLogger(getClass()).error("Failed to read file with track id " + trackFile.getTrackId(), e);
 					}
-					fileTypeProcessingFactory.disposeLocationPreProcessor(trackFile);
+				} catch (IOException e) {
+					corruptTrackFiles.add(trackFile);
+					Logger.getLogger(getClass()).error("Failed to read file with track id " + trackFile.getTrackId(), e);
 				}
-			} else {
-				
+				fileTypeProcessingFactory.disposeLocationPreProcessor(trackFile);
 			}
 		}
 		
