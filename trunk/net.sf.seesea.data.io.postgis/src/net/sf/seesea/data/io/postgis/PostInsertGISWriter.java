@@ -204,9 +204,9 @@ public class PostInsertGISWriter implements IDataWriter {
 			for (int i = 0; i < insertStatements.size(); i++) {
 				PreparedStatement insertStatement = insertStatements.get(i);
 				if (i == 0) {
-					insertStatement.setDouble(1, lat);
-					insertStatement.setDouble(2, lon);
-					insertStatement.setDouble(3, (float) depth);
+					insertStatement.setDouble(1, truncateDecimals(lat,8));
+					insertStatement.setDouble(2, truncateDecimals(lon,8));
+					insertStatement.setDouble(3, truncateDecimals(depth,2));
 					insertStatement.setLong(4, sourceTrackIdentifier);
 					insertStatement.setBoolean(5, true);
 					if (time == null) {
@@ -236,9 +236,9 @@ public class PostInsertGISWriter implements IDataWriter {
 					counters.put(i, counter += 1L);
 					if (((i == 1) && (counter % 32 == 0)) || ((i == 2) && (counter % 128 == 0))
 							|| ((i == 3) && (counter % 512 == 0))) {
-						insertStatement.setDouble(1, lat);
-						insertStatement.setDouble(2, lon);
-						insertStatement.setDouble(3, (float) depth);
+						insertStatement.setDouble(1, truncateDecimals(lat,8));
+						insertStatement.setDouble(2, truncateDecimals(lon,8));
+						insertStatement.setDouble(3, truncateDecimals(depth,2));
 						insertStatement.setLong(4, sourceTrackIdentifier);
 						insertStatement.setBoolean(5, true);
 						if (time == null) {
@@ -274,6 +274,20 @@ public class PostInsertGISWriter implements IDataWriter {
 		}
 	}
 
+	public static double truncateDecimals(double d, int len) {
+	    long p = pow(10, len);
+	    long l = (long)(d * p);
+	    return (double)l / (double)p;
+	}
+
+	public static long pow(long a, int b) {
+	    long result = 1;
+	    for (int i = 1; i <= b; i++) {
+	       result *= a;
+	    }
+	    return result;
+	}
+	
 	@Reference(cardinality = ReferenceCardinality.MANDATORY, policy = ReferencePolicy.DYNAMIC, target = "(db=depth)")
 	public synchronized void bindOutputConnection(DataSource outputDataSource) {
 		this.outputDataSource = outputDataSource;
