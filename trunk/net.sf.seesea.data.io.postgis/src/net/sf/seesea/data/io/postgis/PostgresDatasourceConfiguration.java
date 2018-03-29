@@ -2,6 +2,7 @@ package net.sf.seesea.data.io.postgis;
 
 import java.io.IOException;
 import java.math.BigInteger;
+import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
@@ -65,7 +66,7 @@ public class PostgresDatasourceConfiguration {
 	
 	private String md5Password(String pass) throws NoSuchAlgorithmException {
 	    MessageDigest m = MessageDigest.getInstance("MD5");
-	    byte[] data = pass.getBytes(); 
+	    byte[] data = pass.getBytes(Charset.forName("ISO-8859-1")); 
 	    m.update(data,0,data.length);
 	    BigInteger i = new BigInteger(1,m.digest());
 	    return String.format("%1$032X", i);

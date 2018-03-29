@@ -44,16 +44,8 @@ public class FilterSystemTest {
 		//		contentProperties.put("basedir", resolvedURL.getFile());
 		filterConfiguration.update(filterEngineProperties);
 		
-		String database = "osmapijunit";
-		DataSource dataSource = createDataSource(context, database);
-
 		String depth = "depthjunit";
 		DataSource depthDataSource = createDataSource(context, depth);
-
-//		try(Connection connection = depthDataSource.getConnection();
-//				Statement statement = connection.createStatement();
-//				statement.execute("CREATE TABLE depth)) {"
-//						+ "
 
 		try(Connection connection = depthDataSource.getConnection()) {
 			ScriptRunner scriptRunner = new ScriptRunner(connection, false, true);

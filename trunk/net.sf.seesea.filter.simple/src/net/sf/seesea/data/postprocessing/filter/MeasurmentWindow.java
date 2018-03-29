@@ -54,7 +54,7 @@ public class MeasurmentWindow {
 		depths = new ArrayList<Depth>(2);
 //		headings = new ArrayList<Heading>(2);
 //		speeds = new ArrayList<RelativeSpeed>(2);
-		positions = new ArrayList<GeoPosition3D>(2);;
+		positions = new ArrayList<GeoPosition3D>(2);
 	}
 	
 	public void setMeasurement(Measurement containedMeasurement) {

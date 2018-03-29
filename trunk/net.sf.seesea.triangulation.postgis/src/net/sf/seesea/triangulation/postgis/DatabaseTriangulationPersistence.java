@@ -223,9 +223,7 @@ public class DatabaseTriangulationPersistence implements ITriangulationPersisten
 		b.append(' ');
 		b.append(format.format(firstPoint.getY()));
 		b.append("))"); //$NON-NLS-1$
-		Statement allstatement;
-		try {
-			allstatement = triangulationConnection.createStatement();
+		try (Statement allstatement = triangulationConnection.createStatement()){
 			String sql = "SELECT path, ST_X(geom), ST_Y(geom) FROM (SELECT (ST_Dumppoints((ST_LineMerge(ST_Collect(ST_LineMerge(the_geom)))))).* FROM coastline AS g WHERE m = 0 AND (ST_Contains(ST_GeomFromText('"
 					+ b.toString() + "',4326),the_geom)) ) as g;";
 			// System.out.println(sql);
@@ -290,41 +288,42 @@ public class DatabaseTriangulationPersistence implements ITriangulationPersisten
 				deleteStatement.execute("DELETE FROM triangulation");
 			}
 
-			PreparedStatement statementX = triangulationConnection.prepareStatement("INSERT INTO triangulation (geom) VALUES (ST_GeomFromEWKT(?))"); //$NON-NLS-1$
-			for (ITriangle polygon : triangulationResult) {
-				// System.out.println(polygon);
-				StringBuffer b = new StringBuffer();
-				b.append("SRID=4326;");
-				b.append("POLYGON("); //$NON-NLS-1$
-				b.append("("); //$NON-NLS-1$
-				b.append((polygon.getPoints().get(0)).getX());
-				b.append(' ');
-				b.append((polygon.getPoints().get(0)).getY());
-				b.append(' ');
-				b.append((polygon.getPoints().get(0)).getZ());
-				b.append(',');
-				b.append((polygon.getPoints().get(1)).getX());
-				b.append(' ');
-				b.append((polygon.getPoints().get(1)).getY());
-				b.append(' ');
-				b.append((polygon.getPoints().get(1)).getZ());
-				b.append(',');
-				b.append((polygon.getPoints().get(2)).getX());
-				b.append(' ');
-				b.append((polygon.getPoints().get(2)).getY());
-				b.append(' ');
-				b.append((polygon.getPoints().get(2)).getZ());
-				b.append(',');
-				b.append((polygon.getPoints().get(0)).getX());
-				b.append(' ');
-				b.append((polygon.getPoints().get(0)).getY());
-				b.append(' ');
-				b.append((polygon.getPoints().get(0)).getZ());
-				b.append(")"); //$NON-NLS-1$
-				statementX.setString(1, b.toString() + ")"); //$NON-NLS-1$
-				statementX.addBatch();
-			}
+			try (PreparedStatement statementX = triangulationConnection.prepareStatement("INSERT INTO triangulation (geom) VALUES (ST_GeomFromEWKT(?))")) { //$NON-NLS-1$
+				for (ITriangle polygon : triangulationResult) {
+					// System.out.println(polygon);
+					StringBuffer b = new StringBuffer();
+					b.append("SRID=4326;");
+					b.append("POLYGON("); //$NON-NLS-1$
+					b.append("("); //$NON-NLS-1$
+					b.append((polygon.getPoints().get(0)).getX());
+					b.append(' ');
+					b.append((polygon.getPoints().get(0)).getY());
+					b.append(' ');
+					b.append((polygon.getPoints().get(0)).getZ());
+					b.append(',');
+					b.append((polygon.getPoints().get(1)).getX());
+					b.append(' ');
+					b.append((polygon.getPoints().get(1)).getY());
+					b.append(' ');
+					b.append((polygon.getPoints().get(1)).getZ());
+					b.append(',');
+					b.append((polygon.getPoints().get(2)).getX());
+					b.append(' ');
+					b.append((polygon.getPoints().get(2)).getY());
+					b.append(' ');
+					b.append((polygon.getPoints().get(2)).getZ());
+					b.append(',');
+					b.append((polygon.getPoints().get(0)).getX());
+					b.append(' ');
+					b.append((polygon.getPoints().get(0)).getY());
+					b.append(' ');
+					b.append((polygon.getPoints().get(0)).getZ());
+					b.append(")"); //$NON-NLS-1$
+					statementX.setString(1, b.toString() + ")"); //$NON-NLS-1$
+					statementX.addBatch();
+				}
 			statementX.executeBatch();
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
