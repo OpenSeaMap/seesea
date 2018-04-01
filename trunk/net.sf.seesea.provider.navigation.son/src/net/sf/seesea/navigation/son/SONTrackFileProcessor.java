@@ -16,6 +16,7 @@ import java.util.Set;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
+import org.apache.log4j.Logger;
 import org.osgi.service.component.annotations.Component;
 
 import net.sf.seesea.model.core.geo.Depth;
@@ -45,6 +46,8 @@ import net.sf.seesea.track.api.exception.ProcessingException;
 public class SONTrackFileProcessor implements ITrackFileProcessor {
 
 	private IMeasurmentProcessor measurmentProcessor;
+	
+	private Logger logger = Logger.getLogger(SONTrackFileProcessor.class);
 
 	@Override
 	public void processFile(ITrackFile trackFile) throws FileNotFoundException,
@@ -79,6 +82,9 @@ public class SONTrackFileProcessor implements ITrackFileProcessor {
 						for (Entry<Integer, Integer> indexEntry : index.entrySet()) {
 					        dataInputStream = new BufferedInputStream(new FileInputStream(tempFile));
 							long skip = dataInputStream.skip(indexEntry.getValue());
+							if(logger.isTraceEnabled()) {
+								logger.trace("Skipped " + skip + " bytes");
+							}
 //							System.out.println(skip);
 							SONHeader sonBlock = sonStreamProcessor.readBlock(dataInputStream);
 //							dataInputStream.close();
@@ -124,7 +130,10 @@ public class SONTrackFileProcessor implements ITrackFileProcessor {
 							}
 							dataInputStream.close();
 						}
-						tempFile.delete();
+						boolean delete = tempFile.delete();
+						if(!delete) {
+							logger.warn("Could not delete temporary file " + tempFile);
+						}
 					}
 				}
 	}
