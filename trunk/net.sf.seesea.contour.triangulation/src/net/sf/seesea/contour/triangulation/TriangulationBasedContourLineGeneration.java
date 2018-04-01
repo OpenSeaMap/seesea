@@ -35,8 +35,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import org.apache.log4j.Logger;
 import org.osgi.service.component.annotations.Component;
@@ -113,7 +111,6 @@ public class TriangulationBasedContourLineGeneration implements IContourLineGene
 		// remove all contour lines that are completely contained in this area since a new triangulation is present
 		triangulationPersistence.removeContourLines(triangulationDescription.getBorder(), triangulationDescription.getHoles());
 
-		ExecutorService threadPool = Executors.newFixedThreadPool(4);
 		// for each depth write the contour line
 		for (final Integer depth : depths) {
 			Set<ITriangle> visitedTriangles = new HashSet<ITriangle>();
@@ -129,13 +126,6 @@ public class TriangulationBasedContourLineGeneration implements IContourLineGene
 				}
 			}
 			triangulationPersistence.finishAddOrUpdateContourLines();
-//			threadPool.submit(new Callable<Void>() {
-//
-//				@Override
-//				public Void call() throws Exception {
-//					return null;
-//				}
-//			});
 		}
 		if(!Boolean.getBoolean("disableMerge")) {
 			triangulationPersistence.mergeBorderCrossingContours(triangulationDescription.getBorder(), boundaryTrianglePairs);
