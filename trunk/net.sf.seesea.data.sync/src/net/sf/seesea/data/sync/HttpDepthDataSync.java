@@ -214,8 +214,13 @@ public class HttpDepthDataSync implements IDepthDataSync {
 		String trackrange = (String) config.get("trackRange");
 		if (trackrange != null && trackrange.trim().length() > 0) {
 			List<String> ranges = Arrays.asList(trackrange.split(","));
-			lowerBound = Long.valueOf(ranges.get(0));
-			upperBound = Long.valueOf(ranges.get(1));
+			if(ranges.size() == 2) {
+				lowerBound = Long.valueOf(ranges.get(0));
+				upperBound = Long.valueOf(ranges.get(1));
+			} else {
+				lowerBound = 0L;
+				upperBound = Long.MAX_VALUE;
+			}
 		}
 
 		String usersX = (String) config.get("users");
