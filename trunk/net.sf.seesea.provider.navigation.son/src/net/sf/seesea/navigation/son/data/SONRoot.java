@@ -50,7 +50,7 @@ public class SONRoot {
 	}
 
 	public Date getRecordingStart() {
-		return recordingStart;
+		return new Date(recordingStart.getTime());
 	}
 
 	public double getLatitude() {
