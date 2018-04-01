@@ -53,8 +53,6 @@ public class ContentDetector implements IContentDetector {
 
 	private AtomicReference<IStreamProcessorDetection> streamProcessorDetectionAR = new AtomicReference<IStreamProcessorDetection>();
 
-	private boolean fullprocess;
-
 	private Logger logger = Logger.getLogger(getClass());
 
 	public ContentDetector() {
@@ -64,7 +62,6 @@ public class ContentDetector implements IContentDetector {
 	@Activate
 	public void activate(Map<String, Object> properties) {
 		basedir = (String) properties.get("basedir");
-		fullprocess = "true".equals(properties.get("fullprocess"));
 	}
 
 	@Override
