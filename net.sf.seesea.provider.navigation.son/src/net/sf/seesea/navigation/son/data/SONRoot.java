@@ -42,7 +42,7 @@ public class SONRoot {
 	public SONRoot(Date recordingStart, double latitude, double longitude,
 			String trackname, String trackExtension) {
 		super();
-		this.recordingStart = recordingStart;
+		this.recordingStart = new Date(recordingStart.getTime());
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.trackname = trackname;
