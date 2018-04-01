@@ -68,4 +68,86 @@ public class Track {
 		this.containertrack = containertrack;
 	}
 
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public int getUpload_state() {
+		return upload_state;
+	}
+
+	public void setUpload_state(int upload_state) {
+		this.upload_state = upload_state;
+	}
+
+	public String getFileType() {
+		return fileType;
+	}
+
+	public void setFileType(String fileType) {
+		this.fileType = fileType;
+	}
+
+	public String getCompression() {
+		return compression;
+	}
+
+	public void setCompression(String compression) {
+		this.compression = compression;
+	}
+
+	public String getDelete() {
+		return delete;
+	}
+
+	public void setDelete(String delete) {
+		this.delete = delete;
+	}
+
+	public long getVesselconfigid() {
+		return vesselconfigid;
+	}
+
+	public void setVesselconfigid(long vesselconfigid) {
+		this.vesselconfigid = vesselconfigid;
+	}
+
+	public long getContainertrack() {
+		return containertrack;
+	}
+
+	public void setContainertrack(long containertrack) {
+		this.containertrack = containertrack;
+	}
+
+	public long getLicense() {
+		return license;
+	}
+
+	public void setLicense(long license) {
+		this.license = license;
+	}
+
+	public long getUploadDate() {
+		return uploadDate;
+	}
+
+	public void setUploadDate(long uploadDate) {
+		this.uploadDate = uploadDate;
+	}
+	
+	
+
 }
