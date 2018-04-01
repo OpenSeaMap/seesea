@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Contour Triangulation
 Bundle-SymbolicName: net.sf.seesea.contour.triangulation
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: net.sf.seesea.contour.triangulation.ContourTriangulationActivator
 Require-Bundle: net.sf.seesea.contour.api;bundle-version="1.0.0",
  net.sf.seesea.geometry;bundle-version="1.0.0",
  net.sf.seesea.triangulation;bundle-version="1.0.0",
@@ -14,3 +13,4 @@ Import-Package: org.apache.log4j;version="[1.2.16,2.0.0)",
 Bundle-ActivationPolicy: lazy
 Service-Component: OSGI-INF/net.sf.seesea.contour.triangulation.TriangulationBasedContourLineGeneration.xml
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-Vendor: OpenSeaMap
