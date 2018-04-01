@@ -82,7 +82,10 @@ public class SONStreamProcessor implements IStreamProcessor {
 	public SONHeader readBlock(InputStream is) throws IOException {
 		List<Integer> list = new ArrayList<Integer>();
 //		int[] blockInt = new int[1024];
-		is.skip(4);
+		long skip = is.skip(4);
+		if(skip != 4) {
+			throw new IOException("Failed to skip 4 bytes");
+		}
 		int read = 0;
 		while(((byte)(read = is.read())) != 33) {
 			if(read == -1) {
@@ -375,7 +378,10 @@ private List<ZipEntry> getZipEntries(ZipFile zipFile) {
 		List<SONHeader> sonHeaders = new ArrayList<SONHeader>();
 		inputStream.mark(2048);
 		for (Entry<Integer, Integer> entry : index2Pointer.entrySet()) {
-			inputStream.skip(entry.getValue());
+			long skip = inputStream.skip(entry.getValue());
+			if(skip != entry.getValue()) {
+				throw new IOException("Failed to skip " + entry.getValue() + " bytes. Skipped " + skip);
+			}
 			int[] header = new int[67];
 			for(int i = 0; i < 67 ; i ++) {
 				header[i] = inputStream.read();
