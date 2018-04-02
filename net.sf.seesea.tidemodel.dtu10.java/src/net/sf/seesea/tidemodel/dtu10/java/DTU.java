@@ -74,14 +74,14 @@ public class DTU implements ITideProvider {
 			u[i] = 0.0;
 		}
 
-		boolean init = false;
-		boolean isdata = false;
+//		boolean init = false;
+//		boolean isdata = false;
 
-		boolean select[] = new boolean[ng];
-		boolean isdata0 = false;
+//		boolean select[] = new boolean[ng];
+//		boolean isdata0 = false;
 
 		undef = 99999.0f;
-		double pi = Math.PI;
+//		double pi = Math.PI;
 		double RAD = Math.PI / 180.0;
 		double TWO = 2.0D;
 		double THREE = 3.0D;
@@ -91,13 +91,13 @@ public class DTU implements ITideProvider {
 		double THRITY = 30.0D;
 		double NINETY = 90D;
 
-		double DLAT0 = 4 * 999;
-		double DLON0 = 4 * 999;
-		double TIME0 = 4 * 999;
-		double TIME1 = 4 * 999;
+//		double DLAT0 = 4 * 999;
+//		double DLON0 = 4 * 999;
+//		double TIME0 = 4 * 999;
+//		double TIME1 = 4 * 999;
 
-		boolean ISDATA;
-		boolean ISDATA0;
+//		boolean ISDATA;
+//		boolean ISDATA0;
 		// DATA ? init
 
 		// *
@@ -106,8 +106,8 @@ public class DTU implements ITideProvider {
 		// if((dlat != DLAT0) || dlon != DLON0) {
 
 		double[][] H12 = billinearGridInterpolation(latmin, latmax, lonmin, lonmax, dlat, dlon, nx, ny);
-		DLAT0 = dlat;
-		DLON0 = dlon;
+//		DLAT0 = dlat;
+//		DLON0 = dlon;
 		// ISDATA0 = ISDATA;
 		// *
 		// * move "new" tides to end of H12 array (thus avoids some recoding)
@@ -359,43 +359,97 @@ public class DTU implements ITideProvider {
 	 * 
 	 * @param arrayToBeRead
 	 * @param dataInputStream
+	 * @throws IOException 
 	 * 
 	 */
-	private TideConsituents grdinp(DataInputStream dataInputStream) {
+	private TideConsituents grdinp(DataInputStream dataInputStream) throws IOException {
 		int maxx = 2881;
 		int maxy = 1441;
 
 		float[][] arrayToBeRead = new float[maxx][maxy];
 		byte[] x = new byte[1024];
 
-		try {
 			int read = dataInputStream.read(x, 0, 30);
+			if(read != 30) {
+				throw new IOException("Unable to read 30 header bytes for tidal consituents");
+			}
 			String titleRead = new String(x, charset);
 			System.out.println(titleRead);
 			read = dataInputStream.read(x, 0, 32);
+			if(read != 32) {
+				throw new IOException("Unable to read 32 bytes for tidal consituents");
+			}
 			read = dataInputStream.read(x, 0, 16);
+			if(read != 16) {
+				throw new IOException("Unable to read 16 bytes for tidal consituents");
+			}
 			read = dataInputStream.read(x, 0, 5);
+			if(read != 5) {
+				throw new IOException("Unable to read 5 bytes for tidal consituents");
+			}
 			ny = Integer.parseInt(new String(x, 0, 5).trim());
-			dataInputStream.skipBytes(16);
+			int skipBytes = dataInputStream.skipBytes(16);
+			if(skipBytes != 16) {
+				throw new IOException("Unable to skip 16 bytes for tidal consituents");
+			}
 			read = dataInputStream.read(x, 0, 5);
+			if(read != 5) {
+				throw new IOException("Unable to read 5 bytes for tidal consituents");
+			}
 			nx = Integer.parseInt(new String(x, 0, 5).trim());
-			dataInputStream.skipBytes(16);
+			skipBytes = dataInputStream.skipBytes(16);
+			if(skipBytes != 16) {
+				throw new IOException("Unable to skip 16 bytes for tidal consituents");
+			}
 			read = dataInputStream.read(x, 0, 8);
+			if(read != 8) {
+				throw new IOException("Unable to read 8 bytes for tidal consituents");
+			}
 			double latmin = Double.parseDouble(new String(x, 0, 8).trim());
-			dataInputStream.skipBytes(16);
+			skipBytes = dataInputStream.skipBytes(16);
+			if(skipBytes != 16) {
+				throw new IOException("Unable to skip 16 bytes for tidal consituents");
+			}
 			read = dataInputStream.read(x, 0, 8);
+			if(read != 8) {
+				throw new IOException("Unable to read 8 bytes for tidal consituents");
+			}
 			double latmax = Double.parseDouble(new String(x, 0, 8).trim());
-			dataInputStream.skipBytes(16);
+			skipBytes = dataInputStream.skipBytes(16);
+			if(skipBytes != 16) {
+				throw new IOException("Unable to skip 16 bytes for tidal consituents");
+			}
 			read = dataInputStream.read(x, 0, 8);
+			if(read != 8) {
+				throw new IOException("Unable to read 8 bytes for tidal consituents");
+			}
 			double lonmin = Double.parseDouble(new String(x, 0, 8).trim());
-			dataInputStream.skipBytes(16);
+			skipBytes = dataInputStream.skipBytes(16);
+			if(skipBytes != 16) {
+				throw new IOException("Unable to skip 16 bytes for tidal consituents");
+			}
 			read = dataInputStream.read(x, 0, 8);
+			if(read != 8) {
+				throw new IOException("Unable to read 8 bytes for tidal consituents");
+			}
 			double lonmax = Double.parseDouble(new String(x, 0, 8).trim());
-			dataInputStream.skipBytes(16);
+			skipBytes = dataInputStream.skipBytes(16);
+			if(skipBytes != 16) {
+				throw new IOException("Unable to skip 16 bytes for tidal consituents");
+			}
 			read = dataInputStream.read(x, 0, 8);
+			if(read != 8) {
+				throw new IOException("Unable to read 8 bytes for tidal consituents");
+			}
 			double undefined = Double.parseDouble(new String(x, 0, 8).trim());
-			dataInputStream.skipBytes(16);
+			skipBytes = dataInputStream.skipBytes(16);
+			if(skipBytes != 16) {
+				throw new IOException("Unable to skip 16 bytes for tidal consituents");
+			}
 			read = dataInputStream.read(x, 0, 14);
+			if(read != 14) {
+				throw new IOException("Unable to read 14 bytes for tidal consituents");
+			}
 			String formatX = new String(x, 0, 14).trim();
 			String cleanedFormat = formatX.substring(1, formatX.length() - 1);
 			String[] splitFormat = cleanedFormat.split("F");
@@ -406,17 +460,15 @@ public class DTU implements ITideProvider {
 			for (int j = 0; j < ny; j++) {
 				for (int i = 0; i < dataconunt; i++) {
 					read = dataInputStream.read(x, 0, bytesToBeRead);
+					if(read != bytesToBeRead) {
+						throw new IOException("Unable to read 8 bytes for tidal consituents");
+					}
 					float value = Float.parseFloat(new String(x, 0, bytesToBeRead).trim());
 					arrayToBeRead[i][j] = value;
 				}
-				dataInputStream.read(); // read new line character
+				read = dataInputStream.read(); // read new line character
 			}
 			return new TideConsituents(arrayToBeRead, ny, nx, latmin, latmax, lonmin, lonmax, undefined);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
 
 	}
 
