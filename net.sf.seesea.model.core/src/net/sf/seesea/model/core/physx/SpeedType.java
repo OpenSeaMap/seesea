@@ -42,7 +42,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * @see net.sf.seesea.model.core.physx.PhysxPackage#getSpeedType()
- * @model
  * @generated
  */
 public enum SpeedType implements Enumerator {
@@ -85,7 +84,6 @@ public enum SpeedType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #UNKNOWN
-	 * @model name="Unknown"
 	 * @generated
 	 * @ordered
 	 */
@@ -100,7 +98,6 @@ public enum SpeedType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #COG
-	 * @model
 	 * @generated
 	 * @ordered
 	 */
@@ -115,7 +112,6 @@ public enum SpeedType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SPEEDTHOUGHWATER
-	 * @model
 	 * @generated
 	 * @ordered
 	 */

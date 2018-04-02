@@ -44,7 +44,6 @@ package net.sf.seesea.model.core.physx;
  * </ul>
  *
  * @see net.sf.seesea.model.core.physx.PhysxPackage#getHeading()
- * @model
  * @generated
  */
 public interface Heading extends Measurement {
@@ -59,7 +58,6 @@ public interface Heading extends Measurement {
 	 * @return the value of the '<em>Degrees</em>' attribute.
 	 * @see #setDegrees(double)
 	 * @see net.sf.seesea.model.core.physx.PhysxPackage#getHeading_Degrees()
-	 * @model
 	 * @generated
 	 */
 	double getDegrees();
@@ -87,7 +85,6 @@ public interface Heading extends Measurement {
 	 * @see net.sf.seesea.model.core.physx.HeadingType
 	 * @see #setHeadingType(HeadingType)
 	 * @see net.sf.seesea.model.core.physx.PhysxPackage#getHeading_HeadingType()
-	 * @model
 	 * @generated
 	 */
 	HeadingType getHeadingType();

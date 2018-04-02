@@ -43,7 +43,6 @@ package net.sf.seesea.model.core.physx;
  * </ul>
  *
  * @see net.sf.seesea.model.core.physx.PhysxPackage#getAcceleration()
- * @model
  * @generated
  */
 public interface Acceleration extends Measurement {
@@ -58,7 +57,6 @@ public interface Acceleration extends Measurement {
 	 * @return the value of the '<em>X</em>' attribute.
 	 * @see #setX(double)
 	 * @see net.sf.seesea.model.core.physx.PhysxPackage#getAcceleration_X()
-	 * @model
 	 * @generated
 	 */
 	double getX();
@@ -84,7 +82,6 @@ public interface Acceleration extends Measurement {
 	 * @return the value of the '<em>Y</em>' attribute.
 	 * @see #setY(double)
 	 * @see net.sf.seesea.model.core.physx.PhysxPackage#getAcceleration_Y()
-	 * @model
 	 * @generated
 	 */
 	double getY();
@@ -110,7 +107,6 @@ public interface Acceleration extends Measurement {
 	 * @return the value of the '<em>Z</em>' attribute.
 	 * @see #setZ(double)
 	 * @see net.sf.seesea.model.core.physx.PhysxPackage#getAcceleration_Z()
-	 * @model
 	 * @generated
 	 */
 	double getZ();

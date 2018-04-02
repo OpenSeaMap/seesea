@@ -51,7 +51,6 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see net.sf.seesea.model.core.geo.osm.OsmPackage#getArea()
- * @model
  * @generated
  */
 public interface Area extends Chart, NavigationCompound {
@@ -67,7 +66,6 @@ public interface Area extends Chart, NavigationCompound {
 	 * @return the value of the '<em>Zoom Level</em>' attribute.
 	 * @see #setZoomLevel(int)
 	 * @see net.sf.seesea.model.core.geo.osm.OsmPackage#getArea_ZoomLevel()
-	 * @model default="0"
 	 * @generated
 	 */
 	int getZoomLevel();
@@ -93,7 +91,6 @@ public interface Area extends Chart, NavigationCompound {
 	 * @return the value of the '<em>Map Center Position</em>' containment reference.
 	 * @see #setMapCenterPosition(GeoPosition)
 	 * @see net.sf.seesea.model.core.geo.osm.OsmPackage#getArea_MapCenterPosition()
-	 * @model containment="true"
 	 * @generated
 	 */
 	GeoPosition getMapCenterPosition();
@@ -119,7 +116,6 @@ public interface Area extends Chart, NavigationCompound {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Sub Area</em>' containment reference list.
 	 * @see net.sf.seesea.model.core.geo.osm.OsmPackage#getArea_SubArea()
-	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Area> getSubArea();

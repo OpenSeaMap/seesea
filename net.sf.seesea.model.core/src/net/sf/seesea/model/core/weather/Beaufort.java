@@ -42,7 +42,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * @see net.sf.seesea.model.core.weather.WeatherPackage#getBeaufort()
- * @model
  * @generated
  */
 public enum Beaufort implements Enumerator {
@@ -195,7 +194,6 @@ public enum Beaufort implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #UNDEFINED
-	 * @model name="Undefined"
 	 * @generated
 	 * @ordered
 	 */
@@ -210,7 +208,6 @@ public enum Beaufort implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CALM
-	 * @model name="Calm"
 	 * @generated
 	 * @ordered
 	 */
@@ -225,7 +222,6 @@ public enum Beaufort implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #LIGHT_AIR
-	 * @model name="LightAir"
 	 * @generated
 	 * @ordered
 	 */
@@ -240,7 +236,6 @@ public enum Beaufort implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #LIGHT_BREEZE
-	 * @model name="LightBreeze"
 	 * @generated
 	 * @ordered
 	 */
@@ -255,7 +250,6 @@ public enum Beaufort implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #GENTLE_BREEZE
-	 * @model name="GentleBreeze"
 	 * @generated
 	 * @ordered
 	 */
@@ -270,7 +264,6 @@ public enum Beaufort implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MODERATE_BREEZE
-	 * @model name="ModerateBreeze"
 	 * @generated
 	 * @ordered
 	 */
@@ -285,7 +278,6 @@ public enum Beaufort implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #FRESH_BREEZE
-	 * @model name="FreshBreeze"
 	 * @generated
 	 * @ordered
 	 */
@@ -300,7 +292,6 @@ public enum Beaufort implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #STRONG_BREEZE
-	 * @model name="StrongBreeze"
 	 * @generated
 	 * @ordered
 	 */
@@ -315,7 +306,6 @@ public enum Beaufort implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #NEAR_GALE
-	 * @model name="NearGale"
 	 * @generated
 	 * @ordered
 	 */
@@ -330,7 +320,6 @@ public enum Beaufort implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #GALE
-	 * @model name="Gale"
 	 * @generated
 	 * @ordered
 	 */
@@ -345,7 +334,6 @@ public enum Beaufort implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #STRONG_GALE
-	 * @model name="StrongGale"
 	 * @generated
 	 * @ordered
 	 */
@@ -360,7 +348,6 @@ public enum Beaufort implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #STORM
-	 * @model name="Storm"
 	 * @generated
 	 * @ordered
 	 */
@@ -375,7 +362,6 @@ public enum Beaufort implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #VIOLENT_STORM
-	 * @model name="ViolentStorm"
 	 * @generated
 	 * @ordered
 	 */
@@ -390,7 +376,6 @@ public enum Beaufort implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #HURRICANE_FORCE
-	 * @model name="HurricaneForce"
 	 * @generated
 	 * @ordered
 	 */

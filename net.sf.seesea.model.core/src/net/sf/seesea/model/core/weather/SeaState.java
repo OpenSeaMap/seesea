@@ -42,7 +42,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * @see net.sf.seesea.model.core.weather.WeatherPackage#getSeaState()
- * @model
  * @generated
  */
 public enum SeaState implements Enumerator {
@@ -165,7 +164,6 @@ public enum SeaState implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CALM_GLASSY
-	 * @model name="CalmGlassy"
 	 * @generated
 	 * @ordered
 	 */
@@ -180,7 +178,6 @@ public enum SeaState implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CALM_RIPPLED
-	 * @model name="CalmRippled"
 	 * @generated
 	 * @ordered
 	 */
@@ -195,7 +192,6 @@ public enum SeaState implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SMOOTH_WAVELETS
-	 * @model name="SmoothWavelets"
 	 * @generated
 	 * @ordered
 	 */
@@ -210,7 +206,6 @@ public enum SeaState implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SLIGHT
-	 * @model name="Slight"
 	 * @generated
 	 * @ordered
 	 */
@@ -225,7 +220,6 @@ public enum SeaState implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MODERATE
-	 * @model name="Moderate"
 	 * @generated
 	 * @ordered
 	 */
@@ -240,7 +234,6 @@ public enum SeaState implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #ROUGH
-	 * @model name="Rough"
 	 * @generated
 	 * @ordered
 	 */
@@ -255,7 +248,6 @@ public enum SeaState implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #VERY_ROUGH
-	 * @model name="VeryRough"
 	 * @generated
 	 * @ordered
 	 */
@@ -270,7 +262,6 @@ public enum SeaState implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #HIGH
-	 * @model name="High"
 	 * @generated
 	 * @ordered
 	 */
@@ -285,7 +276,6 @@ public enum SeaState implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #VERY_HIGH
-	 * @model name="VeryHigh"
 	 * @generated
 	 * @ordered
 	 */
@@ -300,7 +290,6 @@ public enum SeaState implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #PHENOMENAL
-	 * @model name="Phenomenal"
 	 * @generated
 	 * @ordered
 	 */
@@ -315,7 +304,6 @@ public enum SeaState implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #UNDEFINED
-	 * @model name="Undefined"
 	 * @generated
 	 * @ordered
 	 */

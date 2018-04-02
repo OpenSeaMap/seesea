@@ -38,7 +38,6 @@ package net.sf.seesea.model.core.diagramInterchange;
  *
  *
  * @see net.sf.seesea.model.core.diagramInterchange.DiagramInterchangePackage#getDiagram()
- * @model
  * @generated
  */
 public interface Diagram extends GraphicalContainer {

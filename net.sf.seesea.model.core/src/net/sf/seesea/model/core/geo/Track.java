@@ -46,7 +46,6 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see net.sf.seesea.model.core.geo.GeoPackage#getTrack()
- * @model
  * @generated
  */
 public interface Track extends ModelObject {
@@ -61,7 +60,6 @@ public interface Track extends ModelObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Measured Position</em>' containment reference list.
 	 * @see net.sf.seesea.model.core.geo.GeoPackage#getTrack_MeasuredPosition()
-	 * @model containment="true"
 	 * @generated
 	 */
 	EList<MeasuredPosition3D> getMeasuredPosition();

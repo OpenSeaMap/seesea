@@ -46,7 +46,6 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see net.sf.seesea.model.core.geo.GeoPackage#getChartWay()
- * @model
  * @generated
  */
 public interface ChartWay extends ModelObject {
@@ -62,7 +61,6 @@ public interface ChartWay extends ModelObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Waypoints</em>' reference list.
 	 * @see net.sf.seesea.model.core.geo.GeoPackage#getChartWay_Waypoints()
-	 * @model
 	 * @generated
 	 */
 	EList<GeoPosition> getWaypoints();

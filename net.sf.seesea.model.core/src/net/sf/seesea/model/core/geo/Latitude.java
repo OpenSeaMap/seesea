@@ -38,7 +38,6 @@ package net.sf.seesea.model.core.geo;
  *
  *
  * @see net.sf.seesea.model.core.geo.GeoPackage#getLatitude()
- * @model
  * @generated
  */
 public interface Latitude extends Coordinate {

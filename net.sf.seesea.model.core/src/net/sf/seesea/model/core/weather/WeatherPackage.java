@@ -48,7 +48,6 @@ import org.eclipse.emf.ecore.EPackage;
  * </ul>
  * <!-- end-user-doc -->
  * @see net.sf.seesea.model.core.weather.WeatherFactory
- * @model kind="package"
  * @generated
  */
 public interface WeatherPackage extends EPackage {

@@ -47,7 +47,6 @@ import net.sf.seesea.model.core.ModelObject;
  * </ul>
  *
  * @see net.sf.seesea.model.core.geo.GeoPackage#getNavigationCompound()
- * @model
  * @generated
  */
 public interface NavigationCompound extends ModelObject {
@@ -62,7 +61,6 @@ public interface NavigationCompound extends ModelObject {
 	 * @return the value of the '<em>Poi Container</em>' containment reference.
 	 * @see #setPoiContainer(POIContainer)
 	 * @see net.sf.seesea.model.core.geo.GeoPackage#getNavigationCompound_PoiContainer()
-	 * @model containment="true"
 	 * @generated
 	 */
 	POIContainer getPoiContainer();
@@ -88,7 +86,6 @@ public interface NavigationCompound extends ModelObject {
 	 * @return the value of the '<em>Routing Container</em>' containment reference.
 	 * @see #setRoutingContainer(RoutingContainer)
 	 * @see net.sf.seesea.model.core.geo.GeoPackage#getNavigationCompound_RoutingContainer()
-	 * @model containment="true"
 	 * @generated
 	 */
 	RoutingContainer getRoutingContainer();
@@ -114,7 +111,6 @@ public interface NavigationCompound extends ModelObject {
 	 * @return the value of the '<em>Tracks Container</em>' containment reference.
 	 * @see #setTracksContainer(TracksContainer)
 	 * @see net.sf.seesea.model.core.geo.GeoPackage#getNavigationCompound_TracksContainer()
-	 * @model containment="true"
 	 * @generated
 	 */
 	TracksContainer getTracksContainer();

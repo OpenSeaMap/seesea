@@ -48,7 +48,6 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see net.sf.seesea.model.core.data.DataPackage#getSeries()
- * @model
  * @generated
  */
 public interface Series extends ModelObject {
@@ -63,7 +62,6 @@ public interface Series extends ModelObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Measurement</em>' containment reference list.
 	 * @see net.sf.seesea.model.core.data.DataPackage#getSeries_Measurement()
-	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Measurement> getMeasurement();

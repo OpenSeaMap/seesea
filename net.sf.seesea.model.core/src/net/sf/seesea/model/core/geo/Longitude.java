@@ -38,7 +38,6 @@ package net.sf.seesea.model.core.geo;
  *
  *
  * @see net.sf.seesea.model.core.geo.GeoPackage#getLongitude()
- * @model
  * @generated
  */
 public interface Longitude extends Coordinate {

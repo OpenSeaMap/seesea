@@ -42,7 +42,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * @see net.sf.seesea.model.core.physx.PhysxPackage#getHeadingType()
- * @model
  * @generated
  */
 public enum HeadingType implements Enumerator {
@@ -117,7 +116,6 @@ public enum HeadingType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #UNKNOWN
-	 * @model name="Unknown"
 	 * @generated
 	 * @ordered
 	 */
@@ -132,7 +130,6 @@ public enum HeadingType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #COMPASS
-	 * @model name="Compass"
 	 * @generated
 	 * @ordered
 	 */
@@ -147,7 +144,6 @@ public enum HeadingType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MAGNETIC
-	 * @model name="Magnetic"
 	 * @generated
 	 * @ordered
 	 */
@@ -162,7 +158,6 @@ public enum HeadingType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #TRUE
-	 * @model name="True"
 	 * @generated
 	 * @ordered
 	 */
@@ -177,7 +172,6 @@ public enum HeadingType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #COURSE_THROUGH_WATER
-	 * @model name="CourseThroughWater"
 	 * @generated
 	 * @ordered
 	 */
@@ -192,7 +186,6 @@ public enum HeadingType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #COG
-	 * @model
 	 * @generated
 	 * @ordered
 	 */
@@ -207,7 +200,6 @@ public enum HeadingType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #RELATIVE
-	 * @model name="Relative"
 	 * @generated
 	 * @ordered
 	 */

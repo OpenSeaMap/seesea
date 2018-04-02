@@ -219,7 +219,6 @@ public enum Direction implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #UNDEFINED
-	 * @model name="Undefined"
 	 * @generated
 	 * @ordered
 	 */
@@ -234,7 +233,6 @@ public enum Direction implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #N
-	 * @model
 	 * @generated
 	 * @ordered
 	 */
@@ -249,7 +247,6 @@ public enum Direction implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #NNE
-	 * @model
 	 * @generated
 	 * @ordered
 	 */
@@ -264,7 +261,6 @@ public enum Direction implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #NE
-	 * @model
 	 * @generated
 	 * @ordered
 	 */
@@ -279,7 +275,6 @@ public enum Direction implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #ENE
-	 * @model
 	 * @generated
 	 * @ordered
 	 */
@@ -294,7 +289,6 @@ public enum Direction implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #E
-	 * @model
 	 * @generated
 	 * @ordered
 	 */
@@ -309,7 +303,6 @@ public enum Direction implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #ESE
-	 * @model
 	 * @generated
 	 * @ordered
 	 */
@@ -324,7 +317,6 @@ public enum Direction implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SE
-	 * @model
 	 * @generated
 	 * @ordered
 	 */
@@ -339,7 +331,6 @@ public enum Direction implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SSE
-	 * @model
 	 * @generated
 	 * @ordered
 	 */
@@ -354,7 +345,6 @@ public enum Direction implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #S
-	 * @model
 	 * @generated
 	 * @ordered
 	 */
@@ -369,7 +359,6 @@ public enum Direction implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SSW
-	 * @model
 	 * @generated
 	 * @ordered
 	 */
@@ -384,7 +373,6 @@ public enum Direction implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SW
-	 * @model
 	 * @generated
 	 * @ordered
 	 */
@@ -399,7 +387,6 @@ public enum Direction implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #WSW
-	 * @model
 	 * @generated
 	 * @ordered
 	 */
@@ -414,7 +401,6 @@ public enum Direction implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #W
-	 * @model
 	 * @generated
 	 * @ordered
 	 */
@@ -429,7 +415,6 @@ public enum Direction implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #WNW
-	 * @model
 	 * @generated
 	 * @ordered
 	 */
@@ -444,7 +429,6 @@ public enum Direction implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #NW
-	 * @model
 	 * @generated
 	 * @ordered
 	 */
@@ -459,7 +443,6 @@ public enum Direction implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #NNW
-	 * @model
 	 * @generated
 	 * @ordered
 	 */

@@ -47,7 +47,6 @@ import net.sf.seesea.model.core.physx.Measurement;
  * </ul>
  *
  * @see net.sf.seesea.model.core.weather.WeatherPackage#getVisibility()
- * @model
  * @generated
  */
 public interface Visibility extends Measurement {
@@ -62,7 +61,6 @@ public interface Visibility extends Measurement {
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(Double)
 	 * @see net.sf.seesea.model.core.weather.WeatherPackage#getVisibility_Value()
-	 * @model
 	 * @generated
 	 */
 	Double getValue();
@@ -90,7 +88,6 @@ public interface Visibility extends Measurement {
 	 * @see net.sf.seesea.model.core.physx.LengthUnit
 	 * @see #setUnit(LengthUnit)
 	 * @see net.sf.seesea.model.core.weather.WeatherPackage#getVisibility_Unit()
-	 * @model
 	 * @generated
 	 */
 	LengthUnit getUnit();

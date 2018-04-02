@@ -48,7 +48,6 @@ import org.eclipse.emf.ecore.EReference;
  * </ul>
  * <!-- end-user-doc -->
  * @see net.sf.seesea.model.core.CoreFactory
- * @model kind="package"
  * @generated
  */
 public interface CorePackage extends EPackage {

@@ -46,7 +46,6 @@ import net.sf.seesea.model.core.physx.Measurement;
  * </ul>
  *
  * @see net.sf.seesea.model.core.geo.GeoPackage#getDepth()
- * @model
  * @generated
  */
 public interface Depth extends Measurement {
@@ -63,7 +62,6 @@ public interface Depth extends Measurement {
 	 * @see net.sf.seesea.model.core.geo.RelativeDepthMeasurementPosition
 	 * @see #setMeasurementPosition(RelativeDepthMeasurementPosition)
 	 * @see net.sf.seesea.model.core.geo.GeoPackage#getDepth_MeasurementPosition()
-	 * @model
 	 * @generated
 	 */
 	RelativeDepthMeasurementPosition getMeasurementPosition();
@@ -90,7 +88,6 @@ public interface Depth extends Measurement {
 	 * @return the value of the '<em>Depth</em>' attribute.
 	 * @see #setDepth(double)
 	 * @see net.sf.seesea.model.core.geo.GeoPackage#getDepth_Depth()
-	 * @model
 	 * @generated
 	 */
 	double getDepth();

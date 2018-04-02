@@ -53,7 +53,6 @@ import net.sf.seesea.model.core.weather.WindMeasurement;
  * </ul>
  *
  * @see net.sf.seesea.model.core.data.DataPackage#getInstruments()
- * @model
  * @generated
  */
 public interface Instruments extends ModelObject {
@@ -68,7 +67,6 @@ public interface Instruments extends ModelObject {
 	 * @return the value of the '<em>Position</em>' reference.
 	 * @see #setPosition(MeasuredPosition3D)
 	 * @see net.sf.seesea.model.core.data.DataPackage#getInstruments_Position()
-	 * @model
 	 * @generated
 	 */
 	MeasuredPosition3D getPosition();
@@ -94,7 +92,6 @@ public interface Instruments extends ModelObject {
 	 * @return the value of the '<em>Water Temperature</em>' containment reference.
 	 * @see #setWaterTemperature(Temperature)
 	 * @see net.sf.seesea.model.core.data.DataPackage#getInstruments_WaterTemperature()
-	 * @model containment="true"
 	 * @generated
 	 */
 	Temperature getWaterTemperature();
@@ -120,7 +117,6 @@ public interface Instruments extends ModelObject {
 	 * @return the value of the '<em>Satellites Visible</em>' containment reference.
 	 * @see #setSatellitesVisible(SatellitesVisible)
 	 * @see net.sf.seesea.model.core.data.DataPackage#getInstruments_SatellitesVisible()
-	 * @model containment="true"
 	 * @generated
 	 */
 	SatellitesVisible getSatellitesVisible();
@@ -146,7 +142,6 @@ public interface Instruments extends ModelObject {
 	 * @return the value of the '<em>Wind Vector</em>' containment reference.
 	 * @see #setWindVector(WindMeasurement)
 	 * @see net.sf.seesea.model.core.data.DataPackage#getInstruments_WindVector()
-	 * @model containment="true"
 	 * @generated
 	 */
 	WindMeasurement getWindVector();

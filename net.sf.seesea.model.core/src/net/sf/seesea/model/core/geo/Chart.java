@@ -46,7 +46,6 @@ import net.sf.seesea.model.core.diagramInterchange.Diagram;
  * </ul>
  *
  * @see net.sf.seesea.model.core.geo.GeoPackage#getChart()
- * @model
  * @generated
  */
 public interface Chart extends NamedArtifact {
@@ -62,7 +61,6 @@ public interface Chart extends NamedArtifact {
 	 * @return the value of the '<em>Chart Configuration</em>' containment reference.
 	 * @see #setChartConfiguration(Diagram)
 	 * @see net.sf.seesea.model.core.geo.GeoPackage#getChart_ChartConfiguration()
-	 * @model containment="true"
 	 * @generated
 	 */
 	Diagram getChartConfiguration();

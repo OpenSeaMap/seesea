@@ -44,7 +44,6 @@ package net.sf.seesea.model.core.geo;
  * </ul>
  *
  * @see net.sf.seesea.model.core.geo.GeoPackage#getGeoPosition3D()
- * @model
  * @generated
  */
 public interface GeoPosition3D extends GeoPosition {
@@ -59,7 +58,6 @@ public interface GeoPosition3D extends GeoPosition {
 	 * @return the value of the '<em>Altitude</em>' attribute.
 	 * @see #setAltitude(double)
 	 * @see net.sf.seesea.model.core.geo.GeoPackage#getGeoPosition3D_Altitude()
-	 * @model
 	 * @generated
 	 */
 	double getAltitude();

@@ -42,7 +42,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * @see net.sf.seesea.model.core.weather.WeatherPackage#getCloudType()
- * @model
  * @generated
  */
 public enum CloudType implements Enumerator {
@@ -165,7 +164,6 @@ public enum CloudType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #UNDEFINED
-	 * @model name="Undefined"
 	 * @generated
 	 * @ordered
 	 */
@@ -180,7 +178,6 @@ public enum CloudType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CIRRUS
-	 * @model name="Cirrus"
 	 * @generated
 	 * @ordered
 	 */
@@ -195,7 +192,6 @@ public enum CloudType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CIRROCUMULUS
-	 * @model name="Cirrocumulus"
 	 * @generated
 	 * @ordered
 	 */
@@ -210,7 +206,6 @@ public enum CloudType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CIRROSTRATUS
-	 * @model name="Cirrostratus"
 	 * @generated
 	 * @ordered
 	 */
@@ -225,7 +220,6 @@ public enum CloudType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #ALTOCUMULUS
-	 * @model name="Altocumulus"
 	 * @generated
 	 * @ordered
 	 */
@@ -240,7 +234,6 @@ public enum CloudType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #ALTOSTRATUS
-	 * @model name="Altostratus"
 	 * @generated
 	 * @ordered
 	 */
@@ -255,7 +248,6 @@ public enum CloudType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #NIMBOSTRATUS
-	 * @model name="Nimbostratus"
 	 * @generated
 	 * @ordered
 	 */
@@ -270,7 +262,6 @@ public enum CloudType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #STRATOCUMULUS
-	 * @model name="Stratocumulus"
 	 * @generated
 	 * @ordered
 	 */
@@ -285,7 +276,6 @@ public enum CloudType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #STRATUS
-	 * @model name="Stratus"
 	 * @generated
 	 * @ordered
 	 */
@@ -300,7 +290,6 @@ public enum CloudType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CUMULUS
-	 * @model name="Cumulus"
 	 * @generated
 	 * @ordered
 	 */
@@ -315,7 +304,6 @@ public enum CloudType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CUMULONIMBUS
-	 * @model name="Cumulonimbus"
 	 * @generated
 	 * @ordered
 	 */

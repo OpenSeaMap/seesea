@@ -42,7 +42,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * @see net.sf.seesea.model.core.physx.PhysxPackage#getSpeedUnit()
- * @model
  * @generated
  */
 public enum SpeedUnit implements Enumerator {
@@ -95,7 +94,6 @@ public enum SpeedUnit implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #K
-	 * @model
 	 * @generated
 	 * @ordered
 	 */
@@ -110,7 +108,6 @@ public enum SpeedUnit implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #M
-	 * @model
 	 * @generated
 	 * @ordered
 	 */
@@ -125,7 +122,6 @@ public enum SpeedUnit implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #N
-	 * @model
 	 * @generated
 	 * @ordered
 	 */
@@ -140,7 +136,6 @@ public enum SpeedUnit implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #UNKNOWN
-	 * @model name="Unknown"
 	 * @generated
 	 * @ordered
 	 */

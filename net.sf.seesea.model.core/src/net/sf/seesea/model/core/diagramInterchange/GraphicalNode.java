@@ -46,7 +46,6 @@ import net.sf.seesea.model.core.ModelObject;
  * </ul>
  *
  * @see net.sf.seesea.model.core.diagramInterchange.DiagramInterchangePackage#getGraphicalNode()
- * @model
  * @generated
  */
 public interface GraphicalNode extends GraphicalElement {
@@ -62,7 +61,6 @@ public interface GraphicalNode extends GraphicalElement {
 	 * @return the value of the '<em>Represents</em>' reference.
 	 * @see #setRepresents(ModelObject)
 	 * @see net.sf.seesea.model.core.diagramInterchange.DiagramInterchangePackage#getGraphicalNode_Represents()
-	 * @model
 	 * @generated
 	 */
 	ModelObject getRepresents();

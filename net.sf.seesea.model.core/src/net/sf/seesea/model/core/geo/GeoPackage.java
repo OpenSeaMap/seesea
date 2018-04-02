@@ -51,7 +51,6 @@ import org.eclipse.emf.ecore.EReference;
  * </ul>
  * <!-- end-user-doc -->
  * @see net.sf.seesea.model.core.geo.GeoFactory
- * @model kind="package"
  * @generated
  */
 public interface GeoPackage extends EPackage {

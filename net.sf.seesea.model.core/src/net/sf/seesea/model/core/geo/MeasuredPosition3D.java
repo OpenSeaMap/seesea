@@ -39,7 +39,6 @@ import net.sf.seesea.model.core.physx.Measurement;
  *
  *
  * @see net.sf.seesea.model.core.geo.GeoPackage#getMeasuredPosition3D()
- * @model
  * @generated
  */
 public interface MeasuredPosition3D extends Measurement, GeoPosition3D {

@@ -46,7 +46,6 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see net.sf.seesea.model.core.geo.GeoPackage#getTracksContainer()
- * @model
  * @generated
  */
 public interface TracksContainer extends ModelObject {
@@ -61,7 +60,6 @@ public interface TracksContainer extends ModelObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Tracks</em>' containment reference list.
 	 * @see net.sf.seesea.model.core.geo.GeoPackage#getTracksContainer_Tracks()
-	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Track> getTracks();

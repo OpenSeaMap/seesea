@@ -42,7 +42,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * @see net.sf.seesea.model.core.physx.PhysxPackage#getLengthUnit()
- * @model
  * @generated
  */
 public enum LengthUnit implements Enumerator {
@@ -95,7 +94,6 @@ public enum LengthUnit implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #UNDEFINED
-	 * @model name="Undefined"
 	 * @generated
 	 * @ordered
 	 */
@@ -110,7 +108,6 @@ public enum LengthUnit implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #METERS
-	 * @model name="Meters"
 	 * @generated
 	 * @ordered
 	 */
@@ -125,7 +122,6 @@ public enum LengthUnit implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #FEET
-	 * @model name="Feet"
 	 * @generated
 	 * @ordered
 	 */
@@ -140,7 +136,6 @@ public enum LengthUnit implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #NAUTICAL_MILE
-	 * @model name="NauticalMile"
 	 * @generated
 	 * @ordered
 	 */

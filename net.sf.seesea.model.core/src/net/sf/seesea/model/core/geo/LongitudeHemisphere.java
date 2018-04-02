@@ -42,7 +42,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * @see net.sf.seesea.model.core.geo.GeoPackage#getLongitudeHemisphere()
- * @model
  * @generated
  */
 public enum LongitudeHemisphere implements Enumerator {
@@ -75,7 +74,6 @@ public enum LongitudeHemisphere implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #W
-	 * @model
 	 * @generated
 	 * @ordered
 	 */
@@ -90,7 +88,6 @@ public enum LongitudeHemisphere implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #E
-	 * @model
 	 * @generated
 	 * @ordered
 	 */
