@@ -47,6 +47,8 @@ import net.sf.seesea.model.core.geo.ChartWay;
 import net.sf.seesea.model.core.geo.Coordinate;
 import net.sf.seesea.model.core.geo.Depth;
 import net.sf.seesea.model.core.geo.Direction;
+import net.sf.seesea.model.core.geo.EstimatedDepth;
+import net.sf.seesea.model.core.geo.EstimatedPosition;
 import net.sf.seesea.model.core.geo.GNSSMeasuredPosition;
 import net.sf.seesea.model.core.geo.GeoBoundingBox;
 import net.sf.seesea.model.core.geo.GeoFactory;
@@ -196,6 +198,20 @@ public class GeoPackageImpl extends EPackageImpl implements GeoPackage {
 	 * @generated
 	 */
 	private EClass geoBoundingBoxEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass estimatedPositionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass estimatedDepthEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -714,6 +730,60 @@ public class GeoPackageImpl extends EPackageImpl implements GeoPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getEstimatedPosition() {
+		return estimatedPositionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEstimatedPosition_LatVariance() {
+		return (EAttribute)estimatedPositionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEstimatedPosition_LonVariance() {
+		return (EAttribute)estimatedPositionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEstimatedPosition_Time() {
+		return (EAttribute)estimatedPositionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getEstimatedDepth() {
+		return estimatedDepthEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getEstimatedDepth_DepthVariance() {
+		return (EAttribute)estimatedDepthEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getDirection() {
 		return directionEEnum;
 	}
@@ -1034,6 +1104,14 @@ public class GeoPackageImpl extends EPackageImpl implements GeoPackage {
 		createEAttribute(geoBoundingBoxEClass, GEO_BOUNDING_BOX__LEFT);
 		createEAttribute(geoBoundingBoxEClass, GEO_BOUNDING_BOX__RIGHT);
 
+		estimatedPositionEClass = createEClass(ESTIMATED_POSITION);
+		createEAttribute(estimatedPositionEClass, ESTIMATED_POSITION__LAT_VARIANCE);
+		createEAttribute(estimatedPositionEClass, ESTIMATED_POSITION__LON_VARIANCE);
+		createEAttribute(estimatedPositionEClass, ESTIMATED_POSITION__TIME);
+
+		estimatedDepthEClass = createEClass(ESTIMATED_DEPTH);
+		createEAttribute(estimatedDepthEClass, ESTIMATED_DEPTH__DEPTH_VARIANCE);
+
 		// Create enums
 		directionEEnum = createEEnum(DIRECTION);
 		latitudeHemisphereEEnum = createEEnum(LATITUDE_HEMISPHERE);
@@ -1103,6 +1181,8 @@ public class GeoPackageImpl extends EPackageImpl implements GeoPackage {
 		gnssMeasuredPositionEClass.getESuperTypes().add(this.getMeasuredPosition3D());
 		anchorPositionEClass.getESuperTypes().add(this.getGeoPosition());
 		geoBoundingBoxEClass.getESuperTypes().add(theCorePackage.getModelObject());
+		estimatedPositionEClass.getESuperTypes().add(this.getGeoPosition());
+		estimatedDepthEClass.getESuperTypes().add(this.getDepth());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(geoPositionEClass, GeoPosition.class, "GeoPosition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -1200,6 +1280,14 @@ public class GeoPackageImpl extends EPackageImpl implements GeoPackage {
 		initEAttribute(getGeoBoundingBox_Bottom(), ecorePackage.getEDouble(), "bottom", null, 0, 1, GeoBoundingBox.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getGeoBoundingBox_Left(), ecorePackage.getEDouble(), "left", null, 0, 1, GeoBoundingBox.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getGeoBoundingBox_Right(), ecorePackage.getEDouble(), "right", null, 0, 1, GeoBoundingBox.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(estimatedPositionEClass, EstimatedPosition.class, "EstimatedPosition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(getEstimatedPosition_LatVariance(), ecorePackage.getEDouble(), "latVariance", null, 0, 1, EstimatedPosition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getEstimatedPosition_LonVariance(), ecorePackage.getEDouble(), "lonVariance", null, 0, 1, EstimatedPosition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getEstimatedPosition_Time(), ecorePackage.getEDate(), "time", null, 0, 1, EstimatedPosition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(estimatedDepthEClass, EstimatedDepth.class, "EstimatedDepth", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(getEstimatedDepth_DepthVariance(), ecorePackage.getEDouble(), "depthVariance", null, 0, 1, EstimatedDepth.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		// Initialize enums and add enum literals
 		initEEnum(directionEEnum, Direction.class, "Direction"); //$NON-NLS-1$

@@ -195,6 +195,14 @@ public class GeoAdapterFactory extends AdapterFactoryImpl {
 				return createGeoBoundingBoxAdapter();
 			}
 			@Override
+			public Adapter caseEstimatedPosition(EstimatedPosition object) {
+				return createEstimatedPositionAdapter();
+			}
+			@Override
+			public Adapter caseEstimatedDepth(EstimatedDepth object) {
+				return createEstimatedDepthAdapter();
+			}
+			@Override
 			public Adapter caseModelObject(ModelObject object) {
 				return createModelObjectAdapter();
 			}
@@ -433,6 +441,34 @@ public class GeoAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createGeoBoundingBoxAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link net.sf.seesea.model.core.geo.EstimatedPosition <em>Estimated Position</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see net.sf.seesea.model.core.geo.EstimatedPosition
+	 * @generated
+	 */
+	public Adapter createEstimatedPositionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link net.sf.seesea.model.core.geo.EstimatedDepth <em>Estimated Depth</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see net.sf.seesea.model.core.geo.EstimatedDepth
+	 * @generated
+	 */
+	public Adapter createEstimatedDepthAdapter() {
 		return null;
 	}
 

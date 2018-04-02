@@ -52,6 +52,9 @@ import org.osgi.service.component.annotations.ReferencePolicy;
 import net.sf.seesea.data.io.IDataWriter;
 import net.sf.seesea.data.io.WriterException;
 import net.sf.seesea.model.core.geo.Depth;
+import net.sf.seesea.model.core.geo.EstimatedDepth;
+import net.sf.seesea.model.core.geo.EstimatedPosition;
+import net.sf.seesea.model.core.geo.GeoPosition;
 import net.sf.seesea.model.core.geo.MeasuredPosition3D;
 import net.sf.seesea.model.core.physx.CompositeMeasurement;
 import net.sf.seesea.model.core.physx.Measurement;
@@ -176,23 +179,38 @@ public class PostInsertGISWriter implements IDataWriter {
 	@Override
 	public void write(Collection<Measurement> measurements, boolean valid, long sourceTrackIdentifier)
 			throws WriterException {
-		MeasuredPosition3D geoPosition = null;
+		GeoPosition geoPosition = null;
 		Depth depth = null;
 
 		for (Measurement measurement2 : measurements) {
-			if (measurement2 instanceof MeasuredPosition3D) {
-				geoPosition = (MeasuredPosition3D) measurement2;
+			if (measurement2 instanceof GeoPosition) {
+				geoPosition = (GeoPosition) measurement2;
 			} else if (measurement2 instanceof Depth) {
 				depth = (Depth) measurement2;
 			}
+
 		}
 		if (geoPosition != null && depth != null) {
 			if (valid && (float) depth.getDepth() > 0.01) {
 				double latitude = geoPosition.getLatitude().getDecimalDegree();
 				double longitude = geoPosition.getLongitude().getDecimalDegree();
 				double depth2 = depth.getDepth();
-				Date time = geoPosition.getTime();
-				write(latitude, longitude, depth2, sourceTrackIdentifier, 0, 0, 0, time);
+				Date time = null;
+				double latvar = 0;
+				double lonvar = 0;
+				double depthVar = 0;
+				if(geoPosition instanceof MeasuredPosition3D) {
+					time = ((MeasuredPosition3D) geoPosition).getTime();
+				}
+				if(geoPosition instanceof EstimatedPosition) {
+					latvar = ((EstimatedPosition) geoPosition).getLatVariance();
+					lonvar = ((EstimatedPosition) geoPosition).getLonVariance();
+					time = ((EstimatedPosition) geoPosition).getTime();
+				}
+				if(depth instanceof EstimatedDepth) {
+					depthVar = ((EstimatedDepth) depth).getDepthVariance();
+				}
+				write(latitude, longitude, depth2, sourceTrackIdentifier, latvar, lonvar, depthVar, time);
 			}
 		}
 	}

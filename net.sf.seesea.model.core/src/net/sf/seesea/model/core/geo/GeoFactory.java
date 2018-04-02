@@ -176,6 +176,24 @@ public interface GeoFactory extends EFactory {
 	GeoBoundingBox createGeoBoundingBox();
 
 	/**
+	 * Returns a new object of class '<em>Estimated Position</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Estimated Position</em>'.
+	 * @generated
+	 */
+	EstimatedPosition createEstimatedPosition();
+
+	/**
+	 * Returns a new object of class '<em>Estimated Depth</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Estimated Depth</em>'.
+	 * @generated
+	 */
+	EstimatedDepth createEstimatedDepth();
+
+	/**
 	 * Returns a new object of class '<em>Chart Container</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

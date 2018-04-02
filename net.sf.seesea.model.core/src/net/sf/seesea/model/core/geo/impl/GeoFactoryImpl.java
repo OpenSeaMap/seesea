@@ -109,6 +109,8 @@ public class GeoFactoryImpl extends EFactoryImpl implements GeoFactory {
 			case GeoPackage.GNSS_MEASURED_POSITION: return createGNSSMeasuredPosition();
 			case GeoPackage.ANCHOR_POSITION: return createAnchorPosition();
 			case GeoPackage.GEO_BOUNDING_BOX: return createGeoBoundingBox();
+			case GeoPackage.ESTIMATED_POSITION: return createEstimatedPosition();
+			case GeoPackage.ESTIMATED_DEPTH: return createEstimatedDepth();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
@@ -294,6 +296,26 @@ public class GeoFactoryImpl extends EFactoryImpl implements GeoFactory {
 	public GeoBoundingBox createGeoBoundingBox() {
 		GeoBoundingBoxImpl geoBoundingBox = new GeoBoundingBoxImpl();
 		return geoBoundingBox;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EstimatedPosition createEstimatedPosition() {
+		EstimatedPositionImpl estimatedPosition = new EstimatedPositionImpl();
+		return estimatedPosition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EstimatedDepth createEstimatedDepth() {
+		EstimatedDepthImpl estimatedDepth = new EstimatedDepthImpl();
+		return estimatedDepth;
 	}
 
 	/**
