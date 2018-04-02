@@ -47,7 +47,6 @@ import net.sf.seesea.model.core.physx.Speed;
  * </ul>
  *
  * @see net.sf.seesea.model.core.weather.WeatherPackage#getWindMeasurement()
- * @model
  * @generated
  */
 public interface WindMeasurement extends Measurement, Speed {
@@ -62,7 +61,6 @@ public interface WindMeasurement extends Measurement, Speed {
 	 * @return the value of the '<em>Angle</em>' attribute.
 	 * @see #setAngle(double)
 	 * @see net.sf.seesea.model.core.weather.WeatherPackage#getWindMeasurement_Angle()
-	 * @model
 	 * @generated
 	 */
 	double getAngle();
@@ -90,7 +88,6 @@ public interface WindMeasurement extends Measurement, Speed {
 	 * @see net.sf.seesea.model.core.weather.Reference
 	 * @see #setReference(Reference)
 	 * @see net.sf.seesea.model.core.weather.WeatherPackage#getWindMeasurement_Reference()
-	 * @model
 	 * @generated
 	 */
 	Reference getReference();

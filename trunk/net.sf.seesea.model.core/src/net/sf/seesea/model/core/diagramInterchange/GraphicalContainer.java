@@ -46,7 +46,6 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see net.sf.seesea.model.core.diagramInterchange.DiagramInterchangePackage#getGraphicalContainer()
- * @model
  * @generated
  */
 public interface GraphicalContainer extends GraphicalElement {
@@ -61,7 +60,6 @@ public interface GraphicalContainer extends GraphicalElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Children</em>' reference list.
 	 * @see net.sf.seesea.model.core.diagramInterchange.DiagramInterchangePackage#getGraphicalContainer_Children()
-	 * @model
 	 * @generated
 	 */
 	EList<GraphicalElement> getChildren();

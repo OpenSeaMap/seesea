@@ -45,7 +45,6 @@ import net.sf.seesea.model.core.ModelObject;
  * </ul>
  *
  * @see net.sf.seesea.model.core.geo.GeoPackage#getCoordinate()
- * @model
  * @generated
  */
 public interface Coordinate extends ModelObject {
@@ -56,7 +55,6 @@ public interface Coordinate extends ModelObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @model kind="operation"
 	 * @generated
 	 */
 	int getDegree();
@@ -68,7 +66,6 @@ public interface Coordinate extends ModelObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @model kind="operation"
 	 * @generated
 	 */
 	int getMinute();
@@ -80,7 +77,6 @@ public interface Coordinate extends ModelObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @model kind="operation"
 	 * @generated
 	 */
 	double getSecond();
@@ -88,7 +84,6 @@ public interface Coordinate extends ModelObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
 	 * @generated
 	 */
 	void setDegree(int degree);
@@ -96,7 +91,6 @@ public interface Coordinate extends ModelObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
 	 * @generated
 	 */
 	void setMinute(int minute);
@@ -104,7 +98,6 @@ public interface Coordinate extends ModelObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
 	 * @generated
 	 */
 	void setSecond(double seconds);

@@ -42,7 +42,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * @see net.sf.seesea.model.core.geo.GeoPackage#getRelativeDepthMeasurementPosition()
- * @model
  * @generated
  */
 public enum RelativeDepthMeasurementPosition implements Enumerator {
@@ -95,7 +94,6 @@ public enum RelativeDepthMeasurementPosition implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #UNKNOWN
-	 * @model name="unknown"
 	 * @generated
 	 * @ordered
 	 */
@@ -110,7 +108,6 @@ public enum RelativeDepthMeasurementPosition implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #TRANSDUCER
-	 * @model name="Transducer"
 	 * @generated
 	 * @ordered
 	 */
@@ -125,7 +122,6 @@ public enum RelativeDepthMeasurementPosition implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SURFACE
-	 * @model name="Surface"
 	 * @generated
 	 * @ordered
 	 */
@@ -140,7 +136,6 @@ public enum RelativeDepthMeasurementPosition implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #KEEL
-	 * @model name="Keel"
 	 * @generated
 	 * @ordered
 	 */

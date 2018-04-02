@@ -38,7 +38,6 @@ package net.sf.seesea.model.core.diagramInterchange;
  *
  *
  * @see net.sf.seesea.model.core.diagramInterchange.DiagramInterchangePackage#getGraphicalEdge()
- * @model
  * @generated
  */
 public interface GraphicalEdge extends GraphicalElement {

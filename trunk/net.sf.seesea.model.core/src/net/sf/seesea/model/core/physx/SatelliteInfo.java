@@ -46,7 +46,6 @@ package net.sf.seesea.model.core.physx;
  * </ul>
  *
  * @see net.sf.seesea.model.core.physx.PhysxPackage#getSatelliteInfo()
- * @model
  * @generated
  */
 public interface SatelliteInfo extends Measurement {
@@ -61,7 +60,6 @@ public interface SatelliteInfo extends Measurement {
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(int)
 	 * @see net.sf.seesea.model.core.physx.PhysxPackage#getSatelliteInfo_Id()
-	 * @model
 	 * @generated
 	 */
 	int getId();
@@ -87,7 +85,6 @@ public interface SatelliteInfo extends Measurement {
 	 * @return the value of the '<em>Elevation</em>' attribute.
 	 * @see #setElevation(int)
 	 * @see net.sf.seesea.model.core.physx.PhysxPackage#getSatelliteInfo_Elevation()
-	 * @model
 	 * @generated
 	 */
 	int getElevation();
@@ -113,7 +110,6 @@ public interface SatelliteInfo extends Measurement {
 	 * @return the value of the '<em>Azimuth</em>' attribute.
 	 * @see #setAzimuth(int)
 	 * @see net.sf.seesea.model.core.physx.PhysxPackage#getSatelliteInfo_Azimuth()
-	 * @model
 	 * @generated
 	 */
 	int getAzimuth();
@@ -139,7 +135,6 @@ public interface SatelliteInfo extends Measurement {
 	 * @return the value of the '<em>Signal Strength</em>' attribute.
 	 * @see #setSignalStrength(int)
 	 * @see net.sf.seesea.model.core.physx.PhysxPackage#getSatelliteInfo_SignalStrength()
-	 * @model
 	 * @generated
 	 */
 	int getSignalStrength();

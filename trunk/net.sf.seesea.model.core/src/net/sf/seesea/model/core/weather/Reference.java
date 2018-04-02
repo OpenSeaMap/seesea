@@ -42,7 +42,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * @see net.sf.seesea.model.core.weather.WeatherPackage#getReference()
- * @model
  * @generated
  */
 public enum Reference implements Enumerator {
@@ -83,7 +82,6 @@ public enum Reference implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #RELATIVE
-	 * @model name="Relative"
 	 * @generated
 	 * @ordered
 	 */
@@ -98,7 +96,6 @@ public enum Reference implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #ABSOLUTE
-	 * @model name="Absolute"
 	 * @generated
 	 * @ordered
 	 */
@@ -113,7 +110,6 @@ public enum Reference implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #UNKNOWN
-	 * @model name="Unknown"
 	 * @generated
 	 * @ordered
 	 */

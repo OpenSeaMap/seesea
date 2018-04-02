@@ -42,7 +42,6 @@ package net.sf.seesea.model.core.physx;
  * </ul>
  *
  * @see net.sf.seesea.model.core.physx.PhysxPackage#getRelativeSpeed()
- * @model
  * @generated
  */
 public interface RelativeSpeed extends Measurement {
@@ -59,7 +58,6 @@ public interface RelativeSpeed extends Measurement {
 	 * @see net.sf.seesea.model.core.physx.SpeedType
 	 * @see #setKey(SpeedType)
 	 * @see net.sf.seesea.model.core.physx.PhysxPackage#getRelativeSpeed_Key()
-	 * @model
 	 * @generated
 	 */
 	SpeedType getKey();
@@ -86,7 +84,6 @@ public interface RelativeSpeed extends Measurement {
 	 * @return the value of the '<em>Value</em>' reference.
 	 * @see #setValue(Speed)
 	 * @see net.sf.seesea.model.core.physx.PhysxPackage#getRelativeSpeed_Value()
-	 * @model
 	 * @generated
 	 */
 	Speed getValue();

@@ -45,7 +45,6 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see net.sf.seesea.model.core.physx.PhysxPackage#getSatellitesVisible()
- * @model
  * @generated
  */
 public interface SatellitesVisible extends Measurement {
@@ -60,7 +59,6 @@ public interface SatellitesVisible extends Measurement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Satellite Info</em>' containment reference list.
 	 * @see net.sf.seesea.model.core.physx.PhysxPackage#getSatellitesVisible_SatelliteInfo()
-	 * @model containment="true"
 	 * @generated
 	 */
 	EList<SatelliteInfo> getSatelliteInfo();

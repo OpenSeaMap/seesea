@@ -49,7 +49,6 @@ import org.eclipse.emf.ecore.EReference;
  * </ul>
  * <!-- end-user-doc -->
  * @see net.sf.seesea.model.core.physx.PhysxFactory
- * @model kind="package"
  * @generated
  */
 public interface PhysxPackage extends EPackage {

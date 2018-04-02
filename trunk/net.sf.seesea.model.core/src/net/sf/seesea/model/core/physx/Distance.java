@@ -43,7 +43,6 @@ package net.sf.seesea.model.core.physx;
  * </ul>
  *
  * @see net.sf.seesea.model.core.physx.PhysxPackage#getDistance()
- * @model
  * @generated
  */
 public interface Distance extends Measurement {
@@ -58,7 +57,6 @@ public interface Distance extends Measurement {
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(double)
 	 * @see net.sf.seesea.model.core.physx.PhysxPackage#getDistance_Value()
-	 * @model
 	 * @generated
 	 */
 	double getValue();
@@ -86,7 +84,6 @@ public interface Distance extends Measurement {
 	 * @see net.sf.seesea.model.core.physx.LengthUnit
 	 * @see #setUnit(LengthUnit)
 	 * @see net.sf.seesea.model.core.physx.PhysxPackage#getDistance_Unit()
-	 * @model
 	 * @generated
 	 */
 	LengthUnit getUnit();
@@ -115,7 +112,6 @@ public interface Distance extends Measurement {
 	 * @see net.sf.seesea.model.core.physx.DistanceType
 	 * @see #setDistanceType(DistanceType)
 	 * @see net.sf.seesea.model.core.physx.PhysxPackage#getDistance_DistanceType()
-	 * @model
 	 * @generated
 	 */
 	DistanceType getDistanceType();

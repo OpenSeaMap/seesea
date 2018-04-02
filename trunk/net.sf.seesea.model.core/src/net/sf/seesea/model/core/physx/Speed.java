@@ -44,7 +44,6 @@ package net.sf.seesea.model.core.physx;
  * </ul>
  *
  * @see net.sf.seesea.model.core.physx.PhysxPackage#getSpeed()
- * @model
  * @generated
  */
 public interface Speed extends Measurement {
@@ -59,7 +58,6 @@ public interface Speed extends Measurement {
 	 * @return the value of the '<em>Speed</em>' attribute.
 	 * @see #setSpeed(double)
 	 * @see net.sf.seesea.model.core.physx.PhysxPackage#getSpeed_Speed()
-	 * @model
 	 * @generated
 	 */
 	double getSpeed();
@@ -87,7 +85,6 @@ public interface Speed extends Measurement {
 	 * @see net.sf.seesea.model.core.physx.SpeedUnit
 	 * @see #setSpeedUnit(SpeedUnit)
 	 * @see net.sf.seesea.model.core.physx.PhysxPackage#getSpeed_SpeedUnit()
-	 * @model
 	 * @generated
 	 */
 	SpeedUnit getSpeedUnit();

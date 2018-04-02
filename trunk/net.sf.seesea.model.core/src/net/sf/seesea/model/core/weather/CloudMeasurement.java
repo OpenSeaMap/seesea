@@ -48,7 +48,6 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see net.sf.seesea.model.core.weather.WeatherPackage#getCloudMeasurement()
- * @model
  * @generated
  */
 public interface CloudMeasurement extends Measurement {
@@ -65,7 +64,6 @@ public interface CloudMeasurement extends Measurement {
 	 * @see net.sf.seesea.model.core.weather.CloudCoverage
 	 * @see #setCloudCoverage(CloudCoverage)
 	 * @see net.sf.seesea.model.core.weather.WeatherPackage#getCloudMeasurement_CloudCoverage()
-	 * @model
 	 * @generated
 	 */
 	CloudCoverage getCloudCoverage();
@@ -94,7 +92,6 @@ public interface CloudMeasurement extends Measurement {
 	 * @return the value of the '<em>Cloud Types</em>' attribute list.
 	 * @see net.sf.seesea.model.core.weather.CloudType
 	 * @see net.sf.seesea.model.core.weather.WeatherPackage#getCloudMeasurement_CloudTypes()
-	 * @model
 	 * @generated
 	 */
 	EList<CloudType> getCloudTypes();

@@ -46,7 +46,6 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see net.sf.seesea.model.core.geo.GeoPackage#getChartArea()
- * @model
  * @generated
  */
 public interface ChartArea extends ModelObject {
@@ -62,7 +61,6 @@ public interface ChartArea extends ModelObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Bounds</em>' containment reference list.
 	 * @see net.sf.seesea.model.core.geo.GeoPackage#getChartArea_Bounds()
-	 * @model containment="true"
 	 * @generated
 	 */
 	EList<GeoPosition> getBounds();

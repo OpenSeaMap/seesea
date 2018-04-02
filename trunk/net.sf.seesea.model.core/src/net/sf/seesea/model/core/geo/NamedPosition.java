@@ -38,7 +38,6 @@ package net.sf.seesea.model.core.geo;
  *
  *
  * @see net.sf.seesea.model.core.geo.GeoPackage#getNamedPosition()
- * @model
  * @generated
  */
 public interface NamedPosition extends GeoPosition, NamedArtifact {

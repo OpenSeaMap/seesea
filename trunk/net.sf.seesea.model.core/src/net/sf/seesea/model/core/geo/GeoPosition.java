@@ -47,7 +47,6 @@ import net.sf.seesea.model.core.ModelObject;
  * </ul>
  *
  * @see net.sf.seesea.model.core.geo.GeoPackage#getGeoPosition()
- * @model
  * @generated
  */
 public interface GeoPosition extends ModelObject {
@@ -62,7 +61,6 @@ public interface GeoPosition extends ModelObject {
 	 * @return the value of the '<em>Longitude</em>' containment reference.
 	 * @see #setLongitude(Longitude)
 	 * @see net.sf.seesea.model.core.geo.GeoPackage#getGeoPosition_Longitude()
-	 * @model containment="true"
 	 * @generated
 	 */
 	Longitude getLongitude();
@@ -88,7 +86,6 @@ public interface GeoPosition extends ModelObject {
 	 * @return the value of the '<em>Latitude</em>' containment reference.
 	 * @see #setLatitude(Latitude)
 	 * @see net.sf.seesea.model.core.geo.GeoPackage#getGeoPosition_Latitude()
-	 * @model containment="true"
 	 * @generated
 	 */
 	Latitude getLatitude();
@@ -114,7 +111,6 @@ public interface GeoPosition extends ModelObject {
 	 * @return the value of the '<em>Precision</em>' attribute.
 	 * @see #setPrecision(int)
 	 * @see net.sf.seesea.model.core.geo.GeoPackage#getGeoPosition_Precision()
-	 * @model
 	 * @generated
 	 */
 	int getPrecision();

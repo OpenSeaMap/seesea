@@ -46,7 +46,6 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see net.sf.seesea.model.core.geo.GeoPackage#getChartContainer()
- * @model
  * @generated
  */
 public interface ChartContainer extends ModelObject {
@@ -61,7 +60,6 @@ public interface ChartContainer extends ModelObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Charts</em>' containment reference list.
 	 * @see net.sf.seesea.model.core.geo.GeoPackage#getChartContainer_Charts()
-	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Chart> getCharts();

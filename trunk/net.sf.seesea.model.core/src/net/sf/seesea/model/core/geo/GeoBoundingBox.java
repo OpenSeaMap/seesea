@@ -45,7 +45,6 @@ import net.sf.seesea.model.core.ModelObject;
  * </ul>
  *
  * @see net.sf.seesea.model.core.geo.GeoPackage#getGeoBoundingBox()
- * @model
  * @generated
  */
 public interface GeoBoundingBox extends ModelObject {
@@ -60,7 +59,6 @@ public interface GeoBoundingBox extends ModelObject {
 	 * @return the value of the '<em>Top</em>' attribute.
 	 * @see #setTop(double)
 	 * @see net.sf.seesea.model.core.geo.GeoPackage#getGeoBoundingBox_Top()
-	 * @model
 	 * @generated
 	 */
 	double getTop();
@@ -86,7 +84,6 @@ public interface GeoBoundingBox extends ModelObject {
 	 * @return the value of the '<em>Bottom</em>' attribute.
 	 * @see #setBottom(double)
 	 * @see net.sf.seesea.model.core.geo.GeoPackage#getGeoBoundingBox_Bottom()
-	 * @model
 	 * @generated
 	 */
 	double getBottom();
@@ -112,7 +109,6 @@ public interface GeoBoundingBox extends ModelObject {
 	 * @return the value of the '<em>Left</em>' attribute.
 	 * @see #setLeft(double)
 	 * @see net.sf.seesea.model.core.geo.GeoPackage#getGeoBoundingBox_Left()
-	 * @model
 	 * @generated
 	 */
 	double getLeft();
@@ -138,7 +134,6 @@ public interface GeoBoundingBox extends ModelObject {
 	 * @return the value of the '<em>Right</em>' attribute.
 	 * @see #setRight(double)
 	 * @see net.sf.seesea.model.core.geo.GeoPackage#getGeoBoundingBox_Right()
-	 * @model
 	 * @generated
 	 */
 	double getRight();

@@ -42,7 +42,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * @see net.sf.seesea.model.core.weather.WeatherPackage#getCloudCoverage()
- * @model
  * @generated
  */
 public enum CloudCoverage implements Enumerator {
@@ -153,7 +152,6 @@ public enum CloudCoverage implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #UNDEFINED
-	 * @model name="Undefined"
 	 * @generated
 	 * @ordered
 	 */
@@ -168,7 +166,6 @@ public enum CloudCoverage implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CLOUDLESS
-	 * @model name="Cloudless"
 	 * @generated
 	 * @ordered
 	 */
@@ -183,7 +180,6 @@ public enum CloudCoverage implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #FAIR
-	 * @model name="Fair"
 	 * @generated
 	 * @ordered
 	 */
@@ -198,7 +194,6 @@ public enum CloudCoverage implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #PARTLY_CLOUDY_WEAK
-	 * @model name="PartlyCloudyWeak"
 	 * @generated
 	 * @ordered
 	 */
@@ -213,7 +208,6 @@ public enum CloudCoverage implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #PARTLY_CLOUDY_MEDIUM
-	 * @model name="PartlyCloudyMedium"
 	 * @generated
 	 * @ordered
 	 */
@@ -228,7 +222,6 @@ public enum CloudCoverage implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #PARTLY_CLOUDY_HEAVY
-	 * @model name="PartlyCloudyHeavy"
 	 * @generated
 	 * @ordered
 	 */
@@ -243,7 +236,6 @@ public enum CloudCoverage implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #WEAKLY_CLOUDED
-	 * @model name="WeaklyClouded"
 	 * @generated
 	 * @ordered
 	 */
@@ -258,7 +250,6 @@ public enum CloudCoverage implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MEDIUM_CLOUDED
-	 * @model name="MediumClouded"
 	 * @generated
 	 * @ordered
 	 */
@@ -273,7 +264,6 @@ public enum CloudCoverage implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #HEAVILY_CLOUDED
-	 * @model name="HeavilyClouded"
 	 * @generated
 	 * @ordered
 	 */
@@ -288,7 +278,6 @@ public enum CloudCoverage implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #DULL
-	 * @model name="Dull"
 	 * @generated
 	 * @ordered
 	 */
@@ -303,7 +292,6 @@ public enum CloudCoverage implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #OBSCURED
-	 * @model name="Obscured"
 	 * @generated
 	 * @ordered
 	 */

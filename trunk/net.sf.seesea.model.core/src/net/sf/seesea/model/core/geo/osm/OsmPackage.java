@@ -49,7 +49,6 @@ import org.eclipse.emf.ecore.EReference;
  * </ul>
  * <!-- end-user-doc -->
  * @see net.sf.seesea.model.core.geo.osm.OsmFactory
- * @model kind="package"
  * @generated
  */
 public interface OsmPackage extends EPackage {

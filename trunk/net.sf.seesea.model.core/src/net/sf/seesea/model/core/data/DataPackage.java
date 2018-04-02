@@ -47,7 +47,6 @@ import org.eclipse.emf.ecore.EReference;
  * </ul>
  * <!-- end-user-doc -->
  * @see net.sf.seesea.model.core.data.DataFactory
- * @model kind="package"
  * @generated
  */
 public interface DataPackage extends EPackage {

@@ -48,7 +48,6 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see net.sf.seesea.model.core.geo.GeoPackage#getPOIContainer()
- * @model
  * @generated
  */
 public interface POIContainer extends ModelObject {
@@ -63,7 +62,6 @@ public interface POIContainer extends ModelObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Pois</em>' containment reference list.
 	 * @see net.sf.seesea.model.core.geo.GeoPackage#getPOIContainer_Pois()
-	 * @model containment="true"
 	 * @generated
 	 */
 	EList<NamedPosition> getPois();
@@ -79,7 +77,6 @@ public interface POIContainer extends ModelObject {
 	 * @return the value of the '<em>Area</em>' reference.
 	 * @see #setArea(Area)
 	 * @see net.sf.seesea.model.core.geo.GeoPackage#getPOIContainer_Area()
-	 * @model
 	 * @generated
 	 */
 	Area getArea();

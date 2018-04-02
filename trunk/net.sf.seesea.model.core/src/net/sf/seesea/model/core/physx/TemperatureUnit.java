@@ -42,7 +42,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * @see net.sf.seesea.model.core.physx.PhysxPackage#getTemperatureUnit()
- * @model
  * @generated
  */
 public enum TemperatureUnit implements Enumerator {
@@ -85,7 +84,6 @@ public enum TemperatureUnit implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CELSIUS
-	 * @model
 	 * @generated
 	 * @ordered
 	 */
@@ -100,7 +98,6 @@ public enum TemperatureUnit implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #FAHRENHEIT
-	 * @model
 	 * @generated
 	 * @ordered
 	 */
@@ -115,7 +112,6 @@ public enum TemperatureUnit implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #KELVIN
-	 * @model
 	 * @generated
 	 * @ordered
 	 */

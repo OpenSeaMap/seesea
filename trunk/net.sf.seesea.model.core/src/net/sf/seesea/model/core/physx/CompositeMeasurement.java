@@ -43,7 +43,6 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see net.sf.seesea.model.core.physx.PhysxPackage#getCompositeMeasurement()
- * @model
  * @generated
  */
 public interface CompositeMeasurement extends Measurement {
@@ -58,7 +57,6 @@ public interface CompositeMeasurement extends Measurement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Measurements</em>' reference list.
 	 * @see net.sf.seesea.model.core.physx.PhysxPackage#getCompositeMeasurement_Measurements()
-	 * @model
 	 * @generated
 	 */
 	EList<Measurement> getMeasurements();

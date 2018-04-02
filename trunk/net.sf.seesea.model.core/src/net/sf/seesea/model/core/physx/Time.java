@@ -37,7 +37,6 @@ package net.sf.seesea.model.core.physx;
  *
  *
  * @see net.sf.seesea.model.core.physx.PhysxPackage#getTime()
- * @model
  * @generated
  */
 public interface Time extends Measurement {

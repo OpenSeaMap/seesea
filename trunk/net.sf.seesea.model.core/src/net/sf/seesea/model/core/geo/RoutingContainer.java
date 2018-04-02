@@ -48,7 +48,6 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see net.sf.seesea.model.core.geo.GeoPackage#getRoutingContainer()
- * @model
  * @generated
  */
 public interface RoutingContainer extends ModelObject {
@@ -63,7 +62,6 @@ public interface RoutingContainer extends ModelObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Routes</em>' containment reference list.
 	 * @see net.sf.seesea.model.core.geo.GeoPackage#getRoutingContainer_Routes()
-	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Route> getRoutes();
@@ -79,7 +77,6 @@ public interface RoutingContainer extends ModelObject {
 	 * @return the value of the '<em>Area</em>' reference.
 	 * @see #setArea(Area)
 	 * @see net.sf.seesea.model.core.geo.GeoPackage#getRoutingContainer_Area()
-	 * @model
 	 * @generated
 	 */
 	Area getArea();

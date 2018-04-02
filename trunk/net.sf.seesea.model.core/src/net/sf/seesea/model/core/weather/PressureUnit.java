@@ -42,7 +42,6 @@ import org.eclipse.emf.common.util.Enumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * @see net.sf.seesea.model.core.weather.WeatherPackage#getPressureUnit()
- * @model
  * @generated
  */
 public enum PressureUnit implements Enumerator {
@@ -85,7 +84,6 @@ public enum PressureUnit implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #UNDEFINED
-	 * @model name="Undefined"
 	 * @generated
 	 * @ordered
 	 */
@@ -100,7 +98,6 @@ public enum PressureUnit implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #TORR
-	 * @model name="Torr"
 	 * @generated
 	 * @ordered
 	 */
@@ -115,7 +112,6 @@ public enum PressureUnit implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #HECTOPASCAL
-	 * @model name="Hectopascal"
 	 * @generated
 	 * @ordered
 	 */

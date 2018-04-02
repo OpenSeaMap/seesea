@@ -45,7 +45,6 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see net.sf.seesea.model.core.geo.GeoPackage#getRoute()
- * @model
  * @generated
  */
 public interface Route extends NamedArtifact {
@@ -60,7 +59,6 @@ public interface Route extends NamedArtifact {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Waypoints</em>' reference list.
 	 * @see net.sf.seesea.model.core.geo.GeoPackage#getRoute_Waypoints()
-	 * @model
 	 * @generated
 	 */
 	EList<NamedPosition> getWaypoints();
