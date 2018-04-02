@@ -1251,6 +1251,170 @@ public interface GeoPackage extends EPackage {
 	int GEO_BOUNDING_BOX_FEATURE_COUNT = CorePackage.MODEL_OBJECT_FEATURE_COUNT + 4;
 
 	/**
+	 * The meta object id for the '{@link net.sf.seesea.model.core.geo.impl.EstimatedPositionImpl <em>Estimated Position</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.sf.seesea.model.core.geo.impl.EstimatedPositionImpl
+	 * @see net.sf.seesea.model.core.geo.impl.GeoPackageImpl#getEstimatedPosition()
+	 * @generated
+	 */
+	int ESTIMATED_POSITION = 24;
+
+	/**
+	 * The feature id for the '<em><b>Longitude</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESTIMATED_POSITION__LONGITUDE = GEO_POSITION__LONGITUDE;
+
+	/**
+	 * The feature id for the '<em><b>Latitude</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESTIMATED_POSITION__LATITUDE = GEO_POSITION__LATITUDE;
+
+	/**
+	 * The feature id for the '<em><b>Precision</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESTIMATED_POSITION__PRECISION = GEO_POSITION__PRECISION;
+
+	/**
+	 * The feature id for the '<em><b>Lat Variance</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESTIMATED_POSITION__LAT_VARIANCE = GEO_POSITION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Lon Variance</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESTIMATED_POSITION__LON_VARIANCE = GEO_POSITION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESTIMATED_POSITION__TIME = GEO_POSITION_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Estimated Position</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESTIMATED_POSITION_FEATURE_COUNT = GEO_POSITION_FEATURE_COUNT + 3;
+
+	/**
+	 * The meta object id for the '{@link net.sf.seesea.model.core.geo.impl.EstimatedDepthImpl <em>Estimated Depth</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see net.sf.seesea.model.core.geo.impl.EstimatedDepthImpl
+	 * @see net.sf.seesea.model.core.geo.impl.GeoPackageImpl#getEstimatedDepth()
+	 * @generated
+	 */
+	int ESTIMATED_DEPTH = 25;
+
+	/**
+	 * The feature id for the '<em><b>Sensor ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESTIMATED_DEPTH__SENSOR_ID = DEPTH__SENSOR_ID;
+
+	/**
+	 * The feature id for the '<em><b>Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESTIMATED_DEPTH__TIME = DEPTH__TIME;
+
+	/**
+	 * The feature id for the '<em><b>Timezone</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESTIMATED_DEPTH__TIMEZONE = DEPTH__TIMEZONE;
+
+	/**
+	 * The feature id for the '<em><b>Valid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESTIMATED_DEPTH__VALID = DEPTH__VALID;
+
+	/**
+	 * The feature id for the '<em><b>Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESTIMATED_DEPTH__RELATIVE = DEPTH__RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Measurement Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESTIMATED_DEPTH__MEASUREMENT_POSITION = DEPTH__MEASUREMENT_POSITION;
+
+	/**
+	 * The feature id for the '<em><b>Depth</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESTIMATED_DEPTH__DEPTH = DEPTH__DEPTH;
+
+	/**
+	 * The feature id for the '<em><b>Depth Variance</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESTIMATED_DEPTH__DEPTH_VARIANCE = DEPTH_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Estimated Depth</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ESTIMATED_DEPTH_FEATURE_COUNT = DEPTH_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link net.sf.seesea.model.core.geo.Direction <em>Direction</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1258,7 +1422,7 @@ public interface GeoPackage extends EPackage {
 	 * @see net.sf.seesea.model.core.geo.impl.GeoPackageImpl#getDirection()
 	 * @generated
 	 */
-	int DIRECTION = 24;
+	int DIRECTION = 26;
 
 
 	/**
@@ -1269,7 +1433,7 @@ public interface GeoPackage extends EPackage {
 	 * @see net.sf.seesea.model.core.geo.impl.GeoPackageImpl#getLatitudeHemisphere()
 	 * @generated
 	 */
-	int LATITUDE_HEMISPHERE = 25;
+	int LATITUDE_HEMISPHERE = 27;
 
 	/**
 	 * The meta object id for the '{@link net.sf.seesea.model.core.geo.LongitudeHemisphere <em>Longitude Hemisphere</em>}' enum.
@@ -1279,7 +1443,7 @@ public interface GeoPackage extends EPackage {
 	 * @see net.sf.seesea.model.core.geo.impl.GeoPackageImpl#getLongitudeHemisphere()
 	 * @generated
 	 */
-	int LONGITUDE_HEMISPHERE = 26;
+	int LONGITUDE_HEMISPHERE = 28;
 
 
 	/**
@@ -1290,7 +1454,7 @@ public interface GeoPackage extends EPackage {
 	 * @see net.sf.seesea.model.core.geo.impl.GeoPackageImpl#getRelativeDepthMeasurementPosition()
 	 * @generated
 	 */
-	int RELATIVE_DEPTH_MEASUREMENT_POSITION = 27;
+	int RELATIVE_DEPTH_MEASUREMENT_POSITION = 29;
 
 
 	/**
@@ -1685,6 +1849,70 @@ public interface GeoPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getGeoBoundingBox_Right();
+
+	/**
+	 * Returns the meta object for class '{@link net.sf.seesea.model.core.geo.EstimatedPosition <em>Estimated Position</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Estimated Position</em>'.
+	 * @see net.sf.seesea.model.core.geo.EstimatedPosition
+	 * @generated
+	 */
+	EClass getEstimatedPosition();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.geo.EstimatedPosition#getLatVariance <em>Lat Variance</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Lat Variance</em>'.
+	 * @see net.sf.seesea.model.core.geo.EstimatedPosition#getLatVariance()
+	 * @see #getEstimatedPosition()
+	 * @generated
+	 */
+	EAttribute getEstimatedPosition_LatVariance();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.geo.EstimatedPosition#getLonVariance <em>Lon Variance</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Lon Variance</em>'.
+	 * @see net.sf.seesea.model.core.geo.EstimatedPosition#getLonVariance()
+	 * @see #getEstimatedPosition()
+	 * @generated
+	 */
+	EAttribute getEstimatedPosition_LonVariance();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.geo.EstimatedPosition#getTime <em>Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Time</em>'.
+	 * @see net.sf.seesea.model.core.geo.EstimatedPosition#getTime()
+	 * @see #getEstimatedPosition()
+	 * @generated
+	 */
+	EAttribute getEstimatedPosition_Time();
+
+	/**
+	 * Returns the meta object for class '{@link net.sf.seesea.model.core.geo.EstimatedDepth <em>Estimated Depth</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Estimated Depth</em>'.
+	 * @see net.sf.seesea.model.core.geo.EstimatedDepth
+	 * @generated
+	 */
+	EClass getEstimatedDepth();
+
+	/**
+	 * Returns the meta object for the attribute '{@link net.sf.seesea.model.core.geo.EstimatedDepth#getDepthVariance <em>Depth Variance</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Depth Variance</em>'.
+	 * @see net.sf.seesea.model.core.geo.EstimatedDepth#getDepthVariance()
+	 * @see #getEstimatedDepth()
+	 * @generated
+	 */
+	EAttribute getEstimatedDepth_DepthVariance();
 
 	/**
 	 * Returns the meta object for enum '{@link net.sf.seesea.model.core.geo.Direction <em>Direction</em>}'.
@@ -2281,6 +2509,58 @@ public interface GeoPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute GEO_BOUNDING_BOX__RIGHT = eINSTANCE.getGeoBoundingBox_Right();
+
+		/**
+		 * The meta object literal for the '{@link net.sf.seesea.model.core.geo.impl.EstimatedPositionImpl <em>Estimated Position</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.sf.seesea.model.core.geo.impl.EstimatedPositionImpl
+		 * @see net.sf.seesea.model.core.geo.impl.GeoPackageImpl#getEstimatedPosition()
+		 * @generated
+		 */
+		EClass ESTIMATED_POSITION = eINSTANCE.getEstimatedPosition();
+
+		/**
+		 * The meta object literal for the '<em><b>Lat Variance</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ESTIMATED_POSITION__LAT_VARIANCE = eINSTANCE.getEstimatedPosition_LatVariance();
+
+		/**
+		 * The meta object literal for the '<em><b>Lon Variance</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ESTIMATED_POSITION__LON_VARIANCE = eINSTANCE.getEstimatedPosition_LonVariance();
+
+		/**
+		 * The meta object literal for the '<em><b>Time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ESTIMATED_POSITION__TIME = eINSTANCE.getEstimatedPosition_Time();
+
+		/**
+		 * The meta object literal for the '{@link net.sf.seesea.model.core.geo.impl.EstimatedDepthImpl <em>Estimated Depth</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see net.sf.seesea.model.core.geo.impl.EstimatedDepthImpl
+		 * @see net.sf.seesea.model.core.geo.impl.GeoPackageImpl#getEstimatedDepth()
+		 * @generated
+		 */
+		EClass ESTIMATED_DEPTH = eINSTANCE.getEstimatedDepth();
+
+		/**
+		 * The meta object literal for the '<em><b>Depth Variance</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ESTIMATED_DEPTH__DEPTH_VARIANCE = eINSTANCE.getEstimatedDepth_DepthVariance();
 
 		/**
 		 * The meta object literal for the '{@link net.sf.seesea.model.core.geo.Direction <em>Direction</em>}' enum.

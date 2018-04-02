@@ -283,6 +283,23 @@ public class GeoSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case GeoPackage.ESTIMATED_POSITION: {
+				EstimatedPosition estimatedPosition = (EstimatedPosition)theEObject;
+				T result = caseEstimatedPosition(estimatedPosition);
+				if (result == null) result = caseGeoPosition(estimatedPosition);
+				if (result == null) result = caseModelObject(estimatedPosition);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case GeoPackage.ESTIMATED_DEPTH: {
+				EstimatedDepth estimatedDepth = (EstimatedDepth)theEObject;
+				T result = caseEstimatedDepth(estimatedDepth);
+				if (result == null) result = caseDepth(estimatedDepth);
+				if (result == null) result = caseMeasurement(estimatedDepth);
+				if (result == null) result = caseModelObject(estimatedDepth);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -509,6 +526,36 @@ public class GeoSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseGeoBoundingBox(GeoBoundingBox object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Estimated Position</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Estimated Position</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEstimatedPosition(EstimatedPosition object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Estimated Depth</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Estimated Depth</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEstimatedDepth(EstimatedDepth object) {
 		return null;
 	}
 

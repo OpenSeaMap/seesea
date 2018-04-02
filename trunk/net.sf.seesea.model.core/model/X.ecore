@@ -153,6 +153,17 @@
               <eStructuralFeatures xsi:type="ecore:EAttribute" name="left" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
               <eStructuralFeatures xsi:type="ecore:EAttribute" name="right" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
             </eClassifiers>
+            <eClassifiers xsi:type="ecore:EClass" name="EstimatedPosition" eSuperTypes="#//sf/seesea/model/core/geo/GeoPosition">
+              <eStructuralFeatures xsi:type="ecore:EAttribute" name="latVariance"
+                  eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <eStructuralFeatures xsi:type="ecore:EAttribute" name="lonVariance"
+                  eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+              <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+            </eClassifiers>
+            <eClassifiers xsi:type="ecore:EClass" name="EstimatedDepth" eSuperTypes="#//sf/seesea/model/core/geo/Depth">
+              <eStructuralFeatures xsi:type="ecore:EAttribute" name="depthVariance"
+                  eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+            </eClassifiers>
             <eSubpackages name="osm" nsURI="osm" nsPrefix="osm">
               <eClassifiers xsi:type="ecore:EClass" name="Area" eSuperTypes="#//sf/seesea/model/core/geo/Chart #//sf/seesea/model/core/geo/NavigationCompound">
                 <eStructuralFeatures xsi:type="ecore:EAttribute" name="zoomLevel"
