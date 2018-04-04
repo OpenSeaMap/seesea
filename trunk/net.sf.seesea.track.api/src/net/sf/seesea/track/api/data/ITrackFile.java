@@ -106,4 +106,12 @@ public interface ITrackFile {
 
 	void setUsername(String username);
 
+	void setCluster(String clusterUUID);
+
+	void setClusterSequenceNumber(int sequenceNumber);
+
+	String getClusterUUID();
+
+	int getSequenceNumber();
+
 }

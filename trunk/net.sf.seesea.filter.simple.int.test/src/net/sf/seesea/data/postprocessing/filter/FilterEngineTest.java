@@ -2,9 +2,11 @@ package net.sf.seesea.data.postprocessing.filter;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.easymock.EasyMock;
 import org.junit.Test;
@@ -15,6 +17,7 @@ import net.sf.seesea.data.postprocessing.process.ITrackClustering;
 import net.sf.seesea.data.postprocessing.process.TrackClusterResult;
 import net.sf.seesea.track.api.ITrackPersistence;
 import net.sf.seesea.track.api.data.ITrackFile;
+import net.sf.seesea.track.api.data.ProcessingState;
 import net.sf.seesea.track.api.exception.TrackPerssitenceException;
 import net.sf.seesea.track.model.SimpleTrackFile;
 
@@ -29,7 +32,8 @@ public class FilterEngineTest {
 		user2TrackFiles.put("user", trackFiles);
 		
 		ITrackPersistence trackPersistence = EasyMock.createNiceMock(ITrackPersistence.class);
-		EasyMock.expect(trackPersistence.getUser2PostprocessTrackCluster()).andReturn(user2TrackFiles);
+		Set<ProcessingState> states = EnumSet.of(ProcessingState.PREPROCESSED);
+		EasyMock.expect(trackPersistence.getUser2PostprocessTrackCluster(states)).andReturn(user2TrackFiles);
 		EasyMock.expectLastCall().anyTimes();
 		trackPersistence.storePreprocessingStates(EasyMock.<List<ITrackFile>>anyObject());
 		EasyMock.expectLastCall().times(1);

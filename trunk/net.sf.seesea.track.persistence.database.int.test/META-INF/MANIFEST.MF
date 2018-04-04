@@ -8,4 +8,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Fragment-Host: net.sf.seesea.track.persistence.database;bundle-version="1.0.0"
 Require-Bundle: org.hsqldb.hsqldb;bundle-version="2.3.3",
  org.junit,
- org.eclipse.equinox.registry
+ org.eclipse.equinox.registry,
+ net.sf.seesea.track.api
