@@ -54,6 +54,8 @@ public abstract class AbstractTrackFile implements ITrackFile {
 	private boolean hasRelativeTimedMeasurements;
 	private GeoBoundingBox boundingBox;
 	private IBoatParameters boatParameters;
+	private String clusterUUID;
+	private int sequenceNumber;
 
 	public AbstractTrackFile() {
 		super();
@@ -198,8 +200,25 @@ public abstract class AbstractTrackFile implements ITrackFile {
 		this.boatParameters = boatParameters;
 	}
 	
-	
-	
+    @Override
+	public void setCluster(String clusterUUID) {
+		this.clusterUUID = clusterUUID;
+	}
+    
+    @Override
+    public void setClusterSequenceNumber(int sequenceNumber) {
+		this.sequenceNumber = sequenceNumber;
+    }
+
+	public String getClusterUUID() {
+		return clusterUUID;
+	}
+
+	public int getSequenceNumber() {
+		return sequenceNumber;
+	}
+
+    
 	
 	
 	

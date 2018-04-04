@@ -17,9 +17,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.core.runtime.FileLocator;
 import org.hsqldb.jdbc.JDBCDataSource;
@@ -347,8 +349,8 @@ public class DatabaseTrackPersistenceTest {
 			Map<String, Object> properties = new HashMap<String, Object>();
 			properties.put("basedir", file.getParentFile().getPath());
 			databaseTrackPersistence.activate(properties);
-			
-			Map<String, List<ITrackFile>> user2PostprocessTrackCluster = databaseTrackPersistence.getUser2PostprocessTrackCluster();
+			Set<ProcessingState> states = EnumSet.of(ProcessingState.PREPROCESSED);
+			Map<String, List<ITrackFile>> user2PostprocessTrackCluster = databaseTrackPersistence.getUser2PostprocessTrackCluster(states);
 			assertEquals(1,user2PostprocessTrackCluster.size());
 			List<ITrackFile> list = user2PostprocessTrackCluster.get("test@test.de");
 			assertNotNull(list);

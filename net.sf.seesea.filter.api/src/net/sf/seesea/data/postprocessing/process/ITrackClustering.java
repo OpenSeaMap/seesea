@@ -6,6 +6,6 @@ import net.sf.seesea.track.api.data.ITrackFile;
 
 public interface ITrackClustering {
 
-	TrackClusterResult classifyTracks(List<ITrackFile> orderedFiles) throws FilterException;
+	TrackClusterResult classifyTracks(List<ITrackFile> orderedFiles) ;
 
 }

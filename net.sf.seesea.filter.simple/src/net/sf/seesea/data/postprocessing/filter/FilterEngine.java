@@ -1,8 +1,11 @@
 package net.sf.seesea.data.postprocessing.filter;
 
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 import java.util.Map.Entry;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -49,76 +52,130 @@ public class FilterEngine implements IFilterEngine {
 		preprocessRun = Boolean.valueOf((String) config.get("preprocessRun"));
 	}
 
-	@Override
-	public void filterTracks() {
+	public void clusterTracks() {
 		ITrackPersistence trackPersistence = trackPersistenceAR.get();
 		ITrackClustering trackClustering = trackClusteringAR.get();
-		IFilterController filterController = filterControllerAR.get();
 		IGaugeValueUpdater gaugeValueUpdater = gaugeValueUpdaterAR.get();
 		Map<String, List<ITrackFile>> user2PostprocessTrackCluster;
 		try {
-			user2PostprocessTrackCluster = trackPersistence.getUser2PostprocessTrackCluster();
+			user2PostprocessTrackCluster = trackPersistence.getUser2PreprocessedTracks();
 			for (Entry<String, List<ITrackFile>> user2TrackListEntry : user2PostprocessTrackCluster.entrySet()) {
+				// String user = user2TrackListEntry.getKey();
+				List<ITrackFile> trackFiles = user2TrackListEntry.getValue();
+				TrackClusterResult trackClusterResult = trackClustering.classifyTracks(trackFiles);
+
 				try {
-					String user = user2TrackListEntry.getKey();
-					List<ITrackFile> trackFiles = user2TrackListEntry.getValue();
-					// FIXME set content type directly
-					TrackClusterResult trackClusterResult = trackClustering.classifyTracks(trackFiles);
-
-					try {
-						// those measurements that have no time need to be
-						// processed separately
-						for (ITrackFile abstractTrackFile : trackClusterResult.getNoTimeMeasurementFiles()) {
-							List<ITrackFile> singleTrackList = new ArrayList<ITrackFile>();
-							singleTrackList.add(abstractTrackFile);
-							filterController.process(singleTrackList, false);
-							if (preprocessRun) {
-								// mark as processed
-								abstractTrackFile.setUploadState(ProcessingState.FILE_PROCESSED);
-							}
-						}
-						trackPersistence.storePreprocessingStates(trackClusterResult.getNoTimeMeasurementFiles());
-					} catch (TrackPerssitenceException | FilterException e1) {
-						e1.printStackTrace();
+					// those measurements that have no time need to be
+					// processed separately
+					for (ITrackFile abstractTrackFile : trackClusterResult.getNoTimeMeasurementFiles()) {
+						String clusterUUID = UUID.randomUUID().toString();
+						List<ITrackFile> singleTrackList = new ArrayList<ITrackFile>();
+						singleTrackList.add(abstractTrackFile);
+						abstractTrackFile.setUploadState(ProcessingState.CLUSTERED);
+						abstractTrackFile.setCluster(clusterUUID);
+						// encode no time measurement as -1
+						abstractTrackFile.setClusterSequenceNumber(-1);
 					}
-
-					// those measurements that logically form a single track that is
-					// spread across several files
-					for (List<ITrackFile> clusterOfTrackFiles : trackClusterResult.getOrderedTrackFiles()) {
-						try {
-							if (!clusterOfTrackFiles.isEmpty()) {
-								List<ITrackFile> trackFilesCluster = new ArrayList<ITrackFile>(clusterOfTrackFiles);
-								if (gaugeValueUpdater != null) {
-									try {
-										gaugeValueUpdater.updateGaugeValues4Track(trackFilesCluster);
-									} catch (GaugeUpdateException e) {
-										Logger.getLogger(getClass()).error("Failed to update gauge", e);
-									}
-								}
-								filterController.process(trackFilesCluster, true);
-								for (ITrackFile iTrackFile : trackFilesCluster) {
-									iTrackFile.setUploadState(ProcessingState.FILE_PROCESSED);
-								}
-							}
-
-							if (preprocessRun) {
-								// mark as processed
-								trackPersistence.storePreprocessingStates(clusterOfTrackFiles);
-							}
-						} catch (FilterException | TrackPerssitenceException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-					}
-				} catch (FilterException e2) {
-					// TODO Auto-generated catch block
-					e2.printStackTrace();
+					trackPersistence.storeTrackCluster(trackClusterResult.getNoTimeMeasurementFiles());
+				} catch (TrackPerssitenceException e1) {
+					Logger.getLogger(getClass()).error("Failed to store track files", e1);
 				}
 
+				// those measurements that logically form a single track that is
+				// spread across several files
+				for (List<ITrackFile> clusterOfTrackFiles : trackClusterResult.getOrderedTrackFiles()) {
+					String clusterUUID = UUID.randomUUID().toString();
+					try {
+						if (!clusterOfTrackFiles.isEmpty()) {
+							List<ITrackFile> trackFilesCluster = new ArrayList<ITrackFile>(clusterOfTrackFiles);
+							if (gaugeValueUpdater != null) {
+								try {
+									gaugeValueUpdater.updateGaugeValues4Track(trackFilesCluster);
+								} catch (GaugeUpdateException e) {
+									Logger.getLogger(getClass()).error("Failed to update gauge", e);
+								}
+							}
+							int i = 0;
+							for (ITrackFile iTrackFile : trackFilesCluster) {
+								iTrackFile.setUploadState(ProcessingState.CLUSTERED);
+								iTrackFile.setCluster(clusterUUID);
+								iTrackFile.setClusterSequenceNumber(i++);
+							}
+						}
+
+						// mark as clustered
+						trackPersistence.storeTrackCluster(clusterOfTrackFiles);
+					} catch (TrackPerssitenceException e) {
+						Logger.getLogger(getClass()).error("Failed to store cluster result", e);
+					}
+				}
 			}
 		} catch (TrackPerssitenceException e3) {
 			Logger.getLogger(getClass()).error("Failed to retrieve tracks from track persistence", e3);
 			return;
+		}
+
+	}
+
+	public void filterNoTime() throws TrackPerssitenceException {
+		ITrackPersistence trackPersistence = trackPersistenceAR.get();
+		IFilterController filterController = filterControllerAR.get();
+		Map<String, List<ITrackFile>> user2PostprocessTrackCluster = trackPersistence.getUser2NoTimeTracksTracks();
+		for (Entry<String, List<ITrackFile>> user2TrackListEntry : user2PostprocessTrackCluster.entrySet()) {
+			String user = user2TrackListEntry.getKey();
+			List<ITrackFile> trackFiles = user2TrackListEntry.getValue();
+			try {
+				// those measurements that have no time need to be
+				// processed separately
+				for (ITrackFile abstractTrackFile : trackFiles) {
+					List<ITrackFile> singleTrackList = new ArrayList<ITrackFile>();
+					singleTrackList.add(abstractTrackFile);
+					filterController.process(singleTrackList, false);
+					abstractTrackFile.setUploadState(ProcessingState.FILE_PROCESSED);
+				}
+				trackPersistence.storePreprocessingStates(trackFiles);
+			} catch (TrackPerssitenceException | FilterException e1) {
+				Logger.getLogger(getClass()).error("Problem during filtering:", e1);
+			}
+		}
+	}
+
+	@Override
+	public void filterTracks() {
+		try {
+			filterNoTime();
+			filterTimeTracks();
+		} catch (TrackPerssitenceException e3) {
+			Logger.getLogger(getClass()).error("Failed to retrieve tracks from track persistence", e3);
+			return;
+		}
+	}
+
+	public void filterTimeTracks() throws TrackPerssitenceException {
+		ITrackPersistence trackPersistence = trackPersistenceAR.get();
+		IFilterController filterController = filterControllerAR.get();
+		Map<String, Map<String, List<ITrackFile>>> postprocessTrackCluster = trackPersistence.getUser2TimeClusteredTracks();
+		for (Entry<String, Map<String, List<ITrackFile>>> user2TrackListEntry : postprocessTrackCluster.entrySet()) {
+			String user = user2TrackListEntry.getKey();
+			Map<String, List<ITrackFile>> trackFiles = user2TrackListEntry.getValue();
+			// those measurements that logically form a single track that is
+			// spread across several files
+			for (Entry<String, List<ITrackFile>> clusterId2TrackFiles : trackFiles.entrySet()) {
+				List<ITrackFile> clusterOfTrackFiles = clusterId2TrackFiles.getValue();
+				try {
+					if (!clusterOfTrackFiles.isEmpty()) {
+						List<ITrackFile> trackFilesCluster = new ArrayList<ITrackFile>(clusterOfTrackFiles);
+						filterController.process(trackFilesCluster, true);
+						int i = 0;
+						for (ITrackFile iTrackFile : trackFilesCluster) {
+							iTrackFile.setUploadState(ProcessingState.FILE_PROCESSED);
+						}
+					}
+					trackPersistence.storePreprocessingStates(clusterOfTrackFiles);
+				} catch (FilterException | TrackPerssitenceException e) {
+					Logger.getLogger(getClass()).error("Problem during filtering:", e);
+				}
+			}
 		}
 
 	}

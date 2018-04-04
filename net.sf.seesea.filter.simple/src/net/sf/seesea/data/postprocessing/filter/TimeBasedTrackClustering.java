@@ -78,7 +78,7 @@ public class TimeBasedTrackClustering implements ITrackClustering {
 	 * @throws IOException
 	 * @throws ProcessingException 
 	 */
-	public TrackClusterResult classifyTracks(List<ITrackFile> orderedFiles) throws FilterException {
+	public TrackClusterResult classifyTracks(List<ITrackFile> orderedFiles) {
 		IFileTypeProcessingFactory fileTypeProcessingFactory = fileTypeProcessingFactoryAR.get();
 //		System.out.println("Classifying tracks");
 		List<List<ITrackFile>> clusterOfTracks = new ArrayList<List<ITrackFile>>();
