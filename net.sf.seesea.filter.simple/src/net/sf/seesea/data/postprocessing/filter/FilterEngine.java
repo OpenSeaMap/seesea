@@ -121,21 +121,24 @@ public class FilterEngine implements IFilterEngine {
 		ITrackPersistence trackPersistence = trackPersistenceAR.get();
 		IFilterController filterController = filterControllerAR.get();
 		Map<String, List<ITrackFile>> user2PostprocessTrackCluster = trackPersistence.getUser2NoTimeTracksTracks();
-		for (Entry<String, List<ITrackFile>> user2TrackListEntry : user2PostprocessTrackCluster.entrySet()) {
-			String user = user2TrackListEntry.getKey();
-			List<ITrackFile> trackFiles = user2TrackListEntry.getValue();
-			try {
-				// those measurements that have no time need to be
-				// processed separately
-				for (ITrackFile abstractTrackFile : trackFiles) {
-					List<ITrackFile> singleTrackList = new ArrayList<ITrackFile>();
-					singleTrackList.add(abstractTrackFile);
-					filterController.process(singleTrackList, false);
-					abstractTrackFile.setUploadState(ProcessingState.FILE_PROCESSED);
+		if ( user2PostprocessTrackCluster != null )
+		{
+			for (Entry<String, List<ITrackFile>> user2TrackListEntry : user2PostprocessTrackCluster.entrySet()) {
+				String user = user2TrackListEntry.getKey();
+				List<ITrackFile> trackFiles = user2TrackListEntry.getValue();
+				try {
+					// those measurements that have no time need to be
+					// processed separately
+					for (ITrackFile abstractTrackFile : trackFiles) {
+						List<ITrackFile> singleTrackList = new ArrayList<ITrackFile>();
+						singleTrackList.add(abstractTrackFile);
+						filterController.process(singleTrackList, false);
+						abstractTrackFile.setUploadState(ProcessingState.FILE_PROCESSED);
+					}
+					trackPersistence.storePreprocessingStates(trackFiles);
+				} catch (TrackPerssitenceException | FilterException e1) {
+					Logger.getLogger(getClass()).error("Problem during filtering:", e1);
 				}
-				trackPersistence.storePreprocessingStates(trackFiles);
-			} catch (TrackPerssitenceException | FilterException e1) {
-				Logger.getLogger(getClass()).error("Problem during filtering:", e1);
 			}
 		}
 	}

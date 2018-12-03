@@ -55,6 +55,8 @@ public class ContentDetector implements IContentDetector {
 
 	private Logger logger = Logger.getLogger(getClass());
 
+	private int max_files;
+
 	public ContentDetector() {
 		// TODO Auto-generated constructor stub
 	}
@@ -62,6 +64,11 @@ public class ContentDetector implements IContentDetector {
 	@Activate
 	public void activate(Map<String, Object> properties) {
 		basedir = (String) properties.get("basedir");
+		String strMaxFiles = (String)properties.get( "max_files" );
+		if ( strMaxFiles == null || strMaxFiles.isEmpty() )
+			max_files = 999999;
+		else
+			max_files = Integer.valueOf( strMaxFiles );
 	}
 
 	@Override
@@ -80,6 +87,7 @@ public class ContentDetector implements IContentDetector {
 		}
 		
 		try {
+			int iFilesProcessed = 0;
 			List<ITrackFile> trackFiles2Process = trackPersistence.getTrackFiles2Process();
 			for (ITrackFile trackFileX : trackFiles2Process) {
 				long id = trackFileX.getTrackId();
@@ -258,6 +266,9 @@ public class ContentDetector implements IContentDetector {
 						trackFileX.setUploadState(net.sf.seesea.track.api.data.ProcessingState.FILE_CORRUPT);
 					}
 				}
+				iFilesProcessed++;
+				if ( iFilesProcessed >= max_files )
+					break;
 			}
 			if(!trackFiles2Process.isEmpty()) {
 				trackPersistence.storePreprocessingStates(trackFiles2Process);
