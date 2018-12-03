@@ -98,7 +98,6 @@ CREATE TABLE user_tracks (
     comment varchar (100)  NULL,
     watertype varchar (20) NULL,
     uploaddate timestamp NULL,
-	bbox geometry,
 	clusteruuid varchar(100), 
 	clusterseq bigint
 );
