@@ -280,8 +280,9 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 					PreparedStatement userTracksStatement = connection.prepareStatement(
 							"SELECT track_id, filetype, compression, file_ref, vesselconfigid, upload_state, clusteruuid, clusterseq FROM user_tracks  " //$NON-NLS-1$
 									+ "WHERE (user_tracks.user_name = ? OR user_tracks.user_name = ?) "
-									+ "AND upload_state = ANY(?) " + //$NON-NLS-1$ //$NON-NLS-2$
-									"AND containertrack IS NULL " + //$NON-NLS-1$
+//									+ "AND upload_state = ANY( cast(? as smallint array ) ) "  //$NON-NLS-1$ //$NON-NLS-2$
+									+ "AND upload_state in ( unnest( cast(? as smallint array ) ) ) "  //$NON-NLS-1$ //$NON-NLS-2$
+									+ "AND containertrack IS NULL " + //$NON-NLS-1$
 									"AND track_id NOT IN (SELECT containertrack FROM user_tracks WHERE containertrack IS NOT NULL)"); //$NON-NLS-1$
 					userTracksStatement.setString(1, user);
 					userTracksStatement.setString(2, sha1Username);
@@ -389,10 +390,11 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 
 					PreparedStatement containerTrackUserStatement = connection.prepareStatement(
 							"SELECT track_id, filetype, compression, vesselconfigid, clusteruuid, clusterseq FROM user_tracks " + //$NON-NLS-1$
-									"WHERE (user_name = ? OR user_name = ?) " + //$NON-NLS-1$ //$NON-NLS-2$
+									"WHERE (user_name = ? OR user_name = ?) " //$NON-NLS-1$ //$NON-NLS-2$
 																				// //$NON-NLS-3$
-									"AND upload_state = ANY(?) " + //$NON-NLS-1$ //$NON-NLS-2$
-									"AND containertrack IS NULL " + //$NON-NLS-1$
+//									+ "AND upload_state = ANY(?) " + //$NON-NLS-1$ //$NON-NLS-2$
+									+ "AND upload_state in ( unnest( cast(? as smallint array ) ) ) "  //$NON-NLS-1$ //$NON-NLS-2$
+									+ "AND containertrack IS NULL " + //$NON-NLS-1$
 									"AND track_id IN (SELECT containertrack FROM user_tracks WHERE containertrack IS NOT NULL)"); //$NON-NLS-1$
 					containerTrackUserStatement.setString(1, user);
 					containerTrackUserStatement.setString(2, sha1Username);
@@ -407,14 +409,15 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 						Long vesselConfigId = mutliTrackFiles.getLong("vesselconfigid"); //$NON-NLS-1$
 						PreparedStatement compressedFilesStatement = connection
 								.prepareStatement("SELECT track_id, filetype, compression, file_ref FROM user_tracks " + //$NON-NLS-1$
-										"WHERE (user_name = ? OR user_name = ?) " + //$NON-NLS-1$ //$NON-NLS-2$
+										"WHERE (user_name = cast( ? as varchar ) OR user_name = cast( ? as varchar ) ) " + //$NON-NLS-1$ //$NON-NLS-2$
 																					// //$NON-NLS-3$
-										"AND upload_state = ANY(?) " + //$NON-NLS-1$ //$NON-NLS-2$
-										"AND containertrack = ? " + //$NON-NLS-1$ //$NON-NLS-2$
+//										"AND upload_state = ANY(?) " + //$NON-NLS-1$ //$NON-NLS-2$
+										"AND upload_state in ( unnest( cast(? as smallint array ) ) ) "  //$NON-NLS-1$ //$NON-NLS-2$
+										+ "AND containertrack = ? " + //$NON-NLS-1$ //$NON-NLS-2$
 										"ORDER BY track_id"); //$NON-NLS-1$
 						compressedFilesStatement.setString(1, user);
 						compressedFilesStatement.setString(2, sha1Username);
-						compressedFilesStatement.setArray(3, connection.createArrayOf("integer", processingStates.toArray()));
+//						compressedFilesStatement.setArray(3, connection.createArrayOf("integer", processingStates.toArray()));
 						compressedFilesStatement.setArray(3, connection.createArrayOf("integer", stateInts.toArray()));
 						compressedFilesStatement.setLong(4, id);
 						ResultSet compressedTracks = compressedFilesStatement.executeQuery();
