@@ -27,13 +27,17 @@ public class FilterEngineTest {
 	@Test
 	public void testSimpleEngineRun() throws TrackPerssitenceException, FilterException {
 		Map<String, List<ITrackFile>> user2TrackFiles = new HashMap<String, List<ITrackFile>>();
+		Map<String, Map<String,List<ITrackFile>>> user2TimeClusterTrackFiles = new HashMap<String, Map<String, List<ITrackFile>>>();
 		List<ITrackFile> trackFiles = new ArrayList<ITrackFile>();
 		trackFiles.add(new SimpleTrackFile());
 		user2TrackFiles.put("user", trackFiles);
+		user2TimeClusterTrackFiles.put( "blah", user2TrackFiles );
 		
 		ITrackPersistence trackPersistence = EasyMock.createNiceMock(ITrackPersistence.class);
 		Set<ProcessingState> states = EnumSet.of(ProcessingState.PREPROCESSED);
-		EasyMock.expect(trackPersistence.getUser2PostprocessTrackCluster(states)).andReturn(user2TrackFiles);
+//		EasyMock.expect(trackPersistence.getUser2PostprocessTrackCluster(states)).andReturn(user2TrackFiles);
+		EasyMock.expect(trackPersistence.getUser2TimeClusteredTracks()).andReturn(user2TimeClusterTrackFiles);
+		
 		EasyMock.expectLastCall().anyTimes();
 		trackPersistence.storePreprocessingStates(EasyMock.<List<ITrackFile>>anyObject());
 		EasyMock.expectLastCall().times(1);
