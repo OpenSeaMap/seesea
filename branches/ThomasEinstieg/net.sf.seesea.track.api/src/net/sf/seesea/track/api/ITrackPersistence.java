@@ -61,4 +61,6 @@ public interface ITrackPersistence {
 
 	List<CompositeMeasurement> getNearByPoints();
 
+	Map<String, List<ITrackFile>> getUser2PostprocessTrackCluster(Set<ProcessingState> states) throws TrackPerssitenceException;
+
 }

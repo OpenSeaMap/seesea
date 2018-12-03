@@ -201,9 +201,12 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 
 	@Override
 	public Map<String, Map<String, List<ITrackFile>>> getUser2TimeClusteredTracks() throws TrackPerssitenceException {
-		EnumSet<ProcessingState> preprocessed = EnumSet.of(ProcessingState.CLUSTERED);
+		// FIXME 4 the time being, clustering is never called, so process PREPROCESSED tracks instead
+		// EnumSet<ProcessingState> preprocessed = EnumSet.of(ProcessingState.CLUSTERED);
+		EnumSet<ProcessingState> preprocessed = EnumSet.of(ProcessingState.PREPROCESSED);
 		Map<String, List<ITrackFile>> user2PostprocessTrackCluster = getUser2PostprocessTrackCluster(preprocessed);
 		Map<String, List<ITrackFile>> clusterId2TrackFile = new HashMap<>();
+		Map<String, Map<String, List<ITrackFile>>> mapResult = new HashMap<>();
 		for (Entry<String, List<ITrackFile>> user2TrackFile : user2PostprocessTrackCluster.entrySet()) {
 			List<ITrackFile> trackFiles = user2TrackFile.getValue();
 			for (ITrackFile trackFile : trackFiles) {
@@ -211,12 +214,13 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 				List<ITrackFile> trackFilesX = clusterId2TrackFile.get(clusterUUID);
 				if(trackFilesX == null) {
 					trackFilesX = new ArrayList<>();
+					clusterId2TrackFile.put( clusterUUID, trackFilesX );
 				}
-				
+				trackFilesX.add( trackFile );
 			}
-			
+			mapResult.put( user2TrackFile.getKey(), clusterId2TrackFile );
 		}
-		return null;
+		return mapResult;
 	}
 
 	@Override
@@ -286,7 +290,9 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 					for (ProcessingState processingState : processingStates) {
 						stateInts.add(processingState.getIndex());
 					}
-					userTracksStatement.setArray(3, connection.createArrayOf("integer", processingStates.toArray()));
+					
+//					userTracksStatement.setArray(3, connection.createArrayOf("integer", processingStates.toArray()));
+					userTracksStatement.setArray(3, connection.createArrayOf("integer", stateInts.toArray()));
 					singleUserTrackFiles = userTracksStatement.executeQuery();
 
 					while (singleUserTrackFiles.next()) {
@@ -390,7 +396,8 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 									"AND track_id IN (SELECT containertrack FROM user_tracks WHERE containertrack IS NOT NULL)"); //$NON-NLS-1$
 					containerTrackUserStatement.setString(1, user);
 					containerTrackUserStatement.setString(2, sha1Username);
-					containerTrackUserStatement.setArray(3, connection.createArrayOf("integer", processingStates.toArray()));
+//					containerTrackUserStatement.setArray(3, connection.createArrayOf("integer", processingStates.toArray()));
+					containerTrackUserStatement.setArray(3, connection.createArrayOf("integer", stateInts.toArray()));
 					ResultSet mutliTrackFiles = containerTrackUserStatement.executeQuery();
 					while (mutliTrackFiles.next()) {
 						long id = mutliTrackFiles.getLong("track_id"); //$NON-NLS-1$
@@ -408,6 +415,7 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 						compressedFilesStatement.setString(1, user);
 						compressedFilesStatement.setString(2, sha1Username);
 						compressedFilesStatement.setArray(3, connection.createArrayOf("integer", processingStates.toArray()));
+						compressedFilesStatement.setArray(3, connection.createArrayOf("integer", stateInts.toArray()));
 						compressedFilesStatement.setLong(4, id);
 						ResultSet compressedTracks = compressedFilesStatement.executeQuery();
 						while (compressedTracks.next()) {
