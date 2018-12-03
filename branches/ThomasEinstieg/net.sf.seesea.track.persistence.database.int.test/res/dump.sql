@@ -125,7 +125,7 @@ CREATE TABLE vesselconfiguration (
     displacement numeric (8,1) NULL,
     maximumspeed numeric (3,1) NULL,
     "type" integer  NULL, 
-	clusteruuid varchar, 
+	clusteruuid varchar(100), 
 	clusterseq bigint
 );
 ALTER TABLE vesselconfiguration ADD CONSTRAINT vesselconfiguration_pkey PRIMARY KEY (id);
