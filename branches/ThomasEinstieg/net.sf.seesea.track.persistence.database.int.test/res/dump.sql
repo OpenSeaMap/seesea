@@ -98,6 +98,9 @@ CREATE TABLE user_tracks (
     comment varchar (100)  NULL,
     watertype varchar (20) NULL,
     uploaddate timestamp NULL,
+	bbox geometry,
+	clusteruuid varchar(100), 
+	clusterseq bigint
 );
 ALTER TABLE user_tracks ADD CONSTRAINT user_tracks_pkey PRIMARY KEY (track_id);
 
@@ -124,9 +127,7 @@ CREATE TABLE vesselconfiguration (
     height numeric (4,2) NULL,
     displacement numeric (8,1) NULL,
     maximumspeed numeric (3,1) NULL,
-    "type" integer  NULL, 
-	clusteruuid varchar(100), 
-	clusterseq bigint
+    "type" integer  NULL
 );
 ALTER TABLE vesselconfiguration ADD CONSTRAINT vesselconfiguration_pkey PRIMARY KEY (id);
 
