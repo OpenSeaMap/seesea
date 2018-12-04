@@ -53,6 +53,7 @@ import net.sf.seesea.data.postprocessing.process.StatisticsException;
 import net.sf.seesea.model.core.physx.Measurement;
 import net.sf.seesea.track.api.ITrackFileProcessor;
 import net.sf.seesea.track.api.data.ITrackFile;
+import net.sf.seesea.track.api.data.ProcessingState;
 import net.sf.seesea.track.api.data.SensorDescriptionUpdateRate;
 import net.sf.seesea.track.api.exception.ProcessingException;
 
@@ -116,11 +117,14 @@ public class FilterController implements IFilterController {
 							}
 							trackFiles.add(trackFile);
 						}
+						trackFile.setUploadState(ProcessingState.FILE_PROCESSED);
 					} else {
 						logger.error("No location preprocessor for file type: " + trackFile.getFileType()); //$NON-NLS-1$
+						trackFile.setUploadState(ProcessingState.FILE_CONTENT_UNKNOWN);
 					}
 				}
 			} catch (Exception e) {
+				trackFile.setUploadState(ProcessingState.PROCESSING_ERROR);
 				e.printStackTrace();
 				logger.error("Failed to process file", e); //$NON-NLS-1$
 			}
