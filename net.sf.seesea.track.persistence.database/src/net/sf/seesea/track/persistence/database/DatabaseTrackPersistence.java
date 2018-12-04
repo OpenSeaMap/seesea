@@ -298,7 +298,7 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 //									+ "AND upload_state = ANY( cast(? as smallint array ) ) "  //$NON-NLS-1$ //$NON-NLS-2$
 									+ "AND upload_state in (" + strStates + " ) "  //$NON-NLS-1$ //$NON-NLS-2$
 									+ "AND containertrack IS NULL " + //$NON-NLS-1$
-									"AND track_id NOT IN (SELECT containertrack FROM user_tracks WHERE containertrack IS NOT NULL)"); //$NON-NLS-1$
+									"AND track_id NOT IN (SELECT containertrack FROM user_tracks WHERE containertrack IS NOT NULL) order by track_id"); //$NON-NLS-1$
 
 					userTracksStatement.setString(1, user);
 					userTracksStatement.setString(2, sha1Username);
@@ -407,7 +407,7 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 //									+ "AND upload_state = ANY(?) " + //$NON-NLS-1$ //$NON-NLS-2$
 									+ "AND upload_state in (" + strStates + " ) "  //$NON-NLS-1$ //$NON-NLS-2$
 									+ "AND containertrack IS NULL " + //$NON-NLS-1$
-									"AND track_id IN (SELECT containertrack FROM user_tracks WHERE containertrack IS NOT NULL)"); //$NON-NLS-1$
+									"AND track_id IN (SELECT containertrack FROM user_tracks WHERE containertrack IS NOT NULL) order by track_id"); //$NON-NLS-1$
 					containerTrackUserStatement.setString(1, user);
 					containerTrackUserStatement.setString(2, sha1Username);
 //					containerTrackUserStatement.setArray(3, connection.createArrayOf("integer", processingStates.toArray()));
@@ -513,7 +513,7 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 		try (Connection sourceConnection = uploadDataSource.getConnection();
 				Statement statement = sourceConnection.createStatement();
 				ResultSet userTrackFiles = statement.executeQuery(
-						"SELECT track_id, user_name FROM user_tracks WHERE upload_state = '1' AND filetype IS NULL AND compression is NULL");) {
+						"SELECT track_id, user_name FROM user_tracks WHERE upload_state = '1' AND filetype IS NULL AND compression is NULL order by track_id");) {
 			while (userTrackFiles.next()) {
 				SimpleTrackFile simpleTrackFile = new SimpleTrackFile();
 				long id = userTrackFiles.getLong("track_id"); //$NON-NLS-1$
