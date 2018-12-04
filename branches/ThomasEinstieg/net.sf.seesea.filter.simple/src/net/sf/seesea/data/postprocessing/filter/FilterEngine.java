@@ -169,10 +169,11 @@ public class FilterEngine implements IFilterEngine {
 					if (!clusterOfTrackFiles.isEmpty()) {
 						List<ITrackFile> trackFilesCluster = new ArrayList<ITrackFile>(clusterOfTrackFiles);
 						filterController.process(trackFilesCluster, true);
-						int i = 0;
+						/* this will now be set in filterController.process - depending on processing results 
 						for (ITrackFile iTrackFile : trackFilesCluster) {
 							iTrackFile.setUploadState(ProcessingState.FILE_PROCESSED);
 						}
+						*/
 					}
 					trackPersistence.storePreprocessingStates(clusterOfTrackFiles);
 				} catch (FilterException | TrackPerssitenceException e) {

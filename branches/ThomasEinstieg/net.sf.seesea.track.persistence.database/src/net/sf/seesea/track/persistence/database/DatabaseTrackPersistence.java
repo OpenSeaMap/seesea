@@ -138,6 +138,7 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 					case FILE_CONTENT_UNKNOWN:
 					case FILE_NODATA:
 					case FILE_PROCESSED:
+					case PROCESSING_ERROR:
 						setUploadStateStatement.setInt(1, processingState.ordinal());
 						setUploadStateStatement.setLong(2, iTrackFile.getTrackId());
 						// execute it right away since we expect this does not
