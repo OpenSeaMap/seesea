@@ -26,6 +26,7 @@ import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
+import java.util.Arrays;
 
 import javax.sql.DataSource;
 
@@ -276,24 +277,35 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 						}
 					}
 
+					/* could not find any syntax for in / any that hsql (for testing) AND psql (for production)
+					 * is happy with. Hence we do it the old way. No danger of SQL injection here since we are 
+					 * fiddling with integers.
+					 */
+					StringBuilder bldr = new StringBuilder();
+//					List<Integer> stateInts = new ArrayList<>(processingStates.size());
+					for (ProcessingState processingState : processingStates) {
+//						stateInts.add(processingState.getIndex());
+						if ( bldr.length() > 0 )
+							bldr.append(',');
+						bldr.append( Integer.toString( processingState.getIndex() ) );
+					}
+					String strStates = bldr.toString();
+					
 					ResultSet singleUserTrackFiles = null;
 					PreparedStatement userTracksStatement = connection.prepareStatement(
 							"SELECT track_id, filetype, compression, file_ref, vesselconfigid, upload_state, clusteruuid, clusterseq FROM user_tracks  " //$NON-NLS-1$
 									+ "WHERE (user_tracks.user_name = ? OR user_tracks.user_name = ?) "
 //									+ "AND upload_state = ANY( cast(? as smallint array ) ) "  //$NON-NLS-1$ //$NON-NLS-2$
-									+ "AND upload_state in ( unnest( cast(? as smallint array ) ) ) "  //$NON-NLS-1$ //$NON-NLS-2$
+									+ "AND upload_state in (" + strStates + " ) "  //$NON-NLS-1$ //$NON-NLS-2$
 									+ "AND containertrack IS NULL " + //$NON-NLS-1$
 									"AND track_id NOT IN (SELECT containertrack FROM user_tracks WHERE containertrack IS NOT NULL)"); //$NON-NLS-1$
+
 					userTracksStatement.setString(1, user);
 					userTracksStatement.setString(2, sha1Username);
 					
-					List<Integer> stateInts = new ArrayList<>(processingStates.size());
-					for (ProcessingState processingState : processingStates) {
-						stateInts.add(processingState.getIndex());
-					}
 					
 //					userTracksStatement.setArray(3, connection.createArrayOf("integer", processingStates.toArray()));
-					userTracksStatement.setArray(3, connection.createArrayOf("integer", stateInts.toArray()));
+//					userTracksStatement.setArray(3, connection.createArrayOf("integer", stateInts.toArray()));
 					singleUserTrackFiles = userTracksStatement.executeQuery();
 
 					while (singleUserTrackFiles.next()) {
@@ -393,13 +405,13 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 									"WHERE (user_name = ? OR user_name = ?) " //$NON-NLS-1$ //$NON-NLS-2$
 																				// //$NON-NLS-3$
 //									+ "AND upload_state = ANY(?) " + //$NON-NLS-1$ //$NON-NLS-2$
-									+ "AND upload_state in ( unnest( cast(? as smallint array ) ) ) "  //$NON-NLS-1$ //$NON-NLS-2$
+									+ "AND upload_state in (" + strStates + " ) "  //$NON-NLS-1$ //$NON-NLS-2$
 									+ "AND containertrack IS NULL " + //$NON-NLS-1$
 									"AND track_id IN (SELECT containertrack FROM user_tracks WHERE containertrack IS NOT NULL)"); //$NON-NLS-1$
 					containerTrackUserStatement.setString(1, user);
 					containerTrackUserStatement.setString(2, sha1Username);
 //					containerTrackUserStatement.setArray(3, connection.createArrayOf("integer", processingStates.toArray()));
-					containerTrackUserStatement.setArray(3, connection.createArrayOf("integer", stateInts.toArray()));
+//					containerTrackUserStatement.setArray(3, connection.createArrayOf("integer", stateInts.toArray()));
 					ResultSet mutliTrackFiles = containerTrackUserStatement.executeQuery();
 					while (mutliTrackFiles.next()) {
 						long id = mutliTrackFiles.getLong("track_id"); //$NON-NLS-1$
@@ -409,16 +421,16 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 						Long vesselConfigId = mutliTrackFiles.getLong("vesselconfigid"); //$NON-NLS-1$
 						PreparedStatement compressedFilesStatement = connection
 								.prepareStatement("SELECT track_id, filetype, compression, file_ref FROM user_tracks " + //$NON-NLS-1$
-										"WHERE (user_name = cast( ? as varchar ) OR user_name = cast( ? as varchar ) ) " + //$NON-NLS-1$ //$NON-NLS-2$
+										"WHERE (user_name = cast( ? as varchar ) OR user_name = cast( ? as varchar ) ) " //$NON-NLS-1$ //$NON-NLS-2$
 																					// //$NON-NLS-3$
-//										"AND upload_state = ANY(?) " + //$NON-NLS-1$ //$NON-NLS-2$
-										"AND upload_state in ( unnest( cast(? as smallint array ) ) ) "  //$NON-NLS-1$ //$NON-NLS-2$
+//										+ "AND upload_state = ANY(?) " + //$NON-NLS-1$ //$NON-NLS-2$
+										+ "AND upload_state in (" + strStates + " ) "  //$NON-NLS-1$ //$NON-NLS-2$
 										+ "AND containertrack = ? " + //$NON-NLS-1$ //$NON-NLS-2$
 										"ORDER BY track_id"); //$NON-NLS-1$
 						compressedFilesStatement.setString(1, user);
 						compressedFilesStatement.setString(2, sha1Username);
 //						compressedFilesStatement.setArray(3, connection.createArrayOf("integer", processingStates.toArray()));
-						compressedFilesStatement.setArray(3, connection.createArrayOf("integer", stateInts.toArray()));
+//						compressedFilesStatement.setArray(3, connection.createArrayOf("integer", stateInts.toArray()));
 						compressedFilesStatement.setLong(4, id);
 						ResultSet compressedTracks = compressedFilesStatement.executeQuery();
 						while (compressedTracks.next()) {
