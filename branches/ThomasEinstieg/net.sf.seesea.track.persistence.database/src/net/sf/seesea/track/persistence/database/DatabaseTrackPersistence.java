@@ -310,6 +310,9 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 
 					while (singleUserTrackFiles.next()) {
 						long id = singleUserTrackFiles.getLong("track_id"); //$NON-NLS-1$
+						
+						Logger.getLogger(getClass()).info( "read single track file from db" + Long.toString( id ));
+						
 						String trackFile = basedir + "/" //$NON-NLS-1$
 								+ format.format((id / 100) * 100) + "/" + id + ".dat"; //$NON-NLS-1$ //$NON-NLS-2$
 						String compression = singleUserTrackFiles.getString("compression"); //$NON-NLS-1$
@@ -415,6 +418,7 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 					ResultSet mutliTrackFiles = containerTrackUserStatement.executeQuery();
 					while (mutliTrackFiles.next()) {
 						long id = mutliTrackFiles.getLong("track_id"); //$NON-NLS-1$
+						Logger.getLogger(getClass()).info( "read multi track file from db" + Long.toString( id ));
 						String trackFile = basedir + "/" //$NON-NLS-1$
 								+ format.format((id / 100) * 100) + "/" + id + ".dat"; //$NON-NLS-1$ //$NON-NLS-2$
 						String compression = mutliTrackFiles.getString("compression"); //$NON-NLS-1$
@@ -431,7 +435,8 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 						compressedFilesStatement.setString(2, sha1Username);
 //						compressedFilesStatement.setArray(3, connection.createArrayOf("integer", processingStates.toArray()));
 //						compressedFilesStatement.setArray(3, connection.createArrayOf("integer", stateInts.toArray()));
-						compressedFilesStatement.setLong(4, id);
+//						compressedFilesStatement.setLong(4, id);
+						compressedFilesStatement.setLong(3, id);
 						ResultSet compressedTracks = compressedFilesStatement.executeQuery();
 						while (compressedTracks.next()) {
 							String uncompressedTrackFile = compressedTracks.getString("file_ref"); //$NON-NLS-1$
