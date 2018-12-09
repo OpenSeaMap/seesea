@@ -397,7 +397,8 @@ public class DepthPositionMeasurementStatisticsProcessor<T extends Measurement> 
 						// sanity check - need update rates less then 60 seconds
 						if(updateRate < 90000) {
 							long lSensorQuality = updateRate * measurementCount; 
-							lSensorQuality *= ( iAvailHDOP + measurementCount ) / ( iUnAvailHDOP + measurementCount ); 
+							lSensorQuality *= ( iAvailHDOP + measurementCount );
+							lSensorQuality /= ( iUnAvailHDOP + measurementCount ); 
 							if ( lSensorQuality > bestMeasurment) {
 								bestMeasurment = lSensorQuality;
 								description = new SensorDescriptionUpdateRate<MeasuredPosition3D>(
