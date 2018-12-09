@@ -302,8 +302,8 @@ public class NMEA0183Reader implements IDataReader {
 			}
 			} catch (IllegalArgumentException e) {
 //				Logger.getLogger(getClass()).error(
-				Logger.getLogger(getClass()).debug( // no need to pollute the log file here just because we do not process some NMEA sentences
-						"Unknown message is being ignored " + e.getMessage());
+				//Logger.getLogger(getClass()).debug( // no need to pollute the log file here just because we do not process some NMEA sentences
+				//		"Unknown message is being ignored " + e.getMessage());
 			}
 		}
 		return results;
