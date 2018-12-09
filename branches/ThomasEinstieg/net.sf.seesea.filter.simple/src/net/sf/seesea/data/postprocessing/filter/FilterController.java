@@ -103,7 +103,7 @@ public class FilterController implements IFilterController {
 						if (!trackFile.getFileType().equals(lastFileType)) {
 							Set<SensorDescriptionUpdateRate<Measurement>> bestSensors = measurmentProcessor
 									.getBestSensors();
-							runFilters(trackFiles, bestSensors);
+							runFilters(trackFiles, bestSensors, executeSensorDistribution);
 							trackFiles.clear();
 							lastFileType = trackFile.getFileType();
 							if (executeSensorDistribution) {
@@ -117,7 +117,6 @@ public class FilterController implements IFilterController {
 							}
 							trackFiles.add(trackFile);
 						}
-						trackFile.setUploadState(ProcessingState.FILE_PROCESSED);
 					} else {
 						logger.error("No location preprocessor for file type: " + trackFile.getFileType()); //$NON-NLS-1$
 						trackFile.setUploadState(ProcessingState.FILE_CONTENT_UNKNOWN);
@@ -133,10 +132,10 @@ public class FilterController implements IFilterController {
 			// trigger any open filter run
 			if (!trackFiles.isEmpty() && executeSensorDistribution) {
 				Set<SensorDescriptionUpdateRate<Measurement>> bestSensors = measurmentProcessor.getBestSensors();
-				runFilters(trackFiles, bestSensors);
+				runFilters(trackFiles, bestSensors, executeSensorDistribution);
 			} else if (!trackFiles.isEmpty()) {
 				Set<SensorDescriptionUpdateRate<Measurement>> noSensors = new HashSet<SensorDescriptionUpdateRate<Measurement>>();
-				runFilters(trackFiles, noSensors);
+				runFilters(trackFiles, noSensors, executeSensorDistribution);
 			}
 		} catch (IOException | ProcessingException | StatisticsException e) {
 			throw new FilterException(e);
@@ -155,7 +154,7 @@ public class FilterController implements IFilterController {
 	 * @throws IOException
 	 * @throws ProcessingException
 	 */
-	private void runFilters(List<ITrackFile> orderedFiles, Set<SensorDescriptionUpdateRate<Measurement>> bestSensors)
+	private void runFilters(List<ITrackFile> orderedFiles, Set<SensorDescriptionUpdateRate<Measurement>> bestSensors, boolean executeSensorDistribution)
 			throws IOException, ProcessingException {
 		IFileTypeProcessingFactory fileTypeProcessingFactory = fileTypeProcessingFactoryAR.get();
 
@@ -163,7 +162,11 @@ public class FilterController implements IFilterController {
 		// System.out.println("Wrinting Filter data to " + format);
 
 		boolean processFiles4Filter = false;
+		ITrackFile lastTrackFile = null;
 
+		if ( executeSensorDistribution && bestSensors.isEmpty() )
+			Logger.getLogger(getClass()).error( "no suitable sensors found" );
+		
 		ITrackFile firstTrack = orderedFiles.iterator().next();
 		for (IFilter filter : filters) {
 			try {
@@ -190,10 +193,16 @@ public class FilterController implements IFilterController {
 							Logger.getLogger(getClass()).info("Running filter run for track file processor "
 									+ trackFileProcessor + " with filter " + filter);
 							for (ITrackFile trackFile : orderedFiles) {
+								lastTrackFile = trackFile;
 								try {
 									Logger.getLogger(getClass()).info("Processing track id:" + trackFile.getTrackId());
 									trackFileProcessor.processFile(trackFile);
+									if ( executeSensorDistribution && bestSensors.isEmpty() )
+										trackFile.setUploadState(ProcessingState.FILE_NODATA);
+									else
+										trackFile.setUploadState(ProcessingState.FILE_PROCESSED);
 								} catch (ProcessingException e) {
+									trackFile.setUploadState(ProcessingState.PROCESSING_ERROR);
 									Logger.getLogger(getClass())
 											.error("Partially correct data for for track id " + trackFile.getTrackId());
 								}
@@ -202,7 +211,9 @@ public class FilterController implements IFilterController {
 						}
 					} catch (ProcessingException e) {
 						Logger.getLogger(getClass())
-								.error("Failed to process file", e);
+							.error("Failed to process file", e);
+						if ( lastTrackFile != null )
+							lastTrackFile.setUploadState(ProcessingState.PROCESSING_ERROR);
 					}
 
 				}
