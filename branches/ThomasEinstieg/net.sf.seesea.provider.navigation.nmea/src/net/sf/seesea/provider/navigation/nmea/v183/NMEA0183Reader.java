@@ -19,6 +19,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TimeZone;
+import java.time.LocalTime;
+import java.time.temporal.ChronoField;
+import java.time.temporal.TemporalField;
+import java.time.Duration;
+import java.time.LocalDateTime;
 
 import net.sf.seesea.data.io.IDataReader;
 import net.sf.seesea.model.core.geo.Depth;
@@ -76,8 +81,13 @@ public class NMEA0183Reader implements IDataReader {
 	private boolean useLastDateFromAnotherSentenceGGA = false;
 	
 	private Date lastDate;
+	private Date currentDate;
+	private LocalTime lastRMCLoggerTS;
+	private LocalTime loggerTS = null;
 
 	private boolean processRMCWithMeasurements = true;
+	
+	long timeOffset = 0;
 
 	public NMEA0183Reader(
 			Map<NMEA0183MessageTypes, Set<String>> processMessageTypes2SensorIds, boolean useLastDateFromAnotherSentenceGGA) {
@@ -86,7 +96,10 @@ public class NMEA0183Reader implements IDataReader {
 		this.processMessageTypes2SensorIds = processMessageTypes2SensorIds;
 		this.useLastDateFromAnotherSentenceGGA = useLastDateFromAnotherSentenceGGA;
 		// we need the date for the tide calculations. the GGA sentence does not have the date so we stick to RMC
-		if(useLastDateFromAnotherSentenceGGA && processMessageTypes2SensorIds.containsKey(NMEA0183MessageTypes.GGA) && !processMessageTypes2SensorIds.containsKey(NMEA0183MessageTypes.RMC)) {
+		if(useLastDateFromAnotherSentenceGGA && 
+				( processMessageTypes2SensorIds.containsKey(NMEA0183MessageTypes.GGA) || 
+				  processMessageTypes2SensorIds.containsKey(NMEA0183MessageTypes.GLL) ) && 
+				!processMessageTypes2SensorIds.containsKey(NMEA0183MessageTypes.RMC)) {
 			this.processMessageTypes2SensorIds.put(NMEA0183MessageTypes.RMC, processMessageTypes2SensorIds.get(NMEA0183MessageTypes.GGA));
 			processRMCWithMeasurements = false;
 		} else {
@@ -137,6 +150,31 @@ public class NMEA0183Reader implements IDataReader {
 	public List<Measurement> extractMeasurementsFromNMEA(String line,
 			List<Measurement> results) {
 		String rawContent = removeValidChecksum(line);
+		
+		/* the OSM logger records timestamps. Since it has no RTC, these are relative from logger startup
+		 * we will use these timestamps for timestamping sentences without own timestamps (e.g. GPGLL)
+		 */
+		
+		int iPosDollar = line.indexOf( '$' );
+		if ( iPosDollar == 15 )
+		{
+			if ( 	line.charAt(2)== ':' && 
+					line.charAt(5)== ':' &&
+					line.charAt(8)== '.' &&
+					line.charAt(12)== ';' )
+			{
+				loggerTS = LocalTime.parse( line.substring(0,  12 ) );
+				if ( lastRMCLoggerTS != null )
+				{
+					long lOffset = loggerTS.get( ChronoField.MILLI_OF_DAY ) - lastRMCLoggerTS.get( ChronoField.MILLI_OF_DAY );
+					if ( lOffset < 0 )
+						lOffset += (long)24*60*60*1000;
+					currentDate = new Date( lastDate.getTime() + lOffset );
+				}
+			}
+		
+		}
+		
 		if (rawContent != null) {
 			String[] nmeaContent = rawContent.split(","); //$NON-NLS-1$
 			try {
@@ -145,7 +183,9 @@ public class NMEA0183Reader implements IDataReader {
 						.valueOf(nmeaContent[0].substring(2));
 				Measurement measurement = null;
 				if (processMessageTypes2SensorIds.keySet()
-						.contains(messageType)) {
+						.contains(messageType) /*|| 
+						messageType == NMEA0183MessageTypes.RMC*/ ) // always process RMC to get date/time 
+				{
 					switch (messageType) {
 					case MTW:
 						measurement = MTW_WaterTemperature(nmeaContent);
@@ -196,9 +236,13 @@ public class NMEA0183Reader implements IDataReader {
 					case RMC:
 						measurement = RMC_Position(nmeaContent);
 						if (measurement != null) {
-							addMeasurmentIfUnfiltered(results,
-									processMessageTypes2SensorIds, measurement,
-									NMEA0183MessageTypes.RMC);
+							//if (processMessageTypes2SensorIds.keySet()
+							//		.contains(messageType) )
+							//{
+								addMeasurmentIfUnfiltered(results,
+										processMessageTypes2SensorIds, measurement,
+										NMEA0183MessageTypes.RMC);
+							//}
 						}
 						break;
 					case ZDA:
@@ -249,10 +293,16 @@ public class NMEA0183Reader implements IDataReader {
 					default:
 						break;
 					}
+					if ( measurement != null && measurement.getTime() == null &&  loggerTS != null && timeOffset > 0 )
+					{
+						Date dt = new Date( timeOffset + loggerTS.get( ChronoField.MILLI_OF_DAY ) );
+						measurement.setTime( dt );
+					}
 				}
 			}
 			} catch (IllegalArgumentException e) {
-				Logger.getLogger(getClass()).error(
+//				Logger.getLogger(getClass()).error(
+				Logger.getLogger(getClass()).debug( // no need to pollute the log file here just because we do not process some NMEA sentences
 						"Unknown message is being ignored " + e.getMessage());
 			}
 		}
@@ -647,6 +697,7 @@ public class NMEA0183Reader implements IDataReader {
 			
 			if(useLastDateFromAnotherSentenceGGA) {
 				lastDate = geoPosition.getTime();
+				lastRMCLoggerTS = loggerTS;
 			}
 		} catch (NumberFormatException e) {
 			// TODO: handle exception
@@ -728,7 +779,10 @@ public class NMEA0183Reader implements IDataReader {
 					measurmentTimeCalendar.set(Calendar.HOUR_OF_DAY, lastTimeCalendar.get(Calendar.HOUR_OF_DAY));
 					measurmentTimeCalendar.set(Calendar.MINUTE, lastTimeCalendar.get(Calendar.MINUTE));
 					measurmentTimeCalendar.set(Calendar.SECOND, lastTimeCalendar.get(Calendar.SECOND));
-					geoPosition.setTime(measurmentTimeCalendar.getTime());
+					long lTime = lastTimeCalendar.getTime().getTime();
+					if ( lTime < lastDate.getTime() - 2 * 1000 * 60 * 60 ) // overflow e.g. 23:59:59 -> 00:00:01
+						lTime += 60*60*24*1000;
+					geoPosition.setTime( new Date( lTime ) );
 					geoPosition.setRelative(false);
 				}
 			}
@@ -982,7 +1036,10 @@ public class NMEA0183Reader implements IDataReader {
 						lastTimeCalendar.setTimeZone(TimeZone.getTimeZone("UTC")); //$NON-NLS-1$
 						lastTimeCalendar.set(Calendar.YEAR, lastTimeCalendar.get(Calendar.YEAR));
 						lastTimeCalendar.set(Calendar.DAY_OF_YEAR, lastTimeCalendar.get(Calendar.DAY_OF_YEAR));
-						geoPosition.setTime(lastTimeCalendar.getTime());
+						long lTime = lastTimeCalendar.getTime().getTime();
+						if ( lTime < lastDate.getTime() - 2 * 1000 * 60 * 60 ) // overflow e.g. 23:59:59 -> 00:00:01
+							lTime += 60*60*24*1000;
+						geoPosition.setTime( new Date( lTime ) );
 						geoPosition.setRelative(false);
 					}
 				}

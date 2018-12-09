@@ -27,6 +27,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.sf.seesea.data.postprocessing.filter;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -90,7 +91,11 @@ public class DepthPositionMeasurementStatisticsProcessor<T extends Measurement> 
 						((CompositeMeasurement) measurement).getMeasurements(),
 						messageType, trackfile);
 			} else if (measurement instanceof MeasuredPosition3D
-					&& (measurement.getTime() != null || !(trackfile.isHasAbsoluteTimedMeasurements() || trackfile.isHasRelativeTimedMeasurements())) && measurement.isValid()) {
+					&& (measurement.getTime() != null 
+						// FIXME:  thomas-osm: Why do we fiddle with timings when neither the measurement nor the format has time?
+						// see fixed exception below
+						|| !(trackfile.isHasAbsoluteTimedMeasurements() || trackfile.isHasRelativeTimedMeasurements())) 
+					&& measurement.isValid()) {
 				MeasuredPosition3D measuredPosition3D = (MeasuredPosition3D) measurement;
 				Map<String, Map<String, Map<Long, Integer>>> sensorId2Distribution = getSensorId2MessageType((Class<T>) MeasuredPosition3D.class);
 				Map<String, Map<Long, Integer>> messageType2Distrubution = getMessageType2Distribution(
@@ -103,15 +108,31 @@ public class DepthPositionMeasurementStatisticsProcessor<T extends Measurement> 
 				Long lastMeasurment = getLastMeasurment4Sensor(messageType,
 						sensorId2Time);
 
-				long measurmentTime = measurement.getTime().getTime();
-				long timeDifference = measurmentTime - lastMeasurment;
-				Integer count = updateDistribution.get(timeDifference);
-				if (count == null) {
-					count = 0;
+				// FIXME: thomas-osm: handle case where no previous time was available
+				/* TG 2018-12-06 as far as I understand this:
+				 * normally the timestamp of a previous measurement ( in conjunction with timestamping done by the logger??? ) is
+				 * used when a measurement does not contain time itself.
+				 * but if this measurement was not preceded by one containing time, no time is available.
+				 * this case was not handled here. I am not sure what to do, but 4 the time being I just disable any code 
+				 * dealing with time in this case.
+				 * Unfortuneately this lead to exceptions that where silently caught and ignored. The track status was
+				 * set to "PROCESSED" anyway
+				 */
+	
+				Date dt = measurement.getTime();
+				if ( dt != null )
+				{
+					long measurmentTime = dt.getTime();
+					long timeDifference = measurmentTime - lastMeasurment;
+					Integer count = updateDistribution.get(timeDifference);
+					if (count == null) {
+						count = 0;
+					}
+					updateDistribution.put(timeDifference, count + 1);
+					sensorId2Time.put(messageType, measurmentTime);
+					lastMeasurmentTime = measurmentTime;
 				}
-				updateDistribution.put(timeDifference, count + 1);
-				sensorId2Time.put(messageType, measurmentTime);
-
+				
 				// check hdop availablity in sentence
 				SensorDescription<MeasuredPosition3D> sensorDescription = new SensorDescription<MeasuredPosition3D>(
 						MeasuredPosition3D.class, measurement.getSensorID(),
@@ -134,7 +155,8 @@ public class DepthPositionMeasurementStatisticsProcessor<T extends Measurement> 
 					if (countHdop == null) {
 						countHdop = 0;
 					}
-					hdopDistribution.put(true, countHdop + 1);
+					// hdopDistribution.put(true, countHdop + 1); thomas-osm 2018-12-07 copy-paste error?
+					hdopDistribution.put(false, countHdop + 1);
 				}
 
 				// set measurement distribution
@@ -150,7 +172,6 @@ public class DepthPositionMeasurementStatisticsProcessor<T extends Measurement> 
 									measuredPosition3D.getPrecision()));
 				}
 
-				lastMeasurmentTime = measurmentTime;
 			} else if ((measurement instanceof Depth
 					|| measurement instanceof Heading || measurement instanceof Speed)
 					&& measurement.isValid()) {
@@ -185,7 +206,17 @@ public class DepthPositionMeasurementStatisticsProcessor<T extends Measurement> 
 				} else {
 					measurmentTime = measurement.getTime().getTime();
 				}
+
+				// thomas-osm
+				/* uninitialized last time revisited: if last time is 0 (uninitialized) timeDifference equals current time.
+				 * this is cast to an integer some lines below, which then becomes negative, just to mess things further up.
+				 * hence:
+				 */
+				if ( lastMeasurment == 0 || lastMeasurment > measurmentTime )
+					lastMeasurment = measurmentTime; 
+				
 				long timeDifference = measurmentTime - lastMeasurment;
+					
 				if (timeDifference == 0) {
 					// raise count
 					// Map<String, Map<String, Long>> sensorId2MessageType =
@@ -334,6 +365,7 @@ public class DepthPositionMeasurementStatisticsProcessor<T extends Measurement> 
 		for (Entry<Class<T>, Map<String, Map<String, Map<Long, Integer>>>> sensor1 : sensorRateDistribution
 				.entrySet()) {
 			if (MeasuredPosition3D.class.isAssignableFrom(sensor1.getKey())) {
+				//Map<String, Map<String, Map<Boolean, Integer>>> sensor1HDOP = hdopAvailability.g .get( sensor1.getKey() );
 				for (Entry<String, Map<String, Map<Long, Integer>>> sensor : sensor1
 						.getValue().entrySet()) {
 					for (Entry<String, Map<Long, Integer>> sensorIds2Distribution : sensor
@@ -343,13 +375,31 @@ public class DepthPositionMeasurementStatisticsProcessor<T extends Measurement> 
 								sensorIds2Distribution.getKey());
 						Integer measurementCount = sensorIds2Distribution
 								.getValue().get(updateRate);
+						
+						SensorDescription<MeasuredPosition3D> sensorDescription = new SensorDescription<MeasuredPosition3D>(
+								MeasuredPosition3D.class, sensor.getKey(),
+								sensorIds2Distribution.getKey());
+
+						/*
+						SensorDescription<MeasuredPosition3D> sensorDescriptionHDOP = new SensorDescription<MeasuredPosition3D>(
+								MeasuredPosition3D.class, sensor.getKey(),
+								sensorIds2Distribution.getKey() );
+						*/
+						
+						Integer iAvailHDOP = hdopAvailability.get( sensorDescription ).get( new Boolean(true ) );
+						Integer iUnAvailHDOP = hdopAvailability.get( sensorDescription ).get( new Boolean(false ) );
+						
+						if ( iAvailHDOP == null )
+							iAvailHDOP = new Integer( 1 );
+						if ( iUnAvailHDOP == null )
+							iUnAvailHDOP = new Integer( 1 );
+						
 						// sanity check - need update rates less then 60 seconds
 						if(updateRate < 90000) {
-							if (updateRate * measurementCount > bestMeasurment) {
-								bestMeasurment = updateRate * measurementCount;
-								SensorDescription<MeasuredPosition3D> sensorDescription = new SensorDescription<MeasuredPosition3D>(
-										MeasuredPosition3D.class, sensor.getKey(),
-										sensorIds2Distribution.getKey());
+							long lSensorQuality = updateRate * measurementCount; 
+							lSensorQuality *= ( iAvailHDOP + measurementCount ) / ( iUnAvailHDOP + measurementCount ); 
+							if ( lSensorQuality > bestMeasurment) {
+								bestMeasurment = lSensorQuality;
 								description = new SensorDescriptionUpdateRate<MeasuredPosition3D>(
 										MeasuredPosition3D.class,
 										sensor.getKey(),
