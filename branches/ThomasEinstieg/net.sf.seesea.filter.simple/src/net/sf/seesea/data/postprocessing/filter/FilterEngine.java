@@ -166,19 +166,22 @@ public class FilterEngine implements IFilterEngine {
 			for (Entry<String, List<ITrackFile>> clusterId2TrackFiles : trackFiles.entrySet()) {
 				List<ITrackFile> clusterOfTrackFiles = clusterId2TrackFiles.getValue();
 				try {
-					if (!clusterOfTrackFiles.isEmpty()) {
-						List<ITrackFile> trackFilesCluster = new ArrayList<ITrackFile>(clusterOfTrackFiles);
-						filterController.process(trackFilesCluster, true);
-						/* this will now be set in filterController.process - depending on processing results 
-						for (ITrackFile iTrackFile : trackFilesCluster) {
-							iTrackFile.setUploadState(ProcessingState.FILE_PROCESSED);
+					try {
+						if (!clusterOfTrackFiles.isEmpty()) {
+							List<ITrackFile> trackFilesCluster = new ArrayList<ITrackFile>(clusterOfTrackFiles);
+							filterController.process(trackFilesCluster, true);
+							/* this will now be set in filterController.process - depending on processing results 
+							for (ITrackFile iTrackFile : trackFilesCluster) {
+								iTrackFile.setUploadState(ProcessingState.FILE_PROCESSED);
+							}
+							*/
 						}
-						*/
+					} catch (FilterException e ) {
+						Logger.getLogger(getClass()).error("Problem during filtering:", e);
 					}
 					trackPersistence.storePreprocessingStates(clusterOfTrackFiles);
-				} catch (FilterException | TrackPerssitenceException e) {
-					Logger.getLogger(getClass()).error("Problem during filtering:", e);
-				}
+				} catch (TrackPerssitenceException e) {
+				}	
 			}
 		}
 
