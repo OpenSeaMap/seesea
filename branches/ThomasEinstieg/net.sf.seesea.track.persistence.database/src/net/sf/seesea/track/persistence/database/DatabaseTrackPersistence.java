@@ -235,6 +235,8 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 		Map<String, List<ITrackFile>> user2Tracks = new HashMap<String, List<ITrackFile>>();
 		DecimalFormat format = new DecimalFormat("000"); //$NON-NLS-1$
 
+		long lCurrentTrack = 0;
+		
 		try (Connection connection = uploadDataSource.getConnection();
 				Statement usersStatement = connection.createStatement();
 				ResultSet userSet = usersStatement.executeQuery(
@@ -311,6 +313,7 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 
 					while (singleUserTrackFiles.next()) {
 						long id = singleUserTrackFiles.getLong("track_id"); //$NON-NLS-1$
+						lCurrentTrack = id;
 						
 						Logger.getLogger(getClass()).info( "read single track file from db" + Long.toString( id ));
 						
@@ -361,6 +364,7 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 									List<IContainedTrackFile> unzippedFiles2 = new ArrayList<>();
 									for (ITrackFileDecompressor trackFileDecompressor : trackFileDecompressors) {
 										long id2 = trackFileY.getTrackId();
+										lCurrentTrack = id2;
 										String trackFile2 = MessageFormat.format("{0}/{1}/{2}.dat", basedir, //$NON-NLS-1$
 												format.format((id2 / 100) * 100),
 												fileFormat.format(id));
@@ -387,6 +391,7 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 									List<IContainedTrackFile> unzippedFiles2 = new ArrayList<>();
 									for (ITrackFileDecompressor trackFileDecompressor : trackFileDecompressors) {
 										long id2 = trackFileY.getTrackId();
+										lCurrentTrack = id2;
 										String trackFile2 = MessageFormat.format("{0}/{1}/{2}.dat", basedir, //$NON-NLS-1$
 												format.format((id2 / 100) * 100),
 												fileFormat.format(id));
@@ -419,6 +424,7 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 					ResultSet mutliTrackFiles = containerTrackUserStatement.executeQuery();
 					while (mutliTrackFiles.next()) {
 						long id = mutliTrackFiles.getLong("track_id"); //$NON-NLS-1$
+						lCurrentTrack = id;
 						Logger.getLogger(getClass()).info( "read multi track file from db" + Long.toString( id ));
 						String trackFile = basedir + "/" //$NON-NLS-1$
 								+ format.format((id / 100) * 100) + "/" + id + ".dat"; //$NON-NLS-1$ //$NON-NLS-2$
@@ -506,7 +512,7 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 				}
 			}
 		} catch (SQLException | IOException e1) {
-			throw new TrackPerssitenceException(e1);
+			throw new TrackPerssitenceException( "track_id " + Long.toString( lCurrentTrack ), e1);
 		}
 
 		return user2Tracks;
