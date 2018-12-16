@@ -138,6 +138,11 @@ public class FilterController implements IFilterController {
 				runFilters(trackFiles, noSensors, executeSensorDistribution);
 			}
 		} catch (IOException | ProcessingException | StatisticsException e) {
+			// if an exception is caught here, consequently all involved track files have status error
+			for (ITrackFile trackFile : trackFiles) {
+				trackFile.setUploadState( ProcessingState.PROCESSING_ERROR );
+			}
+			
 			throw new FilterException(e);
 		}
 	}
@@ -164,8 +169,11 @@ public class FilterController implements IFilterController {
 		boolean processFiles4Filter = false;
 		ITrackFile lastTrackFile = null;
 
-		if ( executeSensorDistribution && bestSensors.isEmpty() )
-			Logger.getLogger(getClass()).error( "no suitable sensors found" );
+//		if ( executeSensorDistribution && bestSensors.isEmpty() )
+//			Logger.getLogger(getClass()).error( "no suitable sensors found" );
+		if ( executeSensorDistribution && bestSensors.size() < 2 )
+			throw new ProcessingException( "did not find sensor for at least position and depth" );
+		
 		
 		ITrackFile firstTrack = orderedFiles.iterator().next();
 		for (IFilter filter : filters) {
@@ -204,7 +212,7 @@ public class FilterController implements IFilterController {
 								} catch (ProcessingException e) {
 									trackFile.setUploadState(ProcessingState.PROCESSING_ERROR);
 									Logger.getLogger(getClass())
-											.error("Partially correct data for for track id " + trackFile.getTrackId());
+											.error("Partially correct data for for track id " + trackFile.getTrackId(), e);
 								}
 							}
 							filter.finish();

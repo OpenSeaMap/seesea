@@ -64,7 +64,13 @@ public class FilterControllerTest {
 		
 		FilterController filterController = new FilterController();
 		filterController.bindFileTypeProcessingFactory(processingFactory);
+		try
+		{
 		filterController.process(trackFiles, true);
+		} catch ( FilterException e ) {
+			
+		}
+	
 	}
 
 	@Test
