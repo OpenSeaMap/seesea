@@ -181,6 +181,7 @@ public class FilterEngine implements IFilterEngine {
 					}
 					trackPersistence.storePreprocessingStates(clusterOfTrackFiles);
 				} catch (TrackPerssitenceException e) {
+					Logger.getLogger(getClass()).error("Problem during track writing to database:", e);
 				}	
 			}
 		}
