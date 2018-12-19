@@ -111,7 +111,10 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 				PreparedStatement updateTrackFileStatement = sourceConnection.prepareStatement(
 						"UPDATE user_tracks SET filetype=?, compression=?, upload_state=?WHERE track_id = ?");
 				PreparedStatement setUploadStateStatement = sourceConnection
-						.prepareStatement("UPDATE user_tracks SET upload_state= ? WHERE track_id = ?");) {
+						.prepareStatement("UPDATE user_tracks SET upload_state= ? WHERE track_id = ?");
+				PreparedStatement insertInfoStatement = sourceConnection.prepareStatement(
+						"insert into track_info( tra_id, short_info, long_info ) values( ?, ?, ? )" );
+			) {
 			// long i = 0;
 			for (ITrackFile iTrackFile : trackFiles) {
 				// i += 1L;
@@ -144,6 +147,13 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 						// execute it right away since we expect this does not
 						// happen very often
 						setUploadStateStatement.execute();
+						if ( iTrackFile.getErrorText() != null )
+						{
+							insertInfoStatement.setLong( 1, iTrackFile.getTrackId() );
+							insertInfoStatement.setString( 2, "ERROR" );
+							insertInfoStatement.setString( 3, iTrackFile.getErrorText() );
+							insertInfoStatement.execute();
+						}
 						break;
 					default:
 						break;
