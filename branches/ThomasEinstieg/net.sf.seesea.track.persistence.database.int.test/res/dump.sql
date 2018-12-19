@@ -128,6 +128,18 @@ CREATE TABLE vesselconfiguration (
     maximumspeed numeric (3,1) NULL,
     "type" integer  NULL
 );
+
+create table track_info (
+	 id bigint not null,
+	 tra_id bigint,
+	 short_info varchar( 20 ),
+	 long_info varchar( 1000 ),
+	 reprocess boolean,
+	 discard boolean, 
+	 ignore boolean
+);
+
+
 ALTER TABLE vesselconfiguration ADD CONSTRAINT vesselconfiguration_pkey PRIMARY KEY (id);
 
 INSERT INTO user_profiles(user_name, attempts)  VALUES ( 'test@test.de', 1);

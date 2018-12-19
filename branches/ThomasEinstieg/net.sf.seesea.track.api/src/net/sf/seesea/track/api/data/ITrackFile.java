@@ -113,5 +113,9 @@ public interface ITrackFile {
 	String getClusterUUID();
 
 	int getSequenceNumber();
+	
+	String getErrorText();
+	
+	void setErrorText( String strText );
 
 }

@@ -56,6 +56,7 @@ public abstract class AbstractTrackFile implements ITrackFile {
 	private IBoatParameters boatParameters;
 	private String clusterUUID;
 	private int sequenceNumber;
+	private String errorText;
 
 	public AbstractTrackFile() {
 		super();
@@ -218,6 +219,13 @@ public abstract class AbstractTrackFile implements ITrackFile {
 		return sequenceNumber;
 	}
 
+	public String getErrorText() {
+		return errorText;
+	}
+	
+	public void setErrorText( String strText ) {
+		errorText = strText;
+	}
     
 	
 	
