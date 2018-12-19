@@ -141,8 +141,14 @@ public class FilterController implements IFilterController {
 			// if an exception is caught here, consequently all involved track files have status error
 			for (ITrackFile trackFile : trackFiles) {
 				trackFile.setUploadState( ProcessingState.PROCESSING_ERROR );
+				if ( trackFile.getErrorText() == null )
+				{
+					String strMsg = e.getMessage();
+					if ( strMsg.length() > 1990 )
+						strMsg = strMsg.substring( 0, 1990 ) + "...";
+					trackFile.setErrorText( strMsg );
+				}
 			}
-			
 			throw new FilterException(e);
 		}
 	}
