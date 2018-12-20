@@ -46,6 +46,7 @@ import net.sf.seesea.data.io.IDataWriter;
 import net.sf.seesea.data.io.WriterException;
 import net.sf.seesea.data.postprocessing.process.IFilter;
 import net.sf.seesea.model.core.geo.Depth;
+import net.sf.seesea.model.core.geo.GeoPosition3D;
 import net.sf.seesea.model.core.geo.MeasuredPosition3D;
 import net.sf.seesea.model.core.physx.CompositeMeasurement;
 import net.sf.seesea.model.core.physx.Measurement;
@@ -176,53 +177,74 @@ public class UnfilteredMeasurementProcessor implements IFilter {
 	 * @throws WriterException
 	 */
 	private void filterMeasurementWindow() throws WriterException {
+		/*
 		MeasuredPosition3D lastPosition = (MeasuredPosition3D) measurementWindow2.getPositions()
 				.get(measurementWindow2.getPositions().size() - 1);
-
-		Depth depth = null;
-		if (!measurementWindow2.getDepths().isEmpty()) {
-			List<Measurement> measurements = new ArrayList<Measurement>(2);
-			measurements.add(lastPosition);
-			depth = measurementWindow2.getDepths().get(measurementWindow2.getDepths().size() - 1);
-			// System.out.println(lastPosition.getLatitude().getDecimalDegree()
-			// + ":" + lastPosition.getLongitude().getDecimalDegree() + ":" +
-			// depth.getDepth());
-			IWaterLevelCorrection tideProvider = waterLevelCorrectionAR.get();
-			if (tideProvider != null) {
-				Depth depthOut = EcoreUtil.copy(depth);
-				double tideHeight;
-				try {
-					tideHeight = tideProvider.getCorrection(lastPosition.getLatitude().getDecimalDegree(),
-							lastPosition.getLongitude().getDecimalDegree(), lastPosition.getTime());
-					if (!Double.isNaN(tideHeight)) {
-						depthOut.setDepth(depth.getDepth() - tideHeight);
-						correctDepthByBoat(depthOut);
-						measurements.add(depthOut);
-						writerFactoryAR.get().write(measurements, true, lastSourceTrackIdentifier);
-					} else {
+				
+		bad things happened here: in processSingleMeasurement, a new window was opened whenever
+		a new valid position arrived. Depth measurements were then added to the window. Then the last depth measurement
+		was attached to the one and only position here - in fact associating the position with the most distant depth.
+		*/
+		for( GeoPosition3D position : measurementWindow2.getPositions() )
+		{
+			Depth depth = null;
+			MeasuredPosition3D lastPosition = (MeasuredPosition3D) position;
+			long lTimeDist = Long.MAX_VALUE;
+			for( Depth d : measurementWindow2.getDepths() )
+			{
+				long l = lastPosition.getTime().getTime() - d.getTime().getTime();
+				if ( Math.abs( l ) < lTimeDist )
+				{
+					depth = d;
+					lTimeDist = l;
+				}
+			}
+			
+			if ( depth != null )
+			{
+				List<Measurement> measurements = new ArrayList<Measurement>(2);
+				measurements.add(lastPosition);
+				// depth = measurementWindow2.getDepths().get(measurementWindow2.getDepths().size() - 1); // see above
+				// System.out.println(lastPosition.getLatitude().getDecimalDegree()
+				// + ":" + lastPosition.getLongitude().getDecimalDegree() + ":" +
+				// depth.getDepth());
+				IWaterLevelCorrection tideProvider = waterLevelCorrectionAR.get();
+				if (tideProvider != null) {
+					Depth depthOut = EcoreUtil.copy(depth);
+					double tideHeight;
+					try {
+						tideHeight = tideProvider.getCorrection(lastPosition.getLatitude().getDecimalDegree(),
+								lastPosition.getLongitude().getDecimalDegree(), lastPosition.getTime());
+						if (!Double.isNaN(tideHeight)) {
+							depthOut.setDepth(depth.getDepth() - tideHeight);
+							correctDepthByBoat(depthOut);
+							measurements.add(depthOut);
+							writerFactoryAR.get().write(measurements, true, lastSourceTrackIdentifier);
+						} else {
+							Logger.getLogger(getClass())
+							.info("No water level correction for:" + lastPosition.getLatitude().getDecimalDegree() + ":"
+									+ lastPosition.getLongitude().getDecimalDegree() + ":" + lastPosition.getTime());
+						}
+					} catch (WaterLevelCorrectionException e) {
 						Logger.getLogger(getClass())
 						.info("No water level correction for:" + lastPosition.getLatitude().getDecimalDegree() + ":"
 								+ lastPosition.getLongitude().getDecimalDegree() + ":" + lastPosition.getTime());
 					}
-				} catch (WaterLevelCorrectionException e) {
-					Logger.getLogger(getClass())
-					.info("No water level correction for:" + lastPosition.getLatitude().getDecimalDegree() + ":"
-							+ lastPosition.getLongitude().getDecimalDegree() + ":" + lastPosition.getTime());
-				}
-			} else {
-				if(enableBoatOffsetFiltering) {
-					Depth depthOut = EcoreUtil.copy(depth);
-					correctDepthByBoat(depthOut);
-					measurements.add(depthOut);
 				} else {
-					measurements.add(depth);
+					if(enableBoatOffsetFiltering) {
+						Depth depthOut = EcoreUtil.copy(depth);
+						correctDepthByBoat(depthOut);
+						measurements.add(depthOut);
+					} else {
+						measurements.add(depth);
+					}
+					writerFactoryAR.get().write(measurements, true, lastSourceTrackIdentifier);
 				}
-				writerFactoryAR.get().write(measurements, true, lastSourceTrackIdentifier);
-			}
-			// System.out.println(latitude.getDecimalDegree() + ":" +
-			// longitude.getDecimalDegree() + ": " + depth);
-			if(measurementWindow2 != null) {
-				measurementWindow2 = null;
+				// System.out.println(latitude.getDecimalDegree() + ":" +
+				// longitude.getDecimalDegree() + ": " + depth);
+				if(measurementWindow2 != null) {
+					measurementWindow2 = null;
+				}
 			}
 		}
 	}

@@ -18,12 +18,13 @@ import net.sf.seesea.model.core.geo.GeoPosition3D;
 import net.sf.seesea.model.core.geo.MeasuredPosition3D;
 import net.sf.seesea.model.core.physx.Measurement;
 import net.sf.seesea.track.api.IMeasurementListener;
+import net.sf.seesea.track.api.exception.RawDataEventException;
 
 public class SL2ReaderTest {
 
 
 	@Test
-	public void testReadNoData() {
+	public void testReadNoData() throws RawDataEventException{
 		SL2Reader sl2Reader = new SL2Reader();
 		IMeasurementListener measurementListener = EasyMock.createNiceMock(IMeasurementListener.class);
 		Capture<List<Measurement>> measurements = Capture.<List<Measurement>>newInstance();
@@ -35,7 +36,7 @@ public class SL2ReaderTest {
 	}
 
 	@Test
-	public void testReadUTCDate() throws IOException {
+	public void testReadUTCDate() throws IOException, RawDataEventException {
 		URL sl2File = FrameworkUtil.getBundle(ISL2Reader.class).findEntries("res", "timeStrippedHeader.dat", false).nextElement();
 		DataInputStream dataInputStream = new DataInputStream(sl2File.openStream());
 		byte[] input = new byte[4096];
@@ -62,7 +63,7 @@ public class SL2ReaderTest {
 	}
 	
 	@Test
-	public void testReadSecondBlockUTCDate() throws IOException {
+	public void testReadSecondBlockUTCDate() throws IOException, RawDataEventException {
 		URL sl2File = FrameworkUtil.getBundle(ISL2Reader.class).findEntries("res", "timeStrippedHeader.dat", false).nextElement();
 		DataInputStream dataInputStream = new DataInputStream(sl2File.openStream());
 		byte[] input = new byte[8192];
