@@ -16,6 +16,7 @@ import net.sf.seesea.model.core.geo.RelativeDepthMeasurementPosition;
 import net.sf.seesea.model.core.physx.Measurement;
 import net.sf.seesea.model.util.GeoParser;
 import net.sf.seesea.track.api.IMeasurementListener;
+import net.sf.seesea.track.api.exception.RawDataEventException;
 
 public class SL2Reader implements ISL2Listener {
 
@@ -27,10 +28,10 @@ public class SL2Reader implements ISL2Listener {
 	}
 	
 	@Override
-	public void notifySL2Block(int[] data) {
+	public void notifySL2Block(int[] data)  throws RawDataEventException {
 
-		short a11 = getShort(data, 0);
-		short a12 = getShort(data, 2);
+		// short a11 = getShort(data, 0);
+		// short a12 = getShort(data, 2);
 		// int a2 = toBigEndianInt(dataInputStream.readInt()); // 4
 		// short a31 = toBigEndianShort(dataInputStream.readShort()); // 8
 		// short a32 = toBigEndianShort(dataInputStream.readShort()); // 10
@@ -41,7 +42,7 @@ public class SL2Reader implements ISL2Listener {
 		// short a7 = toBigEndianShort(dataInputStream.readShort()); // 24
 
 		short blockSize = getShort(data, 28);
-		short lastBlockSize = getShort(data, 30);
+		//short lastBlockSize = getShort(data, 30);
 		Short sensorID = getShort(data, 32);
 		// // 28
 		// short a1 = toBigEndianShort(dataInputStream.readShort()); // 30
@@ -89,6 +90,11 @@ public class SL2Reader implements ISL2Listener {
 
 		 float waterTemperature = Float.intBitsToFloat(getInt(data,104));
 		 try {
+			 if ( blockSize < 140 )
+				throw new RawDataEventException( "block size too small" );
+			 
+			short flags = getShort(data, 132);
+			
 			 Longitude longitude = GeoParser.parseLongitude(toLongitude(getInt(data, 108))); // 104
 			 Latitude latitude = GeoParser.parseLatitude(toLatitude(getInt(data, 112))); // 104
 			 float speed = Float.intBitsToFloat(getInt(data,116));
@@ -96,6 +102,17 @@ public class SL2Reader implements ISL2Listener {
 			 short bitmask = getShort(data, 128);
 			 
 			 int time = getInt(data,140);
+			 
+			 /* just for debugging
+			 if ( longitude.getDegree() > 2 )
+			 {
+				 int i=0;
+			 }
+			 else
+			 {
+				 int i=1;
+			 }
+			 */ 
 			 
 			 // 112
 			 // dataInputStream.read(x, 0, 4);
@@ -117,27 +134,27 @@ public class SL2Reader implements ISL2Listener {
 			 MeasuredPosition3D geoPosition3D = GeoFactory.eINSTANCE.createMeasuredPosition3D();
 			 geoPosition3D.setLatitude(latitude);
 			 geoPosition3D.setLongitude(longitude);
-			 geoPosition3D.setValid(true);
+			 geoPosition3D.setValid( ( ( flags & 0x0010 ) != 0 ) );
+			 
+			 Date dt;
 			 if(utctime != null) {
-				 geoPosition3D.setTime(new Date(utctime + time));
+				 dt = new Date(utctime + time);
 			 } else {
-				 geoPosition3D.setTime(new Date(time));
+				 dt = new Date(time);
 			 }
+			 geoPosition3D.setTime( dt );
+
+			 
 			 Depth depth = GeoFactory.eINSTANCE.createDepth();
 			 depth.setMeasurementPosition(RelativeDepthMeasurementPosition.SURFACE);
 			 depth.setDepth(surfaceDepth);
 			 depth.setSensorID(sensorID.toString());
 			 depth.setValid(true);
-			 if(utctime != null) {
-				 depth.setTime(new Date(utctime + time));
-			 } else {
-				 depth.setTime(new Date(time));
-			 }
+			 depth.setTime( dt );
 			 
 			 List<Measurement> measurements = new ArrayList<Measurement>(2);
 			 measurements.add(geoPosition3D);
 			 measurements.add(depth);
-			 
 			 
 			 for (IMeasurementListener measurementListener : listeners) {
 				 measurementListener.notify(measurements);
