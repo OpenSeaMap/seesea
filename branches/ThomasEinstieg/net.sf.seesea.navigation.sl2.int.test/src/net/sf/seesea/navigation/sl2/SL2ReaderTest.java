@@ -31,7 +31,15 @@ public class SL2ReaderTest {
 		measurementListener.notify(EasyMock.capture(measurements));
 		sl2Reader.addMeasurementListener(measurementListener);
 		int[] data = new int[144];
-		sl2Reader.notifySL2Block(data);
+		try
+		{
+			sl2Reader.notifySL2Block(data);
+		}
+		catch( RawDataEventException e )
+		{
+			// FIXME: should do some special handling here
+			// this exception is expected because the block is uninitialized
+		}
 		assertFalse(measurements.hasCaptured());
 	}
 
