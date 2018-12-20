@@ -192,11 +192,18 @@ public class UnfilteredMeasurementProcessor implements IFilter {
 			long lTimeDist = Long.MAX_VALUE;
 			for( Depth d : measurementWindow2.getDepths() )
 			{
-				long l = lastPosition.getTime().getTime() - d.getTime().getTime();
-				if ( Math.abs( l ) < lTimeDist )
+				if ( lastPosition.getTime() != null && d.getTime() != null )
+				{
+					long l = lastPosition.getTime().getTime() - d.getTime().getTime();
+					if ( Math.abs( l ) < lTimeDist )
+					{
+						depth = d;
+						lTimeDist = l;
+					}
+				}
+				else
 				{
 					depth = d;
-					lTimeDist = l;
 				}
 			}
 			
