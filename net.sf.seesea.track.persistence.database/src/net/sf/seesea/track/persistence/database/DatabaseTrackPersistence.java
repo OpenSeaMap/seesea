@@ -247,10 +247,25 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 
 		long lCurrentTrack = 0;
 		
+		/* could not find any syntax for in / any that hsql (for testing) AND psql (for production)
+		 * is happy with. Hence we do it the old way. No danger of SQL injection here since we are 
+		 * fiddling with integers.
+		 */
+		StringBuilder bldr = new StringBuilder();
+//		List<Integer> stateInts = new ArrayList<>(processingStates.size());
+		for (ProcessingState processingState : processingStates) {
+//			stateInts.add(processingState.getIndex());
+			if ( bldr.length() > 0 )
+				bldr.append(',');
+			bldr.append( Integer.toString( processingState.getIndex() ) );
+		}
+		String strStates = bldr.toString();
+		
 		try (Connection connection = uploadDataSource.getConnection();
 				Statement usersStatement = connection.createStatement();
 				ResultSet userSet = usersStatement.executeQuery(
-						"SELECT user_name FROM user_profiles WHERE user_name IN (SELECT DISTINCT user_name FROM user_tracks)")) {
+						"SELECT user_name FROM user_profiles WHERE user_name IN (SELECT DISTINCT user_name FROM user_tracks where upload_state in( "
+							+ strStates + " ) ) limit 1") ) {
 			while (userSet.next()) {
 				List<ITrackFile> orderedFiles = new ArrayList<ITrackFile>();
 				String user = userSet.getString(1);
@@ -290,20 +305,6 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 						}
 					}
 
-					/* could not find any syntax for in / any that hsql (for testing) AND psql (for production)
-					 * is happy with. Hence we do it the old way. No danger of SQL injection here since we are 
-					 * fiddling with integers.
-					 */
-					StringBuilder bldr = new StringBuilder();
-//					List<Integer> stateInts = new ArrayList<>(processingStates.size());
-					for (ProcessingState processingState : processingStates) {
-//						stateInts.add(processingState.getIndex());
-						if ( bldr.length() > 0 )
-							bldr.append(',');
-						bldr.append( Integer.toString( processingState.getIndex() ) );
-					}
-					String strStates = bldr.toString();
-					
 					ResultSet singleUserTrackFiles = null;
 					PreparedStatement userTracksStatement = connection.prepareStatement(
 							"SELECT track_id, filetype, compression, file_ref, vesselconfigid, upload_state, clusteruuid, clusterseq FROM user_tracks  " //$NON-NLS-1$
@@ -311,7 +312,7 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 //									+ "AND upload_state = ANY( cast(? as smallint array ) ) "  //$NON-NLS-1$ //$NON-NLS-2$
 									+ "AND upload_state in (" + strStates + " ) "  //$NON-NLS-1$ //$NON-NLS-2$
 									+ "AND containertrack IS NULL " + //$NON-NLS-1$
-									"AND track_id NOT IN (SELECT containertrack FROM user_tracks WHERE containertrack IS NOT NULL) order by track_id"); //$NON-NLS-1$
+									"AND track_id NOT IN (SELECT containertrack FROM user_tracks WHERE containertrack IS NOT NULL) order by track_id limit 1"); //$NON-NLS-1$
 
 					userTracksStatement.setString(1, user);
 					userTracksStatement.setString(2, sha1Username);
