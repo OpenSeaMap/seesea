@@ -53,7 +53,9 @@ public class NMEA2000TrackFileProcessorTest {
 		nmea2000TrackFileProcessor.processFile(simpleTrackFile);
 		
 		assertFalse(measurements.isEmpty());
-		assertEquals(8373, measurements.size());
+		// processing has been corrected, checksum is now checked and escaping is handled correctly, hence:
+//		assertEquals(8373, measurements.size());
+		assertEquals(8827, measurements.size());
 
 		Measurement measurement = measurements.get(0);
 		assertTrue(measurement instanceof MeasuredPosition3D);
