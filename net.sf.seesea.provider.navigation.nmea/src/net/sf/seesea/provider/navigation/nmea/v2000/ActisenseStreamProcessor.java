@@ -92,6 +92,7 @@ public class ActisenseStreamProcessor implements IStreamProcessor, INMEA2000Read
 			} else if (c == STARTTX) {
 				state = MessageProcessingState.MESSAGE_MESSAGE;
 			} else if ((c == DLE) || ((c == ESCAPE) && isFile) || noEscape) {
+				message[counter++] = c;								// this was missing... argh!!!
 				state = MessageProcessingState.MESSAGE_MESSAGE;
 			} else {
 				state = MessageProcessingState.MESSAGE_START;
@@ -125,7 +126,9 @@ public class ActisenseStreamProcessor implements IStreamProcessor, INMEA2000Read
 		  long checksum = 0;
 		  if(is[1] + 2 >= is.length) {
 //			  System.out.println("No checksum");
-			  checksum = 0;
+			  // checksum = 0;
+			  checksum = -1;
+			  // no way!!! when there is no checksum, the message is corrupt and we ignore it!!
 		  } else {
 			  for (int i = 0; i < is[1] + 2; i++) {
 				  checksum += is[i];

@@ -90,6 +90,8 @@ public class GNSSPositionData extends SequencedPGN {
 		quality = GNSSIntegrity.of(bitfields);
 		satelitesVisible = data[33];
 		
+		/* FIXME: process HDOP and PDOP, which are encoded in bytes 34,35 and 36,37 with factor 100 */ 
+		
 		geodialSeparation = new Distance(Arrays.copyOfRange(data, 37, 41));
 	}
 
