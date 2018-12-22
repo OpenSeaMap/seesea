@@ -426,7 +426,7 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 //									+ "AND upload_state = ANY(?) " + //$NON-NLS-1$ //$NON-NLS-2$
 									+ "AND upload_state in (" + strStates + " ) "  //$NON-NLS-1$ //$NON-NLS-2$
 									+ "AND containertrack IS NULL " + //$NON-NLS-1$
-									"AND track_id IN (SELECT containertrack FROM user_tracks WHERE containertrack IS NOT NULL) order by track_id"); //$NON-NLS-1$
+									"AND track_id IN (SELECT containertrack FROM user_tracks WHERE containertrack IS NOT NULL) order by track_id limit 1"); //$NON-NLS-1$
 					containerTrackUserStatement.setString(1, user);
 					containerTrackUserStatement.setString(2, sha1Username);
 //					containerTrackUserStatement.setArray(3, connection.createArrayOf("integer", processingStates.toArray()));
