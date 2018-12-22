@@ -91,3 +91,5 @@
 2016-11-06 14:35:11,758 INFO  root - Heartbeat thread sucessfully interrupted
 2016-11-06 14:35:15,182 INFO  root - Heartbeat thread sucessfully interrupted
 2016-11-06 14:35:15,182 INFO  root - Heartbeat thread sucessfully interrupted
+2018-12-22 22:36:40,478 INFO  root - Heartbeat thread sucessfully interrupted
+2018-12-22 22:36:40,478 INFO  root - Heartbeat thread sucessfully interrupted
