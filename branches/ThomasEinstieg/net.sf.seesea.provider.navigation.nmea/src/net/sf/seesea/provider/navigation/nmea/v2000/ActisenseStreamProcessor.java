@@ -35,6 +35,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.osgi.service.component.annotations.Component;
 
 import net.sf.seesea.track.api.IStreamProcessor;
@@ -47,6 +48,7 @@ import net.sf.seesea.track.api.IStreamProcessor;
 public class ActisenseStreamProcessor implements IStreamProcessor, INMEA2000Reader {
 
 	private MessageProcessingState state;
+	private MessageProcessingState laststate;
 
 	private boolean noEscape = false;
 
@@ -77,12 +79,14 @@ public class ActisenseStreamProcessor implements IStreamProcessor, INMEA2000Read
 	 * assembles the nmea 2000 message
 	 */
 	public boolean readByte(int c, String providerName) {
+		/*
 		if (state.equals(MessageProcessingState.MESSAGE_START)) {
 			if ((c == 0x1B) && isFile) {
 				noEscape = true;
 			}
 		}
-
+		
+		
 		if (state.equals(MessageProcessingState.MESSAGE_ESACPE)) {
 			if (c == ENDTX) {
 				messageReceived(Arrays.copyOfRange(message, 0, counter));
@@ -110,6 +114,45 @@ public class ActisenseStreamProcessor implements IStreamProcessor, INMEA2000Read
 				state = MessageProcessingState.MESSAGE_ESACPE;
 			}
 		}
+		*/
+		
+		/* thomas-osm 2018-12-23 the above version contained a special handling for escape (0x1b) characters
+		 * this makes it impossible to have this character in the data stream and led to all sorts of problems.
+		 * As DLE is used for escaping, this does not seem to make any sense. hence:
+		 */
+		
+		
+		if (state.equals(MessageProcessingState.MESSAGE_ESACPE)) {
+			if (c == ENDTX) {
+				messageReceived(Arrays.copyOfRange(message, 0, counter));
+				counter = 0;
+				state = MessageProcessingState.MESSAGE_START;
+			} else if (c == STARTTX) {
+				state = MessageProcessingState.MESSAGE_MESSAGE;
+				counter = 0;
+			} else if ( c == DLE) {
+				message[counter++] = c;								// this was missing... argh!!!
+				state = MessageProcessingState.MESSAGE_MESSAGE;
+			} else {
+				Logger.getLogger( getClass() ).warn( "invalid escape sequence" );
+				state = MessageProcessingState.MESSAGE_START;
+				counter = 0;
+//				state = laststate;
+			}
+		} else if (state == MessageProcessingState.MESSAGE_MESSAGE) {
+			if (c == DLE) {
+				state = MessageProcessingState.MESSAGE_ESACPE;
+			} else {
+				message[counter++] = c;
+			}
+		} else {
+			if (c == DLE) {
+				state = MessageProcessingState.MESSAGE_ESACPE;
+			}
+		}
+		
+		//if ( state != MessageProcessingState.MESSAGE_ESACPE )
+			laststate = state;
 		return processData;
 	}
 
@@ -117,25 +160,43 @@ public class ActisenseStreamProcessor implements IStreamProcessor, INMEA2000Read
 		int command;
 		  if (is.length < 3)
 		  {
+			Logger.getLogger( getClass() ).warn( "message too short" );
 		    return;
-		  } else if(is.length < is[1] + 2) {
+		  }
+
+		  /*
+		  if( is.length > is[1] + 3 ) 
+		  {
+			  // no way!!! when the length is wrong, the message is corrupt and we ignore it!!
+			  Logger.getLogger( getClass() ).warn( "message too long" );
+		  }
+		*/
+		  
+		  if( is.length != is[1] + 3 ) 
+		  {
+			  // no way!!! when the length is wrong, the message is corrupt and we ignore it!!
+			  
+			  /* it is absolutely essential to strictly check the message length here. Bogus 0-bytes are frequently
+			   * inserted into the data stream. Since they do not change the checksum, this is the only way to detect them.
+			   */
+			  Logger.getLogger( getClass() ).warn( "invalid message length / no checksum" );
 			  return;
-		  } 
+		  }
+		  
 		  command = is[0];
 		  
 		  long checksum = 0;
-		  if(is[1] + 2 >= is.length) {
-//			  System.out.println("No checksum");
-			  // checksum = 0;
-			  checksum = -1;
-			  // no way!!! when there is no checksum, the message is corrupt and we ignore it!!
-		  } else {
-			  for (int i = 0; i < is[1] + 2; i++) {
-				  checksum += is[i];
-			  }
-//			  System.out.println(is[is[1] + 2] + ":" + checksum % 256);
-			  checksum = 0;
+		  
+//		  for (int i = 0; i < is[1] + 2; i++) {
+		  /* the checksum was calculated incorrectly here. As of course it then never was ok,
+		   * checking the checksum was disabled altogether (see below), which led of all kind of debris finding
+		   * its way to into the database.
+		   */
+		  for (int i = 0; i < is.length; i++) {
+			  checksum += is[i];
 		  }
+//			  System.out.println(is[is[1] + 2] + ":" + checksum % 256);ads
+		  // checksum = 0; häh???? 
 		  
 		  if(checksum % 256 == 0) {
 			  if (command == N2K_MSG_RECEIVED) {
@@ -143,6 +204,10 @@ public class ActisenseStreamProcessor implements IStreamProcessor, INMEA2000Read
 			  } else if(command == 160) {
 				  processNmea2000Message(Arrays.copyOfRange(is, 2, is.length));
 			  }
+		  }
+		  else
+		  {
+			  Logger.getLogger( getClass() ).warn( "invalid checksum" );
 		  }
 		  
 	}

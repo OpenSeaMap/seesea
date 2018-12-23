@@ -78,6 +78,12 @@ public class GNSSPositionData extends SequencedPGN {
 		positionDate = new DateDayCount(Arrays.copyOfRange(data, 1, 3));
 		timeOfDay = new TimeOfDay(Arrays.copyOfRange(data, 3, 7));
 		latitude = new LatitudeExt(Arrays.copyOfRange(data, 7, 15));
+		
+		if ( latitude.getValue() < 1 )
+		{
+			System.out.println( "blah" );
+		}
+		
 		longitude = new LongitudeExt(Arrays.copyOfRange(data, 15, 23));
 		altitude = new Altitude(Arrays.copyOfRange(data, 23, 31));
 		int[] byte31 = Arrays.copyOfRange(data, 31, 32);
