@@ -217,9 +217,9 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 		// EnumSet<ProcessingState> preprocessed = EnumSet.of(ProcessingState.CLUSTERED);
 		EnumSet<ProcessingState> preprocessed = EnumSet.of(ProcessingState.PREPROCESSED);
 		Map<String, List<ITrackFile>> user2PostprocessTrackCluster = getUser2PostprocessTrackCluster(preprocessed);
-		Map<String, List<ITrackFile>> clusterId2TrackFile = new HashMap<>();
 		Map<String, Map<String, List<ITrackFile>>> mapResult = new HashMap<>();
 		for (Entry<String, List<ITrackFile>> user2TrackFile : user2PostprocessTrackCluster.entrySet()) {
+			Map<String, List<ITrackFile>> clusterId2TrackFile = new HashMap<>();
 			List<ITrackFile> trackFiles = user2TrackFile.getValue();
 			for (ITrackFile trackFile : trackFiles) {
 				String clusterUUID = trackFile.getClusterUUID();
