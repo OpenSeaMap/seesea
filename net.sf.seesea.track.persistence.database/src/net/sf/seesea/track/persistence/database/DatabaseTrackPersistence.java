@@ -176,7 +176,7 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 				if (iTrackFile.getTrackFiles().size() > 0) {
 					for (ITrackFile track : iTrackFile.getTrackFiles()) {
 						try (PreparedStatement createTrackFileStatement = sourceConnection.prepareStatement(
-								"INSERT INTO user_tracks (track_id, user_name, file_ref, upload_state,  filetype, compression, containertrack) VALUES(nextval('user_tracks_track_id_seq'), ?, ?, ?, ?, ?, ?)")) {
+								"INSERT INTO user_tracks ( user_name, file_ref, upload_state,  filetype, compression, containertrack) VALUES( ?, ?, ?, ?, ?, ?)")) {
 							createTrackFileStatement.setString(1, track.getUsername());
 							createTrackFileStatement.setString(2, ((IContainedTrackFile) track).getTrackQualifier());
 							createTrackFileStatement.setInt(3, ProcessingState.PREPROCESSED.ordinal());
