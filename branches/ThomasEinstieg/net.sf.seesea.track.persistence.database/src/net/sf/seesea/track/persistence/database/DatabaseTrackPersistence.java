@@ -265,7 +265,7 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 				Statement usersStatement = connection.createStatement();
 				ResultSet userSet = usersStatement.executeQuery(
 						"SELECT user_name FROM user_profiles WHERE user_name IN (SELECT DISTINCT user_name FROM user_tracks where upload_state in( "
-							+ strStates + " ) ) limit 1") ) {
+							+ strStates + " ) ) ") ) {
 			while (userSet.next()) {
 				List<ITrackFile> orderedFiles = new ArrayList<ITrackFile>();
 				String user = userSet.getString(1);
@@ -312,7 +312,7 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 //									+ "AND upload_state = ANY( cast(? as smallint array ) ) "  //$NON-NLS-1$ //$NON-NLS-2$
 									+ "AND upload_state in (" + strStates + " ) "  //$NON-NLS-1$ //$NON-NLS-2$
 									+ "AND containertrack IS NULL " + //$NON-NLS-1$
-									"AND track_id NOT IN (SELECT containertrack FROM user_tracks WHERE containertrack IS NOT NULL) order by track_id limit 1"); //$NON-NLS-1$
+									"AND track_id NOT IN (SELECT containertrack FROM user_tracks WHERE containertrack IS NOT NULL) order by track_id "); //$NON-NLS-1$
 
 					userTracksStatement.setString(1, user);
 					userTracksStatement.setString(2, sha1Username);
@@ -335,6 +335,16 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 						Long vesselConfigId = singleUserTrackFiles.getLong("vesselconfigid"); //$NON-NLS-1$
 						ProcessingState processingState = ProcessingState
 								.forCode(singleUserTrackFiles.getInt("upload_state"));
+						
+						/* FIXME in order to prevent unclustered tracks from being treated as a single track, we simulate a unique cluster id for each track */
+						String clusterUUID = singleUserTrackFiles.getString("clusteruuid");
+						if ( clusterUUID == null || clusterUUID.isEmpty() )
+						{
+							clusterUUID = Long.toString( id );
+						}
+						int iSeq = singleUserTrackFiles.getInt( "clusterseq" );
+						if ( iSeq == 0 )
+							iSeq = 1;
 
 						if (compression == null) {
 							SimpleTrackFile trackFileX = new SimpleTrackFile();
@@ -345,6 +355,7 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 							trackFileX.setName(singleUserTrackFiles.getString("file_ref"));
 							trackFileX.setVesselConfiguration(vesselConfigurationList.get(vesselConfigId));
 							trackFileX.setUploadState(processingState);
+							trackFileX.setCluster( clusterUUID );
 							orderedFiles.add(trackFileX);
 						} else {
 							CompressionType compressionType = CompressionType.getCompressionType(compression);
@@ -358,11 +369,11 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 								trackFileX.setName(singleUserTrackFiles.getString("file_ref"));
 								trackFileX.setVesselConfiguration(vesselConfigurationList.get(vesselConfigId));
 								trackFileX.setUploadState(processingState);
+								trackFileX.setCluster( clusterUUID );
 								orderedFiles.add(trackFileX);
 								break;
 							case ZIP:
 								try {
-
 									ZipFile zipFile = new ZipFile(trackFile);
 									ZipEntryTrackFile trackFileY = new ZipEntryTrackFile(zipFile,
 											zipFile.entries().nextElement());
@@ -372,6 +383,8 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 									trackFileY.setName(singleUserTrackFiles.getString("file_ref"));
 									trackFileY.setVesselConfiguration(vesselConfigurationList.get(vesselConfigId));
 									trackFileY.setUploadState(processingState);
+									trackFileY.setCluster( clusterUUID );
+									trackFileY.setClusterSequenceNumber( iSeq++ );
 									List<IContainedTrackFile> unzippedFiles2 = new ArrayList<>();
 									for (ITrackFileDecompressor trackFileDecompressor : trackFileDecompressors) {
 										long id2 = trackFileY.getTrackId();
@@ -381,6 +394,10 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 												fileFormat.format(id));
 										File file = new File(trackFile2);
 										unzippedFiles2 = trackFileDecompressor.getTracks(compressionType, file);
+										for ( ITrackFile track : orderedFiles )
+										{
+											track.setClusterSequenceNumber( iSeq++ );
+										}
 										orderedFiles.addAll(unzippedFiles2);
 									}
 									if (unzippedFiles2.size() == 0) {
@@ -399,6 +416,8 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 									trackFileY.setName(singleUserTrackFiles.getString("file_ref"));
 									trackFileY.setVesselConfiguration(vesselConfigurationList.get(vesselConfigId));
 									trackFileY.setUploadState(processingState);
+									trackFileY.setCluster( clusterUUID );
+									trackFileY.setClusterSequenceNumber( iSeq++ );
 									List<IContainedTrackFile> unzippedFiles2 = new ArrayList<>();
 									for (ITrackFileDecompressor trackFileDecompressor : trackFileDecompressors) {
 										long id2 = trackFileY.getTrackId();
@@ -408,6 +427,10 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 												fileFormat.format(id));
 										File file = new File(trackFile2);
 										unzippedFiles2 = trackFileDecompressor.getTracks(compressionType, file);
+										for ( ITrackFile track : orderedFiles )
+										{
+											track.setClusterSequenceNumber( iSeq++ );
+										}
 										orderedFiles.addAll(unzippedFiles2);
 									}
 									if (unzippedFiles2.size() == 0) {
@@ -427,7 +450,7 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 //									+ "AND upload_state = ANY(?) " + //$NON-NLS-1$ //$NON-NLS-2$
 									+ "AND upload_state in (" + strStates + " ) "  //$NON-NLS-1$ //$NON-NLS-2$
 									+ "AND containertrack IS NULL " + //$NON-NLS-1$
-									"AND track_id IN (SELECT containertrack FROM user_tracks WHERE containertrack IS NOT NULL) order by track_id limit 1"); //$NON-NLS-1$
+									"AND track_id IN (SELECT containertrack FROM user_tracks WHERE containertrack IS NOT NULL) order by track_id "); //$NON-NLS-1$
 					containerTrackUserStatement.setString(1, user);
 					containerTrackUserStatement.setString(2, sha1Username);
 //					containerTrackUserStatement.setArray(3, connection.createArrayOf("integer", processingStates.toArray()));
@@ -440,9 +463,21 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 						String trackFile = basedir + "/" //$NON-NLS-1$
 								+ format.format((id / 100) * 100) + "/" + id + ".dat"; //$NON-NLS-1$ //$NON-NLS-2$
 						String compression = mutliTrackFiles.getString("compression"); //$NON-NLS-1$
+						
+						/* FIXME in order to prevent unclustered tracks from being treated as a single track, we simulate a unique cluster id for each track */
+						String clusterUUID = mutliTrackFiles.getString("clusteruuid");
+						if ( clusterUUID == null || clusterUUID.isEmpty() )
+						{
+							clusterUUID = Long.toString( id );
+						}
+						int iSeq = mutliTrackFiles.getInt( "clusterseq" );
+						if ( iSeq == 0 )
+							iSeq = 1;
+						
+						
 						Long vesselConfigId = mutliTrackFiles.getLong("vesselconfigid"); //$NON-NLS-1$
 						PreparedStatement compressedFilesStatement = connection
-								.prepareStatement("SELECT track_id, filetype, compression, file_ref FROM user_tracks " + //$NON-NLS-1$
+								.prepareStatement("SELECT track_id, filetype, compression, file_ref, clusteruuid, clusterseq FROM user_tracks " + //$NON-NLS-1$
 										"WHERE (user_name = cast( ? as varchar ) OR user_name = cast( ? as varchar ) ) " //$NON-NLS-1$ //$NON-NLS-2$
 																					// //$NON-NLS-3$
 //										+ "AND upload_state = ANY(?) " + //$NON-NLS-1$ //$NON-NLS-2$
@@ -460,6 +495,17 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 							String uncompressedTrackFile = compressedTracks.getString("file_ref"); //$NON-NLS-1$
 							String mimeType = compressedTracks.getString("filetype"); //$NON-NLS-1$
 							CompressionType compressionType = CompressionType.getCompressionType(compression);
+							
+							String clusterUUIDSub = compressedTracks.getString("clusteruuid");
+							if ( clusterUUIDSub == null || clusterUUIDSub.isEmpty() )
+							{
+								clusterUUIDSub = clusterUUID;
+							}
+							
+							int iSubSeq = compressedTracks.getInt( "clusterseq" );
+							if ( iSubSeq == 0 )
+								iSubSeq = iSeq++;
+							
 							switch (compressionType) {
 							case ZIP:
 								try {
@@ -472,6 +518,9 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 										zippedTrack.setName(compressedTracks.getString("file_ref"));
 										zippedTrack.setVesselConfiguration(vesselConfigurationList.get(vesselConfigId));
 
+										zippedTrack.setCluster( clusterUUIDSub );
+										zippedTrack.setClusterSequenceNumber( iSubSeq );
+										
 										orderedFiles.add(zippedTrack);
 									} else {
 										Logger.getLogger(getClass())
@@ -487,6 +536,10 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 										zippedTrack.setFileType(mimeType);
 										zippedTrack.setTrackId(compressedTracks.getLong("track_id"));
 										zippedTrack.setName(compressedTracks.getString("file_ref"));
+
+										zippedTrack.setCluster( clusterUUIDSub );
+										zippedTrack.setClusterSequenceNumber( iSubSeq );
+
 										orderedFiles.add(zippedTrack);
 									} else {
 										Logger.getLogger(getClass())
@@ -500,6 +553,10 @@ public class DatabaseTrackPersistence implements ITrackPersistence {
 								gzipTrackFile.setFileType(mimeType);
 								gzipTrackFile.setTrackId(compressedTracks.getLong("track_id"));
 								gzipTrackFile.setName(compressedTracks.getString("file_ref"));
+								
+								gzipTrackFile.setCluster( clusterUUIDSub );
+								gzipTrackFile.setClusterSequenceNumber( iSubSeq );
+								
 								orderedFiles.add(gzipTrackFile);
 								break;
 							case SEVEN_ZIP:
