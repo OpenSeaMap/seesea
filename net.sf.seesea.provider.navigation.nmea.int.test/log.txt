@@ -93,3 +93,1766 @@
 2016-11-06 14:35:15,182 INFO  root - Heartbeat thread sucessfully interrupted
 2018-12-22 22:36:40,478 INFO  root - Heartbeat thread sucessfully interrupted
 2018-12-22 22:36:40,478 INFO  root - Heartbeat thread sucessfully interrupted
+2018-12-23 14:01:22,730 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:22,763 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,154 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,154 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,154 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,154 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,154 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,154 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,169 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,169 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,169 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,169 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,169 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,169 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,169 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,169 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,169 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,169 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,169 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,169 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,169 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,169 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,169 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,169 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,169 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,169 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,169 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,169 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,169 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,169 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,169 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,169 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,169 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,169 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,169 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,169 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,185 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,185 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,185 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,185 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,185 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,185 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,185 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,185 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,185 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,185 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,185 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,185 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,185 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,185 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,185 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,185 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,185 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,185 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,185 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,185 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,185 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,185 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,201 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,201 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,201 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,201 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,201 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,201 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,201 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,201 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,201 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,201 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,201 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,201 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,201 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,201 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,201 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,201 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,201 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,201 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,201 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,201 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,201 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,201 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,201 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,201 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,201 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,201 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,201 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,216 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,216 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,216 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,216 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,216 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,216 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,216 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,216 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,232 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,232 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,232 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,232 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,232 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,232 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,232 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,232 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,232 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,232 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,232 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,232 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,232 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,232 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,232 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,232 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,232 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,232 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,232 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,232 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,232 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,232 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,232 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,232 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,232 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,232 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,248 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,248 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,248 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,248 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,248 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,263 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,263 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,263 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,263 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,294 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,310 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,310 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,310 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,310 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,310 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,310 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,310 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,310 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,326 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,342 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,357 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,373 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,388 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,388 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,388 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,388 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,388 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,388 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,388 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,388 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,388 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,388 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,388 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,388 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,388 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,388 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,388 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,404 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,435 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,435 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,435 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,435 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,435 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,435 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,435 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,435 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,435 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,435 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,435 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,435 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,435 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,435 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,451 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,467 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,483 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,497 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,513 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,529 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,544 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,560 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,576 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,576 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,576 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,576 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,576 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,576 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,576 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,576 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,576 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,576 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,576 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,591 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,607 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,622 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,638 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,654 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,669 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,685 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,701 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid escape sequence
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - message too short
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:23,716 WARN  v2000.ActisenseStreamProcessor - invalid message length / no checksum
+2018-12-23 14:01:24,044 INFO  root - Heartbeat thread sucessfully interrupted
+2018-12-23 14:01:24,044 INFO  root - Heartbeat thread sucessfully interrupted
