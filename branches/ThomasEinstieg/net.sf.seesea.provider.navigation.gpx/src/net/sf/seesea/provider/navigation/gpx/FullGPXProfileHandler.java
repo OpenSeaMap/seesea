@@ -175,6 +175,7 @@ public class FullGPXProfileHandler extends DefaultHandler {
 				list.add(depth);
 			}
 			geoPositionInTrackPoint = null;
+			depth = null; //TG argh!!! this was missing and all the following empty trackpoints were written with the old depth.
 			try {
 				if(list.size() > 1) {
 					measurmentProcessor.processMeasurements(list, "trkpt", trackFile);
@@ -193,6 +194,7 @@ public class FullGPXProfileHandler extends DefaultHandler {
 			list.add(geoPositionInTrackPoint);
 			list.add(depth);
 			geoPositionInTrackPoint = null;
+			depth = null; //TG argh!!! this was missing and all the following empty trackpoints were written with the old depth.
 			try {
 				measurmentProcessor.processMeasurements(list, "lgb", trackFile);
 			} catch (ProcessingException e) {
