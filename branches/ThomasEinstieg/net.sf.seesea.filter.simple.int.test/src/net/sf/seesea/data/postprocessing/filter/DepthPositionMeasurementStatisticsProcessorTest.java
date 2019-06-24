@@ -2,6 +2,8 @@ package net.sf.seesea.data.postprocessing.filter;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNull;
+
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -19,6 +21,7 @@ import net.sf.seesea.model.core.physx.Measurement;
 import net.sf.seesea.track.api.ITrackFileProcessor;
 import net.sf.seesea.track.api.data.ITrackFile;
 import net.sf.seesea.track.api.data.SensorDescriptionUpdateRate;
+import net.sf.seesea.track.api.exception.ProcessingException;
 
 public class DepthPositionMeasurementStatisticsProcessorTest {
 
@@ -52,14 +55,17 @@ public class DepthPositionMeasurementStatisticsProcessorTest {
 
 		depthPositionMeasurementStatisticsProcessor.processMeasurements(measurements, "GLL", trackFile);
 		SensorDescriptionUpdateRate<MeasuredPosition3D> bestPositionSensor = depthPositionMeasurementStatisticsProcessor.getBestPositionSensor();
+		/* due to the new vicinity test we do not expect any results here
 		Class<?> measurement = bestPositionSensor.getMeasurement();
 		assertTrue(measurement.isAssignableFrom(MeasuredPosition3D.class));
 		assertEquals(1000,bestPositionSensor.getUpdateRate());
 		assertEquals("GLL",bestPositionSensor.getMessageType());
+		*/
+		assertNull(bestPositionSensor);
 	}
 	
 	@Test
-	@Ignore
+	//@Ignore
 	public void testDepthLocationMeasurements() {
 		ITrackFileProcessor trackFileProcessor = EasyMock.createNiceMock(ITrackFileProcessor.class);
 		EasyMock.replay(trackFileProcessor);
@@ -98,6 +104,12 @@ public class DepthPositionMeasurementStatisticsProcessorTest {
 		EasyMock.replay(trackFile);
 
 		depthPositionMeasurementStatisticsProcessor.processMeasurements(measurements, "GLL", trackFile);
+		try {
+			depthPositionMeasurementStatisticsProcessor.finish();
+		} catch ( ProcessingException x )
+		{
+			assertTrue(false);
+		}
 		SensorDescriptionUpdateRate<MeasuredPosition3D> bestPositionSensor = depthPositionMeasurementStatisticsProcessor.getBestPositionSensor();
 		Class<?> measurement = bestPositionSensor.getMeasurement();
 		assertTrue(measurement.isAssignableFrom(MeasuredPosition3D.class));

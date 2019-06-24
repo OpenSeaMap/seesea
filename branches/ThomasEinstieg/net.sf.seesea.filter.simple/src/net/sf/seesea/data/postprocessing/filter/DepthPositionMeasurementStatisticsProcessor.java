@@ -28,6 +28,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package net.sf.seesea.data.postprocessing.filter;
 
 import java.util.Date;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -56,6 +57,7 @@ import net.sf.seesea.track.api.exception.ProcessingException;
  */
 public class DepthPositionMeasurementStatisticsProcessor<T extends Measurement> implements IStatisticsPreprocessor {
 
+	
 	private Map<Class<T>, Map<String, Map<String, Map<Long, Integer>>>> sensorRateDistribution;
 
 	private Map<Class<?>, Map<String, Map<String, Long>>> lastMeasurement;
@@ -67,7 +69,13 @@ public class DepthPositionMeasurementStatisticsProcessor<T extends Measurement> 
 	private Map<SensorDescription<MeasuredPosition3D>, Integer> positionPrecisionDigits;
 
 	private long lastMeasurmentTime;
+	
+	private int nextInsertionPoint = 49;
+	private int nextExtractionPoint = 0;
+	private MeasurementContainer[] aContainers = new MeasurementContainer[99];
 
+	private ITrackFile m_trackfile;
+	
 	public DepthPositionMeasurementStatisticsProcessor() {
 		lastMeasurmentTime = 0;
 		sensorRateDistribution = new HashMap<Class<T>, Map<String, Map<String, Map<Long, Integer>>>>();
@@ -77,6 +85,45 @@ public class DepthPositionMeasurementStatisticsProcessor<T extends Measurement> 
 		positionPrecisionDigits = new HashMap<SensorDescription<MeasuredPosition3D>, Integer>();
 	}
 
+	/*
+	 * check if a depth measurement has a position measurement in the vicinity (+- 50 measurements) and vice versa. 
+	 * otherwise the measurement is useless and should not be taken into account for the stats.
+	 */
+	private boolean checkVicinity( MeasurementContainer contEx )
+	{
+		boolean bFound = false;
+		if ( contEx != null )
+		{
+			if( contEx.GetMeasurement() instanceof MeasuredPosition3D )
+			{
+				for ( MeasurementContainer cont:aContainers )
+				{
+					if ( cont != null && cont.GetMeasurement() instanceof Depth )
+					{
+						bFound = true;
+						break;
+					}
+				}
+			}
+			else if ( contEx.GetMeasurement() instanceof Depth )
+			{
+				for ( MeasurementContainer cont:aContainers )
+				{
+					if ( cont != null && cont.GetMeasurement() instanceof MeasuredPosition3D )
+					{
+						bFound = true;
+						break;
+					}
+				}
+			}
+			else
+			{
+				bFound = true;
+			}
+		}
+		return bFound;
+	}
+	
 	/**
 	 * 
 	 * @param results
@@ -90,162 +137,189 @@ public class DepthPositionMeasurementStatisticsProcessor<T extends Measurement> 
 				processMeasurements(
 						((CompositeMeasurement) measurement).getMeasurements(),
 						messageType, trackfile);
-			} else if (measurement instanceof MeasuredPosition3D
-					&& (measurement.getTime() != null 
-						// FIXME:  thomas-osm: Why do we fiddle with timings when neither the measurement nor the format has time?
-						// see fixed exception below
-						|| !(trackfile.isHasAbsoluteTimedMeasurements() || trackfile.isHasRelativeTimedMeasurements())) 
-					&& measurement.isValid()) {
-				MeasuredPosition3D measuredPosition3D = (MeasuredPosition3D) measurement;
-				Map<String, Map<String, Map<Long, Integer>>> sensorId2Distribution = getSensorId2MessageType((Class<T>) MeasuredPosition3D.class);
-				Map<String, Map<Long, Integer>> messageType2Distrubution = getMessageType2Distribution(
-						measurement.getSensorID(), sensorId2Distribution);
-				Map<String, Map<String, Long>> sensorID2MessageType = getLastMeasurement4Sensor((Class<T>) MeasuredPosition3D.class);
-				Map<String, Long> sensorId2Time = getMessageType2Time(
-						measurement, sensorID2MessageType);
-				Map<Long, Integer> updateDistribution = getDistribution(
-						messageType, messageType2Distrubution);
-				Long lastMeasurment = getLastMeasurment4Sensor(messageType,
-						sensorId2Time);
-
-				// FIXME: thomas-osm: handle case where no previous time was available
-				/* TG 2018-12-06 as far as I understand this:
-				 * normally the timestamp of a previous measurement ( in conjunction with timestamping done by the logger??? ) is
-				 * used when a measurement does not contain time itself.
-				 * but if this measurement was not preceded by one containing time, no time is available.
-				 * this case was not handled here. I am not sure what to do, but 4 the time being I just disable any code 
-				 * dealing with time in this case.
-				 * Unfortuneately this lead to exceptions that where silently caught and ignored. The track status was
-				 * set to "PROCESSED" anyway
+			} else {
+				/* thomas-osm 2019-06-23: some track files suffer from an extremely uneven deistribution of measurements,
+				 * where we have, for example, 2 gps sensors and one of them only runs when there are no depth measurements. 
+				 * This led to files with 1000nds of measurements not yielding any results because the stats processor picked
+				 * the wrong gps sensor.
+				 * I now have an array of 100 measurements and check whether each depth measurement has at least a gps
+				 * measurement in its vicinity and vice versa. If not, it is simply ignored for stats.
+				 * The array is used round robin and the remainders are processed in finish().
+				 * 
+				 * I do this here, away from the rest of processing since <all<the<nested<containers>>>> give me headaches.
 				 */
-	
-				Date dt = measurement.getTime();
-				if ( dt != null )
-				{
-					long measurmentTime = dt.getTime();
-					long timeDifference = measurmentTime - lastMeasurment;
-					Integer count = updateDistribution.get(timeDifference);
-					if (count == null) {
-						count = 0;
-					}
-					updateDistribution.put(timeDifference, count + 1);
-					sensorId2Time.put(messageType, measurmentTime);
-					lastMeasurmentTime = measurmentTime;
-				}
 				
-				// check hdop availablity in sentence
-				SensorDescription<MeasuredPosition3D> sensorDescription = new SensorDescription<MeasuredPosition3D>(
-						MeasuredPosition3D.class, measurement.getSensorID(),
-						messageType);
-				Map<Boolean, Integer> hdopDistribution = hdopAvailability
-						.get(sensorDescription);
-				if (hdopDistribution == null) {
-					hdopDistribution = new HashMap<Boolean, Integer>();
-					hdopAvailability.put(sensorDescription, hdopDistribution);
-				}
-				if (measurement instanceof GNSSMeasuredPosition
-						&& ((GNSSMeasuredPosition) measurement).getHdop() > 0.0) {
-					Integer countHdop = hdopDistribution.get(true);
-					if (countHdop == null) {
-						countHdop = 0;
-					}
-					hdopDistribution.put(true, countHdop + 1);
-				} else {
-					Integer countHdop = hdopDistribution.get(false);
-					if (countHdop == null) {
-						countHdop = 0;
-					}
-					// hdopDistribution.put(true, countHdop + 1); thomas-osm 2018-12-07 copy-paste error?
-					hdopDistribution.put(false, countHdop + 1);
-				}
+				m_trackfile =  trackfile;
 
-				// set measurement distribution
-				Integer precision = positionPrecisionDigits
-						.get(sensorDescription);
-				if (precision == null) {
-					positionPrecisionDigits.put(sensorDescription,
-							measuredPosition3D.getPrecision());
-				} else {
-					positionPrecisionDigits.put(
-							sensorDescription,
-							Math.max(precision,
-									measuredPosition3D.getPrecision()));
-				}
-
-			} else if ((measurement instanceof Depth
-					|| measurement instanceof Heading || measurement instanceof Speed)
-					&& measurement.isValid()) {
-				// distribution
-				Map<String, Map<String, Map<Long, Integer>>> sensorId2MessageType = getSensorId2MessageType((Class<T>) measurement
-						.getClass());
-				Map<String, Map<Long, Integer>> messageType2Distrubution = getMessageType2Distribution(
-						measurement.getSensorID(), sensorId2MessageType);
-				Map<Long, Integer> updateDistribution = getDistribution(
-						messageType, messageType2Distrubution);
-
-				// message time
-				Map<String, Map<String, Long>> sensorID2MessageType = getLastMeasurement4Sensor((Class<T>) measurement
-						.getClass());
-				Map<String, Long> sensorId2Time = getMessageType2Time(
-						measurement, sensorID2MessageType);
-
-				// message count
-				Map<String, Map<String, Long>> sensorID2MessageTypeCount = getSensorID2Count(measurement
-						.getClass());
-				Map<String, Long> messageType2Count = getMessageType2Time(
-						measurement, sensorID2MessageTypeCount);
-
-				Long lastMeasurment = getLastMeasurment4Sensor(messageType,
-						sensorId2Time);
-
-				long measurmentTime;
-				// no time coded for measurement, attach to other measurements
-				// that have time
-				if (measurement.getTime() == null) {
-					measurmentTime = lastMeasurmentTime;
-				} else {
-					measurmentTime = measurement.getTime().getTime();
-				}
-
-				// thomas-osm
-				/* uninitialized last time revisited: if last time is 0 (uninitialized) timeDifference equals current time.
-				 * this is cast to an integer some lines below, which then becomes negative, just to mess things further up.
-				 * hence:
-				 */
-				if ( lastMeasurment == 0 || lastMeasurment > measurmentTime )
-					lastMeasurment = measurmentTime; 
+				aContainers[nextInsertionPoint] = new MeasurementContainer( messageType, measurement );
+				MeasurementContainer contEx = aContainers[ nextExtractionPoint ];
 				
-				long timeDifference = measurmentTime - lastMeasurment;
-					
-				if (timeDifference == 0) {
-					// raise count
-					// Map<String, Map<String, Long>> sensorId2MessageType =
-					// getSensorID2Count();
-					Long measurementCountInSameTimeframe = getLastMeasurment4Sensor(
-							messageType, messageType2Count);
-					messageType2Count.put(messageType,
-							measurementCountInSameTimeframe + 1);
-				} else {
-					// reset count
-					// Map<String, Map<String, Long>> sensorId2MessageType =
-					// getSensorID2Count();
-					Long measurementCountInSameTimeframe = getLastMeasurment4Sensor(
-							messageType, messageType2Count);
-					measurementCountInSameTimeframe++;
-					timeDifference = (int) (timeDifference / measurementCountInSameTimeframe);
-					Integer count = updateDistribution.get(timeDifference);
-					if (count == null) {
-						count = 0;
-					}
-					updateDistribution.put(timeDifference, count + 1);
-					messageType2Count.remove(messageType);
-				}
-				sensorId2Time.put(messageType, measurmentTime);
-				lastMeasurmentTime = measurmentTime;
-
+				if ( checkVicinity( contEx ) )
+					processSingleMeasurement( contEx.GetMeasurement(), contEx.MessageType(), trackfile );
+				
+				nextInsertionPoint++;
+				nextExtractionPoint++;
+				nextInsertionPoint %= 99;
+				nextExtractionPoint %= 99;
 			}
 		}
+	}
+	
+	private void processSingleMeasurement( Measurement measurement, String messageType, ITrackFile trackfile ) {
+			if (measurement instanceof MeasuredPosition3D
+				&& (measurement.getTime() != null 
+					// FIXME:  thomas-osm: Why do we fiddle with timings when neither the measurement nor the format has time?
+					// see fixed exception below
+					|| !(trackfile.isHasAbsoluteTimedMeasurements() || trackfile.isHasRelativeTimedMeasurements())) 
+				&& measurement.isValid()) {
+			MeasuredPosition3D measuredPosition3D = (MeasuredPosition3D) measurement;
+			Map<String, Map<String, Map<Long, Integer>>> sensorId2Distribution = getSensorId2MessageType((Class<T>) MeasuredPosition3D.class);
+			Map<String, Map<Long, Integer>> messageType2Distrubution = getMessageType2Distribution(
+					measurement.getSensorID(), sensorId2Distribution);
+			Map<String, Map<String, Long>> sensorID2MessageType = getLastMeasurement4Sensor((Class<T>) MeasuredPosition3D.class);
+			Map<String, Long> sensorId2Time = getMessageType2Time(
+					measurement, sensorID2MessageType);
+			Map<Long, Integer> updateDistribution = getDistribution(
+					messageType, messageType2Distrubution);
+			Long lastMeasurment = getLastMeasurment4Sensor(messageType,
+					sensorId2Time);
 
+			// FIXME: thomas-osm: handle case where no previous time was available
+			/* TG 2018-12-06 as far as I understand this:
+			 * normally the timestamp of a previous measurement ( in conjunction with timestamping done by the logger??? ) is
+			 * used when a measurement does not contain time itself.
+			 * but if this measurement was not preceded by one containing time, no time is available.
+			 * this case was not handled here. I am not sure what to do, but 4 the time being I just disable any code 
+			 * dealing with time in this case.
+			 * Unfortuneately this lead to exceptions that where silently caught and ignored. The track status was
+			 * set to "PROCESSED" anyway
+			 */
+
+			Date dt = measurement.getTime();
+			if ( dt != null )
+			{
+				long measurmentTime = dt.getTime();
+				long timeDifference = measurmentTime - lastMeasurment;
+				Integer count = updateDistribution.get(timeDifference);
+				if (count == null) {
+					count = 0;
+				}
+				updateDistribution.put(timeDifference, count + 1);
+				sensorId2Time.put(messageType, measurmentTime);
+				lastMeasurmentTime = measurmentTime;
+			}
+			
+			// check hdop availablity in sentence
+			SensorDescription<MeasuredPosition3D> sensorDescription = new SensorDescription<MeasuredPosition3D>(
+					MeasuredPosition3D.class, measurement.getSensorID(),
+					messageType);
+			Map<Boolean, Integer> hdopDistribution = hdopAvailability
+					.get(sensorDescription);
+			if (hdopDistribution == null) {
+				hdopDistribution = new HashMap<Boolean, Integer>();
+				hdopAvailability.put(sensorDescription, hdopDistribution);
+			}
+			if (measurement instanceof GNSSMeasuredPosition
+					&& ((GNSSMeasuredPosition) measurement).getHdop() > 0.0) {
+				Integer countHdop = hdopDistribution.get(true);
+				if (countHdop == null) {
+					countHdop = 0;
+				}
+				hdopDistribution.put(true, countHdop + 1);
+			} else {
+				Integer countHdop = hdopDistribution.get(false);
+				if (countHdop == null) {
+					countHdop = 0;
+				}
+				// hdopDistribution.put(true, countHdop + 1); thomas-osm 2018-12-07 copy-paste error?
+				hdopDistribution.put(false, countHdop + 1);
+			}
+
+			// set measurement distribution
+			Integer precision = positionPrecisionDigits
+					.get(sensorDescription);
+			if (precision == null) {
+				positionPrecisionDigits.put(sensorDescription,
+						measuredPosition3D.getPrecision());
+			} else {
+				positionPrecisionDigits.put(
+						sensorDescription,
+						Math.max(precision,
+								measuredPosition3D.getPrecision()));
+			}
+
+		} else if ((measurement instanceof Depth
+				|| measurement instanceof Heading || measurement instanceof Speed)
+				&& measurement.isValid()) {
+			// distribution
+			Map<String, Map<String, Map<Long, Integer>>> sensorId2MessageType = getSensorId2MessageType((Class<T>) measurement
+					.getClass());
+			Map<String, Map<Long, Integer>> messageType2Distrubution = getMessageType2Distribution(
+					measurement.getSensorID(), sensorId2MessageType);
+			Map<Long, Integer> updateDistribution = getDistribution(
+					messageType, messageType2Distrubution);
+
+			// message time
+			Map<String, Map<String, Long>> sensorID2MessageType = getLastMeasurement4Sensor((Class<T>) measurement
+					.getClass());
+			Map<String, Long> sensorId2Time = getMessageType2Time(
+					measurement, sensorID2MessageType);
+
+			// message count
+			Map<String, Map<String, Long>> sensorID2MessageTypeCount = getSensorID2Count(measurement
+					.getClass());
+			Map<String, Long> messageType2Count = getMessageType2Time(
+					measurement, sensorID2MessageTypeCount);
+
+			Long lastMeasurment = getLastMeasurment4Sensor(messageType,
+					sensorId2Time);
+
+			long measurmentTime;
+			// no time coded for measurement, attach to other measurements
+			// that have time
+			if (measurement.getTime() == null) {
+				measurmentTime = lastMeasurmentTime;
+			} else {
+				measurmentTime = measurement.getTime().getTime();
+			}
+
+			// thomas-osm
+			/* uninitialized last time revisited: if last time is 0 (uninitialized) timeDifference equals current time.
+			 * this is cast to an integer some lines below, which then becomes negative, just to mess things further up.
+			 * hence:
+			 */
+			if ( lastMeasurment == 0 || lastMeasurment > measurmentTime )
+				lastMeasurment = measurmentTime - 1000; // reasonable default 
+			
+			long timeDifference = measurmentTime - lastMeasurment;
+				
+			if (timeDifference == 0) {
+				// raise count
+				// Map<String, Map<String, Long>> sensorId2MessageType =
+				// getSensorID2Count();
+				Long measurementCountInSameTimeframe = getLastMeasurment4Sensor(
+						messageType, messageType2Count);
+				messageType2Count.put(messageType,
+						measurementCountInSameTimeframe + 1);
+			} else {
+				// reset count
+				// Map<String, Map<String, Long>> sensorId2MessageType =
+				// getSensorID2Count();
+				Long measurementCountInSameTimeframe = getLastMeasurment4Sensor(
+						messageType, messageType2Count);
+				measurementCountInSameTimeframe++;
+				timeDifference = (int) (timeDifference / measurementCountInSameTimeframe);
+				Integer count = updateDistribution.get(timeDifference);
+				if (count == null) {
+					count = 0;
+				}
+				updateDistribution.put(timeDifference, count + 1);
+				messageType2Count.remove(messageType);
+			}
+			sensorId2Time.put(messageType, measurmentTime);
+			lastMeasurmentTime = measurmentTime;
+
+		}
 	}
 
 	private Map<String, Long> getMessageType2Time(Measurement measurement,
@@ -478,8 +552,17 @@ public class DepthPositionMeasurementStatisticsProcessor<T extends Measurement> 
 
 	@Override
 	public void finish() throws ProcessingException {
-		// TODO Auto-generated method stub
-		
+		// here we have to process the remaining 49 measurements
+		while( nextExtractionPoint != nextInsertionPoint )
+		{
+			MeasurementContainer contEx = aContainers[ nextExtractionPoint ];
+			
+			if ( checkVicinity( contEx ) )
+				processSingleMeasurement( contEx.GetMeasurement(), contEx.MessageType(), m_trackfile );
+			
+			nextExtractionPoint++;
+			nextExtractionPoint %= 99;
+		}
 	}
 
 }

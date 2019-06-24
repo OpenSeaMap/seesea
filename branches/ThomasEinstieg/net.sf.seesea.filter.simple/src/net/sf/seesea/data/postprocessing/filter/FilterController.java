@@ -91,7 +91,9 @@ public class FilterController implements IFilterController {
 		List<ITrackFile> trackFiles = new ArrayList<ITrackFile>();
 		ITrackFileProcessor preprocessor = null;
 		IStatisticsPreprocessor measurmentProcessor = new DepthPositionMeasurementStatisticsProcessor<>();
+		ITrackFile lastTrackFile = null;
 		for (ITrackFile trackFile : orderedFiles) {
+			lastTrackFile = trackFile;
 			try {
 				if (trackFile.getFileType() == null) {
 					// hm must be a zip file
@@ -101,10 +103,14 @@ public class FilterController implements IFilterController {
 						preprocessor.setMeasurementProcessor(measurmentProcessor);
 						// file type changed -> run statistics again
 						if (!trackFile.getFileType().equals(lastFileType)) {
+							measurmentProcessor.finish();
 							Set<SensorDescriptionUpdateRate<Measurement>> bestSensors = measurmentProcessor
 									.getBestSensors();
 							runFilters(trackFiles, bestSensors, executeSensorDistribution);
 							trackFiles.clear();
+							// here we also have to reset the stats processor
+							measurmentProcessor = new DepthPositionMeasurementStatisticsProcessor<>();
+							preprocessor.setMeasurementProcessor(measurmentProcessor);
 							lastFileType = trackFile.getFileType();
 							if (executeSensorDistribution) {
 								preprocessor.processFile(trackFile);
@@ -124,6 +130,17 @@ public class FilterController implements IFilterController {
 				}
 			} catch (Exception e) {
 				trackFile.setUploadState(ProcessingState.PROCESSING_ERROR);
+				e.printStackTrace();
+				logger.error("Failed to process file", e); //$NON-NLS-1$
+			}
+		}
+		if ( lastTrackFile != null )
+		{
+			try
+			{
+				measurmentProcessor.finish();
+			} catch (Exception e) {
+				lastTrackFile.setUploadState(ProcessingState.PROCESSING_ERROR);
 				e.printStackTrace();
 				logger.error("Failed to process file", e); //$NON-NLS-1$
 			}
