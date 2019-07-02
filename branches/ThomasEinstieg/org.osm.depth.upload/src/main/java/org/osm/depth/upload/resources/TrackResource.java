@@ -93,12 +93,12 @@ public class TrackResource {
 				if (context.isUserInRole("ADMIN")) { //$NON-NLS-1$
 					try (Statement statement = connection.createStatement();
 							ResultSet executeQuery = statement.executeQuery(
-									"SELECT * FROM user_tracks u LEFT OUTER JOIN vesselconfiguration v ON u.vesselconfigid = v.id ORDER BY track_id")) {
+									"SELECT * FROM v_user_tracks u LEFT OUTER JOIN vesselconfiguration v ON u.vesselconfigid = v.id ORDER BY track_id")) {
 						return getTracksFromDatabase(executeQuery);
 					}
 				} else {
 					try (PreparedStatement pStatement = connection.prepareStatement(
-							"SELECT * FROM user_tracks u LEFT OUTER JOIN vesselconfiguration v ON u.vesselconfigid = v.id WHERE u.user_name= ? ORDER BY track_id")) {
+							"SELECT * FROM v_user_tracks u LEFT OUTER JOIN vesselconfiguration v ON u.vesselconfigid = v.id WHERE u.user_name= ? ORDER BY track_id desc limit 10")) {
 						pStatement.setString(1, username);
 						try (ResultSet executeQuery = pStatement.executeQuery()) {
 							return getTracksFromDatabase(executeQuery);
@@ -133,6 +133,12 @@ public class TrackResource {
 				}
 				track.license = executeQuery.getLong("license"); //$NON-NLS-1$
 				track.vesselconfigid = executeQuery.getLong("vesselconfigid"); //$NON-NLS-1$
+				track.num_points = executeQuery.getInt("num_points");
+				track.track_info = executeQuery.getString( "track_info" );
+				track.left = executeQuery.getFloat( "left" );
+				track.right = executeQuery.getFloat( "right" );
+				track.top = executeQuery.getFloat( "top" );
+				track.bottom = executeQuery.getFloat( "bottom" );
 				list.add(track);
 			}
 			return list;

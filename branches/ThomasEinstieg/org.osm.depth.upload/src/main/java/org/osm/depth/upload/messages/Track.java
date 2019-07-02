@@ -65,7 +65,25 @@ public class Track {
 //	@XmlJavaTypeAdapter(TimestampAdapter.class)
 	@ApiModelProperty("The date of the upload in UTC milliseconds")
 	public long uploadDate;
+	
+	@ApiModelProperty("number of points")
+	public int num_points;
+	
+	@ApiModelProperty("processing info")
+	public String track_info;
 
+	@ApiModelProperty("bbox left")
+	public float left;
+
+	@ApiModelProperty("bbox right")
+	public float right;
+
+	@ApiModelProperty("bbox top")
+	public float top;
+
+	@ApiModelProperty("bbox bottom")
+	public float bottom;
+	
 	public Track() {
 		
 	}
