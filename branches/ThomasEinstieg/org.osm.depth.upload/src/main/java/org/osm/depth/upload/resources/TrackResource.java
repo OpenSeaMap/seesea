@@ -98,7 +98,7 @@ public class TrackResource {
 					}
 				} else {
 					try (PreparedStatement pStatement = connection.prepareStatement(
-							"SELECT * FROM v_user_tracks u LEFT OUTER JOIN vesselconfiguration v ON u.vesselconfigid = v.id WHERE u.user_name= ? ORDER BY track_id desc limit 10")) {
+							"SELECT * FROM v_user_tracks u LEFT OUTER JOIN vesselconfiguration v ON u.vesselconfigid = v.id WHERE u.user_name= ? ORDER BY track_id desc")) {
 						pStatement.setString(1, username);
 						try (ResultSet executeQuery = pStatement.executeQuery()) {
 							return getTracksFromDatabase(executeQuery);
