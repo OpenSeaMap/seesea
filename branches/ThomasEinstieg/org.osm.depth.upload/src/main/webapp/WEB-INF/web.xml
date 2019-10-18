@@ -14,12 +14,41 @@
     <url-pattern>/api2/*</url-pattern>
   </servlet-mapping>
   
+  <!-- RKu: try to have a common login -->  
+    <!--servlet>
+        <servlet-name>login</servlet-name>
+        <servlet-class>org.osm.depth.upload.Login</servlet-class>
+    </servlet-->
+    <servlet>
+        <servlet-name>logindummy</servlet-name>
+        <servlet-class>org.osm.depth.upload.Login</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>logout</servlet-name>
+        <servlet-class>org.osm.depth.upload.Logout</servlet-class>
+    </servlet>
+    <!--servlet-mapping>
+        <servlet-name>login</servlet-name>
+        <url-pattern>/api2/auth/login</url-pattern>
+    </servlet-mapping-->
+    <servlet-mapping>
+        <servlet-name>logindummy</servlet-name>
+        <url-pattern>/api2/auth/logindummy</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>logout</servlet-name>
+        <url-pattern>/api2/auth/logout</url-pattern>
+    </servlet-mapping>
+ <!-- RKu: End -->
+  
+  
+  <!--
   <filter>
     <filter-name>CorsFilter</filter-name>
     <filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
     <init-param>
       <param-name>cors.allowed.origins</param-name>
-      <param-value>*</param-value>
+      <param-value>file:///C:/Projekte/Osm/WebFrontend/depth_webfrontend/src,http://testdepth.openseamap.org,https://testdepth.openseamap.org,http://depth.openseamap.org,https://depth.openseamap.org</param-value>
     </init-param>
     <init-param>
       <param-name>cors.allowed.methods</param-name>
@@ -50,6 +79,7 @@
     <filter-name>CorsFilter</filter-name>
     <url-pattern>/api2/*</url-pattern>
   </filter-mapping>
+  -->
   <resource-ref>
     <description>Postgres Datasource</description>
     <res-ref-name>jdbc/postgres</res-ref-name>
@@ -124,6 +154,11 @@
       <http-method>TRACE</http-method>
       <http-method>POST</http-method>
     </web-resource-collection>
+    <web-resource-collection>
+      <web-resource-name>Login Dummy</web-resource-name>
+      <url-pattern>/api2/auth/logindummy</url-pattern>
+      <http-method>GET</http-method>
+    </web-resource-collection>
     <auth-constraint>
       <role-name>USER</role-name>
       <role-name>CONTRIBUTOR</role-name>
@@ -135,6 +170,7 @@
       <web-resource-name>Depth upload</web-resource-name>
       <url-pattern>/api2/*</url-pattern>
       <http-method>OPTIONS</http-method>
+      <http-method>GET</http-method>
     </web-resource-collection>
     <web-resource-collection>
       <web-resource-name>Docs</web-resource-name>
@@ -186,6 +222,10 @@
     </web-resource-collection>
   </security-constraint>
   <login-config>
-    <auth-method>BASIC</auth-method>
+    <auth-method>FORM</auth-method>
+    <form-login-config>
+    	<form-login-page>/loginForm.jsp</form-login-page>
+    	<form-error-page>/loginForm.jsp</form-error-page>
+    </form-login-config>
   </login-config>
 </web-app>
