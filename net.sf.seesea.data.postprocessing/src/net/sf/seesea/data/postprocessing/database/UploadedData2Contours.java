@@ -28,8 +28,11 @@ public class UploadedData2Contours implements IUploadedData2Contours {
 	public void processData() {
 		IDepthDataSync depthDataSync = dataSync.get();
 		if(depthDataSync != null) {
-			depthDataSync.downloadFiles();
-			depthDataSync.downloadSQL();
+			// depthDataSync.downloadFiles();
+			Logger.getLogger(getClass()).info("downloadFiles: Skipping file synchronization");
+			// depthDataSync.downloadSQL();
+			Logger.getLogger(getClass()).info("downloadSQL: Skipping file synchronization");
+
 		} else {
 			Logger.getLogger(getClass()).info("Depth sync not or falsely configured. Skipping file synchronization");
 		}
