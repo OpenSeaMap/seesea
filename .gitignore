@@ -1,0 +1,7 @@
+*.class
+*.jar
+*/target/*
+*tidalConsituents.txt.gz
+net.sf.seesea.track.persistence.database.int.test/uploadUnitTest.log
+net.sf.seesea.track.persistence.database.int.test/uploadUnitTest.properties
+net.sf.seesea.track.persistence.database.int.test/uploadUnitTest.script
