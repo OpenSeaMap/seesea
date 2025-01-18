@@ -9,16 +9,16 @@ function patch_configfiles()
 {
     echo "patch config files"
         
-    CONF1="${CONF_DIR}/net.sf.seesea.data.io.postgis.PostgresDatasourceConfiguration-depth.cfg"
-    CONF2="${CONF_DIR}/net.sf.seesea.data.io.postgis.PostgresDatasourceConfiguration-gauge.cfg"
-    CONF3="${CONF_DIR}/net.sf.seesea.data.io.postgis.PostgresDatasourceConfiguration-userdata.cfg"
-
-    sed -i "s|password=changeme|password=\!2osm2\!|g" "${CONF1}"
-    sed -i "s|password=changeme|password=\!2osm2\!|g" "$CONF2"
-    sed -i "s|password=changeme|password=\!2osm2\!|g" "$CONF3"
-
     sed -i "s|basedir=data|basedir=/app/data|g" ${CONF_DIR}/net.sf.seesea.content.impl.ContentDetector.cfg
     sed -i "s|basedir=data|basedir=/app/data|g" ${CONF_DIR}/net.sf.seesea.track.persistence.database.DatabaseTrackPersistence.cfg
+
+    sed -i "s|password=changeme|password=\!2osm2\!|g" ${CONF_DIR}/net.sf.seesea.data.io.postgis.PostgresDatasourceConfiguration-depth.cfg
+    sed -i "s|password=changeme|password=\!2osm2\!|g" ${CONF_DIR}/net.sf.seesea.data.io.postgis.PostgresDatasourceConfiguration-gauge.cfg
+    sed -i "s|password=changeme|password=\!2osm2\!|g" ${CONF_DIR}/net.sf.seesea.data.io.postgis.PostgresDatasourceConfiguration-userdata.cfg
+
+    sed -i "s|server=localhost|server=postgis|g" ${CONF_DIR}/net.sf.seesea.data.io.postgis.PostgresDatasourceConfiguration-depth.cfg
+    sed -i "s|server=localhost|server=postgis|g" ${CONF_DIR}/net.sf.seesea.data.io.postgis.PostgresDatasourceConfiguration-gauge.cfg
+    sed -i "s|server=localhost|server=postgis|g" ${CONF_DIR}/net.sf.seesea.data.io.postgis.PostgresDatasourceConfiguration-userdata.cfg
 
 }
 
